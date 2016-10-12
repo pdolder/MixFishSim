@@ -65,19 +65,31 @@ create_fields <- function (npt = 1000, t = 1, seed = 123, n.spp = NULL,
 						    NULL, seed = seed))
 	
 	# Convert to list of matrices
-	assign(paste0('spp',i), lapply(split(get(paste0('spate.','spp.',i)),
-					     seq(nrow(get(paste0('spate.','spp.',i))$xi)),
-					     function(x) matrix(x, ncol = npt,
-								nrow = npt)))
+	assign(paste0('spp',i), lapply(split(get(paste0('spate.','spp.',i))$xi,
+					     seq(t)), function(x) matrix(x, ncol = npt, nrow = npt)))
+					     
+
+	# Normalise from 0 to 1 per time period
+	assign(paste0('spp',i), lapply(get(paste0('spp',i)), function(x) {
+					   x[x < 0] <- 0 # Any negative to zeros
+					   x / max(x) }))
 
 	# Plot
 	if(plot.dist == TRUE) {
-	plot(paste0('spate.','spp.',i), mfrow = c(4, 7), mar = c(2, 2, 2, 2), indScale = FALSE,
-	     cex.axis = 1.5, cex.main = 2, ToFile = TRUE, file = plot.file)
+	png(filename = paste0(plot.file,'/','spp',i,'.png'), width = 800, height = 1200)
+	par(mfrow = c(ceiling(sqrt(t)), ceiling(t/ceiling(sqrt(t)))), mar = c(2, 2, 2, 2))
+	for (tm in seq(t)) {
+	image(get(paste0('spp',i))[[tm]], cex.axis = 1.5, cex.main = 2, col = grey(seq(1,0,l = 51)), axes = F)
+	axis(1, at = seq(0, 1, by = 0.2), labels = seq(0, npt, by = npt/5))
+	axis(2, at = seq(0, 1, by = 0.2), labels = seq(0, npt, by = npt/5))
+	text(0.5, 0.98, labels = paste('time =', tm), cex = 2)
+		}
+	dev.off()
 	}
 	
 	}
 
+	# Return the list invisibly
 	fields <- mget(paste0('spp',1:n.spp))
 	return(invisible(fields))
 		
