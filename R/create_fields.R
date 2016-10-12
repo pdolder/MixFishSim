@@ -64,7 +64,7 @@ create_fields <- function (npt = 1000, t = 1, seed = 123, n.spp = NULL,
 				       function(x) matrix(x, ncol = npt, nrow = npt)))
 
 	# Plot
-	if(plot.dist = TRUE) {
+	if(plot.dist == TRUE) {
 	plot(paste0('spate.','spp.',i), mfrow = c(4, 7), mar = c(2, 2, 2, 2), indScale = FALSE,
 	     cex.axis = 1.5, cex.main = 2, ToFile = TRUE, file = plot.file)
 	}
