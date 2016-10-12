@@ -1,0 +1,77 @@
+#' @title Create species distribution fields
+#' 
+#' @description \code{create_fields} parametrises and returns the
+#' spatio-temporal fields used for the relative species spatial distribution
+#' and movement for the fishery simulations. 
+#'
+#' The spatio-temporal fields are generated using
+#' \code{\link[spate]{spate.sim}} function from the \emph{spate} package
+#' using an advective-diffusion Stochastic Partial Differential Equation
+#' (SPDE). See \emph{Lindgren 2011 and Sigrist 2015} for further detail.
+#'
+#' @param npt Numeric integer with the dimensions of the field in
+#' \emph{npt * npt}
+#' @param t Numeric integer with the number of time-steps in the simulation
+#' @param seed (Optional) Numeric integer with the seed for the simulation
+#' @param n.spp Numeric integer with the number of species to be simulated.
+#' Each species must have an individual control list as detailed below.
+#' @param spp.ctrl List of controls to generate each species spatio-temporal
+#' distribution. Must be of the form spp.ctrl(list(spp.1 = c(rho0 = 0.001, ...),
+#' spp.2 = c(rho0 = 0.001, ..),..)) and contain the following:
+#' \itemize{
+#' 	\item \strong{rho0} (\emph{>=0}) Controls the range in a matern covariance
+#' 	structure.
+#'	\item \strong{sigma2} (\emph{>=0}) Controls the marginal variance (i.e. process
+#'	error) in the matern (\emph{>=0}) covariance structure.
+#'	\item \strong{zeta} (\emph{>=0}) Damping parameter; regulates the temporal
+#'	correlation.
+#'	\item \strong{rho1} (\emph{>=0}) Range parameter for the diffusion process
+#'	\item \strong{gamma} (\emph{>=0}) Controls the level of anisotropy 
+#'	\item \strong{alpha} (\emph{[0, \eqn{\pi/2}]}) Controls the direction
+#'	of anisotropy
+#'	\item \strong{muX} (\emp{[-0.5, 0.5]}) x component of drift effect
+#'	\item \strong{muY} (\emph{[-0.5, 0.5]}) y component of drift effect
+#'	\item \strong{tau2} (\emph{>=0}) Nugget effect (measurement error)
+#'	\item \strong{nu} Smoothness parameter for the matern covariance
+#'	function
+#'}
+#' @param plot.dist Boolean, whether to plot the distributions to file
+#' @param plot.file path to save the plots of the species distributions
+
+create_fields <- function (npt = 1000, t = 1, seed = 123, n.spp = NULL, 
+			   spp.ctrl = NULL, plot.dist = FALSE, plot.file = getwd()) {
+
+	# Checks
+	if(n.spp == NULL) stop('must specify the number of species to simulate')
+	if(spp.ctrl == NULL) stop('must specify the control parameters for the species simulations')
+
+	for (i in 1:n.spp) {
+	par  <- spp.ctrl[paste0('spp.',i)]
+
+	# Check
+	for (params in c('rho0','sigma2','zeta','rho1','gamma','alpha','muX','muY','tau2','nu')) {
+	if(!(params %in% par)) stop(paste0('spp.',i,' does not contain ',params))
+	}
+
+	# Create the sim object
+	assign(paste0('spate.','spp.',i), spate.sim(par = par[names(par) !='nu'], n =
+						    npt, T = t, nu =
+						    par[names(par)=='nu'], StartVal =
+						    NULL, seed = seed))
+	
+	# Convert to list of matrices
+	assign(paste0('spp',i), lapply(split(get(paste0('spate.','spp.',i)), seq(npt)),
+				       function(x) matrix(x, ncol = npt, nrow = npt)))
+
+	# Plot
+	if(plot.dist = TRUE) {
+	plot(paste0('spate.','spp.',i), mfrow = c(4, 7), mar = c(2, 2, 2, 2), indScale = FALSE,
+	     cex.axis = 1.5, cex.main = 2, ToFile = TRUE, file = plot.file)
+	}
+	
+	}
+
+	fields <- mget(paste0('spp',1:n.spp))
+	return(invisible(fields))
+		
+}
