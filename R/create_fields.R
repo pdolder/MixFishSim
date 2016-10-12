@@ -29,7 +29,7 @@
 #'	\item \strong{gamma} (\emph{>=0}) Controls the level of anisotropy 
 #'	\item \strong{alpha} (\emph{[0, \eqn{\pi/2}]}) Controls the direction
 #'	of anisotropy
-#'	\item \strong{muX} (\emp{[-0.5, 0.5]}) x component of drift effect
+#'	\item \strong{muX} (\emph{[-0.5, 0.5]}) x component of drift effect
 #'	\item \strong{muY} (\emph{[-0.5, 0.5]}) y component of drift effect
 #'	\item \strong{tau2} (\emph{>=0}) Nugget effect (measurement error)
 #'	\item \strong{nu} Smoothness parameter for the matern covariance
