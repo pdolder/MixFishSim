@@ -38,6 +38,11 @@
 #' @param plot.dist Boolean, whether to plot the distributions to file
 #' @param plot.file path to save the plots of the species distributions
 
+#' @return List with first level being the species (1 -> n) and the second 
+#' being time (1 -> t)
+
+#' @export
+
 create_fields <- function (npt = 1000, t = 1, seed = 123, n.spp = NULL, 
 			   spp.ctrl = NULL, plot.dist = FALSE, plot.file = getwd()) {
 
