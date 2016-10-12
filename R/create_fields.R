@@ -51,22 +51,24 @@ create_fields <- function (npt = 1000, t = 1, seed = 123, n.spp = NULL,
 	if(is.null(spp.ctrl)) stop('must specify the control parameters for the species simulations')
 
 	for (i in 1:n.spp) {
-	par  <- spp.ctrl[paste0('spp.',i)]
+	par  <- spp.ctrl[[paste0('spp.',i)]]
 
 	# Check
 	for (params in c('rho0','sigma2','zeta','rho1','gamma','alpha','muX','muY','tau2','nu')) {
-	if(!(params %in% par)) stop(paste0('spp.',i,' does not contain ',params))
+	if(!(params %in% names(par))) stop(paste0('spp.',i,' does not contain ',params))
 	}
 
 	# Create the sim object
-	assign(paste0('spate.','spp.',i), spate.sim(par = par[names(par) !='nu'], n =
+	assign(paste0('spate.','spp.',i), spate::spate.sim(par = par[names(par) !='nu'], n =
 						    npt, T = t, nu =
 						    par[names(par)=='nu'], StartVal =
 						    NULL, seed = seed))
 	
 	# Convert to list of matrices
-	assign(paste0('spp',i), lapply(split(get(paste0('spate.','spp.',i)), seq(npt)),
-				       function(x) matrix(x, ncol = npt, nrow = npt)))
+	assign(paste0('spp',i), lapply(split(get(paste0('spate.','spp.',i)),
+					     seq(nrow(get(paste0('spate.','spp.',i))$xi)),
+					     function(x) matrix(x, ncol = npt,
+								nrow = npt)))
 
 	# Plot
 	if(plot.dist == TRUE) {
