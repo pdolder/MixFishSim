@@ -1,9 +1,11 @@
 Package: MixFishSim
-Title: What the Package Does (one line, title case)
+Title: Mixed Fishery fleet dynamics simulation tool
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-Depends: R (>= 3.3.1)
+Authors@R: person("Paul", "Dolder", email = "paul.dolder@gmit.ie", role = c("aut", "cre"))
+Description: A simulation framework for evaluating fleet dynamics in mixed fisheries.
+Depends: R (>= 3.3.1),
+Imports: 
+	spate
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
