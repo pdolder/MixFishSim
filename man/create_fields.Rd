@@ -43,6 +43,10 @@ function
 
 \item{plot.file}{path to save the plots of the species distributions}
 }
+\value{
+List with first level being the species (1 -> n) and the second 
+being time (1 -> t)
+}
 \description{
 \code{create_fields} parametrises and returns the
 spatio-temporal fields used for the relative species spatial distribution

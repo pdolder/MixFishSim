@@ -47,8 +47,8 @@ create_fields <- function (npt = 1000, t = 1, seed = 123, n.spp = NULL,
 			   spp.ctrl = NULL, plot.dist = FALSE, plot.file = getwd()) {
 
 	# Checks
-	if(n.spp == NULL) stop('must specify the number of species to simulate')
-	if(spp.ctrl == NULL) stop('must specify the control parameters for the species simulations')
+	if(is.null(n.spp)) stop('must specify the number of species to simulate')
+	if(is.null(spp.ctrl)) stop('must specify the control parameters for the species simulations')
 
 	for (i in 1:n.spp) {
 	par  <- spp.ctrl[paste0('spp.',i)]
