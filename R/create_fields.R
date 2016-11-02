@@ -1,8 +1,8 @@
 #' @title Create species distribution fields
 #' 
 #' @description \code{create_fields} parametrises and returns the
-#' spatio-temporal fields used for the relative species spatial distribution
-#' and movement for the fishery simulations. 
+#' spatio-temporal fields used for the spatial distribution of fish populations
+#' and movement in space and time for the simulations. 
 #'
 #' The spatio-temporal fields are generated using
 #' \code{\link[spate]{spate.sim}} function from the \emph{spate} package
@@ -16,8 +16,8 @@
 #' @param n.spp Numeric integer with the number of species to be simulated.
 #' Each species must have an individual control list as detailed below.
 #' @param spp.ctrl List of controls to generate each species spatio-temporal
-#' distribution. Must be of the form spp.ctrl(list(spp.1 = c(rho0 = 0.001, ...),
-#' spp.2 = c(rho0 = 0.001, ..),..)) and contain the following:
+#' distribution. Must be of the form spp.ctrl = list(spp.1 = c(rho0 = 0.001, ...),
+#' spp.2 = c(rho0 = 0.001, ..),..) and contain the following:
 #' \itemize{
 #' 	\item \strong{rho0} (\emph{>=0}) Controls the range in a matern covariance
 #' 	structure.
@@ -38,8 +38,19 @@
 #' @param plot.dist Boolean, whether to plot the distributions to file
 #' @param plot.file path to save the plots of the species distributions
 
-#' @return List with first level being the species (1 -> n) and the second 
-#' being time (1 -> t)
+#' @return Silently returns a list of spatial distributions with first level of
+#' the list being the population (1 -> n.spp) and the second being time (1 ->
+#' t). If \code{plot.dist = TRUE} it produces an image of the spatial
+#' distributions at each time step for each of the populations saved to the
+#' working directory (unless specified otherwise in \code{plot.file})
+
+#' @examples
+#' fields <- create_fields(n.spp = 1, t = 2, 
+#'	      spp.ctrl = list(
+#'	      'spp.1' = c('rho0' = 0.1, 'sigma2' = 1, 'zeta' = 0.1,
+#'			  'rho1' = 0.01, 'gamma' = 0.3, 'alpha' = pi/4,
+#'			  'muX' = -0.05, 'muY' = -0.05, 'tau2' = 0, 'nu' = 1.5)),
+#'			plot.dist = TRUE, plot.file = getwd())
 
 #' @export
 
