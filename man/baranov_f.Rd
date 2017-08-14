@@ -13,10 +13,10 @@ baranov_f(F, C, B, M)
 
 \item{B}{is a Numeric vector of the biomass at \eqn{wk_{t}}}
 
-\item{M}{is a Numeic vector of the natural mortality rate at \eqn{wk_{t}}}
+\item{M}{is a Numeric vector of the natural mortality rate at \eqn{wk_{t}}}
 }
 \value{
-Returns nothing, is objective to be solved by \code{\link{find_f}}
+returns nothing, is objective to be solved by \code{\link{find_f}}
 }
 \description{
 \code{baranov_f} provides the function to solve in
