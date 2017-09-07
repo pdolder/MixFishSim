@@ -5,7 +5,7 @@
 \title{Initialise simulation}
 \usage{
 init_sim(n_years = 1, n_tows_day = 4, n_days_wk_fished = 5,
-  n_fleets = 1, n_vessels = 1, n_species = 1, move_length = 2)
+  n_fleets = 1, n_vessels = 1, n_species = 1, move_freq = 2)
 }
 \arguments{
 \item{n_years}{is an integar defining the number of years for the
@@ -21,7 +21,7 @@ calendar week that are fished (e.g. 5 (out of 7))}
 \item{n_species}{is an integar defining the number of species in the
 simulation}
 
-\item{move_length}{is an integar defining the duration (in weeks) between
+\item{move_freq}{is an integar defining the duration (in weeks) between
 spatial movements for the populations}
 
 \item{n_tow_day}{is an integar defining the number of tows in a days fishing}
@@ -39,6 +39,6 @@ creates some vector and matrix structures which are used in the
 }
 \examples{
 init_sim(n_years = 1, n_tows_day = 4, n_days_wk_fished = 5,
-n_fleets = 1, n_vessels = 1, n_species = 1, move_length = 2)
+n_fleets = 1, n_vessels = 1, n_species = 1, move_freq = 2)
 }
 

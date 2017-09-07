@@ -3,7 +3,7 @@
 #' @description \code{init_fleet} sets up the parameters and results data frame
 #' to record the catches from the simulation.
 #'
-#' @param sim_init is the output (a list) from the \code{sim_init) function with the
+#' @param sim_init is the output (a list) from the \code{sim_init} function with the
 #' indexing for the simulation.
 #' @param n_fleets is an integer of the number of fleets in the model
 #' @param n_vessels is an integer of the number of vessels in each fleet
@@ -37,7 +37,7 @@
 
 #' @export
 
-init_fleet <- function(sim_init = NULL, n_fleets = 1, n_vessels = 1, VPT = NULL, Qs = NULL, step_params = NULL, past_knowledge = FALSE, past_year_month = FALSE, past_trip = FALSE, threshold = FALSE) {
+init_fleet <- function(sim_init = NULL, n_fleets = 1, n_vessels = 1, VPT = NULL, Qs = NULL, step_params = NULL, past_knowledge = FALSE, past_year_month = FALSE, past_trip = FALSE, threshold = NULL) {
 
 	# useful indexes
 	idx     <- sim_init$idx
@@ -50,7 +50,7 @@ init_fleet <- function(sim_init = NULL, n_fleets = 1, n_vessels = 1, VPT = NULL,
 		       past_knowledge = past_knowledge, past_year_month = past_year_month,
 		       past_trip = past_trip, threshold = threshold)
 	return(params)
-}
+})
 
 
 	##########################
@@ -80,5 +80,6 @@ init_fleet <- function(sim_init = NULL, n_fleets = 1, n_vessels = 1, VPT = NULL,
 				  })
 
 	out_lst <- list(fleet_params = params_lst, fleet_catches = catches_lst)
+	return(out_lst)
 
 }

@@ -4,11 +4,12 @@
 \alias{init_pop}
 \title{Initialise populations}
 \usage{
-init_pop(Bio = NULL, hab = NULL, start_cell = NULL, lambda = NULL,
-  init_move_steps = 10)
+init_pop(sim_init = sim_init, Bio = NULL, hab = NULL, start_cell = NULL,
+  lambda = NULL, init_move_steps = 10, rec_params = NULL, rec_wk = NULL,
+  spwn_wk = NULL, M = NULL)
 }
 \arguments{
-\item{Bio}{is a Numeric vector of the starting (total) biomass for each of the
+\item{Bio}{is a named Numeric vector of the starting (total) biomass for each of the
 populations.}
 
 \item{hab}{is the list of Matrices with the habitat preferences created by \code{create_hab}}
@@ -16,12 +17,29 @@ populations.}
 \item{start_cell}{is a list of Numeric vectors with the starting cells for
 the populations}
 
+\item{lambda}{is the strength that the movement distance decays at in the
+\code{move_prob} function}
+
 \item{init_move_steps}{is a Numeric indicating the number of movements to
 initialise for the population distributions}
+
+\item{rec_params}{is a list with an element for each population, containing
+a vector of the stock recruit parameters which must contain \strong{model},
+\strong{a}, \strong{b} and \strong{cv}. See \code{Recr} for details.}
+
+\item{rec_wk}{is a list with an element for each population, containing a
+vector of the weeks in which recruitment takes place for the population}
+
+\item{spwn_wk}{is a list with an element for each population, containing a
+vector of the weeks in which spawning takes place for the population}
+
+\item{M}{is a named vector, with the annual natural mortality rate for each
+population}
 }
 \value{
-The function returns the matrices for the starting spatial
-population densities
+The function returns the recording vectors at the population level,
+the spatial matrices for the starting population densities and the
+demographic parameters for each population
 }
 \description{
 \code{init_pop} sets up the populations spatial distribution
@@ -29,8 +47,12 @@ based on the habitat preference, starting cell and 'n' numbers of movements
 for all populations in the simulation.
 }
 \examples{
-init_pop(Bio = c(1e6, 2e5), hab = list(spp1 = matrix(nc = 10,
-runif(10*10)), spp2 = matrix(nc = 10, runif(10*10)), init_move_steps = 10))
+init_pop(sim_init = sim_init, Bio = c("spp1" = 1e6, "spp2" = 2e5), hab = list(spp1 = matrix(nc = 10,
+runif(10*10)), spp2 = matrix(nc = 10, runif(10*10)), lambda = c("spp1" =
+0.2, "spp2" = 0.3), init_move_steps = 10), rec_params = list("spp1" =
+c("model" = "BH", "a" = 10, "b" = 50, "cv" = 0.2), "spp2" = c("model" = "BH",
+"a" = 1, "b" = 8, "cv" = 0.2)), rec_wk = list("spp1" = 13:16, "spp2" =
+13:18, spwn_wk = list("spp1" = 15:18, "spp2" = 18:20),M = c("spp1" = 0.2, "spp2" = 0.1)))
 Note, example will not have the right biomass
 }
 

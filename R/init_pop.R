@@ -4,7 +4,7 @@
 #' based on the habitat preference, starting cell and 'n' numbers of movements
 #' for all populations in the simulation.
 #'
-#' @param Bio is a Numeric vector of the starting (total) biomass for each of the
+#' @param Bio is a named Numeric vector of the starting (total) biomass for each of the
 #' populations.
 #' @param hab is the list of Matrices with the habitat preferences created by \code{create_hab}
 #' @param start_cell is a list of Numeric vectors with the starting cells for
@@ -13,18 +13,31 @@
 #' \code{move_prob} function
 #' @param init_move_steps is a Numeric indicating the number of movements to
 #' initialise for the population distributions
+#' @param rec_params is a list with an element for each population, containing
+#' a vector of the stock recruit parameters which must contain \strong{model},
+#' \strong{a}, \strong{b} and \strong{cv}. See \code{Recr} for details.
+#' @param rec_wk is a list with an element for each population, containing a
+#' vector of the weeks in which recruitment takes place for the population
+#' @param spwn_wk is a list with an element for each population, containing a
+#' vector of the weeks in which spawning takes place for the population
+#' @param M is a named vector, with the annual natural mortality rate for each
+#' population
 #'
-#' @return The function returns the matrices for the starting spatial
-#' population densities
+#' @return The function returns the recording vectors at the population level,
+#' the spatial matrices for the starting population densities and the
+#' demographic parameters for each population
 
-#' @examples init_pop(sim_init = sim_init, Bio = c(1e6, 2e5), hab = list(spp1 = matrix(nc = 10,
+#' @examples init_pop(sim_init = sim_init, Bio = c("spp1" = 1e6, "spp2" = 2e5), hab = list(spp1 = matrix(nc = 10,
 #' runif(10*10)), spp2 = matrix(nc = 10, runif(10*10)), lambda = c("spp1" =
-#' 0.2, "spp2" = 0.3), init_move_steps = 10))
+#' 0.2, "spp2" = 0.3), init_move_steps = 10), rec_params = list("spp1" =
+#' c("model" = "BH", "a" = 10, "b" = 50, "cv" = 0.2), "spp2" = c("model" = "BH",
+#' "a" = 1, "b" = 8, "cv" = 0.2)), rec_wk = list("spp1" = 13:16, "spp2" =
+#' 13:18, spwn_wk = list("spp1" = 15:18, "spp2" = 18:20),M = c("spp1" = 0.2, "spp2" = 0.1)))
 #' Note, example will not have the right biomass
 
 #' @export
 
-init_pop <- function(sim_init = sim_init, Bio = NULL, hab = NULL, start_cell = NULL, lambda = NULL, init_move_steps = 10) {
+init_pop <- function(sim_init = sim_init, Bio = NULL, hab = NULL, start_cell = NULL, lambda = NULL, init_move_steps = 10, rec_params = NULL, rec_wk = NULL, spwn_wk = NULL, M = NULL) {
 
 
 # set up population matrices
@@ -56,27 +69,49 @@ Pop <- lapply(names(Bio), function(x) {
 
 
 ## Set up the population level recording vectors
+# extract the indices
+idx <- sim_init[["idx"]]
 
-	# extract the indices
-	idx <- sim_init[["idx"]]
+Pop_vec <- lapply(1:idx[["n.spp"]], function(x) {
 
+Pop_vec <- list( 
 	# Pop level biomass
-	Bio.mat <- matrix(NA, nrow = idx["ny"], ncol = idx["nw"], dimnames =
-			  list(1:idx["ny"], 1:idx["nw"]))
+	Bio.mat = matrix(NA, nrow = idx["ny"], ncol = idx["nw"], dimnames =
+			  list(1:idx["ny"], 1:idx["nw"])),
 	# Pop level Fs
-	F.mat <- matrix(NA, nrow = idx["ny"], ncol = idx["nw"], dimnames =
-			list(1:idx["ny"], 1:idx["nw"]))
+	F.mat = matrix(NA, nrow = idx["ny"], ncol = idx["nw"], dimnames =
+			list(1:idx["ny"], 1:idx["nw"])),
 
 	# Pop level catches
-	Catch.mat <- matrix(NA, nrow = idx["ny"], ncol = idx["nw"], dimnames =
-			    list(1:idx["ny"], 1:idx["nw"]))
+	Catch.mat = matrix(NA, nrow = idx["ny"], ncol = idx["nw"], dimnames =
+			    list(1:idx["ny"], 1:idx["nw"])),
 	
-# Pop level recruitment
-	Rec.mat <- matrix(NA,nrow= idx["n.spp"],ncol = idx["ny"]+1,dimnames=list(paste0("spp",1:idx["n.spp"]),0:idx["ny"]))
+	# Pop level recruitment
+	Rec.mat = matrix(NA,nrow= 1,ncol = idx["ny"]+1,dimnames=list(1, 0:idx["ny"]))
 
+	)
 
-	return(list(Pop_record = list(Bio.mat = Bio.mat, F.mat = F.mat, Catch.mat = Catch.met, Rec.mat = Rec.mat),
-		    Pop = Pop))
+return(Pop_vec)
+
+})
+
+names(Pop_vec) <- paste("spp",1:idx[["n.spp"]], sep ="")
+
+## Sets up the stock-recruitment parameters
+
+dem_params <- lapply(names(Bio), function(x) {
+
+dem_params = list(rec_params = rec_params[[x]], rec_wk = rec_wk[[x]], spwn_wk = spwn_wk[[x]], M = M[[x]])
+
+return(dem_params)
+		  
+	})
+
+names(dem_params) <- names(Bio)
+
+# Return the recording vectors for the populations and the matrix of starting
+# pop locations
+return(list(Pop_lst = Pop_vec, Start_pop = Pop, dem_params = dem_params))
 
 
 }
