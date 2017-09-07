@@ -45,7 +45,7 @@ The spatial fields are generated using
 package.
 }
 \examples{
-fields <- create_hab(n.spp = 1,  
+fields <- create_hab(npt = 100, n.spp = 1,  
       spp.ctrl = list(
       'spp.1' = list('nu' = 1/0.15, var = 1, scale = 10, Aniso =
       matrix(nc=2, c(1.5, 3, -3, 4)))), plot.dist = TRUE, plot.file =

@@ -41,8 +41,7 @@ double distance_calc(int x1, int y1, int x2, int y2) {
 //'
 //' @param start is a Numeric vector of dim 2 for the starting position c(x,y)
 //' @param lambda is an integar for the value for the exponential decay in probability 
-//' of movement, i.e. Pr(B|A) = e^-lambda*dist(a,b) / Sum(c=1:c=n)
-//' e^-lambda*dist
+//' of movement, i.e. \eqn{Pr(B|A) = \exp{-\lambda*dist_{a,b}} / Sum(c=1:c=n)  \exp{-\lambda*dist}}
 //' @param hab is a matrix of the habitat suitability
 //'
 //' @return is a matrix of the movement probabilities from a cell
@@ -101,7 +100,6 @@ NumericMatrix move_prob(NumericVector start, double lambda, NumericMatrix hab) {
 //'
 //' @export
 //  [[Rcpp::export]]
-
 List move_prob_Lst(double lambda, NumericMatrix hab) {
 
  // Define the matrix size

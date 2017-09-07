@@ -31,7 +31,7 @@
 #' (unless specified otherwise in \code{plot.file})
 
 #' @examples
-#' fields <- create_hab(n.spp = 1,  
+#' fields <- create_hab(npt = 100, n.spp = 1,  
 #'	      spp.ctrl = list(
 #'	      'spp.1' = list('nu' = 1/0.15, var = 1, scale = 10, Aniso =
 #'	      matrix(nc=2, c(1.5, 3, -3, 4)))), plot.dist = TRUE, plot.file =
@@ -68,7 +68,7 @@ create_hab <- function (npt = 100, seed = 123, n.spp = NULL,
 	# Normalise from 0 to 1 per time period
 	x<- get(paste0('hab.','spp.',i))
 	x[x < 0] <- 0 # Any negative to zeros
-	assign(paste0('hab_','spp',i), x / sum(x)) # sum to 1
+	assign(paste0('spp',i), x / sum(x)) # sum to 1
 
 	}
 
@@ -77,7 +77,7 @@ create_hab <- function (npt = 100, seed = 123, n.spp = NULL,
 	png(filename = paste0(plot.file,'/','habitat','.png'), width = 800, height = 800)
 	par(mfrow = c(ceiling(sqrt(n.spp)), ceiling(n.spp/ceiling(sqrt(n.spp)))), mar = c(2, 2, 2, 2))
 	for (i in seq(n.spp)) {
-	image(get(paste0('hab_','spp',i)), cex.axis = 1.5, cex.main = 2, col = grey(seq(1,0,l = 51)), axes = F)
+	image(get(paste0('spp',i)), cex.axis = 1.5, cex.main = 2, col = grey(seq(1,0,l = 51)), axes = F)
 	axis(1, at = seq(0, 1, by = 0.2), labels = seq(0, npt, by = npt/5))
 	axis(2, at = seq(0, 1, by = 0.2), labels = seq(0, npt, by = npt/5))
 	text(0.5, 0.98, labels = paste('habitat spp =', i), cex = 2)
@@ -86,7 +86,7 @@ create_hab <- function (npt = 100, seed = 123, n.spp = NULL,
 	}
 	
 	# Return the list invisibly
-	fields <- mget(paste0('hab_','spp',1:n.spp))
+	fields <- mget(paste0('spp',1:n.spp))
 	return(invisible(fields))
 		
 }

@@ -10,8 +10,7 @@ move_prob(start, lambda, hab)
 \item{start}{is a Numeric vector of dim 2 for the starting position c(x,y)}
 
 \item{lambda}{is an integar for the value for the exponential decay in probability 
-of movement, i.e. Pr(B|A) = e^-lambda*dist(a,b) / Sum(c=1:c=n)
-e^-lambda*dist}
+of movement, i.e. \eqn{Pr(B|A) = \exp{-\lambda*dist_{a,b}} / Sum(c=1:c=n)  \exp{-\lambda*dist}}}
 
 \item{hab}{is a matrix of the habitat suitability}
 }
