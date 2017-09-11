@@ -8,8 +8,10 @@
 #' \code{\link[RandomFields]{RFsimulate}} function from the \emph{RandomFields}
 #' package.
 #'
-#' @param npt Numeric integer with the dimensions of the field in
-#' \emph{npt * npt}
+#' @param nrows Numeric integer with the y dimension of the field in
+#' \emph{nrow * ncol}
+#' @param ncols Numeric integer with the x dimension of the field in
+#' \emph{nrow * ncol}
 #' @param n.spp Numeric integer with the number of species to be simulated.
 #' Each species must have an individual control list as detailed below.
 #' @param spp.ctrl List of controls to generate suitable habitat for each
@@ -31,7 +33,7 @@
 #' (unless specified otherwise in \code{plot.file})
 
 #' @examples
-#' fields <- create_hab(npt = 100, n.spp = 1,  
+#' fields <- create_hab(nrows = 100, ncols = 100, n.spp = 1,  
 #'	      spp.ctrl = list(
 #'	      'spp.1' = list('nu' = 1/0.15, var = 1, scale = 10, Aniso =
 #'	      matrix(nc=2, c(1.5, 3, -3, 4)))), plot.dist = TRUE, plot.file =
@@ -39,7 +41,7 @@
 
 #' @export
 
-create_hab <- function (npt = 100, seed = 123, n.spp = NULL, 
+create_hab <- function (nrows = 100, ncols = 100, seed = 123, n.spp = NULL, 
 			   spp.ctrl = NULL, plot.dist = FALSE, plot.file = getwd()) {
 
 	RandomFields::RFoptions(spConform = FALSE) # faster and only returns the matrix of values
@@ -62,7 +64,7 @@ create_hab <- function (npt = 100, seed = 123, n.spp = NULL,
 	# Create the sim object
 	hab_mod <- RandomFields::RMmatern(nu = par$nu, var = par$var, scale =
 			    par$scale, Aniso = par$Aniso)
-	assign(paste0('hab.','spp.',i), RandomFields::RFsimulate(model = hab_mod, x = 1:npt, y = 1:npt))
+	assign(paste0('hab.','spp.',i), RandomFields::RFsimulate(model = hab_mod, x = 1:nrows, y = 1:ncols))
 
 
 	# Normalise from 0 to 1 per time period
@@ -78,8 +80,8 @@ create_hab <- function (npt = 100, seed = 123, n.spp = NULL,
 	par(mfrow = c(ceiling(sqrt(n.spp)), ceiling(n.spp/ceiling(sqrt(n.spp)))), mar = c(2, 2, 2, 2))
 	for (i in seq(n.spp)) {
 	image(get(paste0('spp',i)), cex.axis = 1.5, cex.main = 2, col = grey(seq(1,0,l = 51)), axes = F)
-	axis(1, at = seq(0, 1, by = 0.2), labels = seq(0, npt, by = npt/5))
-	axis(2, at = seq(0, 1, by = 0.2), labels = seq(0, npt, by = npt/5))
+	axis(1, at = seq(0, 1, by = 0.2), labels = seq(0, nrows, by = nrows/5))
+	axis(2, at = seq(0, 1, by = 0.2), labels = seq(0, ncols, by = ncols/5))
 	text(0.5, 0.98, labels = paste('habitat spp =', i), cex = 2)
 		}
 	dev.off()

@@ -15,6 +15,10 @@
 #' @param n_vessels is an integar defining the number of vessels in each fleet
 #' @param n_species is an integar defining the number of species in the
 #' simulation
+#' @param nrows Numeric integer with the y dimension of the field in
+#' \emph{nrow * ncol}
+#' @param ncols Numeric integer with the x dimension of the field in
+#' \emph{nrow * ncol}
 #' @param move_freq is an integar defining the duration (in weeks) between
 #' spatial movements for the populations
 
@@ -27,9 +31,12 @@
 #' @export
 
 init_sim <- function(n_years = 1, n_tows_day = 4, n_days_wk_fished = 5,
-		     n_fleets = 1, n_vessels = 1, n_species = 1, move_freq = 2) {
+		     n_fleets = 1, n_vessels = 1, n_species = 1, nrows = nrows,
+		     ncols = ncols, move_freq = 2) {
 
 ## Create an index for the simulations
+	# nrows   = number of cells in y direction
+	# ncols   = number of cells in x direction
 	# ntd     = number tows per day
 	# ndf     = number days fished
 	# nw      = number of weeks per year
@@ -44,7 +51,7 @@ init_sim <- function(n_years = 1, n_tows_day = 4, n_days_wk_fished = 5,
 		 nt = 52 / move_freq , nm = 12, ny = n_years, 
 		 ntow = n_tows_day * n_days_wk_fished * 52 * n_years,
 		 ntow.py = (n_tows_day * n_days_wk_fished * 52 * n_years)/n_years,
-		 n.spp = n_species)
+		 n.spp = n_species, ncols = ncols, nrows = nrows)
 
 	# breaks index
 

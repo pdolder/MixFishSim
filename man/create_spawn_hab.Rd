@@ -4,11 +4,9 @@
 \alias{create_spawn_hab}
 \title{create spawning habitat}
 \usage{
-create_spawn_hab(npt = 100, hab = hab, spwnareas = NULL, mult = 10)
+create_spawn_hab(hab = hab, spwnareas = NULL, mult = 10)
 }
 \arguments{
-\item{npt}{is a Numeric with the dimension of the cells, i.e. matrix = npt * npt}
-
 \item{hab}{is the habitat preference for the population}
 
 \item{spwnareas}{is a list of Numeric vectors with the West, East, South and
@@ -27,7 +25,7 @@ created by \code{create_hab} to account for spawning habitat preference -
 can be used as a substitute during spawning periods.
 }
 \examples{
-create_spawn_hab(npt = 100, hab = matrix(nc = 100, runif(100 *
+create_spawn_hab(hab = matrix(nc = 100, runif(100 *
 100)), spwnareas = list(spwn1 = c(20, 30, 50, 60)), mult = 10)
 
 }

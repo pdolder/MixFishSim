@@ -7,8 +7,9 @@ Description: A simulation framework for evaluating fleet dynamics in mixed
 Depends:
     R (>= 3.3.1),
 Imports:
-    Rcpp,
-    RandomFields
+    dplyr,
+    RandomFields,
+    Rcpp
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true

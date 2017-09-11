@@ -5,7 +5,8 @@
 \title{Initialise simulation}
 \usage{
 init_sim(n_years = 1, n_tows_day = 4, n_days_wk_fished = 5,
-  n_fleets = 1, n_vessels = 1, n_species = 1, move_freq = 2)
+  n_fleets = 1, n_vessels = 1, n_species = 1, nrows = nrows,
+  ncols = ncols, move_freq = 2)
 }
 \arguments{
 \item{n_years}{is an integar defining the number of years for the
@@ -20,6 +21,12 @@ calendar week that are fished (e.g. 5 (out of 7))}
 
 \item{n_species}{is an integar defining the number of species in the
 simulation}
+
+\item{nrows}{Numeric integer with the y dimension of the field in
+\emph{nrow * ncol}}
+
+\item{ncols}{Numeric integer with the x dimension of the field in
+\emph{nrow * ncol}}
 
 \item{move_freq}{is an integar defining the duration (in weeks) between
 spatial movements for the populations}

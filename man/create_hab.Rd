@@ -4,12 +4,15 @@
 \alias{create_hab}
 \title{Create habitat distribution fields}
 \usage{
-create_hab(npt = 100, seed = 123, n.spp = NULL, spp.ctrl = NULL,
-  plot.dist = FALSE, plot.file = getwd())
+create_hab(nrows = 100, ncols = 100, seed = 123, n.spp = NULL,
+  spp.ctrl = NULL, plot.dist = FALSE, plot.file = getwd())
 }
 \arguments{
-\item{npt}{Numeric integer with the dimensions of the field in
-\emph{npt * npt}}
+\item{nrows}{Numeric integer with the y dimension of the field in
+\emph{nrow * ncol}}
+
+\item{ncols}{Numeric integer with the x dimension of the field in
+\emph{nrow * ncol}}
 
 \item{n.spp}{Numeric integer with the number of species to be simulated.
 Each species must have an individual control list as detailed below.}
@@ -45,7 +48,7 @@ The spatial fields are generated using
 package.
 }
 \examples{
-fields <- create_hab(npt = 100, n.spp = 1,  
+fields <- create_hab(nrows = 100, ncols = 100, n.spp = 1,  
       spp.ctrl = list(
       'spp.1' = list('nu' = 1/0.15, var = 1, scale = 10, Aniso =
       matrix(nc=2, c(1.5, 3, -3, 4)))), plot.dist = TRUE, plot.file =

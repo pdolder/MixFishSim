@@ -45,8 +45,10 @@ selection of possible choices of starting fishing locations in future tows.}
 \value{
 is a list with two elements containing the fleet parameters,
 a named list \strong{fleet_params}, and the fleet catches,
-\strong{catches_list}, which is a list of dataframes for recording the
-vessels catches for each fleet.
+\strong{catches_list}, which is a list of a list. For
+the\strong{catches_list} the first element denotes the fleet number, the
+second element is the vessel number with a dataframe for recording the
+vessels catches.
 }
 \description{
 \code{init_fleet} sets up the parameters and results data frame
