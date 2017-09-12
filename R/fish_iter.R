@@ -3,7 +3,8 @@
 #' @description \code{go_fish_iter} applies the function \code{go_fish} to the
 #' entire fleet an lapply.
 
-#' @param fleets is the parameter settings and catch recording dataframe for all fleets
+#' @param fleets_params is the parameter settings initialised from \code{_init_fleets}
+#' @param fleets_catches is the DF initialised from \code{_init_fleets}
 #' @param Pop is the population matrix for all populations
 #'
 
@@ -15,9 +16,10 @@
 
 #' @export
 
-fish_iters <- function (FUN, N = 1, fleets = NULL, Pop = NULL, t = t,...) {
-	out <- lapply(seq(N), function(x) {
-			      res <- go_fish(fleet_params = fleet_params[[x]], t = t, Pop = NULL, fleet_catches = fleets[[x]])
+fish_iters <- function (FUN, N = 1, fleets_params = NULL, fleets_catches = NULL, Pop = NULL, t = t,...) {
+	out <- lapply(seq(N), function(x) { res <- go_fish(fleet_params = fleets_params[[x]],
+							   fleet_catches = fleets_catches[[x]], 
+							   t = t, Pop = NULL)
 	       })
 }
 

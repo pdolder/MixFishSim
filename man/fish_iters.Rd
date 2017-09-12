@@ -4,10 +4,13 @@
 \alias{fish_iters}
 \title{Go fish iter}
 \usage{
-fish_iters(FUN, N = 1, fleets = NULL, Pop = NULL, t = t, ...)
+fish_iters(FUN, N = 1, fleets_params = NULL, fleets_catches = NULL,
+  Pop = NULL, t = t, ...)
 }
 \arguments{
-\item{fleets}{is the parameter settings and catch recording dataframe for all fleets}
+\item{fleets_params}{is the parameter settings initialised from \code{_init_fleets}}
+
+\item{fleets_catches}{is the DF initialised from \code{_init_fleets}}
 
 \item{Pop}{is the population matrix for all populations}
 }

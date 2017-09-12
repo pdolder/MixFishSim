@@ -4,12 +4,15 @@
 \alias{go_fish}
 \title{Go fish}
 \usage{
-go_fish(sim_init = sim, fleets_init = fleets, pops = Pop, t = t)
+go_fish(sim_init = sim, fleet_params = NULL, fleet_catches = NULL,
+  pops = Pop, t = t)
 }
 \arguments{
 \item{sim_init}{is the initialised object from \code{init_sim}.}
 
-\item{fleets_inits}{is the initialised object from \code{_init_fleets}}
+\item{fleet_params}{is the parameter settings initialised from \code{_init_fleets}}
+
+\item{fleet_catches}{is the DF initialised from \code{_init_fleets}}
 }
 \value{
 is ...

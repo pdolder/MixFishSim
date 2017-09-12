@@ -4,7 +4,8 @@
 #' simulation model
 
 #' @param sim_init is the initialised object from \code{init_sim}.
-#' @param fleets_inits is the initialised object from \code{_init_fleets}
+#' @param fleet_params is the parameter settings initialised from \code{_init_fleets}
+#' @param fleet_catches is the DF initialised from \code{_init_fleets}
 #' 
 
 #' @return is ...
@@ -14,14 +15,14 @@
 
 #' @export
 
-go_fish <- function(sim_init = sim, fleets_init = fleets, pops = Pop, t = t) {
+go_fish <- function(sim_init = sim, fleet_params = NULL, fleet_catches = NULL, pops = Pop, t = t) {
 
 ##### extract the relevant components ###########
-params <- fleets_init$fleet_params      # fleet parameter list
-catch  <- fleets_init$fleet_catches     # fleet catches list
+params <- fleet_params      # fleet parameter list
+catch  <- fleet_catches     # fleet catches list
 
 VPT <- params[["VPT"]] 			# Value per tonne
-Q <- params[["Q"]]			# Catchability for vessel
+Q <- params[["Qs"]]			# Catchability for vessel
 if(length(VPT) != length(Q)) stop("VPT and Q must be the same length")
 
 # 
@@ -29,7 +30,7 @@ PastKnowledge <- params[["past_knowledge"]]
 
 ######## indexes ##############
 idx <- sim$idx
-brk.idx <- sim$ibrk.idx
+brk.idx <- sim$brk.idx
 ###############################
 
 ##### past knowledge decisions ####
@@ -46,7 +47,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
 # If incorporating past knowledge, and its a new trip...and not in the
 	# first year
-	if(!is.null(PastKnowledge) & catch[t,"trip"] != catch[t-1,"trip"] & idx[["year.breaks"]][t]>1)  {
+	if(is.null(PastKnowledge) & catch[t,"trip"] != catch[t-1,"trip"] & brk.idx[["year.breaks"]][t]>1)  {
 
 print("USING PAST KNOWLEDGE!!!")
 	catch.df  <- as.data.frame(catch) # Needed for correct sub-setting
@@ -55,7 +56,7 @@ print("USING PAST KNOWLEDGE!!!")
 		# trip, or iii) combination of same month last year and past
 		# trip
 	
-	if(any(is.null(params[["past_year_month"]]) | is.null(params[["past_trip"]]) | is.null(params[["threshold"]]))) stop("Must
+	if(PastKnowledge & any(is.null(params[["past_year_month"]]) | is.null(params[["past_trip"]]) | is.null(params[["threshold"]]))) stop("Must
 	    specify whether the past knowledge of fishing grounds is based
 	    on last year, last trip or both, and a threshold for 'good fishin'")
 	
@@ -122,7 +123,7 @@ print("USING PAST KNOWLEDGE!!!")
 
 	# CRW when no past knowledge, or within same month/trip (depending on
 	# choice)
-	if(is.null(PastKnowledge) | catch[t,"trip"] == catch[t-1,"trip"] | year.breaks[t]==1) {
+	if(!PastKnowledge | catch[t,"trip"] == catch[t-1,"trip"] | brk.idx[["year.breaks"]][t]==1) {
 
 	stepD     <- step_length(revenue = catch[t-1,"val"],step_params = params[["step_params"]])  # Calculate step distance based on last tow value
         catch[t,"stepD"] <- stepD    # record the step distance	
@@ -132,7 +133,7 @@ print("USING PAST KNOWLEDGE!!!")
 	Bear = runif(1,0,360) # bearing - to be replaced with a correlated von mises dist
 	catch[t, "angles"] <- Bear
 	new.point <- round(make_step(stepD = stepD, Bear = Bear, start.x = coords[1], start.y = coords[2])) # returns c(x2,y2)
-	out.bound <- any(new.point < 1) | any(new.point >1000)
+	out.bound <- any(new.point < 1) | any(new.point > idx[["ncols"]])
 		}
 
 	}
@@ -149,7 +150,7 @@ coords <- new.point # assign new fishing position
 	## matrix of the catches, to be stored for the delay-difference
 	## projections
 
-	catch_matrix <- lapply(1:idx[["n.spp"]], function() {
+	catch_matrix <- lapply(1:idx[["n.spp"]], function(.) {
 			       matrix(0, ncol = idx[["ncols"]], nrow = idx[["nrows"]])
 	    })
 
@@ -160,12 +161,12 @@ coords <- new.point # assign new fishing position
 	for (i in 1:idx[["n.spp"]]) {
 
 	# store for the fleets record
-	catch[t,paste("spp",i,sep="")] <- Pop[[paste("spp",i,sep="")]][coords[1],coords[2]] * 
+	catch[t,paste("spp",i,sep="")] <- pops[[paste("spp",i,sep="")]][coords[1],coords[2]] * 
 		Q[[paste("spp",i,sep="")]] 
 
 	# store for the delay-diff record
 	catch_matrix[[paste("spp", i, sep ="")]][coords[1], coords[2]]  <-
-		Pop[[paste("spp",i,sep="")]][coords[1],coords[2]] *
+		pops[[paste("spp",i,sep="")]][coords[1],coords[2]] *
 		Q[[paste("spp",i,sep="")]] 
 
 	}
@@ -181,7 +182,7 @@ coords <- new.point # assign new fishing position
 
 	catch[t, "meanval"] <- mean(catch[1:t,"val"]) # Update mean value
 	catch[t, "sdval"]   <- ifelse(is.na(sd(catch[1:t,"val"])),1, sd(catch[1:t,"val"]))  # Update the SD of the catch
-	print(paste("tow",t,"=",round(catch[t,"val"],0),", mean = ",round(catch[t, "meanval"],0),"euros",",  ",round((t/ntow)*100,0),"% complete"))
+	print(paste("tow",t,"=",round(catch[t,"val"],0),", mean = ",round(catch[t, "meanval"],0),"euros",",  ",round((t/idx[["ntow"]])*100,0),"% complete"))
 
 
 res <- list(catch = catch, catch_matrix = catch_matrix)
