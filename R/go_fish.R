@@ -6,20 +6,25 @@
 #' @param sim_init is the initialised object from \code{init_sim}.
 #' @param fleet_params is the parameter settings initialised from \code{_init_fleets}
 #' @param fleet_catches is the DF initialised from \code{_init_fleets}
+#' @param sp_fleet_catches is a list of spatial catches (as a Numeric matrix) for the fleet of each
+#' population
 #' 
 
-#' @return is ...
+#' @return is a list containing i) the fleet catch dataframes , ii) the spatial
+#' catches of each population
 
 #' @examples
 #'
 
 #' @export
 
-go_fish <- function(sim_init = sim, fleet_params = NULL, fleet_catches = NULL, pops = Pop, t = t) {
+go_fish <- function(sim_init = sim, fleet_params = NUlL, fleet_catches = NULL, 
+		    sp_fleet_catches = NULL,pops = NULL, t = t) {
 
 ##### extract the relevant components ###########
 params <- fleet_params      # fleet parameter list
 catch  <- fleet_catches     # fleet catches list
+catch_matrix <- sp_fleet_catches
 
 VPT <- params[["VPT"]] 			# Value per tonne
 Q <- params[["Qs"]]			# Catchability for vessel
@@ -146,46 +151,39 @@ coords <- new.point # assign new fishing position
 # save coords fished
 	catch[t,"x"] <- coords[1]
 	catch[t,"y"] <- coords[2]
-
-	## matrix of the catches, to be stored for the delay-difference
-	## projections
-
-	catch_matrix <- lapply(1:idx[["n.spp"]], function(.) {
-			       matrix(0, ncol = idx[["ncols"]], nrow = idx[["nrows"]])
-	    })
-
-	names(catch_matrix) <- paste("spp", 1:idx[["n.spp"]], sep = "")
-	
-	
+		
 	# sample from catch of species
-	for (i in 1:idx[["n.spp"]]) {
+	for (i in seq(idx[["n.spp"]])) {
+		print(coords)
 
 	# store for the fleets record
 	catch[t,paste("spp",i,sep="")] <- pops[[paste("spp",i,sep="")]][coords[1],coords[2]] * 
 		Q[[paste("spp",i,sep="")]] 
 
-	# store for the delay-diff record
+	# store for the delay-diff record - add to the passed catch matrix
 	catch_matrix[[paste("spp", i, sep ="")]][coords[1], coords[2]]  <-
+		
+		catch_matrix[[paste("spp", i, sep ="")]][coords[1], coords[2]] +
 		pops[[paste("spp",i,sep="")]][coords[1],coords[2]] *
 		Q[[paste("spp",i,sep="")]] 
 
 	}
 	
-	catch[t,"allspp"] <- sum(catch[t,(paste("spp",1:idx[["n.spp"]],sep=""))])
+	catch[t,"allspp"] <- sum(catch[t,(paste("spp",seq(idx[["n.spp"]]),sep=""))])
 
 	#calculate value of catch
-	catch_val <- sapply(1:idx[["n.spp"]],function(n) {
+	catch_val <- sapply(seq(idx[["n.spp"]]),function(n) {
 	             catch[t,paste("spp",n,sep = "")] * VPT[[paste("spp",n,sep = "")]]
 	    })
 
 	catch[t,"val"] <- sum(catch_val)
 
-	catch[t, "meanval"] <- mean(catch[1:t,"val"]) # Update mean value
-	catch[t, "sdval"]   <- ifelse(is.na(sd(catch[1:t,"val"])),1, sd(catch[1:t,"val"]))  # Update the SD of the catch
+	catch[t, "meanval"] <- mean(catch[seq(t),"val"]) # Update mean value
+	catch[t, "sdval"]   <- ifelse(is.na(sd(catch[seq(t),"val"])),1, sd(catch[seq(t),"val"]))  # Update the SD of the catch
 	print(paste("tow",t,"=",round(catch[t,"val"],0),", mean = ",round(catch[t, "meanval"],0),"euros",",  ",round((t/idx[["ntow"]])*100,0),"% complete"))
 
 
-res <- list(catch = catch, catch_matrix = catch_matrix)
+res <- list(catch = catch, catch_matrices = catch_matrix)
 return(res)
 
 } # End go fish function

@@ -51,7 +51,7 @@ create_hab <- function (nrows = 100, ncols = 100, seed = 123, n.spp = NULL,
 	if(is.null(n.spp)) stop('must specify the number of species to simulate')
 	if(is.null(spp.ctrl)) stop('must specify the control parameters for the species simulations')
 
-	for (i in 1:n.spp) {
+	for (i in seq(n.spp)) {
 	par  <- spp.ctrl[[paste0('spp.',i)]]
 
 	# Check
@@ -64,7 +64,7 @@ create_hab <- function (nrows = 100, ncols = 100, seed = 123, n.spp = NULL,
 	# Create the sim object
 	hab_mod <- RandomFields::RMmatern(nu = par$nu, var = par$var, scale =
 			    par$scale, Aniso = par$Aniso)
-	assign(paste0('hab.','spp.',i), RandomFields::RFsimulate(model = hab_mod, x = 1:nrows, y = 1:ncols))
+	assign(paste0('hab.','spp.',i), RandomFields::RFsimulate(model = hab_mod, x = seq(nrows), y = seq(ncols)))
 
 
 	# Normalise from 0 to 1 per time period
@@ -88,7 +88,7 @@ create_hab <- function (nrows = 100, ncols = 100, seed = 123, n.spp = NULL,
 	}
 	
 	# Return the list invisibly
-	fields <- mget(paste0('spp',1:n.spp))
+	fields <- mget(paste0('spp',seq(n.spp)))
 	return(invisible(fields))
 		
 }

@@ -57,7 +57,7 @@ Pop <- lapply(names(Bio), function(x) {
 
 		      # 2. Apply move n times
 
-		      for (i in 1:init_move_steps) {
+		      for (i in seq(init_move_steps)) {
 		      PopIn <- move_population(moveProp = MoveProp, StartPop = PopIn)
 		      PopIn <- Reduce("+", PopIn)
 		      }
@@ -68,23 +68,23 @@ Pop <- lapply(names(Bio), function(x) {
 
 })
 
-names(Pop) <- paste("spp",1:idx[["n.spp"]], sep ="")
+names(Pop) <- paste("spp",seq(idx[["n.spp"]]), sep ="")
 
 ## Set up the population level recording vectors
 
-Pop_vec <- lapply(1:idx[["n.spp"]], function(x) {
+Pop_vec <- lapply(seq(idx[["n.spp"]]), function(x) {
 
 Pop_vec <- list( 
 	# Pop level biomass
 	Bio.mat = matrix(NA, nrow = idx["ny"], ncol = idx["nw"], dimnames =
-			  list(1:idx["ny"], 1:idx["nw"])),
+			  list(seq(idx["ny"]), seq(idx["nw"]))),
 	# Pop level Fs
 	F.mat = matrix(NA, nrow = idx["ny"], ncol = idx["nw"], dimnames =
-			list(1:idx["ny"], 1:idx["nw"])),
+			list(seq(idx["ny"]), seq(idx["nw"]))),
 
 	# Pop level catches
 	Catch.mat = matrix(NA, nrow = idx["ny"], ncol = idx["nw"], dimnames =
-			    list(1:idx["ny"], 1:idx["nw"])),
+			    list(seq(idx["ny"]), seq(idx["nw"]))),
 	
 	# Pop level recruitment
 	Rec.mat = matrix(NA,nrow= 1,ncol = idx["ny"]+1,dimnames=list(1, 0:idx["ny"]))
@@ -95,7 +95,7 @@ return(Pop_vec)
 
 })
 
-names(Pop_vec) <- paste("spp",1:idx[["n.spp"]], sep ="")
+names(Pop_vec) <- paste("spp",seq(idx[["n.spp"]]), sep ="")
 
 ## Sets up the stock-recruitment parameters
 

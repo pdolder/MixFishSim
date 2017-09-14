@@ -4,8 +4,8 @@
 \alias{go_fish}
 \title{Go fish}
 \usage{
-go_fish(sim_init = sim, fleet_params = NULL, fleet_catches = NULL,
-  pops = Pop, t = t)
+go_fish(sim_init = sim, fleet_params = NUlL, fleet_catches = NULL,
+  sp_fleet_catches = NULL, pops = NULL, t = t)
 }
 \arguments{
 \item{sim_init}{is the initialised object from \code{init_sim}.}
@@ -13,9 +13,13 @@ go_fish(sim_init = sim, fleet_params = NULL, fleet_catches = NULL,
 \item{fleet_params}{is the parameter settings initialised from \code{_init_fleets}}
 
 \item{fleet_catches}{is the DF initialised from \code{_init_fleets}}
+
+\item{sp_fleet_catches}{is a list of spatial catches (as a Numeric matrix) for the fleet of each
+population}
 }
 \value{
-is ...
+is a list containing i) the fleet catch dataframes , ii) the spatial
+catches of each population
 }
 \description{
 \code{go_fish} is a function used to apply the fishing

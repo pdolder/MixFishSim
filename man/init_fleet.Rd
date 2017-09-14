@@ -43,12 +43,14 @@ which a fishing tow should be considered "good" and included in the
 selection of possible choices of starting fishing locations in future tows.}
 }
 \value{
-is a list with two elements containing the fleet parameters,
-a named list \strong{fleet_params}, and the fleet catches,
+is a list with three elements containing i) the fleet parameters,
+a named list \strong{fleet_params}, ii) the fleet catches,
 \strong{catches_list}, which is a list of a list. For
 the\strong{catches_list} the first element denotes the fleet number, the
 second element is the vessel number with a dataframe for recording the
-vessels catches.
+vessels catches. Finally, iii) is the spatial catches for the fleets, which
+is a list (fleet) containing a list (vessels) containing a list (population)
+- which is to be passed to the delay difference model.
 }
 \description{
 \code{init_fleet} sets up the parameters and results data frame

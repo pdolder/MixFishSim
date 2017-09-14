@@ -61,7 +61,7 @@ create_fields <- function (npt = 1000, t = 1, seed = 123, n.spp = NULL,
 	if(is.null(n.spp)) stop('must specify the number of species to simulate')
 	if(is.null(spp.ctrl)) stop('must specify the control parameters for the species simulations')
 
-	for (i in 1:n.spp) {
+	for (i in seq(n.spp)) {
 	par  <- spp.ctrl[[paste0('spp.',i)]]
 
 	# Check
@@ -101,7 +101,7 @@ create_fields <- function (npt = 1000, t = 1, seed = 123, n.spp = NULL,
 	}
 
 	# Return the list invisibly
-	fields <- mget(paste0('spp',1:n.spp))
+	fields <- mget(paste0('spp',seq(n.spp)))
 	return(invisible(fields))
 		
 }

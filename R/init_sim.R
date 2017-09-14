@@ -65,17 +65,17 @@ init_sim <- function(n_years = 1, n_tows_day = 4, n_days_wk_fished = 5,
 	# month.breaks = 
 	# year.breaks = 
 
-	day.seq <- 1:364 # temp
+	day.seq <- seq(364) # temp
 
 	brk.idx <- list(
-        tow.breaks = rep(sort(rep(1:idx["nt"], length.out = idx["ntow.py"])), idx["ny"]),
+        tow.breaks = rep(sort(rep(seq(idx["nt"]), length.out = idx["ntow.py"])), idx["ny"]),
 	day.seq = day.seq[!day.seq %in% c(seq(7,364,7),seq(6,364,7))],
 	day.breaks = rep(rep(day.seq[!day.seq %in%
 				 c(seq(7,364,7),seq(6,364,7))],each =
 				 idx["ntd"]),idx["ny"]),
-	trip.breaks = rep(rep(1:(idx["ntow.py"]/(idx["ntd"]*idx["ndf"])),each=idx["ndf"]*idx["ntd"]),idx["ny"]), 
-	month.breaks  = rep(sort(rep(1:idx["nm"],length.out = idx["ntow.py"])),idx["ny"]), 
-	year.breaks   = rep(1:idx["ny"],each = idx["ntow.py"])
+	trip.breaks = rep(rep(seq(idx["ntow.py"]/(idx["ntd"]*idx["ndf"])),each=idx["ndf"]*idx["ntd"]),idx["ny"]), 
+	month.breaks  = rep(sort(rep(seq(idx["nm"]),length.out = idx["ntow.py"])),idx["ny"]), 
+	year.breaks   = rep(seq(idx["ny"]),each = idx["ntow.py"])
 	)
 
 

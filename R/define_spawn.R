@@ -17,7 +17,7 @@
 
 define_spawn <- function(coord = NULL, spwn = NULL, mult = 10){
 
-	for(i in 1:length(coord)) {
+	for(i in seq(length(coord))) {
 	x1 <- coord[[i]][1]; x2 <- coord[[i]][2]
 	y1 <- coord[[i]][3]; y2 <- coord[[i]][4]
 	spwn[x1:x2, y1:y2] <- spwn[x1:x2, y1:y2] * mult
