@@ -18,12 +18,19 @@
 #' @export
 
 fish_iters <- function (FUN, sim_init = sim, fleets_params = NULL, fleets_catches = NULL, 
-			pops = NULL, t = t,...) {
-	out <- lapply(seq(length(fleets_params)), function(x) { res <- go_fish(sim_init = sim,
-							   fleet_params = fleets_params[[x]],
-							   fleet_catches = fleets_catches[[x]][["catch"]],
-							   sp_fleet_catches = fleets_catches[[x]][["catch_matrices"]],
-							   t = t, pops = pops)
+			sp_fleets_catches = NULL, pops = NULL, t = t,...) {
+	out <- lapply(seq(length(fleets_catches)), function(x) { 
+			      res <- go_fish(sim_init = sim, fleet_params = fleets_params[[x]],
+					     fleet_catches = fleets_catches[[x]],
+					     sp_fleet_catches = sp_fleets_catches[[x]],
+					     t = t, pops = pops)
 	       })
+
+	# We want the fleet catches together, and the spatial catches together
+	out_catches <- lapply(out, '[[', 1)
+	out_sp_catches <- lapply(out, '[[', 2)
+	out <- list(fleets_catches = out_catches, sp_fleets_catches = out_sp_catches)
+	return(out)
+
 }
 

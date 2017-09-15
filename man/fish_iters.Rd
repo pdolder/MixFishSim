@@ -5,7 +5,8 @@
 \title{Go fish iter}
 \usage{
 fish_iters(FUN, sim_init = sim, fleets_params = NULL,
-  fleets_catches = NULL, pops = NULL, t = t, ...)
+  fleets_catches = NULL, sp_fleets_catches = NULL, pops = NULL, t = t,
+  ...)
 }
 \arguments{
 \item{fleets_params}{is the parameter settings initialised from \code{_init_fleets}}
@@ -29,4 +30,3 @@ entire fleet with an lapply.
 \examples{
 None as yet
 }
-

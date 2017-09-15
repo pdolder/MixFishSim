@@ -25,4 +25,3 @@ following a move, using the step distance and bearing inputs.
 \examples{
 make_step(stepD = 20, Bear = 90, start.x = 20, start.y = 5)
 }
-
