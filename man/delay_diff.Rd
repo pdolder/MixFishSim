@@ -46,3 +46,4 @@ biomass, overall mortality and recruitment it returns the biomass in wk+1.
 delay_diff(K = 0.3, F = 0.2, M = 0.2, wt = 1, wtm1 = 0.1, R = 1e6, B = 1e5,
 Bm1 = 1e4, al = 0.5, alm1 = 0.1)
 }
+

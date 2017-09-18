@@ -25,3 +25,4 @@ a cell and all other cells based on the distance and \emph{lambda}.
 move_prob(c(2, 5), 0.3, matrix(nc = 3, runif(9))) 
 
 }
+

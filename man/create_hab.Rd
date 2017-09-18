@@ -54,3 +54,4 @@ fields <- create_hab(nrows = 100, ncols = 100, n.spp = 1,
       matrix(nc=2, c(1.5, 3, -3, 4)))), plot.dist = TRUE, plot.file =
       getwd())
 }
+

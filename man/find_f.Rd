@@ -27,3 +27,4 @@ the \code{\link{baranov_f}} objective function.
 \examples{
 find_f(C = 3000, B = 12000, M = 0.2, FUN = baranov_f)
 }
+
