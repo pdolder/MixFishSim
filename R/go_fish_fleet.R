@@ -1,6 +1,6 @@
-#' @title Go fish iter
+#' @title Go fish fleet 
 
-#' @description \code{go_fish_iter} applies the function \code{go_fish} to the
+#' @description \code{go_fish_fleet} applies the function \code{go_fish} to the
 #' entire fleet with an lapply.
 
 #' @param fleets_params is the parameter settings initialised from \code{_init_fleets}
@@ -17,10 +17,10 @@
 
 #' @export
 
-fish_iters <- function (FUN, sim_init = sim, fleets_params = NULL, fleets_catches = NULL, 
+go_fish_fleet <- function (FUN = go_fish, sim_init = sim, fleets_params = NULL, fleets_catches = NULL, 
 			sp_fleets_catches = NULL, pops = NULL, t = t,...) {
 	out <- lapply(seq(length(fleets_catches)), function(x) { 
-			      res <- go_fish(sim_init = sim, fleet_params = fleets_params[[x]],
+			      res <- go_fish(sim_init = sim, fleet_params = fleets_params,
 					     fleet_catches = fleets_catches[[x]],
 					     sp_fleet_catches = sp_fleets_catches[[x]],
 					     t = t, pops = pops)
