@@ -4,14 +4,13 @@
 \alias{sum_fleet_catches}
 \title{Sum fleet catches}
 \usage{
-sum_fleet_catches(fleet_log = NULL, n_spp = NULL)
+sum_fleet_catches(sim_init = sim, fleet_log = NULL)
 }
 \arguments{
+\item{sim_init}{is the initialised simulation settings, from \code{init_sim}}
+
 \item{fleet_log}{is the output of \code{go_fish_fleet}, i.e. the catch log
 information for a single fleet}
-
-\item{n_spp}{is the number of populations in the simulation (NOTE: can
-remove this and take from the overall sim settings)}
 }
 \value{
 is a list of matrices (one for each population) with the entire
@@ -23,6 +22,5 @@ spatial catches for an entire fleet and sum them as a matrix of catches for
 the fleet for each population
 }
 \examples{
-test <- sum_fleet_catches(fleet_log = applied_to_fleets[[1]], n_spp = 2)
+test <- sum_fleet_catches(fleet_log = applied_to_fleets[[1]])
 }
-

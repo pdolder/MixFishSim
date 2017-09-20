@@ -55,4 +55,3 @@ c("model" = "BH", "a" = 10, "b" = 50, "cv" = 0.2), "spp2" = c("model" = "BH",
 13:18, spwn_wk = list("spp1" = 15:18, "spp2" = 18:20),M = c("spp1" = 0.2, "spp2" = 0.1)))
 Note, example will not have the right biomass
 }
-

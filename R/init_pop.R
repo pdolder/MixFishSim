@@ -63,7 +63,6 @@ Pop <- lapply(names(Bio), function(x) {
 		      }
 
 		      # Return the starting population
-		      names(PopIn) <- x
 		      return(PopIn)
 
 })

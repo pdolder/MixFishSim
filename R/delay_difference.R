@@ -4,10 +4,11 @@
 #' model with a weekly time-step after \emph{Dichmont 2003}. Given the starting
 #' biomass, overall mortality and recruitment it returns the biomass in wk+1.
 
-#' @param K is a Numeric vector describing growth @param F is the weekly. Note:
+#' @param K is a Numeric vector describing growth.  Note:
 #' K is transformed to rho with \emph{\eqn{\rho = exp{-K}}} for the model.
 #' estimate of instantaneous fishing mortality (obtained elsewhere, via
 #' \code{\link{find_f}} and \code{\link{baranov_f}} functions.  
+#' @param F is the weekly fishing mortality rate.
 #' @param M is a Numeric vector of the instantaneous rate of natural mortality for the population
 #' @param wt is a Numeric vector of the weight of a fish when fully recruited
 #' @param wtm1 is a Numeric vector of the weight of a fish before its recruited

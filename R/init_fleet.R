@@ -5,8 +5,6 @@
 #'
 #' @param sim_init is the output (a list) from the \code{sim_init} function with the
 #' indexing for the simulation.
-#' @param n_fleets is an integer of the number of fleets in the model
-#' @param n_vessels is an integer of the number of vessels in each fleet
 #' @param VPT is a named vector of numerics detailing the value-per-tonne for catches
 #' from each of the species (same for all fleets)
 #' @param Qs is a list (an element for each fleet) with each element containing
@@ -41,14 +39,15 @@
 
 #' @export
 
-init_fleet <- function(sim_init = NULL, n_fleets = 1, n_vessels = 1, VPT =
-		       NULL, Qs = NULL, step_params = NULL, past_knowledge =
+init_fleet <- function(sim_init = NULL, VPT =  NULL, Qs = NULL, step_params = NULL, past_knowledge =
 		       FALSE, past_year_month = FALSE, past_trip = FALSE,
 	       threshold = NULL) {
 
 	# useful indexes
-	idx     <- sim_init$idx
-	brk.idx <- sim_init$brk.idx
+	idx       <- sim_init[["idx"]]
+	n_fleets  <- idx[["nf"]]
+	n_vessels <- idx[["nv"]]
+	brk.idx   <- sim_init[["brk.idx"]]
 
 	## Set up parameters list
 	params_lst <- lapply(seq(n_fleets), function(x) {

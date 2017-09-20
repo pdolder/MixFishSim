@@ -4,17 +4,13 @@
 \alias{init_fleet}
 \title{Initialise fleet}
 \usage{
-init_fleet(sim_init = NULL, n_fleets = 1, n_vessels = 1, VPT = NULL,
-  Qs = NULL, step_params = NULL, past_knowledge = FALSE,
-  past_year_month = FALSE, past_trip = FALSE, threshold = NULL)
+init_fleet(sim_init = NULL, VPT = NULL, Qs = NULL, step_params = NULL,
+  past_knowledge = FALSE, past_year_month = FALSE, past_trip = FALSE,
+  threshold = NULL)
 }
 \arguments{
 \item{sim_init}{is the output (a list) from the \code{sim_init} function with the
 indexing for the simulation.}
-
-\item{n_fleets}{is an integer of the number of fleets in the model}
-
-\item{n_vessels}{is an integer of the number of vessels in each fleet}
 
 \item{VPT}{is a named vector of numerics detailing the value-per-tonne for catches
 from each of the species (same for all fleets)}
@@ -59,4 +55,3 @@ to record the catches from the simulation.
 \examples{
 None yet, to add
 }
-

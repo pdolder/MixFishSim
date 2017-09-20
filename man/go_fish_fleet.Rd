@@ -30,4 +30,3 @@ entire fleet with an lapply.
 \examples{
 None as yet
 }
-

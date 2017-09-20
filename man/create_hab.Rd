@@ -4,19 +4,10 @@
 \alias{create_hab}
 \title{Create habitat distribution fields}
 \usage{
-create_hab(nrows = 100, ncols = 100, seed = 123, n.spp = NULL,
-  spp.ctrl = NULL, plot.dist = FALSE, plot.file = getwd())
+create_hab(sim_init = sim, seed = 123, spp.ctrl = NULL,
+  plot.dist = FALSE, plot.file = getwd())
 }
 \arguments{
-\item{nrows}{Numeric integer with the y dimension of the field in
-\emph{nrow * ncol}}
-
-\item{ncols}{Numeric integer with the x dimension of the field in
-\emph{nrow * ncol}}
-
-\item{n.spp}{Numeric integer with the number of species to be simulated.
-Each species must have an individual control list as detailed below.}
-
 \item{spp.ctrl}{List of controls to generate suitable habitat for each
 species. Must be of the form spp.ctrl = list(spp.1 = c(var = 20, ...),
 spp.2 = c(var = 10, ..),..) and contain the following:
@@ -30,6 +21,9 @@ spp.2 = c(var = 10, ..),..) and contain the following:
 \item{plot.dist}{Boolean, whether to plot the distributions to file}
 
 \item{plot.file}{path to save the plots of the species distributions}
+
+\item{sim}{is the parameter settings for the simulation, made by
+\code{init_sim} function.}
 }
 \value{
 Silently returns a list of spatial distributions of suitable habitat
@@ -48,10 +42,8 @@ The spatial fields are generated using
 package.
 }
 \examples{
-fields <- create_hab(nrows = 100, ncols = 100, n.spp = 1,  
-      spp.ctrl = list(
+hab <- create_hab(sim.init = sim.init, spp.ctrl = list(
       'spp.1' = list('nu' = 1/0.15, var = 1, scale = 10, Aniso =
       matrix(nc=2, c(1.5, 3, -3, 4)))), plot.dist = TRUE, plot.file =
       getwd())
 }
-

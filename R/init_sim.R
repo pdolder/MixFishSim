@@ -51,7 +51,8 @@ init_sim <- function(n_years = 1, n_tows_day = 4, n_days_wk_fished = 5,
 		 nt = 52 / move_freq , nm = 12, ny = n_years, 
 		 ntow = n_tows_day * n_days_wk_fished * 52 * n_years,
 		 ntow.py = (n_tows_day * n_days_wk_fished * 52 * n_years)/n_years,
-		 n.spp = n_species, ncols = ncols, nrows = nrows)
+		 n.spp = n_species, ncols = ncols, nrows = nrows, nf = n_fleets, 
+		 nv = n_vessels)
 
 	# breaks index
 
