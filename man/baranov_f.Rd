@@ -27,3 +27,4 @@ on the standard Baranov catch equation.
 \examples{
 ## No examples
 }
+

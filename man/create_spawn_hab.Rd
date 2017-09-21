@@ -29,3 +29,4 @@ create_spawn_hab(hab = matrix(nc = 100, runif(100 *
 100)), spwnareas = list(spwn1 = c(20, 30, 50, 60)), mult = 10)
 
 }
+

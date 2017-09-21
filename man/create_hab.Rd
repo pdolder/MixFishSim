@@ -47,3 +47,4 @@ hab <- create_hab(sim.init = sim.init, spp.ctrl = list(
       matrix(nc=2, c(1.5, 3, -3, 4)))), plot.dist = TRUE, plot.file =
       getwd())
 }
+

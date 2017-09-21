@@ -31,3 +31,4 @@ the revenue from the most recent fishing activity.
 step_length(step_params = list(B1 = 1, B2 = 50, B3 = 2000, rate = 1),
 revenue = 300)
 }
+

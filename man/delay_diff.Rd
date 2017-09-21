@@ -8,10 +8,12 @@ delay_diff(K = 0.3, F = NULL, M = 0.2, wt = 1, wtm1 = 0.1, R = NULL,
   B = NULL, Bm1 = NULL, al = NULL, alm1 = NULL)
 }
 \arguments{
-\item{K}{is a Numeric vector describing growth @param F is the weekly. Note:
+\item{K}{is a Numeric vector describing growth.  Note:
 K is transformed to rho with \emph{\eqn{\rho = exp{-K}}} for the model.
 estimate of instantaneous fishing mortality (obtained elsewhere, via
 \code{\link{find_f}} and \code{\link{baranov_f}} functions.}
+
+\item{F}{is the weekly fishing mortality rate.}
 
 \item{M}{is a Numeric vector of the instantaneous rate of natural mortality for the population}
 
@@ -46,3 +48,4 @@ biomass, overall mortality and recruitment it returns the biomass in wk+1.
 delay_diff(K = 0.3, F = 0.2, M = 0.2, wt = 1, wtm1 = 0.1, R = 1e6, B = 1e5,
 Bm1 = 1e4, al = 0.5, alm1 = 0.1)
 }
+

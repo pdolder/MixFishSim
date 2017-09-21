@@ -30,3 +30,4 @@ with the catches of each population across all fleets and vessels.
 spp_catches <- sum_fleets_catches(FUN = sum_fleet_catches,
 fleets_log = applied_to_fleets, n_spp = 2)
 }
+

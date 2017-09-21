@@ -37,3 +37,4 @@ variation.
 \examples{
 Recr(model = 'BH', params = c("a" = 2000, "b" = 200), B = 1000, cv = 0.1)
 }
+

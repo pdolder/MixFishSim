@@ -24,3 +24,4 @@ a matrix of spawning preference
 \examples{
 define_spawn(coord = list(spwn1 = c(2,4,2,4)), spwn = matrix(nc = 3, runif(9)), mult = 10)  
 }
+

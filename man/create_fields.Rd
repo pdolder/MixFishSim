@@ -68,3 +68,4 @@ fields <- create_fields(n.spp = 1, t = 2,
 		  'muX' = -0.05, 'muY' = -0.05, 'tau2' = 0, 'nu' = 1.5)),
 		plot.dist = TRUE, plot.file = getwd())
 }
+
