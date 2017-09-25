@@ -5,7 +5,8 @@
 \title{Create habitat distribution fields}
 \usage{
 create_hab(sim_init = sim, seed = 123, spp.ctrl = NULL,
-  plot.dist = FALSE, plot.file = getwd())
+  spawn_areas = NULL, spwn_mult = 10, plot.dist = FALSE,
+  plot.file = getwd())
 }
 \arguments{
 \item{spp.ctrl}{List of controls to generate suitable habitat for each
@@ -44,7 +45,8 @@ package.
 \examples{
 hab <- create_hab(sim.init = sim.init, spp.ctrl = list(
       'spp.1' = list('nu' = 1/0.15, var = 1, scale = 10, Aniso =
-      matrix(nc=2, c(1.5, 3, -3, 4)))), plot.dist = TRUE, plot.file =
-      getwd())
+      matrix(nc=2, c(1.5, 3, -3, 4)))), spawn_areas = list("spp1" =
+      list("area1" = c(2,4,6,8))), list("spp2" = list("area1" =
+      c(0,10,23,35))), spwn_mult = 10, plot.dist = TRUE, plot.file =   getwd())
 }
 

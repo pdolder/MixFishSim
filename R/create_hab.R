@@ -31,12 +31,13 @@
 #' @examples
 #' hab <- create_hab(sim.init = sim.init, spp.ctrl = list(
 #'	      'spp.1' = list('nu' = 1/0.15, var = 1, scale = 10, Aniso =
-#'	      matrix(nc=2, c(1.5, 3, -3, 4)))), plot.dist = TRUE, plot.file =
-#'	      getwd())
+#'	      matrix(nc=2, c(1.5, 3, -3, 4)))), spawn_areas = list("spp1" =
+#'	      list("area1" = c(2,4,6,8))), list("spp2" = list("area1" =
+#'	      c(0,10,23,35))), spwn_mult = 10, plot.dist = TRUE, plot.file =   getwd())
 
 #' @export
 
-create_hab <- function (sim_init = sim, seed = 123, spp.ctrl = NULL, plot.dist = FALSE, plot.file = getwd()) {
+create_hab <- function (sim_init = sim, seed = 123, spp.ctrl = NULL, spawn_areas = NULL, spwn_mult = 10, plot.dist = FALSE, plot.file = getwd()) {
 
 	# Extract indices
 	idx <- sim_init[["idx"]]
@@ -87,8 +88,42 @@ create_hab <- function (sim_init = sim, seed = 123, spp.ctrl = NULL, plot.dist =
 	dev.off()
 	}
 	
+	hab <- mget(paste0('spp',seq(n.spp)))
+
+
+# Now the spawning habitat
+# Define the spawning habitat preferences
+
+	if(!is.null(spawn_areas)) {
+
+	spwn_hab <- lapply(paste0("spp",seq_len(n.spp)), function(x) {
+		create_spawn_hab(hab = hab[[x]], spwnareas = spawn_areas[[x]], mult = spwn_mult)
+	})
+	names(spwn_hab) <- paste0("spp", seq_len(n.spp))
+
+# create a matrix of 1s with right dims
+spwn <- matrix(rep(1, nrows * ncols), nc = ncols)
+
+spwn_loc <- lapply(names(spwn_hab), function(x) {
+	res <- define_spawn(coord = spawn_areas[[x]], spwn = spwn, mult = 2)
+	res[res==1] <- 0 # zeros for non-spawning areas
+	return(res)
+	
+	})
+
+	names(spwn_loc) <- paste0("spp", seq_len(n.spp))
+
+
+	}
+
+	if(is.null(spawn_areas)) {
+	spwn_hab <- NULL
+	spwn_loc <- NULL
+	}
+
+
+	habitat_lst <- list(hab = hab, spwn_hab = spwn_hab, spwn_loc = spwn_loc, spawn_areas = spawn_areas)
 	# Return the list invisibly
-	fields <- mget(paste0('spp',seq(n.spp)))
-	return(invisible(fields))
+	return(habitat_lst)
 		
 }

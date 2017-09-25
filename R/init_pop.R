@@ -7,6 +7,9 @@
 #' @param Bio is a named Numeric vector of the starting (total) biomass for each of the
 #' populations.
 #' @param hab is the list of Matrices with the habitat preferences created by \code{create_hab}
+#' @param spawn_areas is a list of lists, with the first level the population
+#' ("spp1" etc..) and the second the boundary coordinates (x1, x2, y1, y2) for
+#' the \code{create_spawn_hab} function
 #' @param start_cell is a list of Numeric vectors with the starting cells for
 #' the populations
 #' @param lambda is the strength that the movement distance decays at in the
@@ -108,9 +111,11 @@ return(dem_params)
 
 names(dem_params) <- names(Bio)
 
+
+
 # Return the recording vectors for the populations and the matrix of starting
 # pop locations
-return(list(Pop_lst = Pop_vec, Start_pop = Pop, dem_params = dem_params))
+return(list(Pop_record = Pop_vec, Start_pop = Pop, dem_params = dem_params ))
 
 
 }

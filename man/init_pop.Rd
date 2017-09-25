@@ -35,6 +35,10 @@ vector of the weeks in which spawning takes place for the population}
 
 \item{M}{is a named vector, with the annual natural mortality rate for each
 population}
+
+\item{spawn_areas}{is a list of lists, with the first level the population
+("spp1" etc..) and the second the boundary coordinates (x1, x2, y1, y2) for
+the \code{create_spawn_hab} function}
 }
 \value{
 The function returns the recording vectors at the population level,
