@@ -18,7 +18,7 @@
 
 #' @export
 
-go_fish <- function(sim_init = sim, fleet_params = NUlL, fleet_catches = NULL, 
+go_fish <- function(sim_init = NULL, fleet_params = NULL, fleet_catches = NULL, 
 		    sp_fleet_catches = NULL,pops = NULL, t = t) {
 
 ##### extract the relevant components ###########
@@ -34,8 +34,8 @@ if(length(VPT) != length(Q)) stop("VPT and Q must be the same length")
 PastKnowledge <- params[["past_knowledge"]]
 
 ######## indexes ##############
-idx <- sim$idx
-brk.idx <- sim$brk.idx
+idx <- sim_init$idx
+brk.idx <- sim_init$brk.idx
 ###############################
 
 ##### past knowledge decisions ####

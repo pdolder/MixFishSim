@@ -101,12 +101,12 @@ create_hab <- function (sim_init = sim, seed = 123, spp.ctrl = NULL, spawn_areas
 	})
 	names(spwn_hab) <- paste0("spp", seq_len(n.spp))
 
-# create a matrix of 1s with right dims
-spwn <- matrix(rep(1, nrows * ncols), nc = ncols)
+# create a matrix of 0.5s with right dims
+spwn <- matrix(rep(0.5, nrows * ncols), nc = ncols)
 
 spwn_loc <- lapply(names(spwn_hab), function(x) {
 	res <- define_spawn(coord = spawn_areas[[x]], spwn = spwn, mult = 2)
-	res[res==1] <- 0 # zeros for non-spawning areas
+	res[res==0.5] <- 0 # zeros for non-spawning areas
 	return(res)
 	
 	})

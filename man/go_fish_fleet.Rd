@@ -4,7 +4,7 @@
 \alias{go_fish_fleet}
 \title{Go fish fleet}
 \usage{
-go_fish_fleet(FUN = go_fish, sim_init = sim, fleets_params = NULL,
+go_fish_fleet(FUN = go_fish, sim_init = NULL, fleets_params = NULL,
   fleets_catches = NULL, sp_fleets_catches = NULL, pops = NULL, t = t,
   ...)
 }

@@ -4,7 +4,7 @@
 \alias{go_fish}
 \title{Go fish}
 \usage{
-go_fish(sim_init = sim, fleet_params = NUlL, fleet_catches = NULL,
+go_fish(sim_init = NULL, fleet_params = NULL, fleet_catches = NULL,
   sp_fleet_catches = NULL, pops = NULL, t = t)
 }
 \arguments{
