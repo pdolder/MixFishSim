@@ -39,6 +39,8 @@
 
 create_hab <- function (sim_init = sim, seed = 123, spp.ctrl = NULL, spawn_areas = NULL, spwn_mult = 10, plot.dist = FALSE, plot.file = getwd()) {
 
+	require(doParallel)
+
 	# Extract indices
 	idx <- sim_init[["idx"]]
 	n.spp <- idx[["n.spp"]]
@@ -52,7 +54,8 @@ create_hab <- function (sim_init = sim, seed = 123, spp.ctrl = NULL, spawn_areas
 	if(is.null(n.spp)) stop('must specify the number of species to simulate')
 	if(is.null(spp.ctrl)) stop('must specify the control parameters for the species simulations')
 
-	for (i in seq(n.spp)) {
+	registerDoParallel()
+hab <- 	foreach(i = seq_len(n.spp)) %dopar% {
 	par  <- spp.ctrl[[paste0('spp.',i)]]
 
 	# Check
@@ -72,23 +75,26 @@ create_hab <- function (sim_init = sim, seed = 123, spp.ctrl = NULL, spawn_areas
 	x<- get(paste0('hab.','spp.',i))
 	x[x < 0] <- 0 # Any negative to zeros
 	assign(paste0('spp',i), x / sum(x)) # sum to 1
+	return(get(paste0('spp',i)))
 
 	}
+
+	names(hab) <- paste0("spp", seq_len(n.spp))
 
 	# Plot
 	if(plot.dist == TRUE) {
 	png(filename = paste0(plot.file,'/','habitat','.png'), width = 800, height = 800)
 	par(mfrow = c(ceiling(sqrt(n.spp)), ceiling(n.spp/ceiling(sqrt(n.spp)))), mar = c(2, 2, 2, 2))
 	for (i in seq(n.spp)) {
-	image(get(paste0('spp',i)), cex.axis = 1.5, cex.main = 2, col = grey(seq(1,0,l = 51)), axes = F)
+	image(hab[[paste0('spp',i)]], cex.axis = 1.5, cex.main = 2, col = grey(seq(1,0,l = 51)), axes = F)
 	axis(1, at = seq(0, 1, by = 0.2), labels = seq(0, nrows, by = nrows/5))
 	axis(2, at = seq(0, 1, by = 0.2), labels = seq(0, ncols, by = ncols/5))
 	text(0.5, 0.98, labels = paste('habitat spp =', i), cex = 2)
 		}
 	dev.off()
 	}
-	
-	hab <- mget(paste0('spp',seq(n.spp)))
+
+#	hab <- mget(paste0('spp',seq(n.spp)))
 
 
 # Now the spawning habitat
@@ -96,20 +102,22 @@ create_hab <- function (sim_init = sim, seed = 123, spp.ctrl = NULL, spawn_areas
 
 	if(!is.null(spawn_areas)) {
 
-	spwn_hab <- lapply(paste0("spp",seq_len(n.spp)), function(x) {
+	registerDoParallel()
+	spwn_hab <- foreach(x = paste0("spp",seq_len(n.spp))) %dopar% {
 		create_spawn_hab(hab = hab[[x]], spwnareas = spawn_areas[[x]], mult = spwn_mult)
-	})
+	}
 	names(spwn_hab) <- paste0("spp", seq_len(n.spp))
 
 # create a matrix of 0.5s with right dims
 spwn <- matrix(rep(0.5, nrows * ncols), nc = ncols)
 
-spwn_loc <- lapply(names(spwn_hab), function(x) {
+	registerDoParallel()
+	spwn_loc <- foreach(x = names(spwn_hab)) %dopar% {
 	res <- define_spawn(coord = spawn_areas[[x]], spwn = spwn, mult = 2)
 	res[res==0.5] <- 0 # zeros for non-spawning areas
 	return(res)
 	
-	})
+	}
 
 	names(spwn_loc) <- paste0("spp", seq_len(n.spp))
 

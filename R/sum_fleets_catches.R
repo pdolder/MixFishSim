@@ -24,10 +24,17 @@ sum_fleets_catches <- function(FUN = sum_fleet_catches, fleets_log = NULL, sim_i
 	n_spp <- sim_init[["idx"]][["n.spp"]]
 
 	## apply the function to all fleets
-	out <- lapply(seq(length(fleets_log)), function(x) {
-	       res <- sum_fleet_catches(fleet_log = fleets_log[[x]], sim_init = sim_init)
+#	out <- lapply(seq(length(fleets_log)), function(x) {
+#	       res <- sum_fleet_catches(fleet_log = fleets_log[[x]], sim_init = sim_init)
 	       
-	       })
+#	       })
+
+	## In parallel
+
+	out <- foreach(x = seq_len(length(fleets_log))) %dopar% {
+		sum_fleet_catches(fleet_log = fleets_log[[x]], sim_init = sim_init)
+
+	}
 
 
 	# Reorder the output by pop
