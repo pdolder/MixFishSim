@@ -75,7 +75,7 @@ init_sim <- function(n_years = 1, n_tows_day = 4, n_days_wk_fished = 5,
 				 c(seq(7,364,7),seq(6,364,7))],each =
 				 idx["ntd"]),idx["ny"]),
 	trip.breaks = rep(rep(seq(idx["ntow.py"]/(idx["ntd"]*idx["ndf"])),each=idx["ndf"]*idx["ntd"]),idx["ny"]), 
-	week.breaks = rep(seq_len(idx[["nw"]]), each = idx[["ntd"]] * idx[["ndf"]]),
+	week.breaks = rep(rep(seq_len(idx[["nw"]]), each = idx[["ntd"]] * idx[["ndf"]]),idx[["ny"]]),
 	month.breaks  = rep(sort(rep(seq(idx["nm"]),length.out = idx["ntow.py"])),idx["ny"]), 
 	year.breaks   = rep(seq(idx["ny"]),each = idx["ntow.py"])
 	)

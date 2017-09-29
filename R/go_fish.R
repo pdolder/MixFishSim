@@ -135,11 +135,12 @@ print("USING PAST KNOWLEDGE!!!")
 	# boundary conditions, when out of bounds redraw the direction and points 
 	out.bound <-TRUE   
 	while(out.bound) {
-		print("Out of bounds!!!")
 	Bear = runif(1,0,360) # bearing - to be replaced with a correlated von mises dist
 	catch[t, "angles"] <- Bear
 	new.point <- round(make_step(stepD = stepD, Bear = Bear, start.x = coords[1], start.y = coords[2])) # returns c(x2,y2)
 	out.bound <- any(new.point < 1) | any(new.point > idx[["ncols"]])
+	print("Out of bounds!!!")
+
 		}
 
 	}

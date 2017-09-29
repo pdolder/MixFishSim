@@ -42,7 +42,7 @@
 
 init_pop <- function(sim_init = sim_init, Bio = NULL, hab = NULL, start_cell = NULL, lambda = NULL, init_move_steps = 10, rec_params = NULL, rec_wk = NULL, spwn_wk = NULL, M = NULL) {
 
-	library(doParallel)
+require(doParallel)
 
 # extract the indices
 idx <- sim_init[["idx"]]
