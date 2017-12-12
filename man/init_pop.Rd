@@ -6,7 +6,7 @@
 \usage{
 init_pop(sim_init = sim_init, Bio = NULL, hab = NULL, start_cell = NULL,
   lambda = NULL, init_move_steps = 10, rec_params = NULL, rec_wk = NULL,
-  spwn_wk = NULL, M = NULL)
+  spwn_wk = NULL, M = NULL, cores = 3)
 }
 \arguments{
 \item{Bio}{is a named Numeric vector of the starting (total) biomass for each of the
@@ -59,4 +59,3 @@ c("model" = "BH", "a" = 10, "b" = 50, "cv" = 0.2), "spp2" = c("model" = "BH",
 13:18, spwn_wk = list("spp1" = 15:18, "spp2" = 18:20),M = c("spp1" = 0.2, "spp2" = 0.1)))
 Note, example will not have the right biomass
 }
-

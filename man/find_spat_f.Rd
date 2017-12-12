@@ -30,4 +30,3 @@ mortality using the \code{\link{baranov_f}} objective function.
 find_spat_f(sim_init = sim, C = matrix(1000,3000, nc =2), B =
 matrix(12000,10000, ncol = 2), M = 0.2, FUN = baranov_f)
 }
-

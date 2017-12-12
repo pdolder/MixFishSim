@@ -28,9 +28,9 @@ find_spat_f_pops <- function (FUN = find_spat_f, sim_init = sim, C = C, B = B, d
 	
 	## In parallel
 
-	out <- foreach(x = seq_len(n.spp)) %dopar%  {
+out <- foreach(x = seq_len(n.spp)) %dopar%  {
 			       find_spat_f(sim_init = sim_init, B = B[[x]], C =
-					   C[[x]], M = dem_params[[x]][["M"]],
+					   C[[x]], M = dem_params[[x]][["M"]]/365,
 				   FUN = baranov_f) }
 
 	names(out)  <- paste("spp", seq_len(n.spp), sep = "")

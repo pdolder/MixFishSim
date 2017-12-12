@@ -40,16 +40,19 @@
 
 #' @export
 
-init_pop <- function(sim_init = sim_init, Bio = NULL, hab = NULL, start_cell = NULL, lambda = NULL, init_move_steps = 10, rec_params = NULL, rec_wk = NULL, spwn_wk = NULL, M = NULL) {
+init_pop <- function(sim_init = sim_init, Bio = NULL, hab = NULL, start_cell = NULL, lambda = NULL, init_move_steps = 10, rec_params = NULL, rec_wk = NULL, spwn_wk = NULL, M = NULL, cores = 3) {
 
 require(doParallel)
+registerDoParallel(cores = cores)
 
 # extract the indices
 idx <- sim_init[["idx"]]
+brk.idx <- sim_init[["brk.idx"]]
+max.day <- max(brk.idx[["day.seq"]])
+
 
 # set up population matrices
 	# Apply over all populations, returning a list
-registerDoParallel()
 Pop <- foreach(x = names(Bio)) %dopar% {
 
 		      ## Initial distribution
@@ -76,21 +79,20 @@ Pop <- foreach(x = names(Bio)) %dopar% {
 names(Pop) <- paste("spp",seq(idx[["n.spp"]]), sep ="")
 
 ## Set up the population level recording vectors
-registerDoParallel()
 
 Pop_vec <- foreach(x = seq_len(idx[["n.spp"]])) %dopar% {
 
 Pop_vec <- list( 
 	# Pop level biomass
-	Bio.mat = matrix(NA, nrow = idx["ny"], ncol = idx["nw"], dimnames =
-			  list(seq(idx["ny"]), seq(idx["nw"]))),
+	Bio.mat = matrix(NA, nrow = idx["ny"], ncol = max.day, dimnames =
+			  list(seq(idx["ny"]), seq(1,max(brk.idx[["day.breaks"]])) )),
 	# Pop level Fs
-	F.mat = matrix(NA, nrow = idx["ny"], ncol = idx["nw"], dimnames =
-			list(seq(idx["ny"]), seq(idx["nw"]))),
+	F.mat = matrix(NA, nrow = idx["ny"], ncol = max.day, dimnames =
+			list(seq(idx["ny"]), seq(1,max(brk.idx[["day.breaks"]])) )),
 
 	# Pop level catches
-	Catch.mat = matrix(NA, nrow = idx["ny"], ncol = idx["nw"], dimnames =
-			    list(seq(idx["ny"]), seq(idx["nw"]))),
+	Catch.mat = matrix(NA, nrow = idx["ny"], ncol = max.day, dimnames =
+			    list(seq(idx["ny"]), seq(1,max(brk.idx[["day.breaks"]])) )),
 	
 	# Pop level recruitment
 	Rec.mat = matrix(NA,nrow= 1,ncol = idx["ny"]+1,dimnames=list(1, 0:idx["ny"]))

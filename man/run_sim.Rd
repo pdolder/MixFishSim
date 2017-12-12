@@ -5,7 +5,7 @@
 \title{Run sim}
 \usage{
 run_sim(sim_init = NULL, pop_init = NULL, fleets_init = NULL,
-  hab_init = NULL, InParallel = TRUE, ...)
+  hab_init = NULL, InParallel = TRUE, cores = 3, ...)
 }
 \arguments{
 \item{sim_init}{is the parameterised simulation settings from
@@ -31,4 +31,3 @@ all the parameterised inputs and returning the results.
 Not yet
 
 }
-

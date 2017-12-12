@@ -6,7 +6,7 @@
 \usage{
 create_hab(sim_init = sim, seed = 123, spp.ctrl = NULL,
   spawn_areas = NULL, spwn_mult = 10, plot.dist = FALSE,
-  plot.file = getwd())
+  plot.file = getwd(), cores = 3)
 }
 \arguments{
 \item{spp.ctrl}{List of controls to generate suitable habitat for each
@@ -49,4 +49,3 @@ hab <- create_hab(sim.init = sim.init, spp.ctrl = list(
       list("area1" = c(2,4,6,8))), list("spp2" = list("area1" =
       c(0,10,23,35))), spwn_mult = 10, plot.dist = TRUE, plot.file =   getwd())
 }
-

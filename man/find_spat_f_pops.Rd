@@ -27,4 +27,3 @@ each of the populations.
 \examples{
 None as yet
 }
-

@@ -38,4 +38,3 @@ relationship and some measure of variation.
 Recr(model = 'BH', params = c("a" = 2000/4, "b" = 200/4), B =
 matrix(c(1000,2000,500,750), nc = 2), cv = 0.1)
 }
-

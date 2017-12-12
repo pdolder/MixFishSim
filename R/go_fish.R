@@ -74,7 +74,7 @@ print("USING PAST KNOWLEDGE!!!")
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
 	new.point   <- sample(paste(goodhauls$x,goodhauls$y,sep=","),1)  	# Randomly select from the good hauls
 	new.point   <- c(as.numeric(sapply(strsplit(new.point,","),"[",1)),as.numeric(sapply(strsplit(new.point,","),"[",2)))
-	}
+		}
 
         #######################################################################
 	# Option 2 - last trip
@@ -139,7 +139,6 @@ print("USING PAST KNOWLEDGE!!!")
 	catch[t, "angles"] <- Bear
 	new.point <- round(make_step(stepD = stepD, Bear = Bear, start.x = coords[1], start.y = coords[2])) # returns c(x2,y2)
 	out.bound <- any(new.point < 1) | any(new.point > idx[["ncols"]])
-	print("Out of bounds!!!")
 
 		}
 
@@ -181,7 +180,7 @@ coords <- new.point # assign new fishing position
 
 	catch[t, "meanval"] <- mean(catch[seq(t),"val"]) # Update mean value
 	catch[t, "sdval"]   <- ifelse(is.na(sd(catch[seq(t),"val"])),1, sd(catch[seq(t),"val"]))  # Update the SD of the catch
-	print(paste("tow",t,"=",round(catch[t,"val"],0),", mean = ",round(catch[t, "meanval"],0),"euros",",  ",round((t/idx[["ntow"]])*100,0),"% complete"))
+#	print(paste("tow",t,"=",round(catch[t,"val"],0),", mean = ",round(catch[t, "meanval"],0),"euros",",  ",round((t/idx[["ntow"]])*100,0),"% complete"))
 
 
 res <- list(catch = catch, catch_matrices = catch_matrix)

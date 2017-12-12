@@ -17,10 +17,11 @@
 #'
 #' @export
 
-run_sim <- function (sim_init = NULL, pop_init = NULL, fleets_init = NULL, hab_init = NULL, InParallel = TRUE, ...) {
+run_sim <- function (sim_init = NULL, pop_init = NULL, fleets_init = NULL, hab_init = NULL, InParallel = TRUE, cores = 3, ...) {
 # Overarching function for running the simulations
 
 require(doParallel)
+registerDoParallel(cores = cores)
 
 #######################
 ####### Indices #######
@@ -34,6 +35,7 @@ n_vess       <- sim_init[["idx"]][["nv"]]
 n_spp        <- sim_init[["idx"]][["n.spp"]]  
 ncols        <- sim_init[["idx"]][["ncols"]]  
 nrows        <- sim_init[["idx"]][["nrows"]]  
+n_weeks        <- sim_init[["idx"]][["nw"]]  
 
 day.breaks     <- sim_init[["brk.idx"]][["day.breaks"]]  
 week.breaks    <- sim_init[["brk.idx"]][["week.breaks"]]  
@@ -57,7 +59,6 @@ Bm1  <- pop_init[["Start_pop"]]  # For storing last time-step biomass, is overwr
 ###################################
 print("Calculating movement probabilities")
 
-registerDoParallel()
 MoveProb  <- foreach(s = paste0("spp", seq_len(n_spp)))  %dopar% move_prob_Lst(lambda = 0.3, hab = hab_init[["hab"]][[s]])
 MoveProb_spwn <- foreach(s = paste0("spp", seq_len(n_spp)))  %dopar% move_prob_Lst(lambda = 0.3, hab = hab_init[["spwn_hab"]][[s]])
 	  
@@ -80,9 +81,9 @@ Recruit  <- ifelse(t > 1, ifelse(week.breaks[t] != week.breaks[t-1] &
 	  TRUE, FALSE), FALSE) 
 
 if(t != ntow) {
-Pop_dyn  <- ifelse(week.breaks[t] != week.breaks[t+1], TRUE, FALSE) ## weekly delay diff
+Pop_dyn  <- ifelse(day.breaks[t] != day.breaks[t+1], TRUE, FALSE) ## weekly delay diff
 Pop_move <- ifelse(week.breaks[t] != week.breaks[t+1], TRUE, FALSE) ## weekly pop movement
-Update   <- ifelse(week.breaks[t] != week.breaks[t+1], TRUE, FALSE) ## weekly pop records 
+Update   <- ifelse(day.breaks[t] != day.breaks[t+1], TRUE, FALSE) ## weekly pop records 
 }
 
 #######################
@@ -99,7 +100,6 @@ Update   <- ifelse(week.breaks[t] != week.breaks[t+1], TRUE, FALSE) ## weekly po
 
 if(Recruit) { # Check for new week
 
-registerDoParallel()
 
 print("Recruiting")
 
@@ -140,7 +140,6 @@ names(Rec) <- paste0("spp", seq_len(n_spp))
 if(InParallel) {
 
 if(t==1) {
-registerDoParallel()
 
 catches <- foreach(fl=seq_len(n_fleets)) %dopar% 
 
@@ -152,16 +151,12 @@ catches <- foreach(fl=seq_len(n_fleets)) %dopar%
 		   pops = B, t = t)
 
 
-print("OK here , t = 1")
-
 } # end t==1 run
 
 if(t > 1) {
 
-
-# if its the same week 
-if(week.breaks[t] == week.breaks[t-1]) {
-registerDoParallel()
+# if its the same day 
+if(day.breaks[t] == day.breaks[t-1]) {
 catches <- foreach(fl=seq_len(n_fleets)) %dopar% 
 
 	go_fish_fleet(FUN = go_fish, 	sim_init = sim_init, 
@@ -171,13 +166,10 @@ catches <- foreach(fl=seq_len(n_fleets)) %dopar%
 		   pops = B, t = t
 		   )
 
-print("OK here , t > 1, same week")
-
 	} # end same week run
 
-# if its a new week - reset the spatial catches counter
-if(week.breaks[t] != week.breaks[t-1]) {
-registerDoParallel()
+# if its a new day - reset the spatial catches counter
+if(day.breaks[t] != day.breaks[t-1]) {
 
 catches <- foreach(fl=seq_len(n_fleets)) %dopar% 
 
@@ -190,8 +182,6 @@ catches <- foreach(fl=seq_len(n_fleets)) %dopar%
 
 	       
 
-
-print("OK here , t > 1, new week")
 
 	} # end new week run
 
@@ -226,9 +216,15 @@ spp_catches <- sum_fleets_catches(FUN = sum_fleet_catches, fleets_log =
 				  catches, sim_init = sim_init)
 
 ## Fs for all populations
+
+
+print(sapply(1:2, function(x) { max(spp_catches[[x]] / B[[x]], na.rm = T) }))
+
 spat_fs <- find_spat_f_pops(sim_init = sim_init, C = spp_catches, B = B, 
                             dem_params = pop_init[["dem_params"]])
 
+#print(sapply(spp_catches, sum))
+#print(sapply(spat_fs, mean))
 
 # Apply the delay difference model
 Bp1 <- foreach(x = paste0("spp", seq_len(n_spp))) %dopar% {
@@ -239,7 +235,7 @@ alm1 <- ifelse(c(week.breaks[t]-1) %in% pop_init[["dem_params"]][[x]][["rec_wk"]
 	     1/length(pop_init[["dem_params"]][[x]][["rec_wk"]]), 0)
 
 res <- delay_diff(K = 0.3, F = spat_fs[[x]], 
-	   M = pop_init[["dem_params"]][[x]][["M"]]/52, 
+	   M = pop_init[["dem_params"]][[x]][["M"]]/365, 
 	   wt = 1, wtm1 = 0.1, R = Rec[[x]], B = B[[x]],
           Bm1 = Bm1[[x]], al = al,  alm1 = alm1)
 
@@ -247,6 +243,7 @@ res <- delay_diff(K = 0.3, F = spat_fs[[x]],
 names(Bp1) <- paste0("spp", seq_len(n_spp))
 
 Bm1 <- B  #record at location
+B <- Bp1
 
 print("done")
 
@@ -275,7 +272,7 @@ if(Pop_move) {
 	newPop <- move_population(moveProp = MoveProb_spwn[[s]], StartPop = Bp1[[s]])
 	}
 	
-	newPop <- Reduce("+", newPop)
+	Reduce("+", newPop)
 		
 	}
 	
@@ -293,7 +290,7 @@ if(Pop_move) {
 	newPop <- move_population(moveProp = MoveProb_spwn[[s]], StartPop = Bm1[[s]])
 	}
 
-	newPop <- Reduce("+", newPop)
+	Reduce("+", newPop)
 	
 	}
 
@@ -319,12 +316,19 @@ print("Updating")
 for(s in paste0("spp", seq_len(n_spp))) {
 
 #print(sum(spat_fs[[s]]))
-pop_init[["Pop_record"]][[s]][["F.mat"]][year.breaks[t], week.breaks[t]] <- mean(spat_fs[[s]])
 
-pop_init[["Pop_record"]][[s]][["Catch.mat"]][year.breaks[t], week.breaks[t]] <- sum(spp_catches[[s]])
+print(paste("year break  = ", year.breaks[t]))
+print(paste("day break = ", day.breaks[t]))
+print("F.mat")
+pop_init[["Pop_record"]][[s]][["F.mat"]][year.breaks[t], day.breaks[t]] <- mean(spat_fs[[s]])
 
-pop_init[["Pop_record"]][[s]][["Bio.mat"]][year.breaks[t], week.breaks[t]] <- sum(Bp1[[s]])
+print("Catch.mat")
+pop_init[["Pop_record"]][[s]][["Catch.mat"]][year.breaks[t], day.breaks[t]] <- sum(spp_catches[[s]])
 
+print("Bio.mat")
+pop_init[["Pop_record"]][[s]][["Bio.mat"]][year.breaks[t], day.breaks[t]] <- sum(Bp1[[s]])
+
+print("Rec.mat")
 pop_init[["Pop_record"]][[s]][["Rec.mat"]][1, year.breaks[t]] <- sum(Rec[[s]], pop_init[["Pop_record"]][[s]][["Rec.mat"]][1, year.breaks[t]], na.rm = T)
 
 

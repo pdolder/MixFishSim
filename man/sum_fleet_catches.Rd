@@ -24,4 +24,3 @@ the fleet for each population
 \examples{
 test <- sum_fleet_catches(fleet_log = applied_to_fleets[[1]])
 }
-

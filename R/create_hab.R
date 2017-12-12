@@ -37,9 +37,11 @@
 
 #' @export
 
-create_hab <- function (sim_init = sim, seed = 123, spp.ctrl = NULL, spawn_areas = NULL, spwn_mult = 10, plot.dist = FALSE, plot.file = getwd()) {
+create_hab <- function (sim_init = sim, seed = 123, spp.ctrl = NULL, spawn_areas = NULL, spwn_mult = 10, plot.dist = FALSE, plot.file = getwd(), cores = 3) {
 
 	require(doParallel)
+	registerDoParallel(cores = cores)
+
 
 	# Extract indices
 	idx <- sim_init[["idx"]]
@@ -54,7 +56,6 @@ create_hab <- function (sim_init = sim, seed = 123, spp.ctrl = NULL, spawn_areas
 	if(is.null(n.spp)) stop('must specify the number of species to simulate')
 	if(is.null(spp.ctrl)) stop('must specify the control parameters for the species simulations')
 
-	registerDoParallel()
 hab <- 	foreach(i = seq_len(n.spp)) %dopar% {
 	par  <- spp.ctrl[[paste0('spp.',i)]]
 
@@ -102,7 +103,6 @@ hab <- 	foreach(i = seq_len(n.spp)) %dopar% {
 
 	if(!is.null(spawn_areas)) {
 
-	registerDoParallel()
 	spwn_hab <- foreach(x = paste0("spp",seq_len(n.spp))) %dopar% {
 		create_spawn_hab(hab = hab[[x]], spwnareas = spawn_areas[[x]], mult = spwn_mult)
 	}
@@ -111,7 +111,6 @@ hab <- 	foreach(i = seq_len(n.spp)) %dopar% {
 # create a matrix of 0.5s with right dims
 spwn <- matrix(rep(0.5, nrows * ncols), nc = ncols)
 
-	registerDoParallel()
 	spwn_loc <- foreach(x = names(spwn_hab)) %dopar% {
 	res <- define_spawn(coord = spawn_areas[[x]], spwn = spwn, mult = 2)
 	res[res==0.5] <- 0 # zeros for non-spawning areas
