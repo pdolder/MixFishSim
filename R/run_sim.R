@@ -65,11 +65,16 @@ MoveProb_spwn <- foreach(s = paste0("spp", seq_len(n_spp)))  %dopar% move_prob_L
 names(MoveProb)      <- paste0("spp", seq_len(n_spp))
 names(MoveProb_spwn) <- paste0("spp", seq_len(n_spp))
 
+## Avoid printing every tow
+print.seq <- seq(1, ntow, 20)
+
 ##################
 ### loop control #
 for (t in seq_len(ntow)) {
 ##################
-print(paste("tow ==", t))
+	if(t %in% print.seq) {
+print(paste("tow ==", t, "----",round(t/ntow * 100,0), "%"))
+	}
 ###################################
 ## Switches for various processes #
 ###################################
@@ -218,13 +223,17 @@ spp_catches <- sum_fleets_catches(FUN = sum_fleet_catches, fleets_log =
 ## Fs for all populations
 
 
-print(sapply(1:2, function(x) { max(spp_catches[[x]] / B[[x]], na.rm = T) }))
+# The proportion of stock removed
+#print(sapply(1:2, function(x) { max(spp_catches[[x]] / B[[x]], na.rm = T) }))
 
 spat_fs <- find_spat_f_pops(sim_init = sim_init, C = spp_catches, B = B, 
                             dem_params = pop_init[["dem_params"]])
 
 #print(sapply(spp_catches, sum))
 #print(sapply(spat_fs, mean))
+
+## Fishing mortality rates
+print(sapply(names(spat_fs), function(x) weighted.mean(spat_fs[[x]], B[[x]])))
 
 # Apply the delay difference model
 Bp1 <- foreach(x = paste0("spp", seq_len(n_spp))) %dopar% {
@@ -245,7 +254,6 @@ names(Bp1) <- paste0("spp", seq_len(n_spp))
 Bm1 <- B  #record at location
 B <- Bp1
 
-print("done")
 
 } # end if statement
 
@@ -259,7 +267,7 @@ print("done")
 
 
 if(Pop_move) {
-	print("Moving")
+	print("Moving populations")
 
 	B <- foreach(s = paste0("spp", seq_len(n_spp))) %dopar% {
 	
@@ -298,7 +306,6 @@ if(Pop_move) {
 	names(Bm1) <- paste0("spp", seq_len(n_spp))
 
 
-	print("done")
 
 	} # end if statement
 
@@ -311,24 +318,17 @@ if(Pop_move) {
 # Update weekly / annual records at pop level
 
 if(Update) {
-print("Updating")
+print("Recording metrics")
 
 for(s in paste0("spp", seq_len(n_spp))) {
 
-#print(sum(spat_fs[[s]]))
 
-print(paste("year break  = ", year.breaks[t]))
-print(paste("day break = ", day.breaks[t]))
-print("F.mat")
-pop_init[["Pop_record"]][[s]][["F.mat"]][year.breaks[t], day.breaks[t]] <- mean(spat_fs[[s]])
+pop_init[["Pop_record"]][[s]][["F.mat"]][year.breaks[t], day.breaks[t]] <- weighted.mean(spat_fs[[s]], B[[s]])
 
-print("Catch.mat")
 pop_init[["Pop_record"]][[s]][["Catch.mat"]][year.breaks[t], day.breaks[t]] <- sum(spp_catches[[s]])
 
-print("Bio.mat")
 pop_init[["Pop_record"]][[s]][["Bio.mat"]][year.breaks[t], day.breaks[t]] <- sum(Bp1[[s]])
 
-print("Rec.mat")
 pop_init[["Pop_record"]][[s]][["Rec.mat"]][1, year.breaks[t]] <- sum(Rec[[s]], pop_init[["Pop_record"]][[s]][["Rec.mat"]][1, year.breaks[t]], na.rm = T)
 
 
