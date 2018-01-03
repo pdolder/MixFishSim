@@ -69,7 +69,7 @@ print("USING PAST KNOWLEDGE!!!")
 	# Option 1 - same month (current and) previous years
 	if(params[["past_year_month"]] == TRUE & params[["past_trip"]] != TRUE) {
 	
-	q <- quantile(filter(catch.df,month==brk.idx[["month.breaks"]][t])$val,prob=c(params[["Threshold"]]),na.rm=T) # Threshold for good hauls
+	q <- quantile(filter(catch.df,month==brk.idx[["month.breaks"]][t])$val,prob=c(params[["threshold"]]),na.rm=T) # Threshold for good hauls
 	goodhauls  <- filter(catch.df,month==brk.idx[["month.breaks"]][t] & val>=q)
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
 	new.point   <- sample(paste(goodhauls$x,goodhauls$y,sep=","),1)  	# Randomly select from the good hauls
@@ -129,21 +129,25 @@ print("USING PAST KNOWLEDGE!!!")
 	# CRW when no past knowledge, or within same month/trip (depending on
 	# choice)
 	if(!PastKnowledge | catch[t,"trip"] == catch[t-1,"trip"] | brk.idx[["year.breaks"]][t]==1) {
-
+	
 	stepD     <- step_length(revenue = catch[t-1,"val"],step_params = params[["step_params"]])  # Calculate step distance based on last tow value
         catch[t,"stepD"] <- stepD    # record the step distance	
-	# boundary conditions, when out of bounds redraw the direction and points 
-	out.bound <-TRUE   
-	while(out.bound) {
+
+	## Choosing new bearing
+	# with boundary conditions, when out of bounds wrap on a taurus 
+	
 	#Bear = runif(1,0,360) # bearing - to be replaced with a correlated von mises dist
 	b <- ifelse(t = 1, 0, catch[t-1,"angles"]) # base on most recent bearing
 	k = 50/params[["step_params"]][["B3"]] + 1 # concentration parameter, a proportion of the maximum haul + 1 (to avoid infinity)
 	Bear <- get_bearing(b = b, k = k)
 	catch[t, "angles"] <- Bear
 	new.point <- round(make_step(stepD = stepD, Bear = Bear, start.x = coords[1], start.y = coords[2])) # returns c(x2,y2)
-	out.bound <- any(new.point < 1) | any(new.point > idx[["ncols"]])
 
-		}
+	## Boundary condition
+	if(new.point[2] > idx[["ncols"]]) { new.point[2]  <-  new.point[2] - idx[["ncols"]]}
+	if(new.point[1] > idx[["nrows"]]) { new.point[1]  <-  new.point[1] - idx[["nrows"]]}
+	if(new.point[2] < 1) { new.point[2]  <-  new.point[2] + idx[["ncols"]]}
+	if(new.point[1] < 1) { new.point[1]  <-  new.point[1] + idx[["nrows"]]}
 
 	}
 
