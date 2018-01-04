@@ -19,7 +19,7 @@
 #' @export
 
 go_fish <- function(sim_init = NULL, fleet_params = NULL, fleet_catches = NULL, 
-		    sp_fleet_catches = NULL,pops = NULL, t = t) {
+		    sp_fleet_catches = NULL, pops = NULL, t = t) {
 
 ##### extract the relevant components ###########
 params <- fleet_params      # fleet parameter list
@@ -52,9 +52,10 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
 # If incorporating past knowledge, and its a new trip...and not in the
 	# first year
-	if(is.null(PastKnowledge) & catch[t,"trip"] != catch[t-1,"trip"] & brk.idx[["year.breaks"]][t]>1)  {
+	if(!is.null(PastKnowledge) & catch[t,"trip"] != catch[t-1,"trip"] & brk.idx[["year.breaks"]][t]>1)  {
 
 print("USING PAST KNOWLEDGE!!!")
+#browser()
 	catch.df  <- as.data.frame(catch) # Needed for correct sub-setting
 
 	# 3 options, choose from good hauls i) same month last year, ii) past
@@ -69,8 +70,8 @@ print("USING PAST KNOWLEDGE!!!")
 	# Option 1 - same month (current and) previous years
 	if(params[["past_year_month"]] == TRUE & params[["past_trip"]] != TRUE) {
 	
-	q <- quantile(filter(catch.df,month==brk.idx[["month.breaks"]][t])$val,prob=c(params[["threshold"]]),na.rm=T) # Threshold for good hauls
-	goodhauls  <- filter(catch.df,month==brk.idx[["month.breaks"]][t] & val>=q)
+	q <- quantile(dplyr::filter(catch.df,month==brk.idx[["month.breaks"]][t])$val,prob=c(params[["threshold"]]),na.rm=T) # Threshold for good hauls
+	goodhauls  <- dplyr::filter(catch.df,month==brk.idx[["month.breaks"]][t] & val>=q)
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
 	new.point   <- sample(paste(goodhauls$x,goodhauls$y,sep=","),1)  	# Randomly select from the good hauls
 	new.point   <- c(as.numeric(sapply(strsplit(new.point,","),"[",1)),as.numeric(sapply(strsplit(new.point,","),"[",2)))
@@ -82,16 +83,16 @@ print("USING PAST KNOWLEDGE!!!")
 	
 	# Case where its within the same year
 	if(brk.idx[["year.breaks"]][t] == brk.idx[["year.breaks"]][t-1]) {
-	q <- quantile(filter(catch.df,trip==brk.idx[["trip.breaks"]][t-1] & year==brk.idx[["year.breaks"]][t])$val,prob=c(params[["threshold"]]),na.rm=T) # Threshold for good hauls
-	goodhauls  <- filter(catch.df,trip==brk.idx[["trip.breaks"]][t-1] & year==brk.idx[["year.breaks"]][t] & val>=q)
+	q <- quantile(dplyr::filter(catch.df,trip==brk.idx[["trip.breaks"]][t-1] & year==brk.idx[["year.breaks"]][t])$val,prob=c(params[["threshold"]]),na.rm=T) # Threshold for good hauls
+	goodhauls  <- dplyr::filter(catch.df,trip==brk.idx[["trip.breaks"]][t-1] & year==brk.idx[["year.breaks"]][t] & val>=q)
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
 
 	}
 	
 	# Case of different year
 	if(brk.idx[["year.breaks"]][t] != brk.idx[["year.breaks"]][t-1]) {
-	q <- quantile(filter(catch.df,trip == max(brk.idx[["trip.breaks"]]) & year == brk.idx[["year.breaks"]][t-1])$val,prob=c(params[["threshold"]]),na.rm=T) # Threshold for good hauls
-	goodhauls  <- filter(catch.df,trip == max(brk.idx[["trip.breaks"]]) & year == brk.idx[["year.breaks"]][t-1] & val>=q)
+	q <- quantile(dplyr::filter(catch.df,trip == max(brk.idx[["trip.breaks"]]) & year == brk.idx[["year.breaks"]][t-1])$val,prob=c(params[["threshold"]]),na.rm=T) # Threshold for good hauls
+	goodhauls  <- dplyr::filter(catch.df,trip == max(brk.idx[["trip.breaks"]]) & year == brk.idx[["year.breaks"]][t-1] & val>=q)
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
 	}
 
@@ -106,15 +107,15 @@ print("USING PAST KNOWLEDGE!!!")
 	
 	# Case where its within the same year
 	if(brk.idx[["year.breaks"]][t] == brk.idx[["year.breaks"]][t-1]) {
-	q <- quantile(filter(catch.df,month==brk.idx[["month.breaks"]][t] | trip==brk.idx[["trip.breaks"]][t-1] & year==brk.idx[["year.breaks"]][t])$val,prob=c(params[["threshold"]]),na.rm=T) # Threshold for good hauls
-	goodhauls  <- filter(catch.df,month==brk.idx[["month.breaks"]][t] & val >=q | trip==brk.idx[["trip.breaks"]][t-1] & year==brk.idx[["year.breaks"]][t] & val>=q)
+	q <- quantile(dplyr::filter(catch.df,month==brk.idx[["month.breaks"]][t] | trip==brk.idx[["trip.breaks"]][t-1] & year==brk.idx[["year.breaks"]][t])$val,prob=c(params[["threshold"]]),na.rm=T) # Threshold for good hauls
+	goodhauls  <- dplyr::filter(catch.df,month==brk.idx[["month.breaks"]][t] & val >=q | trip==brk.idx[["trip.breaks"]][t-1] & year==brk.idx[["year.breaks"]][t] & val>=q)
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
 	}
 	
 	# Case of different year
 	if(brk.idx[["year.breaks"]][t] != brk.idx[["year.breaks"]][t-1]) {
-	q <- quantile(filter(catch.df,month==brk.idx[["month.breaks"]][t] | trip == max(brk.idx[["trip.breaks"]]) & year == brk.idx[["year.breaks"]][t-1])$val,prob=c(params[["threshold"]]),na.rm=T) # Threshold for good hauls
-	goodhauls  <- filter(catch.df,month==brk.idx$month.breaks[t] & val >=q | trip == max(brk.idx[["trip.breaks"]]) & year == brk.idx[["year.breaks"]][t-1] & val>=q)
+	q <- quantile(dplyr::filter(catch.df,month==brk.idx[["month.breaks"]][t] | trip == max(brk.idx[["trip.breaks"]]) & year == brk.idx[["year.breaks"]][t-1])$val,prob=c(params[["threshold"]]),na.rm=T) # Threshold for good hauls
+	goodhauls  <- dplyr::filter(catch.df,month==brk.idx$month.breaks[t] & val >=q | trip == max(brk.idx[["trip.breaks"]]) & year == brk.idx[["year.breaks"]][t-1] & val>=q)
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
 
 	}
