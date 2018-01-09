@@ -235,6 +235,9 @@ spat_fs <- find_spat_f_pops(sim_init = sim_init, C = spp_catches, B = B,
 ## Fishing mortality rates
 print(sapply(names(spat_fs), function(x) weighted.mean(spat_fs[[x]], B[[x]])))
 
+## Or the summed values (fraction fished of pop)
+print(sapply(names(spp_catches), function(x) { sum(spp_catches[[x]]) / sum(B[[x]])}))
+
 # Apply the delay difference model
 Bp1 <- foreach(x = paste0("spp", seq_len(n_spp))) %dopar% {
 
