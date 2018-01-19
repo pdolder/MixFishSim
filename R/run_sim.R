@@ -20,6 +20,8 @@
 run_sim <- function (sim_init = NULL, pop_init = NULL, fleets_init = NULL, hab_init = NULL, InParallel = TRUE, cores = 3, ...) {
 # Overarching function for running the simulations
 
+start.time <- Sys.time() # for printing runtime
+
 require(doParallel)
 registerDoParallel(cores = cores)
 
@@ -343,6 +345,9 @@ pop_init[["Pop_record"]][[s]][["Rec.mat"]][1, year.breaks[t]] <- sum(Rec[[s]], p
 
 } # end loop control
 
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+print(paste("time taken is :", format(time.taken, units = "auto"), sep = " "))
 
 return(list(fleets_catches = catches, pop_summary = pop_init[["Pop_record"]]))
 

@@ -31,13 +31,13 @@
 %% Numbered without titles
 %\bibliographystyle{model1a-num-names}
 %% Harvard
-%\bibliographystyle{model2-names.bst}\biboptions{authoryear}
+%%\bibliographystyle{model2-names.bst}\biboptions{authoryear}
 %% Vancouver numbered
 %\usepackage{numcompress}\bibliographystyle{model3-num-names}
 %% Vancouver name/year
 %\usepackage{numcompress}\bibliographystyle{model4-names}\biboptions{authoryear}
 %% APA style
-%\bibliographystyle{model5-names}\biboptions{authoryear}
+%%\bibliographystyle{model5-names}\biboptions{authoryear}
 %% AMA style
 %\usepackage{numcompress}\bibliographystyle{model6-num-names}
 %% `Elsevier LaTeX' style
@@ -64,13 +64,15 @@
 	Ireland} 
 \address[2]{Centre for Environment, Fisheries and Aquaculture Science (Cefas),
 	Pakefield Road, Lowestoft, UK}
-\address[3]{UPMC}
-\address[4]{Wageningen Marine}
+\address[3]{Université Pierre et Marie Curie, 4 Place Jussieu, 75005 Paris,
+	France}
+\address[4]{Wageningen Marine Research, Haringkade 1 1976 CP IJmuiden,
+	Netherlands}
 
 \begin{abstract}
 [A concise and factual abstract is required. The abstract should state briefly
 the purpose of the research, the principal results and major conclusions. An
-abstract is often presented separately from the article, so it must be able to
+abstract is often pnresented separately from the article, so it must be able to
 stand alone. For this reason, References should be avoided, but if essential,
 then cite the author(s) and year(s). Also, non-standard or uncommon
 abbreviations should be avoided, but if essential they must be defined at their
@@ -97,30 +99,51 @@ Some\sep keywords \sep here. Max 6, American "spelling"
 
 \section{Introduction}
 
-Fishers exploit fish populations that are heterogenously distributed without
-prior knowledge of species distributions and non-selective fishing gear.
-Fisheries are managed by single-species quotas, leading to discarding of
-overquota catch. Increasing interest in technical solutions such as gear,
-spatial closures as a way of managing "fisheries" instead of fish stocks. \\
-
-Provide some examples here of where this is the case..focus on spatial
-management and the increasing sophistication / resolution of data dervied from
-VMS and logbooks; refs: Geritsen et al, Mateo et al. \\ 
+Fishers exploit fish populations that are heterogenously distributed in space
+and time without prior knowledge of species distributions and non-selective
+fishing gear. Fisheries managed by single-species quotas still catch an
+assemblage of species, known as mixed fisheries, leading to discarding of
+overquota catch. Reducing discarding is crucial to ensure biological and
+economic sustainability of fisheries and as such there is increasing interest
+in technical solutions such as gear, spatial closures as a way of avoiding
+discarding unwanted catch. \\
 
 Use of spatial management as a tool is hampered by lack of knowledge of fish
-and fishery spatiotemporal dyanmics and the scale at which processes are
-important for management. Need to understand these to implement effective
-management measures for species avoidance / targeting. Use Dunn et al as a
-ref.\\
+and fishery spatiotemporal dyanmics and understanding of the scale at which
+processes are important for management, crucial in order to implement measures
+at the right resolution to ensure effective management\cite{Dunn2016} which
+promote species avoidance for vulnerable or low quota species while allowing
+continance of sustainable fisheries for available quota species. \\
 
-We develop a simulation model where underlying population dynamics are known
-rather than inferred from sampling or commercial catches. It includes
-population movement and a number of different fisheries exploiting four fish
-populations with different demographics.\\
+Ensuring measures are implemented at an appropriate scale has been a challenge
+in the a past that has led to ineffectual measures with unitended consequences
+such as limited impact towards the management objective wirth increased benthic
+impact on previously unexploited areas (e.g. the cod closure in the North
+Sea\cite{Rijnsdorp2001,Dinmore2003}). Since then more refined spatial
+information has become available through the combination of logbook and Vessel
+Monitoring System (VMS) data\cite{Lee2010, Bastardie2010, Gerritsen2012,
+	Mateo2016}, though such information is patchy and derived from a biased
+sampling programme (i.e.  targeted fishing). Further, generally fishers only
+recorded landings (not catch) on a daily basis. This leads to questions about the
+validity of inferences that can be drawn from landings data assigned to VMS
+activity pings. \\ 
 
-Using the model, we simulation 20 years of exploitation of the fish populations
-and use the results to draw inference on the underlying population structures -
-as done in species modelling approaches. \\
+In order to test the assumption that VMS associated landings data can be used
+to draw inference on the underlying population structures we develop a
+simulation model where population dynamics are known rather than inferred from
+sampling or commercial catches, population movement driven by a random
+(diffusive) and directed (advective) process and characterisation of a number
+of different fisheries exploiting four fish populations with different spatial
+and population demographics.\\
+
+Using our model we simulation 20 years of exploitation of the fish populations
+and use the results to draw inference on the underlying population structures.
+We compare this inference to i) a simulated stratified fixed-site sampling
+design commonly used for fisheries monitoring purposes, ii) the underlying
+population structures input to the simulation.\\
+
+[Could fit a geostatistical model (e.g. VAST) to the fisheries-dependent and
+fisheries-independent data, though may be overkill...] \\
 
 We simulate a fishery closure to protect one species based on the
 fishery-dependent inferred distributions at a spatial and temporal scale
@@ -129,26 +152,37 @@ population, and effect on the other three populations. Further, we extend our
 analysis to a range of spatial and temporal scales to assess the impact of
 these processes on the success of the management measure. \\
 
-[State the objectives of the work and provide an adequate background, avoiding a
-detailed literature survey or a summary of the results.]
+[Guidance:: State the objectives of the work and provide an adequate
+background, avoiding a detailed literature survey or a summary of the results.]
+\\
 
 \section{Materials and Methods}
 
-[Provide sufficient details to allow the work to be reproduced by an independent
-researcher. Methods that are already published should be summarized, and
-indicated by a reference.  If quoting directly from a previously published
-method, use quotation marks and also cite the source. Any modifications to
-existing methods should also be described.]
+[Provide sufficient details to allow the work to be reproduced by an
+independent researcher. Methods that are already published should be
+summarized, and indicated by a reference.  If quoting directly from a
+previously published method, use quotation marks and also cite the source. Any
+modifications to existing methods should also be described.] \\
+
+We developed a simulation model with a modular discrete-event approach to each
+of the processes so that they can occur on different time-scales. The fishing
+model operated on a tow-by-tow basis, while population dynamics (fishing and
+natural mortality, growth) operate on a daily time-step.  Population movement
+occurs on a two-weekly time-step, while recruitment occurs periodcally each
+year for a set time period (e.g. 3 weeks) at at specified point individual to a
+species. The model structure is summerised in Figure 1.  \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Overview schematic  
 \begin{figure}[!ht]
+	\hspace{-4em}
 \begin{tikzpicture}[%
     >=triangle 60,              % Nice arrows; your taste may be different
     start chain=going below,    % General flow is top-to-bottom
     node distance=8mm and 60mm, % Global setup of box spacing
-    every join/.style={norm}   % Default linetype for connecting boxes
-    ]                 
+    every join/.style={norm},   % Default linetype for connecting boxes
+    scale=0.9,
+    every node/.style={scale=0.8}]                 
     \label{fig:model}
     % ------------------------------------------------- 
 % A few box styles 
