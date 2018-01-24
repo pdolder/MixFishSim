@@ -1,6 +1,6 @@
 #' @title Delay-difference (weekly)
 #'
-#' @description \code{delay_difference} implements a two-stage delay-difference
+#' @description \code{delay_diff} implements a two-stage delay-difference
 #' model with a weekly time-step after \emph{Dichmont 2003}. Given the starting
 #' biomass, overall mortality and recruitment it returns the biomass in wk+1.
 

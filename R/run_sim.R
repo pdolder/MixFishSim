@@ -17,7 +17,7 @@
 #'
 #' @export
 
-run_sim <- function (sim_init = NULL, pop_init = NULL, fleets_init = NULL, hab_init = NULL, InParallel = TRUE, cores = 3, ...) {
+run_sim <- function (sim_init = NULL, pop_init = NULL, fleets_init = NULL, hab_init = NULL, InParallel = TRUE, cores = 3, save_pop_bio = FALSE,...) {
 # Overarching function for running the simulations
 
 start.time <- Sys.time() # for printing runtime
@@ -259,6 +259,21 @@ names(Bp1) <- paste0("spp", seq_len(n_spp))
 Bm1 <- B  #record at location
 B <- Bp1
 
+if(save_pop_bio == TRUE) {
+if(day.breaks[t] == 1) {
+pop_bios <- list()
+pop_bios[[day.breaks[t]]] <- B
+}
+
+if(day.break[t] > 1) {
+pop_bios[[day.breaks[t]]] <- B
+	  }
+
+}
+
+if(save_pop_bio == FALSE) {
+pop_bios <- NULL
+}
 
 } # end if statement
 
@@ -349,7 +364,7 @@ end.time <- Sys.time()
 time.taken <- end.time - start.time
 print(paste("time taken is :", format(time.taken, units = "auto"), sep = " "))
 
-return(list(fleets_catches = catches, pop_summary = pop_init[["Pop_record"]]))
+return(list(fleets_catches = catches, pop_summary = pop_init[["Pop_record"]], pop_bios = pop_bios))
 
 } # end func
 
