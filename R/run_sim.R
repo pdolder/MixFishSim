@@ -10,6 +10,8 @@
 #' @param hab_init is the parameterised habitat maps from \code{create_hab}
 #' @param InParallel is a BOLEEN indicating whether calculations should be done
 #' using parallel processing from \code{parallel}, default is TRUE
+#' @param save_pop_bio is a logical flag to indicate if you want to record the
+#' true spatial population at each time step (day)
 
 #' @return is the results...
 
@@ -265,7 +267,7 @@ pop_bios <- list()
 pop_bios[[day.breaks[t]]] <- B
 }
 
-if(day.break[t] > 1) {
+if(day.breaks[t] > 1) {
 pop_bios[[day.breaks[t]]] <- B
 	  }
 
@@ -292,11 +294,11 @@ if(Pop_move) {
 	B <- foreach(s = paste0("spp", seq_len(n_spp))) %dopar% {
 	
 	## If in a non-spawning week or spawning week
-	if(!week.breaks[t] %in% pop_init[[s]][["spwn_wk"]]) {
+	if(!week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
 	newPop <- move_population(moveProp = MoveProb[[s]], StartPop = Bp1[[s]]) 
 	}
 	
-	if(week.breaks[t] %in% pop_init[[s]][["spwn_wk"]]) {
+	if(week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
 	newPop <- move_population(moveProp = MoveProb_spwn[[s]], StartPop = Bp1[[s]])
 	}
 	
@@ -310,11 +312,11 @@ if(Pop_move) {
 	Bm1 <- foreach(s = paste0("spp", seq_len(n_spp))) %dopar% {
 
 	## If in a non-spawning week or spawning week
-	if(!week.breaks[t] %in% pop_init[[s]][["spwn_wk"]]) {
+	if(!week.breaks[t] %in% pop_init[[s]][["dem_params"]][["spwn_wk"]]) {
 	newPop <- move_population(moveProp = MoveProb[[s]], StartPop = Bm1[[s]])
 	}
 
-	if(week.breaks[t] %in% pop_init[[s]][["spwn_wk"]]) {
+	if(week.breaks[t] %in% pop_init[[s]][["dem_params"]][["spwn_wk"]]) {
 	newPop <- move_population(moveProp = MoveProb_spwn[[s]], StartPop = Bm1[[s]])
 	}
 

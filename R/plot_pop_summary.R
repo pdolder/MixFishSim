@@ -3,23 +3,23 @@
 #' @description \code{plot_pop_summary} plots the four population dynamic
 #' metrics: catches, biomass, fishing mortality and recruitment.
 
-#' It can either operate at a weekly timestep or an annual timestep
+#' It can either operate at a daily timestep or an annual timestep
 
 #' @param results is an output from the function \link{run_sim}.
 #' @param timestep is a character string determining whether the plot is
-#' 'weekly' or 'annual'
+#' 'daily' or 'annual'
 #' @param save is a logical whether to save the plot
 #' @param save.location is a location (defaults to current directory)
 
 #' @return is a ggplot of all the species and metrics as a faceted plot
 
 #' examples
-#' plot_pop_summary(results = res, timestep = 'weekly', save = TRUE, location = '.') 
+#' plot_pop_summary(results = res, timestep = 'daily', save = TRUE, location = '.') 
 #' ## Not run
 
 #' @export
 
-plot_pop_summary <- function(results = res, timestep = 'weekly', save = FALSE, save.location = '.') {
+plot_pop_summary <- function(results = res, timestep = 'daily', save = FALSE, save.location = '.') {
 
 	n_spp <- length(res[["pop_summary"]]) 
 		res_df <- lapply(seq_len(n_spp), function(x) {
@@ -44,7 +44,7 @@ plot_pop_summary <- function(results = res, timestep = 'weekly', save = FALSE, s
 	   })
 	results_df <- do.call(rbind, res_df)
 
-	if(timestep == "weekly") {
+	if(timestep == "daily") {
 	require(ggplot2)
 	print(ggplot(results_df, aes(x = julien_day, y = data, group = 2)) + geom_point() + facet_wrap(pop ~ metric, scale = "free"))
 	}

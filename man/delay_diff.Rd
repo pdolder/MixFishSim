@@ -40,7 +40,7 @@ Returns the biomass at the beginning of the following week,
 \emph{\eqn{wk_{t+1}}}
 }
 \description{
-\code{delay_difference} implements a two-stage delay-difference
+\code{delay_diff} implements a two-stage delay-difference
 model with a weekly time-step after \emph{Dichmont 2003}. Given the starting
 biomass, overall mortality and recruitment it returns the biomass in wk+1.
 }
