@@ -4,14 +4,14 @@
 \alias{plot_pop_summary}
 \title{Plot population summary}
 \usage{
-plot_pop_summary(results = res, timestep = "weekly", save = FALSE,
+plot_pop_summary(results = res, timestep = "daily", save = FALSE,
   save.location = ".")
 }
 \arguments{
 \item{results}{is an output from the function \link{run_sim}.}
 
 \item{timestep}{is a character string determining whether the plot is
-'weekly' or 'annual'}
+'daily' or 'annual'}
 
 \item{save}{is a logical whether to save the plot}
 
@@ -20,11 +20,11 @@ plot_pop_summary(results = res, timestep = "weekly", save = FALSE,
 \value{
 is a ggplot of all the species and metrics as a faceted plot
 examples
-plot_pop_summary(results = res, timestep = 'weekly', save = TRUE, location = '.') 
+plot_pop_summary(results = res, timestep = 'daily', save = TRUE, location = '.') 
 ## Not run
 }
 \description{
 \code{plot_pop_summary} plots the four population dynamic
 metrics: catches, biomass, fishing mortality and recruitment.
-It can either operate at a weekly timestep or an annual timestep
+It can either operate at a daily timestep or an annual timestep
 }

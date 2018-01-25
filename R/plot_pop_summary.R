@@ -21,10 +21,10 @@
 
 plot_pop_summary <- function(results = res, timestep = 'daily', save = FALSE, save.location = '.') {
 
-	n_spp <- length(res[["pop_summary"]]) 
+	n_spp <- length(results[["pop_summary"]]) 
 		res_df <- lapply(seq_len(n_spp), function(x) {
-	 		res_spp <- lapply(names(res[["pop_summary"]][[x]]), function(x1) {
-			      x1_res <- tidyr::gather(as.data.frame(t(res[["pop_summary"]][[x]][[x1]])), key = "year", factor_key = T)
+	 		res_spp <- lapply(names(results[["pop_summary"]][[x]]), function(x1) {
+			      x1_res <- tidyr::gather(as.data.frame(t(results[["pop_summary"]][[x]][[x1]])), key = "year", factor_key = T)
 		      	      if(x1 !="Rec.mat") {	res_out <- data.frame("pop" = rep(paste("spp",x, sep = "_"), length.out = nrow(x1_res)), 
 						              "metric" = rep(sapply(strsplit(x1,".",fixed = T),"[",1), length.out = nrow(x1_res)), 
 							      "year" = x1_res$year, 

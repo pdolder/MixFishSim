@@ -135,6 +135,8 @@ print("Recruiting")
     }
 names(Rec) <- paste0("spp", seq_len(n_spp))
 
+print(sapply(names(Rec), function(x) { sum(Rec[[x]]) / sum(B[[x]])}))
+
 }
 
 #######################
@@ -261,22 +263,6 @@ names(Bp1) <- paste0("spp", seq_len(n_spp))
 Bm1 <- B  #record at location
 B <- Bp1
 
-if(save_pop_bio == TRUE) {
-if(day.breaks[t] == 1) {
-pop_bios <- list()
-pop_bios[[day.breaks[t]]] <- B
-}
-
-if(day.breaks[t] > 1) {
-pop_bios[[day.breaks[t]]] <- B
-	  }
-
-}
-
-if(save_pop_bio == FALSE) {
-pop_bios <- NULL
-}
-
 } # end if statement
 
 #######################
@@ -312,11 +298,11 @@ if(Pop_move) {
 	Bm1 <- foreach(s = paste0("spp", seq_len(n_spp))) %dopar% {
 
 	## If in a non-spawning week or spawning week
-	if(!week.breaks[t] %in% pop_init[[s]][["dem_params"]][["spwn_wk"]]) {
+	if(!week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
 	newPop <- move_population(moveProp = MoveProb[[s]], StartPop = Bm1[[s]])
 	}
 
-	if(week.breaks[t] %in% pop_init[[s]][["dem_params"]][["spwn_wk"]]) {
+	if(week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
 	newPop <- move_population(moveProp = MoveProb_spwn[[s]], StartPop = Bm1[[s]])
 	}
 
@@ -326,6 +312,25 @@ if(Pop_move) {
 
 	names(B) <- paste0("spp", seq_len(n_spp))
 	names(Bm1) <- paste0("spp", seq_len(n_spp))
+
+## If we're saving population biomass, do so here
+if(save_pop_bio == TRUE) {
+if(!"pop_bios" %in% ls()) {
+# Create a list structure for storing pop bios
+pop_bios <- vector("list", sim_init[["idx"]][["ny"]] * sim_init[["idx"]][["nw"]]) 
+dim(pop_bios) <- c(sim_init[["idx"]][["ny"]] , sim_init[["idx"]][["nw"]])
+pop_bios[[year.breaks[t], week.breaks[t]]] <- B
+}
+
+if("pop_bios" %in% ls()) {
+pop_bios[[year.breaks[t], week.breaks[t]]] <- B
+	  }
+
+}
+
+if(save_pop_bio == FALSE) {
+pop_bios <- NULL
+}
 
 
 

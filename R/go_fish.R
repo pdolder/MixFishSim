@@ -54,9 +54,9 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	# first year
 	if(!is.null(PastKnowledge) & catch[t,"trip"] != catch[t-1,"trip"] & brk.idx[["year.breaks"]][t]>1)  {
 
-print("USING PAST KNOWLEDGE!!!")
-#browser()
-	catch.df  <- as.data.frame(catch) # Needed for correct sub-setting
+## print("USING PAST KNOWLEDGE!!!")
+	
+		catch.df  <- as.data.frame(catch) # Needed for correct sub-setting
 
 	# 3 options, choose from good hauls i) same month last year, ii) past
 		# trip, or iii) combination of same month last year and past
