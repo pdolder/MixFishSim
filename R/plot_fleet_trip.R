@@ -19,7 +19,7 @@ plot_fleet_trip <- function (logs = logs, fleet_no = 1, year_trip = 1, trip_no =
 require(ggplot2)
 require(dplyr)
 
-log <- filter(as.data.frame(logs), fleet == fleet_no, year == year_trip, trip == trip_no)
+log <- filter(as.data.frame(logs), fleet %in% fleet_no, year %in% year_trip, trip %in% trip_no)
 
 print(ggplot(log, aes(x = x, y = y)) + geom_point(aes(colour = factor(vessel))) + geom_path(aes(colour = factor(vessel))))
 

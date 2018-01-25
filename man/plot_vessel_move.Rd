@@ -5,7 +5,7 @@
 \title{Plot vessel move}
 \usage{
 plot_vessel_move(logs = logs, fleet_no = 1, vessel_no = 1,
-  year_trip = 1, trip_no = 1)
+  year_trip = 1, trip_no = 1, fleets_init = NULL, pop_bios = NULL)
 }
 \arguments{
 \item{logs}{is the combined log file, from \link{combine_logs}.}
@@ -17,11 +17,17 @@ plot_vessel_move(logs = logs, fleet_no = 1, vessel_no = 1,
 \item{year_trip}{is a Numeric, the year in which the trip took place}
 
 \item{trip_no}{is a Numeric for the trip you wish to plot}
+
+\item{fleets_init}{is the output from \link{init_fleet}}
+
+\item{pop_bios}{is the output from \link{run_sim} when option save_pops_bios
+= TRUE}
 }
 \description{
 \code{plot_vessel_move} is a plot of a single vessel movement
 during one trip. It's intended for diagnostics.
 }
 \examples{
-plot_vessel_move(logs = logs, fleet_no = 1, vessel_no = 1, year_trip = 1, trip_no = 1)
+plot_vessel_move(logs = logs, fleet_no = 1, vessel_no = 1, year_trip = 1,
+trip_no = 1, fleets_init = NULL, pop_bios = NULL)
 }
