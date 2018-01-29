@@ -10,8 +10,9 @@
 #' @param hab_init is the parameterised habitat maps from \code{create_hab}
 #' @param InParallel is a BOLEEN indicating whether calculations should be done
 #' using parallel processing from \code{parallel}, default is TRUE
-#' @param save_pop_bio is a logical flag to indicate if you want to record the
-#' true spatial population at each time step (day)
+#' @param save_pop_bio is a logical flag to indicate if you want to record #' true spatial population at each time step (day)
+#' @param survey is the survey settings from \link{survey_settings}, else NNULL
+#' if no survey is due to be simulated
 
 #' @return is the results...
 
@@ -19,7 +20,7 @@
 #'
 #' @export
 
-run_sim <- function (sim_init = NULL, pop_init = NULL, fleets_init = NULL, hab_init = NULL, InParallel = TRUE, cores = 3, save_pop_bio = FALSE,...) {
+run_sim <- function (sim_init = NULL, pop_init = NULL, fleets_init = NULL, hab_init = NULL, InParallel = TRUE, cores = 3, save_pop_bio = FALSE, survey = NULL, ...) {
 # Overarching function for running the simulations
 
 start.time <- Sys.time() # for printing runtime
@@ -263,6 +264,40 @@ names(Bp1) <- paste0("spp", seq_len(n_spp))
 Bm1 <- B  #record at location
 B <- Bp1
 
+####################
+## scientific survey
+####################
+
+if(sim_init[["brk.idx"]][["day.breaks"]][t] %in% survey[["log.mat"]][,"day"]) {
+
+print("undertaking scientific survey") 
+
+# doy and y
+  doy <- sim_init[["brk.idx"]][["day.breaks"]][t]
+  y   <- sim_init[["brk.idx"]][["year.breaks"]][t]
+
+	# survey log
+	log.mat <- survey[["log.mat"]]
+
+	# survey locations
+	x_loc <- subset(log.mat, log.mat[,"day"== doy] & log.mat[,"year"==y])[,"x"]
+	y_loc <- subset(log.mat, log.mat[,"day"== doy] & log.mat[,"year"==y])[,"y"]
+	
+	# For each set of locations
+	for(i in seq_len(length(x_loc))) {
+
+		# For each species
+for(s in seq_len(n_spp)) {
+log.mat[log.mat[,"day"]==doy & log.mat[,"year"]==y,paste0("spp",s)][i]  <-  	B[[s]][x_loc[i],y_loc[i]] * survey[["survey_settings"]][[paste0("Qs.spp",s)]]
+}
+	}
+
+	# return log.mat to the list
+	survey[["log.mat"]] <- log.mat
+
+}
+
+
 } # end if statement
 
 #######################
@@ -371,7 +406,7 @@ end.time <- Sys.time()
 time.taken <- end.time - start.time
 print(paste("time taken is :", format(time.taken, units = "auto"), sep = " "))
 
-return(list(fleets_catches = catches, pop_summary = pop_init[["Pop_record"]], pop_bios = pop_bios))
+return(list(fleets_catches = catches, pop_summary = pop_init[["Pop_record"]], pop_bios = pop_bios, survey = survey))
 
 } # end func
 

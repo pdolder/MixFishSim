@@ -6,7 +6,7 @@
 \usage{
 run_sim(sim_init = NULL, pop_init = NULL, fleets_init = NULL,
   hab_init = NULL, InParallel = TRUE, cores = 3, save_pop_bio = FALSE,
-  ...)
+  survey = NULL, ...)
 }
 \arguments{
 \item{sim_init}{is the parameterised simulation settings from
@@ -21,8 +21,10 @@ run_sim(sim_init = NULL, pop_init = NULL, fleets_init = NULL,
 \item{InParallel}{is a BOLEEN indicating whether calculations should be done
 using parallel processing from \code{parallel}, default is TRUE}
 
-\item{save_pop_bio}{is a logical flag to indicate if you want to record the
-true spatial population at each time step (day)}
+\item{save_pop_bio}{is a logical flag to indicate if you want to record #' true spatial population at each time step (day)}
+
+\item{survey}{is the survey settings from \link{survey_settings}, else NNULL
+if no survey is due to be simulated}
 }
 \value{
 is the results...
