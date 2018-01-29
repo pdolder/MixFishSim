@@ -14,12 +14,12 @@
 #' = TRUE
 
 #' @examples
-#' plot_vessel_move(logs = logs, fleet_no = 1, vessel_no = 1, year_trip = 1,
+#' plot_vessel_move(sim_init = NULL, logs = logs, fleet_no = 1, vessel_no = 1, year_trip = 1,
 #' trip_no = 1, fleets_init = NULL, pop_bios = NULL)
 
 #' @export
 
-plot_vessel_move <- function (logs = logs, fleet_no = 1, vessel_no = 1, year_trip = 1, trip_no = 1, fleets_init = NULL, pop_bios = NULL) {
+plot_vessel_move <- function (sim_init = NULL, logs = logs, fleet_no = 1, vessel_no = 1, year_trip = 1, trip_no = 1, fleets_init = NULL, pop_bios = NULL) {
 
 require(ggplot2)
 require(dplyr)
@@ -30,7 +30,7 @@ log <- filter(as.data.frame(logs), fleet %in% fleet_no, vessel %in% vessel_no, y
 
 if(is.null(fleets_init) | is.null(pop_bios)) {
 
-print(ggplot(log, aes(x = x, y = y, group = paste(vessel, trip))) + geom_point(aes(colour = tow)) + geom_path(aes(colour = tow)))
+print(ggplot(log, aes(x = x, y = y, group = paste(vessel, trip))) + geom_point(aes(colour = tow)) + geom_path(aes(colour = tow))+ expand_limits(y = c(0,sim_init[["idx"]][["ncols"]]), x = c(0,sim_init[["idx"]][["nrows"]])))
 
 }
 
@@ -49,11 +49,11 @@ Value <- lapply(names(Bs), function(x) {
 TotVal <- Reduce("+", Value)
 
 TotValDF <- tidyr::gather(as.data.frame(TotVal), factor_key = TRUE)
-TotValDF$x <- rep(1:100, times = 100)
-TotValDF$y <- rep(1:100, each = 100)
+TotValDF$x <- rep(seq_len(sim_init[["idx"]][["nrows"]]), times = sim_init[["idx"]][["nrows"]])
+TotValDF$y <- rep(seq_len(sim_init[["idx"]][["ncols"]]), each = sim_init[["idx"]][["ncols"]])
 
 print(ggplot(TotValDF, aes(x = x, y = y)) + geom_tile(aes(fill = value)) +
-	scale_fill_gradient2(low = "blue", high = "darkblue") + geom_point(data = log, aes(x = x, y = y, colour = tow)) + geom_path(data = log, aes(x = x, y = y, colour = tow, group = paste(vessel, trip))) + scale_colour_gradient(low = "red", high = "darkred"))
+	scale_fill_gradient2(low = "blue", high = "darkblue") + geom_point(data = log, aes(x = x, y = y, colour = tow)) + geom_path(data = log, aes(x = x, y = y, colour = tow, group = paste(vessel, trip))) + scale_colour_gradient(low = "red", high = "darkred") + expand_limits(y = c(0,sim_init[["idx"]][["ncols"]]), x = c(0,sim_init[["idx"]][["nrows"]])))
 
 }
 

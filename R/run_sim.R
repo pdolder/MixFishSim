@@ -242,9 +242,6 @@ spat_fs <- find_spat_f_pops(sim_init = sim_init, C = spp_catches, B = B,
 ## Fishing mortality rates
 print(sapply(names(spat_fs), function(x) weighted.mean(spat_fs[[x]], B[[x]])))
 
-## Or the summed values (fraction fished of pop)
-print(sapply(names(spp_catches), function(x) { sum(spp_catches[[x]]) / sum(B[[x]])}))
-
 # Apply the delay difference model
 Bp1 <- foreach(x = paste0("spp", seq_len(n_spp))) %dopar% {
 
@@ -268,7 +265,7 @@ B <- Bp1
 ## scientific survey
 ####################
 
-if(sim_init[["brk.idx"]][["day.breaks"]][t] %in% survey[["log.mat"]][,"day"]) {
+if(sim_init[["brk.idx"]][["day.breaks"]][t] %in% survey[["log.mat"]][,"day"] & !is.null(survey)) {
 
 print("undertaking scientific survey") 
 
@@ -280,15 +277,15 @@ print("undertaking scientific survey")
 	log.mat <- survey[["log.mat"]]
 
 	# survey locations
-	x_loc <- subset(log.mat, log.mat[,"day"== doy] & log.mat[,"year"==y])[,"x"]
-	y_loc <- subset(log.mat, log.mat[,"day"== doy] & log.mat[,"year"==y])[,"y"]
-	
+	x_loc <- log.mat[log.mat[,"day"] == doy & log.mat[,"year"] == y, "x"]
+	y_loc <- log.mat[log.mat[,"day"] == doy & log.mat[,"year"] == y, "y"]
+
 	# For each set of locations
 	for(i in seq_len(length(x_loc))) {
-
-		# For each species
+		
+# For each species
 for(s in seq_len(n_spp)) {
-log.mat[log.mat[,"day"]==doy & log.mat[,"year"]==y,paste0("spp",s)][i]  <-  	B[[s]][x_loc[i],y_loc[i]] * survey[["survey_settings"]][[paste0("Qs.spp",s)]]
+log.mat[log.mat[,"day"]==doy & log.mat[,"year"]==y,paste0("spp",s)][i]  <-  	B[[s]][x_loc[i],y_loc[i]] * as.numeric(survey[["survey_settings"]][[paste0("Qs.spp",s)]])
 }
 	}
 

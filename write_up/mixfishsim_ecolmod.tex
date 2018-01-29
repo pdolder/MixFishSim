@@ -99,48 +99,54 @@ Some\sep keywords \sep here. Max 6, American "spelling"
 
 \section{Introduction}
 
+[Guidance:: State the objectives of the work and provide an adequate
+background, avoiding a detailed literature survey or a summary of the results.]
+\\
+
 Fishers exploit fish populations that are heterogenously distributed in space
 and time without prior knowledge of species distributions and non-selective
-fishing gear. Fisheries managed by single-species quotas still catch an
-assemblage of species, known as mixed fisheries, leading to discarding of
-overquota catch. Reducing discarding is crucial to ensure biological and
-economic sustainability of fisheries and as such there is increasing interest
-in technical solutions such as gear, spatial closures as a way of avoiding
-discarding unwanted catch. \\
+fishing gear. Fisheries managed by single-species quotas catch an assemblage of
+species, known as mixed fisheries, leading to discarding of overquota catch.
+Reducing discarding is crucial to ensure biological and economic sustainability
+of fisheries. As such there is increasing interest in technical solutions
+such as gear, spatial closures as a way of avoiding discarding unwanted catch.
+\\
 
 Use of spatial management as a tool is hampered by lack of knowledge of fish
 and fishery spatiotemporal dyanmics and understanding of the scale at which
-processes are important for management, crucial in order to implement measures
-at the right resolution to ensure effective management\cite{Dunn2016} which
-promote species avoidance for vulnerable or low quota species while allowing
-continance of sustainable fisheries for available quota species. \\
+processes are important for management. Understanding of the correct scale for
+spatial management is crucial in order to implement measures at a resolution
+that ensures effective management\cite{Dunn2016} while minimising economic
+impact; for example a scale which promote species avoidance for vulnerable or
+low quota species while allowing continance of sustainable fisheries for
+available quota species. \\
 
 Ensuring measures are implemented at an appropriate scale has been a challenge
 in the a past that has led to ineffectual measures with unitended consequences
-such as limited impact towards the management objective wirth increased benthic
+such as limited impact towards the management objective or increased benthic
 impact on previously unexploited areas (e.g. the cod closure in the North
 Sea\cite{Rijnsdorp2001,Dinmore2003}). Since then more refined spatial
 information has become available through the combination of logbook and Vessel
 Monitoring System (VMS) data\cite{Lee2010, Bastardie2010, Gerritsen2012,
-	Mateo2016}, though such information is patchy and derived from a biased
-sampling programme (i.e.  targeted fishing). Further, generally fishers only
-recorded landings (not catch) on a daily basis. This leads to questions about the
-validity of inferences that can be drawn from landings data assigned to VMS
-activity pings. \\ 
+	Mateo2016}, though such information is patchy and derived from an
+inherently biased sampling programme (i.e. targeted fishing). Further,
+generally fishers only recorded landings (not catch) on a daily basis. This
+leads to questions about the validity of inferences that can be drawn from
+landings data assigned to VMS activity pings. \\ 
 
 In order to test the assumption that VMS associated landings data can be used
 to draw inference on the underlying population structures we develop a
 simulation model where population dynamics are known rather than inferred from
-sampling or commercial catches, population movement driven by a random
-(diffusive) and directed (advective) process and characterisation of a number
-of different fisheries exploiting four fish populations with different spatial
-and population demographics.\\
+sampling or commercial catches. Population movement is driven by a random
+(diffusive) and directed (advective) process and we incorporate
+characterisation of a number of different fisheries exploiting four fish
+populations with different spatial and population demographics.\\
 
 Using our model we simulation 20 years of exploitation of the fish populations
-and use the results to draw inference on the underlying population structures.
-We compare this inference to i) a simulated stratified fixed-site sampling
-design commonly used for fisheries monitoring purposes, ii) the underlying
-population structures input to the simulation.\\
+and use the results from the fishing model to draw inference on the underlying
+population structures.  We compare this inference to i) a simulated
+[stratified] fixed-site sampling design commonly used for fisheries monitoring
+purposes, ii) the underlying population structures input to the simulation.\\
 
 [Could fit a geostatistical model (e.g. VAST) to the fisheries-dependent and
 fisheries-independent data, though may be overkill...] \\
@@ -152,30 +158,26 @@ population, and effect on the other three populations. Further, we extend our
 analysis to a range of spatial and temporal scales to assess the impact of
 these processes on the success of the management measure. \\
 
-[Guidance:: State the objectives of the work and provide an adequate
-background, avoiding a detailed literature survey or a summary of the results.]
-\\
-
 \section{Materials and Methods}
 
-[Provide sufficient details to allow the work to be reproduced by an
+[Guidance: Provide sufficient details to allow the work to be reproduced by an
 independent researcher. Methods that are already published should be
 summarized, and indicated by a reference.  If quoting directly from a
 previously published method, use quotation marks and also cite the source. Any
-modifications to existing methods should also be described.] \\
+modifications to existing methods should also be described.] \\ 
 
-We developed a simulation model with a modular discrete event-based approach to
-each of the processes so that they can occur on independent time-scales
-suitable for the processes. The fishing model operated on a tow-by-tow basis,
-while population dynamics (fishing and natural mortality, growth) operate on a
-daily time-step.  Population movement occurs on a two-weekly time-step, while
-recruitment occurs periodcally each year for a set time period (e.g. 3 weeks)
-at at specified point individual to a species. The model structure is
-summerised in Figure 1.  \\
+We develop a simulation model with a modular event-based approach, where
+modules occur on independent time-scales appropriate to capture the
+characteristic of the process modelled. The fishing model operated on a
+tow-by-tow basis, while population dynamics (fishing and natural mortality,
+growth) operate on a daily time-step.  Population movement occurs on a
+two-weekly time-step, while recruitment occurs periodcally each year for a set
+time period (e.g. 3 weeks) at at specified point individual to a species. The
+model structure is summerised in Figure 1.\\
 
 In the following section, we describe each of the model components; 1)
 Population dynamics, 2) Recruitment dynamics, 3) Population movement, 4)
-fishery dynamics. \\ 
+fishery dynamics.\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Overview schematic  
@@ -216,8 +218,8 @@ fishery dynamics. \\
 \node [term, join, fill=lcnorm!25]      {Choose random location to fish};
 \node [term, join, fill=lcfree!25] (p1){Sample catch};
 \node [test, densely dotted] (t1) {if $y > y-1$};
-\node [test, join, densely dotted] (t2) {if $spp_{t}$ != $spp_{t-1}$};
-\node [test, join, densely dotted] (wk) {if $week_{t}$ != $week_{t-1}$};
+\node [test, join, densely dotted] (t2) {if $pop_{t}$ != $pop_{t-1}$};
+\node [test, join, densely dotted] (wk) {if $day_{t}$ != $day_{t-1}$};
 \node [test, join, densely dotted] (t3) {if $trip_{t}$ != $trip_{t-1}$};
 \node [term, join, fill=lcnorm!25]  (p2) {Correlated Random Walk};
 \node [term, join, fill=lcnorm!25]  (p3) {Choose new fishing location};
@@ -291,14 +293,13 @@ fishery dynamics. \\
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \subsection{Population dynamics}
 
 The basic population level processes are simulated using a modified two-stage
-Deriso-Schnute delay difference model \cite{Deriso1980, Schnute1985}
-occurring at the weekly time-step \cite{Dichmont2003}. Here, population
-biomass growth and depletion for pre-recruits and fish recruited to the fishery
-are modelled separately as a function of previous recruited biomass, intrinsic
+Deriso-Schnute delay difference model \cite{Deriso1980, Schnute1985,
+	Dichmont2003} occurring at a daily time-step. Here, population biomass
+growth and depletion for pre-recruits and fish recruited to the fishery are
+modelled separately as a function of previous recruited biomass, intrinsic
 population growth and recruitment:
 
 \begin{equation*}
@@ -312,12 +313,12 @@ population growth and recruitment:
 	\end{split}
 \end{equation*}
 
-$\rho$ is Brody's coefficient, shown to be approximately equal to $exp(-K)$,
-where $K$ is the growth rate from a von bertalanffy logistic growth model
-\cite{Schnute1985}.  $Wt_{R-1}$ is the weight of fish prior to recruitment,
-while $Wt_{R}$ is the recruited weight.  $\alpha_{w}$ represents the proportion of
-fish recruited during the week, while $R_{\tilde{y}}$ is the annual
-recruits. \\
+where $\rho$ is Brody's coefficient, shown to be approximately equal to
+$exp(-K)$, where $K$ is the growth rate from a von bertalanffy logistic growth
+model \cite{Schnute1985}. $Wt_{R-1}$ is the weight of fish prior to
+recruitment, while $Wt_{R}$ is the recruited weight. $\alpha_{w}$ represents
+the proportion of fish recruited during the week, while $R_{\tilde{y}}$ is the
+annual recruits. \\
 
 Mortality $Z$ can be decomposed to natural mortality, $M$, and fishing
 mortality, $F$, where both $M$ and $F$ are instantaneous rates with $M$ fixed
@@ -329,9 +330,8 @@ C_{w} = \frac{F_{w}}{F_{w}+M_{w}} * (1 - e^{-(F_{w} + M_{w})}) * B
 \end{equation*}
 
 where $C$ is the summed catch from the fishing model across all fleets and
-vessels for the species, year and week respectively, and $B$ the weekly biomass
-for the species. \\
-
+vessels for the population during the day, and $B$ the daily biomass for the
+species. \\
 
 \subsection{Recruitment dynamics}
 
@@ -346,8 +346,8 @@ form (\cite{Beverton1957}):
 	\end{split}
 \end{equation*}
 
-Where $\alpha$ is the maximum recruitment rate, $\beta$ the spawning stock biomass (SSB)
-required to produce half the maximum, and $B$ current SSB; \\
+Where $\alpha$ is the maximum recruitment rate, $\beta$ the spawning stock
+biomass (SSB) required to produce half the maximum, and $B$ current SSB; \\
 
 or a stochastic Ricker form \cite{Ricker1954}
 
@@ -358,26 +358,170 @@ or a stochastic Ricker form \cite{Ricker1954}
 	\end{split}
 \end{equation*}
 
-where $\alpha$ is the maximum productivity per spawner and $\beta$ the density dependent
-reduction in productivity as the SSB increases.
-
-
+where $\alpha$ is the maximum productivity per spawner and $\beta$ the density
+dependent reduction in productivity as the SSB increases.
 
 \subsection{Population movement}
 
+In order to simulate how fish populations might be distributed in space and
+time, we employed a Gaussian spatial process to model habitat suitability for
+each of the populations, with an advection-diffusion process to control how the
+populations moved in time. \\
 
+For the habitat we define a Gaussian random field process, $\{S(x) : x \in
+\mathbb{R}^2\}$, that is a stochastic process where any collection of locations
+$x_{1}, \dots, x_{n}$ where for each $x_{i} \in \mathbb{R}^2$, the joint
+distribution of $S = \{S(x1),\dots S(x_{n})\}$ is multivariate Gaussian. The
+distribution is specified by its \textit{mean function}, $\mu(x) = E[S(x)]$ and
+its \textit{covariance function}, $\gamma(x,x') = Cov\{S(x),S(x')\}$
+\cite{Diggle2007}.\\
+
+The specification of the covariance structure directly affects the smoothness
+of the surfaces which the process generates.  We used the \textit{Matérn}
+family of covariance structures, one where the correlation strength weakens the
+further the distance apart (i.e. the correlation between $S(x)$ and $S(x')$
+decreases as the distance $u = ||x - x'||$ increases).  The \textit{Matérn}
+correlation is a two-parameter family where: \\
+
+\begin{center}
+	$\rho(u) = \{2^{\kappa -
+		1}\Gamma{\kappa}\}^{-1}(u/\phi)^{\kappa}K_{\kappa}(u/\phi)$
+\end{center}
+	
+$K_{\kappa}(.)$ is a modified Bessel function of order $\kappa$, $\phi >
+0$ is a scale parameter with the dimensions of distance, and $\kappa > 0$,
+called the order, is a shape parameter which determines the smoothness of the
+underlying process. \\
+
+The population is initialised at a single location, and subsequently moves
+according to a probabilistic distribtion based on habitat suitability and
+distance from current cell. 
+
+\begin{equation}
+	Pr(B | A) = \frac{e^{-\lambda * d_{AB}} \cdot
+		Hab_{B}^2}{\sum\limits_{c=1}^{C}e^{-\lambda * d} \cdot
+		Hab^2}
+\end{equation}
+
+Where $d_{AB}$ is the euclidean distance between cell $A$ and cell $B$, and
+$\lambda$ is some rate of decay.\\
+
+During specified weeks of the year, the habitat quality is modified for
+spawning habitats, meaning each population has a concentrated area where
+spawning takes place and the population moves towards this in the weeks prior
+to spawning. \\
 
 \subsection{Fleet dynamics}
 
+The fleet dynamics can be broadly categorised into three components; fleet
+targeting - which determines the fleet catch efficiency and preference towards
+a particular species; trip-level decisions, which determine the initial
+location to be fished at the beginning of a trip; and within-trip decisions,
+determining movement from one fishing spot to another within a trip.  A further
+sub-model controls local depletion of fish populations at fished sites. 
 
+\subsubsection{Fleet targeting}
 
+Each fleet of \textit{n} vessels is characterised by both a general efficiency,
+\textit{Q}, and a species specific efficiency, ${Q_{s}}$.  Thus, the product of
+these parameters affects the overall catch rates for the fleet and the
+preferential targeting of one species over another.  This, in combination with
+the parameter choice for the step-function (as well as some randomness from the
+exploratory fishing process) determines the preference of fishing locations for
+the fleet.  All species prices are kept the same, across fleets, though can be
+made to vary seasonally.  
+
+\subsubsection{Trip-level decisions}
+
+Several studies (e.g.\cite{Hutton2004, Tidd2012, Girardin2015}) have confirmed
+past activity and past catch rates are strong predictors of fishing location
+choice. For this reason, the fleet dynamics sub-model includes a learning
+component, where a vessels initial fishing location in a trip is based on
+selecting from previously successful fishing locations. This is achieved by
+sorting all previous fishing events in the previous trip as well as the
+previous time periods in past years, and choosing randomly from the top x \% of
+fishing events in value.  Simulation testing indicating this increased the mean
+value of catches for the vessels, over just relying on the correlated random
+walk function. 
+
+\subsubsection{Within-trip decisions}
+
+Fishing locations within a trip are determined by a Random Walk process. A
+Random walk was chosen as it is commonly used in ecology to describe animal
+movement which searching for homogeneously distributed prey about which there
+is uncertain knowledge. In a random walk, movement is a stochastic process
+through a series of steps that can either be equal in length or take some other
+functional form.  The direction of the random walk can be correlated, a
+characteristic known as 'persistence', providing some overall location
+directional movement \cite{Codling2008} or uncorrelated. \\
+
+A \textit{lévy walk} is a particular form of random walk characterised by a
+heavy-tailed distribution of step-length and has received a lot of attention in
+ecological theory in recent years as having shown to have very similar
+characteristics as those observed by animals in nature, and being a near
+optimum searching strategy for predators pursuing patchily distributed prey
+\cite{Bartumeus2005, Sims2008}.  \cite{Bertrand2007} showed that Peruvian
+anchovy fishermen have a stochastic search pattern similar to that observed
+with a lévy walk. However, it remains a subject of debate, with the contention
+that search patterns may be more simply characteristed as random walks
+\cite{Sakiyama2013} with specific patterns related to the characteristics of
+the prey field \cite{Sims2012}. \\
+
+We use a modified random walk where directional change is based on a correlated
+circular distribution where a favourable fishing ground is likely to be "fished
+back over" by the vessel returning in the direction it came from and step
+length (i.e. the distance travelled from the current to the next fishing
+location) is determined by relating recent fishing success, measured as the
+summed value of fish caught, $$Rev = \sum_{s=1}^{\infty} C_{s} \cdot Pr_{s}$$
+where $C_{s}$ is catch of a species, and $Pr_{s}$ price of a species, to step
+distance. Here, when fishing is successful vessels remain in a similar location
+and continue to exploit the local fishing grounds. When unsuccessful, they move
+some distance away from the current fishing location. The movement distance
+retains some degree of stochasticity, which can be controlled separately. \\
+
+The step function takes the form:
+
+\begin{equation*}
+	StepL = e^{log(\beta_{1}) + log(\beta_{2}) - (log(\frac{\beta_{1}}{\beta_{3}}))} * Rev
+\end{equation*}
+
+So that, a step from (x1,y1) to (x2, y2) is defined by:
+
+\begin{equation*}
+	\begin{split}
+ (x2, y2) =  & x1 + StepL \cdot \cos (\frac{\pi \cdot Br}{180}), \\
+             & y1 + StepL \cdot \sin (\frac{\pi \cdot Br}{180}) \\	
+ where \hspace{0.5cm}     & Br \sim U[(0,360)]
+	\end{split}
+\end{equation*}
+
+\subsubsection{Local population depletion}
+
+Where several fishing vessels are exploiting the same fish population
+competition is known to play an important role in local distribution of fishing
+effort \cite{Gillis1998}. If several vessels are fishing on the same patch of
+fish, local depletion and interference will affect fishing location choice of
+the fleet as a whole \cite{Rijnsdorp2000, Poos2007a}. In order to account for
+this behaviour, the fishing sub-model operates spatially on a daily time-step
+so that for future days the biomass available to the fishery is reduced in the
+areas fished. The cumulative effect is to make heavily fished areas less
+attractive as future fishing opportunities. \\
+
+\subsection{Fisheries independent survey}
+
+A fisheries-independent survey is simulated where fishing on a regular grid
+begins each year at the same time for a given number of stations (a fixed
+station survey design). Catches of the populations present are recorded but not
+removed from the population. This provides a fishery independent snap shot of
+the populations at a regular spatial distribution each year, similar to
+scientific surveys undertaken by fisheries research agencies. \\
 
 \section{Theory/calculation}
 
-[A Theory section should extend, not repeat, the background to the article
-already dealt with in the Introduction and lay the foundation for further work.
-In contrast, a Calculation section represents a practical development from a
-theoretical basis.]
+[Guidance: A Theory section should extend, not repeat, the background to the
+article already dealt with in the Introduction and lay the foundation for
+further work.  In contrast, a Calculation section represents a practical
+development from a theoretical basis.]
 
 HERE DESCRIBE THE PARAMETERISATION, AND ANY COMPARISON AGAINST 'REAL' DATA
 
@@ -386,28 +530,92 @@ HERE DESCRIBE THE PARAMETERISATION, AND ANY COMPARISON AGAINST 'REAL' DATA
 Present simulated closures in terms of \% change in population biomass and
 fishery.
 
-[Results should be clear and concise.]
+[Guidance: Results should be clear and concise.]
 
 \section{Discussion}
 
-This should explore the significance of the results of the work, not repeat
-them. A combined Results
-and Discussion section is often appropriate. Avoid extensive citations and
-discussion of published
-literature.
+[Guidance: This should explore the significance of the results of the work, not
+repeat them. A combined Results and Discussion section is often appropriate.
+Avoid extensive citations and discussion of published literature.]
 
 \section{Conclusions}
 
-The main conclusions of the study may be presented in a short Conclusions
-section, which may stand
-alone or form a subsection of a Discussion or Results and Discussion section.
+[Guidance: The main conclusions of the study may be presented in a short Conclusions
+section, which may stand alone or form a subsection of a Discussion or Results
+and Discussion section.]
 
 \section*{Appendices}
 
-If there is more than one appendix, they should be identified as A, B, etc.
+[Guidance: If there is more than one appendix, they should be identified as A, B, etc.
 Formulae and equations in appendices should be given separate numbering: Eq.
 (A.1), Eq. (A.2), etc.; in a subsequent appendix, Eq. (B.1) and so on.
-Similarly for tables and figures: Table A.1; Fig. A.1, etc.
+Similarly for tables and figures: Table A.1; Fig. A.1, etc.]
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{../tests/plots/habitat}
+		\caption{habitat}
+\end{figure}	
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{../tests/plots/annual_summary}
+		\caption{Annual Summmary}
+\end{figure}	
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{../tests/plots/fDynamics}
+		\caption{f dynamics}
+\end{figure}	
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{../tests/plots/vessel_move}
+		\caption{vessel movement}
+\end{figure}	
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{../tests/plots/vessel_multi_move}
+		\caption{vessel movement multi}
+\end{figure}	
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{../tests/plots/vessel_move_value}
+		\caption{vessel movement value}
+\end{figure}	
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{../tests/plots/fleet_moves}
+		\caption{fleet movement}
+\end{figure}	
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{../tests/plots/catch_comp}
+		\caption{spatial catch composition}
+\end{figure}	
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{../tests/plots/catch_comp_clusters}
+		\caption{spatial catch composition with clustering}
+\end{figure}	
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{../tests/plots/survey_index}
+		\caption{survey index}
+\end{figure}	
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{../tests/plots/spatial_survey}
+		\caption{survey spatial abundance}
+\end{figure}	
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{../tests/plots/step_function}
+		\caption{Realised step function}
+\end{figure}	
+
+
+
+
+
+\newpage
 
 \section*{Abbreviations} Detail any unusual ones used.
 
@@ -416,9 +624,6 @@ Similarly for tables and figures: Table A.1; Fig. A.1, etc.
 \section*{Funding} This work was supported by the MARES doctoral training
 program; and the Centre for Environment, Fisheries and Aquaculture Science
 seedcorn program.
-
-
-
 
 \section*{References}
 

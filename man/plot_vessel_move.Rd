@@ -4,8 +4,9 @@
 \alias{plot_vessel_move}
 \title{Plot vessel move}
 \usage{
-plot_vessel_move(logs = logs, fleet_no = 1, vessel_no = 1,
-  year_trip = 1, trip_no = 1, fleets_init = NULL, pop_bios = NULL)
+plot_vessel_move(sim_init = NULL, logs = logs, fleet_no = 1,
+  vessel_no = 1, year_trip = 1, trip_no = 1, fleets_init = NULL,
+  pop_bios = NULL)
 }
 \arguments{
 \item{logs}{is the combined log file, from \link{combine_logs}.}
@@ -28,6 +29,6 @@ plot_vessel_move(logs = logs, fleet_no = 1, vessel_no = 1,
 during one trip. It's intended for diagnostics.
 }
 \examples{
-plot_vessel_move(logs = logs, fleet_no = 1, vessel_no = 1, year_trip = 1,
+plot_vessel_move(sim_init = NULL, logs = logs, fleet_no = 1, vessel_no = 1, year_trip = 1,
 trip_no = 1, fleets_init = NULL, pop_bios = NULL)
 }
