@@ -70,22 +70,22 @@
 	Netherlands}
 
 \begin{abstract}
-[A concise and factual abstract is required. The abstract should state briefly
-the purpose of the research, the principal results and major conclusions. An
-abstract is often pnresented separately from the article, so it must be able to
-stand alone. For this reason, References should be avoided, but if essential,
-then cite the author(s) and year(s). Also, non-standard or uncommon
-abbreviations should be avoided, but if essential they must be defined at their
-first mention in the abstract itself.  
-Graphical abstract: Although a graphical abstract is optional, its use is
-encouraged as it draws more attention to the online article. The graphical
-abstract should summarize the contents of the article in a concise, pictorial
-form designed to capture the attention of a wide readership. Graphical
-abstracts should be submitted as a separate file in the online submission
-system. Image size: Please provide an image with a minimum of 531 X 1328 pixels
-(h X w) or proportionally more. The image should be readable at a size of 5 x
-13 cm using a regular screen resolution of 96 dpi.  Preferred file types: TIFF,
-EPS, PDF or MS Office files.]
+[Guidance: A concise and factual abstract is required. The abstract should
+state briefly the purpose of the research, the principal results and major
+conclusions. An abstract is often pnresented separately from the article, so it
+must be able to stand alone. For this reason, References should be avoided, but
+if essential, then cite the author(s) and year(s). Also, non-standard or
+uncommon abbreviations should be avoided, but if essential they must be defined
+at their first mention in the abstract itself.  Graphical abstract: Although a
+graphical abstract is optional, its use is encouraged as it draws more
+attention to the online article. The graphical abstract should summarize the
+contents of the article in a concise, pictorial form designed to capture the
+attention of a wide readership. Graphical abstracts should be submitted as a
+separate file in the online submission system. Image size: Please provide an
+image with a minimum of 531 X 1328 pixels (h X w) or proportionally more. The
+image should be readable at a size of 5 x 13 cm using a regular screen
+resolution of 96 dpi.  Preferred file types: TIFF, EPS, PDF or MS Office
+files.]
 \end{abstract}
 
 \begin{keyword}
@@ -491,9 +491,16 @@ So that, a step from (x1,y1) to (x2, y2) is defined by:
 	\begin{split}
  (x2, y2) =  & x1 + StepL \cdot \cos (\frac{\pi \cdot Br}{180}), \\
              & y1 + StepL \cdot \sin (\frac{\pi \cdot Br}{180}) \\	
- where \hspace{0.5cm}     & Br \sim U[(0,360)]
+ with  \hspace{0.5cm}     & Br_{t-1} < 180, Br_{t} = 180 + \sim vm[(0,360), k] \\
+ 			  & Br_{t-1} > 180, Br_{t} = 180 - \sim vm[(0,360), k] \\
 	\end{split}
 \end{equation*}
+
+with $k$ the concentration parameter from the von mises distribution which we
+correlate with the revenue so that $k = (revenue + 1 / maxRevenue) * max_{k}$
+
+where $max_{k}$ is the maximum concentration value, $k$, and maxRevenue is
+parameterised as for $\beta_{3}$ in the step length function. \\
 
 \subsubsection{Local population depletion}
 
@@ -521,9 +528,85 @@ scientific surveys undertaken by fisheries research agencies. \\
 [Guidance: A Theory section should extend, not repeat, the background to the
 article already dealt with in the Introduction and lay the foundation for
 further work.  In contrast, a Calculation section represents a practical
-development from a theoretical basis.]
+development from a theoretical basis.] \\
 
-HERE DESCRIBE THE PARAMETERISATION, AND ANY COMPARISON AGAINST 'REAL' DATA
+\subsection{Simulation settings}
+
+We set up with simulation to run for 20 years based on a 100 X 100 square grid,
+with five fleets of 20 vessels each and four fish populations. Fishing takes
+place four times a day per vessel and five days a week, while population
+movement is every two weeks. \\ 
+
+\subsection{Population parameterisation}
+
+We parameterised the simulation model for four populations with differing
+habitat preference (Figure \ref{fig:1}) and defined two spawning areas for each
+of the populations (Table \ref{tab:1}). \\
+
+\begin{table}[!ht]
+\caption{Population dynamics and movement parameter setting}
+	\begin{tabular}{ p{4cm } p{2cm} p{2cm} p{2cm} p{2cm}}
+	Parameter & Pop 1 & Pop 2 & Pop 3 & Pop 4 \\
+	\hline
+	Habitat quality & & & \\
+	\hline
+	Matérn $\nu$ & 1/0.15 & 1/0.05 & 1/0.55 & 1/0.05  \\
+	Matérn $\kappa$ & 1 & 2 & 1 & 1  \\
+	Anisotropy & 1.5,3,-3,4 & 1,2,-1,2 & 2.5,1,-1,2 & 0.1,2,-1,0.2 \\
+	Spawning areas (bound box) & 40,50,40,50; 80,90,60,70 &
+	50,60,30,40; 80,90,90,90 & 30,34,10,20; 60,70,20,30 & 50,55,80,85; 30,40,30,40 \\
+	Spawning multiplier & 10 & 10 & 10 & 10 \\
+	Movement $\lambda$ & 0.3 & 0.3 & 0.3 & 0.3 \\
+	\hline
+	Population dynamics & & & & \\
+	\hline
+	Starting Biomass & 1e5 & 2e5 & 1e5 & 1e4 \\
+	Beverton-Holt Recruit 'a' & 60 & 100 & 80 & 2 \\
+	Beverton-Holt Recruit 'b' & 250 & 250 & 200 & 50 \\
+	Beverton-Holt Recruit $\sigma$ & 0.2 & 0.1 & 0.2 & 0.1 \\
+	Recruit week & 13-16 & 12-16 & 14-16 & 16-20 \\
+	Population dynamics and movement parameter settingSpawn week & 16-18 & 16-19 & 16-18 & 18-20 \\
+	M (annual) & 0.2 & 0.2 & 0.2 & 0.1 \\
+	\hline
+\end{tabular}
+\label{tab:1}
+\end{table}
+
+\subsection{Fleet parameterisation}
+
+\begin{table}[!ht]
+\caption{Fleet dynamics parameter setting}
+\begin{tabular}{ p{4cm } p{1cm} p{1cm} p{1cm} p{1cm} p{1cm}}
+	\hline
+	Parameter & Fleet 1 & Fleet 2 & Fleet 3 & Fleet 4 & Fleet 5 \\
+	\hline
+	Targeting preferences &&&& \\
+	\hline
+	Price Pop1 & 100 & 100 & 100 & 100 & 100 \\
+	Price Pop2 & 200 & 200 & 200 & 200 & 200 \\
+	Price Pop3 & 600 & 600 & 600 & 600 & 600 \\
+	Price Pop4 & 1600 & 1600 & 1600 & 1600 & 1600 \\
+	$Q$ Pop1 & 0.01 & 0.02 & 0.02 & 0.02 & 0.02 \\
+	$Q$ Pop2 & 0.02 & 0.01 & 0.01 & 0.01 & 0.01\\
+	$Q$ Pop3 & 0.01 & 0.02 & 0.02 & 0.02 & 0.02 \\
+	$Q$ Pop4 & 0.02 & 0.01 & 0.01 & 0.01 & 0.01 \\
+	\hline
+	Exploitation dynamics &&&& \\
+	\hline
+	step function $\beta_1$ & 1 & 2 & 1 & 2 & 3 \\
+	step function $\beta_2$ & 10 & 10 & 8 & 12 & 7 \\
+	step function $\beta_3$ & MaxRev & MaxRev & MaxRev & MaxRev & MaxRev \\
+	step function $rate$ & 10 & 20 & 15 & 25 & 10 \\
+	Past Knowledge & T & T & T & T & T \\
+	Past Year \& Month & T & T & T & T & T \\
+	Past Trip & T & T & T & T & T \\
+	Threshold & 0.75 & 0.75 & 0.75 & 0.75 & 0.75 \\
+	\hline
+\end{tabular}
+\label{tab:2}
+\end{table}
+
+
 
 \section{Results}
 
@@ -553,62 +636,74 @@ Similarly for tables and figures: Table A.1; Fig. A.1, etc.]
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{../tests/plots/habitat}
-		\caption{habitat}
+	\caption{habitat preference}
+	\label{fig:1}
 \end{figure}	
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{../tests/plots/annual_summary}
-		\caption{Annual Summmary}
+	\caption{Annual Summmary}
+	\label{fig:2}
 \end{figure}	
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{../tests/plots/fDynamics}
-		\caption{f dynamics}
+	\caption{f dynamics}
+	\label{fig:3}
 \end{figure}	
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{../tests/plots/vessel_move}
-		\caption{vessel movement}
+	\caption{vessel movement}
+	\label{fig:4}
 \end{figure}	
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{../tests/plots/vessel_multi_move}
-		\caption{vessel movement multi}
+	\caption{vessel movement multi}
+	\label{fig:5}
 \end{figure}	
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{../tests/plots/vessel_move_value}
-		\caption{vessel movement value}
+	\caption{vessel movement value}
+	\label{fig:6}
 \end{figure}	
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{../tests/plots/fleet_moves}
-		\caption{fleet movement}
+	\caption{fleet movement}
+	\label{fig:7}
 \end{figure}	
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{../tests/plots/catch_comp}
-		\caption{spatial catch composition}
+	\caption{spatial catch composition}
+	\label{fig:8}
 \end{figure}	
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{../tests/plots/catch_comp_clusters}
-		\caption{spatial catch composition with clustering}
+	\caption{spatial catch composition with clustering}
+	\label{fig:9}
 \end{figure}	
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{../tests/plots/survey_index}
-		\caption{survey index}
+	\caption{survey index}
+	\label{fig:10}
 \end{figure}	
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{../tests/plots/spatial_survey}
-		\caption{survey spatial abundance}
+	\caption{survey spatial abundance}
+	\label{fig:11}
 \end{figure}	
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{../tests/plots/step_function}
-		\caption{Realised step function}
+	\caption{Realised step function}
+	\label{fig:12}
 \end{figure}	
 
 
@@ -624,6 +719,8 @@ Similarly for tables and figures: Table A.1; Fig. A.1, etc.]
 \section*{Funding} This work was supported by the MARES doctoral training
 program; and the Centre for Environment, Fisheries and Aquaculture Science
 seedcorn program.
+
+\newpage
 
 \section*{References}
 

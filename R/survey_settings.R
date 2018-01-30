@@ -12,7 +12,7 @@
 #' @param start_day is a Numeric for the first day of the survey each year
 #' @param stations_per_day is a Numeric for the number of stations surveyed per
 #' day
-#' @params Qs is a named Numeric Vector containing any survey catchabilities, assumed to be time invariant.
+#' @param Qs is a named Numeric Vector containing any survey catchabilities, assumed to be time invariant.
 #'
 #' @return is a list consisting of the survey setting and a a matrix for
 #' storing the log of catches from the survey, to be used as an input to

@@ -21,6 +21,8 @@ a grid shape if not divisble.}
 
 \item{stations_per_day}{is a Numeric for the number of stations surveyed per
 day}
+
+\item{Qs}{is a named Numeric Vector containing any survey catchabilities, assumed to be time invariant.}
 }
 \value{
 is a list consisting of the survey setting and a a matrix for

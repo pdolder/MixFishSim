@@ -139,7 +139,9 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	
 	#Bear = runif(1,0,360) # bearing - to be replaced with a correlated von mises dist
 	b <- ifelse(t = 1, 0, catch[t-1,"angles"]) # base on most recent bearing
-	k = 50/params[["step_params"]][["B3"]] + 1 # concentration parameter, a proportion of the maximum haul + 1 (to avoid infinity)
+	max_k <- 20
+	k = ((catch[t-1,"val"]+1) / params[["step_params"]][["B3"]]) * max_k
+	# concentration parameter, a proportion of the maximum haul + 1 (to avoid infinity)
 	Bear <- get_bearing(b = b, k = k)
 	catch[t, "angles"] <- Bear
 	new.point <- round(make_step(stepD = stepD, Bear = Bear, start.x = coords[1], start.y = coords[2])) # returns c(x2,y2)
