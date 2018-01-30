@@ -70,26 +70,47 @@
 	Netherlands}
 
 \begin{abstract}
-[Guidance: A concise and factual abstract is required. The abstract should
-state briefly the purpose of the research, the principal results and major
-conclusions. An abstract is often pnresented separately from the article, so it
-must be able to stand alone. For this reason, References should be avoided, but
-if essential, then cite the author(s) and year(s). Also, non-standard or
-uncommon abbreviations should be avoided, but if essential they must be defined
-at their first mention in the abstract itself.  Graphical abstract: Although a
-graphical abstract is optional, its use is encouraged as it draws more
-attention to the online article. The graphical abstract should summarize the
-contents of the article in a concise, pictorial form designed to capture the
-attention of a wide readership. Graphical abstracts should be submitted as a
-separate file in the online submission system. Image size: Please provide an
-image with a minimum of 531 X 1328 pixels (h X w) or proportionally more. The
-image should be readable at a size of 5 x 13 cm using a regular screen
-resolution of 96 dpi.  Preferred file types: TIFF, EPS, PDF or MS Office
-files.]
+\textcolor{gray}{[Guidance: A concise and factual abstract is required. The abstract 
+should state briefly the purpose of the research, the principal results and
+major conclusions. An abstract is often pnresented separately from the article,
+so it must be able to stand alone. For this reason, References should be
+avoided, but if essential, then cite the author(s) and year(s). Also,
+non-standard or uncommon abbreviations should be avoided, but if essential they
+must be defined at their first mention in the abstract itself.  Graphical
+abstract: Although a graphical abstract is optional, its use is encouraged as
+it draws more attention to the online article. The graphical abstract should
+summarize the contents of the article in a concise, pictorial form designed to
+capture the attention of a wide readership. Graphical abstracts should be
+submitted as a separate file in the online submission system. Image size:
+Please provide an image with a minimum of 531 X 1328 pixels (h X w) or
+proportionally more. The image should be readable at a size of 5 x 13 cm using
+a regular screen resolution of 96 dpi.  Preferred file types: TIFF, EPS, PDF or
+MS Office files.] \\}
+
+Fishing exploits spatio-temporally hetergenous fish populations without fully
+selective gear which can result in unintended, unwanted catch of low quota or
+protected species. Reducing these unwanted catches is crucial for biological
+and economic sustainability of 'mixed fisheries'. \\
+
+Understanding of spatio-temporal fishery dynamics is limited by a lack of full
+understanding of population distribution and how fishers interact with the
+different populations. We develop a spatio-temporal simulation model that
+incorporate i) delay-difference population dynamics, ii) population movement
+dynamics using Gaussian Random Fields, iii) fishery dynamics for multiple fleet
+characteristics based on a correlated random walk and learned behaviour. \\
+
+Using our model we simulation 20 years of exploitation of the fish populations
+and use the results from the fishing model to draw inference on the underlying
+population structures.  We compare this inference to i) a simulated fixed-site
+sampling design commonly used for fisheries monitoring purposes, ii) the
+underlying population structures input to the simulation.\\
+
+We find that... \\
+
 \end{abstract}
 
 \begin{keyword}
-Some\sep keywords \sep here. Max 6, American "spelling" 
+Some\sep keywords \sep here. Max 6 
 \MSC[2010] 00-01\sep  99-00
 \end{keyword}
 
@@ -99,9 +120,9 @@ Some\sep keywords \sep here. Max 6, American "spelling"
 
 \section{Introduction}
 
-[Guidance:: State the objectives of the work and provide an adequate
+\textcolor{gray}{[Guidance:: State the objectives of the work and provide an adequate
 background, avoiding a detailed literature survey or a summary of the results.]
-\\
+\\}
 
 Fishers exploit fish populations that are heterogenously distributed in space
 and time without prior knowledge of species distributions and non-selective
@@ -160,11 +181,11 @@ these processes on the success of the management measure. \\
 
 \section{Materials and Methods}
 
-[Guidance: Provide sufficient details to allow the work to be reproduced by an
-independent researcher. Methods that are already published should be
-summarized, and indicated by a reference.  If quoting directly from a
+\textcolor{gray}{[Guidance: Provide sufficient details to allow the work to be
+reproduced by an independent researcher. Methods that are already published
+should be summarized, and indicated by a reference.  If quoting directly from a
 previously published method, use quotation marks and also cite the source. Any
-modifications to existing methods should also be described.] \\ 
+modifications to existing methods should also be described.] \\ }
 
 We develop a simulation model with a modular event-based approach, where
 modules occur on independent time-scales appropriate to capture the
@@ -525,10 +546,10 @@ scientific surveys undertaken by fisheries research agencies. \\
 
 \section{Theory/calculation}
 
-[Guidance: A Theory section should extend, not repeat, the background to the
-article already dealt with in the Introduction and lay the foundation for
-further work.  In contrast, a Calculation section represents a practical
-development from a theoretical basis.] \\
+\textcolor{gray}{[Guidance: A Theory section should extend, not repeat, 
+the background to the article already dealt with in the Introduction and lay
+the foundation for further work.  In contrast, a Calculation section represents
+a practical development from a theoretical basis.] \\}
 
 \subsection{Simulation settings}
 
@@ -574,6 +595,18 @@ of the populations (Table \ref{tab:1}). \\
 
 \subsection{Fleet parameterisation}
 
+The fleets were parameterised to reflect five different characteristics based
+on targeting preference and exploitation dynamics (Table \ref{tab:2}). This
+ensures that different fleets have different spatial dynamics, preferentially
+targeted different fish populations. The stochasticity in the random walk
+process ensures that different vessels within a fleet have slightly different
+spatial distributions based on individual experience. \\
+
+Each fleet was set so that, after the first year, fishing locations were chosen
+based on experience built up in the same month from previous years and from
+past trip fishing success. 'Success' in this context was defined as the
+locations where the top 75 \% of revenue from previous trips was found. \\
+
 \begin{table}[!ht]
 \caption{Fleet dynamics parameter setting}
 \begin{tabular}{ p{4cm } p{1cm} p{1cm} p{1cm} p{1cm} p{1cm}}
@@ -606,33 +639,39 @@ of the populations (Table \ref{tab:1}). \\
 \label{tab:2}
 \end{table}
 
+\subsection{Survey settings}
 
+The survey simulation was set up with follow a fixed gridded station design
+with 49 stations fished each year, starting on day 92 with same catchability
+parameters for all populations (Q = 1). \\
 
 \section{Results}
 
 Present simulated closures in terms of \% change in population biomass and
 fishery.
 
-[Guidance: Results should be clear and concise.]
+\textcolor{gray}{[Guidance: Results should be clear and concise.]}
 
 \section{Discussion}
 
-[Guidance: This should explore the significance of the results of the work, not
-repeat them. A combined Results and Discussion section is often appropriate.
-Avoid extensive citations and discussion of published literature.]
+\textcolor{gray}{[Guidance: This should explore the significance of the results 
+of the work, not repeat them. A combined Results and Discussion section is
+often appropriate.  Avoid extensive citations and discussion of published
+literature.]}
 
 \section{Conclusions}
 
-[Guidance: The main conclusions of the study may be presented in a short Conclusions
-section, which may stand alone or form a subsection of a Discussion or Results
-and Discussion section.]
+textcolor{gray}{[Guidance: The main conclusions of the study may be presented 
+in a short Conclusions section, which may stand alone or form a subsection of a
+Discussion or Results and Discussion section.]}
 
 \section*{Appendices}
 
-[Guidance: If there is more than one appendix, they should be identified as A, B, etc.
-Formulae and equations in appendices should be given separate numbering: Eq.
-(A.1), Eq. (A.2), etc.; in a subsequent appendix, Eq. (B.1) and so on.
-Similarly for tables and figures: Table A.1; Fig. A.1, etc.]
+\textcolor{gray}{[Guidance: If there is more than one appendix, they should 
+be identified as A, B, etc.  Formulae and equations in appendices should be
+given separate numbering: Eq.  (A.1), Eq. (A.2), etc.; in a subsequent
+appendix, Eq. (B.1) and so on.  Similarly for tables and figures: Table A.1;
+Fig. A.1, etc.]}
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{../tests/plots/habitat}
