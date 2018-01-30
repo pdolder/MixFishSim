@@ -130,6 +130,18 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	# CRW when no past knowledge, or within same month/trip (depending on
 	# choice)
 	if(!PastKnowledge | catch[t,"trip"] == catch[t-1,"trip"] | brk.idx[["year.breaks"]][t]==1) {
+
+
+	## Here we need to update the max value in the step param, for the
+		## current population size / value field
+
+
+		ValMat <- 		lapply(names(pops), function(x) {
+					  val_mat <- Q[[x]] * pops[[x]] * VPT[[x]]
+					})
+		ValMat <- Reduce("+", ValMat)
+		maxVal <- max(ValMat, na.rm = T)
+		params[["step_params"]][["B3"]] <- maxVal
 	
 	stepD     <- step_length(revenue = catch[t-1,"val"],step_params = params[["step_params"]])  # Calculate step distance based on last tow value
         catch[t,"stepD"] <- stepD    # record the step distance	
