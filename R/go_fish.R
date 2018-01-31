@@ -140,8 +140,8 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 					  val_mat <- Q[[x]] * pops[[x]] * VPT[[x]]
 					})
 		ValMat <- Reduce("+", ValMat)
-		maxVal <- max(ValMat, na.rm = T)
-		params[["step_params"]][["B3"]] <- maxVal
+		B3_rev <- quantile(ValMat, prob = 0.9)
+		params[["step_params"]][["B3"]] <- B3_rev 
 	
 	stepD     <- step_length(revenue = catch[t-1,"val"],step_params = params[["step_params"]])  # Calculate step distance based on last tow value
         catch[t,"stepD"] <- stepD    # record the step distance	

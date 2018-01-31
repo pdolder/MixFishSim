@@ -25,6 +25,7 @@
 #' vector of the weeks in which spawning takes place for the population
 #' @param M is a named vector, with the annual natural mortality rate for each
 #' population
+#' @param K is a named vector, with the annual growth rate for each population
 #'
 #' @return The function returns the recording vectors at the population level,
 #' the spatial matrices for the starting population densities and the
@@ -35,12 +36,13 @@
 #' 0.2, "spp2" = 0.3), init_move_steps = 10), rec_params = list("spp1" =
 #' c("model" = "BH", "a" = 10, "b" = 50, "cv" = 0.2), "spp2" = c("model" = "BH",
 #' "a" = 1, "b" = 8, "cv" = 0.2)), rec_wk = list("spp1" = 13:16, "spp2" =
-#' 13:18, spwn_wk = list("spp1" = 15:18, "spp2" = 18:20),M = c("spp1" = 0.2, "spp2" = 0.1)))
+#' 13:18), spwn_wk = list("spp1" = 15:18, "spp2" = 18:20),M = c("spp1" = 0.2,
+#' "spp2" = 0.1), K = c("spp1" = 0.3, "spp2" = 0.2))
 #' Note, example will not have the right biomass
 
 #' @export
 
-init_pop <- function(sim_init = sim_init, Bio = NULL, hab = NULL, start_cell = NULL, lambda = NULL, init_move_steps = 10, rec_params = NULL, rec_wk = NULL, spwn_wk = NULL, M = NULL, cores = 3) {
+init_pop <- function(sim_init = sim_init, Bio = NULL, hab = NULL, start_cell = NULL, lambda = NULL, init_move_steps = 10, rec_params = NULL, rec_wk = NULL, spwn_wk = NULL, M = NULL, K = NULL, cores = 3) {
 
 require(doParallel)
 registerDoParallel(cores = cores)
@@ -109,7 +111,7 @@ names(Pop_vec) <- paste("spp",seq(idx[["n.spp"]]), sep ="")
 
 dem_params <- lapply(names(Bio), function(x) {
 
-dem_params = list(rec_params = rec_params[[x]], rec_wk = rec_wk[[x]], spwn_wk = spwn_wk[[x]], M = M[[x]])
+dem_params = list(rec_params = rec_params[[x]], rec_wk = rec_wk[[x]], spwn_wk = spwn_wk[[x]], M = M[[x]], K = K[[x]])
 
 return(dem_params)
 		  

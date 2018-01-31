@@ -276,6 +276,7 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti9.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm
@@ -283,6 +284,8 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 INPUT ../tests/plots/habitat.png
 INPUT ../tests/plots/habitat.png
 INPUT ../tests/plots/habitat.png
@@ -319,9 +322,14 @@ INPUT ../tests/plots/spatial_survey.png
 INPUT ../tests/plots/step_function.png
 INPUT ../tests/plots/step_function.png
 INPUT ../tests/plots/step_function.png
+INPUT ../tests/plots/pop_dist.png
+INPUT ../tests/plots/pop_dist.png
+INPUT ../tests/plots/pop_dist.png
+INPUT ../tests/plots/Proportion_in_cell.png
+INPUT ../tests/plots/Proportion_in_cell.png
+INPUT ../tests/plots/Proportion_in_cell.png
 INPUT mixfishsim_ecolmod.bbl
 INPUT mixfishsim_ecolmod.bbl
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT mixfishsim_ecolmod.aux
 INPUT ./mixfishsim_ecolmod.out
 INPUT ./mixfishsim_ecolmod.out
