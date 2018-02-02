@@ -7,7 +7,7 @@
 \usage{
 plot_catch_comp(gran = c(20, 10, 5), logs = logs, fleets = 1:2,
   vessels = 1:5, trips = 1:20, years = 18:20, cluster_plot = FALSE,
-  cluster_k = 5)
+  cluster_k = 5, scale_data = NULL)
 }
 \arguments{
 \item{gran}{is a Numeric Vector of granularities required}
@@ -26,6 +26,9 @@ composition plot}
 \item{cluster_plot}{is a logical, determines whether also to run PAM cluserting
 on  the catch compositions and plot the clusters spatially}
 
+\item{scale_data}{is a logical, whether to normalise the data before the
+clustering}
+
 \item{clusters_k}{is the number of clusters to search for in the PAM
 clustering algorithm}
 }
@@ -35,5 +38,6 @@ aggregation
 }
 \examples{
 plot_catch_comp(gran = c(20,10,5,2), logs = logs, fleets = 1:2, vessels =
-1:5. trips = 1:20, years = 18:20, cluster_plot = FALSE, cluster_k = 5)
+1:5. trips = 1:20, years = 18:20, cluster_plot = FALSE, cluster_k = 5,
+scale_data = TRUE)
 }

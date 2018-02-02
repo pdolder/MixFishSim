@@ -15,14 +15,17 @@
 #' on  the catch compositions and plot the clusters spatially
 #' @param clusters_k is the number of clusters to search for in the PAM
 #' clustering algorithm
+#' @param scale_data is a logical, whether to normalise the data before the
+#' clustering
 
 #' @examples
 #' plot_catch_comp(gran = c(20,10,5,2), logs = logs, fleets = 1:2, vessels =
-#' 1:5. trips = 1:20, years = 18:20, cluster_plot = FALSE, cluster_k = 5)
+#' 1:5. trips = 1:20, years = 18:20, cluster_plot = FALSE, cluster_k = 5,
+#' scale_data = TRUE)
 
 #' @export
 
-plot_catch_comp <- function (gran = c(20,10,5), logs = logs , fleets = 1:2, vessels = 1:5, trips = 1:20, years = 18:20, cluster_plot = FALSE, cluster_k = 5) {
+plot_catch_comp <- function (gran = c(20,10,5), logs = logs , fleets = 1:2, vessels = 1:5, trips = 1:20, years = 18:20, cluster_plot = FALSE, cluster_k = 5, scale_data = NULL) {
 require(dplyr)
 require(reshape2) 
 require(mapplots)
@@ -83,10 +86,19 @@ if(cluster_plot == TRUE) {
 n_plots <- length(gran) 
 
 ## Run PAM clustering
+if(is.null(scale_data) | scale_data == FALSE) {
 pam_mods <- lapply(seq_len(n_plots), function(x) {
 			   pam(dist(catch_comp[[x]][[2]][,c("spp1", "spp2","spp3","spp4")]), k = cluster_k, trace.lev = 1)
     
 	       })
+}
+
+if (scale_data == TRUE) {
+pam_mods <- lapply(seq_len(n_plots), function(x) {
+			   pam(dist(scale(catch_comp[[x]][[2]][,c("spp1", "spp2","spp3","spp4")])), k = cluster_k, trace.lev = 1)
+    
+	       })
+}
 
 ## Assign clustering
 for(i in seq_len(n_plots)) {

@@ -6,7 +6,7 @@
 \usage{
 init_pop(sim_init = sim_init, Bio = NULL, hab = NULL, start_cell = NULL,
   lambda = NULL, init_move_steps = 10, rec_params = NULL, rec_wk = NULL,
-  spwn_wk = NULL, M = NULL, cores = 3)
+  spwn_wk = NULL, M = NULL, K = NULL, cores = 3)
 }
 \arguments{
 \item{Bio}{is a named Numeric vector of the starting (total) biomass for each of the
@@ -36,6 +36,8 @@ vector of the weeks in which spawning takes place for the population}
 \item{M}{is a named vector, with the annual natural mortality rate for each
 population}
 
+\item{K}{is a named vector, with the annual growth rate for each population}
+
 \item{spawn_areas}{is a list of lists, with the first level the population
 ("spp1" etc..) and the second the boundary coordinates (x1, x2, y1, y2) for
 the \code{create_spawn_hab} function}
@@ -56,6 +58,7 @@ runif(10*10)), spp2 = matrix(nc = 10, runif(10*10)), lambda = c("spp1" =
 0.2, "spp2" = 0.3), init_move_steps = 10), rec_params = list("spp1" =
 c("model" = "BH", "a" = 10, "b" = 50, "cv" = 0.2), "spp2" = c("model" = "BH",
 "a" = 1, "b" = 8, "cv" = 0.2)), rec_wk = list("spp1" = 13:16, "spp2" =
-13:18, spwn_wk = list("spp1" = 15:18, "spp2" = 18:20),M = c("spp1" = 0.2, "spp2" = 0.1)))
+13:18), spwn_wk = list("spp1" = 15:18, "spp2" = 18:20),M = c("spp1" = 0.2,
+"spp2" = 0.1), K = c("spp1" = 0.3, "spp2" = 0.2))
 Note, example will not have the right biomass
 }
