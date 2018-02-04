@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.24)  2 FEB 2018 13:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.24)  4 FEB 2018 18:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1080,35 +1080,35 @@ LaTeX Info: Redefining \nameref on input line 47.
 
 
 ABD: EveryShipout initializing macros
-Underfull \hbox (badness 10000) in paragraph at lines 90--95
+Underfull \hbox (badness 10000) in paragraph at lines 91--96
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 96--104
+Underfull \hbox (badness 10000) in paragraph at lines 97--105
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 105--110
+Underfull \hbox (badness 10000) in paragraph at lines 106--112
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--120
+Underfull \hbox (badness 10000) in paragraph at lines 113--122
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
 
  []
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 132.
+LaTeX Font Info:    Try loading font information for U+msa on input line 134.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 132.
+LaTeX Font Info:    Try loading font information for U+msb on input line 134.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1116,407 +1116,416 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 142--151
+Overfull \hbox (3.27835pt too wide) in paragraph at lines 144--153
+\OT1/cmr/m/n/10 and time with very-ing knowl-edge of species dis-tri-bu-tions u
+s-ing species-unselective
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--153
 
  []
 
 
 Package natbib Warning: Citation `Dunn2016' on page 3 undefined on input line 1
-57.
+59.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--161
+Underfull \hbox (badness 10000) in paragraph at lines 154--163
 
  []
 
 
 Package natbib Warning: Citation `Rijnsdorp2001' on page 3 undefined on input l
-ine 166.
+ine 168.
 
 
 Package natbib Warning: Citation `Dinmore2003' on page 3 undefined on input lin
-e 166.
+e 168.
 
 
-Package natbib Warning: Citation `Lee2010' on page 3 undefined on input line 16
-9.
+Package natbib Warning: Citation `Lee2010' on page 3 undefined on input line 17
+1.
 
 
 Package natbib Warning: Citation `Bastardie2010' on page 3 undefined on input l
-ine 169.
+ine 171.
 
 
 Package natbib Warning: Citation `Gerritsen2012' on page 3 undefined on input l
-ine 169.
+ine 171.
 
 
 Package natbib Warning: Citation `Mateo2016' on page 3 undefined on input line 
-169.
+171.
 
 
 Package natbib Warning: Citation `Holmes2011' on page 3 undefined on input line
- 170.
+ 172.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--175
+Underfull \hbox (badness 10000) in paragraph at lines 164--177
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 176--183
+Underfull \hbox (badness 10000) in paragraph at lines 178--186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--189
+Underfull \hbox (badness 10000) in paragraph at lines 187--192
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--192
+Underfull \hbox (badness 10000) in paragraph at lines 193--195
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--199
+Underfull \hbox (badness 10000) in paragraph at lines 196--202
 
  []
 
 [4]
 
 Package natbib Warning: Citation `RCoreTeam2017' on page 5 undefined on input l
-ine 216.
+ine 219.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 208--219
+Underfull \hbox (badness 10000) in paragraph at lines 211--221
 
  []
 
 
-Overfull \hbox (46.79233pt too wide) in paragraph at lines 227--334
+Overfull \hbox (46.79233pt too wide) in paragraph at lines 229--336
 []  [] 
  []
 
 
 Package natbib Warning: Citation `Deriso1980' on page 5 undefined on input line
- 342.
+ 345.
 
 
 Package natbib Warning: Citation `Schnute1985' on page 5 undefined on input lin
-e 342.
+e 345.
 
 
 Package natbib Warning: Citation `Dichmont2003' on page 5 undefined on input li
-ne 342.
+ne 345.
 
 [5] [6]
 
 Package natbib Warning: Citation `Schnute1985' on page 7 undefined on input lin
-e 360.
+e 363.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--364
+Underfull \hbox (badness 10000) in paragraph at lines 361--367
 
  []
 
 
 Package natbib Warning: Citation `Hilborn1992b' on page 7 undefined on input li
-ne 367.
+ne 370.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--377
+Underfull \hbox (badness 10000) in paragraph at lines 377--380
 
  []
 
 
 Package natbib Warning: Citation `Beverton1957' on page 7 undefined on input li
-ne 382.
+ne 385.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 391--393
+Underfull \hbox (badness 10000) in paragraph at lines 392--396
 
  []
 
-
-Package natbib Warning: Citation `Ricker1954' on page 7 undefined on input line
- 394.
-
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 408--412
+
+Package natbib Warning: Citation `Ricker1954' on page 8 undefined on input line
+ 397.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 411--415
 
  []
 
 
 Package natbib Warning: Citation `Diggle2007' on page 8 undefined on input line
- 419.
+ 422.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 413--420
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 421--427
+Underfull \hbox (badness 10000) in paragraph at lines 416--423
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 433--437
+Underfull \hbox (badness 10000) in paragraph at lines 424--430
 
  []
 
 
-Package natbib Warning: Citation `Schlater2015' on page 8 undefined on input li
-ne 440.
+Underfull \hbox (badness 10000) in paragraph at lines 436--440
+
+ []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 451--453
+
+Package natbib Warning: Citation `Schlater2015' on page 9 undefined on input li
+ne 443.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 454--456
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 454--458
+Underfull \hbox (badness 10000) in paragraph at lines 457--461
 
  []
 
 [9]
 
 Package natbib Warning: Citation `Hutton2004' on page 10 undefined on input lin
-e 480.
+e 483.
 
 
 Package natbib Warning: Citation `Tidd2012' on page 10 undefined on input line 
-480.
+483.
 
 
 Package natbib Warning: Citation `Girardin2015' on page 10 undefined on input l
-ine 480.
+ine 483.
 
 
 Package natbib Warning: Citation `Codling2008' on page 10 undefined on input li
-ne 500.
+ne 503.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 493--501
+Underfull \hbox (badness 10000) in paragraph at lines 496--504
 
  []
 
 
 Package natbib Warning: Citation `Bartumeus2005' on page 10 undefined on input 
-line 507.
+line 510.
 
 
 Package natbib Warning: Citation `Sims2008' on page 10 undefined on input line 
-507.
+510.
 
 
 Package natbib Warning: Citation `Bertrand2007' on page 10 undefined on input l
-ine 507.
+ine 510.
 
 
 Package natbib Warning: Citation `Sakiyama2013' on page 10 undefined on input l
-ine 511.
+ine 514.
 
 
 Package natbib Warning: Citation `Sims2012' on page 10 undefined on input line 
-512.
+515.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 502--513
+Underfull \hbox (badness 10000) in paragraph at lines 505--516
 
  []
 
 [10] [11]
 
 Package natbib Warning: Citation `Gillis1998' on page 12 undefined on input lin
-e 552.
+e 555.
 
 
 Package natbib Warning: Citation `Rijnsdorp2000' on page 12 undefined on input 
-line 554.
+line 557.
 
 
 Package natbib Warning: Citation `Poos2007a' on page 12 undefined on input line
- 554.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 586--590
-
- []
+ 557.
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 593--602
+Underfull \hbox (badness 10000) in paragraph at lines 589--593
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 619.
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+Underfull \hbox (badness 10000) in paragraph at lines 596--605
+
+ []
+
+[13]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 622.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 619.
- [13] [14]
-Underfull \hbox (badness 4108) in paragraph at lines 685--685
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 622.
+ [14]
+Underfull \hbox (badness 4108) in paragraph at lines 688--688
 []\OT1/cmr/m/n/10 Spawning ar-eas (bound
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 685--685
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
 []\OT1/cmr/m/n/10 40,50,40,50;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 686--686
+Underfull \hbox (badness 10000) in paragraph at lines 689--689
 []\OT1/cmr/m/n/10 50,60,30,40;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 686--686
+Underfull \hbox (badness 10000) in paragraph at lines 689--689
 []\OT1/cmr/m/n/10 30,34,10,20;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 686--687
+Underfull \hbox (badness 10000) in paragraph at lines 689--690
 []\OT1/cmr/m/n/10 50,55,80,85;
  []
 
 
-Overfull \hbox (56.43303pt too wide) in paragraph at lines 677--705
+Overfull \hbox (56.43303pt too wide) in paragraph at lines 680--708
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 711--711
+Underfull \hbox (badness 10000) in paragraph at lines 714--714
 []\OT1/cmr/m/n/10 Fleet
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 711--711
+Underfull \hbox (badness 10000) in paragraph at lines 714--714
 []\OT1/cmr/m/n/10 Fleet
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 711--711
+Underfull \hbox (badness 10000) in paragraph at lines 714--714
 []\OT1/cmr/m/n/10 Fleet
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 711--711
+Underfull \hbox (badness 10000) in paragraph at lines 714--714
 []\OT1/cmr/m/n/10 Fleet
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 711--712
+Underfull \hbox (badness 10000) in paragraph at lines 714--715
 []\OT1/cmr/m/n/10 Fleet
  []
 
-<../tests/plots/habitat.png, id=183, 803.0pt x 803.0pt>
+<../tests/plots/habitat.png, id=184, 803.0pt x 803.0pt>
 File: ../tests/plots/habitat.png Graphic file (type png)
 
 <use ../tests/plots/habitat.png>
-Package pdftex.def Info: ../tests/plots/habitat.png used on input line 741.
+Package pdftex.def Info: ../tests/plots/habitat.png used on input line 744.
 (pdftex.def)             Requested size: 345.0pt x 345.00146pt.
 
-<../tests/plots/annual_summary.png, id=184, 504.9264pt x 505.4082pt>
+<../tests/plots/annual_summary.png, id=185, 504.9264pt x 505.4082pt>
 File: ../tests/plots/annual_summary.png Graphic file (type png)
 
 <use ../tests/plots/annual_summary.png>
 Package pdftex.def Info: ../tests/plots/annual_summary.png used on input line 7
-47.
+50.
 (pdftex.def)             Requested size: 345.0pt x 345.33879pt.
 
-<../tests/plots/fDynamics.png, id=185, 1231.4808pt x 459.3963pt>
+<../tests/plots/fDynamics.png, id=186, 1231.4808pt x 459.3963pt>
 File: ../tests/plots/fDynamics.png Graphic file (type png)
 
 <use ../tests/plots/fDynamics.png>
-Package pdftex.def Info: ../tests/plots/fDynamics.png used on input line 754.
+Package pdftex.def Info: ../tests/plots/fDynamics.png used on input line 757.
 (pdftex.def)             Requested size: 345.0pt x 128.70018pt.
 
-<../tests/plots/vessel_move.png, id=186, 504.9264pt x 505.4082pt>
+<../tests/plots/vessel_move.png, id=187, 504.9264pt x 505.4082pt>
 File: ../tests/plots/vessel_move.png Graphic file (type png)
 
 <use ../tests/plots/vessel_move.png>
-Package pdftex.def Info: ../tests/plots/vessel_move.png used on input line 761.
+Package pdftex.def Info: ../tests/plots/vessel_move.png used on input line 764.
 
 (pdftex.def)             Requested size: 345.0pt x 345.33879pt.
 
-<../tests/plots/vessel_multi_move.png, id=187, 504.9264pt x 505.4082pt>
+<../tests/plots/vessel_multi_move.png, id=188, 504.9264pt x 505.4082pt>
 File: ../tests/plots/vessel_multi_move.png Graphic file (type png)
 
 <use ../tests/plots/vessel_multi_move.png>
 Package pdftex.def Info: ../tests/plots/vessel_multi_move.png used on input lin
-e 767.
+e 770.
 (pdftex.def)             Requested size: 345.0pt x 345.33879pt.
 
-<../tests/plots/vessel_move_value.png, id=188, 504.9264pt x 505.4082pt>
+<../tests/plots/vessel_move_value.png, id=189, 504.9264pt x 505.4082pt>
 File: ../tests/plots/vessel_move_value.png Graphic file (type png)
 
 <use ../tests/plots/vessel_move_value.png>
 Package pdftex.def Info: ../tests/plots/vessel_move_value.png used on input lin
-e 776.
+e 779.
 (pdftex.def)             Requested size: 345.0pt x 345.33879pt.
 
-<../tests/plots/fleet_moves.png, id=189, 505.89pt x 505.89pt>
+<../tests/plots/fleet_moves.png, id=190, 505.89pt x 505.89pt>
 File: ../tests/plots/fleet_moves.png Graphic file (type png)
 
 <use ../tests/plots/fleet_moves.png>
-Package pdftex.def Info: ../tests/plots/fleet_moves.png used on input line 783.
+Package pdftex.def Info: ../tests/plots/fleet_moves.png used on input line 786.
 
 (pdftex.def)             Requested size: 345.0pt x 345.00414pt.
 
-<../tests/plots/catch_comp.png, id=190, 1606.0pt x 401.5pt>
+<../tests/plots/catch_comp.png, id=191, 1606.0pt x 401.5pt>
 File: ../tests/plots/catch_comp.png Graphic file (type png)
 
 <use ../tests/plots/catch_comp.png>
-Package pdftex.def Info: ../tests/plots/catch_comp.png used on input line 789.
+Package pdftex.def Info: ../tests/plots/catch_comp.png used on input line 792.
 (pdftex.def)             Requested size: 345.0pt x 86.2473pt.
 
-<../tests/plots/catch_comp_clusters.png, id=191, 1606.0pt x 803.0pt>
+<../tests/plots/catch_comp_clusters.png, id=192, 1606.0pt x 803.0pt>
 File: ../tests/plots/catch_comp_clusters.png Graphic file (type png)
 
 <use ../tests/plots/catch_comp_clusters.png>
 Package pdftex.def Info: ../tests/plots/catch_comp_clusters.png used on input l
-ine 797.
+ine 800.
 (pdftex.def)             Requested size: 345.0pt x 172.4946pt.
 
-<../tests/plots/survey_index.png, id=192, 504.9264pt x 505.4082pt>
+<../tests/plots/survey_index.png, id=193, 504.9264pt x 505.4082pt>
 File: ../tests/plots/survey_index.png Graphic file (type png)
 
 <use ../tests/plots/survey_index.png>
-Package pdftex.def Info: ../tests/plots/survey_index.png used on input line 807
+Package pdftex.def Info: ../tests/plots/survey_index.png used on input line 810
 .
 (pdftex.def)             Requested size: 345.0pt x 345.33879pt.
 
-<../tests/plots/spatial_survey.png, id=193, 867.24pt x 1156.32pt>
+<../tests/plots/spatial_survey.png, id=194, 867.24pt x 1156.32pt>
 File: ../tests/plots/spatial_survey.png Graphic file (type png)
 
 <use ../tests/plots/spatial_survey.png>
 Package pdftex.def Info: ../tests/plots/spatial_survey.png used on input line 8
-14.
+17.
 (pdftex.def)             Requested size: 345.0pt x 459.99672pt.
 
-<../tests/plots/step_function.png, id=194, 803.0pt x 401.5pt>
+<../tests/plots/step_function.png, id=195, 803.0pt x 401.5pt>
 File: ../tests/plots/step_function.png Graphic file (type png)
 
 <use ../tests/plots/step_function.png>
 Package pdftex.def Info: ../tests/plots/step_function.png used on input line 82
-1.
+4.
 (pdftex.def)             Requested size: 345.0pt x 172.50072pt.
 
-<../tests/plots/pop_dist.png, id=195, 1606.0pt x 1606.0pt>
+<../tests/plots/pop_dist.png, id=196, 1606.0pt x 1606.0pt>
 File: ../tests/plots/pop_dist.png Graphic file (type png)
 
 <use ../tests/plots/pop_dist.png>
-Package pdftex.def Info: ../tests/plots/pop_dist.png used on input line 829.
+Package pdftex.def Info: ../tests/plots/pop_dist.png used on input line 832.
 (pdftex.def)             Requested size: 345.0pt x 344.98921pt.
 
-<../tests/plots/Proportion_in_cell.png, id=196, 504.9264pt x 505.4082pt>
+<../tests/plots/Proportion_in_cell.png, id=197, 504.9264pt x 505.4082pt>
 File: ../tests/plots/Proportion_in_cell.png Graphic file (type png)
 
 <use ../tests/plots/Proportion_in_cell.png>
 Package pdftex.def Info: ../tests/plots/Proportion_in_cell.png used on input li
-ne 840.
+ne 843.
 (pdftex.def)             Requested size: 345.0pt x 345.33879pt.
  [15] [16] [17] [18 <../tests/plots/habitat.png>] [19 <../tests/plots/annual_su
 mmary.png> <../tests/plots/fDynamics.png (PNG copy)>] [20 <../tests/plots/vesse
@@ -1533,21 +1542,21 @@ Package natbib Warning: There were undefined citations.
 [30
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 861.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 861.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 864.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 864.
  (./mixfishsim_ecolmod.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 861.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 861.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 864.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 864.
 Package rerunfilecheck Info: File `mixfishsim_ecolmod.out' has not changed.
 (rerunfilecheck)             Checksum: 6E14EB20F9186CFC6D113BD1E7456317;1234.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 861.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 864.
  ) 
 Here is how much of TeX's memory you used:
- 20245 strings out of 494953
- 396976 string characters out of 6180977
- 505395 words of memory out of 5000000
- 23059 multiletter control sequences out of 15000+600000
- 13308 words of font info for 51 fonts, out of 8000000 for 9000
+ 20248 strings out of 494953
+ 397013 string characters out of 6180977
+ 506761 words of memory out of 5000000
+ 23061 multiletter control sequences out of 15000+600000
+ 13655 words of font info for 52 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  55i,17n,68p,493b,927s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
@@ -1568,15 +1577,16 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
-i9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on mixfishsim_ecolmod.pdf (30 pages, 5729995 bytes).
+msfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on mixfishsim_ecolmod.pdf (30 pages, 5741396 bytes).
 PDF statistics:
- 384 PDF objects out of 1000 (max. 8388607)
- 305 compressed objects within 4 object streams
+ 388 PDF objects out of 1000 (max. 8388607)
+ 308 compressed objects within 4 object streams
  78 named destinations out of 1000 (max. 500000)
  235 words of extra memory for PDF output out of 10000 (max. 10000000)
 
