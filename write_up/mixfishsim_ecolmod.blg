@@ -1,51 +1,54 @@
 This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: mixfishsim_ecolmod.aux
-I couldn't open style file elsarticle-num.bst
----line 19 of file mixfishsim_ecolmod.aux
- : \bibstyle{elsarticle-num
- :                         }
-I'm skipping whatever remains of this command
-I found no style file---while reading file mixfishsim_ecolmod.aux
+The style file: elsarticle-num.bst
+Database file #1: simulation_framework.bib
+Repeated entry---line 472 of file simulation_framework.bib
+ : @article{Girardin2015
+ :                      ,
+I'm skipping whatever remains of this entry
+Warning--empty publisher in Hilborn1992b
+Warning--empty journal in Beverton1957
+Warning--empty publisher in Diggle2007
 You've used 29 entries,
-            0 wiz_defined-function locations,
-            143 strings with 1168 characters,
-and the built_in function-call counts, 0 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 0
-:= -- 0
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+            2937 wiz_defined-function locations,
+            917 strings with 12798 characters,
+and the built_in function-call counts, 10230 in all, are:
+= -- 1031
+> -- 347
+< -- 2
++ -- 135
+- -- 106
+* -- 967
+:= -- 1418
+add.period$ -- 51
+call.type$ -- 29
+change.case$ -- 27
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 0
-format.name$ -- 0
-if$ -- 0
+cite$ -- 32
+duplicate$ -- 251
+empty$ -- 1051
+format.name$ -- 130
+if$ -- 2515
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 0
-num.names$ -- 0
-pop$ -- 0
-preamble$ -- 0
+int.to.str$ -- 29
+missing$ -- 31
+newline$ -- 129
+num.names$ -- 29
+pop$ -- 145
+preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 0
+skip$ -- 529
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 739
+swap$ -- 97
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 0
-(There were 2 error messages)
+warning$ -- 3
+while$ -- 78
+width$ -- 31
+write$ -- 295
+(There was 1 error message)

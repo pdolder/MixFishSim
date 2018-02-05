@@ -1,0 +1,236 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{Dunn2016}
+D.~C. Dunn, S.~M. Maxwell, A.~M. Boustany, P.~N. Halpin,
+  \href{http://www.pnas.org/content/early/2016/01/02/1513626113.abstract}{{Dynamic
+  ocean management increases the efficiency and efficacy of fisheries
+  management}}, Proceedings of the National Academy of Sciences (2016)
+  201513626\href {http://dx.doi.org/10.1073/pnas.1513626113}
+  {\path{doi:10.1073/pnas.1513626113}}.
+\newline\urlprefix\url{http://www.pnas.org/content/early/2016/01/02/1513626113.abstract}
+
+\bibitem{Rijnsdorp2001}
+A.~D. Rijnsdorp, G.~J. Piet, J.~J. Poos, {Effort allocation of the Dutch beam
+  trawl fleet in response to a temporarily closed area in the North Sea}, Ices
+  Cm 2001/N: 01 (2001) 1--17.
+
+\bibitem{Dinmore2003}
+T.~A. Dinmore, D.~E. Duplisea, B.~D. Rackham, D.~L. Maxwell, S.~Jennings,
+  {Impact of a large-scale area closure on patterns of fishing disturbance and
+  the consequences for benthic communities}, ICES Journal of Marine Science
+  60~(2) (2003) 371--380.
+\newblock \href {http://dx.doi.org/10.1016/S1054-3139(03)00010-9}
+  {\path{doi:10.1016/S1054-3139(03)00010-9}}.
+
+\bibitem{Lee2010}
+J.~Lee, A.~B. South, S.~Jennings, {Developing reliable, repeatable, and
+  accessible methods to provide high-resolution estimates of fishing-effort
+  distributions from vessel monitoring system (VMS) data}, ICES Journal of
+  Marine Science 67~(6) (2010) 1260--1271.
+\newblock \href {http://dx.doi.org/10.1093/icesjms/fsq010}
+  {\path{doi:10.1093/icesjms/fsq010}}.
+
+\bibitem{Bastardie2010}
+F.~Bastardie, J.~R. Nielsen, C.~Ulrich, J.~Egekvist, H.~Degel,
+  \href{http://dx.doi.org/10.1016/j.fishres.2010.06.016}{{Detailed mapping of
+  fishing effort and landings by coupling fishing logbooks with
+  satellite-recorded vessel geo-location}}, Fisheries Research 106~(1) (2010)
+  41--53.
+\newblock \href {http://dx.doi.org/10.1016/j.fishres.2010.06.016}
+  {\path{doi:10.1016/j.fishres.2010.06.016}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1016/j.fishres.2010.06.016}
+
+\bibitem{Gerritsen2012}
+H.~D. Gerritsen, C.~Lordan, C.~Minto, S.~B.~M. Kraak,
+  \href{http://dx.doi.org/10.1016/j.fishres.2012.06.019}{{Spatial patterns in
+  the retained catch composition of Irish demersal otter trawlers:
+  High-resolution fisheries data as a management tool}}, Fisheries Research
+  129-130 (2012) 127--136.
+\newblock \href {http://dx.doi.org/10.1016/j.fishres.2012.06.019}
+  {\path{doi:10.1016/j.fishres.2012.06.019}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1016/j.fishres.2012.06.019}
+
+\bibitem{Mateo2016}
+M.~Mateo, L.~Pawlowski, M.~Robert,
+  \href{http://icesjms.oxfordjournals.org/lookup/doi/10.1093/icesjms/fsw129}{{Highly
+  mixed fisheries: fine-scale spatial patterns in retained catches of French
+  fisheries in the Celtic Sea}}, ICES Journal of Marine Science: Journal du
+  Conseil (2016) fsw129\href {http://dx.doi.org/10.1093/icesjms/fsw129}
+  {\path{doi:10.1093/icesjms/fsw129}}.
+\newline\urlprefix\url{http://icesjms.oxfordjournals.org/lookup/doi/10.1093/icesjms/fsw129}
+
+\bibitem{Holmes2011}
+S.~J. Holmes, N.~Bailey, N.~Campbell, R.~Catarino, K.~Barratt, A.~Gibb, P.~G.
+  Fernandes,
+  \href{http://icesjms.oxfordjournals.org/cgi/doi/10.1093/icesjms/fsr101}{{Using
+  fishery-dependent data to inform the development and operation of a
+  co-management initiative to reduce cod mortality and cut discards}}, ICES
+  Journal of Marine Science 68~(8) (2011) 1679--1688.
+\newblock \href {http://dx.doi.org/10.1093/icesjms/fsr101}
+  {\path{doi:10.1093/icesjms/fsr101}}.
+\newline\urlprefix\url{http://icesjms.oxfordjournals.org/cgi/doi/10.1093/icesjms/fsr101}
+
+\bibitem{RCoreTeam2017}
+{R Core Team}, {R Core Team (2017). R: A language and environment for
+  statistical computing.}, R Foundation for Statistical Computing, Vienna,
+  Austria. URL http://www.R-project.org/. (2017) R Foundation for Statistical
+  Computing.
+
+\bibitem{Deriso1980}
+R.~B. Deriso, {Harvesting Strategies and Parameter Estimation for an
+  Age-Structured Model}, Canadian Journal of Fisheries and Aquatic Sciences
+  37~(2) (1980) 268--282.
+\newblock \href {http://arxiv.org/abs/arXiv:1410.7455v3}
+  {\path{arXiv:arXiv:1410.7455v3}}, \href {http://dx.doi.org/10.1139/f80-034}
+  {\path{doi:10.1139/f80-034}}.
+
+\bibitem{Schnute1985}
+J.~Schnute, {A genera theory for analysis of catch and effort data}, Canadian
+  Journal of Fisheries and Aquatic Sciences 42~(1970) (1985) 414--429.
+\newblock \href {http://dx.doi.org/10.1139/f85-057}
+  {\path{doi:10.1139/f85-057}}.
+
+\bibitem{Dichmont2003}
+C.~M. Dichmont, A.~E. Punt, A.~Deng, Q.~Dell, W.~Venables, {Application of a
+  weekly delay-difference model to commercial catch and effort data for tiger
+  prawns in Australia ' s Northern Prawn Fishery}, Fisheries Research 65 (2003)
+  335--350.
+\newblock \href {http://dx.doi.org/10.1016/j.fishres.2003.09.024}
+  {\path{doi:10.1016/j.fishres.2003.09.024}}.
+
+\bibitem{Hilborn1992b}
+R.~Hilborn, C.~Walters, {Quantitative fisheries stock assessment: Choice,
+  dynamics and uncertainty}, Vol.~2, 1992.
+\newblock \href {http://arxiv.org/abs/arXiv:1011.1669v3}
+  {\path{arXiv:arXiv:1011.1669v3}}, \href
+  {http://dx.doi.org/10.1007/BF00042883} {\path{doi:10.1007/BF00042883}}.
+
+\bibitem{Beverton1957}
+R.~J. Beverton, S.~J. Holt, {On the Dynamics of Exploited Fish Populations}
+  (1957) 533\href {http://dx.doi.org/10.1007/978-94-011-2106-4}
+  {\path{doi:10.1007/978-94-011-2106-4}}.
+
+\bibitem{Ricker1954}
+W.~E. Ricker, {Stock and recruitment}, Journal of the Fisheries Research Board
+  of Canada 11~(5) (1954) 559 -- 623.
+
+\bibitem{Diggle2007}
+P.~J. Diggle, P.~J. Ribeiro,
+  \href{http://www.amazon.es/Model-based-Geostatistics-Springer-Series-Statistics/dp/0387329072}{{Model-based
+  Geostatistics (Springer Series in Statistics)}}, Vol.~1, 2007.
+\newline\urlprefix\url{http://www.amazon.es/Model-based-Geostatistics-Springer-Series-Statistics/dp/0387329072}
+
+\bibitem{Schlater2015}
+M.~Schlater, A.~Malinowski, P.~J. Menck, {Analysis, Simulation and Prediction
+  of Multivariate Random Fields with Package RandomFields}, Journal of
+  Statistical Software 63 (2015) 1--25.
+\newblock \href {http://arxiv.org/abs/arXiv:1501.0228}
+  {\path{arXiv:arXiv:1501.0228}}, \href
+  {http://dx.doi.org/http://dx.doi.org/10.18637/jss.v063.i08}
+  {\path{doi:http://dx.doi.org/10.18637/jss.v063.i08}}.
+
+\bibitem{Hutton2004}
+T.~Hutton, S.~Mardle, S.~Pascoe, R.~a. Clark, {Modelling fishing location
+  choice within mixed fisheries: English North Sea beam trawlers in 2000 and
+  2001}, ICES Journal of Marine Science 61~(8) (2004) 1443--1452.
+\newblock \href {http://dx.doi.org/10.1016/j.icesjms.2004.08.016}
+  {\path{doi:10.1016/j.icesjms.2004.08.016}}.
+
+\bibitem{Tidd2012}
+A.~N. Tidd, T.~Hutton, L.~T. Kell, J.~L. Blanchard,
+  \href{http://dx.doi.org/10.1016/j.fishres.2012.03.004}{{Dynamic prediction of
+  effort reallocation in mixed fisheries}}, Fisheries Research 125-126 (2012)
+  243--253.
+\newblock \href {http://dx.doi.org/10.1016/j.fishres.2012.03.004}
+  {\path{doi:10.1016/j.fishres.2012.03.004}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1016/j.fishres.2012.03.004}
+
+\bibitem{Girardin2015}
+R.~Girardin, Y.~Vermard, O.~Th{\'{e}}baud, A.~Tidd, P.~Marchal,
+  \href{http://linkinghub.elsevier.com/retrieve/pii/S0964569115000265}{{Predicting
+  fisher response to competition for space and resources in a mixed demersal
+  fishery}}, Ocean {\&} Coastal Management 106 (2015) 124--135.
+\newblock \href {http://dx.doi.org/10.1016/j.ocecoaman.2015.01.017}
+  {\path{doi:10.1016/j.ocecoaman.2015.01.017}}.
+\newline\urlprefix\url{http://linkinghub.elsevier.com/retrieve/pii/S0964569115000265}
+
+\bibitem{Codling2008}
+E.~A. Codling, M.~J. Plank, S.~Benhamou, J.~R.~S. Interface,
+  \href{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2504494{\&}tool=pmcentrez{\&}rendertype=abstract}{{Random
+  walk models in biology.}}, Journal of the Royal Society, Interface / the
+  Royal Society 5~(25) (2008) 813--34.
+\newblock \href {http://dx.doi.org/10.1098/rsif.2008.0014}
+  {\path{doi:10.1098/rsif.2008.0014}}.
+\newline\urlprefix\url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2504494{\&}tool=pmcentrez{\&}rendertype=abstract}
+
+\bibitem{Bartumeus2005}
+F.~Bartumeus, M.~G.~E. {Da Luz}, G.~M. Viswanatham, J.~Catalan, {Animal Search
+  Strategies: A Quantitative Random Walk Analysis}, Ecological Society of
+  America 86~(11) (2005) 3078--3087.
+\newblock \href {http://dx.doi.org/10.1890/04-1806}
+  {\path{doi:10.1890/04-1806}}.
+
+\bibitem{Sims2008}
+D.~W. Sims, E.~J. Southall, N.~E. Humphries, G.~C. Hays, C.~J.~A. Bradshaw,
+  J.~W. Pitchford, A.~James, M.~Z. Ahmed, A.~S. Brierley, M.~A. Hindell,
+  D.~Morritt, M.~K. Musyl, D.~Righton, E.~L.~C. Shepard, V.~J. Wearmouth, R.~P.
+  Wilson, M.~J. Witt, J.~D. Metcalfe, {Scaling laws of marine predator search
+  behaviour}, Nature 451~(7182) (2008) 1098--U5.
+\newblock \href {http://dx.doi.org/10.1038/nature06518}
+  {\path{doi:10.1038/nature06518}}.
+
+\bibitem{Bertrand2007}
+S.~Bertrand, A.~Bertrand, R.~Guevara-Carrasco, F.~Gerlotto,
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/17489242}{{Scale-invariant movements
+  of fishermen: The same foraging strategy as natural predators}}, Ecological
+  Applications 17~(2) (2007) 331--337.
+\newblock \href {http://dx.doi.org/10.1890/06-0303}
+  {\path{doi:10.1890/06-0303}}.
+\newline\urlprefix\url{http://www.ncbi.nlm.nih.gov/pubmed/17489242}
+
+\bibitem{Sakiyama2013}
+T.~Sakiyama, Y.-P. Gunji,
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/23804445}{{Emergence of an optimal
+  search strategy from a simple random walk.}}, Journal of the Royal Society,
+  Interface 10~(86) (2013) 20130486.
+\newblock \href {http://dx.doi.org/10.1098/rsif.2013.0486}
+  {\path{doi:10.1098/rsif.2013.0486}}.
+\newline\urlprefix\url{http://www.ncbi.nlm.nih.gov/pubmed/23804445}
+
+\bibitem{Sims2012}
+D.~W. Sims, N.~E. Humphries, R.~W. Bradford, B.~D. Bruce, {L{\'{e}}vy flight
+  and Brownian search patterns of a free-ranging predator reflect different
+  prey field characteristics}, Journal of Animal Ecology 81~(2) (2012)
+  432--442.
+\newblock \href {http://dx.doi.org/10.1111/j.1365-2656.2011.01914.x}
+  {\path{doi:10.1111/j.1365-2656.2011.01914.x}}.
+
+\bibitem{Gillis1998}
+D.~M. Gillis, R.~M. Peterman, {Implications of interference among fishing
+  vessels and the ideal free distribution to the interpretation of CPUE},
+  Canadian Journal of Fisheries and Aquatic Sciences 55~(1) (1998) 37--46.
+\newblock \href {http://dx.doi.org/10.1139/f97-206}
+  {\path{doi:10.1139/f97-206}}.
+
+\bibitem{Rijnsdorp2000}
+A.~Rijnsdorp,
+  \href{http://icesjms.oxfordjournals.org/cgi/doi/10.1006/jmsc.2000.0576}{{Competitive
+  interactions among beam trawlers exploiting local patches of flatfish in the
+  North Sea}}, ICES Journal of Marine Science 57~(4) (2000) 894--902.
+\newblock \href {http://dx.doi.org/10.1006/jmsc.2000.0576}
+  {\path{doi:10.1006/jmsc.2000.0576}}.
+\newline\urlprefix\url{http://icesjms.oxfordjournals.org/cgi/doi/10.1006/jmsc.2000.0576}
+
+\bibitem{Poos2007a}
+J.-J. Poos, A.~D. Rijnsdorp, {An "experiment" on effort allocation of fishing
+  vessels: the role of interference competition and area specialization},
+  Canadian Journal of Fisheries and Aquatic Sciences 64~(2) (2007) 304--313.
+\newblock \href {http://dx.doi.org/10.1139/f06-177}
+  {\path{doi:10.1139/f06-177}}.
+
+\end{thebibliography}
