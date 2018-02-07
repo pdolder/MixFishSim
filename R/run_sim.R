@@ -11,8 +11,9 @@
 #' @param InParallel is a BOLEEN indicating whether calculations should be done
 #' using parallel processing from \code{parallel}, default is TRUE
 #' @param save_pop_bio is a logical flag to indicate if you want to record #' true spatial population at each time step (day)
-#' @param survey is the survey settings from \link{survey_settings}, else NNULL
-#' if no survey is due to be simulated
+#' @param survey is the survey settings from \link{init_survey}, else NULL if no survey is due to be simulated
+#' @param closure is the spatial closure settings from \link{init_closure}m
+#' else NULL if no closures are to be implemented
 
 #' @return is the results...
 
@@ -20,7 +21,7 @@
 #'
 #' @export
 
-run_sim <- function (sim_init = NULL, pop_init = NULL, fleets_init = NULL, hab_init = NULL, InParallel = TRUE, cores = 3, save_pop_bio = FALSE, survey = NULL, ...) {
+run_sim <- function (sim_init = NULL, pop_init = NULL, fleets_init = NULL, hab_init = NULL, InParallel = TRUE, cores = 1, save_pop_bio = FALSE, survey = NULL, closure = NULL,...) {
 # Overarching function for running the simulations
 
 start.time <- Sys.time() # for printing runtime

@@ -130,8 +130,20 @@ fleets <- init_fleet(sim_init = sim, VPT = c("spp1" = 100, "spp2" = 200, "spp3" 
 
 ## Setup survey
 
-survey <- survey_settings(sim_init = sim, design = "fixed_station", 
+survey <- init_survey(sfm_init = sim, design = "fixed_station", 
 		n_stations = 50, start_day = 92, Qs = c("spp1" = 1, "spp2" = 1, "spp3" = 1, "spp4" = 1)) 
+
+## Example 1
+closure <- init_closure(input_coords = NULL, basis = 'survey', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 15, no_cells = 10, buffer_size = 1, temp_dyn = 'annual')
+
+## Example 2 - fails correctly
+closure <- init_closure(input_coords = list("area1" = c(2,3), "area2" = c(3,5)),
+			basis = 'survey', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 15, no_cells = 10, buffer_size = 1, temp_dyn = 'weekly')
+
+## Example 3
+closure <- init_closure(input_coords = NULL, basis = 'survey', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 15, no_cells = 10, buffer_size = 1, temp_dyn = 'weekly')
+
+
 
 
 ## run_sim function for overall control

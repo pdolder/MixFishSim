@@ -137,13 +137,8 @@ logs2 <- logs2[logs2$variable %in% c("spp1","spp2","spp3","spp4"),]
   # Calculate spatial information for SPDE mesh, strata areas, and AR1 process
   Spatial_List = SpatialDeltaGLMM::Spatial_Information_Fn(n_x=n_x, Method=Method, Lon=Data_Geostat[,'Lon'], Lat=Data_Geostat[,'Lat'], Extrapolation_List=Extrapolation_List, randomseed=Kmeans_Config[["randomseed"]], nstart=Kmeans_Config[["nstart"]], iter.max=Kmeans_Config[["iter.max"]], DirPath=DateFile )
 
-
- 
-
-
 #### Prep data
 Data_Geostat = cbind(Data_Geostat, Spatial_List$loc_i, "knot_i"=Spatial_List$knot_i)
-
 
 ################################
 #### Make and Run TMB model ####
@@ -175,8 +170,54 @@ Data_Geostat = cbind(Data_Geostat, Spatial_List$loc_i, "knot_i"=Spatial_List$kno
 Save = list(Obj = Obj,"Opt"=Opt, "Report"=Report, "ParHat"=Obj$env$parList(Opt$par), "TmbData"=TmbData, "Data_Geostat" = Data_Geostat)
 save(Save, file=file.path('..',"..",DateFile,"Save.RData"))
 
+################################
+################################
+####### Plots ##################
+################################
+################################
+
+load(file.path("results", "2018-02-05_M0", "Save.RData"))
+DateFile <- file.path("results", "2018-02-05_M0")
+an <- as.numeric
+DF <- Save$Data_Geostat
+  strata.limits <- data.frame('STRATA'="All_areas") # Decide on strata for use when calculating indices
+  Region = "Mixtopia"# Determine region
+BiasCorr <- FALSE
+
+Data_Geostat <- Save$Data_Geostat
+# Get extrapolation data
+ Extrapolation_List = SpatialDeltaGLMM::Prepare_Extrapolation_Data_Fn(Region=Region, strata.limits=strata.limits, observations_LL=Data_Geostat[,c('Lon','Lat')])
+
+ Method = c("Grid", "Mesh")[2]
+  n_x = c(10, 50, 100, 250, 500, 1000, 2000)[3] # Number of stations
+  Kmeans_Config = list( "randomseed"=1, "nstart"=100, "iter.max"=1e3 )     # Samples: Do K-means on trawl locs; Domain: Do K-means on extrapolation grid
+
+  # Calculate spatial information for SPDE mesh, strata areas, and AR1 process
+  Spatial_List = SpatialDeltaGLMM::Spatial_Information_Fn(n_x=n_x, Method=Method, Lon=Data_Geostat[,'Lon'], Lat=Data_Geostat[,'Lat'], Extrapolation_List=Extrapolation_List, randomseed=Kmeans_Config[["randomseed"]], nstart=Kmeans_Config[["nstart"]], iter.max=Kmeans_Config[["iter.max"]], DirPath=DateFile )
+
   # Plot index
-  SpatialDeltaGLMM::PlotIndex_Fn( DirName=file.path("..","..",DateFile), TmbData=Save$TmbData, Sdreport=Save$Opt$SD, Year_Set=seq(min(an(as.character(DF[,'Year']))),max(an(as.character(DF[,'Year'])))), strata_names=strata.limits[,1], category_names=levels(DF[,'SpeciesName']), use_biascorr=BiasCorr, cex = 0.3)
+  SpatialDeltaGLMM::PlotIndex_Fn( DirName=file.path(DateFile), TmbData=Save$TmbData, Sdreport=Save$Opt$SD, Year_Set=seq(min(an(as.character(DF[,'Year']))),max(an(as.character(DF[,'Year'])))), strata_names=strata.limits[,1], category_names=levels(DF[,'spp']), use_biascorr=BiasCorr, cex = 0.3)
+
+  Year_Set = seq(min(an(as.character(DF[,'Year']))),max(an(as.character(DF[,'Year']))))
+  Years2Include = which(Year_Set %in% sort(unique(an(as.character(DF[,'Year'])))))
+
+  ## Plot encounter probability 
+  Enc_prob <- SpatialDeltaGLMM::Check_encounter_prob(Report = Save$Report, Data_Geostat = Save$Data_Geostat, DirName = DateFile)
+
+  # Plot Anisotropy  
+  SpatialDeltaGLMM::PlotAniso_Fn( FileName=file.path(DateFile,"Aniso.png"), Report=Save$Report, TmbData=Save$TmbData )
+
+  # Plot covariances
+  Cov_List = Summarize_Covariance( Report=Save$Report, ParHat=Save$ParHat, Data=Save$TmbData, SD=Save$Opt$SD, plot_cor=TRUE, category_names=levels(DF[,'spp']), figname=file.path(DateFile, "Spatio-temporal_covariances"), plotTF=c("Omega1"=TRUE,"Epsilon1"=TRUE,"Omega2"=TRUE,"Epsilon2"=TRUE), mgp=c(2,0.5,0), tck=-0.02, oma=c(0,5,2,2) )
+
+ # Plot surface - this is for all spp
+  Dim = c( "Nrow"=ceiling(sqrt(length(Years2Include))), "Ncol"=ceiling(length(Years2Include)/ceiling(sqrt(length(Years2Include)))))
+  MapDetails_List = SpatialDeltaGLMM::MapDetails_Fn( "Region"=Region, "NN_Extrap"=Spatial_List$PolygonList$NN_Extrap, "Extrapolation_List"=Extrapolation_List )
+SpatialDeltaGLMM::PlotResultsOnMap_Fn(plot_set=1:3, MappingDetails=MapDetails_List[["MappingDetails"]], Report=Save$Report, PlotDF=MapDetails_List[["PlotDF"]], MapSizeRatio=MapDetails_List[["MapSizeRatio"]], Xlim=MapDetails_List[["Xlim"]], Ylim=MapDetails_List[["Ylim"]], FileName=file.path(DateFile,"Field_"), Year_Set=Year_Set, Years2Include=Years2Include, Rotate=MapDetails_List[["Rotate"]], category_names=levels(DF[,'spp']), mfrow=Dim, mar=c(0,0,2,0), oma=c(3.5,3.5,0,0), Cex=MapDetails_List[["Cex"]], cex=1.8, Legend=MapDetails_List[["Legend"]])
+
+## Plot factors
+Plot_factors(Report = Save$Report, ParHat = Save$ParHat, Data = Save$TmbData, SD = Save$Opt$SD, mapdetails_list = MapDetails_List, Year_Set = Year_Set, 
+	     category_names = levels(DF[,'spp']), plotdir = file.path(DateFile,""))
 
 
 

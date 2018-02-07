@@ -76,7 +76,7 @@ fleets <- init_fleet(sim_init = sim, VPT = c("spp1" = 100, "spp2" = 200),
 	   threshold = 0.75)
 
 ## Setup survey
-survey <- survey_settings(sim_init = sim, design = "fixed_station", 
+survey <- init_survey(sim_init = sim, design = "fixed_station", 
 		n_stations = 50, start_day = 92, Qs = c("spp1" = 1, "spp2" = 1, "spp3" = 1, "spp4" = 1)) 
 
 
