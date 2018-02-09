@@ -22,10 +22,8 @@
 #' high_pop.
 #' @param year_start is a Numeric indicating the first year the spatial
 #' closure(s) shoud be implemented.
-#' @param no_cells is the number of cells to closure if implemented 'on the
-#' fly'. Not needed if using input_coords.
-#' @param buffer_size is a Numeric, as an optional buffer round identified cells
-#' which is n deep from identified location on all sides.
+#' @param closure_thresh is the quantile of catches or high catch ratio which
+#' determines closed cells
 #' @param temp_dyn is a character string detailing whether closures should
 #' be temporally 'annual', or change 'monthly' or 'weekly'. 
 
@@ -36,7 +34,7 @@
 
 #' @export
 
-init_closure <- function (input_coords = NULL, basis = 'commercial', rationale = 'high_pop', spp1 = 'spp1', spp2, year_start = 1, no_cells = 10, buffer_size = 2, temp_dyn = 'annual') {
+init_closure <- function (input_coords = NULL, basis = 'commercial', rationale = 'high_pop', spp1 = 'spp1', spp2, year_start = 1, closure_thresh = 0.95, temp_dyn = 'annual') {
 
 	input_coords <- input_coords
 
@@ -61,10 +59,11 @@ init_closure <- function (input_coords = NULL, basis = 'commercial', rationale =
 
 	if(rationale == "high_ratio" & is.null(spp1) | is.null(spp2)) stop("If the rationale is high_ratio, you need to define spp1 and spp2")
 
-	year_start  <- year_start
-	no_cells    <- no_cells
-	buffer_size <- buffer_size
+	if(basis == "survey" & temp_dyn %in% c("weekly", "monthly")) stop("The survey only takes place once a year, so temp_dyn has to be annual")
 
-	return(list(input_coords = input_coords, basis = basis, rationale = rationale, spp1 = spp1, spp2 = spp2, year_start = year_start, no_cells = no_cells, buffer = buffer_size, temp_dyn = temp_dyn)) 
+	year_start     <- year_start
+	closure_thresh <- closure_thresh
+
+	return(list(input_coords = input_coords, basis = basis, rationale = rationale, spp1 = spp1, spp2 = spp2, year_start = year_start, closure_thresh = closure_thresh, temp_dyn = temp_dyn)) 
 	
 }
