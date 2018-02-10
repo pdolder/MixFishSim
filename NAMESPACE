@@ -3,6 +3,7 @@
 export(Recr)
 export(Recr_mat)
 export(baranov_f)
+export(close_areas)
 export(combine_logs)
 export(create_fields)
 export(create_hab)

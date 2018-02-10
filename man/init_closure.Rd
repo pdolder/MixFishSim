@@ -6,7 +6,7 @@
 \usage{
 init_closure(input_coords = NULL, basis = "commercial",
   rationale = "high_pop", spp1 = "spp1", spp2, year_start = 1,
-  no_cells = 10, buffer_size = 2, temp_dyn = "annual")
+  closure_thresh = 0.95, temp_dyn = "annual")
 }
 \arguments{
 \item{input_coords}{is a list of coordinates defining the closure(s). If the
@@ -34,11 +34,8 @@ high_pop.}
 \item{year_start}{is a Numeric indicating the first year the spatial
 closure(s) shoud be implemented.}
 
-\item{no_cells}{is the number of cells to closure if implemented 'on the
-fly'. Not needed if using input_coords.}
-
-\item{buffer_size}{is a Numeric, as an optional buffer round identified cells
-which is n deep from identified location on all sides.}
+\item{closure_thresh}{is the quantile of catches or high catch ratio which
+determines closed cells}
 
 \item{temp_dyn}{is a character string detailing whether closures should
 be temporally 'annual', or change 'monthly' or 'weekly'.}

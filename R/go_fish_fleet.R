@@ -6,8 +6,8 @@
 #' @param fleets_params is the parameter settings initialised from \code{_init_fleets}
 #' @param fleets_catches is the DF initialised from \code{_init_fleets}
 #' @param Pop is the population matrix for all populations
-#' @param sp_fleet_catches is a list of spatial catches (as a Numeric matrix) for the fleet of each
-#' population
+#' @param sp_fleet_catches is a list of spatial catches (as a Numeric matrix) for the fleet of each population
+#' @param closed_areas is a dataframe with the x,y coordinates are any closed
 
 #' @return is a list with the objects catch detailing the fleet catches and
 #' catch_matrices detailing the spatial catches, to input to the delay difference
@@ -22,7 +22,7 @@ go_fish_fleet <- function (FUN = go_fish, sim_init = NULL, fleets_params = NULL,
 	out <- lapply(seq_len(length(fleets_catches)), function(x) { 
 			      res <- go_fish(sim_init = sim_init, fleet_params = fleets_params,
 					     fleet_catches = fleets_catches[[x]],
-					     sp_fleet_catches = sp_fleets_catches[[x]],
+					     sp_fleet_catches = sp_fleets_catches[[x]], closed_areas = NULL,
 					     t = t, pops = pops)
 	       })
 

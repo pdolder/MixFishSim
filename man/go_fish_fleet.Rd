@@ -15,8 +15,9 @@ go_fish_fleet(FUN = go_fish, sim_init = NULL, fleets_params = NULL,
 
 \item{Pop}{is the population matrix for all populations}
 
-\item{sp_fleet_catches}{is a list of spatial catches (as a Numeric matrix) for the fleet of each
-population}
+\item{sp_fleet_catches}{is a list of spatial catches (as a Numeric matrix) for the fleet of each population}
+
+\item{closed_areas}{is a dataframe with the x,y coordinates are any closed}
 }
 \value{
 is a list with the objects catch detailing the fleet catches and

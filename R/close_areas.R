@@ -28,9 +28,11 @@ close_areas <- function (sim_init = sim_init, closure_init = NULL, commercial_lo
 	basis     <- closure_init[["basis"]]
 	rationale <- closure_init[["rationale"]]
 	thresh    <- closure_init[["closure_thresh"]]
+	spp1 	  <- closure_init[["spp1"]]
+	spp2 	  <- closure_init[["spp2"]]
 
-	nx <- sim_init[["idx"]][["nrow"]]
-	ny <- sim_init[["idx"]][["ncol"]]
+	nx <- sim_init[["idx"]][["nrows"]]
+	ny <- sim_init[["idx"]][["ncols"]]
 
 	## Annual timestep
 	if(timescale == 'annual') {
@@ -46,12 +48,12 @@ close_areas <- function (sim_init = sim_init, closure_init = NULL, commercial_lo
 		if(rationale == 'high_pop') {
 
 		## Get data
-		logs <- combine_logs(commercial_logs)
+		logs <- as.data.frame(combine_logs(commercial_logs))
 		spp <- spp1
 		
 		## Filter as appropriate:- here based on last years catch
 		## summarise with catch/no_tows
-		logs2 <- filter(as.data.frame(logs), year == max(logs$year) -
+		logs2 <- filter(logs, year == max(logs$year) -
 				1) %>% group_by(x, y) %>% summarise(spp =
 			sum(spp)/n())
 

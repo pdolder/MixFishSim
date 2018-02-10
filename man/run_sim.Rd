@@ -5,8 +5,8 @@
 \title{Run sim}
 \usage{
 run_sim(sim_init = NULL, pop_init = NULL, fleets_init = NULL,
-  hab_init = NULL, InParallel = TRUE, cores = 3, save_pop_bio = FALSE,
-  survey = NULL, ...)
+  hab_init = NULL, InParallel = TRUE, cores = 1, save_pop_bio = FALSE,
+  survey = NULL, closure = NULL, ...)
 }
 \arguments{
 \item{sim_init}{is the parameterised simulation settings from
@@ -23,8 +23,10 @@ using parallel processing from \code{parallel}, default is TRUE}
 
 \item{save_pop_bio}{is a logical flag to indicate if you want to record #' true spatial population at each time step (day)}
 
-\item{survey}{is the survey settings from \link{survey_settings}, else NNULL
-if no survey is due to be simulated}
+\item{survey}{is the survey settings from \link{init_survey}, else NULL if no survey is due to be simulated}
+
+\item{closure}{is the spatial closure settings from \link{init_closure}m
+else NULL if no closures are to be implemented}
 }
 \value{
 is the results...

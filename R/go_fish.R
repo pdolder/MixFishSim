@@ -6,8 +6,9 @@
 #' @param sim_init is the initialised object from \code{init_sim}.
 #' @param fleet_params is the parameter settings initialised from \code{_init_fleets}
 #' @param fleet_catches is the DF initialised from \code{_init_fleets}
-#' @param sp_fleet_catches is a list of spatial catches (as a Numeric matrix) for the fleet of each
-#' population
+#' @param sp_fleet_catches is a list of spatial catches (as a Numeric matrix) for the fleet of each population
+#' @param closed_areas is a dataframe with the x,y coordinates are any closed
+#' areas
 #' 
 
 #' @return is a list containing i) the fleet catch dataframes , ii) the spatial
@@ -19,7 +20,7 @@
 #' @export
 
 go_fish <- function(sim_init = NULL, fleet_params = NULL, fleet_catches = NULL, 
-		    sp_fleet_catches = NULL, pops = NULL, t = t) {
+		    sp_fleet_catches = NULL, pops = NULL, closed_areas = NULL, t = t) {
 
 ##### extract the relevant components ###########
 params <- fleet_params      # fleet parameter list
@@ -37,6 +38,17 @@ PastKnowledge <- params[["past_knowledge"]]
 idx <- sim_init$idx
 brk.idx <- sim_init$brk.idx
 ###############################
+
+
+###############################
+## Get closed areas as a vector of x,y values 
+
+if(!is.null(closed_areas)) {
+closed_areas <- paste(closed_areas$x, closed_areas$y)
+}
+
+
+##############################
 
 ##### past knowledge decisions ####
 
@@ -73,8 +85,15 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	q <- quantile(dplyr::filter(catch.df,month==brk.idx[["month.breaks"]][t])$val,prob=c(params[["threshold"]]),na.rm=T) # Threshold for good hauls
 	goodhauls  <- dplyr::filter(catch.df,month==brk.idx[["month.breaks"]][t] & val>=q)
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
+
+	## Exclude any closed areas
+	repeat {
 	new.point   <- sample(paste(goodhauls$x,goodhauls$y,sep=","),1)  	# Randomly select from the good hauls
 	new.point   <- c(as.numeric(sapply(strsplit(new.point,","),"[",1)),as.numeric(sapply(strsplit(new.point,","),"[",2)))
+	
+	if(all(!new.point %in% closed_areas)) break
+	}
+
 		}
 
         #######################################################################
@@ -96,8 +115,12 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
 	}
 
+	## Exclude any closed areas
+	repeat {
 	new.point   <- sample(paste(goodhauls$x,goodhauls$y,sep=","),1)
 	new.point   <- c(as.numeric(sapply(strsplit(new.point,","),"[",1)),as.numeric(sapply(strsplit(new.point,","),"[",2)))
+	if(all(!new.point %in% closed_areas)) break
+	}
 
 	}
   	
@@ -120,8 +143,14 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
 	}
 
+	## Exclude any closed areas
+
+
+	repeat {
 	new.point   <- sample(paste(goodhauls$x,goodhauls$y,sep=","),1)
 	new.point   <- c(as.numeric(sapply(strsplit(new.point,","),"[",1)),as.numeric(sapply(strsplit(new.point,","),"[",2)))
+	if(all(!new.point %in% closed_areas)) break
+	}
 
 	}
 
@@ -149,6 +178,8 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	## Choosing new bearing
 	# with boundary conditions, when out of bounds wrap on a taurus 
 	
+	repeat {
+
 	#Bear = runif(1,0,360) # bearing - to be replaced with a correlated von mises dist
 	b <- ifelse(t = 1, 0, catch[t-1,"angles"]) # base on most recent bearing
 	max_k <- 20
@@ -163,6 +194,10 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	if(new.point[1] > idx[["nrows"]]) { new.point[1]  <-  new.point[1] - idx[["nrows"]]}
 	if(new.point[2] < 1) { new.point[2]  <-  new.point[2] + idx[["ncols"]]}
 	if(new.point[1] < 1) { new.point[1]  <-  new.point[1] + idx[["nrows"]]}
+
+	## Exclude any closed areas - draw a new point
+	if(all(!new.point %in% closed_areas)) break
+	}
 
 	}
 

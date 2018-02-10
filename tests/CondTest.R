@@ -130,24 +130,24 @@ fleets <- init_fleet(sim_init = sim, VPT = c("spp1" = 100, "spp2" = 200, "spp3" 
 
 ## Setup survey
 
-survey <- init_survey(sfm_init = sim, design = "fixed_station", 
+survey <- init_survey(sim_init = sim, design = "fixed_station", 
 		n_stations = 50, start_day = 92, Qs = c("spp1" = 1, "spp2" = 1, "spp3" = 1, "spp4" = 1)) 
 
 ## Example 1
-closure <- init_closure(input_coords = NULL, basis = 'survey', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 15, closure_thresh = 0.95, temp_dyn = 'annual')
+closure <- init_closure(input_coords = NULL, basis = 'commercial', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 15, closure_thresh = 0.95, temp_dyn = 'annual')
 
 ## Example 2 - fails correctly
-closure <- init_closure(input_coords = list("area1" = c(2,3), "area2" = c(3,5)),
-			basis = 'survey', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 15, temp_dyn = 'weekly')
+#closure <- init_closure(input_coords = list("area1" = c(2,3), "area2" = c(3,5)),
+#			basis = 'survey', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 15, temp_dyn = 'weekly')
 
 ## Example 3
-closure <- init_closure(input_coords = NULL, basis = 'survey', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 15, closure_thresh = 0.95, temp_dyn = 'weekly')
+#closure <- init_closure(input_coords = NULL, basis = 'survey', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 15, closure_thresh = 0.95, temp_dyn = 'weekly')
 
 
 
 
 ## run_sim function for overall control
-res <- run_sim(sim_init = sim, pop_init = Pop, fleets_init = fleets, hab_init = hab, InParallel = TRUE, cores = 1, save_pop_bio = TRUE, survey = survey)
+res <- run_sim(sim_init = sim, pop_init = Pop, fleets_init = fleets, hab_init = hab, InParallel = TRUE, cores = 1, save_pop_bio = TRUE, survey = survey, closure = closure)
 
 format(object.size(res), units = "auto")
 

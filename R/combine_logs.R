@@ -16,7 +16,6 @@
 
 combine_logs <- function (fleets_catches) {
 
-	fleets_catches <- res[["fleets_catches"]]
 	# index
 	no_fleets     <- length(fleets_catches)
 	ves_per_fleet <- length(fleets_catches[[1]][[1]])
