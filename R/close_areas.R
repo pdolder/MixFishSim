@@ -18,7 +18,7 @@
 
 #' @export
 
-close_areas <- function (sim_init = sim_init, closure_init = NULL, commercial_logs = NULL, survey_logs = NULL, real_pop = NULL) {
+close_areas <- function (sim_init = sim_init, closure_init = NULL, commercial_logs = NULL, survey_logs = NULL, real_pop = NULL, t = t) {
 
 	require(dplyr); require(akima)
 
@@ -33,6 +33,10 @@ close_areas <- function (sim_init = sim_init, closure_init = NULL, commercial_lo
 
 	nx <- sim_init[["idx"]][["nrows"]]
 	ny <- sim_init[["idx"]][["ncols"]]
+
+	yr <- sim_init[["brk.idx"]][["year.breaks"]][[t]]
+	mn <- sim_init[["brk.idx"]][["month.breaks"]][[t]]
+	wk <- sim_init[["brk.idx"]][["week.breaks"]][[t]]
 
 	## Annual timestep
 	if(timescale == 'annual') {
@@ -53,12 +57,10 @@ close_areas <- function (sim_init = sim_init, closure_init = NULL, commercial_lo
 		
 		## Filter as appropriate:- here based on last years catch
 		## summarise with catch/no_tows
-		logs2 <- filter(logs, year == max(logs$year) -
-				1) %>% group_by(x, y) %>% summarise(spp =
-			sum(spp)/n())
+		logs2 <- filter(logs, year == yr - 1) %>% group_by(x, y) %>% summarise(spp =	sum(get(spp))/n())
 
 	# Do interpolation
-	akima.li <- interp(logs2$x, logs2$y, logs2$spp, nx = nx, ny = ny)
+	akima.li <- interp(logs2[["x"]], logs2[["y"]], logs2[["spp"]], nx = nx, ny = ny)
 
 	# Make as DF
 	akimaDF <- data.frame(x = rep(seq_len(nx), times = ny), 
@@ -70,6 +72,8 @@ close_areas <- function (sim_init = sim_init, closure_init = NULL, commercial_lo
 		q_close <- quantile(akimaDF$spp, prob = thresh)
 		akimaDF$closure <- ifelse(akimaDF$spp >= q_close, "Closed" , "Open")
 		closed_areas <- akimaDF[akimaDF$closure == 'Closed',]
+		
+		print(paste("Closing", nrow(closed_areas), "areas = ", 100 * nrow(closed_areas)/c(nx*ny), "% of area"))
 	
 			}
 

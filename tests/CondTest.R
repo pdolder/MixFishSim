@@ -151,7 +151,7 @@ res <- run_sim(sim_init = sim, pop_init = Pop, fleets_init = fleets, hab_init = 
 
 format(object.size(res), units = "auto")
 
-save(res, file = 'TestResults.RData')
+save(res, file = 'TestResults_Close.RData')
 ############################################
 
 

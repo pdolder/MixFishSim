@@ -169,7 +169,7 @@ if(closeArea & CalcClosures & year.breaks[t] > 1 & is.null(closure[["input_coord
 print("Calculating where to place closures dynamically...")
 print(paste("Based on", closure[["basis"]], "on a", closure[["temp_dyn"]], "basis using", closure[["rationale"]]))
 
-AreaClosures <- close_areas(sim_init = sim_init, closure_init = closure, commercial_logs = catches, survey_logs = survey, real_pop = pop_bios)
+AreaClosures <- close_areas(sim_init = sim_init, closure_init = closure, commercial_logs = catches, survey_logs = survey, real_pop = pop_bios, t = t)
 
 }
 
