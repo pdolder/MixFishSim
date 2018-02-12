@@ -4,15 +4,18 @@
 \alias{run_sim}
 \title{Run sim}
 \usage{
-run_sim(sim_init = NULL, pop_init = NULL, fleets_init = NULL,
-  hab_init = NULL, InParallel = TRUE, cores = 1, save_pop_bio = FALSE,
-  survey = NULL, closure = NULL, ...)
+run_sim(sim_init = NULL, pop_init = NULL, move_cov = NULL,
+  fleets_init = NULL, hab_init = NULL, InParallel = TRUE, cores = 1,
+  save_pop_bio = FALSE, survey = NULL, closure = NULL, ...)
 }
 \arguments{
 \item{sim_init}{is the parameterised simulation settings from
 \code{init_sim}}
 
 \item{pop_init}{is the parameterised populations from \code{init_pop}}
+
+\item{move_cov}{is a parameterised movement covariate object, from
+\code{init_moveCov}}
 
 \item{fleets_init}{is the parameterised fleets from \code{init_fleets}}
 

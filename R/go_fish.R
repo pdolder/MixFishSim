@@ -45,6 +45,7 @@ brk.idx <- sim_init$brk.idx
 
 if(!is.null(closed_areas)) {
 closed_areas <- paste(closed_areas$x, closed_areas$y)
+print(paste("Closed areas = \n", closed_areas))
 }
 
 
@@ -90,7 +91,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	repeat {
 	new.point   <- sample(paste(goodhauls$x,goodhauls$y,sep=","),1)  	# Randomly select from the good hauls
 	new.point   <- c(as.numeric(sapply(strsplit(new.point,","),"[",1)),as.numeric(sapply(strsplit(new.point,","),"[",2)))
-	
+
 	if(all(!new.point %in% closed_areas)) break
 	}
 
@@ -119,6 +120,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	repeat {
 	new.point   <- sample(paste(goodhauls$x,goodhauls$y,sep=","),1)
 	new.point   <- c(as.numeric(sapply(strsplit(new.point,","),"[",1)),as.numeric(sapply(strsplit(new.point,","),"[",2)))
+
 	if(all(!new.point %in% closed_areas)) break
 	}
 

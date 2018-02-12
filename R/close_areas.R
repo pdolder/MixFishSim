@@ -20,7 +20,8 @@
 
 close_areas <- function (sim_init = sim_init, closure_init = NULL, commercial_logs = NULL, survey_logs = NULL, real_pop = NULL, t = t) {
 
-	require(dplyr); require(akima)
+	suppressMessages(require(dplyr))
+	suppressMessages(require(akima))
 
 	## Settings
 	coords    <- closure_init[["input_coords"]]

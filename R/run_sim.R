@@ -6,6 +6,8 @@
 #' @param sim_init is the parameterised simulation settings from
 #' \code{init_sim}
 #' @param pop_init is the parameterised populations from \code{init_pop}
+#' @param move_cov is a parameterised movement covariate object, from
+#' \code{init_moveCov}
 #' @param fleets_init is the parameterised fleets from \code{init_fleets}
 #' @param hab_init is the parameterised habitat maps from \code{create_hab}
 #' @param InParallel is a BOLEEN indicating whether calculations should be done
@@ -21,12 +23,12 @@
 #'
 #' @export
 
-run_sim <- function (sim_init = NULL, pop_init = NULL, fleets_init = NULL, hab_init = NULL, InParallel = TRUE, cores = 1, save_pop_bio = FALSE, survey = NULL, closure = NULL,...) {
+run_sim <- function (sim_init = NULL, pop_init = NULL, move_cov = NULL, fleets_init = NULL, hab_init = NULL, InParallel = TRUE, cores = 1, save_pop_bio = FALSE, survey = NULL, closure = NULL,...) {
 # Overarching function for running the simulations
 
 start.time <- Sys.time() # for printing runtime
 
-require(doParallel)
+suppressMessages(require(doParallel))
 registerDoParallel(cores = cores)
 
 #######################
@@ -84,9 +86,18 @@ closeArea <- TRUE
 ### loop control #
 for (t in seq_len(ntow)) {
 ##################
+
+
+## Loop messages
+if(t == 1 | year.breaks[t] != year.breaks[t+1]) {
+	print(paste("----------year", year.breaks[t], "-----------"))
+}
+
 	if(t %in% print.seq) {
 print(paste("tow ==", t, "----",round(t/ntow * 100,0), "%"))
 	}
+
+
 ###################################
 ## Switches for various processes #
 ###################################
@@ -103,6 +114,8 @@ Pop_move <- ifelse(week.breaks[t] != week.breaks[t+1], TRUE, FALSE) ## weekly po
 Update   <- ifelse(day.breaks[t] != day.breaks[t+1], TRUE, FALSE) ## weekly pop records 
 
 ## Closure switch, when to recalculate the closed areas
+
+if(closeArea) 		{
 if(closure[["temp_dyn"]] == 'annual') {
 CalcClosures <- ifelse(year.breaks[t] != year.breaks[t+1], TRUE, FALSE)
 }
@@ -112,6 +125,8 @@ CalcClosures <- ifelse(month.breaks[t] != month.breaks[t+1], TRUE, FALSE)
 if(closure[["temp_dyn"]] == 'weekly') {
 CalcClosures <- ifelse(week.breaks[t] != week.breaks[t+1], TRUE, FALSE)
 }
+
+	      		}
 
 	      }
 
@@ -165,7 +180,13 @@ print(sapply(names(Rec), function(x) { sum(Rec[[x]]) / sum(B[[x]])}))
 ## Calculate where to place the closures
 ## Can't close areas in the first year, unless manually defined
 
-if(closeArea & CalcClosures & year.breaks[t] > 1 & is.null(closure[["input_coords"]])) {
+## No closures
+if(!closeArea) {
+AreaClosures <- NULL
+}
+
+## Dynamic closures
+if(closeArea & CalcClosures & year.breaks[t] >= closure[["year_start"]] & is.null(closure[["input_coords"]])) {
 print("Calculating where to place closures dynamically...")
 print(paste("Based on", closure[["basis"]], "on a", closure[["temp_dyn"]], "basis using", closure[["rationale"]]))
 
@@ -173,7 +194,9 @@ AreaClosures <- close_areas(sim_init = sim_init, closure_init = closure, commerc
 
 }
 
-if(closeArea & CalcClosures & !is.null(closure[["input_coords"]])) {
+
+## Fixed closures
+if(closeArea & CalcClosures & !is.null(closure[["input_coords"]]) & year.breaks[t] >= closure[["year_start"]]) {
 print("Setting manually defined closures")
 print(paste("Closures are", closure[["temp_dyn"]]))
 
@@ -225,8 +248,7 @@ catches <- foreach(fl=seq_len(n_fleets)) %dopar%
 			fleets_params = fleets_init[["fleet_params"]][[fl]],
 		   fleets_catches =     catches[[fl]][["fleets_catches"]], 
 		   sp_fleets_catches =  catches[[fl]][["sp_fleets_catches"]],
-		   pops = B, t = t
-		   )
+		   pops = B, t = t, closed_areas = AreaClosures )
 
 	} # end same week run
 
@@ -240,7 +262,7 @@ catches <- foreach(fl=seq_len(n_fleets)) %dopar%
 			fleets_params = fleets_init[["fleet_params"]][[fl]],
 		   fleets_catches =     catches[[fl]][["fleets_catches"]], 
 		   sp_fleets_catches =  fleets_init[["sp_fleet_catches"]][[fl]],
-		   pops = B, t = t)
+		   pops = B, t = t, closed_areas = AreaClosures)
 
 	       
 
@@ -359,6 +381,64 @@ log.mat[log.mat[,"day"]==doy & log.mat[,"year"]==y,paste0("spp",s)][i]  <-  	B[[
 if(Pop_move) {
 	print("Moving populations")
 
+	### With covariates ###
+
+	## If we've spatiotemporal movement covariate, include here:
+	if(!is.null(move_cov)) {
+	
+	## The temperature covariates for the week
+	move_cov_wk <- move_cov[["cov.matrix"]][[week.breaks[t]]]
+
+		
+	B <- foreach(s = paste0("spp", seq_len(n_spp))) %dopar% {
+
+	if(move_cov[["spp_assoc"]][[s]] == -1) { move_cov_wk <- abs(1 - move_cov_wk)}
+	
+	## If in a non-spawning week or spawning week
+	if(!week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
+	newPop <- move_population(moveProp = lapply(lapply(MoveProb[[s]], function(x) x * move_cov_wk), function(x1) x1/sum(x1)),
+				  StartPop = Bp1[[s]]) 
+	}
+	
+	if(week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
+	newPop <- move_population(moveProp = lapply(lapply(MoveProb_spwn[[s]], function(x) x * move_cov_wk), function(x1) x1/sum(x1)),
+				  StartPop = Bp1[[s]])
+	}
+	
+	Reduce("+", newPop)
+		
+	}
+	
+	
+	## Also need to move the previous month biomass, so the f calcs match
+	## as an input to the delay diff
+	Bm1 <- foreach(s = paste0("spp", seq_len(n_spp))) %dopar% {
+		
+	if(move_cov[["spp_assoc"]][[s]] == -1) { move_cov_wk <- abs(1 - move_cov_wk)}
+
+
+	## If in a non-spawning week or spawning week
+	if(!week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
+	newPop <- move_population(lapply(lapply(MoveProb[[s]], function(x) x * move_cov_wk), function(x1) x1/sum(x1)),
+			          StartPop = Bm1[[s]])
+	}
+
+	if(week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
+	newPop <- move_population(lapply(lapply(MoveProb_spwn[[s]], function(x) x * move_cov_wk), function(x1) x1/sum(x1)),
+				   StartPop = Bm1[[s]])
+	}
+
+	Reduce("+", newPop)
+	
+	}
+
+	}
+
+
+	### No covariates ###
+
+	if(is.null(move_cov)) {
+
 	B <- foreach(s = paste0("spp", seq_len(n_spp))) %dopar% {
 	
 	## If in a non-spawning week or spawning week
@@ -390,6 +470,8 @@ if(Pop_move) {
 
 	Reduce("+", newPop)
 	
+	}
+
 	}
 
 	names(B) <- paste0("spp", seq_len(n_spp))

@@ -18,7 +18,7 @@
 #' @export
 
 go_fish_fleet <- function (FUN = go_fish, sim_init = NULL, fleets_params = NULL, fleets_catches = NULL, 
-			sp_fleets_catches = NULL, pops = NULL, t = t,...) {
+			sp_fleets_catches = NULL, pops = NULL, closed_areas = NULL, t = t,...) {
 	out <- lapply(seq_len(length(fleets_catches)), function(x) { 
 			      res <- go_fish(sim_init = sim_init, fleet_params = fleets_params,
 					     fleet_catches = fleets_catches[[x]],

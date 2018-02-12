@@ -9,7 +9,7 @@ set.seed(123, kind = "L'Ecuyer-CMRG")
 
 ## initialise the simulation
 
-sim <- init_sim(nrows = 100, ncols = 100, n_years = 20, n_tows_day = 4, n_days_wk_fished = 5,
+sim <- init_sim(nrows = 100, ncols = 100, n_years = 50, n_tows_day = 4, n_days_wk_fished = 5,
      n_fleets = 5, n_vessels = 20, n_species = 4, move_freq = 2)
 
 
@@ -64,6 +64,11 @@ Pop <- init_pop(sim_init = sim, Bio = c(spp1 = 1e5, spp2 = 2e5, spp3 = 1e5, spp4
 				   spwn_wk = list("spp1" = 16:18, "spp2" = 16:19, "spp3" = 16:18, "spp4" = 18:20),
 				   M  = c("spp1" = 0.2, "spp2" = 0.1, "spp3" = 0.2, "spp4" = 0.1),
 				   K  = c("spp1" = 0.3, "spp2" = 0.3, "spp3" = 0.3, "spp4" = 0.3))
+
+
+#### Spatiotemporal movement covariates
+
+moveCov <- init_moveCov(sim_init = sim, steps = 52, spp_assoc = list("spp1" = 1, "spp2" = -1, "spp3" = -1, "spp4" = 1))
 
 ## Initialise the fleets
 
@@ -134,7 +139,7 @@ survey <- init_survey(sim_init = sim, design = "fixed_station",
 		n_stations = 50, start_day = 92, Qs = c("spp1" = 1, "spp2" = 1, "spp3" = 1, "spp4" = 1)) 
 
 ## Example 1
-closure <- init_closure(input_coords = NULL, basis = 'commercial', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 15, closure_thresh = 0.95, temp_dyn = 'annual')
+closure <- init_closure(input_coords = NULL, basis = 'commercial', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 2, closure_thresh = 0.95, temp_dyn = 'annual')
 
 ## Example 2 - fails correctly
 #closure <- init_closure(input_coords = list("area1" = c(2,3), "area2" = c(3,5)),
@@ -143,11 +148,8 @@ closure <- init_closure(input_coords = NULL, basis = 'commercial', rationale = '
 ## Example 3
 #closure <- init_closure(input_coords = NULL, basis = 'survey', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 15, closure_thresh = 0.95, temp_dyn = 'weekly')
 
-
-
-
 ## run_sim function for overall control
-res <- run_sim(sim_init = sim, pop_init = Pop, fleets_init = fleets, hab_init = hab, InParallel = TRUE, cores = 1, save_pop_bio = TRUE, survey = survey, closure = closure)
+res <- run_sim(sim_init = sim, pop_init = Pop, move_cov = moveCov, fleets_init = fleets, hab_init = hab, InParallel = TRUE, cores = 1, save_pop_bio = TRUE, survey = survey, closure = closure)
 
 format(object.size(res), units = "auto")
 
