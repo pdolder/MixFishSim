@@ -60,6 +60,7 @@ for(s in paste0("spp",seq_len(n_spp))) { Rec[[s]] <- 0 }
 B    <- pop_init[["Start_pop"]]  # For storing current biomass, is overwritten
 Bm1  <- pop_init[["Start_pop"]]  # For storing last time-step biomass, is overwritten
 
+AreaClosures <- data.frame(x = -1, y = -1) # Dummy closures 
 
 ###################################
 ###### Move probabilities #########
@@ -87,13 +88,20 @@ closeArea <- TRUE
 for (t in seq_len(ntow)) {
 ##################
 
-
 ## Loop messages
-if(t == 1 | year.breaks[t] != year.breaks[t+1]) {
+
+	## Print when new year
+if(t == 1){
 	print(paste("----------year", year.breaks[t], "-----------"))
 }
 
-	if(t %in% print.seq) {
+if(t > 1){
+	if(year.breaks[t] != year.breaks[t-1]) {
+	print(paste("----------year", year.breaks[t], "-----------")) }
+}
+
+## Print some tow info
+if(t %in% print.seq) {
 print(paste("tow ==", t, "----",round(t/ntow * 100,0), "%"))
 	}
 
@@ -115,15 +123,20 @@ Update   <- ifelse(day.breaks[t] != day.breaks[t+1], TRUE, FALSE) ## weekly pop 
 
 ## Closure switch, when to recalculate the closed areas
 
-if(closeArea) 		{
+if(t==1 & !closeArea) {CalcClosures  <-  FALSE }
+if(t==1 & closeArea & is.null(closure[["input_coords"]])) {CalcClosures <- FALSE}
+if(t==1 & closeArea & !is.null(closure[["input_coords"]]) & closure[["year_start"]] == 1) {CalcClosures <- TRUE}
+if(t==1 & closeArea & !is.null(closure[["input_coords"]]) & closure[["year_start"]] > 1) {CalcClosures <- FALSE}
+
+if( t > 1 & closeArea ) 		{
 if(closure[["temp_dyn"]] == 'annual') {
-CalcClosures <- ifelse(year.breaks[t] != year.breaks[t+1], TRUE, FALSE)
+CalcClosures <- ifelse(year.breaks[t] != year.breaks[t-1], TRUE, FALSE)
 }
 if(closure[["temp_dyn"]] == 'monthly') {
-CalcClosures <- ifelse(month.breaks[t] != month.breaks[t+1], TRUE, FALSE)
+CalcClosures <- ifelse(month.breaks[t] != month.breaks[t-1], TRUE, FALSE)
 }
 if(closure[["temp_dyn"]] == 'weekly') {
-CalcClosures <- ifelse(week.breaks[t] != week.breaks[t+1], TRUE, FALSE)
+CalcClosures <- ifelse(week.breaks[t] != week.breaks[t-1], TRUE, FALSE)
 }
 
 	      		}
@@ -180,11 +193,6 @@ print(sapply(names(Rec), function(x) { sum(Rec[[x]]) / sum(B[[x]])}))
 ## Calculate where to place the closures
 ## Can't close areas in the first year, unless manually defined
 
-## No closures
-if(!closeArea) {
-AreaClosures <- NULL
-}
-
 ## Dynamic closures
 if(closeArea & CalcClosures & year.breaks[t] >= closure[["year_start"]] & is.null(closure[["input_coords"]])) {
 print("Calculating where to place closures dynamically...")
@@ -233,7 +241,7 @@ catches <- foreach(fl=seq_len(n_fleets)) %dopar%
 			sim_init = sim_init, 
 			fleets_params = fleets_init[["fleet_params"]][[fl]],
 		   fleets_catches =     fleets_init[["fleet_catches"]][[fl]], 
-		   sp_fleets_catches =  fleets_init[["sp_fleet_catches"]][[fl]], closed_areas = AreaClosures,   pops = B, t = t)
+		   sp_fleets_catches =  fleets_init[["sp_fleet_catches"]][[fl]], closed_areas = AreaClosures, pops = B, t = t)
 
 
 } # end t==1 run
@@ -248,7 +256,7 @@ catches <- foreach(fl=seq_len(n_fleets)) %dopar%
 			fleets_params = fleets_init[["fleet_params"]][[fl]],
 		   fleets_catches =     catches[[fl]][["fleets_catches"]], 
 		   sp_fleets_catches =  catches[[fl]][["sp_fleets_catches"]],
-		   pops = B, t = t, closed_areas = AreaClosures )
+		   pops = B, t = t, closed_areas = AreaClosures)
 
 	} # end same week run
 

@@ -17,7 +17,7 @@ go_fish(sim_init = NULL, fleet_params = NULL, fleet_catches = NULL,
 \item{sp_fleet_catches}{is a list of spatial catches (as a Numeric matrix) for the fleet of each population}
 
 \item{closed_areas}{is a dataframe with the x,y coordinates are any closed
-areas}
+areas, provided internally by \link{close_areas}}
 }
 \value{
 is a list containing i) the fleet catch dataframes , ii) the spatial

@@ -39,7 +39,7 @@
 
 create_hab <- function (sim_init = sim, seed = 123, spp.ctrl = NULL, spawn_areas = NULL, spwn_mult = 10, plot.dist = FALSE, plot.file = getwd(), cores = 3) {
 
-	require(doParallel)
+	suppressMessages(require(doParallel))
 	registerDoParallel(cores = cores)
 
 

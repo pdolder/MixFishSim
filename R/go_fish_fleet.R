@@ -22,7 +22,7 @@ go_fish_fleet <- function (FUN = go_fish, sim_init = NULL, fleets_params = NULL,
 	out <- lapply(seq_len(length(fleets_catches)), function(x) { 
 			      res <- go_fish(sim_init = sim_init, fleet_params = fleets_params,
 					     fleet_catches = fleets_catches[[x]],
-					     sp_fleet_catches = sp_fleets_catches[[x]], closed_areas = NULL,
+					     sp_fleet_catches = sp_fleets_catches[[x]], closed_areas = closed_areas,
 					     t = t, pops = pops)
 	       })
 
