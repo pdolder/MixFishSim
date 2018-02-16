@@ -14,10 +14,10 @@ go_fish(sim_init = NULL, fleet_params = NULL, fleet_catches = NULL,
 
 \item{fleet_catches}{is the DF initialised from \code{_init_fleets}}
 
-\item{sp_fleet_catches}{is a list of spatial catches (as a Numeric matrix) for the fleet of each population}
-
-\item{closed_areas}{is a dataframe with the x,y coordinates are any closed
-areas, provided internally by \link{close_areas}}
+\item{sp_fleet_catches}{is a list of spatial catches (as a Numeric matrix)
+for the fleet of each population @param closed_areas is a dataframe with the
+x,y coordinates are any closed areas, provided internally by
+\link{close_areas}}
 }
 \value{
 is a list containing i) the fleet catch dataframes , ii) the spatial

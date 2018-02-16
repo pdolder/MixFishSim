@@ -6,9 +6,10 @@
 #' @param sim_init is the initialised object from \code{init_sim}.
 #' @param fleet_params is the parameter settings initialised from \code{_init_fleets}
 #' @param fleet_catches is the DF initialised from \code{_init_fleets}
-#' @param sp_fleet_catches is a list of spatial catches (as a Numeric matrix) for the fleet of each population
-#' @param closed_areas is a dataframe with the x,y coordinates are any closed
-#' areas, provided internally by \link{close_areas}
+#' @param sp_fleet_catches is a list of spatial catches (as a Numeric matrix)
+#' for the fleet of each population @param closed_areas is a dataframe with the
+#' x,y coordinates are any closed areas, provided internally by
+#' \link{close_areas}
 #' 
 
 #' @return is a list containing i) the fleet catch dataframes , ii) the spatial
@@ -45,6 +46,7 @@ brk.idx <- sim_init$brk.idx
 if(t == 1) {
 coords <- c(round(runif(1,1,idx[["nrows"]])),round(runif(1,1,idx[["ncols"]]))) # Choose a random lat and lon
 }
+	
 
 # For t > 1
 if(t > 1) {
@@ -80,7 +82,8 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
 	if(dim(goodhauls)[1]==0) {
 	
-	q <- quantile(dplyr::filter(catch.df,month==brk.idx[["month.breaks"]][t])$val,prob=c(0.1),na.rm=T) # Threshold for good hauls
+	q <- quantile(dplyr::filter(catch.df,month==brk.idx[["month.breaks"]][t])$val,prob=c(0.05),na.rm=T) # Threshold for good hauls
+
 	goodhauls  <- dplyr::filter(catch.df,month==brk.idx[["month.breaks"]][t] & val>=q)
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
 
@@ -92,9 +95,15 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	# Find area and make sure its not closed
 	Closure <- TRUE; count <- 1 
 	while(Closure == TRUE) {
+		
+		if(dim(goodhauls[1]) == 0) {   ## If we still can't find any good hauls despite lowering the threshold, choose at random
+	new.point <- c(round(runif(1, 1, idx[["nrows"]])), round(runif(1, 1, idx[["ncols"]])))
+			    }
+
+		if(dim(goodhauls[1]) != 0) {
 	new.point   <- sample(paste(goodhauls$x,goodhauls$y,sep=","),1)  	# Randomly select from the good hauls
 	new.point   <- c(as.numeric(sapply(strsplit(new.point,","),"[",1)),as.numeric(sapply(strsplit(new.point,","),"[",2)))
-
+		}
 	## Check for closed areas
 	cl <- apply(closed_areas, 1, function(x) {
 			    x["x"] == new.point[1] & 
@@ -134,7 +143,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	
 	# Case where its within the same year
 	if(brk.idx[["year.breaks"]][t] == brk.idx[["year.breaks"]][t-1]) {
-	q <- quantile(dplyr::filter(catch.df,trip==brk.idx[["trip.breaks"]][t-1] & year==brk.idx[["year.breaks"]][t])$val,prob=c(0.1),na.rm=T) # Threshold for good hauls
+	q <- quantile(dplyr::filter(catch.df,trip==brk.idx[["trip.breaks"]][t-1] & year==brk.idx[["year.breaks"]][t])$val,prob=c(0.05),na.rm=T) # Threshold for good hauls
 	goodhauls  <- dplyr::filter(catch.df,trip==brk.idx[["trip.breaks"]][t-1] & year==brk.idx[["year.breaks"]][t] & val>=q)
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
 
@@ -142,7 +151,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	
 	# Case of different year
 	if(brk.idx[["year.breaks"]][t] != brk.idx[["year.breaks"]][t-1]) {
-	q <- quantile(dplyr::filter(catch.df,trip == max(brk.idx[["trip.breaks"]]) & year == brk.idx[["year.breaks"]][t-1])$val,prob=c(0.1),na.rm=T) # Threshold for good hauls
+	q <- quantile(dplyr::filter(catch.df,trip == max(brk.idx[["trip.breaks"]]) & year == brk.idx[["year.breaks"]][t-1])$val,prob=c(0.05),na.rm=T) # Threshold for good hauls
 	goodhauls  <- dplyr::filter(catch.df,trip == max(brk.idx[["trip.breaks"]]) & year == brk.idx[["year.breaks"]][t-1] & val>=q)
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
 	}
@@ -152,8 +161,16 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	# Find area and make sure its not closed
 	Closure <- TRUE; count <- 1
 	while(Closure == TRUE ) {
+	
+	if(dim(goodhauls[1]) == 0) {   ## If we still can't find any good hauls despite lowering the threshold, choose at random
+	new.point <- c(round(runif(1, 1, idx[["nrows"]])), round(runif(1, 1, idx[["ncols"]])))
+			    }
+	if(dim(goodhauls[1]) != 0) {  
+
 	new.point   <- sample(paste(goodhauls$x,goodhauls$y,sep=","),1)
 	new.point   <- c(as.numeric(sapply(strsplit(new.point,","),"[",1)),as.numeric(sapply(strsplit(new.point,","),"[",2)))
+
+	}
 
 	## Check for closed areas
 	cl <- apply(closed_areas, 1, function(x) {
@@ -162,7 +179,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
-	if(Closure == TRUE) { print(paste("Stuck on option 2", count))
+	if(Closure == TRUE) { 
 	count <- count+1 }
 
 	if(Closure == FALSE) break
@@ -201,14 +218,14 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	
 	# Case where its within the same year
 	if(brk.idx[["year.breaks"]][t] == brk.idx[["year.breaks"]][t-1]) {
-	q <- quantile(dplyr::filter(catch.df,month==brk.idx[["month.breaks"]][t] | trip==brk.idx[["trip.breaks"]][t-1] & year==brk.idx[["year.breaks"]][t])$val,prob=c(0.1),na.rm=T) # Threshold for good hauls
+	q <- quantile(dplyr::filter(catch.df,month==brk.idx[["month.breaks"]][t] | trip==brk.idx[["trip.breaks"]][t-1] & year==brk.idx[["year.breaks"]][t])$val,prob=c(0.05),na.rm=T) # Threshold for good hauls
 	goodhauls  <- dplyr::filter(catch.df,month==brk.idx[["month.breaks"]][t] & val >=q | trip==brk.idx[["trip.breaks"]][t-1] & year==brk.idx[["year.breaks"]][t] & val>=q)
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
 	}
 	
 	# Case of different year
 	if(brk.idx[["year.breaks"]][t] != brk.idx[["year.breaks"]][t-1]) {
-	q <- quantile(dplyr::filter(catch.df,month==brk.idx[["month.breaks"]][t] | trip == max(brk.idx[["trip.breaks"]]) & year == brk.idx[["year.breaks"]][t-1])$val,prob=c(0.1),na.rm=T) # Threshold for good hauls
+	q <- quantile(dplyr::filter(catch.df,month==brk.idx[["month.breaks"]][t] | trip == max(brk.idx[["trip.breaks"]]) & year == brk.idx[["year.breaks"]][t-1])$val,prob=c(0.05),na.rm=T) # Threshold for good hauls
 	goodhauls  <- dplyr::filter(catch.df,month==brk.idx$month.breaks[t] & val >=q | trip == max(brk.idx[["trip.breaks"]]) & year == brk.idx[["year.breaks"]][t-1] & val>=q)
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
 
@@ -222,9 +239,16 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	# Find area and make sure its not closed
 	Closure <- TRUE; count <- 1
 	while(Closure == TRUE ) {
+	
+	if(dim(goodhauls[1]) == 0) {   ## If we still can't find any good hauls, choose at random
+	new.point <- c(round(runif(1, 1, idx[["nrows"]])), round(runif(1, 1, idx[["ncols"]])))
+			    }
+
+	if(dim(goodhauls[1]) != 0) {
 	new.point   <- sample(paste(goodhauls$x,goodhauls$y,sep=","),1)
 	new.point   <- c(as.numeric(sapply(strsplit(new.point,","),"[",1)),as.numeric(sapply(strsplit(new.point,","),"[",2)))
-	
+}
+
 	## Check for closed areas
 	cl <- apply(closed_areas, 1, function(x) {
 			    x["x"] == new.point[1] & 
@@ -262,6 +286,9 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	Closure <- TRUE; count <- 1
 	while(Closure == TRUE ) {
 
+		## Condition to deal with being trapped in closed area
+		if(count <101) {
+
 	stepD     <- step_length(revenue = catch[t-1,"val"],step_params = params[["step_params"]])  # Calculate step distance based on last tow value
         catch[t,"stepD"] <- stepD    # record the step distance	
 
@@ -275,6 +302,13 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	Bear <- get_bearing(b = b, k = k)
 	catch[t, "angles"] <- Bear
 	new.point <- round(make_step(stepD = stepD, Bear = Bear, start.x = coords[1], start.y = coords[2])) # returns c(x2,y2)
+
+		}
+		
+		## Condition to deal with being trapped in closed area
+		if(count > 100) {
+		new.point <- c(round(runif(1, 1, idx[["nrows"]])), round(runif(1, 1, idx[["ncols"]])))
+		}
 
 	## Boundary condition
 	if(new.point[2] > idx[["ncols"]]) { new.point[2]  <-  new.point[2] - idx[["ncols"]]}
