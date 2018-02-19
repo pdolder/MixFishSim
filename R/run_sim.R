@@ -202,7 +202,6 @@ AreaClosures <- close_areas(sim_init = sim_init, closure_init = closure, commerc
 
 }
 
-
 ## Fixed closures
 if(closeArea & CalcClosures & !is.null(closure[["input_coords"]]) & year.breaks[t] >= closure[["year_start"]]) {
 print("Setting manually defined closures")
@@ -258,7 +257,7 @@ catches <- foreach(fl=seq_len(n_fleets)) %dopar%
 		   sp_fleets_catches =  catches[[fl]][["sp_fleets_catches"]],
 		   pops = B, t = t, closed_areas = AreaClosures)
 
-	} # end same week run
+	} # end same day run
 
 # if its a new day - reset the spatial catches counter
 if(day.breaks[t] != day.breaks[t-1]) {
@@ -269,13 +268,10 @@ catches <- foreach(fl=seq_len(n_fleets)) %dopar%
 		sim_init = sim_init, 
 			fleets_params = fleets_init[["fleet_params"]][[fl]],
 		   fleets_catches =     catches[[fl]][["fleets_catches"]], 
-		   sp_fleets_catches =  fleets_init[["sp_fleet_catches"]][[fl]],
+		   sp_fleets_catches =  fleets_init[["sp_fleet_catches"]][[fl]], ## These are empty
 		   pops = B, t = t, closed_areas = AreaClosures)
 
-	       
-
-
-	} # end new week run
+	} # end new day run
 
 } # end if t>1
 
@@ -289,7 +285,7 @@ catches <- foreach(fl=seq_len(n_fleets)) %dopar%
 ##### Pop dynamics ####
 #######################
 
-# every week (end week?)
+# every day (end day)
 # calc the spatial Fs, find_spat_f_pops()
 # Apply the delay_diff()
 # Need B-1 and B to calc B+1
@@ -304,20 +300,14 @@ print("Delay-difference model")
 # 3. reset the catch matrices - DONE (above)
 
 # Sum the catches of each population over the fleets and vessels
-spp_catches <- sum_fleets_catches(FUN = sum_fleet_catches, fleets_log =
-				  catches, sim_init = sim_init)
+#spp_catches <- sum_fleets_catches(FUN = sum_fleet_catches, fleets_log =
+#				  catches, sim_init = sim_init)
+spp_catches <- sum_fleets_catches(sim_init = sim_init, fleets_log =
+				  catches)
 
 ## Fs for all populations
-
-
-# The proportion of stock removed
-#print(sapply(1:2, function(x) { max(spp_catches[[x]] / B[[x]], na.rm = T) }))
-
 spat_fs <- find_spat_f_pops(sim_init = sim_init, C = spp_catches, B = B, 
                             dem_params = pop_init[["dem_params"]])
-
-#print(sapply(spp_catches, sum))
-#print(sapply(spat_fs, mean))
 
 ## Fishing mortality rates
 print(sapply(names(spat_fs), function(x) weighted.mean(spat_fs[[x]], B[[x]])))

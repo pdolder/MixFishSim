@@ -26,26 +26,26 @@ logs2 %>% as.data.frame %>%
 ##################
 ## For kriging 
 ##################
-coordinates(logs2) <- ~ x+ y
-class(logs2)
-bbox(logs2)
+#coordinates(logs2) <- ~ x+ y
+#class(logs2)
+#bbox(logs2)
 
-logs2.vgm <- variogram(spp1 ~ 1, logs2)
-logs2.fit <- fit.variogram(logs2.vgm, model = vgm(0.1, "Mat", 10, 1))
+#logs2.vgm <- variogram(spp1 ~ 1, logs2)
+#logs2.fit <- fit.variogram(logs2.vgm, model = vgm(0.1, "Mat", 10, 1))
 
-summary(logs2.fit)
+#summary(logs2.fit)
 
-plot(logs2.vgm, logs2.fit)
-grid <- data.frame(x = rep(seq_len(100), times = 100), y = rep(seq_len(100), each = 100))
+#plot(logs2.vgm, logs2.fit)
+#grid <- data.frame(x = rep(seq_len(100), times = 100), y = rep(seq_len(100), each = 100))
 
 ## Points and grid
-par(mfrow = c(1,2))
-plot(logs2$x, logs2$y)
-plot(grid)
+#par(mfrow = c(1,2))
+#plot(logs2$x, logs2$y)
+#plot(grid)
 
 ## the actual krigging
-coordinates(grid) <- ~ x + y
-logs2.kriged <- krige(spp1 ~ 1, logs2, grid, model = logs2.fit, debug.level = -1, block = 1)
+#coordinates(grid) <- ~ x + y
+#logs2.kriged <- krige(spp1 ~ 1, logs2, grid, model = logs2.fit, debug.level = -1, block = 1)
 
 ########################################################################
 ### This takes faaar too long, let's try some simple linear interpolation
@@ -85,12 +85,13 @@ akimaDF <- data.frame(x = rep(seq_len(100), times = 100),
 akimaDF$spp1[is.na(akimaDF$spp1)] <- 0
 
 ## highest 10 % of each
-q90 <- quantile(akimaDF$spp1, prob = 0.95)
+q95 <- quantile(akimaDF$spp1[akimaDF$spp1 > 0], prob = 0.95)
 
-akimaDF$closure <- ifelse(akimaDF$spp1 >= q90, "Closed" , "Open")
+akimaDF$closure <- ifelse(akimaDF$spp1 >= q95, "Closed" , "Open")
 
 p1 <- ggplot(akimaDF, aes(x=x, y=y)) + geom_tile(aes(fill=factor(closure)) )+
-coord_equal() + scale_fill_manual(values = c("red","green")) + theme_bw() + geom_point(data = logs2, aes(x = x, y = y, size=spp1), color="blue", alpha=0.1)  
+coord_equal() + scale_fill_manual(values = c("red","green")) + theme_bw() + 
+geom_point(data = logs2, aes(x = x, y = y, size=spp1), color="blue", alpha=0.1)  
 
 ##################
 # spline interp ##
@@ -102,9 +103,9 @@ akimaDFsp <- data.frame(x = rep(seq_len(100), times = 100),
 akimaDFsp$spp1[is.na(akimaDFsp$spp1)] <- 0
 
 ## highest 10 % of each
-q90 <- quantile(akimaDFsp$spp1, prob = 0.95)
+q95 <- quantile(akimaDFsp$spp1[akimaDF$spp1 > 0], prob = 0.95)
 
-akimaDFsp$closure <- ifelse(akimaDFsp$spp1 >= q90, "Closed" , "Open")
+akimaDFsp$closure <- ifelse(akimaDFsp$spp1 >= q95, "Closed" , "Open")
 
 p2 <- ggplot(akimaDFsp, aes(x=x, y=y)) + geom_tile(aes(fill=factor(closure)) )+
 coord_equal() + scale_fill_manual(values = c("red","green")) + theme_bw() + geom_point(data = logs2, aes(x = x, y = y, size=spp1), color="blue", alpha=0.1)  
@@ -114,7 +115,6 @@ library(cowplot)
 plot_grid(p1, p2)
 
 ## Seems much better!  Can use linear interpolation for simplicity and time
-
 
 ## What's actually needed::
 load('TestResults.RData')
@@ -134,8 +134,10 @@ akimaDF <- data.frame(x = rep(seq_len(100), times = 100),
 		      spp1 = as.numeric(akima.li$z))
 
 akimaDF$spp1[is.na(akimaDF$spp1)] <- 0
-## highest 10 % of each
-q90 <- quantile(akimaDF$spp1, prob = 0.95)
-akimaDF$closure <- ifelse(akimaDF$spp1 >= q90, "Closed" , "Open")
+## highest 5 % of each
+q95 <- quantile(akimaDF$spp1[akimaDF$spp1 >0], prob = 0.95)
+akimaDF$closure <- ifelse(akimaDF$spp1 >= q95, "Closed" , "Open")
 
 closed_areas <- akimaDF[akimaDF$closure == 'Closed',]
+
+print(paste(nrow(closed_areas) / nrow(akimaDF) * 100, "%"))

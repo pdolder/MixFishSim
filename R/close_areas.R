@@ -70,7 +70,7 @@ close_areas <- function (sim_init = sim_init, closure_init = NULL, commercial_lo
 	akimaDF$spp[is.na(akimaDF$spp)] <- 0
 
 	## Get coords for cells above threshold catch
-		q_close <- quantile(akimaDF$spp, prob = thresh)
+		q_close <- quantile(akimaDF$spp[akimaDF$spp > 0], prob = thresh)
 		akimaDF$closure <- ifelse(akimaDF$spp >= q_close, "Closed" , "Open")
 		closed_areas <- akimaDF[akimaDF$closure == 'Closed',]
 		
