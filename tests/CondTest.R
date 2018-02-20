@@ -68,10 +68,13 @@ Pop <- init_pop(sim_init = sim, Bio = c(spp1 = 1e5, spp2 = 2e5, spp3 = 1e5, spp4
 
 #### Spatiotemporal movement covariates
 
-moveCov <- init_moveCov(sim_init = sim, steps = 52, spp_assoc = list("spp1" = 1, "spp2" = -1, "spp3" = -1, "spp4" = 1))
+moveCov <- init_moveCov(sim_init = sim, steps = 52, 
+			spp_tol = list("spp1" = list("mu" = 10, va = 6),
+				       "spp2" = list("mu" = 15, va = 4),
+				       "spp3" = list("mu" = 17, va = 7), 
+				       "spp4" = list("mu" = 12, va = 10)))
 
 ## Initialise the fleets
-
 Q_mult  <- 0.01
 
 ## maximum possible revenue
@@ -139,7 +142,7 @@ survey <- init_survey(sim_init = sim, design = "fixed_station",
 		n_stations = 50, start_day = 92, Qs = c("spp1" = 1, "spp2" = 1, "spp3" = 1, "spp4" = 1)) 
 
 ## Example 1
-closure <- init_closure(input_coords = NULL, basis = 'commercial', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 2, closure_thresh = 0.95, temp_dyn = 'annual')
+closure <- init_closure(input_coords = NULL, basis = 'commercial', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 2, closure_thresh = 0.9, temp_dyn = 'annual')
 
 ## Example 2 - fails correctly
 #closure <- init_closure(input_coords = list("area1" = c(2,3), "area2" = c(3,5)),

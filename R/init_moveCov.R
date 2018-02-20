@@ -5,14 +5,14 @@
 #' @param sim_init is the output from the function \link{init_sim}.
 #' @param steps is a Numeric with the number of timesteps over which the
 #' covariate changes
-#' @param spp_assoc is a named list of whether species are positively
-#' associated (+1) or negatively associated (-1) with the covariate.
+#' @param spp_tol is a named list (each species) with a list of mean (mu) and
+#' variance (va) for the normal distribution for thermal tolerance.
 
 #' @examples None
 
 #' @export
 
-init_moveCov <- function (sim_init = NULL, steps = 52, spp_assoc = NULL) {	
+init_moveCov <- function (sim_init = NULL, steps = 52, spp_tol = NULL) {	
 
 	## Create list of matrices to capture spatio-temporal move covariates
 
@@ -41,6 +41,6 @@ init_moveCov <- function (sim_init = NULL, steps = 52, spp_assoc = NULL) {
 }
 
 
-	return(list(spp_assoc = spp_assoc, cov.matrix = cov.matrix))
+	return(list(cov.matrix = cov.matrix, spp_tol = spp_tol))
 
 }

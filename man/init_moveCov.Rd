@@ -4,7 +4,7 @@
 \alias{init_moveCov}
 \title{Initialise movement covariates}
 \usage{
-init_moveCov(sim_init = NULL, steps = 52, spp_assoc = NULL)
+init_moveCov(sim_init = NULL, steps = 52, spp_tol = NULL)
 }
 \arguments{
 \item{sim_init}{is the output from the function \link{init_sim}.}
@@ -12,8 +12,8 @@ init_moveCov(sim_init = NULL, steps = 52, spp_assoc = NULL)
 \item{steps}{is a Numeric with the number of timesteps over which the
 covariate changes}
 
-\item{spp_assoc}{is a named list of whether species are positively
-associated (+1) or negatively associated (-1) with the covariate.}
+\item{spp_tol}{is a named list (each species) with a list of mean (mu) and
+variance (va) for the normal distribution for thermal tolerance.}
 }
 \description{
 This function creates a list of covariates, to be used

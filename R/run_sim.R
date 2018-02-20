@@ -390,16 +390,20 @@ if(Pop_move) {
 		
 	B <- foreach(s = paste0("spp", seq_len(n_spp))) %dopar% {
 
-	if(move_cov[["spp_assoc"]][[s]] == -1) { move_cov_wk <- abs(1 - move_cov_wk)}
+	move_cov_wk_spp <- matrix(nc = sim_init[["idx"]][["ncols"]],
+				 nr = sim_init[["idx"]][["nrows"]],
+				 sapply(move_cov_wk, norm_fun, 
+                          mu = move_cov[["spp_tol"]][[s]][["mu"]], 
+		  	  va = move_cov[["spp_tol"]][[s]][["va"]]))
 	
 	## If in a non-spawning week or spawning week
 	if(!week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
-	newPop <- move_population(moveProp = lapply(lapply(MoveProb[[s]], function(x) x * move_cov_wk), function(x1) x1/sum(x1)),
+	newPop <- move_population(moveProp = lapply(lapply(MoveProb[[s]], function(x) x * move_cov_wk_spp), function(x1) x1/sum(x1)),
 				  StartPop = Bp1[[s]]) 
 	}
 	
 	if(week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
-	newPop <- move_population(moveProp = lapply(lapply(MoveProb_spwn[[s]], function(x) x * move_cov_wk), function(x1) x1/sum(x1)),
+	newPop <- move_population(moveProp = lapply(lapply(MoveProb_spwn[[s]], function(x) x * move_cov_wk_spp), function(x1) x1/sum(x1)),
 				  StartPop = Bp1[[s]])
 	}
 	
@@ -412,17 +416,20 @@ if(Pop_move) {
 	## as an input to the delay diff
 	Bm1 <- foreach(s = paste0("spp", seq_len(n_spp))) %dopar% {
 		
-	if(move_cov[["spp_assoc"]][[s]] == -1) { move_cov_wk <- abs(1 - move_cov_wk)}
-
-
+	move_cov_wk_spp <- matrix(nc = sim_init[["idx"]][["ncols"]],
+				 nr = sim_init[["idx"]][["nrows"]],
+				 sapply(move_cov_wk, norm_fun, 
+                          mu = move_cov[["spp_tol"]][[s]][["mu"]], 
+		  	  va = move_cov[["spp_tol"]][[s]][["va"]]))
+	
 	## If in a non-spawning week or spawning week
 	if(!week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
-	newPop <- move_population(lapply(lapply(MoveProb[[s]], function(x) x * move_cov_wk), function(x1) x1/sum(x1)),
+	newPop <- move_population(lapply(lapply(MoveProb[[s]], function(x) x * move_cov_wk_spp), function(x1) x1/sum(x1)),
 			          StartPop = Bm1[[s]])
 	}
 
 	if(week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
-	newPop <- move_population(lapply(lapply(MoveProb_spwn[[s]], function(x) x * move_cov_wk), function(x1) x1/sum(x1)),
+	newPop <- move_population(lapply(lapply(MoveProb_spwn[[s]], function(x) x * move_cov_wk_spp), function(x1) x1/sum(x1)),
 				   StartPop = Bm1[[s]])
 	}
 

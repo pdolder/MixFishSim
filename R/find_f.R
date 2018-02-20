@@ -17,7 +17,7 @@
 
 #' @export
 
-find_f <- function(C = C, B = B, M = M,FUN = baronov_f) {
-return(uniroot(FUN,c(0,2),tol = 1E-16, C = C, B = B, M = M)$root)
+find_f <- function(C = C, B = B, M = M, FUN = baronov_f) {
+return(uniroot(FUN,c(0,2),tol = 1E-8, C = C, B = B, M = M,extendInt = "yes")$root)
 }
 
