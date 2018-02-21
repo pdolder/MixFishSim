@@ -52,46 +52,67 @@ logs2 %>% as.data.frame %>%
 #########################################################################
 library(akima)
 
-grid.interp <- data.frame(x = rep(seq_len(100), times = 100), y = rep(seq_len(100), each = 100))
+## ADD A SCALE PARAMETER
+sc <- 1 
+px <- 100
+
+nx <- px / sc
+ny <- px / sc
 
 ## linear interpolation
-akima.li <- interp(logs2$x, logs2$y, logs2$spp1, nx = 100, ny = 100)
+akima.li <- interp(logs2$x, logs2$y, logs2$spp1, nx = nx, ny = ny, duplicate = "mean")
 li.zmin <- min(akima.li$z,na.rm=TRUE)
 li.zmax <- max(akima.li$z,na.rm=TRUE)
 breaks <- pretty(c(li.zmin,li.zmax),100)
 colors <- heat.colors(length(breaks)-1)
-with(akima.li, image  (x,y,z, breaks=breaks, col=colors))
+#with(akima.li, image  (x,y,z, breaks=breaks, col=colors))
 
 ## spline interpolation
-akima.spl <- with(logs2, interp(x, y, spp1, nx=100, ny=100, linear=FALSE))
-
+#akima.spl <- with(logs2, interp(x, y, spp1, nx=nx, ny=ny, linear=FALSE))
 
 ## Compare vs data
-par(mfrow = c(1,2))
-with(akima.li, image  (x,y,z, breaks=breaks, col=colors))
-points(logs2$x, logs2$y, pch = 16, cex = log(logs2$spp1), col = "blue")
-image(akima.spl, main = "smooth  interp(*, linear = FALSE)", col = colors)
-points(logs2$x, logs2$y, pch = 16, cex = log(logs2$spp1), col = "blue")
+#par(mfrow = c(1,2))
+#with(akima.li, image  (x,y,z, breaks=breaks, col=colors))
+#points(logs2$x, logs2$y, pch = 16, cex = log(logs2$spp1), col = "blue")
+#image(akima.spl, col = colors)
+#points(logs2$x, logs2$y, pch = 16, cex = log(logs2$spp1), col = "blue")
 
-## What if we were to close top 10% catches
+## What if we were to close top 5 % catches
 
 ##################
 # linear interp ##
 ##################
-akimaDF <- data.frame(x = rep(seq_len(100), times = 100), 
-		      y = rep(seq_len(100), each = 100),
-		      spp1 = as.numeric(akima.li$z))
+#akimaDF <- data.frame(x = rep(seq_len(100), times = 100), 
+#		      y = rep(seq_len(100), each = 100),
+#		      spp1 = as.numeric(akima.li$z))
+#akimaDF$spp1[is.na(akimaDF$spp1)] <- 0
+
+## Trying to get the right values in the right places...
+## Fill the data frame
+akimaDF <- data.frame(x = rep(seq_len(px), times = px), 
+		      y = rep(seq_len(px), each = px),
+		      spp1 = as.numeric(apply(t(apply(akima.li$z, 1, rep, each = sc)), 2, rep, each = sc)))
 
 akimaDF$spp1[is.na(akimaDF$spp1)] <- 0
 
+## Check we've allocated grid correctly
+x <- 10/sc 
+y <- 16/sc
+akimaDF[akimaDF$x == 10 & akimaDF$y == 16,]
+akima.li$z[x,y]
+
 ## highest 10 % of each
 q95 <- quantile(akimaDF$spp1[akimaDF$spp1 > 0], prob = 0.95)
+akima.li$z[akima.li$z > q95]
 
 akimaDF$closure <- ifelse(akimaDF$spp1 >= q95, "Closed" , "Open")
 
 p1 <- ggplot(akimaDF, aes(x=x, y=y)) + geom_tile(aes(fill=factor(closure)) )+
 coord_equal() + scale_fill_manual(values = c("red","green")) + theme_bw() + 
 geom_point(data = logs2, aes(x = x, y = y, size=spp1), color="blue", alpha=0.1)  
+
+p1
+with(akima.li, image  (x,y,z, breaks=breaks, col=colors))
 
 ##################
 # spline interp ##

@@ -142,7 +142,7 @@ survey <- init_survey(sim_init = sim, design = "fixed_station",
 		n_stations = 50, start_day = 92, Qs = c("spp1" = 1, "spp2" = 1, "spp3" = 1, "spp4" = 1)) 
 
 ## Example 1
-closure <- init_closure(input_coords = NULL, basis = 'commercial', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 2, closure_thresh = 0.9, temp_dyn = 'annual')
+closure <- init_closure(input_coords = NULL, basis = 'commercial', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 2, year_basis = 1, closure_thresh = 0.9, sc = 5, temp_dyn = 'annual')
 
 ## Example 2 - fails correctly
 #closure <- init_closure(input_coords = list("area1" = c(2,3), "area2" = c(3,5)),

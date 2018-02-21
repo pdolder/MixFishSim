@@ -31,9 +31,15 @@ close_areas <- function (sim_init = sim_init, closure_init = NULL, commercial_lo
 	thresh    <- closure_init[["closure_thresh"]]
 	spp1 	  <- closure_init[["spp1"]]
 	spp2 	  <- closure_init[["spp2"]]
+	sc        <- closure_init[["sc"]]
+	yr_base   <- closure_init[["year_basis"]]
 
 	nx <- sim_init[["idx"]][["nrows"]]
 	ny <- sim_init[["idx"]][["ncols"]]
+
+	nx_i <- nx/sc
+	nx_y <- ny/sc
+
 
 	yr <- sim_init[["brk.idx"]][["year.breaks"]][[t]]
 	mn <- sim_init[["brk.idx"]][["month.breaks"]][[t]]
@@ -58,26 +64,23 @@ close_areas <- function (sim_init = sim_init, closure_init = NULL, commercial_lo
 		
 		## Filter as appropriate:- here based on last years catch
 		## summarise with catch/no_tows
-		logs2 <- filter(logs, year == yr - 1) %>% group_by(x, y) %>% summarise(spp =	sum(get(spp))/n())
+		logs2 <- filter(logs, year == yr - 1) %>% group_by(x, y) %>% summarise(spp = sum(get(spp))/n())
 
 	# Do interpolation
-	akima.li <- interp(logs2[["x"]], logs2[["y"]], logs2[["spp"]], nx = nx, ny = ny)
+	akima.li <- interp(logs2[["x"]], logs2[["y"]], logs2[["spp"]], nx = nx_i, ny = ny_i, duplicate = "mean")
 
-	# Make as DF
+	# Make as DF - need to expand back to the correct scale of 1 x 1 cells
 	akimaDF <- data.frame(x = rep(seq_len(nx), times = ny), 
 		      y = rep(seq_len(ny), each = nx),
-		      spp = as.numeric(akima.li$z))
+		      spp = as.numeric(apply(t(apply(akima.li$z, 1, rep, each = sc)), 2, rep, each = sc)))
 	akimaDF$spp[is.na(akimaDF$spp)] <- 0
 
 	## Get coords for cells above threshold catch
 		q_close <- quantile(akimaDF$spp[akimaDF$spp > 0], prob = thresh)
 		akimaDF$closure <- ifelse(akimaDF$spp >= q_close, "Closed" , "Open")
 		closed_areas <- akimaDF[akimaDF$closure == 'Closed',]
-		
 		print(paste("Closing", nrow(closed_areas), "areas = ", 100 * nrow(closed_areas)/c(nx*ny), "% of area"))
-	
 			}
-
 		}
 
 		#### Survey logs 

@@ -6,12 +6,12 @@
 \usage{
 init_closure(input_coords = NULL, basis = "commercial",
   rationale = "high_pop", spp1 = "spp1", spp2, year_start = 1,
-  closure_thresh = 0.95, temp_dyn = "annual")
+  year_basis = NULL, closure_thresh = 0.95, sc = 1, temp_dyn = "annual")
 }
 \arguments{
-\item{input_coords}{is a list of coordinates defining the closure(s). If the
-temp_dyn are not static, the list should be multilayered with the
-[[week/month]][[coords]]}
+\item{input_coords}{is a dataframe of x,y coordinates defining the
+closure(s). If the temp_dyn are not static, the list should be multilayered
+with the [[week/month]][x, y]}
 
 \item{basis}{is a character string detailing the data used to define a
 closure 'on the fly'. Can be \emph{survey} to be based on survey data,
@@ -34,8 +34,15 @@ high_pop.}
 \item{year_start}{is a Numeric indicating the first year the spatial
 closure(s) shoud be implemented.}
 
+\item{year_basis}{is a vector indicating the years of data the closure is
+based on...Must be before \code{year_start}. If \code{NULL} then closure
+will be calculated dynamically each year.}
+
 \item{closure_thresh}{is the quantile of catches or high catch ratio which
 determines closed cells}
+
+\item{sc}{is a Numeric indicating the scale of data to use for the closure,
+e.g. if the data is aggregated to 2 x 2 cells, is 2.}
 
 \item{temp_dyn}{is a character string detailing whether closures should
 be temporally 'annual', or change 'monthly' or 'weekly'.}

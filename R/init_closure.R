@@ -3,9 +3,9 @@
 #' @description \code{init_closure} sets up the parameters for spatial
 #' closure(s) in the simulation.
 #'
-#' @param input_coords is a list of coordinates defining the closure(s). If the
-#' temp_dyn are not static, the list should be multilayered with the
-#' [[week/month]][[coords]]
+#' @param input_coords is a dataframe of x,y coordinates defining the
+#' closure(s). If the temp_dyn are not static, the list should be multilayered
+#' with the [[week/month]][x, y]
 #' @param basis is a character string detailing the data used to define a
 #' closure 'on the fly'. Can be \emph{survey} to be based on survey data,
 #' \emph{commercial} to be based on commercial data, \emph{real_pop} to be
@@ -22,8 +22,13 @@
 #' high_pop.
 #' @param year_start is a Numeric indicating the first year the spatial
 #' closure(s) shoud be implemented.
+#' @param year_basis is a vector indicating the years of data the closure is
+#' based on...Must be before \code{year_start}. If \code{NULL} then closure
+#' will be calculated dynamically each year. 
 #' @param closure_thresh is the quantile of catches or high catch ratio which
 #' determines closed cells
+#' @param sc is a Numeric indicating the scale of data to use for the closure,
+#' e.g. if the data is aggregated to 2 x 2 cells, is 2.
 #' @param temp_dyn is a character string detailing whether closures should
 #' be temporally 'annual', or change 'monthly' or 'weekly'. 
 
@@ -34,10 +39,9 @@
 
 #' @export
 
-init_closure <- function (input_coords = NULL, basis = 'commercial', rationale = 'high_pop', spp1 = 'spp1', spp2, year_start = 1, closure_thresh = 0.95, temp_dyn = 'annual') {
+init_closure <- function (input_coords = NULL, basis = 'commercial', rationale = 'high_pop', spp1 = 'spp1', spp2, year_start = 1, year_basis = NULL, closure_thresh = 0.95, sc = 1, temp_dyn = 'annual') {
 
 	input_coords <- input_coords
-
 	temp_dyn     <- temp_dyn
 
 	if(!temp_dyn == 'annual') {
@@ -62,8 +66,12 @@ init_closure <- function (input_coords = NULL, basis = 'commercial', rationale =
 	if(basis == "survey" & temp_dyn %in% c("weekly", "monthly")) stop("The survey only takes place once a year, so temp_dyn has to be annual")
 
 	year_start     <- year_start
+	if(any(year_basis >= year_start)) stop("The years on which the closures are based must be before the closure implementation year!")
+	
 	closure_thresh <- closure_thresh
 
-	return(list(input_coords = input_coords, basis = basis, rationale = rationale, spp1 = spp1, spp2 = spp2, year_start = year_start, closure_thresh = closure_thresh, temp_dyn = temp_dyn)) 
+	sc <- sc
+
+	return(list(input_coords = input_coords, basis = basis, rationale = rationale, spp1 = spp1, spp2 = spp2, year_start = year_start, year_basis = year_basis, closure_thresh = closure_thresh, sc = sc, temp_dyn = temp_dyn)) 
 	
 }
