@@ -12,11 +12,110 @@ library(ggplot2)
 load('TestResults.RData')
 
 ## Test results
+
+## Commercial data ##
 logs <- combine_logs(res[["fleets_catches"]])
+ratios <- T
 
 ## Take one month of a year
 ## Summarise with catch/no_tows
+
+if(ratios != T) {
 logs2 <- filter(as.data.frame(logs), month == 6, year == 10) %>% group_by(x, y) %>% summarise(spp1 = sum(spp1)/n())
+}
+
+##############
+## Ratios!! ##
+##############
+if(ratios == T) {
+logs2 <- filter(as.data.frame(logs), month == 6, year == 10) %>% group_by(x, y) %>% summarise(spp1 = sum(spp1) / n(), spp2 =sum(spp2)/n())
+
+## Calculate the ratios
+logs2$dat <- logs2$spp2 / logs2$spp1
+
+## Deal with any NaN and Infs - calculate the Infs as large
+## numbers and Nans as 0s
+logs2$dat[is.nan(logs2$dat)]      <- 0 
+logs2$dat[is.infinite(logs2$dat)] <- 10 * logs2$spp2[is.infinite(logs2$dat)]
+## scale the values
+logs2$dat <- 1 - (logs2$dat / max(logs2$dat)) ## want to exclude low spp2 areas
+
+logs2$spp1 <- logs2$dat
+}
+###########
+
+###########
+## Survey data
+###########
+
+logs <- res[["survey"]][["log.mat"]]
+
+if(ratios != T) {
+logs2 <- filter(as.data.frame(logs), year == 10) %>% group_by(x, y) %>% summarise(spp1 = sum(spp1)/n())
+}
+
+if(ratios == T) {
+logs2 <- filter(as.data.frame(logs), year == 10) %>% group_by(x, y) %>% summarise(spp1 = sum(spp1)/n(), spp2 = sum(spp2)/n())
+## Calculate the ratios
+logs2$dat <- logs2$spp2 / logs2$spp1
+
+## Deal with any NaN and Infs - calculate the Infs as large
+## numbers and Nans as 0s
+logs2$dat[is.nan(logs2$dat)]      <- 0 
+logs2$dat[is.infinite(logs2$dat)] <- 10 * logs2$spp2[is.infinite(logs2$dat)]
+## scale the values
+logs2$dat <- 1 - (logs2$dat / max(logs2$dat)) ## want to exclude low spp2 areas
+
+logs2$spp1 <- logs2$dat
+
+
+}
+
+####################
+## Real pop basis ##
+####################
+
+logs <- res[["pop_bios"]]
+
+# [[yr,wk]][[spp]]
+
+yr <- 10
+
+## Also need to lapply over the number of weeks we want!!
+## If using "monthly", should we approximate the month?
+
+wks   <- 1:52
+n_spp <- 4
+
+
+lapply(wks, function(w) {
+
+## Number species
+res2 <- lapply(seq_len(n_spp), function(x) {
+res <- data.frame(spp = as.numeric(logs[[10,12]][[x]]))
+colnames(res) <- paste("spp",x,sep="")
+ return(res) 
+	   })
+
+logs2  <- cbind(data.frame(x = rep(seq_len(100), times = 100), 
+			   y = rep(seq_len(100), each = 100),
+			   do.call(cbind,logs2)))
+
+}
+
+
+
+
+res2 <- lapply(seq_len(n_spp), function(x) {
+res <- data.frame(spp = as.numeric(logs[[10,12]][[x]]))
+colnames(res) <- paste("spp",x,sep="")
+ return(res) 
+	   })
+
+logs2  <- cbind(data.frame(x = rep(seq_len(100), times = 100), 
+			   y = rep(seq_len(100), each = 100),
+			   do.call(cbind,logs2)))
+
 
 ## These are the data
 logs2 %>% as.data.frame %>% 

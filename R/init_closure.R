@@ -53,6 +53,8 @@ init_closure <- function (input_coords = NULL, basis = 'commercial', rationale =
 	basis     <- basis
 	if(!basis %in% c("survey", "commercial", "real_pop")) stop("The basis must be survey, commercial or real_pop") 
 
+	if(temp_dyn %in% c("weekly", "monthly") & basis == 'survey') stop("Survey closures can only be on a fixed annual basis. Please set 'temp_dyn' to 'annual when using survey data")
+
 	rationale <- rationale
 	if(!rationale %in% c("high_pop", "high_ratio")) stop("The rationale must be either high_pop or high_ratio")
 

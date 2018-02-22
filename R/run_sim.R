@@ -193,12 +193,28 @@ print(sapply(names(Rec), function(x) { sum(Rec[[x]]) / sum(B[[x]])}))
 ## Calculate where to place the closures
 ## Can't close areas in the first year, unless manually defined
 
+
+if(t > 1) {
+
+
 ## Dynamic closures
-if(closeArea & CalcClosures & year.breaks[t] >= closure[["year_start"]] & is.null(closure[["input_coords"]])) {
+if(closeArea & CalcClosures & year.breaks[t] >= closure[["year_start"]] & is.null(closure[["input_coords"]]) & is.null(closure[["year_basis"]])) {
 print("Calculating where to place closures dynamically...")
 print(paste("Based on", closure[["basis"]], "on a", closure[["temp_dyn"]], "basis using", closure[["rationale"]]))
 
 AreaClosures <- close_areas(sim_init = sim_init, closure_init = closure, commercial_logs = catches, survey_logs = survey, real_pop = pop_bios, t = t)
+
+}
+
+## Closures calculated based on fixed year
+
+if(closeArea & CalcClosures & year.breaks[t] >= closure[["year_start"]] & is.null(closure[["input_coords"]]) & !is.null(closure[["year_start"]])) {
+print("Calculating where to place closures only once for rest of sim")
+print(paste("Based on", closure[["basis"]], "on a", closure[["temp_dyn"]], "basis using", closure[["rationale"]]))
+
+AreaClosures <- close_areas(sim_init = sim_init, closure_init = closure, commercial_logs = catches, survey_logs = survey, real_pop = pop_bios, t = t)
+
+}
 
 }
 
