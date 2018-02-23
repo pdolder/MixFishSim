@@ -202,17 +202,16 @@ if(closeArea & CalcClosures & year.breaks[t] >= closure[["year_start"]] & is.nul
 print("Calculating where to place closures dynamically...")
 print(paste("Based on", closure[["basis"]], "on a", closure[["temp_dyn"]], "basis using", closure[["rationale"]]))
 
-AreaClosures <- close_areas(sim_init = sim_init, closure_init = closure, commercial_logs = catches, survey_logs = survey, real_pop = pop_bios, t = t)
+AreaClosures <- close_areas(sim_init = sim_init, closure_init = closure, commercial_logs = catches, survey_logs = survey[["log.mat"]], real_pop = pop_bios, t = t)
 
 }
 
 ## Closures calculated based on fixed year
-
-if(closeArea & CalcClosures & year.breaks[t] >= closure[["year_start"]] & is.null(closure[["input_coords"]]) & !is.null(closure[["year_start"]])) {
-print("Calculating where to place closures only once for rest of sim")
+if(closeArea & CalcClosures & year.breaks[t] >= closure[["year_start"]] & is.null(closure[["input_coords"]]) & !is.null(closure[["year_basis"]])) {
+print("Calculating where to place closures based on the input years / months / weeks")
 print(paste("Based on", closure[["basis"]], "on a", closure[["temp_dyn"]], "basis using", closure[["rationale"]]))
 
-AreaClosures <- close_areas(sim_init = sim_init, closure_init = closure, commercial_logs = catches, survey_logs = survey, real_pop = pop_bios, t = t)
+AreaClosures <- close_areas(sim_init = sim_init, closure_init = closure, commercial_logs = catches, survey_logs = survey[["log.mat"]], real_pop = pop_bios, t = t)
 
 }
 
@@ -353,7 +352,7 @@ B <- Bp1
 
 if(sim_init[["brk.idx"]][["day.breaks"]][t] %in% survey[["log.mat"]][,"day"] & !is.null(survey)) {
 
-print("undertaking scientific survey") 
+print("undertaking scientific survey")
 
 # doy and y
   doy <- sim_init[["brk.idx"]][["day.breaks"]][t]

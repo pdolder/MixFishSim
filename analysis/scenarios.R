@@ -14,3 +14,4 @@ sc <- sc[!(sc$timescale %in% c("weekly","monthly") & sc$data_type == 'survey'),]
 nrow(sc)
 
 write.csv(sc, file = "scenarios.csv", row.names = F)
+save(sc, file = "scenarios.RData")

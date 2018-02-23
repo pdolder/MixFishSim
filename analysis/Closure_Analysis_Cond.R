@@ -1,7 +1,13 @@
-###############################################
-# Stability test for fully conditioned model 
-###############################################
-#source('build.R')
+############################################################################
+## Code to run a number of scenarios testing data type (commercial, survey,
+## real population), resolution (spatio-temporal) and basis for closure (high
+## pop or high ratio spp1:spp2)
+#############################################################################
+#######################
+#
+## Conditioning
+#
+######################
 
 library(MixFishSim)
 
@@ -11,10 +17,6 @@ set.seed(123, kind = "L'Ecuyer-CMRG")
 
 sim <- init_sim(nrows = 100, ncols = 100, n_years = 20, n_tows_day = 4, n_days_wk_fished = 5,
      n_fleets = 5, n_vessels = 20, n_species = 4, move_freq = 2)
-
-
-# Here's what is produced...
-#names(sim)
 
 ## create the suitable habitat for each species
 
@@ -138,97 +140,11 @@ fleets <- init_fleet(sim_init = sim, VPT = c("spp1" = 100, "spp2" = 200, "spp3" 
 
 ## Setup survey
 survey <- init_survey(sim_init = sim, design = "fixed_station", 
-		n_stations = 50, start_day = 92, Qs = c("spp1" = 1, "spp2" = 1, "spp3" = 1, "spp4" = 1)) 
+		n_stations = 100, start_day = 92, Qs = c("spp1" = 1, "spp2" = 1, "spp3" = 1, "spp4" = 1)) 
 
-## Example 1
-#closure <- init_closure(input_coords = NULL, basis = 'commercial', rationale =
-#'high_pop', spp1 = 'spp1', spp2 = NULL, year_start = 2, year_basis = NULL, closure_thresh = 0.9, sc = 5, temp_dyn = 'annual')
+######
+# Save all objects
 
-closure <- init_closure(input_coords = NULL, basis = 'survey', rationale = 'high_ratio', spp1 = 'spp1', spp2 = 'spp2', year_start = 2, year_basis = 1, closure_thresh = 0.9, sc = 5, temp_dyn = 'annual')
-
-## Example 2 - fails correctly
-#closure <- init_closure(input_coords = list("area1" = c(2,3), "area2" = c(3,5)),
-#			basis = 'survey', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 15, temp_dyn = 'weekly')
-
-## Example 3
-#closure <- init_closure(input_coords = NULL, basis = 'survey', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 15, closure_thresh = 0.95, temp_dyn = 'weekly')
-
-## run_sim function for overall control
-res <- run_sim(sim_init = sim, pop_init = Pop, move_cov = moveCov, fleets_init = fleets, hab_init = hab, InParallel = TRUE, cores = 1, save_pop_bio = TRUE, survey = survey, closure = closure)
-
-format(object.size(res), units = "auto")
-
-save(res, file = 'TestResults_Close.RData')
-############################################
-
-############################################
-load('TestResults.RData')
-load('TestResults_Close.RData')
-
-plot_pop_summary(res, timestep = "daily", save = FALSE)
-
-plot_pop_summary(res, timestep = "annual", save = FALSE)
-ggsave(file.path("plots", "annual_summary.png"))
-
-plot_daily_fdyn(res)
-ggsave(file.path("plots", "fDynamics.png"))
-
-## Look at a vessels tracks
-
-logs <- combine_logs(res[["fleets_catches"]])
-
-plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 1, vessel_no = 1,
-       year_trip = 20, trip_no = 1)
-ggsave(file.path("plots", "vessel_move.png"))
-
-# multiple trips
-plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 1, vessel_no = 1:10,
-       year_trip = 10, trip_no = 43:52)
-ggsave(file.path("plots", "vessel_multi_move.png"))
-
-# with the value field behind
-plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 1, vessel_no = 1:10,
-       year_trip = 10, trip_no = 43, fleets_init = fleets, pop_bios = res[["pop_bios"]])
-ggsave(file.path("plots", "vessel_move_value.png"))
-
-
-plot_fleet_trip(logs = logs, fleet_no = 1, year_trip = 10, trip_no = 1)
-ggsave(file.path("plots", "fleets_move.png"))
-
-# catch compositions
-png(file = file.path("plots", "catch_comp.png"), width = 1600, height = 400)
-plot_catch_comp(gran = c(20, 10, 5, 2), logs = logs, fleets = 1:5,
-       vessels = 1:20, trips = 1:20, years = 1:10, cluster_plot = FALSE)
-dev.off()
-
-png(file = file.path("plots", "catch_comp_clusters.png"), width = 1600, height = 800)
-plot_catch_comp(gran = c(20, 10, 5, 2), logs = logs, fleets = 1:5,
-       vessels = 1:20, trips = 1:60, years = 1:10, cluster_plot = TRUE, cluster_k = 5)
-dev.off()
-
-plot_catch_comp(gran = c(20, 10, 5, 2), logs = logs, fleets = 1:5,
-       vessels = 1:20, trips = 1:60, years = 1:10, cluster_plot = TRUE, cluster_k = 5, scale_data = TRUE)
-
-# fisheies independent survey
-plot_survey(survey = res[["survey"]], type = "spatial")
-ggsave(file.path("plots", "spatial_survey.png"), width = 12, height = 16)
-
-plot_survey(survey = res[["survey"]], type = "index")
-ggsave(file.path("plots", "survey_index.png"))
-
-
-# res[["fleets_catches"]] levels
-# [[1]] is all fleet
-# [[1]][[1]] is the first fleets catch logs
-# [[1]][[1]][[1]] is the first vessel of the first fleet
-# [[1]][[2]][[1]] is the spatial catches of both species for the first fleet
-# [[1]][[2]][[1]][[1]] is the spatial catches for the first fleet, first
-# species
-
-## The step functions diagnostics
-
-png(file = file.path("plots", "step_function.png"), width = 800, height = 400)
-plot_realised_stepF(logs = logs, fleet_no = 2, vessel_no = 2)
-dev.off()
+save(sim, Pop, moveCov, fleets, hab, survey, file = "Common_Params.RData")
 
 

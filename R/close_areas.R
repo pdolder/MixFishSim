@@ -38,7 +38,7 @@ close_areas <- function (sim_init = sim_init, closure_init = NULL, commercial_lo
 	ny <- sim_init[["idx"]][["ncols"]]
 
 	nx_i <- nx/sc
-	nx_y <- ny/sc
+	ny_i <- ny/sc
 
 	## Time references
 
@@ -142,7 +142,7 @@ if(timestep == 'weekly') {closed_areas <- coords[[wk]]}
 		#### Survey logs 
 		if(basis == 'survey') {
 
-		logs <- survey_logs
+		logs <- as.data.frame(survey_logs)
 
 		if(rationale == 'high_pop') {
 		## Filter as appropriate:- here based on either yr_base or
@@ -173,14 +173,14 @@ if(timestep == 'weekly') {closed_areas <- coords[[wk]]}
 			logs_wk_list <- lapply(wk, function(w) {
 
 		## Number species
-		res2 <- lapply(seq_len(n_spp), function(x) {
-		res <- data.frame(spp = as.numeric(logs[[y,w]][[x]]))
+		res2 <- lapply(seq_len(length(real_pop[[1,1]])), function(x) {
+		res <- data.frame(spp = as.numeric(real_pop[[y,w]][[x]]))
 		colnames(res) <- paste("spp",x,sep="")
 		 return(res) 
 			   })
 
-		res3 <- cbind(data.frame(x = rep(seq_len(100), times = 100), 
-			   y = rep(seq_len(100), each = 100),
+		res3 <- cbind(data.frame(x = rep(seq_len(nx), times = ny), 
+			   y = rep(seq_len(ny), each = nx),
 			   year = y, week = w,  do.call(cbind,res2)))
 
 		return(res3)
@@ -230,8 +230,19 @@ q_close <- quantile(akimaDF$dat[akimaDF$dat > 0], prob = thresh)
 akimaDF$closure <- ifelse(akimaDF$dat >= q_close, "Closed" , "Open")
 closed_areas <- akimaDF[akimaDF$closure == 'Closed',]
 
+### If using high_ratio, sometimes there are a large proportion where we catch
+### spp a but not spp b. So to avoid very large closures (higher than
+### threshold) we need to reduce the closure sizes
 
-print(paste("Closing", nrow(closed_areas), "areas = ", 100 * nrow(closed_areas)/c(nx*ny), "% of area"))
+if( ( nrow( closed_areas ) / c( nx * ny ) ) > (1 - thresh) ) {
+	## Should be max of (1 - thresh) * (nx * ny) closures
+	cl <- (1 - thresh) * (nx * ny)
+	closed_areas <- closed_areas[1:cl,]  ## This isn't ideal as will bunch
+	
+}
+
+
+print(paste("Closing", nrow(closed_areas), "areas = ", 100 * nrow(closed_areas)/c(nx*ny), "% of area, 5 % of areas with positive catches"))
 
 return(closed_areas)
 }
