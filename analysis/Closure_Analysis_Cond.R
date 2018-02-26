@@ -76,6 +76,9 @@ moveCov <- init_moveCov(sim_init = sim, steps = 52,
 				       "spp3" = list("mu" = 17, va = 7), 
 				       "spp4" = list("mu" = 12, va = 10)))
 
+plot_spatiotemp_hab(hab = hab, moveCov =, spwn_wk = list("spp1" = 16:18, "spp2" = 16:19, "spp3" = 16:18, "spp4" = 18:20))
+
+
 ## Initialise the fleets
 Q_mult  <- 0.01
 

@@ -45,15 +45,15 @@ b <- params[["b"]]
 B <- B
 
 if(model=="BH") {
-	Recr1  <- (a*B)/(b+B)
+	Recr1  <- log((a*B)/(b+B)) - ((cv^2)/2)
 	Recr2  <- apply(Recr1, 1:2, function(x) {
-		    rnorm(1, mean = x, sd = cv * x) })
+		    rlnorm(1, mean = x, sdlog = cv) })
 }
 
 if(model=="Ricker") {
-	Recr1  <- B*exp(a - b * B)
+	Recr1  <- log(B*exp(a - b * B)) - ((cv^2)/2)
 	Recr2  <- apply(Recr1, function(x) {
-		     rnorm(1, mean = x, sd = cv * x)
+		     rlnorm(1, mean = x, sdlog = cv)
 		    })
 }
 

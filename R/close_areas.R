@@ -140,7 +140,7 @@ if(timestep == 'weekly') {closed_areas <- coords[[wk]]}
 			} ## end commercial basis
 			
 		#### Survey logs 
-		if(basis == 'survey') {
+if(basis == 'survey') {
 
 		logs <- as.data.frame(survey_logs)
 
@@ -165,7 +165,7 @@ if(timestep == 'weekly') {closed_areas <- coords[[wk]]}
 		} ## End survey basis 
 
 		#### real pop
-		if(basis == 'real_pop') {
+if(basis == 'real_pop') {
 
 		## Stored as matrices within a nested list, so we need to
 			## unravel
@@ -181,7 +181,7 @@ if(timestep == 'weekly') {closed_areas <- coords[[wk]]}
 
 		res3 <- cbind(data.frame(x = rep(seq_len(nx), times = ny), 
 			   y = rep(seq_len(ny), each = nx),
-			   year = y, week = w,  do.call(cbind,res2)))
+			   year = y, month = sim_init[["brk.idx"]][["month.breaks"]],week = w,  do.call(cbind,res2)))
 
 		return(res3)
 		})

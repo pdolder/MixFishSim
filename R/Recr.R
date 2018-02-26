@@ -44,16 +44,17 @@ b <- params[["b"]]
 B <- B
 
 if(model=="BH") {
-	Recr1  <- (a*B)/(b+B)
-	Recr2  <- rnorm(1, mean = Recr1, sd = cv * Recr1)
+	Recr1  <- log((a*B)/(b+B)) - ((cv^2)/2)
+	Recr2  <- rlnorm(1, mean = Recr1, sdlog = cv)
 }
 
 if(model=="Ricker") {
-	Recr1  <- B*exp(a - b * B)
-	Recr2  <- rnorm(1, mean = Recr1, sd = cv * Recr1)
+	Recr1  <- log(B*exp(a - b * B)) - ((cv^2)/2)
+	Recr2  <- rlnorm(1, mean = Recr1, sdlog = cv)
 }
 
 return(Recr2)
 
 }
+
 

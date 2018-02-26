@@ -18,6 +18,6 @@
 #' @export
 
 find_f <- function(C = C, B = B, M = M, FUN = baronov_f) {
-return(uniroot(FUN,c(0,2),tol = 1E-8, C = C, B = B, M = M,extendInt = "yes")$root)
+return(uniroot(FUN,c(0,2),tol = 1E-8, C = C, B = B, M = M,extendInt = "yes", maxiter = 10000)$root)
 }
 

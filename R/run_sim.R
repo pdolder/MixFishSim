@@ -182,7 +182,6 @@ print("Recruiting")
     }
 names(Rec) <- paste0("spp", seq_len(n_spp))
 
-print(sapply(names(Rec), function(x) { sum(Rec[[x]]) / sum(B[[x]])}))
 
 }
 
