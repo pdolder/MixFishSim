@@ -67,8 +67,8 @@ AreaClosures <- data.frame(x = -1, y = -1) # Dummy closures
 ###################################
 print("Calculating movement probabilities")
 
-MoveProb  <- foreach(s = paste0("spp", seq_len(n_spp)))  %dopar% move_prob_Lst(lambda = 0.3, hab = hab_init[["hab"]][[s]])
-MoveProb_spwn <- foreach(s = paste0("spp", seq_len(n_spp)))  %dopar% move_prob_Lst(lambda = 0.3, hab = hab_init[["spwn_hab"]][[s]])
+MoveProb  <- foreach(s = paste0("spp", seq_len(n_spp)))  %do% move_prob_Lst(lambda = 0.3, hab = hab_init[["hab"]][[s]])
+MoveProb_spwn <- foreach(s = paste0("spp", seq_len(n_spp)))  %do% move_prob_Lst(lambda = 0.3, hab = hab_init[["spwn_hab"]][[s]])
 	  
 names(MoveProb)      <- paste0("spp", seq_len(n_spp))
 names(MoveProb_spwn) <- paste0("spp", seq_len(n_spp))
@@ -160,7 +160,7 @@ if(Recruit) { # Check for new week
 print("Recruiting")
 
     ## Check if its a recruitment week for the population
- Rec <- foreach(s = paste0("spp", seq_len(n_spp))) %dopar% {
+ Rec <- foreach(s = paste0("spp", seq_len(n_spp))) %do% {
 
 	    if(week.breaks[t] %in% pop_init[["dem_params"]][[s]][["rec_wk"]]) {
 
@@ -248,7 +248,7 @@ if(InParallel) {
 
 if(t==1) {
 
-catches <- foreach(fl=seq_len(n_fleets)) %dopar% 
+catches <- foreach(fl=seq_len(n_fleets)) %do% 
 
      go_fish_fleet(FUN = go_fish, 
 			sim_init = sim_init, 
@@ -263,7 +263,7 @@ if(t > 1) {
 
 # if its the same day 
 if(day.breaks[t] == day.breaks[t-1]) {
-catches <- foreach(fl=seq_len(n_fleets)) %dopar% 
+catches <- foreach(fl=seq_len(n_fleets)) %do% 
 
 	go_fish_fleet(FUN = go_fish, 	sim_init = sim_init, 
 			fleets_params = fleets_init[["fleet_params"]][[fl]],
@@ -276,7 +276,7 @@ catches <- foreach(fl=seq_len(n_fleets)) %dopar%
 # if its a new day - reset the spatial catches counter
 if(day.breaks[t] != day.breaks[t-1]) {
 
-catches <- foreach(fl=seq_len(n_fleets)) %dopar% 
+catches <- foreach(fl=seq_len(n_fleets)) %do% 
 
   go_fish_fleet(FUN = go_fish, 
 		sim_init = sim_init, 
@@ -327,7 +327,7 @@ spat_fs <- find_spat_f_pops(sim_init = sim_init, C = spp_catches, B = B,
 print(sapply(names(spat_fs), function(x) weighted.mean(spat_fs[[x]], B[[x]])))
 
 # Apply the delay difference model
-Bp1 <- foreach(x = paste0("spp", seq_len(n_spp))) %dopar% {
+Bp1 <- foreach(x = paste0("spp", seq_len(n_spp))) %do% {
 
 al   <- ifelse(week.breaks[t] %in% pop_init[["dem_params"]][[x]][["rec_wk"]],
 	     1/length(pop_init[["dem_params"]][[x]][["rec_wk"]]), 0)
@@ -402,7 +402,7 @@ if(Pop_move) {
 	move_cov_wk <- move_cov[["cov.matrix"]][[week.breaks[t]]]
 
 		
-	B <- foreach(s = paste0("spp", seq_len(n_spp))) %dopar% {
+	B <- foreach(s = paste0("spp", seq_len(n_spp))) %do% {
 
 	move_cov_wk_spp <- matrix(nc = sim_init[["idx"]][["ncols"]],
 				 nr = sim_init[["idx"]][["nrows"]],
@@ -428,7 +428,7 @@ if(Pop_move) {
 	
 	## Also need to move the previous month biomass, so the f calcs match
 	## as an input to the delay diff
-	Bm1 <- foreach(s = paste0("spp", seq_len(n_spp))) %dopar% {
+	Bm1 <- foreach(s = paste0("spp", seq_len(n_spp))) %do% {
 		
 	move_cov_wk_spp <- matrix(nc = sim_init[["idx"]][["ncols"]],
 				 nr = sim_init[["idx"]][["nrows"]],
@@ -458,7 +458,7 @@ if(Pop_move) {
 
 	if(is.null(move_cov)) {
 
-	B <- foreach(s = paste0("spp", seq_len(n_spp))) %dopar% {
+	B <- foreach(s = paste0("spp", seq_len(n_spp))) %do% {
 	
 	## If in a non-spawning week or spawning week
 	if(!week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
@@ -476,7 +476,7 @@ if(Pop_move) {
 	
 	## Also need to move the previous month biomass, so the f calcs match
 	## as an input to the delay diff
-	Bm1 <- foreach(s = paste0("spp", seq_len(n_spp))) %dopar% {
+	Bm1 <- foreach(s = paste0("spp", seq_len(n_spp))) %do% {
 
 	## If in a non-spawning week or spawning week
 	if(!week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
