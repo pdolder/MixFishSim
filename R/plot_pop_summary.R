@@ -64,7 +64,7 @@ plot_pop_summary <- function(results = res, timestep = 'daily', save = FALSE, sa
 	}
 
 	if(save == TRUE) {
-	ggsave(file = file.path(paste(save.location, '/Population_Summary', timstep, '.png', sep = "")))
+	ggsave(file = file.path(paste(save.location, '/Population_Summary', timestep, '.png', sep = "")))
 	}
 }
 

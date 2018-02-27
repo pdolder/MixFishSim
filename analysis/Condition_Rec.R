@@ -63,9 +63,9 @@ Pop <- init_pop(sim_init = sim, Bio = c(spp1 = 1e5, spp2 = 2e5, spp3 = 1e5, spp4
 		lambda = c("spp1" = 0.1, "spp2" = 0.1, "spp3" = 0.1, "spp4" = 0.1), 
 		init_move_steps = 20, 
 		rec_params =  list("spp1" = c("model" = "BH", "a" = 6, "b" = 4, "cv" = 0.7), 
-				   "spp2" = c("model" = "BH", "a" = 17, "b" = 4, "cv" = 0.6),
+				   "spp2" = c("model" = "BH", "a" = 27, "b" = 4, "cv" = 0.6),
 				   "spp3" = c("model" = "BH", "a" = 4, "b" = 11, "cv" = 0.7), 
-				   "spp4" = c("model" = "BH", "a" = 1, "b" = 2, "cv" = 0.6)
+				   "spp4" = c("model" = "BH", "a" = 1, "b" = 0.5, "cv" = 0.6)
 				   ),
 				   rec_wk = list("spp1" = 13:16, "spp2" = 12:16, "spp3" = 14:16, "spp4" = 16:20),
 				   spwn_wk = list("spp1" = 16:18, "spp2" = 16:19, "spp3" = 16:18, "spp4" = 18:20),

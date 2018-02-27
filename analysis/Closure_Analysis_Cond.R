@@ -15,7 +15,7 @@ set.seed(123, kind = "L'Ecuyer-CMRG")
 
 ## initialise the simulation
 
-sim <- init_sim(nrows = 100, ncols = 100, n_years = 20, n_tows_day = 4, n_days_wk_fished = 5,
+sim <- init_sim(nrows = 100, ncols = 100, n_years = 10, n_tows_day = 4, n_days_wk_fished = 5,
      n_fleets = 5, n_vessels = 20, n_species = 4, move_freq = 2)
 
 ## create the suitable habitat for each species
@@ -57,10 +57,10 @@ Pop <- init_pop(sim_init = sim, Bio = c(spp1 = 1e5, spp2 = 2e5, spp3 = 1e5, spp4
 		hab = hab[["hab"]], start_cell = c(25,25), 
 		lambda = c("spp1" = 0.1, "spp2" = 0.1, "spp3" = 0.1, "spp4" = 0.1), 
 		init_move_steps = 20, 
-		rec_params =  list("spp1" = c("model" = "BH", "a" = 60, "b" = 250, "cv" = 0.4), 
-				   "spp2" = c("model" = "BH", "a" = 100, "b" = 250, "cv" = 0.3),
-				   "spp3" = c("model" = "BH", "a" = 80, "b" = 200, "cv" = 0.4), 
-				   "spp4" = c("model" = "BH", "a" =  2, "b" = 50, "cv" = 0.3)
+		rec_params =  list("spp1" = c("model" = "BH", "a" = 6, "b" = 4, "cv" = 0.7), 
+				   "spp2" = c("model" = "BH", "a" = 27, "b" = 4, "cv" = 0.6),
+				   "spp3" = c("model" = "BH", "a" = 4, "b" = 11, "cv" = 0.7), 
+				   "spp4" = c("model" = "BH", "a" =  1, "b" = 0.5, "cv" = 0.6)
 				   ),
 				   rec_wk = list("spp1" = 13:16, "spp2" = 12:16, "spp3" = 14:16, "spp4" = 16:20),
 				   spwn_wk = list("spp1" = 16:18, "spp2" = 16:19, "spp3" = 16:18, "spp4" = 18:20),
@@ -129,11 +129,11 @@ fleets <- init_fleet(sim_init = sim, VPT = c("spp1" = 100, "spp2" = 200, "spp3" 
 		     "fleet 4" = c("spp1" = Q_mult * 1, "spp2" = Q_mult * 1, "spp3" = Q_mult * 1, "spp4" = Q_mult * 5),
 		     "fleet 5" = c("spp1" = Q_mult * 1, "spp2" = Q_mult * 3, "spp3" = Q_mult * 2, "spp4" = Q_mult * 1)
 		     ),
-	   step_params = list("fleet 1" = c("rate" = 10, "B1" = 1, "B2" = 10, "B3" = B3_1),
-			      "fleet 2" = c("rate" = 20, "B1" = 2 , "B2" = 15, "B3" = B3_2),
-			      "fleet 3" = c("rate" = 15, "B1" = 1, "B2" =  8, "B3" = B3_3),
-			      "fleet 4" = c("rate" = 25, "B1" = 2, "B2" = 12, "B3" = B3_4),
-			      "fleet 5" = c("rate" = 10, "B1" = 3, "B2" =  7, "B3" = B3_5)
+	   step_params = list("fleet 1" = c("rate" = 20, "B1" = 1, "B2" = 10, "B3" = B3_1),
+			      "fleet 2" = c("rate" = 30, "B1" = 2 , "B2" = 15, "B3" = B3_2),
+			      "fleet 3" = c("rate" = 25, "B1" = 1, "B2" =  8, "B3" = B3_3),
+			      "fleet 4" = c("rate" = 35, "B1" = 2, "B2" = 12, "B3" = B3_4),
+			      "fleet 5" = c("rate" = 20, "B1" = 3, "B2" =  7, "B3" = B3_5)
 			      ),
 	   past_knowledge = TRUE,
 	   past_year_month = TRUE,
