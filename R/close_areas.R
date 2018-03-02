@@ -181,7 +181,8 @@ if(basis == 'real_pop') {
 
 		res3 <- cbind(data.frame(x = rep(seq_len(nx), times = ny), 
 			   y = rep(seq_len(ny), each = nx),
-			   year = y, month = sim_init[["brk.idx"]][["month.breaks"]],week = w,  do.call(cbind,res2)))
+			   year = y, month = unique(sim_init[["brk.idx"]][["month.breaks"]][sim_init[["brk.idx"]][["week.breaks"]]==w]),
+			   week = w,  do.call(cbind,res2)))
 
 		return(res3)
 		})

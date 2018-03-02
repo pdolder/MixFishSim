@@ -61,7 +61,8 @@ B    <- pop_init[["Start_pop"]]  # For storing current biomass, is overwritten
 Bm1  <- pop_init[["Start_pop"]]  # For storing last time-step biomass, is overwritten
 
 AreaClosures <- data.frame(x = -1, y = -1) # Dummy closures 
-
+close_count <- 0 # counter for recording closures
+closure_list <- list()
 ###################################
 ###### Move probabilities #########
 ###################################
@@ -195,13 +196,16 @@ names(Rec) <- paste0("spp", seq_len(n_spp))
 
 if(t > 1) {
 
-
 ## Dynamic closures
 if(closeArea & CalcClosures & year.breaks[t] >= closure[["year_start"]] & is.null(closure[["input_coords"]]) & is.null(closure[["year_basis"]])) {
 print("Calculating where to place closures dynamically...")
 print(paste("Based on", closure[["basis"]], "on a", closure[["temp_dyn"]], "basis using", closure[["rationale"]]))
 
 AreaClosures <- close_areas(sim_init = sim_init, closure_init = closure, commercial_logs = catches, survey_logs = survey[["log.mat"]], real_pop = pop_bios, t = t)
+
+# keep a record
+close_count <- close_count + 1
+closure_list[close_count] <- AreaClosures
 
 }
 
@@ -211,6 +215,9 @@ print("Calculating where to place closures based on the input years / months / w
 print(paste("Based on", closure[["basis"]], "on a", closure[["temp_dyn"]], "basis using", closure[["rationale"]]))
 
 AreaClosures <- close_areas(sim_init = sim_init, closure_init = closure, commercial_logs = catches, survey_logs = survey[["log.mat"]], real_pop = pop_bios, t = t)
+# keep a record
+close_count <- close_count + 1
+closure_list[close_count] <- AreaClosures
 
 }
 
@@ -554,7 +561,7 @@ end.time <- Sys.time()
 time.taken <- end.time - start.time
 print(paste("time taken is :", format(time.taken, units = "auto"), sep = " "))
 
-return(list(fleets_catches = catches, pop_summary = pop_init[["Pop_record"]], pop_bios = pop_bios, survey = survey))
+return(list(fleets_catches = catches, pop_summary = pop_init[["Pop_record"]], pop_bios = pop_bios, survey = survey, closures = closure_list))
 
 } # end func
 

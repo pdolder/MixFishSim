@@ -7,9 +7,8 @@ sc <- expand.grid(timescale = c("weekly", "monthly", "yearly"),
 	    data_type = c("commercial", "survey", "real_pop"),
 	    resolution = c(1, 5, 10, 20))
 
-sc <- cbind(data.frame(scenario = 1:nrow(sc)), sc)
-
 sc <- sc[!(sc$timescale %in% c("weekly","monthly") & sc$data_type == 'survey'),]
+sc <- cbind(data.frame(scenario = 1:nrow(sc)), sc)
 
 nrow(sc)
 
