@@ -401,20 +401,20 @@ either either as a stochastic Beverton-Holt stock-recruit form
 \begin{equation*}
 	\begin{split}
 	\bar{R} = & \frac{(\alpha * B)}{(\beta + B)} \\
-	     R \sim & N[(\bar{R},\sigma^2)]
+	     R \sim & \log N[(\log(\bar{R}),\log(\sigma^2))]
 	\end{split}
 \end{equation*}
-\textcolor{red}{[better to use lognormal variability to avoid negative
-	recruitment events at low biomasses.]} Where $\alpha$ is the maximum
-recruitment rate, $\beta$ the spawning stock biomass (SSB) required to produce
-half the maximum, and $B$ current SSB; \\
+Where $\alpha$ is the maximum recruitment rate, $\beta$ the spawning stock
+biomass (SSB) required to produce half the maximum, $B$ current SSB and
+$\sigma^2$ the variability in the recruitment due to stochastic
+processes. \\
 
 or a stochastic Ricker form \cite{Ricker1954}
 
 \begin{equation*}
 	\begin{split}
 	\bar{R} = & B * e^{(\alpha - \beta * B)} \\	
-   	     R \sim & N[(\bar{R},\sigma^2)]
+   	     R \sim & \log N[(\log(\bar{R}),\log(\sigma^2))]
 	\end{split}
 \end{equation*}
 
@@ -426,8 +426,11 @@ dependent reduction in productivity as the SSB increases.
 To simulate how fish populations might be distributed in space and time, we
 employed a Gaussian spatial process to model habitat suitability for each of
 the populations, with an advection-diffusion process to control how the
-populations moved over time. \textcolor{red}{[say why - balance between realism
-	and practicalities of IBMs for the fish population]}\\
+populations moved over time with a moving temperature covariate to capture
+temporal dependencies. This was intended to balance realism in population
+movement, capturing the main directed and random processes, and practicality of
+modelling the population rather than individual fish. \\
+
 
 For the habitat we define a Gaussian random field process, $\{S(x) : x \in
 \mathbb{R}^2\}$, that is a stochastic process where any collection of locations
@@ -454,22 +457,40 @@ $K_{\kappa}(.)$ is a modified Bessel function of order $\kappa$, $\phi >
 called the order, is a shape parameter which determines the smoothness of the
 underlying process. \\
 
+The temperature field is simulated to be on a gradient from a South-Westerly to
+North-Easterly direction, with temperature in each cell changing gradually on a
+week-by-week basis so that initially high temperature areas cycle to lower
+temperatures and low temperature areas vice versa. Each population is assigned
+a thermal tolerance with mean, $\mu$ and variance, $\sigma^2$ so that each cell
+and population temperature suitability is defined that:
+
+\begin{equation}
+	Tol_{c, p} = \frac{1}{ \sqrt (2\pi \cdot \sigma^2_{p})} \cdot \exp(-
+		\frac{(T_{c} -
+		\mu_{p})^2}{2 \cdot \sigma^2_{p}} )	
+\end{equation}
+
+Where $Tol_{c,p}$ is the tolerance of population $p$ in cell $c$, $T_{c}$ is
+the temperature in the cell and $\mu$ and $\sigma^2$ the mean and standard
+deviation of the population temperature tolerance. \\
+
 In the simulation model, the habitat for each of the populations is generated
 through the \textit{RFSimulate} function of the \textit{RandomFields} R package
 \cite{Schlater2015}, implementing different parameter settings to affect the
 patchiness of the populations. Each population is initialised at a single
 location, and subsequently moves according to a probabilistic distribtion based
-on habitat suitability and distance from current cell. 
+on habitat suitability, temperature and distance from current cell. 
 
 \begin{equation}
 	Pr(B | A) = \frac{e^{-\lambda * d_{AB}} \cdot
-		Hab_{B}^2}{\sum\limits_{c=1}^{C}e^{-\lambda * d} \cdot
-		Hab_{B}^2}
+		(Hab_{B}^2 \cdot Tol_{B,wk})}{\sum\limits_{c=1}^{C}e^{-\lambda * d} \cdot
+		(Hab_{B}^2 \cdot Tol_{B,wk})}
 \end{equation}
 
 Where $d_{AB}$ is the euclidean distance between cell $A$ and cell $B$,
-$\lambda$ is a given rate of decay and $Hab_{B}^2$ is the squared index of
-habitat suitability for cell $B$.\\
+$\lambda$ is a given rate of decay, $Hab_{B}^2$ is the squared index of habitat
+suitability for cell $B$ and $Tol_{B,wk}$ the temperature tolerance for the
+cell in week $wk$; population index, $p$ has been dropped for simplicity.\\
 
 During specified weeks of the year, the habitat quality is modified for
 spawning habitats, meaning each population has a concentrated area where
@@ -595,15 +616,6 @@ and lay the foundation for further work.  In contrast, a
 \underline{Calculation} section represents a practical development from a
 theoretical basis.] \\}
 
-\subsection{Simulation settings}
-
-To illustrate the capabilities on \emph{MixFishSim}, we investigate the
-influence of ... \textcolor{red}{[expand]}. To do so, we first set up with
-simulation to run for 20 years based on a 100 X 100 square grid, with five
-fleets of 20 vessels each and four fish populations. Fishing takes place four
-times a day per vessel and five days a week, while population movement is every
-week.  
-
 \subsection{Population parameterisation}
 
 We parameterised the simulation model for four populations with differing
@@ -633,6 +645,52 @@ locations where the top 75 \% of revenue from was found in previous trips.
 The survey simulation was set up with follow a fixed gridded station design
 with 49 stations fished each year, starting on day 92 with same catchability
 parameters for all populations (Q = 1). 
+
+\subsection{Simulation settings}
+
+To illustrate the capabilities on \emph{MixFishSim}, we investigate the
+influence of the temporal and spatial resolution of different data sources on
+the reduction in catches of a population given spatial closures. To do so, we
+first set up with simulation to run for 10 years based on a 100 X 100 square
+grid, with five fleets of 20 vessels each and four fish populations. Fishing
+takes place four times a day per vessel and five days a week, while population
+movement is every week. \\
+
+We allow the simulation to run unrestricted for 5 years, and subsequently close
+areas for the last 5 years of the simulation based on data (either derived from
+the commercial catches, fisheries-independent survey or the 'real population')
+used at different spatial and temporal scales.
+
+The following steps are undertaken to determine closures:
+
+i. Extract data source
+ii. Aggregate according to resolution
+iii. Interpolate across entire area at desired resoltion
+iv. Close top 5 \% of areas
+
+\begin{table}[!ht]
+\caption{Closure scenarios}
+\begin{tabular}{ p{4cm } p{4cm} p{4cm}}
+	\hline
+	Data type & Temporal resolution & Spatial resolution \\
+	\hline
+	Commercial logs, survey data, real population & weekly, monthly, years
+	& 1, 2, 5, 10 \\ 
+\end{tabular}
+\label{tab:x}
+\end{table}
+
+ABOVE WOULD BE BETTER AS SOME SORT OF GRAPHICAL ILLUSTRATION OF AGGREGATION
+CONSEQUENCES, E.G. 
+COMMERCIAL DATA SPARSITY, SURVEY DATA CONSISTENCY, REAL
+POPULATION IS ALL. 
+
+TEMPORALLY VARYING PROPORTIONS DIVIDED BY WEEK, MONTH, YEAR
+
+CELLS AGGREGATED ACCORDING TO SIMULATION EXAMPLES !!!
+
+Total 56 scenarios.
+
 
 \section{Results}
 

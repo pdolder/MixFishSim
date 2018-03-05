@@ -9,7 +9,6 @@ load('scenarios.RData')
 load('Common_Params.RData')
 
 runs <- 1:56
-runs <- runs[!runs %in% c(44)]  ## These didn't work..
 
 for(i in runs) {
 load(file.path('Scenario_runs', paste('Scenario', i, '.RData', sep = "_")))
