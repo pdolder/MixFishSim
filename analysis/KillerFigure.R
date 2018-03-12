@@ -81,7 +81,7 @@ if(basis == 'real_pop') {
 			   y = rep(seq_len(100), each = 100),
 			   year = y, month = unique(sim_init[["brk.idx"]][["month.breaks"]][sim_init[["brk.idx"]][["week.breaks"]]==w]),
 			   week = w,  do.call(cbind,res2)))
-)
+
 		return(res3)
 		})
 
