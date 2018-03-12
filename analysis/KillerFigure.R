@@ -191,7 +191,7 @@ plot_comp(gran = 1, dataIn = dataIn)
 ##############################################
 ## Setting out the plot
 setEPS()
-postscript('Data_Aggregation.eps', width = 8 * 2, height = 8 * 3, bg = "white")
+postscript('Data_Aggregation_space.eps', width = 8 * 2, height = 8 * 3, bg = "white")
 
 par(oma = c(2,2,12,12), mar = c(0,0,0,0), mfrow = c(4,3))
 
@@ -230,55 +230,76 @@ mtext(text = "20 x 20 pt                        10 x 10  pt                     
 dev.off()
 
 
+#####################
 ## Temporal changes
+#####################
+
+## all year, month and week combinations
+
+logs <- as.data.frame(combine_logs(res[["fleets_catches"]]))
+
+logs_wk_mn <- unique(paste(logs$month, logs$week, sep = "_"))
 
 ## Some measure of temporal change in distribtions
+plot_temp <- function(timestep = NULL, basis = NULL) {
 
-catch_comp <- function (basis = NULL, dataIn = NULL, timestep = NULL, xs = NULL, ys = NULL) {
+xs <- 1:100
+ys <- 1:100
 
-	if(timestep == "annual") {
-catch_comp <- matrix(NA, nc = 1 * 3, nr = 4)
-	}
-	if(timestep == "monthly") {
-catch_comp <- matrix(NA, nc = 12 * 3, nr = 4)
-	}
-	if(timestep == "weekly") {
-catch_comp <- matrix(NA, nc = 52 * 3, nr = 4)
-	}
+## weekly 
+if(timestep == 'week') {
 
-
-	dataPlot <- filter(dataIn, x %in% xs, y %in% ys) %>%
-		group_by(year, month, week) %>%
-		summarise(spp_1 = sum(spp_1),
-			  spp_2 = sum(spp_2),
-			  spp_3 = sum(spp_3),
-			  spp_4 = sum(spp_4))
-
-
-
-	if(basis == 'commercial') {
-
-for(i in 1:4) { ## spp
-
-	if(timestep == 'weekly')
-	for(j in 1:52) {  ##wk
-    catch_comp[i,j] <- B / allB 	}
+if(basis == 'commercial') {
+dataIn <- get_data(basis = 'commercial', yr = yr, mn = mn, wk = wk, aggBasis = 'week', dataIn = res[["fleets_catches"]]) %>%
+	filter(x %in% xs, y %in% ys) %>% group_by(year, month, week) %>% summarise(spp_1 = sum(spp_1), spp_2 = sum(spp_2), spp_3 = sum(spp_3), spp_4 = sum(spp_4))
 }
 
-	}
-
-
-
-
-
-	
+if(basis == 'real_pop') {
+dataIn <- get_data(basis = 'real_pop', yr = yr, mn = mn, wk = wk, aggBasis = 'week', dataIn = res[["pop_bios"]], sim_init = sim) %>%
+	filter(x %in% xs, y %in% ys) %>% group_by(year, month, week) %>% summarise(spp_1 = sum(spp_1), spp_2 = sum(spp_2), spp_3 = sum(spp_3), spp_4 = sum(spp_4))
 }
 
+dataIn <- dataIn[order(dataIn$year, dataIn$month, dataIn$week),]
 
-dataIn <- get_data(basis = 'commercial', yr = yr, mn = mn, wk = wk, aggBasis = 'month',dataIn = res[["fleets_catches"]]) %>%
-	filter(x %in% c(40:50), y %in% 20:30) %>% group_by(year, month) %>% summarise(spp_1 = sum(spp_1), spp_2 = sum(spp_2), spp_3 = sum(spp_3), spp_4 = sum(spp_4))
+dataIn[,4:7] <- dataIn[,4:7] / rowSums(dataIn[,4:7])
+
+dataPlot <- data.frame(year = rep(2:4, each = length(logs_wk_mn)), 
+		       month = sapply(strsplit(logs_wk_mn, "_"), "[", 1),
+		       week = sapply(strsplit(logs_wk_mn, "_"), "[", 2), 
+		       spp_1 = NA, spp_2 = NA, spp_3 = NA, spp_4 = NA)
+
+dataPlot$spp_1 <- dataIn$spp_1[match(paste(dataPlot$year, dataPlot$month, dataPlot$week),
+				     paste(dataIn$year, dataIn$month, dataIn$week))]
+dataPlot$spp_2 <- dataIn$spp_2[match(paste(dataPlot$year, dataPlot$month, dataPlot$week),
+				     paste(dataIn$year, dataIn$month, dataIn$week))]
+dataPlot$spp_3 <- dataIn$spp_3[match(paste(dataPlot$year, dataPlot$month, dataPlot$week),
+				     paste(dataIn$year, dataIn$month, dataIn$week))]
+dataPlot$spp_4 <- dataIn$spp_4[match(paste(dataPlot$year, dataPlot$month, dataPlot$week),
+				     paste(dataIn$year, dataIn$month, dataIn$week))]
+
+dataPlot[,4:7][is.na(dataPlot[,4:7])] <- 0
+dataPlot <- dataPlot[order(dataPlot$year, dataPlot$month, dataPlot$week),]
+
+cols <- c("red", "blue", "purple", "green")
+barplot(t(dataPlot[,4:7]), names.arg = rep(paste(""), nrow(dataPlot)), col = cols)
+
+}
+
+## Monthly
+if(timestep == 'month') {
+
+if(basis == 'commercial') {
+dataIn <- get_data(basis = 'commercial', yr = yr, mn = mn, wk = wk, aggBasis = 'month', dataIn = res[["fleets_catches"]]) %>%
+	filter(x %in% xs, y %in% ys) %>% group_by(year, month) %>% summarise(spp_1 = sum(spp_1), spp_2 = sum(spp_2), spp_3 = sum(spp_3), spp_4 = sum(spp_4))
+}
+
+if(basis == 'real_pop') {
+dataIn <- get_data(basis = 'real_pop', yr = yr, mn = mn, wk = wk, aggBasis = 'month', dataIn = res[["pop_bios"]], sim_init = sim) %>%
+	filter(x %in% xs, y %in% ys) %>% group_by(year, month) %>% summarise(spp_1 = sum(spp_1), spp_2 = sum(spp_2), spp_3 = sum(spp_3), spp_4 = sum(spp_4))
+}
 
 dataIn <- dataIn[order(dataIn$year, dataIn$month),]
+
 dataIn[,3:6] <- dataIn[,3:6] / rowSums(dataIn[,3:6])
 
 dataPlot <- expand.grid(year = 2:4, month = 1:12, spp_1 = NA, spp_2 = NA, spp_3 = NA, spp_4 = NA)
@@ -295,20 +316,80 @@ dataPlot$spp_4 <- dataIn$spp_4[match(paste(dataPlot$year, dataPlot$month),
 dataPlot[,3:6][is.na(dataPlot[,3:6])] <- 0
 dataPlot <- dataPlot[order(dataPlot$year, dataPlot$month),]
 
-
 cols <- c("red", "blue", "purple", "green")
-
 barplot(t(dataPlot[,3:6]), names.arg = rep(paste(""), 36), col = cols)
 
-par(oma = c(8,2,2,2), mar = c(0,0,0,0), mfrow = c(1,1))
-barplot(t(dataPlot[,3:6]),names.arg = dataPlot$month, col = cols)
-mtext(text = "2                         3                    4", side = 1, line = 2, outer = T, font = 2,   cex = 1 ) ## top
+}
+
+## yearly 
+if(timestep == 'year') {
+
+if(basis == 'commercial') {
+dataIn <- get_data(basis = 'commercial', yr = yr, mn = mn, wk = wk, aggBasis = 'year', dataIn = res[["fleets_catches"]]) %>%
+	filter(x %in% xs, y %in% ys) %>% group_by(year) %>% summarise(spp_1 = sum(spp_1), spp_2 = sum(spp_2), spp_3 = sum(spp_3), spp_4 = sum(spp_4))
+}
+
+if(basis == 'survey') {
+dataIn <- get_data(basis = 'survey', yr = yr, mn = mn, wk = wk, aggBasis = 'year', dataIn = res[["survey"]][["log.mat"]]) %>%
+	filter(x %in% xs, y %in% ys) %>% group_by(year) %>% summarise(spp_1 = sum(spp_1), spp_2 = sum(spp_2), spp_3 = sum(spp_3), spp_4 = sum(spp_4))
+}
+
+if(basis == 'real_pop') {
+dataIn <- get_data(basis = 'real_pop', yr = yr, mn = mn, wk = wk, aggBasis = 'year', dataIn = res[["pop_bios"]], sim_init = sim) %>%
+	filter(x %in% xs, y %in% ys) %>% group_by(year) %>% summarise(spp_1 = sum(spp_1), spp_2 = sum(spp_2), spp_3 = sum(spp_3), spp_4 = sum(spp_4))
+}
+
+dataIn <- dataIn[order(dataIn$year),]
+
+dataIn[,2:5] <- dataIn[,2:5] / rowSums(dataIn[,2:5])
+
+dataPlot <- expand.grid(year = 2:4, spp_1 = NA, spp_2 = NA, spp_3 = NA, spp_4 = NA)
+
+dataPlot$spp_1 <- dataIn$spp_1[match(dataPlot$year, dataIn$year)]
+dataPlot$spp_2 <- dataIn$spp_2[match(dataPlot$year, dataIn$year)]
+dataPlot$spp_3 <- dataIn$spp_3[match(dataPlot$year, dataIn$year)]
+dataPlot$spp_4 <- dataIn$spp_4[match(dataPlot$year, dataIn$year)]
+
+dataPlot[,2:5][is.na(dataPlot[,2:5])] <- 0
+dataPlot <- dataPlot[order(dataPlot$year),]
+
+cols <- c("red", "blue", "purple", "green")
+barplot(t(dataPlot[,2:5]), names.arg = rep(paste(""), 3), col = cols)
+
+}
+
+}
 
 
+##########################
+## Set out the plot 
+#########################
 
-png(file.path("..","tests" , "plots", "Proportion_in_cell.png"), width = 800, height = 800)
-matplot(t(catch_comp), type = "l", ylab = "Proportion of population in cell")
-legend(45, 0.3, c("Pop 1", "Pop 2", "Pop 3", "Pop 4"),
-            pch = "-", col = 1:4)
+setEPS()
+postscript('Data_Aggregation_time.eps', width = 8 * 2, height = 8 * 3, bg = "white")
+par(oma = c(2,2,12,12), mar = c(0,0,0,0), mfrow = c(3,3))
+
+plot_temp(timestep = 'week', basis = 'real_pop')
+plot_temp(timestep = 'week', basis = 'commercial')
+plot(x = 1:100, y = 1:100, type = "n", xaxt = 'n', yaxt = 'n', xlab = "", ylab = "")
+
+## plot_temp(timestep = 'week', basis = 'survey') #- only yearly
+
+plot_temp(timestep = 'month', basis = 'real_pop')
+plot_temp(timestep = 'month', basis = 'commercial')
+## plot_temp(timestep = 'month', basis = 'survey') #- only yearly
+plot(x = 1:100, y = 1:100, type = "n", xaxt = 'n', yaxt = 'n', xlab = "", ylab = "")
+
+plot_temp(timestep = 'year', basis = 'real_pop')
+plot_temp(timestep = 'year', basis = 'commercial')
+plot_temp(timestep = 'year', basis = 'survey')
+
+mtext(text = "Real Population        Commercial Data     Survey Data", side = 3, line = 2, outer = T, font = 2,   cex = 3 ) ## top
+mtext(text = "yearly                                     monthly                                       weekly", side = 4, line = 2, outer = T, font = 2, cex  = 3) ## right side
+
 dev.off()
+
+
+#legend(45, 0.3, c("Pop 1", "Pop 2", "Pop 3", "Pop 4"),
+#            pch = "-", col = 1:4)
  
