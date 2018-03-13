@@ -193,7 +193,7 @@ plot_comp(gran = 1, dataIn = dataIn)
 setEPS()
 postscript('Data_Aggregation_space.eps', width = 8 * 2, height = 8 * 3, bg = "white")
 
-par(oma = c(2,2,12,12), mar = c(0,0,0,0), mfrow = c(4,3))
+par(oma = c(12,2,12,12), mar = c(0,0,0,0), mfrow = c(4,3))
 
 ## real pop 
 dataIn <- get_data(basis = 'real_pop', yr = yr, mn = mn, wk = wk, dataIn = res[["pop_bios"]], sim_init = sim)
@@ -227,6 +227,9 @@ plot_comp(gran = 20, dataIn = dataIn)
 mtext(text = "Real Population        Commercial Data     Survey Data", side = 3, line = 2, outer = T, font = 2,   cex = 3 ) ## top
 mtext(text = "20 x 20 pt                        10 x 10  pt                         5 x 5 pt                     1 x 1 pt", side = 4, line = 2, outer = T, font = 2, cex  = 3) ## right side
 
+legend(x = -250, y = -10, legend = c("Pop 1", "Pop 2", "Pop 3", "Pop 4"),
+            fill = c("red", "blue", "purple", "green"), ncol = 4, xpd = NA, bty = "n", cex = 4)
+ 
 dev.off()
 
 
@@ -367,7 +370,7 @@ barplot(t(dataPlot[,2:5]), names.arg = rep(paste(""), 3), col = cols)
 
 setEPS()
 postscript('Data_Aggregation_time.eps', width = 8 * 2, height = 8 * 3, bg = "white")
-par(oma = c(2,2,12,12), mar = c(0,0,0,0), mfrow = c(3,3))
+par(oma = c(12,2,12,12), mar = c(0,0,0,0), mfrow = c(3,3))
 
 plot_temp(timestep = 'week', basis = 'real_pop')
 plot_temp(timestep = 'week', basis = 'commercial')
@@ -387,9 +390,10 @@ plot_temp(timestep = 'year', basis = 'survey')
 mtext(text = "Real Population        Commercial Data     Survey Data", side = 3, line = 2, outer = T, font = 2,   cex = 3 ) ## top
 mtext(text = "yearly                                     monthly                                       weekly", side = 4, line = 2, outer = T, font = 2, cex  = 3) ## right side
 
+legend(x = -5, y = 0, legend = c("Pop 1", "Pop 2", "Pop 3", "Pop 4"),
+            fill = c("red", "blue", "purple", "green"), ncol = 4, xpd = NA, bty = "n", cex = 4)
+ 
 dev.off()
 
 
-#legend(45, 0.3, c("Pop 1", "Pop 2", "Pop 3", "Pop 4"),
-#            pch = "-", col = 1:4)
- 
+

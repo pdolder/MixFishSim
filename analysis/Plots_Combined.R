@@ -104,6 +104,7 @@ library(ggrepel)
 
 ggplot(filter(combined, basis == 'high_pop', metric == "F"), aes(x = data_type, y = diff)) + geom_point(aes(colour = resolution, shape = timescale), size = 4) + 
 	facet_wrap(pop~.) + #geom_text_repel(aes(data_type, diff, label = paste(timescale,"," ,resolution, sep = "")), direction = "both") +
-	coord_flip() + ylab("Difference before and after closure in % F") + theme_bw() + facet_grid(pop~.) + geom_hline(yintercept = 0, linetype = "dashed") + ggtitle("Effectiveness of closure in reducing Fishing mortality")
+	coord_flip() + ylab("Difference before and after closure in % F") + theme_bw() + facet_grid(pop~.) + geom_hline(yintercept = 0, linetype = "dashed") + ggtitle("Effectiveness of closure in reducing Fishing mortality") + scale_colour_gradient2(high = "red", mid = "orange", low = "yellow") +
+	scale_shape_discrete(solid = F)
 
 ggsave('Overview_plot_highPop.png', width = 12, height = 4)
