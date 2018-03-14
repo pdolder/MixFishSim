@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.12.6)  5 MAR 2018 17:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.12.6)  14 MAR 2018 19:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1130,77 +1130,92 @@ Underfull \hbox (badness 10000) in paragraph at lines 794--795
 []\OT1/cmr/m/n/10 Fleet
  []
 
-<../tests/plots/habitat.png, id=254, 803.0pt x 803.0pt>
+<../analysis/Data_Aggregation_space.pdf, id=254, 1156.32pt x 1734.48pt>
+File: ../analysis/Data_Aggregation_space.pdf Graphic file (type pdf)
+<use ../analysis/Data_Aggregation_space.pdf>
+Package pdftex.def Info: ../analysis/Data_Aggregation_space.pdf used on input line 823.
+(pdftex.def)             Requested size: 345.0pt x 517.4897pt.
+<../analysis/Data_Aggregation_time.pdf, id=255, 1156.32pt x 1734.48pt>
+File: ../analysis/Data_Aggregation_time.pdf Graphic file (type pdf)
+<use ../analysis/Data_Aggregation_time.pdf>
+Package pdftex.def Info: ../analysis/Data_Aggregation_time.pdf used on input line 829.
+(pdftex.def)             Requested size: 345.0pt x 517.4897pt.
+<../analysis/Overview_plot_highPop.png, id=256, 867.24pt x 289.08pt>
+File: ../analysis/Overview_plot_highPop.png Graphic file (type png)
+<use ../analysis/Overview_plot_highPop.png>
+Package pdftex.def Info: ../analysis/Overview_plot_highPop.png used on input line 836.
+(pdftex.def)             Requested size: 345.0pt x 114.99918pt.
+<../tests/plots/habitat.png, id=257, 803.0pt x 803.0pt>
 File: ../tests/plots/habitat.png Graphic file (type png)
 <use ../tests/plots/habitat.png>
-Package pdftex.def Info: ../tests/plots/habitat.png used on input line 824.
+Package pdftex.def Info: ../tests/plots/habitat.png used on input line 847.
 (pdftex.def)             Requested size: 345.0pt x 345.00146pt.
-<../tests/plots/annual_summary.png, id=255, 504.9264pt x 505.4082pt>
+<../tests/plots/annual_summary.png, id=258, 504.9264pt x 505.4082pt>
 File: ../tests/plots/annual_summary.png Graphic file (type png)
 <use ../tests/plots/annual_summary.png>
-Package pdftex.def Info: ../tests/plots/annual_summary.png used on input line 830.
+Package pdftex.def Info: ../tests/plots/annual_summary.png used on input line 853.
 (pdftex.def)             Requested size: 345.0pt x 345.33879pt.
-<../tests/plots/fDynamics.png, id=256, 1231.4808pt x 459.3963pt>
+<../tests/plots/fDynamics.png, id=259, 1231.4808pt x 459.3963pt>
 File: ../tests/plots/fDynamics.png Graphic file (type png)
 <use ../tests/plots/fDynamics.png>
-Package pdftex.def Info: ../tests/plots/fDynamics.png used on input line 837.
+Package pdftex.def Info: ../tests/plots/fDynamics.png used on input line 860.
 (pdftex.def)             Requested size: 345.0pt x 128.70018pt.
-<../tests/plots/vessel_move.png, id=257, 504.9264pt x 505.4082pt>
+<../tests/plots/vessel_move.png, id=260, 504.9264pt x 505.4082pt>
 File: ../tests/plots/vessel_move.png Graphic file (type png)
 <use ../tests/plots/vessel_move.png>
-Package pdftex.def Info: ../tests/plots/vessel_move.png used on input line 844.
+Package pdftex.def Info: ../tests/plots/vessel_move.png used on input line 867.
 (pdftex.def)             Requested size: 345.0pt x 345.33879pt.
-<../tests/plots/vessel_multi_move.png, id=258, 504.9264pt x 505.4082pt>
+<../tests/plots/vessel_multi_move.png, id=261, 504.9264pt x 505.4082pt>
 File: ../tests/plots/vessel_multi_move.png Graphic file (type png)
 <use ../tests/plots/vessel_multi_move.png>
-Package pdftex.def Info: ../tests/plots/vessel_multi_move.png used on input line 850.
+Package pdftex.def Info: ../tests/plots/vessel_multi_move.png used on input line 873.
 (pdftex.def)             Requested size: 345.0pt x 345.33879pt.
-<../tests/plots/vessel_move_value.png, id=259, 504.9264pt x 505.4082pt>
+<../tests/plots/vessel_move_value.png, id=262, 504.9264pt x 505.4082pt>
 File: ../tests/plots/vessel_move_value.png Graphic file (type png)
 <use ../tests/plots/vessel_move_value.png>
-Package pdftex.def Info: ../tests/plots/vessel_move_value.png used on input line 859.
+Package pdftex.def Info: ../tests/plots/vessel_move_value.png used on input line 882.
 (pdftex.def)             Requested size: 345.0pt x 345.33879pt.
-<../tests/plots/fleet_moves.png, id=260, 505.89pt x 505.89pt>
+<../tests/plots/fleet_moves.png, id=263, 505.89pt x 505.89pt>
 File: ../tests/plots/fleet_moves.png Graphic file (type png)
 <use ../tests/plots/fleet_moves.png>
-Package pdftex.def Info: ../tests/plots/fleet_moves.png used on input line 866.
+Package pdftex.def Info: ../tests/plots/fleet_moves.png used on input line 889.
 (pdftex.def)             Requested size: 345.0pt x 345.00414pt.
-<../tests/plots/catch_comp.png, id=261, 1606.0pt x 401.5pt>
+<../tests/plots/catch_comp.png, id=264, 1606.0pt x 401.5pt>
 File: ../tests/plots/catch_comp.png Graphic file (type png)
 <use ../tests/plots/catch_comp.png>
-Package pdftex.def Info: ../tests/plots/catch_comp.png used on input line 872.
+Package pdftex.def Info: ../tests/plots/catch_comp.png used on input line 895.
 (pdftex.def)             Requested size: 345.0pt x 86.2473pt.
-<../tests/plots/catch_comp_clusters.png, id=262, 1606.0pt x 803.0pt>
+<../tests/plots/catch_comp_clusters.png, id=265, 1606.0pt x 803.0pt>
 File: ../tests/plots/catch_comp_clusters.png Graphic file (type png)
 <use ../tests/plots/catch_comp_clusters.png>
-Package pdftex.def Info: ../tests/plots/catch_comp_clusters.png used on input line 880.
+Package pdftex.def Info: ../tests/plots/catch_comp_clusters.png used on input line 903.
 (pdftex.def)             Requested size: 345.0pt x 172.4946pt.
-<../tests/plots/survey_index.png, id=263, 504.9264pt x 505.4082pt>
+<../tests/plots/survey_index.png, id=266, 504.9264pt x 505.4082pt>
 File: ../tests/plots/survey_index.png Graphic file (type png)
 <use ../tests/plots/survey_index.png>
-Package pdftex.def Info: ../tests/plots/survey_index.png used on input line 890.
+Package pdftex.def Info: ../tests/plots/survey_index.png used on input line 913.
 (pdftex.def)             Requested size: 345.0pt x 345.33879pt.
-<../tests/plots/spatial_survey.png, id=264, 867.24pt x 1156.32pt>
+<../tests/plots/spatial_survey.png, id=267, 867.24pt x 1156.32pt>
 File: ../tests/plots/spatial_survey.png Graphic file (type png)
 <use ../tests/plots/spatial_survey.png>
-Package pdftex.def Info: ../tests/plots/spatial_survey.png used on input line 897.
+Package pdftex.def Info: ../tests/plots/spatial_survey.png used on input line 920.
 (pdftex.def)             Requested size: 345.0pt x 459.99672pt.
-<../tests/plots/step_function.png, id=265, 803.0pt x 401.5pt>
+<../tests/plots/step_function.png, id=268, 803.0pt x 401.5pt>
 File: ../tests/plots/step_function.png Graphic file (type png)
 <use ../tests/plots/step_function.png>
-Package pdftex.def Info: ../tests/plots/step_function.png used on input line 904.
+Package pdftex.def Info: ../tests/plots/step_function.png used on input line 927.
 (pdftex.def)             Requested size: 345.0pt x 172.50072pt.
-<../tests/plots/pop_dist.png, id=266, 1606.0pt x 1606.0pt>
+<../tests/plots/pop_dist.png, id=269, 1606.0pt x 1606.0pt>
 File: ../tests/plots/pop_dist.png Graphic file (type png)
 <use ../tests/plots/pop_dist.png>
-Package pdftex.def Info: ../tests/plots/pop_dist.png used on input line 912.
+Package pdftex.def Info: ../tests/plots/pop_dist.png used on input line 935.
 (pdftex.def)             Requested size: 345.0pt x 344.98921pt.
-<../tests/plots/Proportion_in_cell.png, id=267, 504.9264pt x 505.1673pt>
+<../tests/plots/Proportion_in_cell.png, id=270, 504.9264pt x 505.1673pt>
 File: ../tests/plots/Proportion_in_cell.png Graphic file (type png)
 <use ../tests/plots/Proportion_in_cell.png>
-Package pdftex.def Info: ../tests/plots/Proportion_in_cell.png used on input line 923.
+Package pdftex.def Info: ../tests/plots/Proportion_in_cell.png used on input line 946.
 (pdftex.def)             Requested size: 345.0pt x 345.1742pt.
-[17] [18] [19 <../tests/plots/habitat.png>] [20 <../tests/plots/annual_summary.png> <../tests/plots/fDynamics.png (PNG copy)>] [21 <../tests/plots/vessel_move.png (PNG copy)>] [22 <../tests/plots/vessel_multi_move.png (PNG copy)>] [23 <../tests/plots/vessel_move_value.png (PNG copy)>] [24 <../tests/plots/fleet_moves.png (PNG copy)> <../tests/plots/catch_comp.png (PNG copy)>] [25 <../tests/plots/catch_comp_clusters.png (PNG copy)>] [26 <../tests/plots/survey_index.png>] [27 <../tests/plots/spatial_survey.png (PNG copy)>] [28 <../tests/plots/step_function.png>] [29 <../tests/plots/pop_dist.png (PNG copy)>] [30 <../tests/plots/Proportion_in_cell.png (PNG copy)>] (./mixfishsim_ecolmod.bbl
+[17] [18] [19] [20 <../analysis/Data_Aggregation_space.pdf>] [21 <../analysis/Data_Aggregation_time.pdf>] [22 <../analysis/Overview_plot_highPop.png (PNG copy)> <../tests/plots/habitat.png>] [23 <../tests/plots/annual_summary.png> <../tests/plots/fDynamics.png (PNG copy)>] [24 <../tests/plots/vessel_move.png (PNG copy)>] [25 <../tests/plots/vessel_multi_move.png (PNG copy)>] [26 <../tests/plots/vessel_move_value.png (PNG copy)>] [27 <../tests/plots/fleet_moves.png (PNG copy)> <../tests/plots/catch_comp.png (PNG copy)>] [28 <../tests/plots/catch_comp_clusters.png (PNG copy)>] [29 <../tests/plots/survey_index.png>] [30 <../tests/plots/spatial_survey.png (PNG copy)>] [31 <../tests/plots/step_function.png>] [32 <../tests/plots/pop_dist.png (PNG copy)>] [33 <../tests/plots/Proportion_in_cell.png (PNG copy)>] (./mixfishsim_ecolmod.bbl
 Underfull \hbox (badness 4673) in paragraph at lines 9--16
 \OT1/cmr/m/n/10 URL []$\OT1/cmtt/m/n/10 http : / / www . pnas . org / content / early / 2016 / 01 / 02 / 1513626113 .
  []
@@ -1215,14 +1230,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--66
 \OT1/cmr/m/n/10 URL []$\OT1/cmtt/m/n/10 http : / / icesjms . oxfordjournals . org / lookup / doi / 10 . 1093 /
  []
 
-[31
+[34
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 68--77
 \OT1/cmr/m/n/10 URL []$\OT1/cmtt/m/n/10 http : / / icesjms . oxfordjournals . org / cgi / doi / 10 . 1093 /
  []
 
-[32]
+[35]
 Overfull \hbox (89.88448pt too wide) in paragraph at lines 123--127
 \OT1/cmr/m/n/10 URL []$\OT1/cmtt/m/n/10 http : / / www . amazon . es / Model-[]based-[]Geostatistics-[]Springer-[]Series-[]Statistics /
  []
@@ -1232,39 +1247,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 154--161
 \OT1/cmr/m/n/10 URL []$\OT1/cmtt/m/n/10 http : / / linkinghub . elsevier . com / retrieve / pii /
  []
 
-[33]
+[36]
 Underfull \hbox (badness 10000) in paragraph at lines 163--170
 \OT1/cmr/m/n/10 URL []$\OT1/cmtt/m/n/10 http : / / www . pubmedcentral . nih . gov / articlerender . fcgi ?
  []
 
-[34]
+[37]
 Underfull \hbox (badness 10000) in paragraph at lines 221--228
 \OT1/cmr/m/n/10 URL []$\OT1/cmtt/m/n/10 http : / / icesjms . oxfordjournals . org / cgi / doi / 10 . 1006 / jmsc .
  []
 
-) [35]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 944.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 944.
+) [38]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 967.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 967.
 (./mixfishsim_ecolmod.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 944.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 944.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 967.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 967.
 Package rerunfilecheck Info: File `mixfishsim_ecolmod.out' has not changed.
 (rerunfilecheck)             Checksum: CE6A02218FD5AE3C14F608A4C5236ADA;1234.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 944.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 967.
  ) 
 Here is how much of TeX's memory you used:
- 20344 strings out of 493029
- 398832 string characters out of 6136234
- 509604 words of memory out of 5000000
- 23372 multiletter control sequences out of 15000+600000
+ 20369 strings out of 493029
+ 399497 string characters out of 6136234
+ 510809 words of memory out of 5000000
+ 23387 multiletter control sequences out of 15000+600000
  13655 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,17n,68p,489b,927s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on mixfishsim_ecolmod.pdf (35 pages, 5755397 bytes).
+Output written on mixfishsim_ecolmod.pdf (38 pages, 6554263 bytes).
 PDF statistics:
- 597 PDF objects out of 1000 (max. 8388607)
- 509 compressed objects within 6 object streams
- 114 named destinations out of 1000 (max. 500000)
- 235 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 631 PDF objects out of 1000 (max. 8388607)
+ 535 compressed objects within 6 object streams
+ 120 named destinations out of 1000 (max. 500000)
+ 250 words of extra memory for PDF output out of 10000 (max. 10000000)
 

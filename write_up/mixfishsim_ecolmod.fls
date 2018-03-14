@@ -287,6 +287,15 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+INPUT ../analysis/Data_Aggregation_space.pdf
+INPUT ../analysis/Data_Aggregation_space.pdf
+INPUT ../analysis/Data_Aggregation_space.pdf
+INPUT ../analysis/Data_Aggregation_time.pdf
+INPUT ../analysis/Data_Aggregation_time.pdf
+INPUT ../analysis/Data_Aggregation_time.pdf
+INPUT ../analysis/Overview_plot_highPop.png
+INPUT ../analysis/Overview_plot_highPop.png
+INPUT ../analysis/Overview_plot_highPop.png
 INPUT ../tests/plots/habitat.png
 INPUT ../tests/plots/habitat.png
 INPUT ../tests/plots/habitat.png

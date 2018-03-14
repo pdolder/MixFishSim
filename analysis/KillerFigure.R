@@ -157,7 +157,7 @@ cols <- c("red", "blue", "purple", "green")
 #par(mar = c(0,0,0,0), pty = 'm')
 basemap(xlim = c(0,100), ylim = c(0,100), xlab = "", ylab = "", bg = "white", xaxt = 'n', yaxt = "n")
 draw.barplot2D(catch_comp[[1]]$x,catch_comp[[1]]$y,z = catch_comp[[1]]$z, width = gran,
-	       height = gran, xlab = "", ylab = "", col = cols, lwd.frame = 0.1, col.frame = "white")
+	       height = gran, xlab = "", ylab = "", col = cols, lwd.frame = 0, col.frame = "white")
 
 
 }
@@ -190,8 +190,9 @@ plot_comp(gran = 1, dataIn = dataIn)
 
 ##############################################
 ## Setting out the plot
-setEPS()
-postscript('Data_Aggregation_space.eps', width = 8 * 2, height = 8 * 3, bg = "white")
+##setEPS()
+##postscript('Data_Aggregation_space.eps', width = 8 * 2, height = 8 * 3, bg = "white")
+pdf('Data_Aggregation_space.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
 
 par(oma = c(12,2,12,12), mar = c(0,0,0,0), mfrow = c(4,3))
 
@@ -246,8 +247,8 @@ logs_wk_mn <- unique(paste(logs$month, logs$week, sep = "_"))
 ## Some measure of temporal change in distribtions
 plot_temp <- function(timestep = NULL, basis = NULL) {
 
-xs <- 1:100
-ys <- 1:100
+xs <- 60:80
+ys <- 20:40
 
 ## weekly 
 if(timestep == 'week') {
@@ -284,7 +285,7 @@ dataPlot[,4:7][is.na(dataPlot[,4:7])] <- 0
 dataPlot <- dataPlot[order(dataPlot$year, dataPlot$month, dataPlot$week),]
 
 cols <- c("red", "blue", "purple", "green")
-barplot(t(dataPlot[,4:7]), names.arg = rep(paste(""), nrow(dataPlot)), col = cols)
+barplot(t(dataPlot[,4:7]), names.arg = rep(paste(""), nrow(dataPlot)), col = cols, border = NA)
 
 }
 
@@ -320,7 +321,7 @@ dataPlot[,3:6][is.na(dataPlot[,3:6])] <- 0
 dataPlot <- dataPlot[order(dataPlot$year, dataPlot$month),]
 
 cols <- c("red", "blue", "purple", "green")
-barplot(t(dataPlot[,3:6]), names.arg = rep(paste(""), 36), col = cols)
+barplot(t(dataPlot[,3:6]), names.arg = rep(paste(""), 36), col = cols, border = NA)
 
 }
 
@@ -357,7 +358,7 @@ dataPlot[,2:5][is.na(dataPlot[,2:5])] <- 0
 dataPlot <- dataPlot[order(dataPlot$year),]
 
 cols <- c("red", "blue", "purple", "green")
-barplot(t(dataPlot[,2:5]), names.arg = rep(paste(""), 3), col = cols)
+barplot(t(dataPlot[,2:5]), names.arg = rep(paste(""), 3), col = cols, border = NA)
 
 }
 
@@ -368,20 +369,21 @@ barplot(t(dataPlot[,2:5]), names.arg = rep(paste(""), 3), col = cols)
 ## Set out the plot 
 #########################
 
-setEPS()
-postscript('Data_Aggregation_time.eps', width = 8 * 2, height = 8 * 3, bg = "white")
+##setEPS()
+##postscript('Data_Aggregation_time.eps', width = 8 * 2, height = 8 * 3, bg = "white")
+pdf('Data_Aggregation_time.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
 par(oma = c(12,2,12,12), mar = c(0,0,0,0), mfrow = c(3,3))
 
 plot_temp(timestep = 'week', basis = 'real_pop')
 plot_temp(timestep = 'week', basis = 'commercial')
-plot(x = 1:100, y = 1:100, type = "n", xaxt = 'n', yaxt = 'n', xlab = "", ylab = "")
+plot(x = 1:100, y = 1:100, type = "n", xaxt = 'n', yaxt = 'n', xlab = "", ylab = "", bty = "n")
 
 ## plot_temp(timestep = 'week', basis = 'survey') #- only yearly
 
 plot_temp(timestep = 'month', basis = 'real_pop')
 plot_temp(timestep = 'month', basis = 'commercial')
 ## plot_temp(timestep = 'month', basis = 'survey') #- only yearly
-plot(x = 1:100, y = 1:100, type = "n", xaxt = 'n', yaxt = 'n', xlab = "", ylab = "")
+plot(x = 1:100, y = 1:100, type = "n", xaxt = 'n', yaxt = 'n', xlab = "", ylab = "", bty = "n")
 
 plot_temp(timestep = 'year', basis = 'real_pop')
 plot_temp(timestep = 'year', basis = 'commercial')
