@@ -296,6 +296,9 @@ INPUT ../analysis/Data_Aggregation_time.pdf
 INPUT ../analysis/Overview_plot_highPop.png
 INPUT ../analysis/Overview_plot_highPop.png
 INPUT ../analysis/Overview_plot_highPop.png
+INPUT ../analysis/F_trends.png
+INPUT ../analysis/F_trends.png
+INPUT ../analysis/F_trends.png
 INPUT ../tests/plots/habitat.png
 INPUT ../tests/plots/habitat.png
 INPUT ../tests/plots/habitat.png

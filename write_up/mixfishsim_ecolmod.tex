@@ -659,40 +659,28 @@ movement is every week. \\
 We allow the simulation to run unrestricted for 5 years, and subsequently close
 areas for the last 5 years of the simulation based on data (either derived from
 the commercial catches, fisheries-independent survey or the 'real population')
-used at different spatial and temporal scales.
+used at different spatial and temporal scales. \\
 
 The following steps are undertaken to determine closures:
 
-i. Extract data source
-ii. Aggregate according to resolution
-iii. Interpolate across entire area at desired resoltion
-iv. Close top 5 \% of areas
+\begin{enumerate}
+	\item Extract data source
+	\item Aggregate according to resolution
+	\item Interpolate across entire area at desired resoltion
+	\item Close top 5 \% of areas
+\end{enumerate}
 
-\begin{table}[!ht]
-\caption{Closure scenarios}
-\begin{tabular}{ p{4cm } p{4cm} p{4cm}}
-	\hline
-	Data type & Temporal resolution & Spatial resolution \\
-	\hline
-	Commercial logs, survey data, real population & weekly, monthly, years
-	& 1, 2, 5, 10 \\ 
-\end{tabular}
-\label{tab:x}
-\end{table}
-
-ABOVE WOULD BE BETTER AS SOME SORT OF GRAPHICAL ILLUSTRATION OF AGGREGATION
-CONSEQUENCES, E.G. 
-COMMERCIAL DATA SPARSITY, SURVEY DATA CONSISTENCY, REAL
-POPULATION IS ALL. 
-
-TEMPORALLY VARYING PROPORTIONS DIVIDED BY WEEK, MONTH, YEAR
-
-CELLS AGGREGATED ACCORDING TO SIMULATION EXAMPLES !!!
-
-Total 56 scenarios.
-
+In total 56 closure scenarios were run which represent combinations of: three
+data types; commercial logbook data, survey data and 'real population', three
+temporal resolutions; weekly, monthly and yearly closures, and four spatial
+resolutions; 1 x 1 grid, 5 x 5 grid, 10 x 10 grid and 20 x 20 grid. Survey
+closures were on an annual basis, as the most temporally resolved survey data
+available.
 
 \section{Results}
+
+
+
 
 Need to consider what best to present here as 4 / 5 figures:
 
@@ -836,6 +824,12 @@ Fig. A.1, etc.]}
 	\includegraphics[width = \linewidth]{../analysis/Overview_plot_highPop}
 	\caption{Comparison of closure scenarios}
 	\label{fig:0c}
+\end{figure}	
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{../analysis/F_trends}
+	\caption{Comparison of closure scenarios - F trends}
+	\label{fig:0d}
 \end{figure}	
 
 

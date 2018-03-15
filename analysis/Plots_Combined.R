@@ -65,13 +65,9 @@ results_df_an2 <- combined_pop %>% filter(metric != "Bio") %>%
 
 combined_pop_an <- rbind(results_df_an1, results_df_an2) 
 
-pl <- c(2,5)
-
-ggplot(filter(combined_pop_an, scenario %in% pl, metric ==  "F"), aes(x = year, y = data)) +
-	geom_point(aes(colour = factor(scenario)))  + 
-	facet_wrap(~pop) + expand_limits(y= 0)
-
-## Averages years 1 - 4 and 5-10, then the difference per scenario
+#####################################################################
+## Averages years 1 - 4 and 5-10, then the difference per scenario ##
+#####################################################################
 
 avg2_4  <- combined_pop_an %>% filter(year %in% 2:4) %>% 
 	group_by(scenario, pop, metric) %>% summarise(value = mean(data, na.rm = T))
@@ -85,13 +81,10 @@ colnames(combined)[4:5] <- c("before", "after")
 
 combined$diff <- ((combined$after - combined$before) / combined$before)  * 100
 
-ggplot(combined, aes(x = scenario, y = diff)) + geom_point() + facet_wrap(pop ~ metric)
-
-val_ref <- range(combined$diff[combined$metric == "F" & combined$pop=='spp_1']) 
-
-combined[combined$diff %in% val_ref,]
-
+######################
 ## Label up scenarios
+######################
+
 load('scenarios.RData')
 sc <- sc[sc$scenario %in% runs,]
 
@@ -108,3 +101,29 @@ ggplot(filter(combined, basis == 'high_pop', metric == "F"), aes(x = data_type, 
 	scale_shape_discrete(solid = F)
 
 ggsave('Overview_plot_highPop.png', width = 12, height = 4)
+
+###########################
+### 
+### Plot of all scenarios
+############################
+
+## Add scenario labels
+
+combined_pop_an <- as.data.frame(combined_pop_an)
+
+sc$combined 		   <- paste(sc$basis, sc$data_type, sc$timescale, sc$resolution, sep = "_")
+combined_pop_an$combined   <- sc$combined[match(combined_pop_an$scenario, sc$scenario)]
+combined_pop_an$basis      <- sc$basis[match(combined_pop_an$scenario, sc$scenario)]
+combined_pop_an$timescale  <- sc$timescale[match(combined_pop_an$scenario, sc$scenario)]
+combined_pop_an$res        <- sc$resolution[match(combined_pop_an$scenario, sc$scenario)]
+combined_pop_an$data_type  <- sc$data_type[match(combined_pop_an$scenario, sc$scenario)]
+
+combined_pop_an <-  combined_pop_an[!is.na(combined_pop_an$year),] ## Remove R for last year
+
+ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F'), 
+       aes(x = year, y = data, group = combined)) + 
+geom_line(aes(colour = timescale, linetype = factor(res))) + 
+facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
+geom_vline(xintercept = 4.5, linetype = 2, colour = "grey")
+ggsave('F_trends.png', width = 10, height = 8)
+
