@@ -127,3 +127,24 @@ facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
 geom_vline(xintercept = 4.5, linetype = 2, colour = "grey")
 ggsave('F_trends.png', width = 10, height = 8)
 
+ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'Bio'), 
+       aes(x = year, y = data, group = combined)) + 
+geom_line(aes(colour = timescale, linetype = factor(res))) + 
+facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
+geom_vline(xintercept = 4.5, linetype = 2, colour = "grey")
+ggsave('B_trends.png', width = 10, height = 8)
+
+ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'Rec'), 
+       aes(x = year, y = data, group = combined)) + 
+geom_line(aes(colour = timescale, linetype = factor(res))) + 
+facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
+geom_vline(xintercept = 4.5, linetype = 2, colour = "grey")
+ggsave('R_trends.png', width = 10, height = 8)
+
+ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'Catch'), 
+       aes(x = year, y = data, group = combined)) + 
+geom_line(aes(colour = timescale, linetype = factor(res))) + 
+facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
+geom_vline(xintercept = 4.5, linetype = 2, colour = "grey")
+ggsave('C_trends.png', width = 10, height = 8)
+

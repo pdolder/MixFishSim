@@ -1,5 +1,8 @@
 \documentclass[review]{elsarticle}
 
+\usepackage{xr} %% For cross-referencing supl figures
+\externaldocument[S-]{Supplementary}
+
 \usepackage{lineno,hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
@@ -12,8 +15,6 @@
 \colorlet{lcfree}{green}
 \colorlet{lcnorm}{blue}
 \colorlet{lccong}{red}
-
-
 
 \modulolinenumbers[1]
 
@@ -118,11 +119,15 @@ design commonly used for fisheries monitoring purposes, and ii) the true
 underlying population structures input to the simulation, to establish the
 potential and limitations of fishery-dependent data - an inherently biased
 sampling method due to fisher's targeting- to provide a robust picture of
-spatiotemporal distributions. [We simulate a closure based on areas defined
-from commercial catch data and assess its effectiveness on reducing catches of
-a fish population.] \\
+spatiotemporal distributions. Finally, we simulate an area closure based on
+areas defined from commercial the known ("real-population") distribution,
+commercial catch data and survey data at different temporal and spatial
+resolutions and assess their effectiveness on reducing catches of a fish
+population. \\
 
-We conclude that... \\
+We conclude from our simulations that commercial data, while not unbiased,
+provides a useful tool for managing catches in mixed fisheries if applied at
+the correct spatiotemporal scale. \\
 
 [233 words]
 
@@ -192,9 +197,6 @@ fixed-site sampling survey design commonly used for fisheries monitoring
 purposes, otherwise know as a fisheries-independent
 	survey, and ii) the underlying population structures input to the
 simulation.\\
-
-[Could fit a geostatistical model (e.g. VAST) to the fisheries-dependent and
-fisheries-independent data, though may be overkill...] \\
 
 We simulate a fishery closure to protect one species based on the
 fishery-dependent inferred distributions at a spatial and temporal scale
@@ -619,9 +621,13 @@ theoretical basis.] \\}
 \subsection{Population parameterisation}
 
 We parameterised the simulation model for four populations with differing
-habitat preference (Figure \ref{fig:1}), population demographic and recruitment
-functions; each of the populations also has two defined spawning areas and
-movement rates (Table \ref{tab:1}). \\
+habitat preference and temperature tolerances (Figures \ref{S-fig:1},
+\ref{S-fig:3}, \ref{S-fig:4}, \ref{S-fig:5}, \ref{S-fig:6}, \ref{S-fig:7}),
+population demographic and recruitment functions; each of the populations also
+has two defined spawning areas (Figure \ref{S-fig:2}) and movement rates (Table
+\ref{tab:1}). The actual movement of the populations for a number of weeks is
+shown in Figure \ref{S-fig:9} while the realised daily fishing mortality are
+shown in Figure \ref{S-fig:10}. \\
 
 \subsection{Fleet parameterisation}
 
@@ -632,18 +638,26 @@ targeted different fish populations. The stochasticity in the random walk
 process ensures that different vessels within a fleet have slightly different
 spatial distributions based on individual experience, while the step function
 was parameterised dynamically so that vessels take smaller steps where the
-fishing location yields in the top X \textcolor{red}{[??]}quartile of the value
-available in that year (as defined per fleet in Table \ref{tab:2}). \\
+fishing location yields in a top quartile of the value available in that year
+(as defined per fleet in Table \ref{tab:2}). \\
 
 Each fleet was set so that, after the first year, fishing locations were chosen
 based on experience built up in the same month from previous years and from
 past trip fishing success. 'Success' in this context was defined as the
-locations where the top 75 \% of revenue from was found in previous trips. 
+locations where the top 75 \% of revenue from was found in previous trips.
+
+An example of the realised fleet movements for a single vessel during a single
+trip are given in Figure \ref{S-fig:11}, while Figure \ref{S-fig:12} shows
+multiple trips for a single vessel, \ref{S-fig:13} the vessel movements for
+some trips overlaid on the value field, \ref{S-fig:14} shows fishing locations
+for an entire fleet of 20 vessels for a single trip, while \ref{S-fig:15} shows
+an example of the step function realisation and turning angles from the
+correlated random walk.
 
 \subsection{Survey settings}
 
 The survey simulation was set up with follow a fixed gridded station design
-with 49 stations fished each year, starting on day 92 with same catchability
+with 100 stations fished each year, starting on day 92 with same catchability
 parameters for all populations (Q = 1). 
 
 \subsection{Simulation settings}
@@ -658,8 +672,9 @@ movement is every week. \\
 
 We allow the simulation to run unrestricted for 5 years, and subsequently close
 areas for the last 5 years of the simulation based on data (either derived from
-the commercial catches, fisheries-independent survey or the 'real population')
-used at different spatial and temporal scales. \\
+the commercial catches, fisheries-independent survey or the 'real population' -
+the underlying populations assumed to be known perfectly) used at different
+spatial and temporal scales. \\
 
 The following steps are undertaken to determine closures:
 
@@ -670,55 +685,112 @@ The following steps are undertaken to determine closures:
 	\item Close top 5 \% of areas
 \end{enumerate}
 
-In total 56 closure scenarios were run which represent combinations of: three
-data types; commercial logbook data, survey data and 'real population', three
-temporal resolutions; weekly, monthly and yearly closures, and four spatial
-resolutions; 1 x 1 grid, 5 x 5 grid, 10 x 10 grid and 20 x 20 grid. Survey
-closures were on an annual basis, as the most temporally resolved survey data
-available.
+In total 56 closure scenarios were run which represent combinations of
+
+\begin{itemize}
+	\item \textbf{data types:} commercial logbook data, survey data and
+		'real population',
+	\item \textbf{temporal resolutions:} weekly, monthly and yearly
+		closures,
+	\item \textbf{spatial resolutions:} 1 x 1 grid, 5 x 5 grid, 10 x 10
+		grid and 20 x 20 grid.
+\end{itemize}
+
+Survey closures were on an annual basis only, as this was the most temporally
+resolved survey data available.
 
 \section{Results}
 
+The species distribution themselves 
 
+The consequences of different spatial aggregations of the data are shown in
+Figure \ref{fig:1}, which represents the aggregation of catch from each of the
+data sources over a year at different spatial resolutions. \\
 
+The finer spatial grid for the the real population (top left) and commercial
+data (top middle) show similar patterns, though there are unsampled gaps in the
+commercial data from a lack of fishing activity (particularly in the lower left
+part of the sampling domain). The survey data at this spatial resolution shows
+very sparse and uninformative information about the spatial distributions of
+the populations. The slightly aggregated data on a 5 x 5 grid shows similar
+patterns, and while losing some of the spatial detail there remains good
+consistency between the 'real population' and the commercial data. Survey data
+starts to pick out some of the similar patterns as the other data sources, but
+lacks coverage. The spatial catch information on a 10 x 10 and 20 x 20 grid
+loses a significant amount of information about the spatial resolutions for all
+data sources, and some differences between the commercial and 'real population'
+data emerge. \\
 
-Need to consider what best to present here as 4 / 5 figures:
+Figure \ref{fig:2} shows the consequences of different temporal aggregations of
+the data, with 156 weekly (top), 36 monthly (middle) and 3 yearly (bottom)
+catch compositions across a 20 x 20 area. \\
 
-\begin{itemize}
-	\item Spatial dynamics: e.g. Figure 14. showing the population movement
-		across weeks, including a spawning period.
-	\item Overall population trends: e.g. Figure 3, showing the population
-		dynamics at play.
-	\item Realised step function: e.g. Figure 13, showing how the movement
-		and turning angle responds. This could be combined with Figure
-		7 for a more complete visualisaiton.
-	\item Catch composition and spatial clustering: e.g. Figure 10, showing
-		the importance of spatial resolution.
-	\item Some measure of temporal trends/changes in spatial composition -
-		could pick a certain cell and show how the proportions change
-		over time ? An example is Figure 15, though there is little
-		variation here. I think this is because the static habitat with
-		population movement is far more stable than the previous
-		directly affected population distributions (where there was an
-		advective-diffusive process from the SPDE). Might need to
-		consider how to change this?  Could include a spatiotemporally
-		changing habitat suitability covariate, e.g. temperature ??
-		\textcolor{red}{[temperature would be very interesting and
-			cover varying spatial fields]}
-	\item Comparison of population structure from i) commercial sampling,
-		ii) fisheries independent survey, iii) real population. This
-		should be some statistical measure...not sure best approach
-		here.
-	\item [If we perform the closure, some measure of cost/benefit based on
-		different resolutions of data and data used (i.e. commercial,
-		survey, real populations). This could be on the basis of
-		closing x cells, giving cell references to the model so they
-		cannot be fished. Need to consider whether this is also a
-		seasonal closure.]
-\end{itemize} 
+As can be seen from the 'real population', the monthly aggregation captures the
+major patterns seen in the weekly data, albeit missing more subtle differences.
+The yearly data results in a constant catch pattern due to the aggregation
+process (sometimes known as an aggregation bias). The commercial data on a
+weekly basis shows some of the same patterns as the 'real population', though
+the first species (in red) is less well represented and some weeks are missing
+catches from the area. The monthly data. The monthly data shows some
+consistency between the 'real population' and commercial data for species 2 -
+4, though species 1 remains underrepresented. On an annual basis, interestingly
+the commercial data underrepresents the first species (in red) while the survey
+overrepresents species 1. This is likely due to the biases in commercial
+sampling, with the fisheries not targeting the areas where species 1 are
+present, and the biases in the survey sampling from overrepresentation of the
+spatial distribution. \\
 
-Present simulated closures in terms of \% change in population biomass and
-fishery.
+We implemented a spatial closure using the different data sources and spatial
+and temporal aggregations as outlined in the protocol in Section 3.4. We used
+this to assess the efficacy of a closure in reducing fishing mortality on
+species 1, given availability of data and its use at different resolutions in
+order to evaluate the trade-offs in data sources. Figure \ref{fig:3} shows the
+trend in fishing mortality for each species simulated (columns) given the data
+sources (rows), temporal aggregations (colour lines) and spatial aggregations
+(linestyles), while Figure \ref{fig:4} shows the change in fishing mortality
+from before the closure (average F years 2 - 4) to after the closure (average F
+years 8 - 10). \\
+
+For the closures based on 'real population' (bottom row), the most
+disaggregated data (a weekly timescale and 1 x 1 resolution) was most
+effective, reducing fishing mortality on species 1 (left) by $\sim$ 60 \%. Next
+was the monthly closures ($<$ $\sim$ 30 \%).  The least effective were the
+yearly closures (blue lines) at all spatial resolutions, which resulted in
+increased fishing mortalities ($>$ 30 \% - \textcolor{blue}{N.B. Note though,
+this is consistent with the increasing trends in F, which is probably more
+related to the fact that Fs hadn't stabilised in the simulation from the
+fishing vessels "learning" the best locations - I will rerun the sims for a
+longer time (20 - 30 years)}. \\
+
+For the survey data, which can only be implemented on a yearly timescale, the
+closures had no effect at any data resolution. The results are identical for
+the different data resolutions except 20 x 20, which is why you can't see more
+than 2 points. This is because of the sparsity of the sampling locations.\\
+
+For the commercial data, the most effective closure scenario was based on 1 x 1
+data at a monthly temporal resolution. This results in $\sim$ 10 \% reduction
+in F for species 1. \textcolor{blue}{This was the only closure scenario to have
+	positive effect according to Figure \ref{fig:4}, though looking at the
+	trend in Figure \ref{fig:3} this looks more related to the continued
+	increased in F trend, as other scenarios had an initial effect}.
+Interestingly the monthly data scenario was more effective than weekly data,
+which I'd posit is due to the increase amount of data available from the
+commercial sampling across a month compared to a week.i Commercial data used at
+an annual timestep was ineffective in bringing fishing mortality down for
+species 1. \\
+
+Given the scenarios above, it seems clear that spatial disaggregation is more
+important than the temporal disaggregation of the commercial data, except when
+its used at an annual timeframe, which is the scenario that gave the worst
+results.
+
+For the other species in the simulation (population 2 - 4) there was little
+difference in fishing mortalities across scenarios.
+
+\textcolor{blue}{Note: The monthly commercial data scenario is the most
+	effective of the realistic scenarios, as the 'real population' can only
+	be seen as a baseline comparison.}
+
 
 \textcolor{gray}{[Guidance: Results should be clear and concise.]}
 
@@ -810,139 +882,27 @@ Fig. A.1, etc.]}
 \begin{figure}[!ht]
 	\includegraphics[width =\linewidth]{../analysis/Data_Aggregation_space}
 	\caption{Data aggregation at different spatial resolutions}
-	\label{fig:0a}
+	\label{fig:1}
 \end{figure}	
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{../analysis/Data_Aggregation_time}
 	\caption{Data aggregation at different temporal resolutions}
-	\label{fig:0b}
+	\label{fig:2}
 \end{figure}	
 
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../analysis/Overview_plot_highPop}
-	\caption{Comparison of closure scenarios}
-	\label{fig:0c}
-\end{figure}	
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{../analysis/F_trends}
 	\caption{Comparison of closure scenarios - F trends}
-	\label{fig:0d}
-\end{figure}	
-
-
-// 
-//Supplementary
-// 
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../tests/plots/habitat}
-	\caption{habitat preference}
-	\label{fig:1}
-\end{figure}	
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../tests/plots/annual_summary}
-	\caption{Summary of annualised metrics: biomass, catch, fishing
-		mortality and recruitment. x-axis is the year, y the value}
-	\label{fig:2}
-\end{figure}	
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../tests/plots/fDynamics}
-	\caption{f dynamics - the daily fishing mortalities, each year is a
-		different colour}
 	\label{fig:3}
 \end{figure}	
 
 \begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../tests/plots/vessel_move}
-	\caption{vessel movement - a single trip movement for one vessel}
+	\includegraphics[width = \linewidth]{../analysis/Overview_plot_highPop}
+	\caption{Comparison of closure scenarios}
 	\label{fig:4}
 \end{figure}	
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../tests/plots/vessel_multi_move}
-	\caption{vessel movement for multiple trips from a single vessel. Note
-	the movement off the side pops up the other side, but is joined by a
-	line across the grid. This is from the torus approach rather than the
-	edges being barriers}
-	\label{fig:5}
-\end{figure}	
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../tests/plots/vessel_move_value}
-	\caption{movement of a single vessel over a few trips overlaid on the
-		value field (i.e. sum of the population abundance x catchability x value}
-	\label{fig:6}
-\end{figure}	
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../tests/plots/fleet_moves}
-	\caption{An entire fleets (20 vessels) movement for a single trip}
-	\label{fig:7}
-\end{figure}	
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../tests/plots/catch_comp}
-	\caption{spatial catch composition - the raw catches per cell at 4
-		different spatial resolutions. Sorry, its a bit small at the
-		moment!}
-	\label{fig:8}
-\end{figure}	
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../tests/plots/catch_comp_clusters}
-	\caption{spatial catch composition (as above) but with clustering of
-		cells performs on the bottom row. I'm confused as to why some
-		entirely blue cells in the raw catch composition get allocated
-	to the same cluster as some entirely red cells - needs investigating,
-	it may be the clustering is not optimal}
-	\label{fig:9}
-\end{figure}	
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../tests/plots/survey_index}
-	\caption{survey index - a non-spatial index generated from the fishery independent
-	survey}
-	\label{fig:10}
-\end{figure}	
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../tests/plots/spatial_survey}
-	\caption{survey spatial abundance - a bubble plot of the survey
-		abundances, not really useful for the paper}
-	\label{fig:11}
-\end{figure}	
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../tests/plots/step_function}
-	\caption{Realised step function - the step function as realised for a
-		single fleet. For turning angles, it can be seen that at higher
-	values, the turning range is less}
-	\label{fig:12}
-\end{figure}	
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../tests/plots/pop_dist}
-	\caption{Spatial dynamics - the four populations at four time steps.
-		Not really happy about the lack of dynamics here - mainly down
-	to the static habitat leading to the populations settle in same cells
-	over most time steps (exception: during the spawning period). Could
-	include a temperature covariate or something to force some more
-	temporal changes?}
-	\label{fig:13}
-\end{figure}	
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../tests/plots/Proportion_in_cell}
-	\caption{Temporal dynamics - the proportion of each population in a
-		randomly chosen cell. Similar criticism as above}
-	\label{fig:14}
-\end{figure}	
-
 
 \section*{Abbreviations} Detail any unusual ones used.
 
