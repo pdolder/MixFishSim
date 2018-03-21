@@ -1,16 +1,16 @@
 # Fdb version 3
-["bibtex mixfishsim_ecolmod"] 1521221143 "mixfishsim_ecolmod.aux" "mixfishsim_ecolmod.bbl" "mixfishsim_ecolmod" 1521221147
+["bibtex mixfishsim_ecolmod"] 1521647737 "mixfishsim_ecolmod.aux" "mixfishsim_ecolmod.bbl" "mixfishsim_ecolmod" 1521647741
   "/usr/share/texlive/texmf-dist/bibtex/bst/elsarticle/elsarticle-num.bst" 1253317863 30001 6fb47de13cacd52e2c80466b180be262 ""
-  "mixfishsim_ecolmod.aux" 1521221147 6659 3751f93a2c939ac2e7ac6da1608f5b20 ""
+  "mixfishsim_ecolmod.aux" 1521647741 6657 f3fca34edd77d243787c14c0ed66a6e9 ""
   "mixfishsim_ecolmod.bcf" 0 -1 0 ""
   "simulation_framework.bib" 1517406526 101802 9d4ca5806797536ea187fab28db9b2ed ""
   (generated)
-  "mixfishsim_ecolmod.blg"
   "mixfishsim_ecolmod.bbl"
-["pdflatex"] 1521221147 "mixfishsim_ecolmod.tex" "mixfishsim_ecolmod.pdf" "mixfishsim_ecolmod" 1521221147
-  "../analysis/Data_Aggregation_space.pdf" 1520977162 570755 f32989c9156bcb0c0575e57a67d3d5fa ""
-  "../analysis/Data_Aggregation_time.pdf" 1521055691 21534 49df556bd8a6061144c70203f01fdfcc ""
-  "../analysis/F_trends.png" 1521115422 425717 9405550437aaf42466b5d3a1fc2c6dfa ""
+  "mixfishsim_ecolmod.blg"
+["pdflatex"] 1521647740 "mixfishsim_ecolmod.tex" "mixfishsim_ecolmod.pdf" "mixfishsim_ecolmod" 1521647741
+  "../analysis/Data_Aggregation_space.png" 1521388004 561822 e8253c7edf46d721e0c0bfe3fb9d0fb6 ""
+  "../analysis/Data_Aggregation_time.png" 1521388135 121054 43fcac01324e5c214432ab48886c683a ""
+  "../analysis/F_trends.png" 1521562210 440288 02ca8830ec7ff3aca1ae3667d6bcda8f ""
   "../analysis/Overview_plot_highPop.png" 1520933718 207094 2a1f3ecb6be4ba993a1b3d73dde2c27a ""
   "/etc/texmf/web2c/texmf.cnf" 1512585396 1101 af7716885e081ab43982cab7b4672c1a ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
@@ -208,14 +208,14 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1512585473 1863403 f3ff9a4253bcb5fb9a9baaf0c572cb01 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1512585530 3854800 61def254b42a7b15a7d1849086cebe52 ""
   "Supplementary.aux" 1521220504 4762 b2e11200b32c748d5f5ca9aa0028b151 ""
-  "mixfishsim_ecolmod.aux" 1521221147 6659 3751f93a2c939ac2e7ac6da1608f5b20 ""
-  "mixfishsim_ecolmod.bbl" 1521221143 11481 3b6391ef727bad794960d6e6a397bced "bibtex mixfishsim_ecolmod"
-  "mixfishsim_ecolmod.out" 1521221147 1234 ce6a02218fd5ae3c14f608a4c5236ada ""
-  "mixfishsim_ecolmod.spl" 1521221147 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "mixfishsim_ecolmod.tex" 1521221146 43362 a5779d6275b9d86b43dbfed855b00475 ""
+  "mixfishsim_ecolmod.aux" 1521647741 6657 f3fca34edd77d243787c14c0ed66a6e9 ""
+  "mixfishsim_ecolmod.bbl" 1521647737 11481 3b6391ef727bad794960d6e6a397bced "bibtex mixfishsim_ecolmod"
+  "mixfishsim_ecolmod.out" 1521647741 1234 ce6a02218fd5ae3c14f608a4c5236ada ""
+  "mixfishsim_ecolmod.spl" 1521647740 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "mixfishsim_ecolmod.tex" 1521647739 43411 237545e0825d4aeb785b2506e398999b ""
   (generated)
   "mixfishsim_ecolmod.aux"
   "mixfishsim_ecolmod.spl"
-  "mixfishsim_ecolmod.log"
   "mixfishsim_ecolmod.out"
+  "mixfishsim_ecolmod.log"
   "mixfishsim_ecolmod.pdf"
