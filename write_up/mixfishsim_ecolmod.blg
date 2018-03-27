@@ -1,54 +1,52 @@
 This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: mixfishsim_ecolmod.aux
-The style file: elsarticle-num.bst
+The style file: model2-names.bst.bst
 Database file #1: simulation_framework.bib
 Repeated entry---line 472 of file simulation_framework.bib
  : @article{Girardin2015
  :                      ,
 I'm skipping whatever remains of this entry
-Warning--empty publisher in Hilborn1992b
 Warning--empty journal in Beverton1957
-Warning--empty publisher in Diggle2007
 You've used 29 entries,
-            2937 wiz_defined-function locations,
-            917 strings with 12798 characters,
-and the built_in function-call counts, 10230 in all, are:
-= -- 1031
-> -- 347
-< -- 2
-+ -- 135
-- -- 106
-* -- 967
-:= -- 1418
-add.period$ -- 51
+            2761 wiz_defined-function locations,
+            801 strings with 11029 characters,
+and the built_in function-call counts, 19856 in all, are:
+= -- 1553
+> -- 906
+< -- 13
++ -- 347
+- -- 318
+* -- 2351
+:= -- 3034
+add.period$ -- 87
 call.type$ -- 29
-change.case$ -- 27
-chr.to.int$ -- 0
-cite$ -- 32
-duplicate$ -- 251
-empty$ -- 1051
-format.name$ -- 130
-if$ -- 2515
-int.to.chr$ -- 0
-int.to.str$ -- 29
-missing$ -- 31
-newline$ -- 129
-num.names$ -- 29
-pop$ -- 145
+change.case$ -- 249
+chr.to.int$ -- 29
+cite$ -- 30
+duplicate$ -- 1229
+empty$ -- 1280
+format.name$ -- 407
+if$ -- 3580
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 277
+newline$ -- 155
+num.names$ -- 116
+pop$ -- 298
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 222
 quote$ -- 0
-skip$ -- 529
+skip$ -- 394
 stack$ -- 0
-substring$ -- 739
-swap$ -- 97
+substring$ -- 1058
+swap$ -- 1087
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 3
-while$ -- 78
-width$ -- 31
-write$ -- 295
+type$ -- 255
+warning$ -- 1
+while$ -- 136
+width$ -- 0
+write$ -- 410
 (There was 1 error message)

@@ -32,7 +32,7 @@
 %% Numbered without titles
 %\bibliographystyle{model1a-num-names}
 %% Harvard
-%%\bibliographystyle{model2-names.bst}\biboptions{authoryear}
+\bibliographystyle{model2-names.bst}\biboptions{authoryear}
 %% Vancouver numbered
 %\usepackage{numcompress}\bibliographystyle{model3-num-names}
 %% Vancouver name/year
@@ -42,7 +42,9 @@
 %% AMA style
 %\usepackage{numcompress}\bibliographystyle{model6-num-names}
 %% `Elsevier LaTeX' style
-\bibliographystyle{elsarticle-num}
+%%\bibliographystyle{elsarticle-num}
+%%\bibliographystyle{elsarticle-harv}
+
 %%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -77,7 +79,7 @@
 %should state briefly the purpose of the research, the principal results and
 %major conclusions. An abstract is often pnresented separately from the article,
 %so it must be able to stand alone. For this reason, References should be
-%avoided, but if essential, then cite the author(s) and year(s). Also,
+%avoided, but if essential, then citep the author(s) and year(s). Also,
 %non-standard or uncommon abbreviations should be avoided, but if essential they
 %must be defined at their first mention in the abstract itself.  Graphical
 %abstract: Although a graphical abstract is optional, its use is encouraged as
@@ -163,7 +165,7 @@ discards. However, its implementation is hampered by lack of knowledge of fish
 and fishery spatiotemporal dynamics and understanding of the scale at which
 processes are important for management. Understanding the correct scale for
 spatial management is crucial in order to implement measures at a resolution
-that ensures effective management\cite{Dunn2016} while minimising economic
+that ensures effective management \citep{Dunn2016} while minimising economic
 impact. For example, a scale that promotes species avoidance for vulnerable or
 low quota species while allowing continuance of sustainable fisheries for
 available quota species. \\
@@ -172,11 +174,11 @@ Ensuring measures are implemented at an appropriate scale has been a challenge
 in the past that has led to ineffectual measures with unitended consequences
 such as limited impact towards the management objective or increased benthic
 impact on previously unexploited areas (e.g. the cod closure in the North
-Sea\cite{Rijnsdorp2001,Dinmore2003}). Since then more refined spatial
+Sea \citep{Rijnsdorp2001,Dinmore2003}). Since then more refined spatial
 information has become available through the combination of logbook and Vessel
-Monitoring System (VMS) data\cite{Lee2010, Bastardie2010, Gerritsen2012,
+Monitoring System (VMS) data \citep{Lee2010, Bastardie2010, Gerritsen2012,
 	Mateo2016} and more real-time spatial management has been possible 
-	(e.g. \cite{Holmes2011}). Such information is, however, patchy and
+	\citep[e.g.][]{Holmes2011}. Such information is, however, patchy and
 derived from an inherently biased sampling programme (i.e. targeted fishing).
 Further, fishers generally only recorded landings (not catch) on a daily basis.
 This leads to questions about the validity of inference that can be drawn from
@@ -210,7 +212,7 @@ these processes on the success of the management measure. \\
 %\textcolor{gray}{[Guidance: Provide sufficient details to allow the work to be
 %reproduced by an independent researcher. Methods that are already published
 %should be summarized, and indicated by a reference.  If quoting directly from a
-%previously published method, use quotation marks and also cite the source. Any
+%previously published method, use quotation marks and also citep the source. Any
 %modifications to existing methods should also be described.] \\ }
 %
 We develop a simulation model with a modular event-based approach, where
@@ -221,7 +223,7 @@ growth) operate on a daily time-step.  Population movement occurs on a
 weekly time-step, while recruitment occurs periodcally each year for a set
 time period (e.g. 3 weeks) at at specified point individual to a species. The
 simulation framework is implemented in the statistical software package R
-\cite{RCoreTeam2017}; available as an R package from the authors github
+\citep{RCoreTeam2017}; available as an R package from the authors github
 (\url{www.github.com/pdolder/MixFishSim}).\\
 
 Here we describe each of the model components; 1)
@@ -352,7 +354,7 @@ fishery dynamics.
 \subsection{Population dynamics}
 
 The basic population level processes are simulated using a modified two-stage
-Deriso-Schnute delay difference model \cite{Deriso1980, Schnute1985,
+Deriso-Schnute delay difference model \citep{Deriso1980, Schnute1985,
 	Dichmont2003} occurring at a daily time-step. Here, population biomass
 growth and depletion for pre-recruits and fish recruited to the fishery are
 modelled separately as a function of previous recruited biomass, intrinsic
@@ -371,14 +373,14 @@ population growth and recruitment:
 
 where $\rho$ is Brody's coefficient, shown to be approximately equal to
 $exp(-K)$, where $K$ is the growth rate from a von bertalanffy logistic growth
-model \cite{Schnute1985}. $Wt_{R-1}$ is the weight of fish prior to
+model \citep{Schnute1985}. $Wt_{R-1}$ is the weight of fish prior to
 recruitment, while $Wt_{R}$ is the recruited weight. $\alpha_{d}$ represents
 the proportion of fish recruited during that day for the year, while
 $R_{\tilde{y}}$ is the annual recruits. \\
 
 Mortality $Z$ can be decomposed to natural mortality, $M$, and fishing
 mortality, $F$, where both $M$ and $F$ are instantaneous rates with $M$ fixed
-and $F$ calculated by solving the Baranov catch equation \cite{Hilborn1992b}
+and $F$ calculated by solving the Baranov catch equation \citep{Hilborn1992b}
 for $F$:
 
 \begin{equation*}
@@ -398,7 +400,7 @@ species. \textcolor{red}{[link $F$ to effort and catchability - as I think we
 Recruitment is modelled through a function relating the mature biomass to
 recruits at time of recruitment. In \emph{mixfishsim}, it can be modelled
 either either as a stochastic Beverton-Holt stock-recruit form
-(\cite{Beverton1957}): 
+\citep{Beverton1957}: 
 
 \begin{equation*}
 	\begin{split}
@@ -411,7 +413,7 @@ biomass (SSB) required to produce half the maximum, $B$ current SSB and
 $\sigma^2$ the variability in the recruitment due to stochastic
 processes. \\
 
-or a stochastic Ricker form \cite{Ricker1954}
+or a stochastic Ricker form \citep{Ricker1954}:
 
 \begin{equation*}
 	\begin{split}
@@ -440,7 +442,7 @@ $x_{1}, \dots, x_{n}$ where for each $x_{i} \in \mathbb{R}^2$, the joint
 distribution of $S = \{S(x1),\dots S(x_{n})\}$ is multivariate Gaussian. The
 distribution is specified by its \textit{mean function}, $\mu(x) = E[S(x)]$ and
 its \textit{covariance function}, $\gamma(x,x') = Cov\{S(x),S(x')\}$
-\cite{Diggle2007}.\\
+\citep{Diggle2007}.\\
 
 The covariance structure affects the smoothness of the surfaces which the
 process generates, and we used the \textit{Matérn} family of covariance
@@ -478,7 +480,7 @@ deviation of the population temperature tolerance. \\
 
 In the simulation model, the habitat for each of the populations is generated
 through the \textit{RFSimulate} function of the \textit{RandomFields} R package
-\cite{Schlater2015}, implementing different parameter settings to affect the
+\citep{Schlater2015}, implementing different parameter settings to affect the
 patchiness of the populations. Each population is initialised at a single
 location, and subsequently moves according to a probabilistic distribtion based
 on habitat suitability, temperature and distance from current cell. 
@@ -520,7 +522,7 @@ though can be made to vary seasonally.
 
 \subsubsection{Trip-level decisions}
 
-Several studies (e.g.\cite{Hutton2004, Tidd2012, Girardin2015}) have confirmed
+Several studies \citep[e.g.][]{Hutton2004, Tidd2012, Girardin2015} have confirmed
 past activity and past catch rates are strong predictors of fishing location
 choice. For this reason, the fleet dynamics sub-model includes a learning
 component, where a vessel's initial fishing location in a trip is based on
@@ -541,19 +543,19 @@ random walk, movement is a stochastic process through a series of steps that
 can either be equal in length or take some other functional form.  The
 direction of the random walk can be correlated, a characteristic known as
 `persistence', providing some overall location of directional movement
-\cite{Codling2008} or uncorrelated. \\
+\citep{Codling2008} or uncorrelated. \\
 
 A \textit{lévy walk} is a particular form of random walk characterised by a
 heavy-tailed distribution of step-length and has received a lot of attention in
 ecological theory in recent years as having shown to have very similar
 characteristics as those observed by animals in nature, and being a near
 optimum searching strategy for predators pursuing patchily distributed prey
-\cite{Bartumeus2005, Sims2008}.  \cite{Bertrand2007} showed that Peruvian
+\citep{Bartumeus2005, Sims2008}.  \citet{Bertrand2007} showed that Peruvian
 anchovy fishermen have a stochastic search pattern similar to that observed
 with a lévy walk. However, it remains a subject of debate, with the contention
 that search patterns may be more simply characteristed as random walks
-\cite{Sakiyama2013} with specific patterns related to the characteristics of
-the prey field \cite{Sims2012}. \\
+\citep{Sakiyama2013} with specific patterns related to the characteristics of
+the prey field \citep{Sims2012}. \\
 
 We use a modified random walk where directional change is based on a correlated
 circular distribution where a favourable fishing ground is likely to be ``fished
@@ -593,9 +595,9 @@ parameterised as for $\beta_{3}$ in the step length function.
 
 Where several fishing vessels are exploiting the same fish population
 competition is known to play an important role in local distribution of fishing
-effort \cite{Gillis1998}. If several vessels are fishing on the same patch of
+effort \citep{Gillis1998}. If several vessels are fishing on the same patch of
 fish, local depletion and interference will affect fishing location choice of
-the fleet as a whole \cite{Rijnsdorp2000, Poos2007a}. In order to account for
+the fleet as a whole \citep{Rijnsdorp2000, Poos2007a}. In order to account for
 this behaviour, the fishing sub-model operates spatially on a daily time-step
 so that for future days the biomass available to the fishery is reduced in the
 areas fished. The cumulative effect is to make heavily fished areas less
