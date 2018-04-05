@@ -10,6 +10,16 @@
 \usepackage{mathtools}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,chains,calc}
+\usepackage{hhline}
+\usepackage{booktabs}
+
+% For track-changes
+\usepackage[draft]{changes}
+%\usepackage[final]{changes}
+\definechangesauthor[color = red]{JM}
+\definechangesauthor[color = blue]{PD}
+\definechangesauthor[color = green!40!black]{JJ}
+\definechangesauthor[color = purple]{CM}
 
 % Set up a few colours for tikz figure
 \colorlet{lcfree}{green}
@@ -69,8 +79,9 @@
 	Ireland} 
 \address[2]{Centre for Environment, Fisheries and Aquaculture Science (Cefas),
 	Pakefield Road, Lowestoft, UK}
-\address[3]{Université Pierre et Marie Curie, 4 Place Jussieu, 75005 Paris,
-	France}
+\address[3]{\replaced[id=JM]{Sorbonne Université, Faculty of
+		Sciences}{Université Pierre et Marie Curie}, 4 Place Jussieu,
+	75005 Paris, France}
 \address[4]{Wageningen Marine Research, Haringkade 1 1976 CP IJmuiden,
 	Netherlands}
 
@@ -92,11 +103,12 @@
 %a regular screen resolution of 96 dpi.  Preferred file types: TIFF, EPS, PDF or
 %MS Office files.] \\}
 %
-Fishing exploits spatially and temporally hetergenous fish populations, using
-species-unselective gear that can result in unintended, unwanted catch of low
-quota or protected species. Reducing these unwanted catches is crucial for
-biological and economic sustainability of `mixed fisheries' and implementation
-of an ecosystem approach to fishing. \\
+\replaced[id = JJ]{Most fisheries}{Fishing} exploit\deleted[id=JJ]{s} spatially
+and temporally hetergenous fish populations, using species-unselective gear
+that can result in unintended, unwanted catch of low quota or protected
+species. Reducing these unwanted catches is crucial for biological and economic
+sustainability of `mixed fisheries' and implementation of an ecosystem approach
+to fishing. \\
 
 To implement effective spatial measures to reduce discards a good understanding
 of spatiotemporal fishery dynamics is required. However, traditional
@@ -153,22 +165,31 @@ Some\sep keywords \sep here. Max 6
 Fishers exploit fish populations that are heterogenously distributed in space
 and time with verying knowledge of species distributions using
 species-unselective fishing gear. Fisheries that catch an assemblage of
-species, known as mixed fisheries, when managed by single-species quotas can
-end up discarding overquota catch leading to overexploitation of fish
-populations. Reducing discarding is crucial to ensure biological and economic
-sustainability of fisheries and implementation of an ecosystem approach to
-fisheries. As such there is increasing interest in technical solutions such as
-gear and spatial closures as ways of avoiding discards.  \\
+species, known as mixed fisheries \replaced[id=JJ]{may}{, when managed by
+	single-species quotas can end up} discard\deleted[id=JJ]{ing} overquota
+catch \added[id=JJ]{when managed by single species quotas,} leading to
+overexploitation of fish populations \added[id=JJ]{\citep{Ulrich2011a,
+		Batsleer2015}}.  \added[id=JJ]{This discarding of fish in
+	excess of quota hampers the ability to limit fishing mortality to
+	within sustainable limits \citep{Alverson1994, Crowder1998,
+		Rijnsdorp2007}.} Reducing discarding is crucial to ensure
+biological and economic sustainability of fisheries\deleted[id=JJ]{ and
+	implementation of an ecosystem approach to
+	fisheries}\replaced[id=PD]{and}{. As such} there is increasing interest
+in technical solutions such as gear and spatial closures as ways of avoiding
+discard\replaced[id=JJ]{ing of fish \citep{Kennelly2002, Catchpole2008,
+		Bellido2011}}{s}.  \\
 
 Use of spatial management as a tool has been proposed as a method to reduce
-discards. However, its implementation is hampered by lack of knowledge of fish
-and fishery spatiotemporal dynamics and understanding of the scale at which
-processes are important for management. Understanding the correct scale for
-spatial management is crucial in order to implement measures at a resolution
-that ensures effective management \citep{Dunn2016} while minimising economic
-impact. For example, a scale that promotes species avoidance for vulnerable or
-low quota species while allowing continuance of sustainable fisheries for
-available quota species. \\
+discards \added[id=PD]{\citep{Holmes2011, Little2014, Dunn2014a}}. However, its
+implementation is hampered by lack of knowledge of fish and fishery
+spatiotemporal dynamics and understanding of the scale at which processes are
+important for management. Understanding the correct scale for spatial
+management is crucial in order to implement measures at a resolution that
+ensures effective management \citep{Dunn2016} while minimising economic impact.
+For example, a scale that promotes species avoidance for vulnerable or low
+quota species while allowing continuance of sustainable fisheries for available
+quota species. \\
 
 Ensuring measures are implemented at an appropriate scale has been a challenge
 in the past that has led to ineffectual measures with unitended consequences
@@ -180,9 +201,12 @@ Monitoring System (VMS) data \citep{Lee2010, Bastardie2010, Gerritsen2012,
 	Mateo2016} and more real-time spatial management has been possible 
 	\citep[e.g.][]{Holmes2011}. Such information is, however, patchy and
 derived from an inherently biased sampling programme (i.e. targeted fishing).
-Further, fishers generally only recorded landings (not catch) on a daily basis.
+Further, fishers generally only recorded landings (not catch) on a daily
+basis\footnote{\added[id=JJ]{Its not clear what the problem is: landed
+		collected on daily basis or landings recorded rather than catch}}.
 This leads to questions about the validity of inference that can be drawn from
-landings data assigned to VMS activity pings. \\ 
+landings data assigned to VMS activity pings\footnote{\added[id=JJ]{This comes as a
+	surprise: I thought this was going to be about discards}}. \\ 
 
 In order to understand challenges that face VMS-linked landings to draw
 inference on the underlying population structure we develop a simulation model
@@ -203,9 +227,11 @@ simulation.\\
 We simulate a fishery closure to protect one species based on the
 fishery-dependent inferred distributions at a spatial and temporal scale
 typical in fisheries management, and assess a theoretical "benefit" to the
-population, and effect on the other three populations. Further, we extend our
-analysis to a range of spatial and temporal scales to assess the impact of
-these processes on the success of the management measure. \\
+population, and effect on the other three populations\footnote{\added[id=JJ]{If
+		the paper has two goals this should be clear from the start,
+		but may be better over 2 MSs}}. Further, we extend our analysis
+to a range of spatial and temporal scales to assess the impact of these
+processes on the success of the management measure. \\
 
 \section{Materials and Methods}
 
@@ -215,20 +241,30 @@ these processes on the success of the management measure. \\
 %previously published method, use quotation marks and also citep the source. Any
 %modifications to existing methods should also be described.] \\ }
 %
-We develop a simulation model with a modular event-based approach, where
-modules are implemented on independent time-scales appropriate to capture the
-characteristic of the process modelled (Figure 1). The fishing model operated on a
-tow-by-tow basis, while population dynamics (fishing and natural mortality,
-growth) operate on a daily time-step.  Population movement occurs on a
-weekly time-step, while recruitment occurs periodcally each year for a set
-time period (e.g. 3 weeks) at at specified point individual to a species. The
-simulation framework is implemented in the statistical software package R
-\citep{RCoreTeam2017}; available as an R package from the authors github
-(\url{www.github.com/pdolder/MixFishSim}).\\
+\replaced[id=PD]{A}{We developed and implemented a simulation model with a}
+modular event-based \replaced{simulation model was developed with}{approach,
+	where} \added[id=PD]{sub-}modules \deleted[id=PD]{are} implemented on
+independent time-scales appropriate to capture the characteristic of the
+\replaced[id=PD]{different processes}{process modelled} (Figure 1).
+\added[id=PD]{The following sub-modules were included to capture the full
+	system: 1) Population dynamics, 2) Recruitment dynamics, 3) Population
+	movement, 4) fishery dynamics.} \\
 
-Here we describe each of the model components; 1)
-Population dynamics, 2) Recruitment dynamics, 3) Population movement, 4)
-fishery dynamics.
+\deleted[id=PD]{The fishing model operated on a tow-by-tow basis, while}
+\replaced[id=PD]{P}{p}opulation dynamics (fishing and natural mortality,
+growth) operate on a daily time-step\replaced[id=PD]{, while p}{. P}opulation
+movement occurs on a weekly time-step\replaced[id=PD]{. R}{, while r}ecruitment
+\replaced[id=PD]{takes place}{occurs} periodcally each year for a set time
+\replaced[id=PD]{duration}{period (e.g. 3 weeks)} at at specified point
+individual to a species\deleted[id=PD]{.}\added[id=PD]{, while the fishing
+	module operates on a tow-by-tow basis (multiple events a day)}. The
+simulation framework is implemented in the statistical software package R
+\citep{RCoreTeam2017} \replaced[id=PD]{and}{;} available as an R package from
+the authors github (\url{www.github.com/pdolder/MixFishSim}).\\
+
+\deleted[id=PD]{Here we describe each of the model components; 1)
+Population dynamics, 2) Recruitment dynamics, 3) Population movement dynamics, 4)
+fishery dynamics.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Overview schematic  
@@ -355,19 +391,24 @@ fishery dynamics.
 
 The basic population level processes are simulated using a modified two-stage
 Deriso-Schnute delay difference model \citep{Deriso1980, Schnute1985,
-	Dichmont2003} occurring at a daily time-step. Here, population biomass
-growth and depletion for pre-recruits and fish recruited to the fishery are
-modelled separately as a function of previous recruited biomass, intrinsic
-population growth and recruitment:
+	Dichmont2003} occurring at a daily time-step. \added[id=PD]{A daily
+	time-step was chosen as to discretise continuous population processes
+	on a biologically relevent and computationally tractable timescale.}
+\replaced[id=PD]{Under the popualation dynamics module}{Here,} population
+biomass growth and depletion for pre-recruits and \deleted[id=PD]{fish}
+recruited \added[id=PD]{fish} \deleted[id=PD]{to the fishery} are modelled
+separately as a function of previous recruited biomass, intrinsic population
+growth and recruitment:
 
 \begin{equation*}
 	\begin{split}
-	B_{y,d+1} = &\\
-	& (1 + \rho) B_{y,d} \cdot e^{-Z_{y,d}} - \rho \cdot e^{-Z_{y,d}} \hspace{2.9cm}
+	B_{c,d+1} = &\\
+	& (1 + \rho) B_{c,d} \cdot e^{-Z_{c,d}} - \rho \cdot e^{-Z_{c,d}} \hspace{2.9cm}
 	\times \\  
-	& (B_{y,d-1} \cdot e^{-Z_{y,d-1}} + Wt_{R-1} \cdot \alpha_{d-1} \cdot R_{\tilde{y}(y,d-1)})
+	& (B_{c,d-1} \cdot e^{-Z_{c,d-1}} + Wt_{R-1} \cdot \alpha_{d-1} \cdot
+	R_{\tilde{y}(c,y,d-1)})
 	\hspace{0.4cm} + \\
-	& Wt_{R} \cdot \alpha_{d} \cdot R_{\tilde{y}(y,d)} 
+	& Wt_{R} \cdot \alpha_{d} \cdot R_{\tilde{y}(c,y,d)} 
 	\end{split}
 \end{equation*}
 
@@ -376,24 +417,26 @@ $exp(-K)$, where $K$ is the growth rate from a von bertalanffy logistic growth
 model \citep{Schnute1985}. $Wt_{R-1}$ is the weight of fish prior to
 recruitment, while $Wt_{R}$ is the recruited weight. $\alpha_{d}$ represents
 the proportion of fish recruited during that day for the year, while
-$R_{\tilde{y}}$ is the annual recruits. \\
+$R_{\tilde{c,y}}$ is the annual recruits in cell $c$ for year $y$. \\
 
-Mortality $Z$ can be decomposed to natural mortality, $M$, and fishing
-mortality, $F$, where both $M$ and $F$ are instantaneous rates with $M$ fixed
-and $F$ calculated by solving the Baranov catch equation \citep{Hilborn1992b}
-for $F$:
+Mortality $Z_{c,d}$ can be decomposed to natural mortality, $M_{c,d}$, and
+fishing mortality, $F_{c,d}$, where both $M_{c,d}$ and $F_{c,d}$ are
+instantaneous rates with $M_{c,d}$ fixed and $F_{c,d}$ calculated by solving
+the Baranov catch equation \citep{Hilborn1992b} for $F_{c,d}$:
 
 \begin{equation*}
-C_{d} = \frac{F_{d}}{F_{d}+M_{d}} * (1 - e^{-(F_{d} + M_{d})}) * B
+C_{c,d} = \frac{F_{c,d}}{F_{c,d} + M_{c,d}} * (1 - e^{-(F_{c,d} + M_{c,d})}) *
+B_{c,d}
 \end{equation*}
 
-where $C$ is the summed catch from the fishing model across all fleets and
-vessels for the population during the day, and $B$ the daily biomass for the
-species. \textcolor{red}{[link $F$ to effort and catchability - as I think we
-	have F as an emergent property of the fleets rather than something we
-	solve for (I could be wrong though!) - catch for a vessel is a product of
-	catchability and biomass, i.e. C = qB, but this catch is summed to
-	solve for F. So its both really]}\\
+where $C_{c,d}$ is the summed catch from the fishing model across all fleets
+and vessels in cell $c$ for the population during the day $d$, and $B_{c,d}$
+the daily biomass for the population in the cell. \textcolor{red}{[link $F$ to
+	effort and catchability - as I think we have F as an emergent property
+	of the fleets rather than something we solve for (I could be wrong
+	though!) - catch for a vessel is a product of catchability and biomass,
+	i.e. C = qB, but this catch is summed to solve for F. So its both
+	really]}\\
 
 \subsection{Recruitment dynamics}
 
@@ -404,8 +447,8 @@ either either as a stochastic Beverton-Holt stock-recruit form
 
 \begin{equation*}
 	\begin{split}
-	\bar{R} = & \frac{(\alpha * B)}{(\beta + B)} \\
-	     R \sim & \log N[(\log(\bar{R}),\log(\sigma^2))]
+	\bar{R}_{c,d} = & \frac{(\alpha * B_{c,d})}{(\beta + B_{c,d})} \\
+	     R_{c,d} \sim & \log N[(\log(\bar{R}_{c,d}),\log(\sigma^2))]
 	\end{split}
 \end{equation*}
 Where $\alpha$ is the maximum recruitment rate, $\beta$ the spawning stock
@@ -417,15 +460,15 @@ or a stochastic Ricker form \citep{Ricker1954}:
 
 \begin{equation*}
 	\begin{split}
-	\bar{R} = & B * e^{(\alpha - \beta * B)} \\	
-   	     R \sim & \log N[(\log(\bar{R}),\log(\sigma^2))]
+	\bar{R}_{c,d} = & B_{c,d} * e^{(\alpha - \beta * B_{c,d})} \\	
+   	     R_{c,d} \sim & \log N[(\log(\bar{R}_{c,d}),\log(\sigma^2))]
 	\end{split}
 \end{equation*}
 
 where $\alpha$ is the maximum productivity per spawner and $\beta$ the density
 dependent reduction in productivity as the SSB increases.
 
-\subsection{Population movement}
+\subsection{Population movement dynamics}
 
 To simulate how fish populations might be distributed in space and time, we
 employed a Gaussian spatial process to model habitat suitability for each of
@@ -818,6 +861,58 @@ difference in fishing mortalities across scenarios.
 %appendix, Eq. (B.1) and so on.  Similarly for tables and figures: Table A.1;
 %Fig. A.1, etc.]}
 %
+
+\begin{table}[!ht]
+	\centering
+	\caption{Description of variables for sub-modules}
+	\begin{tabular}{p{1.5cm} p{8cm} p{1.5cm}}
+		\toprule
+		Variable & Meaning & Units \\
+		\hline
+		\multicolumn{3}{c}{\textbf{Population dynamics}}  \\
+		\hhline{===}
+		\multicolumn{3}{l}{\textit{Delay-difference model}} \\
+		\hline
+		$B_{c,d}$ & Biomass in cell $c$ and day $d$ & kg \\
+		$Z_{c,d}$ & Total mortality in cell $c$ for day $d$ & - \\
+		$R_{c, \tilde{y}}$  &Annualy recruited fish in cell &  yr\textsuperscript{-1} \\
+		$\rho$ & Brody's growth coefficient & yr\textsuperscript{-1} \\
+		$Wt_{R}$ & Weight of a fully recruited fish & kg \\
+		$Wt_{R-1}$ & Weight of a pre-recruit fish & kg \\
+		$\alpha_{d}$ & Proportion of annually recruited fish recruited
+		during day $d$ & - \\
+		\hline
+		\multicolumn{3}{l}{\textit{Baranov catch equation}} \\
+		\hline
+		$C_{c,d}$ & Catch from cell $c$ for day $d$ & kg \\
+		$F_{c,d}$ & Instantaneous rate of fishing mortality in cell $c$
+		on day $d$ & - \\
+		$M_{c,d}$ & Instantaneous rate of natural mortality in cell $c$
+		on day $d$ & - \\
+		$B_{c,d}$ & Biomass in cell $c$ on day $d$ & kg \\
+		\hline
+		\multicolumn{3}{c}{\textbf{Recruitment dynamics}} \\
+		\hhline{===}
+		$\tilde{R}_{c,d}$ & is the recruitment in cell $c$ for day $d$ & $d^{-1}$ \\
+		$B_{c,d}$ & is the Biomass in cell $c$ for day $d$ & $d^{-1}$ \\
+		$\alpha$ & the maximum recruitment rate & kg  \\
+		$\beta$ & the biomass required to produce half the maximum rate
+		of recruitment & kg \\
+		\hline
+		\multicolumn{3}{c}{\textbf{Population movement dynamics}} \\
+		\hhline{===}
+		a & b & c \\
+		a & b & c \\
+		\hline
+		\multicolumn{3}{c}{\textbf{Fleet dynamics}} \\
+		\hhline{===}
+		a & b & c \\
+		a & b & c \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
 \begin{table}[!ht]
 \caption{Population dynamics and movement parameter setting}
 	\begin{tabular}{ p{4cm } p{2cm} p{2cm} p{2cm} p{2cm}}

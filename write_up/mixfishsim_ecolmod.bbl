@@ -1,4 +1,4 @@
-\begin{thebibliography}{29}
+\begin{thebibliography}{39}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -6,6 +6,14 @@
 \providecommand{\eprint}[2][]{\url{#2}}
 \providecommand{\bibinfo}[2]{#2}
 \ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Misc
+\bibitem[{Alverson et~al.(1994)Alverson, Freeberg, Murawski and
+  Pope}]{Alverson1994}
+\bibinfo{author}{Alverson, D.L.}, \bibinfo{author}{Freeberg, M.H.},
+  \bibinfo{author}{Murawski, S.A.}, \bibinfo{author}{Pope, J.},
+  \bibinfo{year}{1994}.
+\newblock \bibinfo{title}{{A global assessment of fisheries bycatch and
+  discards}}.
 %Type = Article
 \bibitem[{Bartumeus et~al.(2005)Bartumeus, {Da Luz}, Viswanatham and
   Catalan}]{Bartumeus2005}
@@ -27,6 +35,24 @@
 \newblock \bibinfo{journal}{Fisheries Research} \bibinfo{volume}{106},
   \bibinfo{pages}{41--53}.
 %Type = Article
+\bibitem[{Batsleer et~al.(2015)Batsleer, Hamon, Overzee, Rijnsdorp and
+  Poos}]{Batsleer2015}
+\bibinfo{author}{Batsleer, J.}, \bibinfo{author}{Hamon, K.G.},
+  \bibinfo{author}{Overzee, H.M.J.}, \bibinfo{author}{Rijnsdorp, A.D.},
+  \bibinfo{author}{Poos, J.J.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{{High-grading and over-quota discarding in mixed
+  fisheries}}.
+\newblock \bibinfo{journal}{Reviews in Fish Biology and Fisheries}
+  \bibinfo{volume}{25}, \bibinfo{pages}{715--736}.
+%Type = Misc
+\bibitem[{Bellido et~al.(2011)Bellido, Santos, Pennino, Valeiras and
+  Pierce}]{Bellido2011}
+\bibinfo{author}{Bellido, J.M.}, \bibinfo{author}{Santos, M.B.},
+  \bibinfo{author}{Pennino, M.G.}, \bibinfo{author}{Valeiras, X.},
+  \bibinfo{author}{Pierce, G.J.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{{Fishery discards and bycatch: Solutions for an
+  ecosystem approach to fisheries management?}}
+%Type = Article
 \bibitem[{Bertrand et~al.(2007)Bertrand, Bertrand, Guevara-Carrasco and
   Gerlotto}]{Bertrand2007}
 \bibinfo{author}{Bertrand, S.}, \bibinfo{author}{Bertrand, A.},
@@ -43,6 +69,13 @@
 \newblock \bibinfo{title}{{On the Dynamics of Exploited Fish Populations}} ,
   \bibinfo{pages}{533}.
 %Type = Article
+\bibitem[{Catchpole and Revill(2008)}]{Catchpole2008}
+\bibinfo{author}{Catchpole, T.L.}, \bibinfo{author}{Revill, A.S.},
+  \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{{Gear technology in Nephrops trawl fisheries}}.
+\newblock \bibinfo{journal}{Reviews in Fish Biology and Fisheries}
+  \bibinfo{volume}{18}, \bibinfo{pages}{17--31}.
+%Type = Article
 \bibitem[{Codling et~al.(2008)Codling, Plank, Benhamou and
   Interface}]{Codling2008}
 \bibinfo{author}{Codling, E.A.}, \bibinfo{author}{Plank, M.J.},
@@ -51,6 +84,13 @@
 \newblock \bibinfo{title}{{Random walk models in biology.}}
 \newblock \bibinfo{journal}{Journal of the Royal Society, Interface / the Royal
   Society} \bibinfo{volume}{5}, \bibinfo{pages}{813--34}.
+%Type = Article
+\bibitem[{Crowder and Murawski(1998)}]{Crowder1998}
+\bibinfo{author}{Crowder, L.B.}, \bibinfo{author}{Murawski, S.A.},
+  \bibinfo{year}{1998}.
+\newblock \bibinfo{title}{{Fisheries Bycatch: Implications for Management}}.
+\newblock \bibinfo{journal}{Fisheries} \bibinfo{volume}{23},
+  \bibinfo{pages}{8--17}.
 %Type = Article
 \bibitem[{Deriso(1980)}]{Deriso1980}
 \bibinfo{author}{Deriso, R.B.}, \bibinfo{year}{1980}.
@@ -86,6 +126,17 @@
   fishing disturbance and the consequences for benthic communities}}.
 \newblock \bibinfo{journal}{ICES Journal of Marine Science}
   \bibinfo{volume}{60}, \bibinfo{pages}{371--380}.
+%Type = Article
+\bibitem[{Dunn et~al.(2014)Dunn, Boustany, Roberts, Brazer, Sanderson, Gardner
+  and Halpin}]{Dunn2014a}
+\bibinfo{author}{Dunn, D.C.}, \bibinfo{author}{Boustany, A.M.},
+  \bibinfo{author}{Roberts, J.J.}, \bibinfo{author}{Brazer, E.},
+  \bibinfo{author}{Sanderson, M.}, \bibinfo{author}{Gardner, B.},
+  \bibinfo{author}{Halpin, P.N.}, \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{{Empirical move-on rules to inform fishing
+  strategies: A New England case study}}.
+\newblock \bibinfo{journal}{Fish and Fisheries} \bibinfo{volume}{15},
+  \bibinfo{pages}{359--375}.
 %Type = Article
 \bibitem[{Dunn et~al.(2016)Dunn, Maxwell, Boustany and Halpin}]{Dunn2016}
 \bibinfo{author}{Dunn, D.C.}, \bibinfo{author}{Maxwell, S.M.},
@@ -153,6 +204,14 @@
 \newblock \bibinfo{journal}{ICES Journal of Marine Science}
   \bibinfo{volume}{61}, \bibinfo{pages}{1443--1452}.
 %Type = Article
+\bibitem[{Kennelly and Broadhurst(2002)}]{Kennelly2002}
+\bibinfo{author}{Kennelly, S.J.}, \bibinfo{author}{Broadhurst, M.K.},
+  \bibinfo{year}{2002}.
+\newblock \bibinfo{title}{{By-catch begone: Changes in the philosophy of
+  fishing technology}}.
+\newblock \bibinfo{journal}{Fish and Fisheries} \bibinfo{volume}{3},
+  \bibinfo{pages}{340--355}.
+%Type = Article
 \bibitem[{Lee et~al.(2010)Lee, South and Jennings}]{Lee2010}
 \bibinfo{author}{Lee, J.}, \bibinfo{author}{South, A.B.},
   \bibinfo{author}{Jennings, S.}, \bibinfo{year}{2010}.
@@ -161,6 +220,15 @@
   from vessel monitoring system (VMS) data}}.
 \newblock \bibinfo{journal}{ICES Journal of Marine Science}
   \bibinfo{volume}{67}, \bibinfo{pages}{1260--1271}.
+%Type = Article
+\bibitem[{Little et~al.(2014)Little, Needle, Hilborn, Holland and
+  Marshall}]{Little2014}
+\bibinfo{author}{Little, A.S.}, \bibinfo{author}{Needle, C.L.},
+  \bibinfo{author}{Hilborn, R.}, \bibinfo{author}{Holland, D.S.},
+  \bibinfo{author}{Marshall, C.T.}, \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{{Real-time spatial management approaches to reduce
+  bycatch and discards: experiences from Europe and the United States}}.
+\newblock \bibinfo{journal}{Fish and Fisheries} , \bibinfo{pages}{n/a--n/a}.
 %Type = Article
 \bibitem[{Mateo et~al.(2016)Mateo, Pawlowski and Robert}]{Mateo2016}
 \bibinfo{author}{Mateo, M.}, \bibinfo{author}{Pawlowski, L.},
@@ -198,6 +266,16 @@
   exploiting local patches of flatfish in the North Sea}}.
 \newblock \bibinfo{journal}{ICES Journal of Marine Science}
   \bibinfo{volume}{57}, \bibinfo{pages}{894--902}.
+%Type = Article
+\bibitem[{Rijnsdorp et~al.(2007)Rijnsdorp, Daan, Dekker, Poos and {Van
+  Densen}}]{Rijnsdorp2007}
+\bibinfo{author}{Rijnsdorp, a.D.}, \bibinfo{author}{Daan, N.},
+  \bibinfo{author}{Dekker, W.}, \bibinfo{author}{Poos, J.J.},
+  \bibinfo{author}{{Van Densen}, W.L.T.}, \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{{Sustainable use of flatfish resources: Addressing
+  the credibility crisis in mixed fisheries management}}.
+\newblock \bibinfo{journal}{Journal of Sea Research} \bibinfo{volume}{57},
+  \bibinfo{pages}{114--125}.
 %Type = Article
 \bibitem[{Rijnsdorp et~al.(2001)Rijnsdorp, Piet and Poos}]{Rijnsdorp2001}
 \bibinfo{author}{Rijnsdorp, A.D.}, \bibinfo{author}{Piet, G.J.},
@@ -264,5 +342,15 @@
   fisheries}}.
 \newblock \bibinfo{journal}{Fisheries Research} \bibinfo{volume}{125-126},
   \bibinfo{pages}{243--253}.
+%Type = Article
+\bibitem[{Ulrich et~al.(2011)Ulrich, Reeves, Vermard, Holmes and
+  Vanhee}]{Ulrich2011a}
+\bibinfo{author}{Ulrich, C.}, \bibinfo{author}{Reeves, S.a.},
+  \bibinfo{author}{Vermard, Y.}, \bibinfo{author}{Holmes, S.J.},
+  \bibinfo{author}{Vanhee, W.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{{Reconciling single-species TACs in the North Sea
+  demersal fisheries using the Fcube mixed-fisheries advice framework}}.
+\newblock \bibinfo{journal}{ICES Journal of Marine Science}
+  \bibinfo{volume}{68}, \bibinfo{pages}{1535--1547}.
 
 \end{thebibliography}
