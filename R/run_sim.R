@@ -84,6 +84,12 @@ print("You are implementing spatial closures....")
 closeArea <- TRUE
 }
 
+if(is.null(closure )) {
+print("You are NOT implementing spatial closures....")
+closeArea <- FALSE 
+}
+
+
 ##################
 ### loop control #
 for (t in seq_len(ntow)) {

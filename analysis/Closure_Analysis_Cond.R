@@ -15,7 +15,7 @@ set.seed(123, kind = "L'Ecuyer-CMRG")
 
 ## initialise the simulation
 
-sim <- init_sim(nrows = 100, ncols = 100, n_years = 10, n_tows_day = 4, n_days_wk_fished = 5,
+sim <- init_sim(nrows = 100, ncols = 100, n_years = 30, n_tows_day = 4, n_days_wk_fished = 5,
      n_fleets = 5, n_vessels = 20, n_species = 4, move_freq = 2)
 
 ## create the suitable habitat for each species
@@ -59,8 +59,8 @@ Pop <- init_pop(sim_init = sim, Bio = c(spp1 = 1e5, spp2 = 2e5, spp3 = 1e5, spp4
 		init_move_steps = 20, 
 		rec_params =  list("spp1" = c("model" = "BH", "a" = 6, "b" = 4, "cv" = 0.7), 
 				   "spp2" = c("model" = "BH", "a" = 27, "b" = 4, "cv" = 0.6),
-				   "spp3" = c("model" = "BH", "a" = 7, "b" = 11, "cv" = 0.7), 
-				   "spp4" = c("model" = "BH", "a" =  0.7, "b" = 0.5, "cv" = 0.6)
+				   "spp3" = c("model" = "BH", "a" = 14, "b" = 11, "cv" = 0.7), 
+				   "spp4" = c("model" = "BH", "a" =  0.4, "b" = 0.5, "cv" = 0.6)
 				   ),
 				   rec_wk = list("spp1" = 13:16, "spp2" = 12:16, "spp3" = 14:16, "spp4" = 16:20),
 				   spwn_wk = list("spp1" = 16:18, "spp2" = 16:19, "spp3" = 16:18, "spp4" = 18:20),
@@ -76,7 +76,7 @@ moveCov <- init_moveCov(sim_init = sim, steps = 52,
 				       "spp3" = list("mu" = 17, va = 7), 
 				       "spp4" = list("mu" = 12, va = 10)))
 
-plot_spatiotemp_hab(hab = hab, moveCov =, spwn_wk = list("spp1" = 16:18, "spp2" = 16:19, "spp3" = 16:18, "spp4" = 18:20))
+#plot_spatiotemp_hab(hab = hab, moveCov =, spwn_wk = list("spp1" = 16:18, "spp2" = 16:19, "spp3" = 16:18, "spp4" = 18:20))
 
 
 ## Initialise the fleets
@@ -123,11 +123,11 @@ B3_5 <- quantile(sapply(1:1000, function(x) { 1 * Q_mult * Pop[["Start_pop"]][[1
 #test_step(step_params = list("rate"  = 20, "B1" = 0.5, "B2" = 15, "B3" = max2), rev.max = max2)
 
 fleets <- init_fleet(sim_init = sim, VPT = c("spp1" = 100, "spp2" = 200, "spp3" = 600, "spp4" = 1600),
-	   Qs = list("fleet 1" = c("spp1" = Q_mult * 1, "spp2" = Q_mult * 2, "spp3" = Q_mult * 1, "spp4" = Q_mult * 2), 
-		     "fleet 2" = c("spp1" = Q_mult * 2, "spp2" = Q_mult * 1, "spp3" = Q_mult * 2, "spp4" = Q_mult * 1),
+	   Qs = list("fleet 1" = c("spp1" = Q_mult * 1, "spp2" = Q_mult * 2, "spp3" = Q_mult * 0.5, "spp4" = Q_mult * 2), 
+		     "fleet 2" = c("spp1" = Q_mult * 3, "spp2" = Q_mult * 0.5, "spp3" = Q_mult * 1, "spp4" = Q_mult * 0.5),
 		     "fleet 3" = c("spp1" = Q_mult * 2, "spp2" = Q_mult * 2, "spp3" = Q_mult * 2, "spp4" = Q_mult * 2),
-		     "fleet 4" = c("spp1" = Q_mult * 1, "spp2" = Q_mult * 1, "spp3" = Q_mult * 1, "spp4" = Q_mult * 5),
-		     "fleet 5" = c("spp1" = Q_mult * 1, "spp2" = Q_mult * 3, "spp3" = Q_mult * 2, "spp4" = Q_mult * 1)
+		     "fleet 4" = c("spp1" = Q_mult * 1, "spp2" = Q_mult * 0.5, "spp3" = Q_mult * 0.5, "spp4" = Q_mult * 3),
+		     "fleet 5" = c("spp1" = Q_mult * 1, "spp2" = Q_mult * 2, "spp3" = Q_mult * 2, "spp4" = Q_mult * 0.5)
 		     ),
 	   step_params = list("fleet 1" = c("rate" = 20, "B1" = 1, "B2" = 10, "B3" = B3_1),
 			      "fleet 2" = c("rate" = 30, "B1" = 2 , "B2" = 15, "B3" = B3_2),

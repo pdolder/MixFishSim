@@ -19,12 +19,7 @@ load('Common_Params.RData')
 ## Scenarios here
 load('scenarios.RData')
 
-#for(r in 1:nrow(sc)) {
-## Change closure per scenario
-#closure <- init_closure(input_coords = NULL, basis = sc$data_type[r], rationale = sc$basis[r], spp1 = 'spp1', spp2 = 'spp2', year_start = 5, year_basis = c(1:4), closure_thresh = 0.95, sc = sc$resolution[r], temp_dyn = sc$timescale[r])
-
-closure <- init_closure(input_coords = NULL, basis = 'real_pop', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 2, year_basis = 1, closure_thresh = 0.95, sc = 1, temp_dyn = 'weekly')
-
+closure <- NULL
 
 ## run_sim function for overall control
 res <- run_sim(sim_init = sim, pop_init = Pop, move_cov = moveCov, fleets_init = fleets, hab_init = hab, InParallel = TRUE, cores = 1, save_pop_bio = TRUE, survey = survey, closure = closure)
@@ -34,5 +29,4 @@ save(res, file = paste('Scenario',r , '.RData',sep = "_"))
 
 rm(res); gc()
 
-#}
 
