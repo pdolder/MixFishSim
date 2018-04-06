@@ -383,7 +383,8 @@ fishery dynamics.}
 	the white boxes are the timesteps at which processes occur; $t$ = tow,
 	$tmax$ is the total number of tows, $y$ = year, $pop_{t}$ is time of
 	population movement, $day$ is a day timestep, $trip$ is a trip time
-	step. 
+	step. \textcolor{red}{I NEED TO REDO THIS TO MAKE NOTATION MORE CONCISE
+		AND CONSISTENT} 
 	} 
 \label{fig:overview}
 \end{figure}
@@ -720,26 +721,31 @@ surveys undertaken by fisheries research agencies.
 \subsection{Population parameterisation}
 
 We parameterised the simulation model for four populations with differing
-habitat preference and temperature tolerances (Figures \ref{S-fig:1},
-\ref{S-fig:3}, \ref{S-fig:4}, \ref{S-fig:5}, \ref{S-fig:6}, \ref{S-fig:7}),
-population demographic and recruitment functions. In addition, each of the
-populations has two defined spawning areas which result in the populations
-moving towards these areas in given weeks (Figure \ref{S-fig:2}) and
-population-specific movement rates (Table \ref{tab:1}). The realised movement
-of the populations for a number of weeks is shown in Figure \ref{S-fig:9} while
-the realised daily fishing mortality are shown in Figure \ref{S-fig:10}. \\
+habitat preference\replaced{,}{ and} temperature tolerances (Figures
+\ref{S-fig:1}, \ref{S-fig:3}, \ref{S-fig:4}, \ref{S-fig:5}, \ref{S-fig:6},
+\ref{S-fig:7}), population demographic\replaced{,}{ and} recruitment functions.
+In addition, each of the populations has two defined spawning areas which
+result in the populations moving towards these areas in given weeks (Figure
+\ref{S-fig:2}) and population-specific movement rates (Table \ref{tab:1}). The
+realised movement of the populations for a number of weeks is shown in Figure
+\ref{S-fig:9} while the realised daily fishing mortality are shown in Figure
+\ref{S-fig:10}. \\
 
 \subsection{Fleet parameterisation}
 
 The fleets were parameterised to reflect five different characteristics based
-on targeting preference and exploitation dynamics (Table \ref{tab:2}). This
-ensures that different fleets have different spatial dynamics, preferentially
-targeted different fish populations. The stochasticity in the random walk
-process ensures that different vessels within a fleet have slightly different
-spatial distributions based on individual experience, while the step function
-was parameterised dynamically so that vessels take smaller steps where the
-fishing location yields in a top quartile of the value available in that year
-(as defined per fleet in Table \ref{tab:2}). \\
+on targeting preference and exploitation dynamics (Table \ref{tab:2}).
+\replaced[id=PD]{Setting a targeting parameter ($Q$) that differed across
+	fleets ensured different spatial dynamics, due to preferential
+	targeting of populations that differ in their spatial
+	distributions}{This ensures that different fleets have different
+	spatial dynamics, preferentially targeted different fish populations}.
+The stochasticity in the random walk process ensures that different vessels
+within a fleet have slightly different spatial distributions based on
+individual experience, while the step function was parameterised dynamically so
+that vessels take smaller steps where the fishing location yields in a top
+quartile of the value available in that year (as defined per fleet in Table
+\ref{tab:2}). \\
 
 Each fleet was set so that, after the first year, fishing locations were chosen
 based on experience built up in the same month from previous years and from
@@ -748,17 +754,20 @@ locations where the top 75 \% of revenue from was found in previous trips.
 
 An example of the realised fleet movements for a single vessel during a single
 trip are given in Figure \ref{S-fig:11}, while Figure \ref{S-fig:12} shows
-multiple trips for a single vessel, \ref{S-fig:13} the vessel movements for
-some trips overlaid on the value field, \ref{S-fig:14} shows fishing locations
-for an entire fleet of 20 vessels for a single trip, while \ref{S-fig:15} shows
-an example of the step function realisation and turning angles from the
-correlated random walk.
+multiple trips for a single vessel, \added[id=PD]{Figure} \ref{S-fig:13} the
+vessel movements for some trips overlaid on the value field,
+\added[id=PD]{Figure} \ref{S-fig:14} shows fishing locations for an entire
+fleet of 20 vessels for a single trip, \replaced[id=PD]{and Figure}{while}
+\ref{S-fig:15} shows an example of the step function realisation and turning
+angles from the correlated random walk.\todo{\added[id=JJ]{Move some of the
+	supplementary figures to the manuscript}}
 
 \subsection{Survey settings}
 
 The survey simulation was set up with follow a fixed gridded station design
-with 100 stations fished each year, starting on day 92 with same catchability
-parameters for all populations (Q = 1). 
+with 100 stations fished each year, starting on day 92 \added[id=PD]{and ending
+	on day 112 (5 stations per day)} with same catchability parameters for
+all populations ($Q_{p} = 1$). 
 
 \subsection{Simulation settings}
 
@@ -768,15 +777,23 @@ the reduction in catches of a population given spatial closures. To do so, we
 first set up with simulation to run for 10 years based on a 100 X 100 square
 grid, with five fleets of 20 vessels each and four fish populations. Fishing
 takes place four times a day per vessel and five days a week, while population
-movement is every week. \\
+movement is every week.\todo{\added[id=JJ]{move to start of methods
+		section}\added[id=PD]{I think ecological modelling wants the
+		'calculations' section here..will check}} \\
 
-We allow the simulation to run unrestricted for 5 years, and subsequently close
-areas for the last 5 years of the simulation based on data (either derived from
-the commercial catches, fisheries-independent survey or the 'real population' -
-the underlying populations assumed to be known perfectly) used at different
-spatial and temporal scales. \\
+We allow the simulation to run unrestricted for 5 years\todo{\added[id=JJ]{Is
+		there equilibrium after 5 years or still some trend in
+		B}\added[id=PD]{Not at equilibrium yet...I need to rerun until
+		steady state, looks 20 years. Will update}}, and
+subsequently close areas for the last 5 years of the simulation based on data
+(either derived from the commercial catches, fisheries-independent survey or
+the 'real population' - the underlying populations assumed to be known
+perfectly) used at different spatial and temporal scales. \\
 
-The following steps are undertaken to determine closures:
+The following steps are undertaken to determine
+closures:\todo{\added[id=JJ]{Procedure unclear. Refer to symbols in
+		methods section or switch order starting with description of
+		data type	etc..}\added[id=PD]{Yes, will redo}}
 
 \begin{enumerate}
 	\item Extract data source
