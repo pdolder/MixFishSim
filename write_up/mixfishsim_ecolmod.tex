@@ -12,10 +12,12 @@
 \usetikzlibrary{shapes,arrows,chains,calc}
 \usepackage{hhline}
 \usepackage{booktabs}
+\usepackage[textsize=scriptsize]{todonotes}
+%\usepackage[textsize=scriptsize, disable]{todonotes}  %% to turn off notes
 
 % For track-changes
 \usepackage[draft]{changes}
-%\usepackage[final]{changes}
+%\usepackage[final]{changes} %% to turn off changes
 \definechangesauthor[color = red]{JM}
 \definechangesauthor[color = blue]{PD}
 \definechangesauthor[color = green!40!black]{JJ}
@@ -202,10 +204,10 @@ Monitoring System (VMS) data \citep{Lee2010, Bastardie2010, Gerritsen2012,
 	\citep[e.g.][]{Holmes2011}. Such information is, however, patchy and
 derived from an inherently biased sampling programme (i.e. targeted fishing).
 Further, fishers generally only recorded landings (not catch) on a daily
-basis\footnote{\added[id=JJ]{Its not clear what the problem is: landed
+basis\todo{\added[id=JJ]{Its not clear what the problem is: landed
 		collected on daily basis or landings recorded rather than catch}}.
 This leads to questions about the validity of inference that can be drawn from
-landings data assigned to VMS activity pings\footnote{\added[id=JJ]{This comes as a
+landings data assigned to VMS activity pings\todo{\added[id=JJ]{This comes as a
 	surprise: I thought this was going to be about discards}}. \\ 
 
 In order to understand challenges that face VMS-linked landings to draw
@@ -227,7 +229,7 @@ simulation.\\
 We simulate a fishery closure to protect one species based on the
 fishery-dependent inferred distributions at a spatial and temporal scale
 typical in fisheries management, and assess a theoretical "benefit" to the
-population, and effect on the other three populations\footnote{\added[id=JJ]{If
+population, and effect on the other three populations\todo{\added[id=JJ]{If
 		the paper has two goals this should be clear from the start,
 		but may be better over 2 MSs}}. Further, we extend our analysis
 to a range of spatial and temporal scales to assess the impact of these
@@ -431,12 +433,12 @@ B_{c,d}
 
 where $C_{c,d}$ is the summed catch from the fishing model across all fleets
 and vessels in cell $c$ for the population during the day $d$, and $B_{c,d}$
-the daily biomass for the population in the cell. \textcolor{red}{[link $F$ to
+the daily biomass for the population in the cell. \todo{\added[id=CM]{[link $F$ to
 	effort and catchability - as I think we have F as an emergent property
 	of the fleets rather than something we solve for (I could be wrong
 	though!) - catch for a vessel is a product of catchability and biomass,
 	i.e. C = qB, but this catch is summed to solve for F. So its both
-	really]}\\
+	really]}}\\
 
 \subsection{Recruitment dynamics}
 
@@ -470,29 +472,47 @@ dependent reduction in productivity as the SSB increases.
 
 \subsection{Population movement dynamics}
 
-To simulate how fish populations might be distributed in space and time, we
-employed a Gaussian spatial process to model habitat suitability for each of
-the populations, with an advection-diffusion process to control how the
-populations moved over time with a moving temperature covariate to capture
-temporal dependencies. This was intended to balance realism in population
-movement, capturing the main directed and random processes, and practicality of
-modelling the population rather than individual fish. \\
+To simulate \deleted[id=JJ]{how} fish population\deleted[id=JJ]{s might be}
+distribut\replaced[id=JJ]{ion}{ed} in space and time\deleted[id=JJ]{, we
+	employed} a Gaussian spatial process \added[id=JJ]{was employed} to
+model habitat suitability for each of the populations\replaced[id=JJ]{. An}{,
+	with an} advection-diffusion process \deleted[id=JJ]{to}
+control\added[id=JJ]{led} \deleted[id=JJ]{how the} population\deleted[id=JJ]{s}
+move\replaced[id=JJ]{ment}{d} over time with a moving temperature covariate to
+capture temporal dependencies\todo{\added[id=JJ]{What have a temperature
+		covariate? Could just use time}\added[id=PD]{Was intended as
+		some biological meaning - species thermal tolerances load onto
+		the temperature effect}}. \deleted[id=JJ]{This was intended to
+	balance realism in population movement, capturing the main directed and
+	random processes, and practicality of modelling the population rather
+	than individual fish.} \\
 
 
-For the habitat we define a Gaussian random field process, $\{S(x) : x \in
-\mathbb{R}^2\}$, that is a stochastic process where any collection of locations
-$x_{1}, \dots, x_{n}$ where for each $x_{i} \in \mathbb{R}^2$, the joint
-distribution of $S = \{S(x1),\dots S(x_{n})\}$ is multivariate Gaussian. The
-distribution is specified by its \textit{mean function}, $\mu(x) = E[S(x)]$ and
-its \textit{covariance function}, $\gamma(x,x') = Cov\{S(x),S(x')\}$
-\citep{Diggle2007}.\\
+For \deleted[id=PD]{the} habitat we define\added[id=PD]{d} a Gaussian random
+field process\todo{\added[id=JJ]{Not clear how habitat/GRF affect local
+		abundances, only have $B_{y,d}$}\added[id=PD]{Have included
+		cell reference, $c$ to make spatial link explicit}}, $\{S(c) :
+c \in \mathbb{R}^2\}$, \deleted[id=PD]{that is a stochastic process} where
+\added[id=PD]{for} any set of cells $c_{1}, \dots, c_{n}$ \deleted[id=PD]{where
+	for each $c_{i} \in \mathbb{R}^2$}, the joint distribution of $S =
+\{S(c1),\dots S(c_{n})\}$ is multivariate Gaussian. The distribution is
+specified by its \textit{mean function}, $\mu(c) = E[S(c)]$ and its
+\textit{covariance function}\todo{\added[id=JM]{Introduce the gamma function,
+		and why this covariance structure? Why correlate values in the
+		random field?}\added[id=PD]{to allow populations to have
+		different aggregation densities: have tried to clarify}},
+$\gamma(c,c') = Cov\{S(c),S(c')\}$ \citep{Diggle2007}.\\
 
 The covariance structure affects the smoothness of the surfaces which the
-process generates, and we used the \textit{Matérn} family of covariance
-structures, one where the correlation strength weakens the further the distance
-apart (i.e. the correlation between $S(x)$ and $S(x')$ decreases as the
-distance $u = ||x - x'||$ increases).  The \textit{Matérn} correlation is a
-two-parameter family where: \\
+process generates\replaced[id=PD]{;}{, and} we used the \textit{Matérn}
+\deleted[id=PD]{family of} covariance structure\deleted[id=PD]{s},
+\replaced[id=PD]{as}{one where} the correlation strength weakens the further
+the distance apart \deleted[id=PD]{(i.e. the correlation between $S(x)$ and
+	$S(x')$ decreases as the distance $u = ||x - x'||$ increases)}.
+\added[id=PD]{The Matérn covariance structure models the spatial
+	autocorrelation observed with animal distributions \citep{Tobler1970,
+		F.Dormann2007}} \replaced[id=PD]{and}{The \textit{Matérn}
+	correlation} is a two-parameter family where: 
 
 \begin{center}
 	$\rho(u) = \{2^{\kappa -
@@ -504,12 +524,44 @@ $K_{\kappa}(.)$ is a modified Bessel function of order $\kappa$, $\phi >
 called the order, is a shape parameter which determines the smoothness of the
 underlying process. \\
 
-The temperature field is simulated to be on a gradient from a South-Westerly to
-North-Easterly direction, with temperature in each cell changing gradually on a
-week-by-week basis so that initially high temperature areas cycle to lower
-temperatures and low temperature areas vice versa. Each population is assigned
-a thermal tolerance with mean, $\mu$ and variance, $\sigma^2$ so that each cell
-and population temperature suitability is defined that:
+\replaced[id=PD]{T}{In the simulation model, t}he habitat for each of the
+populations \replaced[id=PD]{was}{is} generated \replaced[id=PD]{with}{through}
+the \textit{RFSimulate} function of the \textit{RandomFields} R package
+\citep{Schlater2015}, implementing different parameter settings to affect the
+patchiness of the populations. Each population \replaced[id=PD]{was}{is}
+initialised at a single location, and subsequently move\replaced[id=PD]{ed}{s}
+according to a probabilistic distrib\added[id=PD]{u}tion based on habitat
+suitability, temperature and distance from current cell\replaced[id=PD]{:}{.} 
+
+\begin{equation}
+	Pr(J | I) = \frac{e^{-\lambda * d_{IJ}} \cdot
+		(Hab_{J,p}^2 \cdot Tol_{J,p,wk})}{\sum\limits_{c=1}^{C}e^{-\lambda * d} \cdot
+		(Hab_{J,p}^2 \cdot Tol_{J,p,wk})}
+\end{equation}
+
+Where $d_{IJ}$ is the euclidean distance between cell $I$ and cell $J$,
+$\lambda$ is a given rate of decay, $Hab_{J,p}^2$ is the squared index of
+habitat suitability for cell $J$ and population $p$, with $Tol_{J,p,wk}$ the
+temperature tolerance for cell $J$ by population $p$ in week $wk$.\\
+
+During specified weeks of the year, the habitat quality
+\replaced[id=PD]{was}{is} modified for \added[id=PD]{user-defined} spawning
+habitat\deleted[id=PD]{s}, \replaced[id=PD]{resulting in}{meaning} each
+population \replaced[id=PD]{had}{has} a concentrated area where spawning takes
+place and the population move\replaced[id=PD]{d}{s} towards
+\replaced[id=PD]{these cells}{this} in the weeks prior to
+spawning.\todo{\added[id=JM]{What does it mean concisely? Areas are assigned?}
+\added[id=PD]{Yes, the areas are pre-defined - I have amended to reflect and
+	tried to clarify}} \\
+
+The temperature field \replaced[id=PD]{was}{is} simulated to be on a gradient
+from a South-Westerly to North-Easterly direction, with temperature in each
+cell changing gradually on a week-by-week basis so that initially high
+temperature areas cycle\added[id=PD]{d} to lower temperatures and low
+temperature areas vice versa. Each population $p$ \replaced[id=PD]{wa}{i}s
+assigned a thermal tolerance with mean, $\mu\added[id=PD]{_{p}}$ and variance,
+$\sigma^2\added[id=PD]{_{p}}$ so that each cell and population temperature
+suitability is defined that:
 
 \begin{equation}
 	Tol_{c, p} = \frac{1}{ \sqrt (2\pi \cdot \sigma^2_{p})} \cdot \exp(-
@@ -518,31 +570,15 @@ and population temperature suitability is defined that:
 \end{equation}
 
 Where $Tol_{c,p}$ is the tolerance of population $p$ in cell $c$, $T_{c}$ is
-the temperature in the cell and $\mu$ and $\sigma^2$ the mean and standard
-deviation of the population temperature tolerance. \\
+the temperature in the cell and $\mu\added[id=PD]{_{p}}$ and
+$\sigma^2\added[id=PD]{_{p}}$ the mean and standard deviation of the population
+temperature tolerance. \\
 
-In the simulation model, the habitat for each of the populations is generated
-through the \textit{RFSimulate} function of the \textit{RandomFields} R package
-\citep{Schlater2015}, implementing different parameter settings to affect the
-patchiness of the populations. Each population is initialised at a single
-location, and subsequently moves according to a probabilistic distribtion based
-on habitat suitability, temperature and distance from current cell. 
-
-\begin{equation}
-	Pr(B | A) = \frac{e^{-\lambda * d_{AB}} \cdot
-		(Hab_{B}^2 \cdot Tol_{B,wk})}{\sum\limits_{c=1}^{C}e^{-\lambda * d} \cdot
-		(Hab_{B}^2 \cdot Tol_{B,wk})}
-\end{equation}
-
-Where $d_{AB}$ is the euclidean distance between cell $A$ and cell $B$,
-$\lambda$ is a given rate of decay, $Hab_{B}^2$ is the squared index of habitat
-suitability for cell $B$ and $Tol_{B,wk}$ the temperature tolerance for the
-cell in week $wk$; population index, $p$ has been dropped for simplicity.\\
-
-During specified weeks of the year, the habitat quality is modified for
-spawning habitats, meaning each population has a concentrated area where
-spawning takes place and the population moves towards this in the weeks prior
-to spawning. \\
+\added[id=PD]{The final process resulted in independent populations structure
+	and movement patterns, with population movement occuring on a weekly
+	basis. This process approximated the demographic shifts in fish
+	populations throughout a year while maintaining seasonal patterns for
+	spawning.}
 
 \subsection{Fleet dynamics}
 

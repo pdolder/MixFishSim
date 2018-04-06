@@ -3,50 +3,50 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: mixfishsim_ecolmod.aux
 The style file: model2-names.bst.bst
 Database file #1: simulation_framework.bib
-Repeated entry---line 815 of file simulation_framework.bib
+Repeated entry---line 666 of file simulation_framework.bib
  : @article{Ulrich2011a
  :                     ,
 I'm skipping whatever remains of this entry
 Warning--empty journal in Beverton1957
-You've used 39 entries,
+You've used 41 entries,
             2761 wiz_defined-function locations,
-            867 strings with 13085 characters,
-and the built_in function-call counts, 26706 in all, are:
-= -- 2082
-> -- 1262
-< -- 16
-+ -- 483
-- -- 444
-* -- 3181
-:= -- 4092
-add.period$ -- 115
-call.type$ -- 39
-change.case$ -- 341
-chr.to.int$ -- 39
-cite$ -- 40
-duplicate$ -- 1651
-empty$ -- 1686
-format.name$ -- 569
-if$ -- 4797
+            881 strings with 13749 characters,
+and the built_in function-call counts, 28650 in all, are:
+= -- 2204
+> -- 1410
+< -- 17
++ -- 539
+- -- 498
+* -- 3445
+:= -- 4395
+add.period$ -- 122
+call.type$ -- 41
+change.case$ -- 369
+chr.to.int$ -- 41
+cite$ -- 42
+duplicate$ -- 1757
+empty$ -- 1781
+format.name$ -- 627
+if$ -- 5131
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 372
-newline$ -- 203
-num.names$ -- 156
-pop$ -- 408
+missing$ -- 402
+newline$ -- 214
+num.names$ -- 164
+pop$ -- 435
 preamble$ -- 1
-purify$ -- 304
+purify$ -- 330
 quote$ -- 0
-skip$ -- 523
+skip$ -- 550
 stack$ -- 0
-substring$ -- 1359
-swap$ -- 1468
+substring$ -- 1415
+swap$ -- 1588
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 345
+type$ -- 363
 warning$ -- 1
-while$ -- 182
+while$ -- 191
 width$ -- 0
-write$ -- 543
+write$ -- 573
 (There was 1 error message)
