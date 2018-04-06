@@ -1,4 +1,4 @@
-#' @title Run sim
+!#' @title Run sim
 
 #' @description \code{run_sim} is the overarching simulation function, taking
 #' all the parameterised inputs and returning the results.
@@ -130,6 +130,7 @@ Update   <- ifelse(day.breaks[t] != day.breaks[t+1], TRUE, FALSE) ## weekly pop 
 
 ## Closure switch, when to recalculate the closed areas
 
+if(!is.null(closure)) {
 if(t==1 & !closeArea) {CalcClosures  <-  FALSE }
 if(t==1 & closeArea & is.null(closure[["input_coords"]])) {CalcClosures <- FALSE}
 if(t==1 & closeArea & !is.null(closure[["input_coords"]]) & closure[["year_start"]] == 1) {CalcClosures <- TRUE}
@@ -147,7 +148,7 @@ CalcClosures <- ifelse(week.breaks[t] != week.breaks[t-1], TRUE, FALSE)
 }
 
 	      		}
-
+}
 	      }
 
 #######################
@@ -200,7 +201,7 @@ names(Rec) <- paste0("spp", seq_len(n_spp))
 ## Can't close areas in the first year, unless manually defined
 
 
-if(t > 1) {
+if(t > 1 & !is.null(closure)) {
 
 ## Dynamic closures
 if(closeArea & CalcClosures & year.breaks[t] >= closure[["year_start"]] & is.null(closure[["input_coords"]]) & is.null(closure[["year_basis"]])) {
@@ -230,6 +231,7 @@ closure_list[close_count] <- AreaClosures
 }
 
 ## Fixed closures
+if(!is.null(closure)) {
 if(closeArea & CalcClosures & !is.null(closure[["input_coords"]]) & year.breaks[t] >= closure[["year_start"]]) {
 print("Setting manually defined closures")
 print(paste("Closures are", closure[["temp_dyn"]]))
@@ -246,6 +248,7 @@ if(closure[["temp_dyn"]] == "weekly") {
 AreaClosures <- closure[["input_coords"]][[week.breaks[[t]]]]
 }
 
+}
 }
 
 #######################
@@ -570,8 +573,4 @@ print(paste("time taken is :", format(time.taken, units = "auto"), sep = " "))
 return(list(fleets_catches = catches, pop_summary = pop_init[["Pop_record"]], pop_bios = pop_bios, survey = survey, closures = closure_list))
 
 } # end func
-
-
-
-
 
