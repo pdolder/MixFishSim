@@ -583,76 +583,92 @@ temperature tolerance. \\
 \subsection{Fleet dynamics}
 
 The fleet dynamics can be broadly categorised into three components; fleet
-targeting - which determines the fleet catch efficiency and preference towards
-a particular species; trip-level decisions, which determine the initial
-location to be fished at the beginning of a trip; and within-trip decisions,
-determining movement from one fishing spot to another within a trip.
+targeting - which determine\replaced[id=PD]{d}{s} the fleet catch efficiency
+and preference towards a particular species; trip-level decisions, which
+determine\added[id=PD]{d} the initial location to be fished at the beginning of
+a trip; and within-trip decisions, determining movement from one fishing spot
+to another within a trip.
 
 \subsubsection{Fleet targeting}
 
-Each fleet of \textit{n} vessels is characterised by both a general efficiency,
-\textit{Q}, and a population specific efficiency, ${Q_{p}}$.  Thus, the product
-of these parameters affects the overall catch rates for the fleet and the
-preferential targeting of one population over another. This, in combination
-with the parameter choice for the step-function (as well as some randomness
-from the exploratory fishing process) determines the preference of fishing
-locations for the fleet.  All species prices are kept the same, across fleets,
-though can be made to vary seasonally.  
+Each fleet of \textit{n} vessels \replaced[id=PD]{was}{is} characterised by
+both a general efficiency, \textit{Q}, and a population specific efficiency,
+${Q_{p}}$.  Thus, the product of these parameters affect\replaced[id=PD]{s}{ed}
+the overall catch rates for the fleet and the preferential targeting of one
+population over another. This, in combination with the parameter choice for the
+step-function \added[id=PD]{defined below} (as well as some randomness from the
+exploratory fishing process) determine\replaced[id=PD]{d}{s} the preference of
+fishing locations for the fleet.  All species prices
+\replaced[id=PD]{were}{are} kept the same, across fleets\replaced[id=PD]{and
+seasons}{, though can be made to vary seasonally}.  
 
 \subsubsection{Trip-level decisions}
 
-Several studies \citep[e.g.][]{Hutton2004, Tidd2012, Girardin2015} have confirmed
-past activity and past catch rates are strong predictors of fishing location
-choice. For this reason, the fleet dynamics sub-model includes a learning
-component, where a vessel's initial fishing location in a trip is based on
-selecting from previously successful fishing locations. This is achieved by
-sorting all previous fishing events in the previous trip as well as the
-previous time periods in past years, and choosing randomly from the top x \% of
-fishing events in value.  Simulation testing indicated that this learning
-increased the mean value of catches for the vessels, over just relying on the
-correlated random walk function. 
+Several studies \citep[e.g.][]{Hutton2004, Tidd2012, Girardin2015} have
+confirmed past activity and past catch rates are strong predictors of fishing
+location choice. For this reason, the fleet dynamics sub-model
+include\replaced[id=PD]{d}{s} a learning component, where a vessel's initial
+fishing location in a trip \replaced[id=PD]{wa}{i}s based on selecting from
+previously successful fishing locations. This \replaced[id=PD]{wa}{i}s achieved
+by sorting all previous fishing events in the previous trip as well as the
+previous time periods in past years, and choosing randomly from the top 75 \%
+of fishing events \replaced[id=PD]{as defined by the revenue gained}{in value}.
+Simulation testing indicated that this learning increased the mean value of
+catches for the vessels, over just relying on the correlated random
+walk \todo{\added[id=JJ]{Correlated random walk of what}} function
+\added[id=PD]{as described for the 'within trip' decisions below}. 
 
 \subsubsection{Within-trip decisions}
 
 Fishing locations within a trip are determined by a modified random walk
 process. A random walk type was chosen as it is the simplest assumption
-commonly used in ecology to describe animal movement which searching for
-homogeneously distributed prey about which there is uncertain knowledge. In a
-random walk, movement is a stochastic process through a series of steps that
-can either be equal in length or take some other functional form.  The
-direction of the random walk can be correlated, a characteristic known as
-`persistence', providing some overall location of directional movement
-\citep{Codling2008} or uncorrelated. \\
+commonly used in ecology to describe \added[id=PD]{optimal} animal
+\deleted[id=PD]{movement which} search\replaced[id=PD]{ strategy}{ing} for
+\added[id=PD]{exploiting} homogeneously distributed prey about which there is
+uncertain knowledge \citep{Viswanathan1999}. In a random walk, movement is a
+stochastic process through a series of steps\added[id=JJ]{. These steps have a
+	length, and a direction} that can either be equal in length or take
+some other functional form. The direction of the random walk can be correlated,
+a characteristic known as `persistence', providing some overall
+\deleted[id=PD]{location of} directional movement \citep{Codling2008}
+\deleted[id=PD]{or uncorrelated}. \\
 
-A \textit{lévy walk} is a particular form of random walk characterised by a
-heavy-tailed distribution of step-length and has received a lot of attention in
+A \textit{\replaced[id=JJ]{Lévy flight} {lévy walk}} is a particular form of
+random walk characterised by a heavy-tailed distribution of step-length
+\replaced[id=JJ]{. The Lévy flight}{and} has received a lot of attention in
 ecological theory in recent years as having shown to have very similar
 characteristics as those observed by animals in nature, and being a near
 optimum searching strategy for predators pursuing patchily distributed prey
-\citep{Bartumeus2005, Sims2008}.  \citet{Bertrand2007} showed that Peruvian
-anchovy fishermen have a stochastic search pattern similar to that observed
-with a lévy walk. However, it remains a subject of debate, with the contention
-that search patterns may be more simply characteristed as random walks
-\citep{Sakiyama2013} with specific patterns related to the characteristics of
-the prey field \citep{Sims2012}. \\
+\citep{Viswanathan1999, Bartumeus2005, Sims2008}.  \citet{Bertrand2007} showed
+that Peruvian anchovy fishermen have a stochastic search pattern similar to
+that observed with a lévy walk. However, it remains a subject of debate
+\added[id=PD]{\citep[e.g. see][]{Edwards2011, Reynolds2015}}, with the
+contention that search patterns may be more simply characteristed as random
+walks \citep{Sakiyama2013} with specific patterns related to the
+characteristics of the prey field \citep{Sims2012}. \\
 
 We use a modified random walk where directional change is based on a correlated
-circular distribution where a favourable fishing ground is likely to be ``fished
-back over" by the vessel returning in the direction it came from and step
-length (i.e. the distance travelled from the current to the next fishing
-location) is determined by relating recent fishing success, measured as the
-summed value of fish caught, $$Rev = \sum_{s=1}^{\infty} C_{s} \cdot Pr_{s}$$
-where $C_{s}$ is catch of a species, and $Pr_{s}$ price of a species, to step
-distance. Here, when fishing is successful vessels remain in a similar location
-and continue to exploit the local fishing grounds. When unsuccessful, they move
-some distance away from the current fishing location. The movement distance
-retains some degree of stochasticity, which can be controlled separately. 
+circular distribution where a favourable fishing ground is likely to be
+``fished back over" by the vessel returning in the direction it came from and
+step length (i.e. the distance travelled from the current to the next fishing
+location) is determined by \deleted[id=JJ]{relating} recent fishing success,
+measured as the summed value of fish caught (revenue, $Rev$), $$Rev =
+\sum_{p=1}^{P} \replaced[id=PD]{L}{C}_{p} \cdot Pr_{p}$$ where
+$\replaced[id=PD]{L}{C}_{p}$ is \replaced[id=PD]{landings}{catch} of a
+population $p$, and $Pr_{p}$ price of a population, to step distance. Here,
+when fishing is successful vessels remain in a similar location and continue to
+exploit the local fishing grounds.  When unsuccessful, they move some distance
+away from the current fishing location.  The movement distance retains some
+degree of stochasticity, which can be controlled separately. 
 
 The step function takes the form:
 
 \begin{equation*}
-	StepL = e^{log(\beta_{1}) + log(\beta_{2}) - (log(\frac{\beta_{1}}{\beta_{3}}))} * Rev
-\end{equation*}
+	StepL = e^{log(\beta_{1}) + log(\beta_{2}) -
+		(log(\frac{\beta_{1}}{\beta_{3}}))} * Rev
+\end{equation*}\todo{\added[id=JJ]{So
+			step length increases with increasingly gross
+			revenue?}\added[id=PD]{No, the opposite}}
 
 So that, a step from (x1,y1) to (x2, y2) is defined by:
 
@@ -665,31 +681,33 @@ So that, a step from (x1,y1) to (x2, y2) is defined by:
 	\end{split}
 \end{equation*}
 
-with $k$ the concentration parameter from the von mises distribution which we
-correlate with the revenue so that $k = (Rev + 1 / RefRev) * max_{k}$,
-where $max_{k}$ is the maximum concentration value, $k$, and RefRev is
-parameterised as for $\beta_{3}$ in the step length function. 
+with $k$ the concentration parameter from the von \replaced[id=JJ]{M}{m}ises
+distribution which we correlate with the revenue so that $k = (Rev + 1 /
+RefRev) * max_{k}$, where $max_{k}$ is the maximum concentration value, $k$,
+and RefRev is parameterised as for $\beta_{3}$ in the step length function. 
 
 \subsubsection{Local population depletion}
 
 Where several fishing vessels are exploiting the same fish population
 competition is known to play an important role in local distribution of fishing
 effort \citep{Gillis1998}. If several vessels are fishing on the same patch of
-fish, local depletion and interference will affect fishing location choice of
-the fleet as a whole \citep{Rijnsdorp2000, Poos2007a}. In order to account for
-this behaviour, the fishing sub-model operates spatially on a daily time-step
-so that for future days the biomass available to the fishery is reduced in the
-areas fished. The cumulative effect is to make heavily fished areas less
-attractive as future fishing opportunities. 
+fish, local depletion and interference \added[id=JJ]{competition} will affect
+fishing location choice of the fleet as a whole \citep{Rijnsdorp2000,
+	Poos2007a}. In order to account for this behaviour, the fishing
+sub-model operates spatially on a daily time-step so that for future days the
+biomass available to the fishery is reduced in the areas fished. The cumulative
+effect is to make heavily fished areas less attractive as future fishing
+opportunities. 
 
 \subsection{Fisheries independent survey}
 
 A fisheries-independent survey is simulated where fishing on a regular grid
 begins each year at the same time for a given number of stations (a fixed
-station survey design). Catches of the populations present are recorded but not
-removed from the population. This provides a fishery independent snapshot of
-the populations at a regular spatial distribution each year, similar to
-scientific surveys undertaken by fisheries research agencies. 
+station survey design). Catches of the populations \replaced[id=JJ]{at each
+station}{present} are recorded but not removed from the population. This
+provides a fishery independent snapshot of the populations at a regular spatial
+\replaced[id=JJ]{intervals}{distribution} each year, similar to scientific
+surveys undertaken by fisheries research agencies. 
 
 \section{Calculation}
 

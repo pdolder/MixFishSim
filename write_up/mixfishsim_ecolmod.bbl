@@ -1,4 +1,4 @@
-\begin{thebibliography}{41}
+\begin{thebibliography}{44}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -147,6 +147,13 @@
 \newblock \bibinfo{journal}{Proceedings of the National Academy of Sciences} ,
   \bibinfo{pages}{201513626}.
 %Type = Article
+\bibitem[{Edwards(2011)}]{Edwards2011}
+\bibinfo{author}{Edwards, A.M.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{{Overturning conclusions of L{\'{e}}vy flight
+  movement patterns by fishing boats and foraging animals}}.
+\newblock \bibinfo{journal}{Ecology} \bibinfo{volume}{92},
+  \bibinfo{pages}{1247--1257}.
+%Type = Article
 \bibitem[{{F. Dormann} et~al.(2007){F. Dormann}, {M. McPherson}, {B.
   Ara{\'{u}}jo}, Bivand, Bolliger, Carl, {G. Davies}, Hirzel, Jetz, {Daniel
   Kissling}, K{\"{u}}hn, Ohlem{\"{u}}ller, {R. Peres-Neto}, Reineking,
@@ -271,6 +278,11 @@
 \newblock \bibinfo{journal}{R Foundation for Statistical Computing, Vienna,
   Austria. URL http://www.R-project.org/.} , \bibinfo{pages}{R Foundation for
   Statistical Computing}.
+%Type = Misc
+\bibitem[{Reynolds(2015)}]{Reynolds2015}
+\bibinfo{author}{Reynolds, A.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{{Liberating L{\'{e}}vy walk research from the
+  shackles of optimal foraging}}.
 %Type = Article
 \bibitem[{Ricker(1954)}]{Ricker1954}
 \bibinfo{author}{Ricker, W.E.}, \bibinfo{year}{1954}.
@@ -378,5 +390,15 @@
   demersal fisheries using the Fcube mixed-fisheries advice framework}}.
 \newblock \bibinfo{journal}{ICES Journal of Marine Science}
   \bibinfo{volume}{68}, \bibinfo{pages}{1535--1547}.
+%Type = Article
+\bibitem[{Viswanathan et~al.(1999)Viswanathan, Buldyrev, Havlin, {Da Luz},
+  Raposo and Stanley}]{Viswanathan1999}
+\bibinfo{author}{Viswanathan, G.M.}, \bibinfo{author}{Buldyrev, S.V.},
+  \bibinfo{author}{Havlin, S.}, \bibinfo{author}{{Da Luz}, M.G.E.},
+  \bibinfo{author}{Raposo, E.P.}, \bibinfo{author}{Stanley, H.E.},
+  \bibinfo{year}{1999}.
+\newblock \bibinfo{title}{{Optimizing the success of random searches}}.
+\newblock \bibinfo{journal}{Nature} \bibinfo{volume}{401},
+  \bibinfo{pages}{911--914}.
 
 \end{thebibliography}
