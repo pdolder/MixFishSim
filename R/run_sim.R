@@ -1,4 +1,4 @@
-!#' @title Run sim
+#' @title Run sim
 
 #' @description \code{run_sim} is the overarching simulation function, taking
 #' all the parameterised inputs and returning the results.

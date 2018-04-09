@@ -1,0 +1,16 @@
+^./analysis$		# Ignore the results outputs
+^./write_up$		# Ignore the write up docs
+^analysis$		# Have NO IDEA which of these is right format
+analysis
+analysis/
+/analysis
+/analysis/
+^/analysis
+analysis$
+^write_up$
+write_up
+write_up/
+/write_up
+/write_up/
+^/write_up
+write_up$
