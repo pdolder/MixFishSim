@@ -14,6 +14,7 @@
 \usepackage{booktabs}
 \usepackage[textsize=scriptsize]{todonotes}
 %\usepackage[textsize=scriptsize, disable]{todonotes}  %% to turn off notes
+\usepackage{eurosym}
 
 % For track-changes
 \usepackage[draft]{changes}
@@ -537,7 +538,7 @@ suitability, temperature and distance from current cell\replaced[id=PD]{:}{.}
 \begin{equation}
 	Pr(J | I) = \frac{e^{-\lambda * d_{IJ}} \cdot
 		(Hab_{J,p}^2 \cdot Tol_{J,p,wk})}{\sum\limits_{c=1}^{C}e^{-\lambda * d} \cdot
-		(Hab_{J,p}^2 \cdot Tol_{J,p,wk})}
+		(Hab_{c,p}^2 \cdot Tol_{c,p,wk})}
 \end{equation}
 
 Where $d_{IJ}$ is the euclidean distance between cell $I$ and cell $J$,
@@ -565,15 +566,15 @@ $\sigma^2\added[id=PD]{_{p}}$ so that each cell and population temperature
 suitability is defined that:
 
 \begin{equation}
-	Tol_{c, p} = \frac{1}{ \sqrt (2\pi \cdot \sigma^2_{p})} \cdot \exp(-
-		\frac{(T_{c} -
-		\mu_{p})^2}{2 \cdot \sigma^2_{p}} )	
+	Tol_{c, p\added[id=PD]{, wk}} = \frac{1}{ \sqrt (2\pi \cdot \sigma^2_{p})} \cdot \exp(-
+		\frac{(T_{c\added[id=PD]{, wk}} - \mu_{p})^2}{2 \cdot \sigma^2_{p}} )	
 \end{equation}
 
-Where $Tol_{c,p}$ is the tolerance of population $p$ in cell $c$, $T_{c}$ is
-the temperature in the cell and $\mu\added[id=PD]{_{p}}$ and
-$\sigma^2\added[id=PD]{_{p}}$ the mean and standard deviation of the population
-temperature tolerance. \\
+Where $Tol_{c, p, \added[id=PD]{wk}}$ is the tolerance of population $p$ in
+cell $c$ \added[id=PD]{in week $wk$}, $T_{c, \added[id=PD]{wk}}$ is the
+temperature in the cell \added[id=PD]{given the week} and
+$\mu\added[id=PD]{_{p}}$ and $\sigma^2\added[id=PD]{_{p}}$ the mean and
+standard deviation of the population temperature tolerance. \\
 
 \added[id=PD]{The final process resulted in independent populations structure
 	and movement patterns, with population movement occuring on a weekly
@@ -935,7 +936,7 @@ difference in fishing mortalities across scenarios.
 
 \begin{table}[!ht]
 	\centering
-	\caption{Description of variables for sub-modules}
+	\caption{Description of variables for population dynamics sub-module}
 	\begin{tabular}{p{1.5cm} p{8cm} p{1.5cm}}
 		\toprule
 		Variable & Meaning & Units \\
@@ -969,16 +970,61 @@ difference in fishing mortalities across scenarios.
 		$\alpha$ & the maximum recruitment rate & kg  \\
 		$\beta$ & the biomass required to produce half the maximum rate
 		of recruitment & kg \\
+		\bottomrule
+		\end{tabular}
+	\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\caption{Description of variables for population movement sub-module}
+	\begin{tabular}{p{1.5cm} p{8cm} p{1.5cm}}
+		\toprule
+		Variable & Meaning & Units \\
 		\hline
 		\multicolumn{3}{c}{\textbf{Population movement dynamics}} \\
 		\hhline{===}
-		a & b & c \\
+		\multicolumn{3}{l}{\textit{Habitat model}} \\
+		\hline
 		a & b & c \\
 		\hline
-		\multicolumn{3}{c}{\textbf{Fleet dynamics}} \\
+		\multicolumn{3}{l}{\textit{Thermal tolerance}} \\
+		\hline
+		$T_{c,wk}$ & Temperature for cell in week & $^\circ$C \\
+		$\mu_{p}$ & Mean of the thermal tolerance for population & $^\circ$C \\
+		$\sigma^{2}_{p}$ & Standard deviation of thermal tolerance for
+		the population & $^\circ$C \\
+		\hline
+		\multicolumn{3}{l}{\textit{Population movement model}} \\
+		\hline
+		$\lambda$ & decay rate for population movement & - \\
+		$Hab^{2}_{c,p}$ & Square of habitat suitability for cell $c$ and
+		population $p$ & - \\
+		$Tol_{c,p,wk}$ & Thermal tolerance for population $p$ in cell
+		$c$ at week $wk$ & - \\
+		$d_{IJ}$ & euclidean distance between cell $I$ and cell $J$ & - \\
+		\bottomrule
+		\end{tabular}
+	\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\caption{Description of variables for fleet dynamics sub-module}
+	\begin{tabular}{p{1.5cm} p{8cm} p{1.5cm}}
+		\toprule
+		Variable & Meaning & Units \\
+		\hline
+		\multicolumn{3}{c}{\textbf{Short-term fleet dynamics}} \\
 		\hhline{===}
-		a & b & c \\
-		a & b & c \\
+		$Rev$ & Revenue from fishing tow & \euro \\
+		$L_{p}$ & Landings of population $p$ & kg \\
+		$Pr_{p}$ & Average price of population $p$ & \euro
+		\hspace{0.1cm} kg$^{-1}$ \\
+		StepL & Step length for vessel & euclidean distance \\
+		Br & Bearing & degrees \\
+		$k$ & Concentration parameter for Von mises distribution & - \\
+		$\beta_{1}$ & shape parameter for step function & - \\
+		$\beta_{2}$ & shape parameter for step function & - \\
+		$\beta_{3}$ & shape parameter for step function & - \\
 		\bottomrule
 	\end{tabular}
 \end{table}
