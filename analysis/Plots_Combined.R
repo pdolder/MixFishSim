@@ -8,20 +8,20 @@ library(MixFishSim)
 load('scenarios.RData')
 load('Common_Params.RData')
 
-runs <- 1:56
+runs <- 0:56
 
-for(i in runs) {
-load(file.path('Scenario_runs', paste('Scenario', i, '.RData', sep = "_")))
-assign(paste0("sc",i),res)
-}
+for(r in runs) {
+load(file.path('Scenario_runs2', paste('Scenario', r, '.RData', sep = "_")))
+#assign(paste0("sc",r),res)
+#}
 
 ## Combine the population metrics
 
-combined_pop <- lapply(runs, function(r) {
-	n_spp <- length(get(paste("sc",r,sep=""))[["pop_summary"]]) 
+#combined_pop <- lapply(runs, function(r) {
+	n_spp <- length(res[["pop_summary"]]) 
 		res_df <- lapply(seq_len(n_spp), function(x) {
-	 		res_spp <- lapply(names(get(paste("sc",r,sep=""))[["pop_summary"]][[x]]), function(x1) {
-			      x1_res <- tidyr::gather(as.data.frame(t(get(paste("sc",r,sep=""))[["pop_summary"]][[x]][[x1]])), key = "year", factor_key = T)
+	 		res_spp <- lapply(names(res[["pop_summary"]][[x]]), function(x1) {
+			      x1_res <- tidyr::gather(as.data.frame(t(res[["pop_summary"]][[x]][[x1]])), key = "year", factor_key = T)
 		      	      if(x1 !="Rec.mat") {	res_out <- data.frame("pop" = rep(paste("spp",x, sep = "_"), length.out = nrow(x1_res)), 
 						              "metric" = rep(sapply(strsplit(x1,".",fixed = T),"[",1), length.out = nrow(x1_res)), 
 							      "year" = x1_res$year, 
@@ -40,17 +40,24 @@ combined_pop <- lapply(runs, function(r) {
 			return(do.call(rbind, res_spp))
 	   })
 	results_df <- do.call(rbind, res_df)
+	results_df$scenario <- r
 
-})
+	if(r == 1) { combined_pop <- results_df}
+	if(r > 1) {combined_pop <- rbind(combined_pop, results_df) }
 
-rm(list = ls(pattern = "sc"))
+rm(res)
 gc()
+}
+#})
 
-rows <- nrow(combined_pop[[1]])
+#rm(list = ls(pattern = "sc"))
+#gc()
 
-combined_pop <- do.call(rbind, combined_pop)
+#rows <- nrow(combined_pop[[1]])
 
-combined_pop$scenario <- rep(runs, each = rows)
+#combined_pop <- do.call(rbind, combined_pop)
+
+#combined_pop$scenario <- rep(runs, each = rows)
 
 
 library(ggplot2)
@@ -69,10 +76,10 @@ combined_pop_an <- rbind(results_df_an1, results_df_an2)
 ## Averages years 1 - 4 and 5-10, then the difference per scenario ##
 #####################################################################
 
-avg2_4  <- combined_pop_an %>% filter(year %in% 2:4) %>% 
+avg2_4  <- combined_pop_an %>% filter(year %in% 26:30) %>% 
 	group_by(scenario, pop, metric) %>% summarise(value = mean(data, na.rm = T))
 
-avg8_10 <- combined_pop_an %>% filter(year %in% 8:10) %>% 
+avg8_10 <- combined_pop_an %>% filter(year %in% 36:40) %>% 
 	group_by(scenario, pop, metric) %>% summarise(value = mean(data, na.rm = T))
 
 combined <- merge(avg2_4, avg8_10, by = c("scenario","metric","pop"))
@@ -87,6 +94,9 @@ combined$diff <- ((combined$after - combined$before) / combined$before)  * 100
 
 load('scenarios.RData')
 sc <- sc[sc$scenario %in% runs,]
+
+sc <- rbind(data.frame("scenario" = 0, timescale = "-", basis = "-", "data_type" = "-", "resolution" = 1),
+      sc)
 
 combined$timescale  <- sc$timescale[match(combined$scenario, sc$scenario)]
 combined$basis      <- sc$basis[match(combined$scenario, sc$scenario)]
@@ -124,35 +134,35 @@ ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F'),
        aes(x = year, y = data, group = combined)) + 
 geom_line(aes(colour = timescale, linetype = factor(res))) + 
 facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
-geom_vline(xintercept = 4.5, linetype = 2, colour = "grey") + ylab("Fishing mortality")
+geom_vline(xintercept = 30, linetype = 2, colour = "grey") + ylab("Fishing mortality")
 ggsave('F_trends.png', width = 10, height = 8)
 
-ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F', pop == "spp_1"), 
+ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F', pop == "spp_3"), 
        aes(x = year, y = data, group = combined)) + 
 geom_line(aes(colour = timescale, linetype = factor(res))) + 
 facet_wrap(data_type ~ pop, scale = 'free', ncol = 1) + expand_limits(y = 0) +theme_bw() +
-geom_vline(xintercept = 4.5, linetype = 2, colour = "grey") + ylab("Fishing mortality")
-ggsave('F_trends_spp1.png', width = 8, height = 12)
+geom_vline(xintercept = 30, linetype = 2, colour = "grey") + ylab("Fishing mortality")
+ggsave('F_trends_spp3.png', width = 8, height = 12)
 
 
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'Bio'), 
        aes(x = year, y = data, group = combined)) + 
 geom_line(aes(colour = timescale, linetype = factor(res))) + 
 facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
-geom_vline(xintercept = 4.5, linetype = 2, colour = "grey")
+geom_vline(xintercept = 30, linetype = 2, colour = "grey")
 ggsave('B_trends.png', width = 10, height = 8)
 
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'Rec'), 
        aes(x = year, y = data, group = combined)) + 
 geom_line(aes(colour = timescale, linetype = factor(res))) + 
 facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
-geom_vline(xintercept = 4.5, linetype = 2, colour = "grey")
+geom_vline(xintercept = 30, linetype = 2, colour = "grey")
 ggsave('R_trends.png', width = 10, height = 8)
 
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'Catch'), 
        aes(x = year, y = data, group = combined)) + 
 geom_line(aes(colour = timescale, linetype = factor(res))) + 
 facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
-geom_vline(xintercept = 4.5, linetype = 2, colour = "grey")
+geom_vline(xintercept = 30, linetype = 2, colour = "grey")
 ggsave('C_trends.png', width = 10, height = 8)
 

@@ -7,8 +7,8 @@ library(MixFishSim)
 
 load('Common_Params.RData')
 
-Run <- 1 
-load(file.path('Scenario_runs', paste0("Scenario_", Run, "_.RData")))
+Run <- 0 
+load(file.path('Scenario_runs2', paste0("Scenario_", Run, "_.RData")))
 
 plot_pop_summary(res, timestep = "annual", save = FALSE)
 
@@ -18,7 +18,7 @@ ggsave(file = file.path('..', 'write_up', 'Plots', 'f_dynamics.png'), width = 8,
 logs <- combine_logs(res[["fleets_catches"]])
 
 plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 1, vessel_no = 1,
-       year_trip = 1, trip_no = 4)
+       year_trip = 10, trip_no = 4)
 ggsave(file = file.path("..", "write_up", "Plots", "vessel_move.png"), width = 8, height = 8)
 
 

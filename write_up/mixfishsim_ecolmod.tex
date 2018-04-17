@@ -205,7 +205,7 @@ Monitoring System (VMS) data \citep{Lee2010, Bastardie2010, Gerritsen2012,
 	\citep[e.g.][]{Holmes2011}. Such information is, however, patchy and
 derived from an inherently biased sampling programme (i.e. targeted fishing).
 Further, fishers generally only recorded landings (not catch) on a daily
-basis\todo{\added[id=JJ]{Its not clear what the problem is: landed
+basis\todo{\added[id=JJ]{Its not clear what the problem is: landings
 		collected on daily basis or landings recorded rather than catch}}.
 This leads to questions about the validity of inference that can be drawn from
 landings data assigned to VMS activity pings\todo{\added[id=JJ]{This comes as a
@@ -307,8 +307,8 @@ fishery dynamics.}
 % Use join to connect a node to the previous one 
 \node [term, join, fill=lcnorm!25]      {Choose random location to fish};
 \node [term, join, fill=lcfree!25] (p1){Sample catch};
-\node [test, densely dotted] (t1) {if $y > y-1$};
-\node [test, join, densely dotted] (t2) {if $pop_{t}$ != $pop_{t-1}$};
+\node [test, densely dotted] (t1) {if $spawn_{t}$};
+\node [test, join, densely dotted] (t2) {if $wk_{t}$ != $wk_{t-1}$};
 \node [test, join, densely dotted] (wk) {if $day_{t}$ != $day_{t-1}$};
 \node [test, join, densely dotted] (t3) {if $trip_{t}$ != $trip_{t-1}$};
 \node [term, join, fill=lcnorm!25]  (p2) {Correlated Random Walk};
@@ -382,11 +382,9 @@ fishery dynamics.}
 \caption{Overview Schematic of simulation model. The blue boxes indicate fleet
 	dynamics processes, the green boxes population dynamics processes while
 	the white boxes are the timesteps at which processes occur; $t$ = tow,
-	$tmax$ is the total number of tows, $y$ = year, $pop_{t}$ is time of
-	population movement, $day$ is a day timestep, $trip$ is a trip time
-	step. \textcolor{red}{I NEED TO REDO THIS TO MAKE NOTATION MORE CONCISE
-		AND CONSISTENT} 
-	} 
+	$tmax$ is the total number of tows, $wk$ is a weekly timestep, $day$ is
+	a day timestep, $trip$ is a trip time step. \textcolor{red}{I NEED TO
+		REDO THIS TO MAKE NOTATION MORE CONCISE AND CONSISTENT} } 
 \label{fig:overview}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%

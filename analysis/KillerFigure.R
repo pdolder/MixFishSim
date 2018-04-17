@@ -167,12 +167,12 @@ draw.barplot2D(catch_comp[[1]]$x,catch_comp[[1]]$y,z = catch_comp[[1]]$z, width 
 
 ## Test
 
-yr <- 2:4 
+yr <- 2:10 
 wk <- 1:52 
 mn <- 1:12
 
 ## Load the results
-load(file.path('.', 'Scenario_runs', paste0('Scenario_', 1, '_.RData')))
+load(file.path('.', 'Scenario_runs2', paste0('Scenario_', 0, '_.RData')))
 load(file.path('.', 'Common_Params.RData'))
 
 ## Commercial
