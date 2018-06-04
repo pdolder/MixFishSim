@@ -151,6 +151,7 @@ return outLst;
 
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 //// Population movement function - to return a matrix of the new population //
 //// locations following the probability function                            //
@@ -219,7 +220,8 @@ List move_population(List moveProp, NumericMatrix StartPop) {
   }
 
 // Sum the list of matrices
- 
+// NOTE: We are going this with the R function Reduce() as quicker
+
 // for (int i = 0; i < nrow; i++) {
 //	 for (int j = 0; j < ncol; j++) 	 {
 

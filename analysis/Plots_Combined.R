@@ -59,7 +59,6 @@ gc()
 
 #combined_pop$scenario <- rep(runs, each = rows)
 
-
 library(ggplot2)
 library(dplyr)
 
@@ -130,18 +129,23 @@ combined_pop_an$data_type  <- sc$data_type[match(combined_pop_an$scenario, sc$sc
 
 combined_pop_an <-  combined_pop_an[!is.na(combined_pop_an$year),] ## Remove R for last year
 
+combined_pop_an$year <- as.numeric(combined_pop_an$year) # to fix x-axis breaks
+
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F'), 
        aes(x = year, y = data, group = combined)) + 
 geom_line(aes(colour = timescale, linetype = factor(res))) + 
 facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
-geom_vline(xintercept = 30, linetype = 2, colour = "grey") + ylab("Fishing mortality")
+geom_vline(xintercept = 30, linetype = 2, colour = "grey") + ylab("Fishing mortality") +
+theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,40,5))
 ggsave('F_trends.png', width = 10, height = 8)
 
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F', pop == "spp_3"), 
        aes(x = year, y = data, group = combined)) + 
 geom_line(aes(colour = timescale, linetype = factor(res))) + 
 facet_wrap(data_type ~ pop, scale = 'free', ncol = 1) + expand_limits(y = 0) +theme_bw() +
-geom_vline(xintercept = 30, linetype = 2, colour = "grey") + ylab("Fishing mortality")
+geom_vline(xintercept = 30, linetype = 2, colour = "grey") + ylab("Fishing mortality")+
+theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,40,5))
+
 ggsave('F_trends_spp3.png', width = 8, height = 12)
 
 
@@ -149,20 +153,26 @@ ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'Bio'),
        aes(x = year, y = data, group = combined)) + 
 geom_line(aes(colour = timescale, linetype = factor(res))) + 
 facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
-geom_vline(xintercept = 30, linetype = 2, colour = "grey")
+geom_vline(xintercept = 30, linetype = 2, colour = "grey")+
+theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,40,5))
+
 ggsave('B_trends.png', width = 10, height = 8)
 
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'Rec'), 
        aes(x = year, y = data, group = combined)) + 
 geom_line(aes(colour = timescale, linetype = factor(res))) + 
 facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
-geom_vline(xintercept = 30, linetype = 2, colour = "grey")
+geom_vline(xintercept = 30, linetype = 2, colour = "grey")+
+theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,40,5))
+
 ggsave('R_trends.png', width = 10, height = 8)
 
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'Catch'), 
        aes(x = year, y = data, group = combined)) + 
 geom_line(aes(colour = timescale, linetype = factor(res))) + 
 facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
-geom_vline(xintercept = 30, linetype = 2, colour = "grey")
+geom_vline(xintercept = 30, linetype = 2, colour = "grey")+
+theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,40,5))
+
 ggsave('C_trends.png', width = 10, height = 8)
 

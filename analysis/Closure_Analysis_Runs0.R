@@ -14,7 +14,7 @@ library(MixFishSim)
 set.seed(123, kind = "L'Ecuyer-CMRG")
 
 ## Common settings
-load('Common_Params.RData')
+load('Common_Params2.RData')
 
 ## Scenarios here
 load('scenarios.RData')
@@ -26,7 +26,7 @@ r <- 0
 ## run_sim function for overall control
 res <- run_sim(sim_init = sim, pop_init = Pop, move_cov = moveCov, fleets_init = fleets, hab_init = hab, InParallel = TRUE, cores = 1, save_pop_bio = TRUE, survey = survey, closure = closure)
 
-save(res, file = paste('Scenario', r, '.RData',sep = "_"))
+save(res, file = file.path('.','Scenario_runs3',paste('Scenario', r, '.RData',sep = "_")))
 ############################################
 
 rm(res); gc()

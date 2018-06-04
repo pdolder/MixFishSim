@@ -33,7 +33,7 @@ ggsave(file = file.path("..", "write_up", "Plots", "vessel_move_value.png"), wid
 plot_fleet_trip(logs = logs, fleet_no = 1, year_trip = 10, trip_no = 1)
 ggsave(file = file.path("..", "write_up", "Plots", "fleet_moves.png"), width = 8, height = 8)
 
-plot_catch_comp(gran = c(20, 10, 5, 2), logs = logs, fleets = 1:5,
+plot_catch_comp(gran = c(20, 10, 5, 2), logs = logs, fleets = 1:5, scale_data = FALSE,
        vessels = 1:20, trips = 1:60, years = 1:10, cluster_plot = TRUE, cluster_k = 5)
 
 plot_survey(survey = res[["survey"]], type = "index")
