@@ -1,3 +1,4 @@
 *.tex.backup
 tests/*.RData
 *.png
+.RDataTmp
