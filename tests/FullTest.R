@@ -1,4 +1,3 @@
-
 #source('build.R')
 
 library(MixFishSim)
@@ -9,7 +8,6 @@ set.seed(123, kind = "L'Ecuyer-CMRG")
 
 sim <- init_sim(nrows = 100, ncols = 100, n_years = 2, n_tows_day = 4, n_days_wk_fished = 5,
      n_fleets = 2, n_vessels = 10, n_species = 2, move_freq = 2)
-
 
 # Here's what is produced...
 #names(sim)
@@ -78,8 +76,6 @@ fleets <- init_fleet(sim_init = sim, VPT = c("spp1" = 100, "spp2" = 200),
 ## Setup survey
 survey <- init_survey(sim_init = sim, design = "fixed_station", 
 		n_stations = 50, start_day = 92, Qs = c("spp1" = 1, "spp2" = 1, "spp3" = 1, "spp4" = 1)) 
-
-
 
 ## run_sim function for overall control
 
@@ -209,4 +205,3 @@ xy <- xy %>% group_by(x) %>%
 plot(xy$x, xy$fifty, type = "l", ylim = c(0,360))
 lines(xy$x, xy$five, type = "l", col = "blue")
 lines(xy$x, xy$ninetyfive, type = "l", col = "blue")
-

@@ -65,9 +65,10 @@ init_fleet <- function(sim_init = NULL, VPT =  NULL, Qs = NULL, step_params = NU
 	##########################
 	##########################
 
-	catch.mat <- matrix(NA, nrow = idx[["ntow"]], ncol = 14 + idx[["n.spp"]])
+	catch.mat <- matrix(NA, nrow = idx[["ntow"]], ncol = 16 + idx[["n.spp"]])
 	colnames(catch.mat)  <- c("x","y","stepD","angles","day","tow","trip","week","month","year",
-				  paste0("spp",seq(idx[["n.spp"]])),"allspp","val","meanval","sdval")
+				  paste0("spp",seq(idx[["n.spp"]])),"allspp","val","meanval","sdval", 
+				  "costs", "profit")
 
 	catch.mat[,'day']     <- brk.idx$day.breaks
 	catch.mat[,'tow']     <- seq(idx[["ntow"]])
