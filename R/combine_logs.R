@@ -37,7 +37,7 @@ combine_logs <- function (fleets_catches) {
 
 	all_logs <- do.call(rbind, all_logs)
           
-	return(all_logs)
+	return(as.data.frame(all_logs))
 
 }
 
