@@ -10,6 +10,7 @@
 #' @param Qs is a list (an element for each fleet) with each element containing
 #' a named vector with the catchability parameters for each species the vessels
 #' in the fleet
+#' @param fuelC is the fuel cost per unit of distance moved in euro
 #' @param step_params is a list (an element for each fleet) with each element
 #' containing a named vector with the step parameters used in
 #' \code{step_length}. This must include the named elements \strong{rate},
@@ -39,7 +40,7 @@
 
 #' @export
 
-init_fleet <- function(sim_init = NULL, VPT =  NULL, Qs = NULL, step_params = NULL, past_knowledge =
+init_fleet <- function(sim_init = NULL, VPT =  NULL, Qs = NULL, fuelC = 0, step_params = NULL, past_knowledge =
 		       FALSE, past_year_month = FALSE, past_trip = FALSE,
 	       threshold = NULL) {
 
@@ -52,7 +53,7 @@ init_fleet <- function(sim_init = NULL, VPT =  NULL, Qs = NULL, step_params = NU
 	## Set up parameters list
 	params_lst <- lapply(seq(n_fleets), function(x) {
 
-	params <- list(VPT = VPT, Qs = Qs[[x]], step_params = step_params[[x]], 
+	params <- list(VPT = VPT, Qs = Qs[[x]], fuelC = fuelC[[x]], step_params = step_params[[x]], 
 		       past_knowledge = past_knowledge, past_year_month = past_year_month,
 		       past_trip = past_trip, threshold = threshold)
 	return(params)
