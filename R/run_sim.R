@@ -212,7 +212,7 @@ AreaClosures <- close_areas(sim_init = sim_init, closure_init = closure, commerc
 
 # keep a record
 close_count <- close_count + 1
-closure_list[close_count] <- AreaClosures
+closure_list[[close_count]] <- AreaClosures
 
 }
 
@@ -224,7 +224,7 @@ print(paste("Based on", closure[["basis"]], "on a", closure[["temp_dyn"]], "basi
 AreaClosures <- close_areas(sim_init = sim_init, closure_init = closure, commercial_logs = catches, survey_logs = survey[["log.mat"]], real_pop = pop_bios, t = t)
 # keep a record
 close_count <- close_count + 1
-closure_list[close_count] <- AreaClosures
+closure_list[[close_count]] <- AreaClosures
 
 }
 
