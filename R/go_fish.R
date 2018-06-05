@@ -374,12 +374,31 @@ coords <- new.point # assign new fishing position
 
 	# and the costs and profit
 	# costs from the distance travelled * fuel cost
-	if(t > 1 ) {
-	catch[t,"costs"] <- (distance_calc(x1 = catch[t-1, "x"], y1 = catch[t-1, "y"],
-					  x2 = catch[t, "x"], y2 = catch[t, "y"]) * fuelC)
-	catch[t,"profit"] <- catch[t,"val"] - catch[t,"costs"] 
-	}
 
+	## If its the first tow
+	if(t==1) {
+	catch[t,"costs"] <- (distance_calc(x1 = 0, y1 = 0,
+	x2 = catch[t, "x"], y2 = catch[t, "y"]) * fuelC)
+	}
+	
+	# If not the first tow
+	if(t>1) {
+	
+	# if its a new trip
+	if(catch[t,"trip"] != catch[t-1,"trip"]) {
+	catch[t,"costs"] <- (distance_calc(x1 = 0, y1 = 0,
+	x2 = catch[t, "x"], y2 = catch[t, "y"]) * fuelC)
+	   }
+
+	# if its the same trip
+		if(catch[t,"trip"] == catch[t-1,"trip"]) {
+	catch[t,"costs"] <- (distance_calc(x1 = catch[t-1, "x"], y1 = catch[t-1, "y"],
+	x2 = catch[t, "x"], y2 = catch[t, "y"]) * fuelC)
+		}
+
+		}
+	
+	catch[t,"profit"] <- catch[t,"val"] - catch[t,"costs"] 
 	catch[t, "meanval"] <- mean(catch[seq(t),"val"]) # Update mean value
 	catch[t, "sdval"]   <- ifelse(is.na(sd(catch[seq(t),"val"])),1, sd(catch[seq(t),"val"]))  # Update the SD of the catch
 
