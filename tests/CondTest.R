@@ -9,8 +9,8 @@ set.seed(123, kind = "L'Ecuyer-CMRG")
 
 ## initialise the simulation
 
-sim <- init_sim(nrows = 100, ncols = 100, n_years = 20, n_tows_day = 4, n_days_wk_fished = 5,
-     n_fleets = 5, n_vessels = 20, n_species = 4, move_freq = 2)
+sim <- init_sim(nrows = 100, ncols = 100, n_years = 3, n_tows_day = 4, n_days_wk_fished = 5,
+     n_fleets = 5, n_vessels = 10, n_species = 4, move_freq = 2)
 
 
 # Here's what is produced...
