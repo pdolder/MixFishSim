@@ -375,7 +375,7 @@ coords <- new.point # assign new fishing position
 	# and the costs and profit
 	# costs from the distance travelled * fuel cost
 	catch[t,"costs"] <- (distance_calc(x1 = catch[t-1, "x"], y1 = catch[t-1, "y"],
-					  x1 = catch[t, "x"], y1 = catch[t, "y"]) * fuelC)
+					  x2 = catch[t, "x"], y2 = catch[t, "y"]) * fuelC)
 
 	catch[t,"profit"] <- catch[t,"val"] - catch[t,"costs"] 
 

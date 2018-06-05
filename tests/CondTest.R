@@ -124,6 +124,7 @@ fleets <- init_fleet(sim_init = sim, VPT = c("spp1" = 100, "spp2" = 200, "spp3" 
 		     "fleet 4" = c("spp1" = Q_mult * 1, "spp2" = Q_mult * 1, "spp3" = Q_mult * 1, "spp4" = Q_mult * 5),
 		     "fleet 5" = c("spp1" = Q_mult * 1, "spp2" = Q_mult * 3, "spp3" = Q_mult * 2, "spp4" = Q_mult * 1)
 		     ),
+	   fuelC = list("fleet 1" = 3, "fleet 2" = 2, "fleet 3" = 5, "fleet 4" = 2, "fleet 5" = 1),
 	   step_params = list("fleet 1" = c("rate" = 10, "B1" = 1, "B2" = 10, "B3" = B3_1),
 			      "fleet 2" = c("rate" = 20, "B1" = 2 , "B2" = 15, "B3" = B3_2),
 			      "fleet 3" = c("rate" = 15, "B1" = 1, "B2" =  8, "B3" = B3_3),

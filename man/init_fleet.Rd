@@ -4,9 +4,9 @@
 \alias{init_fleet}
 \title{Initialise fleet}
 \usage{
-init_fleet(sim_init = NULL, VPT = NULL, Qs = NULL, step_params = NULL,
-  past_knowledge = FALSE, past_year_month = FALSE, past_trip = FALSE,
-  threshold = NULL)
+init_fleet(sim_init = NULL, VPT = NULL, Qs = NULL, fuelC = 0,
+  step_params = NULL, past_knowledge = FALSE, past_year_month = FALSE,
+  past_trip = FALSE, threshold = NULL)
 }
 \arguments{
 \item{sim_init}{is the output (a list) from the \code{sim_init} function with the
@@ -18,6 +18,8 @@ from each of the species (same for all fleets)}
 \item{Qs}{is a list (an element for each fleet) with each element containing
 a named vector with the catchability parameters for each species the vessels
 in the fleet}
+
+\item{fuelC}{is the fuel cost per unit of distance moved in euro}
 
 \item{step_params}{is a list (an element for each fleet) with each element
 containing a named vector with the step parameters used in
