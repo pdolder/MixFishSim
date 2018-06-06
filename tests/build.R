@@ -19,4 +19,4 @@ install()
 
 #move_prob(start = c(2,2), lambda = 0.3, hab = matrix(nc = 3, runif(9)))
 
-fove_prob_Lst(lambda = 0.3, hab = matrix(nc = 2, runif(4)))
+move_prob_Lst(lambda = 0.3, hab = matrix(nc = 2, runif(4)))

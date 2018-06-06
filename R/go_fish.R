@@ -27,7 +27,6 @@ go_fish <- function(sim_init = NULL, fleet_params = NULL, fleet_catches = NULL,
 params <- fleet_params      # fleet parameter list
 catch  <- fleet_catches     # fleet catches list
 catch_matrix <- sp_fleet_catches
-
 VPT <- params[["VPT"]] 			# Value per tonne
 Q <- params[["Qs"]]			# Catchability for vessel
 if(length(VPT) != length(Q)) stop("VPT and Q must be the same length")
@@ -64,7 +63,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	## fishing grounds, calculate the expected profit by including fuel costs
 	loc_choice <- as.data.frame(catch)
 	loc_choice$loc_dist <- mapply(x1 = 0, y1 = 0, x2 = loc_choice$x, y2 = loc_choice$y, FUN = distance_calc)
-	loc_choice$expec_prof <- loc_choice$val - (loc_choice$distance * fuelC)
+	loc_choice$expec_prof <- loc_choice$val - (loc_choice$dist * fuelC)
 
 	# 3 options, choose from good hauls i) same month last year, ii) past
 		# trip, or iii) combination of same month last year and past
