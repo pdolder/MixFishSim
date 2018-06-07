@@ -53,8 +53,10 @@ if(t > 1) {
 
 coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
-# If incorporating past knowledge, and its a new trip...and not in the first year
-	if(!is.null(PastKnowledge) & catch[t,"trip"] != catch[t-1,"trip"] & brk.idx[["year.breaks"]][t]>1)  {
+# If incorporating past knowledge, and its a new trip...and not in the first
+# year (changed to transition)
+#	if(!is.null(PastKnowledge) & catch[t,"trip"] != catch[t-1,"trip"] & brk.idx[["year.breaks"]][t]>1)  {
+	if(!is.null(PastKnowledge) & catch[t,"trip"] != catch[t-1,"trip"] & UseKnowledge)  {
 
 ## print("USING PAST KNOWLEDGE!!!")
 	
@@ -274,15 +276,14 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	# CRW when no past knowledge, or within same month/trip (depending on
 	# choice)
 	if(!PastKnowledge | catch[t,"trip"] == catch[t-1,"trip"] | brk.idx[["year.breaks"]][t]==1) {
+#	if(!PastKnowledge | catch[t,"trip"] == catch[t-1,"trip"] | !UseKnowledge) {
 
 
 	## Here we need to update the max value in the step param, for the
 		## current population size / value field
-
-
-		ValMat <- 		lapply(names(pops), function(x) {
-					  val_mat <- Q[[x]] * pops[[x]] * VPT[[x]]
-					})
+		ValMat <- lapply(names(pops), function(x) {
+			val_mat <- Q[[x]] * pops[[x]] * VPT[[x]]
+			})
 		ValMat <- Reduce("+", ValMat)
 		B3_rev <- quantile(ValMat, prob = 0.9)
 		params[["step_params"]][["B3"]] <- B3_rev 
@@ -306,7 +307,6 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	Bear <- get_bearing(b = b, k = k)
 	catch[t, "angles"] <- Bear
 	new.point <- round(make_step(stepD = stepD, Bear = Bear, start.x = coords[1], start.y = coords[2])) # returns c(x2,y2)
-
 		}
 		
 		## Condition to deal with being trapped in closed area
