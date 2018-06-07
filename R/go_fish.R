@@ -56,7 +56,8 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 # If incorporating past knowledge, and its a new trip...and not in the first
 # year (changed to transition)
 #	if(!is.null(PastKnowledge) & catch[t,"trip"] != catch[t-1,"trip"] & brk.idx[["year.breaks"]][t]>1)  {
-	if(!is.null(PastKnowledge) & catch[t,"trip"] != catch[t-1,"trip"] & UseKnowledge)  {
+#	if(!is.null(PastKnowledge) & catch[t,"trip"] != catch[t-1,"trip"] & UseKnowledge)  {
+    if(!is.null(PastKnowledge) & UseKnowledge)  {
 
 ## print("USING PAST KNOWLEDGE!!!")
 	
@@ -273,11 +274,13 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
 	}
 
+
+###################################################################################
 	# CRW when no past knowledge, or within same month/trip (depending on
 	# choice)
-	if(!PastKnowledge | catch[t,"trip"] == catch[t-1,"trip"] | brk.idx[["year.breaks"]][t]==1) {
-#	if(!PastKnowledge | catch[t,"trip"] == catch[t-1,"trip"] | !UseKnowledge) {
-
+###################################################################################
+#	if(!PastKnowledge | catch[t,"trip"] == catch[t-1,"trip"] | brk.idx[["year.breaks"]][t]==1 | !UseKnowledge) {
+	if(!PastKnowledge | !UseKnowledge) {
 
 	## Here we need to update the max value in the step param, for the
 		## current population size / value field
@@ -335,7 +338,6 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	}
 
 	}
-
 
 coords <- new.point # assign new fishing position
 

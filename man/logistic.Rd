@@ -29,3 +29,6 @@ established). Where ~0 is exploratory fishing and ~1 is established on past
 knowledge. 
 Only Q (can be set at tmax/100) and t (current tow) need to be supplied.
 }
+\examples{
+ NOT RUN
+}

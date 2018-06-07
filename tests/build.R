@@ -26,11 +26,7 @@ tmax  <-  1e6
 logistic(Q = tmax/100, t = 1)
 logistic(Q = tmax/100, t = 1e6)
 
-rand_draw <- function(p = NULL) {
-return(ifelse(runif(1,0,1) < p, TRUE, FALSE))
-}
-
-rand_draw(p = logistic(Q = tmax/100, t = 1))
-rand_draw(p = logistic(Q = tmax/100, t = 1e5))
+use_past_knowledge(p = logistic(Q = tmax/100, t = 1))
+use_past_knowledge(p = logistic(Q = tmax/100, t = 1e5))
 
 
