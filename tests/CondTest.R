@@ -203,7 +203,7 @@ dev.off()
 
 png(file = file.path("plots", "catch_comp_clusters.png"), width = 1600, height = 800)
 plot_catch_comp(gran = c(20, 10, 5, 2), logs = logs, fleets = 1:5,
-       vessels = 1:20, trips = 1:60, years = 1:10, cluster_plot = TRUE, cluster_k = 5)
+       vessels = 1:20, trips = 1:60, years = 1:10, cluster_plot = TRUE, scale_data = F,cluster_k = 5)
 dev.off()
 
 plot_catch_comp(gran = c(20, 10, 5, 2), logs = logs, fleets = 1:5,

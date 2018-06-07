@@ -32,15 +32,15 @@ Q <- params[["Qs"]]			# Catchability for vessel
 if(length(VPT) != length(Q)) stop("VPT and Q must be the same length")
 fuelC <- params[["fuelC"]]
 
-# 
-PastKnowledge <- params[["past_knowledge"]]
-
 ######## indexes ##############
 idx <- sim_init$idx
 brk.idx <- sim_init$brk.idx
 ###############################
 
 ##### past knowledge decisions ####
+PastKnowledge <- params[["past_knowledge"]]  # overall flag if past knowledge used
+UseKnowledge  <- use_past_knowledge(p = logistic(Q = idx[["ntow"]]/100, t = t))    # specific flag for this timestep whether past knowledge being used in transition
+##################################
 
 ## If its the first location fished, need to choose a random location
 if(t == 1) {
@@ -53,8 +53,7 @@ if(t > 1) {
 
 coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
-# If incorporating past knowledge, and its a new trip...and not in the
-	# first year
+# If incorporating past knowledge, and its a new trip...and not in the first year
 	if(!is.null(PastKnowledge) & catch[t,"trip"] != catch[t-1,"trip"] & brk.idx[["year.breaks"]][t]>1)  {
 
 ## print("USING PAST KNOWLEDGE!!!")
@@ -63,7 +62,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	## fishing grounds, calculate the expected profit by including fuel costs
 	loc_choice <- as.data.frame(catch)
 	loc_choice$loc_dist <- mapply(x1 = 0, y1 = 0, x2 = loc_choice$x, y2 = loc_choice$y, FUN = distance_calc)
-	loc_choice$expec_prof <- loc_choice$val - (loc_choice$dist * fuelC)
+	loc_choice$expec_prof <- loc_choice$val - (loc_choice$loc_dist * fuelC)
 
 	# 3 options, choose from good hauls i) same month last year, ii) past
 		# trip, or iii) combination of same month last year and past
