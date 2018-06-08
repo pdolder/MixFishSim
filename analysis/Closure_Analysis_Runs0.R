@@ -26,7 +26,7 @@ r <- 0
 ## run_sim function for overall control
 res <- run_sim(sim_init = sim, pop_init = Pop, move_cov = moveCov, fleets_init = fleets, hab_init = hab, InParallel = TRUE, cores = 1, save_pop_bio = TRUE, survey = survey, closure = closure)
 
-save(res, file = file.path('.','Scenario_runs3',paste('Scenario', r, '.RData',sep = "_")))
+save(res, file = file.path('.','Scenario_runs3',paste0('Scenario_', r, '.RData')))
 ############################################
 
 rm(res); gc()

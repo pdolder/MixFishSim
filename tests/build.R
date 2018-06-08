@@ -19,7 +19,7 @@ install()
 
 #move_prob(start = c(2,2), lambda = 0.3, hab = matrix(nc = 3, runif(9)))
 
-move_prob_Lst(lambda = 0.3, hab = matrix(nc = 2, runif(4)))
+qove_prob_Lst(lambda = 0.3, hab = matrix(nc = 2, runif(4)))
 
 # test logistic prob
 tmax  <-  1e6

@@ -39,7 +39,7 @@ brk.idx <- sim_init$brk.idx
 
 ##### past knowledge decisions ####
 PastKnowledge <- params[["past_knowledge"]]  # overall flag if past knowledge used
-UseKnowledge  <- use_past_knowledge(p = logistic(Q = idx[["ntow"]]/100, t = t))    # specific flag for this timestep whether past knowledge being used in transition
+UseKnowledge  <- use_past_knowledge(p = logistic(Q = 200, B = 0.02/idx[["ny"]], t = t))    # specific flag for this timestep whether past knowledge being used in transition
 ##################################
 
 ## If its the first location fished, need to choose a random location

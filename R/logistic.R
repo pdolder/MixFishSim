@@ -22,8 +22,7 @@
 
 #' @export
 
-logistic <- function(A = 0, K = 0.95, C = 1, Q = NULL, B = 0.001, v = 1, t = NULL) {
+logistic <- function(A = 0, K = 0.95, C = 1, Q = 200, B = NULL, v = 1, t = NULL) {
 
 	return(A + ((K-A)/(C + Q * exp(-B * t))^1/v))
-
 }

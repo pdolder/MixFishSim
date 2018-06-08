@@ -135,6 +135,13 @@ fleets <- init_fleet(sim_init = sim, VPT = c("spp1" = 100, "spp2" = 200, "spp3" 
 	   past_trip = TRUE,
 	   threshold = 0.75)
 
+#ntow <- sim[["idx"]][["ntow"]]
+#ny <- sim[["idx"]][["ny"]]
+
+#plot(1:ntow, sapply(1:ntow, function(x) {
+#	     logistic(B = 0.02/ny, v = 1, t = x)})
+#)
+
 
 ## Setup survey
 survey <- init_survey(sim_init = sim, design = "fixed_station", 
@@ -178,32 +185,32 @@ ggsave(file.path("plots", "fDynamics.png"))
 logs <- combine_logs(res[["fleets_catches"]])
 
 plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 1, vessel_no = 1,
-       year_trip = 20, trip_no = 1)
+       year_trip = 3, trip_no = 1)
 ggsave(file.path("plots", "vessel_move.png"))
 
 # multiple trips
 plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 1, vessel_no = 1:10,
-       year_trip = 10, trip_no = 43:52)
+       year_trip = 2, trip_no = 43:52)
 ggsave(file.path("plots", "vessel_multi_move.png"))
 
 # with the value field behind
 plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 1, vessel_no = 1:10,
-       year_trip = 10, trip_no = 43, fleets_init = fleets, pop_bios = res[["pop_bios"]])
+       year_trip = 3, trip_no = 44, fleets_init = fleets, pop_bios = res[["pop_bios"]])
 ggsave(file.path("plots", "vessel_move_value.png"))
 
 
-plot_fleet_trip(logs = logs, fleet_no = 1, year_trip = 10, trip_no = 1)
+plot_fleet_trip(logs = logs, fleet_no = 1, year_trip = 2, trip_no = 1)
 ggsave(file.path("plots", "fleets_move.png"))
 
 # catch compositions
 png(file = file.path("plots", "catch_comp.png"), width = 1600, height = 400)
 plot_catch_comp(gran = c(20, 10, 5, 2), logs = logs, fleets = 1:5,
-       vessels = 1:20, trips = 1:20, years = 1:10, cluster_plot = FALSE)
+       vessels = 1:20, trips = 1:20, years = 1:3, cluster_plot = FALSE)
 dev.off()
 
 png(file = file.path("plots", "catch_comp_clusters.png"), width = 1600, height = 800)
 plot_catch_comp(gran = c(20, 10, 5, 2), logs = logs, fleets = 1:5,
-       vessels = 1:20, trips = 1:60, years = 1:10, cluster_plot = TRUE, scale_data = F,cluster_k = 5)
+       vessels = 1:20, trips = 1:60, years = 1:3, cluster_plot = TRUE, scale_data = F,cluster_k = 5)
 dev.off()
 
 plot_catch_comp(gran = c(20, 10, 5, 2), logs = logs, fleets = 1:5,
