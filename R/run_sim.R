@@ -270,7 +270,8 @@ catches <- foreach(fl=seq_len(n_fleets)) %do%
 			sim_init = sim_init, 
 			fleets_params = fleets_init[["fleet_params"]][[fl]],
 		   fleets_catches =     fleets_init[["fleet_catches"]][[fl]], 
-		   sp_fleets_catches =  fleets_init[["sp_fleet_catches"]][[fl]], closed_areas = AreaClosures, pops = B, t = t)
+		   sp_fleets_catches =  fleets_init[["sp_fleet_catches"]][[fl]], 
+		   closed_areas = AreaClosures, pops = B, t = t)
 
 
 } # end t==1 run
