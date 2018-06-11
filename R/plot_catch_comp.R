@@ -55,6 +55,13 @@ catch_grid$grid_y <- sapply(catch_grid$y,bin.func)
 
 catch_grid <- group_by(catch_grid,grid_x,grid_y) %>% summarise(spp1 = sum(spp1), spp2 = sum(spp2), spp3 = sum(spp3), spp4 = sum(spp4), allspp = sum(allspp), val = sum(val))
 
+## Convert to a % value for clustering
+catch_grid[,c("spp1", "spp2", "spp3", "spp4")] <- 
+	catch_grid[,c("spp1", "spp2", "spp3", "spp4")]/
+apply(catch_grid[,c("spp1", "spp2", "spp3", "spp4")],1,sum)
+catch_grid <- as.data.frame(catch_grid)
+catch_grid[is.na(catch_grid)] <- 0
+
 ## Now plot the gridded data to compare against the individual points
 catch_hans <- melt(catch_grid,id=c("grid_x","grid_y"))
 catch_hans <- catch_hans[catch_hans$variable %in% c("spp1","spp2","spp3","spp4"),]

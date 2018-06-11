@@ -5,10 +5,10 @@
 ############################################
 library(MixFishSim)
 
-load('Common_Params.RData')
+load('Common_Params2.RData')
 
 Run <- 0 
-load(file.path('Scenario_runs2', paste0("Scenario_", Run, "_.RData")))
+load(file.path('Scenario_runs3', paste0("Scenario_", Run, ".RData")))
 
 plot_pop_summary(res, timestep = "annual", save = FALSE)
 
@@ -17,8 +17,8 @@ ggsave(file = file.path('..', 'write_up', 'Plots', 'f_dynamics.png'), width = 8,
 
 logs <- combine_logs(res[["fleets_catches"]])
 
-plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 1, vessel_no = 1,
-       year_trip = 10, trip_no = 4)
+plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 1, vessel_no = 5,
+       year_trip = 10, trip_no = 9)
 ggsave(file = file.path("..", "write_up", "Plots", "vessel_move.png"), width = 8, height = 8)
 
 
@@ -34,10 +34,13 @@ plot_fleet_trip(logs = logs, fleet_no = 1, year_trip = 10, trip_no = 1)
 ggsave(file = file.path("..", "write_up", "Plots", "fleet_moves.png"), width = 8, height = 8)
 
 plot_catch_comp(gran = c(20, 10, 5, 2), logs = logs, fleets = 1:5, scale_data = FALSE,
-       vessels = 1:20, trips = 1:60, years = 1:10, cluster_plot = TRUE, cluster_k = 5)
+       vessels = 1:20, trips = 1:60, years = 1:10, cluster_plot = TRUE, cluster_k = 6)
 
 plot_survey(survey = res[["survey"]], type = "index")
 
 png(file = file.path("..", "write_up", "Plots", "step_function.png"), width = 1200, height = 800)
 plot_realised_stepF(logs = logs, fleet_no = 2, vessel_no = 2)
 dev.off()
+
+
+
