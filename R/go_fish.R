@@ -112,8 +112,8 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 		}
 	## Check for closed areas
 	cl <- apply(closed_areas, 1, function(x) {
-			    as.numeric(x["x"]) == as.numeric(new.point["x"]) & 
-			    as.numeric(x["y"]) == as.numeric(new.point["y"])})
+			    as.numeric(x["x"]) == as.numeric(new.point[1]) & 
+			    as.numeric(x["y"]) == as.numeric(new.point[2])})
 
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
@@ -181,8 +181,8 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
 	## Check for closed areas
 	cl <- apply(closed_areas, 1, function(x) {
-			    as.numeric(x["x"]) == as.numeric(new.point["x"]) & 
-			    as.numeric(x["y"]) == as.numeric(new.point["y"])})
+			    as.numeric(x["x"]) == as.numeric(new.point[1]) & 
+			    as.numeric(x["y"]) == as.numeric(new.point[2])})
 
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
@@ -258,8 +258,8 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
 	## Check for closed areas
 	cl <- apply(closed_areas, 1, function(x) {
-			    as.numeric(x["x"]) == as.numeric(new.point["x"]) & 
-			    as.numeric(x["y"]) == as.numeric(new.point["y"])})
+			    as.numeric(x["x"]) == as.numeric(new.point[1]) & 
+			    as.numeric(x["y"]) == as.numeric(new.point[2])})
 
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
@@ -325,8 +325,8 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
 	## Check for closed areas
 	cl <- apply(closed_areas, 1, function(x) {
-			    as.numeric(x["x"]) == as.numeric(new.point["x"]) & 
-			    as.numeric(x["y"]) == as.numeric(new.point["y"])})
+			    as.numeric(x["x"]) == as.numeric(new.point[1]) & 
+			    as.numeric(x["y"]) == as.numeric(new.point[2])})
 
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 

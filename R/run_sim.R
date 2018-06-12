@@ -112,7 +112,6 @@ if(t %in% print.seq) {
 print(paste("tow ==", t, "----",round(t/ntow * 100,0), "%"))
 	}
 
-
 ###################################
 ## Switches for various processes #
 ###################################

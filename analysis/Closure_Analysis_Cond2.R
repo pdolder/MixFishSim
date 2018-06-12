@@ -39,18 +39,18 @@ hab <- create_hab(sim_init = sim,
 		 ),
 		spwn_mult = 10, plot.dist = TRUE, plot.file = getwd())
 
-par(mfrow=c(2,2))
-for(i in 1:4) {
-image(hab[["hab"]][[i]])
-}
+#par(mfrow=c(2,2))
+#for(i in 1:4) {
+#image(hab[["hab"]][[i]])
+#}
 
-habs <- Reduce("+", hab[["hab"]])
-image(habs)
+#habs <- Reduce("+", hab[["hab"]])
+#image(habs)
 
 ## Number of non-zeros
-sapply(1:4, function(x)  {
-	       length(hab[["hab"]][[x]][hab[["hab"]][[x]]!=0]) / (100 * 100)
-		})
+#sapply(1:4, function(x)  {
+#	       length(hab[["hab"]][[x]][hab[["hab"]][[x]]!=0]) / (100 * 100)
+#		})
 
 # Change the zeros with something v. low ?
 
@@ -169,6 +169,6 @@ survey <- init_survey(sim_init = sim, design = "fixed_station",
 ######
 # Save all objects
 
-save(sim, Pop, moveCov, fleets, hab, survey, file = "Common_Params2.RData")
+save(sim, Pop, moveCov, fleets, hab, survey, file = "Common_Params.RData")
 
 
