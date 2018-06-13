@@ -33,31 +33,8 @@
 
 \journal{Ecological Modelling}
 
-%%%%%%%%%%%%%%%%%%%%%%%
-%% Elsevier bibliography styles
-%%%%%%%%%%%%%%%%%%%%%%%
-%% To change the style, put a % in front of the second line of the current style and
-%% remove the % from the second line of the style you would like to use.
-%%%%%%%%%%%%%%%%%%%%%%%
-
-%% Numbered
-%\bibliographystyle{model1-num-names}
-%% Numbered without titles
-%\bibliographystyle{model1a-num-names}
 %% Harvard
 \bibliographystyle{model2-names.bst}\biboptions{authoryear}
-%% Vancouver numbered
-%\usepackage{numcompress}\bibliographystyle{model3-num-names}
-%% Vancouver name/year
-%\usepackage{numcompress}\bibliographystyle{model4-names}\biboptions{authoryear}
-%% APA style
-%%\bibliographystyle{model5-names}\biboptions{authoryear}
-%% AMA style
-%\usepackage{numcompress}\bibliographystyle{model6-num-names}
-%% `Elsevier LaTeX' style
-%%\bibliographystyle{elsarticle-num}
-%%\bibliographystyle{elsarticle-harv}
-
 %%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -65,9 +42,6 @@
 \begin{frontmatter}
 \title{\emph{MixFishSim}: highly resolved spatiotemporal simulations for
 	exploring mixed fishery dynamics}
-
-%%\title{A simulation framework for exploring spatiotemporal dynamics in mixed
-%%	fisheries}
 
 %% Group authors per affiliation:
 \author[1,2]{Paul J. Dolder\corref{c}}
@@ -89,34 +63,19 @@
 	Netherlands}
 
 \begin{abstract}
-%\textcolor{gray}{[Guidance: A concise and factual abstract is required. The abstract 
-%should state briefly the purpose of the research, the principal results and
-%major conclusions. An abstract is often pnresented separately from the article,
-%so it must be able to stand alone. For this reason, References should be
-%avoided, but if essential, then citep the author(s) and year(s). Also,
-%non-standard or uncommon abbreviations should be avoided, but if essential they
-%must be defined at their first mention in the abstract itself.  Graphical
-%abstract: Although a graphical abstract is optional, its use is encouraged as
-%it draws more attention to the online article. The graphical abstract should
-%summarize the contents of the article in a concise, pictorial form designed to
-%capture the attention of a wide readership. Graphical abstracts should be
-%submitted as a separate file in the online submission system. Image size:
-%Please provide an image with a minimum of 531 X 1328 pixels (h X w) or
-%proportionally more. The image should be readable at a size of 5 x 13 cm using
-%a regular screen resolution of 96 dpi.  Preferred file types: TIFF, EPS, PDF or
-%MS Office files.] \\}
-%
+
 \replaced[id = JJ]{Most fisheries}{Fishing} exploit\deleted[id=JJ]{s} spatially
-and temporally hetergenous fish populations, using species-unselective gear
+and temporally heterogeneous fish populations, using species-unselective gear
 that can result in unintended, unwanted catch of low quota or protected
 species. Reducing these unwanted catches is crucial for biological and economic
 sustainability of `mixed fisheries' and implementation of an ecosystem approach
 to fishing. \\
 
-To implement effective spatial measures to reduce discards a good understanding
-of spatiotemporal fishery dynamics is required. However, traditional
-scientific advice is limited by a lack of highly resolved knowledge of
-population distribution, movement and how fishers interact with different fish
+\replaced[id = PD]{If fisheries are to avoid unwanted catch}{To implement
+	effective spatial measures to reduce discards} a good understanding of
+spatiotemporal fishery dynamics is required. However, traditional scientific
+advice is limited by a lack of highly resolved knowledge of population
+distribution, movement and how fishers interact with different fish
 populations. This reflects that data on fish location at high temporal and
 spatial resolutions is expensive and difficult to collect and therefore proxies
 inferred from either scientific surveys or commercial catch data are often used
@@ -125,8 +84,8 @@ to model distributions, often with limited spatial and temporal resolution. \\
 To understand how resolution impacts mixed fisheries inference, we develop a
 highly resolved spatiotemporal simulation model incorporating: i)
 delay-difference population dynamics, ii) population movement using Gaussian
-Random Fields to simulate patchy, hetergenously distributed populations, and
-iii) fishery dynamics for multiple fleet characteristics based on targetting
+Random Fields to simulate patchy, heterogeneously distributed populations, and
+iii) fishery dynamics for multiple fleet characteristics based on targeting
 via correlated random walk movement and learned behaviour. \\ 
 
 We simulate 20 years of exploitation of the fish populations and use the
@@ -161,89 +120,117 @@ Some\sep keywords \sep here. Max 6
 
 \section{Introduction}
 
-%\textcolor{gray}{[Guidance:: State the objectives of the work and provide an 
-%adequate background, avoiding a detailed literature survey or a summary of the
-%results.] \\}
-%
-Fishers exploit fish populations that are heterogenously distributed in space
-and time with verying knowledge of species distributions using
-species-unselective fishing gear. Fisheries that catch an assemblage of
-species, known as mixed fisheries \replaced[id=JJ]{may}{, when managed by
-	single-species quotas can end up} discard\deleted[id=JJ]{ing} overquota
-catch \added[id=JJ]{when managed by single species quotas,} leading to
-overexploitation of fish populations \added[id=JJ]{\citep{Ulrich2011a,
-		Batsleer2015}}.  \added[id=JJ]{This discarding of fish in
-	excess of quota hampers the ability to limit fishing mortality to
-	within sustainable limits \citep{Alverson1994, Crowder1998,
-		Rijnsdorp2007}.} Reducing discarding is crucial to ensure
-biological and economic sustainability of fisheries\deleted[id=JJ]{ and
-	implementation of an ecosystem approach to
-	fisheries}\replaced[id=PD]{and}{. As such} there is increasing interest
-in technical solutions such as gear and spatial closures as ways of avoiding
-discard\replaced[id=JJ]{ing of fish \citep{Kennelly2002, Catchpole2008,
-		Bellido2011}}{s}.  \\
+Fishers exploit fish populations that are heterogeneously distributed in space
+and time with varying knowledge of species distributions using
+species-unselective fishing gear. \added[id=PD]{In doing so} fisheries
+\deleted[id=PD]{that} catch an assemblage of species
+\added[id=PD]{and}\deleted{, known as mixed fisheries} \replaced[id=JJ]{may}{,
+	when managed by single-species quotas can end up}
+discard\deleted[id=JJ]{ing} overquota catch \added[id=JJ]{when managed by
+	single species quotas,} leading to overexploitation of fish populations
+\added[id=JJ]{\citep{Ulrich2011a, Batsleer2015}}.  \added[id=JJ]{This
+	discarding of fish in excess of quota hampers the ability to limit
+	fishing mortality to within sustainable limits \citep{Alverson1994,
+	Crowder1998, Rijnsdorp2007}} \deleted[id=PD]{; reducing
+discarding is crucial} to ensure biological and
+economic sustainability of fisheries\deleted[id=JJ]{ and implementation of an
+	ecosystem approach to fisheries}\replaced[id=PD]{and}{. As such} there
+is increasing interest in technical solutions such as gear and spatial closures
+as ways of \replaced[id=PD]{reducing unwanted catch}{avoiding
+	discard\added[id=JJ]{ing of fish}}\citep{Kennelly2002,
+		Catchpole2008, Bellido2011}.  \\
 
-Use of spatial management as a tool has been proposed as a method to reduce
-discards \added[id=PD]{\citep{Holmes2011, Little2014, Dunn2014a}}. However, its
-implementation is hampered by lack of knowledge of fish and fishery
-spatiotemporal dynamics and understanding of the scale at which processes are
-important for management. Understanding the correct scale for spatial
-management is crucial in order to implement measures at a resolution that
-ensures effective management \citep{Dunn2016} while minimising economic impact.
-For example, a scale that promotes species avoidance for vulnerable or low
-quota species while allowing continuance of sustainable fisheries for available
-quota species.\\
+\replaced[id=PD]{Changes to spatial fishing patterns have}{Use of spatial
+	management as a tools} been proposed as a method to reduce discards
+\added[id=PD]{\citep{Holmes2011, Little2014, Dunn2014a}}. However,
+\deleted[id=PD]{its} implementation is hampered by lack of knowledge of fish
+and fishery spatiotemporal dynamics and understanding of the scale at which
+processes are important for management. Understanding the correct scale for
+spatial management is crucial in order to implement measures at a resolution
+that ensures effective management \citep{Dunn2016} while minimising economic
+impact.  For example, a scale that promotes species avoidance for vulnerable or
+low quota species while allowing continuance of sustainable fisheries for
+available quota species.\\
 
-Ensuring measures are implemented at an appropriate scale has been a challenge
-in the past that has led to ineffectual measures with unitended consequences
-such as limited impact towards the management objective or increased benthic
-impact on previously unexploited areas (e.g. the cod closure in the North
-Sea \citep{Rijnsdorp2001,Dinmore2003}). Since then more refined spatial
-information has become available through the combination of logbook and Vessel
-Monitoring System (VMS) data \citep{Lee2010, Bastardie2010, Gerritsen2012,
-	Mateo2016} and more real-time spatial management has been possible 
-	\citep[e.g.][]{Holmes2011}. Such information is, however, patchy and
-derived from an inherently biased sampling programme (i.e. targeted fishing).
-Further, fishers generally only recorded landings (not catch) on a daily
-basis\todo{\added[id=JJ]{Its not clear what the problem is: landings
-		collected on daily basis or landings recorded rather than catch}}.
-This leads to questions about the validity of inference that can be drawn from
-landings data assigned to VMS activity pings\todo{\added[id=JJ]{This comes as a
-	surprise: I thought this was going to be about discards}}.\\ 
+\replaced[id=PD]{Identifying}{Ensuring measures are implemented at} an
+appropriate scale has been a challenge in the past that has led to ineffectual
+measures with unintended consequences such as limited impact towards the
+management objective or increased benthic impact on previously unexploited
+areas (e.g. the cod closure in the North Sea
+\citep{Rijnsdorp2001,Dinmore2003}). \replaced[id=PD]{M}{Since then m}ore
+refined spatial information has \added[id=PD]{since} become available through
+the combination of logbook and Vessel Monitoring System (VMS) data
+\citep{Lee2010, Bastardie2010, Gerritsen2012, Mateo2016} and more real-time
+spatial management has been possible \citep[e.g.][]{Holmes2011}.  Such
+information is, however, patchy and derived from an inherently biased sampling
+programme (i.e. targeted fishing). \deleted[id=PD]{ Further, fishers generally only recorded
+landings (not catch) on a daily basis\todo{\added[id=JJ]{Its not clear what the
+		problem is: landings collected on daily basis or landings
+		recorded rather than catch}}.  This leads to questions about
+the validity of inference that can be drawn from landings data assigned to VMS
+activity pings.}\todo{\added[id=JJ]{This comes as a surprise: I thought this was
+		going to be about discards}\added[id=PD]{Agree, have removed
+		this to avoid confusion}}\\ 
 
-In order to understand challenges that face VMS-linked landings to draw
-inference on the underlying population structure we develop a simulation model
-where population dynamics are highly-resolved in space and time and are known
-rather than inferred from sampling or commercial catches. Population movement
-is driven by a random (diffusive) and directed (advective) process and we
-incorporate characterisation of a number of different fisheries exploiting four
-fish populations with different spatial and population demographics.\\
+In order to understand \replaced[id=PD]{the consequences of using}{challenges
+	that face} VMS-linked landings to draw inference on the underlying
+population structure we develop a simulation model where population dynamics
+are highly-resolved in space and time\replaced[id=PD]{. Being}{ and are}
+known \added[id=PD]{directly} rather than inferred from sampling or commercial
+catches \added[id=PD]{, we can use the population model to evaluate how inference from
+	fisheries-dependent and fisheries independent sampling relates to the
+	real population structure}. \replaced[id=PD]{In our model system
+	p}{P}opulation movement is driven by random (diffusive) and directed
+(advective) processes and we incorporate characterisation of a number of
+different fisheries \added[id=PD]{dynamics} exploiting four fish populations
+with different spatial and population demographics.\\
 
-Using our model we simulate 20 years of exploitation of the fish populations
-and use the results from the fishing model to draw inference on the underlying
-population structures.  We compare this inference to: i) a stratified
-fixed-site sampling survey design commonly used for fisheries monitoring
-purposes, otherwise know as a fisheries-independent
-	survey, and ii) the underlying population structures input to the
-simulation.\\
+Using our model we simulate \replaced[id=PD]{20}{40} years of exploitation of
+the fish populations. \replaced[id=PD]{We}{ and} use the
+results\deleted[id=PD]{ from the fishing model:}
 
-We simulate a fishery closure to protect one species based on the
-fishery-dependent inferred distributions at a spatial and temporal scale
-typical in fisheries management, and assess a theoretical "benefit" to the
-population, and effect on the other three populations\todo{\added[id=JJ]{If
-		the paper has two goals this should be clear from the start,
-		but may be better over 2 MSs}}. Further, we extend our analysis
-to a range of spatial and temporal scales to assess the impact of these
-processes on the success of the management measure.\\
+\begin{enumerate}
+	\item to understand how sampling-derived data reflects the underlying
+		population structures. We compare at different spatial and
+		temporal aggregations of data the real population to: 
+		\begin{enumerate}
+			\item the inferred population from a stratified fixed-site sampling survey design
+				commonly used for fisheries monitoring purposes, otherwise know as a
+				fisheries-independent survey,
+			\item the inferred population from our fishery-dependent model which includes
+				fishery-induced sampling dynamics.\\
+		\end{enumerate}
+	\item to understand the impact of data aggregation and source on
+		spatial fisheries management measures we simulate a fishery closure to
+		protect a species based on different spatial and temporal data
+		aggregations:
+		\begin{enumerate}
+			\item as if the real spatial population structure were
+				known,
+			\item the fishery-independent inferred population
+				structure
+			\item the fishery-dependent inferred population
+				structure
+		\end{enumerate}
+		We evaluate the theoretical "benefit" to the population of the
+		closure(s), and effect on the other three
+		populations\todo{\added[id=JJ]{If the paper has two goals this
+				should be clear from the start, but may be
+				better over 2 MSs}\added[id=PD]{I would like to
+				keep both parts, but have made clearer in how
+				its set out. The closure scenarios form
+				validation of the data aggregation, rather than
+				effectiveness of the closures themselves - so
+				its a continuation of the same question in my
+				eyes}}\deleted[id=PD]{.  Further, we extend our
+			analysis to a range of spatial and temporal scales to
+			assess the impact of these processes on the success of
+			the management measure.}\\
+\end{enumerate}
+
 
 \section{Materials and Methods}
 
-%\textcolor{gray}{[Guidance: Provide sufficient details to allow the work to be
-%reproduced by an independent researcher. Methods that are already published
-%should be summarized, and indicated by a reference.  If quoting directly from a
-%previously published method, use quotation marks and also citep the source. Any
-%modifications to existing methods should also be described.] \\ }
-%
 \replaced[id=PD]{A}{We developed and implemented a simulation model with a}
 modular event-based \replaced{simulation model was developed with}{approach,
 	where} \added[id=PD]{sub-}modules \deleted[id=PD]{are} implemented on
@@ -260,8 +247,8 @@ movement occurs on a weekly time-step\replaced[id=PD]{. R}{, while r}ecruitment
 \replaced[id=PD]{takes place}{occurs} periodcally each year for a set time
 \replaced[id=PD]{duration}{period (e.g. 3 weeks)} at at specified point
 individual to a species\deleted[id=PD]{.}\added[id=PD]{, while the fishing
-	module operates on a tow-by-tow basis (multiple events a day)}. The
-simulation framework is implemented in the statistical software package R
+	module operates on a tow-by-tow basis (i.e. multiple events a day)}.
+The simulation framework is implemented in the statistical software package R
 \citep{RCoreTeam2017} \replaced[id=PD]{and}{;} available as an R package from
 the authors github (\url{www.github.com/pdolder/MixFishSim}).\\
 
@@ -711,12 +698,6 @@ surveys undertaken by fisheries research agencies.
 
 \section{Calculation}
 
-%\textcolor{gray}{[Guidance: A \underline{Theory} section should extend, not
-%repeat, the background to the article already dealt with in the	Introduction
-%and lay the foundation for further work.  In contrast, a
-%\underline{Calculation} section represents a practical development from a
-%theoretical basis.] \\}
-%
 \subsection{Population parameterisation}
 
 We parameterised the simulation model for four populations with differing
@@ -907,30 +888,11 @@ difference in fishing mortalities across scenarios.
 	effective of the realistic scenarios, as the 'real population' can only
 	be seen as a baseline comparison.}
 
-
-%\textcolor{gray}{[Guidance: Results should be clear and concise.]}
-
 \section{Discussion}
 
-%\textcolor{gray}{[Guidance: This should explore the significance of the results 
-%of the work, not repeat them. A combined Results and Discussion section is
-%often appropriate.  Avoid extensive citations and discussion of published
-%literature.]}
-%
 \section{Conclusions}
 
-%\textcolor{gray}{[Guidance: The main conclusions of the study may be presented 
-%in a short Conclusions section, which may stand alone or form a subsection of a
-%Discussion or Results and Discussion section.]}
-%
 \section*{Appendices}
-
-%\textcolor{gray}{[Guidance: If there is more than one appendix, they should 
-%be identified as A, B, etc.  Formulae and equations in appendices should be
-%given separate numbering: Eq.  (A.1), Eq. (A.2), etc.; in a subsequent
-%appendix, Eq. (B.1) and so on.  Similarly for tables and figures: Table A.1;
-%Fig. A.1, etc.]}
-%
 
 \begin{table}[!ht]
 	\centering
