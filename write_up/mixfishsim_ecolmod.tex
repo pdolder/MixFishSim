@@ -294,10 +294,10 @@ fishery dynamics.}
 % Use join to connect a node to the previous one 
 \node [term, join, fill=lcnorm!25]      {Choose random location to fish};
 \node [term, join, fill=lcfree!25] (p1){Sample catch};
-\node [test, densely dotted] (t1) {if $spawn_{t}$};
-\node [test, join, densely dotted] (t2) {if $wk_{t}$ != $wk_{t-1}$};
-\node [test, join, densely dotted] (wk) {if $day_{t}$ != $day_{t-1}$};
-\node [test, join, densely dotted] (t3) {if $trip_{t}$ != $trip_{t-1}$};
+\node [test, densely dotted] (t1) {if $Rec_{p}[t]$};
+\node [test, join, densely dotted] (t2) {if $wk[t] \neq  wk[t-1]$};
+\node [test, join, densely dotted] (wk) {if $day[t] \neq day[t-1]$};
+\node [test, join, densely dotted] (t3) {if $trip[t] \neq trip[t-1] \ | \ PK[t]$};
 \node [term, join, fill=lcnorm!25]  (p2) {Correlated Random Walk};
 \node [term, join, fill=lcnorm!25]  (p3) {Choose new fishing location};
 \node [proc, densely dotted, join, it] (p7) {end};
@@ -314,9 +314,9 @@ fishery dynamics.}
 
 % -------------------------------------------------
 % A couple of boxes have annotations
-\node [below=of p0, it, yshift=1.5em,xshift=-3em] {$t==1$};
+\node [below=of p0, it, yshift=1.5em,xshift=-3em] {$t=1$};
 \node [right=30mm of p3, it] {$1 < t < t_{max}$};
-\node [below=of p3, it,xshift=-3em, yshift=1.5em] {$t == t_{max}$};
+\node [below=of p3, it,xshift=-3em, yshift=1.5em] {$t = t_{max}$};
 
 % -------------------------------------------------
 % First, the straight north-south connections. In each case, we first
@@ -368,10 +368,10 @@ fishery dynamics.}
 \end{tikzpicture}
 \caption{Overview Schematic of simulation model. The blue boxes indicate fleet
 	dynamics processes, the green boxes population dynamics processes while
-	the white boxes are the timesteps at which processes occur; $t$ = tow,
-	$tmax$ is the total number of tows, $wk$ is a weekly timestep, $day$ is
-	a day timestep, $trip$ is a trip time step. \textcolor{red}{I NEED TO
-		REDO THIS TO MAKE NOTATION MORE CONCISE AND CONSISTENT} } 
+	the white boxes are the timesteps at which processes occur; $Rec$
+	is a recruitment period for population $p$, $t$ = tow, $tmax$ is the
+	total number of tows, $wk$ is a weekly timestep, $day$ is a day
+	timestep, $trip$ is a trip time step.}
 \label{fig:overview}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -597,28 +597,34 @@ location choice. For this reason, the fleet dynamics sub-model
 include\replaced[id=PD]{d}{s} a learning component, where a vessel's initial
 fishing location in a trip \replaced[id=PD]{wa}{i}s based on selecting from
 previously successful fishing locations. This \replaced[id=PD]{wa}{i}s achieved
-by sorting all previous fishing events in the previous trip as well as the
-previous time periods in past years, and choosing randomly from the top 75 \%
-of fishing events \replaced[id=PD]{as defined by the revenue gained}{in value}.
-Simulation testing indicated that this learning increased the mean value of
-catches for the vessels, over just relying on the correlated random
-walk \todo{\added[id=JJ]{Correlated random walk of what}} function
+by \added[id=PD]{calculating expected profit from locations fished during}
+previous fishing events in the previous trip as well as the previous time
+periods in past years, and choosing randomly from the top 75 \% of fishing
+events \replaced[id=PD]{as defined by the expected profit}{in value}.
+\added[id=PD]{Expected profit was estimated from the revenue from previous
+	times fished at a location minus the fuel cost of travelling to the
+	location.} Simulation testing indicated that this learning increased
+the mean value of catches for the vessels, over just relying on the correlated
+random walk \todo{\added[id=JJ]{Correlated random walk of what}} function
 \added[id=PD]{as described for the 'within trip' decisions below}. 
 
 \subsubsection{Within-trip decisions}
 
-Fishing locations within a trip are determined by a modified random walk
-process. A random walk type was chosen as it is the simplest assumption
-commonly used in ecology to describe \added[id=PD]{optimal} animal
-\deleted[id=PD]{movement which} search\replaced[id=PD]{ strategy}{ing} for
+Fishing locations within a trip are \added[id=PD]{initially} determined by a
+modified random walk process. \added[id=PD]{As the simulation progresses, the
+	within-trip decision become gradually more influenced by past locations
+	fished, based on the same process as the initial location, influenced
+	by expected profit at a fishing location.} A random walk was chosen for
+the exploratory fishing process as it is the simplest assumption commonly used
+in ecology to describe \added[id=PD]{optimal} animal \deleted[id=PD]{movement
+	which} search\replaced[id=PD]{ strategy}{ing} for
 \added[id=PD]{exploiting} homogeneously distributed prey about which there is
 uncertain knowledge \citep{Viswanathan1999}. In a random walk, movement is a
 stochastic process through a series of steps\added[id=JJ]{. These steps have a
 	length, and a direction} that can either be equal in length or take
 some other functional form. The direction of the random walk can be correlated,
-a characteristic known as `persistence', providing some overall
-\deleted[id=PD]{location of} directional movement \citep{Codling2008}
-\deleted[id=PD]{or uncorrelated}. \\
+(known as `persistence'), providing some overall \deleted[id=PD]{location of}
+directional movement \citep{Codling2008} \deleted[id=PD]{or uncorrelated}. \\
 
 A \textit{\replaced[id=JJ]{Lévy flight} {lévy walk}} is a particular form of
 random walk characterised by a heavy-tailed distribution of step-length
