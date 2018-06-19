@@ -29,6 +29,8 @@ load(file.path('..', 'analysis','scenarios.RData'))
 r  <- 3 ## second closure settings
 closure <- init_closure(input_coords = NULL, basis = sc$data_type[r], rationale = sc$basis[r], spp1 = 'spp3', spp2 = 'spp2', year_start = 31, year_basis = c(21:30), closure_thresh = 0.95, sc = sc$resolution[r], temp_dyn = sc$timescale[r])
 
+mn <- 1:12
+wk <- 1:52
 # t for month 1:12 of year 31
 closure_areas <- lapply(1:12, function(m) {
 t <-which(sim$brk.idx$year.breaks == 21 & sim$brk.idx$month.breaks == m)[1]
@@ -85,4 +87,10 @@ ggplot(filter(closure_areas, year == 40), aes(x = x , y = y)) + geom_point(colou
 		   alpha = 0.2, shape = "x") +
 	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
 
+######## Testing slow down
+debug(go_fish)
+res <- go_fish(sim_init = sim, fleet_params = fleets$fleet_params[[1]],
+fleet_catches = res$fleets_catches[[1]][[1]][[1]],
+sp_fleet_catches = res$fleets_catches[[1]][[2]], closed_areas = closure_areas[[1]],
+t = 1356, pops = res$pop_bios[[4,34]])
 

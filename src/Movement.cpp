@@ -23,10 +23,7 @@ using namespace Rcpp;
 //  [[Rcpp::export]]
 
 double distance_calc(int x1, int y1, int x2, int y2) {
-	int x = x1 - x2;
-	int y = y1 - y2;
-	double dist = pow(x,2) + pow(y,2);
-	dist = sqrt(dist);
+	double dist = sqrt(pow(x1 - x2,2) + pow(y1 - y2,2));
 	return dist;
 }
 

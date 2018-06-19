@@ -26,8 +26,8 @@ find_spat_f  <- function(sim_init = NULL, C = C, B = B, M = M, FUN = baranov_f) 
 
 res <- sapply(seq(ncols * nrows), function(x) {
 	       
-	       uniroot(f = FUN, interval = c(0,2), tol = 1e-8, C = C[[x]], B =
-		       B[[x]], M = M, extendInt = "yes", maxiter = 10000)$root })
+	       uniroot(f = FUN, interval = c(0,2), tol = 1e-7, C = C[[x]], B =
+		       B[[x]], M = M, extendInt = "yes", maxiter = 1000)$root })
 
 res <- matrix(res, ncol = ncols, nrow = nrows)
 return(res)

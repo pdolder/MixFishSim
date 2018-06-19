@@ -20,7 +20,7 @@
 
 #' @export
 
-go_fish <- function(sim_init = NULL, fleet_params = NULL, fleet_catches = NULL, 
+go_fishOLD <- function(sim_init = NULL, fleet_params = NULL, fleet_catches = NULL, 
 		    sp_fleet_catches = NULL, pops = NULL, closed_areas = NULL, t = t) {
 
 ##### extract the relevant components ###########
@@ -36,7 +36,6 @@ fuelC <- params[["fuelC"]]
 idx <- sim_init$idx
 brk.idx <- sim_init$brk.idx
 ###############################
-
 ##### past knowledge decisions ####
 PastKnowledge <- params[["past_knowledge"]]  # overall flag if past knowledge used
 UseKnowledge  <- use_past_knowledge(p = logistic(Q = 200, B = 0.02/idx[["ny"]], t = t))    # specific flag for this timestep whether past knowledge being used in transition
@@ -53,21 +52,20 @@ if(t > 1) {
 
 coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
-# If incorporating past knowledge, and its a new trip...and not in the first
-    if(!is.null(PastKnowledge) & UseKnowledge)  {
+# If incorporating past knowledge, and its a new trip...and not in the first year
+	if(!is.null(PastKnowledge) & catch[t,"trip"] != catch[t-1,"trip"] & brk.idx[["year.breaks"]][t]>1)  {
 
 ## print("USING PAST KNOWLEDGE!!!")
 	
 	## Need to determine start location by including the distance to
 	## fishing grounds, calculate the expected profit by including fuel costs
 	loc_choice <- as.data.frame(catch)
-	loc_choice$loc_dist <- mapply(x1 = 0, y1 = 0, x2 = loc_choice$x, y2 = loc_choice$y, FUN = distance_calcR)
+	loc_choice$loc_dist <- mapply(x1 = 0, y1 = 0, x2 = loc_choice$x, y2 = loc_choice$y, FUN = distance_calc)
 	loc_choice$expec_prof <- loc_choice$val - (loc_choice$loc_dist * fuelC)
 
-	# 3 options, choose from good hauls 
-	# i) same month last year, 
-	# ii) past trip, or 
-	# iii) combination of same month last year and past trip
+	# 3 options, choose from good hauls i) same month last year, ii) past
+		# trip, or iii) combination of same month last year and past
+		# trip
 	
 	if(PastKnowledge & any(is.null(params[["past_year_month"]]) | is.null(params[["past_trip"]]) | is.null(params[["threshold"]]))) stop("Must
 	    specify whether the past knowledge of fishing grounds is based
@@ -82,7 +80,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
 
 	## Exclude any closed areas from the good haul list
-	goodhauls <- goodhauls[!paste(goodhauls$x, goodhauls$y) %in% paste(closed_areas[,"x"], closed_areas[,"y"]),]
+	goodhauls <- goodhauls[!paste(goodhauls$x, goodhauls$y) %in% paste(closed_areas$x, closed_areas$y),]
 
 	if(dim(goodhauls)[1]==0) {
 	
@@ -92,7 +90,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	goodhauls  <- goodhauls[complete.cases(goodhauls),] # Remove NAs
 
 	## Exclude any closed areas from the good haul list
-	goodhauls <- goodhauls[!paste(goodhauls$x, goodhauls$y) %in% paste(closed_areas[,"x"], closed_areas[,"y"]),]
+	goodhauls <- goodhauls[!paste(goodhauls$x, goodhauls$y) %in% paste(closed_areas$x, closed_areas$y),]
 	
 	}
 
@@ -109,11 +107,9 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	new.point   <- c(as.numeric(sapply(strsplit(new.point,","),"[",1)),as.numeric(sapply(strsplit(new.point,","),"[",2)))
 		}
 	## Check for closed areas
-	cl <- mapply(x1 = closed_areas[,"x"],
-       y1 = closed_areas[,"y"],
-       FUN = function(x1,y1) {
-	as.integer(x1) == as.integer(new.point[1]) & 
-	as.integer(y1) == as.integer(new.point[2])})
+	cl <- apply(closed_areas, 1, function(x) {
+			    x["x"] == new.point[1] & 
+			    x["y"] == new.point[2]})
 
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
@@ -144,7 +140,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	}
 
 	## Exclude any closed areas from the good haul list
-	goodhauls <- goodhauls[!paste(goodhauls$x, goodhauls$y) %in% paste(closed_areas[,"x"], closed_areas[,"y"]),]
+	goodhauls <- goodhauls[!paste(goodhauls$x, goodhauls$y) %in% paste(closed_areas$x, closed_areas$y),]
 
 	if(dim(goodhauls)[1] == 0) {
 	
@@ -180,11 +176,9 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	}
 
 	## Check for closed areas
-	cl <- mapply(x1 = closed_areas[,"x"],
-       y1 = closed_areas[,"y"],
-       FUN = function(x1,y1) {
-	as.integer(x1) == as.integer(new.point[1]) & 
-	as.integer(y1) == as.integer(new.point[2])})
+	cl <- apply(closed_areas, 1, function(x) {
+			    x["x"] == new.point[1] & 
+			    x["y"] == new.point[2]})
 
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
@@ -218,7 +212,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	}
 	
 	## Exclude any closed areas from the good haul list
-	goodhauls <- goodhauls[!paste(goodhauls$x, goodhauls$y) %in% paste(closed_areas[,"x"], closed_areas[,"y"]),]
+	goodhauls <- goodhauls[!paste(goodhauls$x, goodhauls$y) %in% paste(closed_areas$x, closed_areas$y),]
 
 	## But if we're left with nowhere to fish, we need to lower the
 	## threshold
@@ -241,7 +235,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	}
 	
 	## Exclude any closed areas from the good haul list
-	goodhauls <- goodhauls[!paste(goodhauls$x, goodhauls$y) %in% paste(closed_areas[,"x"], closed_areas[,"y"]),]
+	goodhauls <- goodhauls[!paste(goodhauls$x, goodhauls$y) %in% paste(closed_areas$x, closed_areas$y),]
 
 	}
 
@@ -259,17 +253,14 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 }
 
 	## Check for closed areas
-	cl <- mapply(x1 = closed_areas[,"x"],
-       y1 = closed_areas[,"y"],
-       FUN = function(x1,y1) {
-	as.integer(x1) == as.integer(new.point[1]) & 
-	as.integer(y1) == as.integer(new.point[2])})
-
+	cl <- apply(closed_areas, 1, function(x) {
+			    x["x"] == new.point[1] & 
+			    x["y"] == new.point[2]})
 
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
-	if(Closure == TRUE) {	
-		count <- count+1 }
+	if(Closure == TRUE) {## print(paste("Stuck on option 3", count))
+	count <- count+1 }
 
 	if(Closure == FALSE) break
 
@@ -279,19 +270,18 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
 	}
 
-
-###################################################################################
 	# CRW when no past knowledge, or within same month/trip (depending on
 	# choice)
-###################################################################################
-#	if(!PastKnowledge | catch[t,"trip"] == catch[t-1,"trip"] | brk.idx[["year.breaks"]][t]==1 | !UseKnowledge) {
-	if(!PastKnowledge | !UseKnowledge) {
+	if(!PastKnowledge | catch[t,"trip"] == catch[t-1,"trip"] | brk.idx[["year.breaks"]][t]==1) {
+
 
 	## Here we need to update the max value in the step param, for the
 		## current population size / value field
-		ValMat <- lapply(names(pops), function(x) {
-			val_mat <- Q[[x]] * pops[[x]] * VPT[[x]]
-			})
+
+
+		ValMat <- 		lapply(names(pops), function(x) {
+					  val_mat <- Q[[x]] * pops[[x]] * VPT[[x]]
+					})
 		ValMat <- Reduce("+", ValMat)
 		B3_rev <- quantile(ValMat, prob = 0.9)
 		params[["step_params"]][["B3"]] <- B3_rev 
@@ -315,6 +305,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	Bear <- get_bearing(b = b, k = k)
 	catch[t, "angles"] <- Bear
 	new.point <- round(make_step(stepD = stepD, Bear = Bear, start.x = coords[1], start.y = coords[2])) # returns c(x2,y2)
+
 		}
 		
 		## Condition to deal with being trapped in closed area
@@ -329,11 +320,9 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	if(new.point[1] < 1) { new.point[1]  <-  new.point[1] + idx[["nrows"]]}
 
 	## Check for closed areas
-	cl <- mapply(x1 = closed_areas[,"x"],
-       y1 = closed_areas[,"y"],
-       FUN = function(x1,y1) {
-	as.integer(x1) == as.integer(new.point[1]) & 
-	as.integer(y1) == as.integer(new.point[2])})
+	cl <- apply(closed_areas, 1, function(x) {
+			    x["x"] == new.point[1] & 
+			    x["y"] == new.point[2]})
 
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
@@ -345,6 +334,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	}
 
 	}
+
 
 coords <- new.point # assign new fishing position
 
@@ -384,7 +374,7 @@ coords <- new.point # assign new fishing position
 
 	## If its the first tow
 	if(t==1) {
-	catch[t,"costs"] <- (distance_calcR(x1 = 0, y1 = 0,
+	catch[t,"costs"] <- (distance_calc(x1 = 0, y1 = 0,
 	x2 = catch[t, "x"], y2 = catch[t, "y"]) * fuelC)
 	}
 	
@@ -393,13 +383,13 @@ coords <- new.point # assign new fishing position
 	
 	# if its a new trip
 	if(catch[t,"trip"] != catch[t-1,"trip"]) {
-	catch[t,"costs"] <- (distance_calcR(x1 = 0, y1 = 0,
+	catch[t,"costs"] <- (distance_calc(x1 = 0, y1 = 0,
 	x2 = catch[t, "x"], y2 = catch[t, "y"]) * fuelC)
 	   }
 
 	# if its the same trip
 		if(catch[t,"trip"] == catch[t-1,"trip"]) {
-	catch[t,"costs"] <- (distance_calcR(x1 = catch[t-1, "x"], y1 = catch[t-1, "y"],
+	catch[t,"costs"] <- (distance_calc(x1 = catch[t-1, "x"], y1 = catch[t-1, "y"],
 	x2 = catch[t, "x"], y2 = catch[t, "y"]) * fuelC)
 		}
 
@@ -413,4 +403,3 @@ res <- list(catch = catch, catch_matrices = catch_matrix)
 return(res)
 
 } # End go fish function
-

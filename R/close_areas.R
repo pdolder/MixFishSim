@@ -245,5 +245,5 @@ if( ( nrow( closed_areas ) / c( nx * ny ) ) > (1 - thresh) ) {
 
 print(paste("Closing", nrow(closed_areas), "areas = ", 100 * nrow(closed_areas)/c(nx*ny), "% of area, 5 % of areas with positive catches"))
 
-return(closed_areas)
+return(as.matrix(closed_areas))
 }

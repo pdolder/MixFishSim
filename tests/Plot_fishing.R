@@ -1,4 +1,3 @@
-
 ###########################################################
 ## Plot of fishing locations before and after closures...
 ###########################################################
@@ -20,6 +19,7 @@ logs$closure <- factor(logs$closure)
 sim <- init_sim(nrows = 100, ncols = 100, n_years = 2, n_tows_day = 4, n_days_wk_fished = 5,
      n_fleets = 5, n_vessels = 10, n_species = 4, move_freq = 2)
 
+
 # Re-calc the closures as implemented
 closure <- init_closure(input_coords = NULL, basis = 'commercial', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 2, year_basis = 1, closure_thresh = 0.9, sc = 5, temp_dyn = 'annual')
 
@@ -31,8 +31,8 @@ year <- y
 mn <- 1:12
 wk <- 1:52
 AreaClosures <- close_areas(sim_init = sim, closure_init = closure, commercial_logs = res$fleets_catches, survey_logs = NULL, real_pop = NULL, t = t)
-AreaClosures$closure <- "after" # rename for consistency in the plot
-AreaClosures$year <- y
+#AreaClosures$closure <- "after" # rename for consistency in the plot
+#AreaClosures$year <- y
 return(AreaClosures)
 })
 
@@ -66,5 +66,4 @@ ggplot(filter(closure_areas, year == 40), aes(x = x , y = y)) + geom_point(colou
 	geom_point(aes(x = x, y = y, colour = factor(trip)), data = filter(logs, closure == "after", year == 40), 
 		   alpha = 0.2, shape = "x") +
 	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
-
 
