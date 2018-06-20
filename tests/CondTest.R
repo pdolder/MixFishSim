@@ -161,7 +161,35 @@ closure <- init_closure(input_coords = NULL, basis = 'commercial', rationale = '
 #closure <- init_closure(input_coords = NULL, basis = 'survey', rationale = 'high_pop', spp1 = 'spp1', spp2 = 'spp2', year_start = 15, closure_thresh = 0.95, temp_dyn = 'weekly')
 
 ## run_sim function for overall control
+
+
+start_time <- Sys.time()
+library(doParallel)
+registerDoParallel(2)
+
+foreach(i== seq_len(2)) %dopar%  
 res <- run_sim(sim_init = sim, pop_init = Pop, move_cov = moveCov, fleets_init = fleets, hab_init = hab, InParallel = TRUE, cores = 1, save_pop_bio = TRUE, survey = survey, closure = closure)
+
+end_time <- Sys.time()
+end_time - start_time
+
+## Test nested do par
+source(file.path("..","R", "run_sim.R"))
+
+start_time <- Sys.time()
+library(doParallel)
+registerDoParallel(2)
+
+foreach(i== seq_len(2)) %dopar%  
+res <- run_sim(sim_init = sim, pop_init = Pop, move_cov = moveCov, fleets_init = fleets, hab_init = hab, InParallel = TRUE, cores = 2, save_pop_bio = TRUE, survey = survey, closure = closure)
+end_time <- Sys.time()
+end_time - start_time
+
+
+
+
+
+
 
 format(object.size(res), units = "auto")
 

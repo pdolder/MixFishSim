@@ -100,11 +100,16 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	Closure <- TRUE; count <- 1 
 	while(Closure == TRUE) {
 		
-		if(dim(goodhauls)[1] == 0) {   ## If we still can't find any good hauls despite lowering the threshold, choose at random
-	new.point <- c(round(runif(1, 1, idx[["nrows"]])), round(runif(1, 1, idx[["ncols"]])))
-			    }
+	## If we still can't find any good hauls despite lowering the threshold, choose at random
+	if(dim(goodhauls)[1] == 0 | count > 100) {   			   
+	not_closed <- paste(rep(seq_len(idx[["nrows"]]), each = idx[["ncols"]]), 
+		       rep(seq_len(idx[["ncols"]]), times = idx[["nrows"]]))
+	not_closed <- not_closed[!not_closed %in% trimws(paste(closed_areas[,"x"],closed_areas[,"y"]))]
+	new.point <- sample(not_closed, 1)
+	new.point <- c(as.numeric(sapply(strsplit(new.point," "),"[",1)),as.numeric(sapply(strsplit(new.point," "),"[",2)))
+	}
 
-		if(dim(goodhauls)[1] != 0) {
+	if(dim(goodhauls)[1] != 0) {
 	new.point   <- sample(paste(goodhauls$x,goodhauls$y,sep=","),1)  	# Randomly select from the good hauls
 	new.point   <- c(as.numeric(sapply(strsplit(new.point,","),"[",1)),as.numeric(sapply(strsplit(new.point,","),"[",2)))
 		}
@@ -118,7 +123,12 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
 	if(Closure == TRUE) {## print(paste("Stuck on option 1", count))
-	count <- count+1 }
+	count <- count+1
+	# remove new.point from loc_choice 
+	loc_choice <- filter(loc_choice, x != new.point[1] & loc_choice$y != new.point[2])
+	goodhauls <- filter(goodhauls, x != new.point[1] & goodhauls$y != new.point[2])
+
+	}
 	if(Closure == FALSE) break
 	}
 		}
@@ -169,9 +179,15 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	Closure <- TRUE; count <- 1
 	while(Closure == TRUE ) {
 	
-	if(dim(goodhauls)[1] == 0) {   ## If we still can't find any good hauls despite lowering the threshold, choose at random
-	new.point <- c(round(runif(1, 1, idx[["nrows"]])), round(runif(1, 1, idx[["ncols"]])))
-			    }
+	## If we still can't find any good hauls despite lowering the threshold, choose at random
+	if(dim(goodhauls)[1] == 0 | count > 100) {   			   
+	not_closed <- paste(rep(seq_len(idx[["nrows"]]), each = idx[["ncols"]]), 
+		       rep(seq_len(idx[["ncols"]]), times = idx[["nrows"]]))
+	not_closed <- not_closed[!not_closed %in% trimws(paste(closed_areas[,"x"],closed_areas[,"y"]))]
+	new.point <- sample(not_closed, 1)
+	new.point <- c(as.numeric(sapply(strsplit(new.point," "),"[",1)),as.numeric(sapply(strsplit(new.point," "),"[",2)))
+	}
+
 	if(dim(goodhauls)[1] != 0) {  
 
 	new.point   <- sample(paste(goodhauls$x,goodhauls$y,sep=","),1)
@@ -189,10 +205,14 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
 	if(Closure == TRUE) { 
-	count <- count+1 }
+	count <- count+1 
+	# remove new.point from loc_choice 
+	loc_choice <- filter(loc_choice, x != new.point[1] & loc_choice$y != new.point[2])
+	goodhauls <- filter(goodhauls, x != new.point[1] & goodhauls$y != new.point[2])
+
+	}
 
 	if(Closure == FALSE) break
-
 	}
 
 	}
@@ -249,9 +269,15 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	Closure <- TRUE; count <- 1
 	while(Closure == TRUE ) {
 	
-	if(dim(goodhauls)[1] == 0) {   ## If we still can't find any good hauls, choose at random
-	new.point <- c(round(runif(1, 1, idx[["nrows"]])), round(runif(1, 1, idx[["ncols"]])))
-			    }
+	## If we still can't find any good hauls, choose at random from the
+	## open areas
+	if(dim(goodhauls)[1] == 0 | count > 100) {   			   
+	not_closed <- paste(rep(seq_len(idx[["nrows"]]), each = idx[["ncols"]]), 
+		       rep(seq_len(idx[["ncols"]]), times = idx[["nrows"]]))
+	not_closed <- not_closed[!not_closed %in% trimws(paste(closed_areas[,"x"],closed_areas[,"y"]))]
+	new.point <- sample(not_closed, 1)
+	new.point <- c(as.numeric(sapply(strsplit(new.point," "),"[",1)),as.numeric(sapply(strsplit(new.point," "),"[",2)))
+	}
 
 	if(dim(goodhauls)[1] != 0) {
 	new.point   <- sample(paste(goodhauls$x,goodhauls$y,sep=","),1)
@@ -269,7 +295,12 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
 	if(Closure == TRUE) {	
-		count <- count+1 }
+		count <- count+1
+	# remove new.point from loc_choice 
+	loc_choice <- filter(loc_choice, x != new.point[1] & loc_choice$y != new.point[2])
+	goodhauls <- filter(goodhauls, x != new.point[1] & goodhauls$y != new.point[2])
+
+	}
 
 	if(Closure == FALSE) break
 
@@ -319,7 +350,11 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 		
 		## Condition to deal with being trapped in closed area
 		if(count > 100) {
-		new.point <- c(round(runif(1, 1, idx[["nrows"]])), round(runif(1, 1, idx[["ncols"]])))
+	not_closed <- paste(rep(seq_len(idx[["nrows"]]), each = idx[["ncols"]]), 
+		       rep(seq_len(idx[["ncols"]]), times = idx[["nrows"]]))
+	not_closed <- not_closed[!not_closed %in% trimws(paste(closed_areas[,"x"],closed_areas[,"y"]))]
+	new.point <- sample(not_closed, 1)
+	new.point <- c(as.numeric(sapply(strsplit(new.point," "),"[",1)),as.numeric(sapply(strsplit(new.point," "),"[",2)))
 		}
 
 	## Boundary condition
@@ -338,6 +373,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
 	if(Closure == TRUE) {## print(paste("Stuck on CRW", count))
+
 	count <- count+1 }
 
 	if(Closure == FALSE) break

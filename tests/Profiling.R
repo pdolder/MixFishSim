@@ -127,6 +127,7 @@ return(AreaClosures)
 
 ####################################
 ######## Testing slow down #########
+#########  Go fish func ############
 ####################################
 
 undebug(go_fish)
@@ -161,7 +162,7 @@ microbenchmark(
 	fleet_catches = res[["fleets_catches"]][[fl]][["fleets_catches"]][[1]], 
 	sp_fleet_catches = res$fleets_catches[[fl]][["sp_fleets_catches"]][[1]], 
 	pops = res$pop_bios[[2,34]], t = t, closed_areas = as.matrix(closure_areas[[1]])),
-	       times = 1000)
+	       times = 100)
 
 
 ## For some reason, the R implementation is quicker...??
@@ -214,6 +215,46 @@ find_spat_f(sim_init = sim, C = res$fleets_catches[[fl]][["sp_fleets_catches"]][
 	    B = res$pop_bios[[2,34]][[1]], M = 0.2/52, FUN = baranov_f), 
 find_spat_f_m(sim_init = sim, C = res$fleets_catches[[fl]][["sp_fleets_catches"]][[1]][[1]], 
 	    B = res$pop_bios[[2,34]][[1]], M = 0.2/52, FUN = baranov_f),
-	       times = 100)
+	       times = 10)
+
+## No benefit
+
+
+##############################
+##### do par v do v for
+#############################
+#source(file.path("go_fishTEST.R"))
+#source(file.path("..","R","go_fish.R"))
+
+for(t in 1000:2000)  {
+	print(t)
+out <- go_fish(sim_init = sim, fleet_params = fleets[["fleet_params"]][[fl]], 
+	fleet_catches = res[["fleets_catches"]][[fl]][["fleets_catches"]][[1]], 
+	sp_fleet_catches = res$fleets_catches[[fl]][["sp_fleets_catches"]][[1]], 
+	pops = res$pop_bios[[2,34]], t = t, closed_areas = as.matrix(closure_areas[[1]]))
+}
+
+library(doParallel)
+registerDoParallel(3) 
+
+t <- 1041
+
+microbenchmark(
+"do" = catches <- foreach(fl=seq_len(5)) %do% 
+go_fish_fleet(FUN = go_fish,	sim_init = sim, 
+			fleets_params = fleets[["fleet_params"]][[fl]],
+		   fleets_catches =     res$fleets_catches[[fl]][["fleets_catches"]], 
+		   sp_fleets_catches =  res$fleets_catches[[fl]][["sp_fleets_catches"]],
+		   pops = res$pop_bios[[2,34]], t = t, closed_areas = closure_areas[[1]]),
+"dopar" = catches <- foreach(fl=seq_len(5)) %dopar% 
+go_fish_fleet(FUN = go_fish,	sim_init = sim, 
+			fleets_params = fleets[["fleet_params"]][[fl]],
+		   fleets_catches =     res$fleets_catches[[fl]][["fleets_catches"]], 
+		   sp_fleets_catches =  res$fleets_catches[[fl]][["sp_fleets_catches"]],
+		   pops = res$pop_bios[[2,34]], t = t, closed_areas = closure_areas[[1]]),
+	       times = 10 
+)
+
+
 
 
