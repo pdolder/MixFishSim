@@ -31,7 +31,7 @@ sum_fleets_catches <- function(FUN = sum_fleet_catches, fleets_log = NULL, sim_i
 
 	## In parallel
 
-	out <- foreach(x = seq_len(length(fleets_log))) %dopar% {
+	out <- foreach(x = seq_len(length(fleets_log))) %do% {
 		sum_fleet_catches(fleet_log = fleets_log[[x]], sim_init = sim_init)
 
 	}
