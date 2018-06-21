@@ -16,20 +16,20 @@ set.seed(123, kind = "L'Ecuyer-CMRG")
 ## initialise the simulation
 
 sim <- init_sim(nrows = 100, ncols = 100, n_years = 40, n_tows_day = 4, n_days_wk_fished = 5,
-     n_fleets = 5, n_vessels = 10, n_species = 4, move_freq = 2)
+     n_fleets = 5, n_vessels = 20, n_species = 4, move_freq = 2)
 
 ## create the suitable habitat for each species
 
 hab <- create_hab(sim_init = sim,
 		  spp.ctrl = list(
-           'spp.1' = list('nu' = 1/0.015, var = 1, scale = 100, Aniso =
+           'spp.1' = list('nu' = 1/0.15, var = 1, scale = 10, Aniso =
            matrix(nc=2, c(1.5, 3, -3, 4))),
-           'spp.2' = list('nu' = 1/0.05, var = 2, scale = 12, Aniso =
+           'spp.2' = list('nu' = 1/0.05, var = 2, scale = 20, Aniso =
            matrix(nc=2, c(1, 2, -1, 2))),
-	   'spp.3' = list('nu' = 1/0.01, var = 1, scale = 29, Aniso =
+	   'spp.3' = list('nu' = 1/0.55, var = 1, scale = 5, Aniso =
            matrix(nc=2, c(2.5, 1, -1, 2))),
-           'spp.4' = list('nu' = 1/0.005, var = 1, scale = 18, Aniso =
-           matrix(nc=2, c(0.1, 2, -1, 0.02)))
+           'spp.4' = list('nu' = 1/0.05, var = 1, scale = 30, Aniso =
+           matrix(nc=2, c(0.1, 2, -1, 0.2)))
 				  ),
 		  spawn_areas = list("spp1" = list(area1 = c(40, 50, 40, 50), area2 =
 				   c(80, 90, 60, 70)), 
@@ -38,22 +38,6 @@ hab <- create_hab(sim_init = sim,
 		 "spp4" = list(area1 = c(50, 55, 80, 85), area2 = c(30, 40, 30, 40))
 		 ),
 		spwn_mult = 10, plot.dist = TRUE, plot.file = getwd())
-
-#par(mfrow=c(2,2))
-#for(i in 1:4) {
-#image(hab[["hab"]][[i]])
-#}
-
-#habs <- Reduce("+", hab[["hab"]])
-#image(habs)
-
-## Number of non-zeros
-#sapply(1:4, function(x)  {
-#	       length(hab[["hab"]][[x]][hab[["hab"]][[x]]!=0]) / (100 * 100)
-#		})
-
-# Change the zeros with something v. low ?
-
 
 ## Initialise the populations
 
@@ -96,60 +80,55 @@ moveCov <- init_moveCov(sim_init = sim, steps = 52,
 
 
 ## Initialise the fleets
-Q_mult  <- 0.02
+Q_mult  <- 0.01
 
 ## maximum possible revenue
 
-VPT <- c("spp1" = 100, 
-	 "spp2" = 200, 
-	 "spp3" = 350, 
-	 "spp4" = 600)
-
 # fleet 1
-B3_1   <- quantile(sapply(1:1000, function(x) { 1 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * VPT[["spp1"]] +
-				 2 * Q_mult * Pop[["Start_pop"]][[2]][[x]] * VPT[["spp2"]] +
-				 1 * Q_mult * Pop[["Start_pop"]][[3]][[x]] * VPT[["spp3"]] +
-				 2 * Q_mult * Pop[["Start_pop"]][[4]][[x]] * VPT[["spp4"]] 
+B3_1   <- quantile(sapply(1:1000, function(x) { 1 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * 100 +
+				 2 * Q_mult * Pop[["Start_pop"]][[2]][[x]] * 200 +
+				 1 * Q_mult * Pop[["Start_pop"]][[3]][[x]] * 300 +
+				 2 * Q_mult * Pop[["Start_pop"]][[4]][[x]] * 600 
 				   }), prob = 0.9)
 # fleet 2
-B3_2   <- quantile(sapply(1:1000, function(x) { 2 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * VPT[["spp1"]] +
-				 1 * Q_mult * Pop[["Start_pop"]][[2]][[x]] * VPT[["spp2"]] +
-				 2 * Q_mult * Pop[["Start_pop"]][[3]][[x]] * VPT[["spp3"]] +
-				 1 * Q_mult * Pop[["Start_pop"]][[4]][[x]] * VPT[["spp4"]] 
+B3_2   <- quantile(sapply(1:1000, function(x) { 2 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * 100 +
+				 1 * Q_mult * Pop[["Start_pop"]][[2]][[x]] * 200 +
+				 2 * Q_mult * Pop[["Start_pop"]][[3]][[x]] * 300 +
+				 1 * Q_mult * Pop[["Start_pop"]][[4]][[x]] * 600 
 				   }), prob = 0.9)
 
+
 # fleet 3
-B3_3 <- quantile(sapply(1:1000, function(x) { 2 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * VPT[["spp1"]] +
-				 2 * Q_mult * Pop[["Start_pop"]][[2]][[x]] * VPT[["spp2"]] +
-				 2 * Q_mult * Pop[["Start_pop"]][[3]][[x]] * VPT[["spp3"]] +
-				 2 * Q_mult * Pop[["Start_pop"]][[4]][[x]] * VPT[["spp4"]]  
+B3_3 <- quantile(sapply(1:1000, function(x) { 2 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * 100 +
+				 2 * Q_mult * Pop[["Start_pop"]][[2]][[x]] * 200 +
+				 2 * Q_mult * Pop[["Start_pop"]][[3]][[x]] * 300 +
+				 2 * Q_mult * Pop[["Start_pop"]][[4]][[x]] * 600 
 				   }), prob = 0.85)
 
 # fleet 4
-B3_4 <- quantile(sapply(1:1000, function(x) { 1 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * VPT[["spp1"]] +
-				 1 * Q_mult * Pop[["Start_pop"]][[2]][[x]] * VPT[["spp2"]] +
-				 1 * Q_mult * Pop[["Start_pop"]][[3]][[x]] * VPT[["spp3"]] +
-				 5 * Q_mult * Pop[["Start_pop"]][[4]][[x]] * VPT[["spp4"]] 
+B3_4 <- quantile(sapply(1:1000, function(x) { 1 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * 100 +
+				 1 * Q_mult * Pop[["Start_pop"]][[2]][[x]] * 200 +
+				 1 * Q_mult * Pop[["Start_pop"]][[3]][[x]] * 300 +
+				 5 * Q_mult * Pop[["Start_pop"]][[4]][[x]] * 600 
 				   }), prob = 0.9)
 
 # fleet 5
-B3_5 <- quantile(sapply(1:1000, function(x) { 1 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * VPT[["spp1"]] +
-				 3 * Q_mult * Pop[["Start_pop"]][[2]][[x]] * VPT[["spp2"]] +
-				 2 * Q_mult * Pop[["Start_pop"]][[3]][[x]] * VPT[["spp3"]] +
-				 1 * Q_mult * Pop[["Start_pop"]][[4]][[x]] * VPT[["spp4"]] 
+B3_5 <- quantile(sapply(1:1000, function(x) { 1 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * 100 +
+				 3 * Q_mult * Pop[["Start_pop"]][[2]][[x]] * 200 +
+				 2 * Q_mult * Pop[["Start_pop"]][[3]][[x]] * 300 +
+				 1 * Q_mult * Pop[["Start_pop"]][[4]][[x]] * 600 
 				   }), prob = 0.8)
 
 #test_step(step_params = list("rate"  = 20, "B1" = 1, "B2" = 10, "B3" = B3_1), rev.max = max1)
 #test_step(step_params = list("rate"  = 20, "B1" = 0.5, "B2" = 15, "B3" = max2), rev.max = max2)
 
-fleets <- init_fleet(sim_init = sim, VPT = VPT,
+fleets <- init_fleet(sim_init = sim, VPT = c("spp1" = 100, "spp2" = 200, "spp3" = 600, "spp4" = 1600),
 	   Qs = list("fleet 1" = c("spp1" = Q_mult * 1, "spp2" = Q_mult * 1, "spp3" = Q_mult * 0.2, "spp4" = Q_mult * 1), 
 		     "fleet 2" = c("spp1" = Q_mult * 3, "spp2" = Q_mult * 0.5, "spp3" = Q_mult * 1, "spp4" = Q_mult * 0.5),
 		     "fleet 3" = c("spp1" = Q_mult * 2, "spp2" = Q_mult * 1, "spp3" = Q_mult * 1, "spp4" = Q_mult * 1),
 		     "fleet 4" = c("spp1" = Q_mult * 1, "spp2" = Q_mult * 0.5, "spp3" = Q_mult * 0.2, "spp4" = Q_mult * 2),
 		     "fleet 5" = c("spp1" = Q_mult * 1, "spp2" = Q_mult * 1, "spp3" = Q_mult * 1, "spp4" = Q_mult * 0.5)
 		     ),
-		     fuelC = list("fleet 1" = 3, "fleet 2" = 2, "fleet 3" = 5, "fleet 4" = 2, "fleet 5" = 1),
 	   step_params = list("fleet 1" = c("rate" = 20, "B1" = 1, "B2" = 10, "B3" = B3_1),
 			      "fleet 2" = c("rate" = 30, "B1" = 2 , "B2" = 15, "B3" = B3_2),
 			      "fleet 3" = c("rate" = 25, "B1" = 1, "B2" =  8, "B3" = B3_3),

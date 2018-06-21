@@ -45,7 +45,7 @@
 init_pop <- function(sim_init = sim_init, Bio = NULL, hab = NULL, start_cell = NULL, lambda = NULL, init_move_steps = 10, rec_params = NULL, rec_wk = NULL, spwn_wk = NULL, M = NULL, K = NULL, cores = 3) {
 
 suppressMessages(require(doParallel))
-registerDoParallel(cores = cores)
+#registerDoParallel(cores = cores)
 
 # extract the indices
 idx <- sim_init[["idx"]]
@@ -55,7 +55,7 @@ max.day <- max(brk.idx[["day.seq"]])
 
 # set up population matrices
 	# Apply over all populations, returning a list
-Pop <- foreach(x = names(Bio)) %dopar% {
+Pop <- foreach(x = names(Bio)) %do% {
 
 		      ## Initial distribution
 		      PopIn <- matrix(nc = ncol(hab[[x]]), nr = nrow(hab[[x]]), 0)
@@ -82,7 +82,7 @@ names(Pop) <- paste("spp",seq(idx[["n.spp"]]), sep ="")
 
 ## Set up the population level recording vectors
 
-Pop_vec <- foreach(x = seq_len(idx[["n.spp"]])) %dopar% {
+Pop_vec <- foreach(x = seq_len(idx[["n.spp"]])) %do% {
 
 Pop_vec <- list( 
 	# Pop level biomass

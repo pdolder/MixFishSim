@@ -29,7 +29,7 @@ run_sim <- function(sim_init = NULL, pop_init = NULL, move_cov = NULL, fleets_in
 start.time <- Sys.time() # for printing runtime
 
 suppressMessages(require(doParallel))
-registerDoParallel(cores = cores)
+registerDoParallel()
 
 #######################
 ####### Indices #######
@@ -60,8 +60,9 @@ for(s in paste0("spp",seq_len(n_spp))) { Rec[[s]] <- 0 }
 B    <- pop_init[["Start_pop"]]  # For storing current biomass, is overwritten
 Bm1  <- pop_init[["Start_pop"]]  # For storing last time-step biomass, is overwritten
 
-AreaClosures <- matrix(nc = 2, c(-1,-1), dimnames = list(NULL, c("x","y"))) # Dummy closures 
+#AreaClosures <- matrix(nc = 2, c(-1,-1), dimnames = list(NULL, c("x","y"))) # Dummy closures 
 #AreaClosures <- data.frame(x = -1, y = -1) # Dummy closures 
+AreaClosures <- NULL
 close_count <- 0 # counter for recording closures
 closure_list <- list()
 ###################################

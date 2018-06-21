@@ -235,7 +235,7 @@ out <- go_fish(sim_init = sim, fleet_params = fleets[["fleet_params"]][[fl]],
 }
 
 library(doParallel)
-registerDoParallel(3) 
+registerDoParallel() 
 
 t <- 1041
 
@@ -252,6 +252,27 @@ go_fish_fleet(FUN = go_fish,	sim_init = sim,
 		   fleets_catches =     res$fleets_catches[[fl]][["fleets_catches"]], 
 		   sp_fleets_catches =  res$fleets_catches[[fl]][["sp_fleets_catches"]],
 		   pops = res$pop_bios[[2,34]], t = t, closed_areas = closure_areas[[1]]),
+	       times = 10 
+)
+
+
+#################################
+### Testing early v late calls to go_fish
+#######################################
+
+microbenchmark(
+"early" = catches <- foreach(fl=seq_len(5)) %do% 
+go_fish_fleet(FUN = go_fish,	sim_init = sim, 
+			fleets_params = fleets[["fleet_params"]][[fl]],
+		   fleets_catches =     res$fleets_catches[[fl]][["fleets_catches"]], 
+		   sp_fleets_catches =  res$fleets_catches[[fl]][["sp_fleets_catches"]],
+		   pops = res$pop_bios[[2,34]], t = 2, closed_areas = NULL),
+"late" = catches <- foreach(fl=seq_len(5)) %do% 
+go_fish_fleet(FUN = go_fish,	sim_init = sim, 
+			fleets_params = fleets[["fleet_params"]][[fl]],
+		   fleets_catches =     res$fleets_catches[[fl]][["fleets_catches"]], 
+		   sp_fleets_catches =  res$fleets_catches[[fl]][["sp_fleets_catches"]],
+		   pops = res$pop_bios[[2,34]], t = 2000, closed_areas = closure_areas[[1]]),
 	       times = 10 
 )
 
