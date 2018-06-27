@@ -43,25 +43,35 @@ return(AreaClosures)
 
 ## Let's plot the first fleet only
 logs <- filter(logs, fleet == 1, closure %in% c("before", "after"))
-closure_areas <- do.call(rbind, closure_areas) # make closures list a combined df
+closure_areas <- as.data.frame(do.call(rbind, closure_areas)) # make closures list a combined df
+
+closure_areas$x <- as.integer(closure_areas$x) 
+closure_areas$y <- as.integer(closure_areas$y) 
 
 library(cowplot)
 
 p1 <- ggplot(filter(logs, closure == "before"), aes(x = x , y = y)) +
-	geom_point(colour = "blue", alpha = 0.2, shape = "x") +
+	geom_point(colour = "blue", alpha = 1, shape = "x", aes(size = log(allspp))) +
 	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~year) +
 	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
 
-p2 <- ggplot(closure_areas, aes(x = x , y = y)) + geom_point(colour = "red", shape = 15) +
+p1 <- ggplot(as.data.frame(closure_areas), aes(x = x , y = y)) + geom_point(colour = "red", shape = 15) +
+	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~year) +
+	geom_point(aes(x = x, y = y), data = filter(logs, closure == "before"), 
+		   alpha = 1, colour = "blue", shape = "x")+
+	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
+
+
+p2 <- ggplot(as.data.frame(closure_areas), aes(x = x , y = y)) + geom_point(colour = "red", shape = 15) +
 	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~year) +
 	geom_point(aes(x = x, y = y), data = filter(logs, closure == "after"), 
-		   alpha = 0.2, shape = "x") +
+		   alpha = 1, colour = "blue", shape = "x")+
 	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
 
 plot_grid(p1,p2, labels = c("(a) before closures", "(b) after closures"), vjust = 2)
-ggsave(file = "Closure_fishing_locations.pdf", width = 12, height = 8)
+ggsave(file = "Closure_fishing_locations.png", width = 12, height = 8)
 
-ggplot(filter(closure_areas, year == 40), aes(x = x , y = y)) + geom_point(colour = "red", shape = 15) +
+ggplot(filter(as.data.frame(closure_areas), year == 40), aes(x = x , y = y)) + geom_point(colour = "red", shape = 15) +
 	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~year) +
 	geom_point(aes(x = x, y = y, colour = factor(trip)), data = filter(logs, closure == "after", year == 40), 
 		   alpha = 0.2, shape = "x") +

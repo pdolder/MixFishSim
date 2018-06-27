@@ -233,6 +233,109 @@ legend(x = -250, y = -10, legend = c("Pop 1", "Pop 2", "Pop 3", "Pop 4"),
  
 dev.off()
 
+######################################################################################################
+###### Clustering
+require(cluster)
+cluster_k = 4
+plot_cluster <- function(gran = 1,dataIn = dataIn, cluster_k = 4) {
+
+## First, aggregate the catch data to the appropriate scales
+breaks<-seq(0.001,100.001,by=gran)
+mid_break <- breaks + (gran/2)
+mid_break <- mid_break[-length(mid_break)] 
+
+# Func to bin the data
+bin.func <- function (x) {
+	mid_break[which(abs(mid_break - x) == min(abs(mid_break - x)))]
+}
+
+# Then aggregate the data to the bins
+catch_grid <- dataIn 
+catch_grid$grid_x <- sapply(catch_grid$x,bin.func)
+catch_grid$grid_y <- sapply(catch_grid$y,bin.func)
+
+catch_grid <- group_by(catch_grid,grid_x,grid_y) %>% 
+	summarise(spp1 = sum(spp_1), spp2 = sum(spp_2), spp3 = sum(spp_3), spp4 = sum(spp_4))
+
+## Convert to a % value for clustering
+catch_grid[,c("spp1", "spp2", "spp3", "spp4")] <- 
+	catch_grid[,c("spp1", "spp2", "spp3", "spp4")]/
+apply(catch_grid[,c("spp1", "spp2", "spp3", "spp4")],1,sum)
+catch_grid <- as.data.frame(catch_grid)
+catch_grid[is.na(catch_grid)] <- 0
+
+catch_grid <- catch_grid[order(catch_grid[,"grid_x"], catch_grid[,"grid_y"]),]
+
+pam.mod <- pam(dist(catch_grid[,c("spp1", "spp2","spp3","spp4")]), k = cluster_k, trace.lev = 1)
+catch_grid$cluster <- pam.mod$clustering
+
+## Fix to ensure clustering assignment is consistent from one plot to next
+cl <- catch_grid %>% group_by(cluster) %>% 
+	summarise(spp1 = mean(spp1),
+		  spp2 = mean(spp2),
+		  spp3 = mean(spp3),
+		  spp4 = mean(spp4)) %>% as.data.frame()
+print(cl)
+
+catch_grid[catch_grid[,"cluster"] == filter(cl, spp1 == max(cl[,"spp1"]))$cluster,"cluster"] <- 6
+catch_grid[catch_grid[,"cluster"] == filter(cl, spp2 == max(cl[,"spp2"]))$cluster,"cluster"] <- 7
+catch_grid[catch_grid[,"cluster"] == filter(cl, spp3 == max(cl[,"spp3"]))$cluster,"cluster"] <- 8
+catch_grid[catch_grid[,"cluster"] == filter(cl, spp4 == max(cl[,"spp4"]))$cluster,"cluster"] <- 9
+
+# Make xyz data
+xyz <-      make.xyz(x = catch_grid$grid_x, y = catch_grid$grid_y, z = rep(1, l = nrow(catch_grid)), group = catch_grid$cluster) 
+cols <- c("darkred", "darkblue", "orange", "darkgreen", "pink")[1:cluster_k]
+
+basemap(xlim = c(0,100), ylim = c(0,100), xlab = "", ylab = "", bg = "white")
+draw.barplot2D(xyz[["x"]],xyz[["y"]],z = xyz[["z"]], width = gran, height = gran, xlab = "", ylab = "", col = cols)
+
+}
+
+
+
+#######################################################################################################
+pdf('Data_cluster_space.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
+
+par(oma = c(12,2,12,12), mar = c(0,0,0,0), mfrow = c(4,3))
+
+## real pop 
+dataIn <- get_data(basis = 'real_pop', yr = yr, mn = mn, wk = wk, dataIn = res[["pop_bios"]], sim_init = sim)
+plot_cluster(gran = 1, dataIn = dataIn)
+dataIn <- get_data(basis = 'commercial', yr = yr, mn = mn, wk = wk, dataIn = res[["fleets_catches"]]) 
+plot_cluster(gran = 1, dataIn = dataIn)
+dataIn <- get_data(basis = 'survey', yr = yr, mn = mn, wk = wk, dataIn = res[["survey"]][["log.mat"]]) 
+plot_cluster(gran = 1, dataIn = dataIn)
+
+dataIn <- get_data(basis = 'real_pop', yr = yr, mn = mn, wk = wk, dataIn = res[["pop_bios"]], sim_init = sim)
+plot_cluster(gran = 5, dataIn = dataIn)
+dataIn <- get_data(basis = 'commercial', yr = yr, mn = mn, wk = wk, dataIn = res[["fleets_catches"]]) 
+plot_cluster(gran = 5, dataIn = dataIn)
+dataIn <- get_data(basis = 'survey', yr = yr, mn = mn, wk = wk, dataIn = res[["survey"]][["log.mat"]]) 
+plot_cluster(gran = 5, dataIn = dataIn)
+
+dataIn <- get_data(basis = 'real_pop', yr = yr, mn = mn, wk = wk, dataIn = res[["pop_bios"]], sim_init = sim)
+plot_cluster(gran = 10, dataIn = dataIn)
+dataIn <- get_data(basis = 'commercial', yr = yr, mn = mn, wk = wk, dataIn = res[["fleets_catches"]]) 
+plot_cluster(gran = 10, dataIn = dataIn)
+dataIn <- get_data(basis = 'survey', yr = yr, mn = mn, wk = wk, dataIn = res[["survey"]][["log.mat"]]) 
+plot_cluster(gran = 10, dataIn = dataIn)
+
+dataIn <- get_data(basis = 'real_pop', yr = yr, mn = mn, wk = wk, dataIn = res[["pop_bios"]], sim_init = sim)
+plot_cluster(gran = 20, dataIn = dataIn)
+dataIn <- get_data(basis = 'commercial', yr = yr, mn = mn, wk = wk, dataIn = res[["fleets_catches"]]) 
+plot_cluster(gran = 20, dataIn = dataIn)
+dataIn <- get_data(basis = 'survey', yr = yr, mn = mn, wk = wk, dataIn = res[["survey"]][["log.mat"]]) 
+plot_cluster(gran = 20, dataIn = dataIn)
+
+mtext(text = "Real Population        Commercial Data     Survey Data", side = 3, line = 2, outer = T, font = 2,   cex = 3 ) ## top
+mtext(text = "20 x 20 pt                        10 x 10  pt                         5 x 5 pt                     1 x 1 pt", side = 4, line = 2, outer = T, font = 2, cex  = 3) ## right side
+
+legend(x = -250, y = -10, legend = paste("cluster", seq_len(cluster_k)),
+            fill = c("darkred", "darkblue", "orange", "darkgreen", "pink")[1:cluster_k],
+	    ncol = 4, xpd = NA, bty = "n", cex = 4)
+ 
+dev.off()
+
 
 #####################
 ## Temporal changes
