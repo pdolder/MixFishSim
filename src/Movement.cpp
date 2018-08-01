@@ -188,8 +188,8 @@ List move_population(List moveProp, NumericMatrix StartPop) {
  int counter = 0;                    // initialise the counter
 
 // For each row and column in the present population 
- for(int a = 0; a < nrow; a++) {
-	 for(int b = 0; b < ncol; b++) {
+ for(int a = 0; a < nrow; a++) { 
+	 for(int b = 0; b < ncol; b++)  {
 
      int counter2 = counter; // counter state for position in list
      counter2++;             // update counter steps
@@ -201,20 +201,18 @@ List move_population(List moveProp, NumericMatrix StartPop) {
  // Calculate the distribution of the population from the cell 
  for (int i = 0; i < nrow; i++) {
 	 for (int j = 0; j < ncol; j++) {
-		 
+
  // Allocate cell pop to the new pop matrix
  outPop(i,j) = Props(i,j) * CellPop;
  // std::cout << Props(i,j) << std::endl;
-
-	 }
+ }
  }
 
  // return to list at end of cell loop
  outPopLst[counter] = outPop;
  counter = counter2; // update the counter
-	 
-	 }
-  }
+ }
+ }
 
 // Sum the list of matrices
 // NOTE: We are going this with the R function Reduce() as quicker

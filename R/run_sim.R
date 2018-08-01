@@ -338,8 +338,13 @@ spp_catches <- sum_fleets_catches(sim_init = sim_init, fleets_log =
 				  catches)
 
 ## Fs for all populations
-spat_fs <- find_spat_f_pops(sim_init = sim_init, C = spp_catches, B = B, 
-                            dem_params = pop_init[["dem_params"]])
+#spat_fs <- find_spat_f_pops(sim_init = sim_init, C = spp_catches, B = B, 
+#                            dem_params = pop_init[["dem_params"]])
+
+spat_fs <- lapply(names(B), function(x) {
+			  find_spat_f_naive(C = spp_catches[[x]], B = B[[x]])
+				  })
+names(spat_fs)  <- names(B)
 
 ## Fishing mortality rates
 print(sapply(names(spat_fs), function(x) weighted.mean(spat_fs[[x]], B[[x]])))

@@ -10,7 +10,7 @@ set.seed(123, kind = "L'Ecuyer-CMRG")
 ## initialise the simulation
 
 sim <- init_sim(nrows = 100, ncols = 100, n_years = 2, n_tows_day = 4, n_days_wk_fished = 5,
-     n_fleets = 5, n_vessels = 10, n_species = 4, move_freq = 2)
+     n_fleets = 5, n_vessels = 1, n_species = 4, move_freq = 2)
 
 # Here's what is produced...
 #names(sim)
@@ -164,14 +164,33 @@ closure <- init_closure(input_coords = NULL, basis = 'commercial', rationale = '
 
 
 start_time <- Sys.time()
-library(doParallel)
-registerDoParallel(2)
+#library(doParallel)
+#registerDoParallel(2)
 
-foreach(i== seq_len(2)) %dopar%  
+#foreach(i== seq_len(2)) %dopar%  
 res <- run_sim(sim_init = sim, pop_init = Pop, move_cov = moveCov, fleets_init = fleets, hab_init = hab, InParallel = TRUE, cores = 1, save_pop_bio = TRUE, survey = survey, closure = closure)
 
 end_time <- Sys.time()
 end_time - start_time
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Test nested do par
 source(file.path("..","R", "run_sim.R"))
@@ -263,7 +282,7 @@ ggsave(file.path("plots", "survey_index.png"))
 ## The step functions diagnostics
 
 png(file = file.path("plots", "step_function.png"), width = 800, height = 400)
-plot_realised_stepF(logs = logs, fleet_no = 2, vessel_no = 2)
+plot_realised_stepF(logs = logs, fleet_no = 2, vessel_no = 1)
 dev.off()
 
 

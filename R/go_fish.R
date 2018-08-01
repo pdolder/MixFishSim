@@ -84,7 +84,8 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	## Exclude any closed areas from the good haul list
 	goodhauls <- goodhauls[!paste(goodhauls$x, goodhauls$y) %in% paste(closed_areas[,"x"], closed_areas[,"y"]),]
 
-	if(dim(goodhauls)[1]==0) {
+	## lowers threshold
+	if(dim(goodhauls)[1] == 0) {
 	
 	q <- quantile(dplyr::filter(loc_choice,month==brk.idx[["month.breaks"]][t])$expec_prof,prob=c(0.05),na.rm=T) # Threshold for good hauls
 
@@ -122,7 +123,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
-	if(Closure == TRUE) {## print(paste("Stuck on option 1", count))
+	if(Closure == TRUE) {# print(paste("Stuck on option 1", count))
 	count <- count+1
 	# remove new.point from loc_choice 
 	loc_choice <- filter(loc_choice, x != new.point[1] & loc_choice$y != new.point[2])
@@ -204,7 +205,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
-	if(Closure == TRUE) { 
+	if(Closure == TRUE) {# print(paste("Stuck on option 2", count))
 	count <- count+1 
 	# remove new.point from loc_choice 
 	loc_choice <- filter(loc_choice, x != new.point[1] & loc_choice$y != new.point[2])
@@ -294,8 +295,8 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
-	if(Closure == TRUE) {	
-		count <- count+1
+	if(Closure == TRUE) {#	print(paste("Stuck on option 2", count))
+	count <- count+1
 	# remove new.point from loc_choice 
 	loc_choice <- filter(loc_choice, x != new.point[1] & loc_choice$y != new.point[2])
 	goodhauls <- filter(goodhauls, x != new.point[1] & goodhauls$y != new.point[2])
@@ -329,7 +330,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	
 	Closure <- TRUE; count <- 1
 	while(Closure == TRUE ) {
-
+	
 		## Condition to deal with being trapped in closed area
 		if(count <101) {
 
@@ -372,7 +373,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
 	# If new.point is in closure areas, repick, else break
 	Closure <- ifelse(any(cl), TRUE, FALSE) 
-	if(Closure == TRUE) {## print(paste("Stuck on CRW", count))
+	if(Closure == TRUE) {# print(paste("Stuck on CRW", count))
 
 	count <- count+1 }
 

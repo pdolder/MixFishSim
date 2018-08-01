@@ -130,7 +130,6 @@ return(AreaClosures)
 #########  Go fish func ############
 ####################################
 
-undebug(go_fish)
 t = 1356
 fl <- 1
 
@@ -211,14 +210,24 @@ return(res)
 fl <- 1
 
 microbenchmark::microbenchmark(
-find_spat_f(sim_init = sim, C = res$fleets_catches[[fl]][["sp_fleets_catches"]][[1]][[1]], 
-	    B = res$pop_bios[[2,34]][[1]], M = 0.2/52, FUN = baranov_f), 
-find_spat_f_m(sim_init = sim, C = res$fleets_catches[[fl]][["sp_fleets_catches"]][[1]][[1]], 
-	    B = res$pop_bios[[2,34]][[1]], M = 0.2/52, FUN = baranov_f),
+find_spat_f(sim_init = sim, C = res$fleets_catches[[fl]][["sp_fleets_catches"]][[1]][[3]], 
+	    B = res$pop_bios[[2,34]][[3]], M = 0.2/52, FUN = baranov_f), 
+find_spat_f_m(sim_init = sim, C = res$fleets_catches[[fl]][["sp_fleets_catches"]][[1]][[3]], 
+	    B = res$pop_bios[[2,34]][[3]], M = 0.2/52, FUN = baranov_f),
 	       times = 10)
 
 ## No benefit
 
+
+## Speed up in general
+
+## A naive calc of F (i.e. C/B)
+microbenchmark::microbenchmark(
+"exact_f" = find_spat_f(sim_init = sim, C = res$fleets_catches[[fl]][["sp_fleets_catches"]][[1]][[3]], 
+	    B = res$pop_bios[[2,34]][[3]], M = 0.2/52, FUN = baranov_f),
+"naive_f" = find_spat_f_naive(C = res$fleets_catches[[fl]][["sp_fleets_catches"]][[1]][[3]],
+		    B =  res$pop_bios[[2,34]][[3]]),
+			       times = 100)
 
 ##############################
 ##### do par v do v for
@@ -276,6 +285,27 @@ go_fish_fleet(FUN = go_fish,	sim_init = sim,
 	       times = 10 
 )
 
+
+
+#################################
+### Testing go_fish function before it slowed down 
+#######################################
+
+microbenchmark(
+"old" = catches1 <- foreach(fl=seq_len(5)) %do% 
+go_fish_fleet(FUN = go_fish_old, sim_init = sim, 
+			fleets_params = fleets[["fleet_params"]][[fl]],
+		   fleets_catches =     res$fleets_catches[[fl]][["fleets_catches"]], 
+		   sp_fleets_catches =  res$fleets_catches[[fl]][["sp_fleets_catches"]],
+		   pops = res$pop_bios[[2,34]], t = 2002, closed_areas = closure_areas[[1]]),
+"new" = catches2 <- foreach(fl=seq_len(5)) %do% 
+go_fish_fleet(FUN = go_fish,	sim_init = sim, 
+			fleets_params = fleets[["fleet_params"]][[fl]],
+		   fleets_catches =     res$fleets_catches[[fl]][["fleets_catches"]], 
+		   sp_fleets_catches =  res$fleets_catches[[fl]][["sp_fleets_catches"]],
+		   pops = res$pop_bios[[2,34]], t = 2002, closed_areas = closure_areas[[1]]),
+	       times = 100
+)
 
 
 
