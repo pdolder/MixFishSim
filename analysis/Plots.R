@@ -5,7 +5,7 @@
 ############################################
 library(MixFishSim)
 
-load('Common_Params2.RData')
+load('Common_Params.RData')
 
 Run <- 0 
 load(file.path('Scenario_runs3', paste0("Scenario_", Run, ".RData")))
@@ -17,8 +17,8 @@ ggsave(file = file.path('..', 'write_up', 'Plots', 'f_dynamics.png'), width = 8,
 
 logs <- combine_logs(res[["fleets_catches"]])
 
-plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 1, vessel_no = 5,
-       year_trip = 10, trip_no = 9)
+plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 2, vessel_no = 5,
+       year_trip = 30, trip_no = 1:8)
 ggsave(file = file.path("..", "write_up", "Plots", "vessel_move.png"), width = 8, height = 8)
 
 
@@ -26,8 +26,8 @@ plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 1, vessel_no = 1:10,
        year_trip = 10, trip_no = 43:52)
 ggsave(file = file.path("..", "write_up", "Plots", "vessel_multi_move.png"), width = 8, height = 8)
 
-plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 1, vessel_no = 1:10,
-       year_trip = 4, trip_no = 43, fleets_init = fleets, pop_bios = res[["pop_bios"]])
+plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 2, vessel_no = 1:10,
+       year_trip = 34, trip_no = 43, fleets_init = fleets, pop_bios = res[["pop_bios"]])
 ggsave(file = file.path("..", "write_up", "Plots", "vessel_move_value.png"), width = 8, height = 8)
 
 plot_fleet_trip(logs = logs, fleet_no = 1, year_trip = 10, trip_no = 1)

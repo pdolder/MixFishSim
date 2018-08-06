@@ -24,10 +24,10 @@ closure <- NULL
 r <- 0
 
 ## run_sim function for overall control
-Rprof()
+#Rprof()
 res <- run_sim(sim_init = sim, pop_init = Pop, move_cov = moveCov, fleets_init = fleets, hab_init = hab, InParallel = TRUE, cores = 1, save_pop_bio = TRUE, survey = survey, closure = closure)
-Rprof(NULL)
-summaryRprof()
+#Rprof(NULL)
+#summaryRprof()
 
 
 save(res, file = file.path('.','Scenario_runs3',paste0('Scenario_', r, '.RData')))

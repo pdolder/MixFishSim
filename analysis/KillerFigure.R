@@ -172,7 +172,7 @@ wk <- 1:52
 mn <- 1:12
 
 ## Load the results
-load(file.path('.', 'Scenario_runs2', paste0('Scenario_', 0, '_.RData')))
+load(file.path('.', 'Scenario_runs3', paste0('Scenario_', 0, '.RData')))
 load(file.path('.', 'Common_Params.RData'))
 
 ## Commercial
@@ -192,7 +192,7 @@ plot_comp(gran = 1, dataIn = dataIn)
 ## Setting out the plot
 ##setEPS()
 ##postscript('Data_Aggregation_space.eps', width = 8 * 2, height = 8 * 3, bg = "white")
-pdf('Data_Aggregation_space.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
+pdf('Data_Aggregation_space_Rev.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
 
 par(oma = c(12,2,12,12), mar = c(0,0,0,0), mfrow = c(4,3))
 
@@ -294,7 +294,7 @@ draw.barplot2D(xyz[["x"]],xyz[["y"]],z = xyz[["z"]], width = gran, height = gran
 
 
 #######################################################################################################
-pdf('Data_cluster_space.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
+pdf('Data_cluster_space_Rev.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
 
 par(oma = c(12,2,12,12), mar = c(0,0,0,0), mfrow = c(4,3))
 
@@ -474,7 +474,7 @@ barplot(t(dataPlot[,2:5]), names.arg = rep(paste(""), 3), col = cols, border = N
 
 ##setEPS()
 ##postscript('Data_Aggregation_time.eps', width = 8 * 2, height = 8 * 3, bg = "white")
-pdf('Data_Aggregation_time.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
+pdf('Data_Aggregation_time_Rev.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
 par(oma = c(12,2,12,12), mar = c(0,0,0,0), mfrow = c(3,3))
 
 plot_temp(timestep = 'week', basis = 'real_pop')
