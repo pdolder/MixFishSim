@@ -4,9 +4,10 @@
 \alias{init_pop}
 \title{Initialise populations}
 \usage{
-init_pop(sim_init = sim_init, Bio = NULL, hab = NULL, start_cell = NULL,
-  lambda = NULL, init_move_steps = 10, rec_params = NULL, rec_wk = NULL,
-  spwn_wk = NULL, M = NULL, K = NULL, cores = 3)
+init_pop(sim_init = sim_init, Bio = NULL, hab = NULL,
+  start_cell = NULL, lambda = NULL, init_move_steps = 10,
+  rec_params = NULL, rec_wk = NULL, spwn_wk = NULL, M = NULL,
+  K = NULL, cores = 3)
 }
 \arguments{
 \item{Bio}{is a named Numeric vector of the starting (total) biomass for each of the

@@ -4,8 +4,9 @@
 \alias{go_fish_old}
 \title{Go fish Old}
 \usage{
-go_fish_old(sim_init = NULL, fleet_params = NULL, fleet_catches = NULL,
-  sp_fleet_catches = NULL, pops = NULL, closed_areas = NULL, t = t)
+go_fish_old(sim_init = NULL, fleet_params = NULL,
+  fleet_catches = NULL, sp_fleet_catches = NULL, pops = NULL,
+  closed_areas = NULL, t = t)
 }
 \arguments{
 \item{sim_init}{is the initialised object from \code{init_sim}.}

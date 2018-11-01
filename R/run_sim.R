@@ -91,7 +91,6 @@ print("You are NOT implementing spatial closures....")
 closeArea <- FALSE 
 }
 
-
 ##################
 ### loop control #
 for (t in seq_len(ntow)) {
@@ -570,8 +569,9 @@ pop_init[["Pop_record"]][[s]][["Rec.mat"]][1, year.breaks[t]] <- sum(Rec[[s]], p
 
 }
 
-
 } # end loop control
+
+
 
 end.time <- Sys.time()
 time.taken <- end.time - start.time

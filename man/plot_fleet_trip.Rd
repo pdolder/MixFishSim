@@ -4,7 +4,8 @@
 \alias{plot_fleet_trip}
 \title{Plot an entire fleet for a trip}
 \usage{
-plot_fleet_trip(logs = logs, fleet_no = 1, year_trip = 1, trip_no = 1)
+plot_fleet_trip(logs = logs, fleet_no = 1, year_trip = 1,
+  trip_no = 1)
 }
 \arguments{
 \item{logs}{is the combined log file, from \link{combine_logs}.}
