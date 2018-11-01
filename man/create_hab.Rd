@@ -6,7 +6,7 @@
 \usage{
 create_hab(sim_init = sim, seed = 123, spp.ctrl = NULL,
   spawn_areas = NULL, spwn_mult = 10, plot.dist = FALSE,
-  plot.file = getwd(), cores = 3)
+  plot.file = getwd())
 }
 \arguments{
 \item{spp.ctrl}{List of controls to generate suitable habitat for each

@@ -8,9 +8,7 @@ Depends:
     R (>= 3.3.1),
 Imports:
     CircStats,
-    doParallel,
     dplyr,
-    parallel,
     RandomFields,
     Rcpp
 License: What license is it under?

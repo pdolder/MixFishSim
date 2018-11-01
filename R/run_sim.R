@@ -10,8 +10,6 @@
 #' \code{init_moveCov}
 #' @param fleets_init is the parameterised fleets from \code{init_fleets}
 #' @param hab_init is the parameterised habitat maps from \code{create_hab}
-#' @param InParallel is a BOLEEN indicating whether calculations should be done
-#' using parallel processing from \code{parallel}, default is TRUE
 #' @param save_pop_bio is a logical flag to indicate if you want to record #' true spatial population at each time step (day)
 #' @param survey is the survey settings from \link{init_survey}, else NULL if no survey is due to be simulated
 #' @param closure is the spatial closure settings from \link{init_closure}m
@@ -23,13 +21,10 @@
 #'
 #' @export
 
-run_sim <- function(sim_init = NULL, pop_init = NULL, move_cov = NULL, fleets_init = NULL, hab_init = NULL, InParallel = TRUE, cores = 1, save_pop_bio = FALSE, survey = NULL, closure = NULL,...) {
+run_sim <- function(sim_init = NULL, pop_init = NULL, move_cov = NULL, fleets_init = NULL, hab_init = NULL, save_pop_bio = FALSE, survey = NULL, closure = NULL,...) {
 # Overarching function for running the simulations
 
 start.time <- Sys.time() # for printing runtime
-
-suppressMessages(require(doParallel))
-registerDoParallel()
 
 #######################
 ####### Indices #######
@@ -70,8 +65,8 @@ closure_list <- list()
 ###################################
 print("Calculating movement probabilities")
 
-MoveProb  <- foreach(s = paste0("spp", seq_len(n_spp)))  %do% move_prob_Lst(lambda = 0.3, hab = hab_init[["hab"]][[s]])
-MoveProb_spwn <- foreach(s = paste0("spp", seq_len(n_spp)))  %do% move_prob_Lst(lambda = 0.3, hab = hab_init[["spwn_hab"]][[s]])
+MoveProb  <- lapply(paste0("spp", seq_len(n_spp)), function(s) { move_prob_Lst(lambda = 0.3, hab = hab_init[["hab"]][[s]])})
+MoveProb_spwn <- foreach(paste0("spp", seq_len(n_spp)), function(s) { move_prob_Lst(lambda = 0.3, hab = hab_init[["spwn_hab"]][[s]])})
 	  
 names(MoveProb)      <- paste0("spp", seq_len(n_spp))
 names(MoveProb_spwn) <- paste0("spp", seq_len(n_spp))
@@ -168,7 +163,7 @@ if(Recruit) { # Check for new week
 print("Recruiting")
 
     ## Check if its a recruitment week for the population
- Rec <- foreach(s = paste0("spp", seq_len(n_spp))) %do% {
+ Rec <- lapply(paste0("spp", seq_len(n_spp)), function(s) {
 
 	    if(week.breaks[t] %in% pop_init[["dem_params"]][[s]][["rec_wk"]]) {
 
@@ -187,7 +182,7 @@ print("Recruiting")
 
 	rec
 
-    }
+    })
 names(Rec) <- paste0("spp", seq_len(n_spp))
 
 
@@ -257,14 +252,10 @@ AreaClosures <- closure[["input_coords"]][[week.breaks[[t]]]]
 
 # every t
 # uses go_fish_fleet function, either
-# 1. in a loop over fleets (InParallel = F)
-# 2. Using a parLapply (InParallel = T)
-
-if(InParallel) {
 
 if(t==1) {
 
-catches <- foreach(fl=seq_len(n_fleets)) %do% 
+catches <- lapply(seq_len(n_fleets), function(fl) { 
 
      go_fish_fleet(FUN = go_fish, 
 			sim_init = sim_init, 
@@ -272,6 +263,7 @@ catches <- foreach(fl=seq_len(n_fleets)) %do%
 		   fleets_catches =     fleets_init[["fleet_catches"]][[fl]], 
 		   sp_fleets_catches =  fleets_init[["sp_fleet_catches"]][[fl]], 
 		   closed_areas = AreaClosures, pops = B, t = t)
+    })
 
 
 } # end t==1 run
@@ -280,20 +272,21 @@ if(t > 1) {
 
 # if its the same day 
 if(day.breaks[t] == day.breaks[t-1]) {
-catches <- foreach(fl=seq_len(n_fleets)) %do% 
+catches <- lapply(seq_len(n_fleets), function(fl) {  
 
 	go_fish_fleet(FUN = go_fish, 	sim_init = sim_init, 
 			fleets_params = fleets_init[["fleet_params"]][[fl]],
 		   fleets_catches =     catches[[fl]][["fleets_catches"]], 
 		   sp_fleets_catches =  catches[[fl]][["sp_fleets_catches"]],
 		   pops = B, t = t, closed_areas = AreaClosures)
+    })
 
 	} # end same day run
 
 # if its a new day - reset the spatial catches counter
 if(day.breaks[t] != day.breaks[t-1]) {
 
-catches <- foreach(fl=seq_len(n_fleets)) %do% 
+catches <- lapply(seq_len(n_fleets), function(fl) { 
 
   go_fish_fleet(FUN = go_fish, 
 		sim_init = sim_init, 
@@ -302,15 +295,12 @@ catches <- foreach(fl=seq_len(n_fleets)) %do%
 		   sp_fleets_catches =  fleets_init[["sp_fleet_catches"]][[fl]], ## These are empty
 		   pops = B, t = t, closed_areas = AreaClosures)
 
+    })
+
 	} # end new day run
 
 } # end if t>1
 
-} # end InParallel if statement
-
-#if(!InParallel) {
-
-#}
 
 #######################
 ##### Pop dynamics ####
@@ -349,7 +339,7 @@ names(spat_fs)  <- names(B)
 print(sapply(names(spat_fs), function(x) weighted.mean(spat_fs[[x]], B[[x]])))
 
 # Apply the delay difference model
-Bp1 <- foreach(x = paste0("spp", seq_len(n_spp))) %do% {
+Bp1 <- lapply(paste0("spp", seq_len(n_spp)), function(x) {
 
 al   <- ifelse(week.breaks[t] %in% pop_init[["dem_params"]][[x]][["rec_wk"]],
 	     1/length(pop_init[["dem_params"]][[x]][["rec_wk"]]), 0)
@@ -361,7 +351,7 @@ res <- delay_diff(K = pop_init[["dem_params"]][[x]][["K"]], F = spat_fs[[x]],
 	   wt = 1, wtm1 = 0.1, R = Rec[[x]], B = B[[x]],
           Bm1 = Bm1[[x]], al = al,  alm1 = alm1)
 
-}
+})
 names(Bp1) <- paste0("spp", seq_len(n_spp))
 
 Bm1 <- B  #record at location
@@ -424,7 +414,7 @@ if(Pop_move) {
 	move_cov_wk <- move_cov[["cov.matrix"]][[week.breaks[t]]]
 
 		
-	B <- foreach(s = paste0("spp", seq_len(n_spp))) %do% {
+	B <- lapply(paste0("spp", seq_len(n_spp)), function(s) {
 
 	move_cov_wk_spp <- matrix(nc = sim_init[["idx"]][["ncols"]],
 				 nr = sim_init[["idx"]][["nrows"]],
@@ -445,12 +435,12 @@ if(Pop_move) {
 	
 	Reduce("+", newPop)
 		
-	}
+	})
 	
 	
 	## Also need to move the previous month biomass, so the f calcs match
 	## as an input to the delay diff
-	Bm1 <- foreach(s = paste0("spp", seq_len(n_spp))) %do% {
+	Bm1 <- lapply(paste0("spp", seq_len(n_spp)), function(s) {
 		
 	move_cov_wk_spp <- matrix(nc = sim_init[["idx"]][["ncols"]],
 				 nr = sim_init[["idx"]][["nrows"]],
@@ -471,7 +461,7 @@ if(Pop_move) {
 
 	Reduce("+", newPop)
 	
-	}
+	})
 
 	}
 
@@ -480,7 +470,7 @@ if(Pop_move) {
 
 	if(is.null(move_cov)) {
 
-	B <- foreach(s = paste0("spp", seq_len(n_spp))) %do% {
+	B <- lapply(paste0("spp", seq_len(n_spp)), function(s) {
 	
 	## If in a non-spawning week or spawning week
 	if(!week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
@@ -493,12 +483,12 @@ if(Pop_move) {
 	
 	Reduce("+", newPop)
 		
-	}
+	})
 	
 	
 	## Also need to move the previous month biomass, so the f calcs match
 	## as an input to the delay diff
-	Bm1 <- foreach(s = paste0("spp", seq_len(n_spp))) %do% {
+	Bm1 <- lapply(paste0("spp", seq_len(n_spp)), function(s) {
 
 	## If in a non-spawning week or spawning week
 	if(!week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
@@ -511,7 +501,7 @@ if(Pop_move) {
 
 	Reduce("+", newPop)
 	
-	}
+	})
 
 	}
 

@@ -6,8 +6,7 @@
 \usage{
 run_sim(sim_init = NULL, pop_init = NULL, move_cov = NULL,
   fleets_init = NULL, hab_init = NULL, InParallel = TRUE,
-  cores = 1, save_pop_bio = FALSE, survey = NULL, closure = NULL,
-  ...)
+  save_pop_bio = FALSE, survey = NULL, closure = NULL, ...)
 }
 \arguments{
 \item{sim_init}{is the parameterised simulation settings from
