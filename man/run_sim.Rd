@@ -5,8 +5,8 @@
 \title{Run sim}
 \usage{
 run_sim(sim_init = NULL, pop_init = NULL, move_cov = NULL,
-  fleets_init = NULL, hab_init = NULL, InParallel = TRUE,
-  save_pop_bio = FALSE, survey = NULL, closure = NULL, ...)
+  fleets_init = NULL, hab_init = NULL, save_pop_bio = FALSE,
+  survey = NULL, closure = NULL, ...)
 }
 \arguments{
 \item{sim_init}{is the parameterised simulation settings from
@@ -20,9 +20,6 @@ run_sim(sim_init = NULL, pop_init = NULL, move_cov = NULL,
 \item{fleets_init}{is the parameterised fleets from \code{init_fleets}}
 
 \item{hab_init}{is the parameterised habitat maps from \code{create_hab}}
-
-\item{InParallel}{is a BOLEEN indicating whether calculations should be done
-using parallel processing from \code{parallel}, default is TRUE}
 
 \item{save_pop_bio}{is a logical flag to indicate if you want to record #' true spatial population at each time step (day)}
 

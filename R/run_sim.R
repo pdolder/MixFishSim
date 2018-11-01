@@ -66,7 +66,7 @@ closure_list <- list()
 print("Calculating movement probabilities")
 
 MoveProb  <- lapply(paste0("spp", seq_len(n_spp)), function(s) { move_prob_Lst(lambda = 0.3, hab = hab_init[["hab"]][[s]])})
-MoveProb_spwn <- foreach(paste0("spp", seq_len(n_spp)), function(s) { move_prob_Lst(lambda = 0.3, hab = hab_init[["spwn_hab"]][[s]])})
+MoveProb_spwn <- lapply(paste0("spp", seq_len(n_spp)), function(s) { move_prob_Lst(lambda = 0.3, hab = hab_init[["spwn_hab"]][[s]])})
 	  
 names(MoveProb)      <- paste0("spp", seq_len(n_spp))
 names(MoveProb_spwn) <- paste0("spp", seq_len(n_spp))
