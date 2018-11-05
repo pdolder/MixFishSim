@@ -56,12 +56,12 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 # If incorporating past knowledge, and its a new trip...and not in the first
     if(!is.null(PastKnowledge) & UseKnowledge)  {
 
-## print("USING PAST KNOWLEDGE!!!")
+# print("USING PAST KNOWLEDGE!!!")
 	
 	## Need to determine start location by including the distance to
 	## fishing grounds, calculate the expected profit by including fuel costs
 	loc_choice <- as.data.frame(catch)
-	loc_choice$loc_dist <- mapply(x1 = 0, y1 = 0, x2 = loc_choice$x, y2 = loc_choice$y, FUN = distance_calcR)
+	loc_choice$loc_dist <- distanc_calcR(x1 = 0, y1 = 0, x2 = loc_choice$x, y2 = loc_choice$y)
 	loc_choice$expec_prof <- loc_choice$val - (loc_choice$loc_dist * fuelC)
 
 	# 3 options, choose from good hauls 
@@ -115,14 +115,11 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	new.point   <- c(as.numeric(sapply(strsplit(new.point,","),"[",1)),as.numeric(sapply(strsplit(new.point,","),"[",2)))
 		}
 	## Check for closed areas
-	cl <- mapply(x1 = closed_areas[,"x"],
-       y1 = closed_areas[,"y"],
-       FUN = function(x1,y1) {
-	as.integer(x1) == as.integer(new.point[1]) & 
-	as.integer(y1) == as.integer(new.point[2])})
+	Closure <- as.integer(paste(new.point, collapse="")) %in%
+		paste(as.integer(closed_areas[,"x"]),
+		      as.integer(closed_areas[,"y"]) sep = "")
 
 	# If new.point is in closure areas, repick, else break
-	Closure <- ifelse(any(cl), TRUE, FALSE) 
 	if(Closure == TRUE) {# print(paste("Stuck on option 1", count))
 	count <- count+1
 	# remove new.point from loc_choice 
@@ -197,14 +194,19 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	}
 
 	## Check for closed areas
-	cl <- mapply(x1 = closed_areas[,"x"],
-       y1 = closed_areas[,"y"],
-       FUN = function(x1,y1) {
-	as.integer(x1) == as.integer(new.point[1]) & 
-	as.integer(y1) == as.integer(new.point[2])})
-
+#	cl <- mapply(x1 = closed_areas[,"x"],
+#       y1 = closed_areas[,"y"],
+#       FUN = function(x1,y1) {
+#	as.integer(x1) == as.integer(new.point[1]) & 
+#	as.integer(y1) == as.integer(new.point[2])})
+#
 	# If new.point is in closure areas, repick, else break
-	Closure <- ifelse(any(cl), TRUE, FALSE) 
+#	Closure <- ifelse(any(cl), TRUE, FALSE) 
+
+	Closure <- as.integer(paste(new.point, collapse="")) %in%
+		paste(as.integer(closed_areas[,"x"]),
+		      as.integer(closed_areas[,"y"]) sep = "")
+
 	if(Closure == TRUE) {# print(paste("Stuck on option 2", count))
 	count <- count+1 
 	# remove new.point from loc_choice 
@@ -286,15 +288,11 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 }
 
 	## Check for closed areas
-	cl <- mapply(x1 = closed_areas[,"x"],
-       y1 = closed_areas[,"y"],
-       FUN = function(x1,y1) {
-	as.integer(x1) == as.integer(new.point[1]) & 
-	as.integer(y1) == as.integer(new.point[2])})
-
+	Closure <- as.integer(paste(new.point, collapse="")) %in%
+		paste(as.integer(closed_areas[,"x"]),
+		      as.integer(closed_areas[,"y"]) sep = "")
 
 	# If new.point is in closure areas, repick, else break
-	Closure <- ifelse(any(cl), TRUE, FALSE) 
 	if(Closure == TRUE) {#	print(paste("Stuck on option 2", count))
 	count <- count+1
 	# remove new.point from loc_choice 
@@ -365,14 +363,11 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	if(new.point[1] < 1) { new.point[1]  <-  new.point[1] + idx[["nrows"]]}
 
 	## Check for closed areas
-	cl <- mapply(x1 = closed_areas[,"x"],
-       y1 = closed_areas[,"y"],
-       FUN = function(x1,y1) {
-	as.integer(x1) == as.integer(new.point[1]) & 
-	as.integer(y1) == as.integer(new.point[2])})
+	Closure <- as.integer(paste(new.point, collapse="")) %in%
+		paste(as.integer(closed_areas[,"x"]),
+		      as.integer(closed_areas[,"y"]) sep = "")
 
 	# If new.point is in closure areas, repick, else break
-	Closure <- ifelse(any(cl), TRUE, FALSE) 
 	if(Closure == TRUE) {# print(paste("Stuck on CRW", count))
 
 	count <- count+1 }

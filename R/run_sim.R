@@ -50,17 +50,36 @@ year.breaks    <- sim_init[["brk.idx"]][["year.breaks"]]
 ##### Temporary containers ########
 ###################################
 
-Rec  <- list()                   # For storing spatial recruitment, is overwritten
+Rec  <- vector("list", n_spp) # For storing spatial recruitment, is overwritten
 for(s in paste0("spp",seq_len(n_spp))) { Rec[[s]] <- 0 }
 B    <- pop_init[["Start_pop"]]  # For storing current biomass, is overwritten
 Bm1  <- pop_init[["Start_pop"]]  # For storing last time-step biomass, is overwritten
 
-#AreaClosures <- matrix(nc = 2, c(-1,-1), dimnames = list(NULL, c("x","y"))) # Dummy closures 
-#AreaClosures <- data.frame(x = -1, y = -1) # Dummy closures 
 AreaClosures <- NULL
 close_count <- 0 # counter for recording closures
-closure_list <- list()
-###################################
+
+# preallocate closure list
+
+if(!is.null(closure)) {
+	
+	
+if(closure[["temp_dyn"]] == 'annual') {
+closure_list <- vector("list", sim_init[["idx"]][["ny"]] - closure[["year_start"]])
+}
+
+if(closure[["temp_dyn"]] == 'monthly') {
+closure_list <- vector("list", 12 * (sim_init[["idx"]][["ny"]] - closure[["year_start"]]))
+}
+
+if(closure[["temp_dyn"]] == 'weekly') {
+closure_list <- vector("list", 52 * (sim_init[["idx"]][["ny"]] - closure[["year_start"]]))
+}
+
+}
+
+if(is.null(closure)) { closure_list <- NULL} 
+		       
+##################################q
 ###### Move probabilities #########
 ###################################
 print("Calculating movement probabilities")
@@ -86,6 +105,8 @@ print("You are NOT implementing spatial closures....")
 closeArea <- FALSE 
 }
 
+s.time <- Sys.time() # for printing runtime  CHECKING
+
 ##################
 ### loop control #
 for (t in seq_len(ntow)) {
@@ -105,7 +126,16 @@ if(t > 1){
 
 ## Print some tow info
 if(t %in% print.seq) {
+	
+e.time <- Sys.time()
+
 print(paste("tow ==", t, "----",round(t/ntow * 100,0), "%"))
+
+print(paste("time taken is :", format(e.time - s.time, units = "auto"), sep = " "))
+
+s.time <- Sys.time() # for printing runtime  CHECKING
+
+
 	}
 
 ###################################
@@ -523,7 +553,7 @@ pop_bios[[year.breaks[t], week.breaks[t]]] <- B
 
 }
 
-if(save_pop_bio == FALSE) {
+if(!"pop_bios" %in% ls() & save_pop_bio == FALSE) {
 pop_bios <- NULL
 }
 
