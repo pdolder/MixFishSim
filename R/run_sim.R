@@ -105,8 +105,6 @@ print("You are NOT implementing spatial closures....")
 closeArea <- FALSE 
 }
 
-s.time <- Sys.time() # for printing runtime  CHECKING
-
 ##################
 ### loop control #
 for (t in seq_len(ntow)) {
@@ -126,16 +124,7 @@ if(t > 1){
 
 ## Print some tow info
 if(t %in% print.seq) {
-	
-e.time <- Sys.time()
-
 print(paste("tow ==", t, "----",round(t/ntow * 100,0), "%"))
-
-print(paste("time taken is :", format(e.time - s.time, units = "auto"), sep = " "))
-
-s.time <- Sys.time() # for printing runtime  CHECKING
-
-
 	}
 
 ###################################
@@ -357,13 +346,13 @@ spp_catches <- sum_fleets_catches(sim_init = sim_init, fleets_log =
 				  catches)
 
 ## Fs for all populations
-#spat_fs <- find_spat_f_pops(sim_init = sim_init, C = spp_catches, B = B, 
-#                            dem_params = pop_init[["dem_params"]])
+spat_fs <- find_spat_f_pops(sim_init = sim_init, C = spp_catches, B = B, 
+                            dem_params = pop_init[["dem_params"]])
 
-spat_fs <- lapply(names(B), function(x) {
-			  find_spat_f_naive(C = spp_catches[[x]], B = B[[x]])
-				  })
-names(spat_fs)  <- names(B)
+#spat_fs <- lapply(names(B), function(x) {
+#			  find_spat_f_naive(C = spp_catches[[x]], B = B[[x]])
+#				  })
+#names(spat_fs)  <- names(B)
 
 ## Fishing mortality rates
 print(sapply(names(spat_fs), function(x) weighted.mean(spat_fs[[x]], B[[x]])))

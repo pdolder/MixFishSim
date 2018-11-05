@@ -61,7 +61,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	## Need to determine start location by including the distance to
 	## fishing grounds, calculate the expected profit by including fuel costs
 	loc_choice <- as.data.frame(catch)
-	loc_choice$loc_dist <- distanc_calcR(x1 = 0, y1 = 0, x2 = loc_choice$x, y2 = loc_choice$y)
+	loc_choice$loc_dist <- distance_calcR(x1 = 0, y1 = 0, x2 = loc_choice$x, y2 = loc_choice$y)
 	loc_choice$expec_prof <- loc_choice$val - (loc_choice$loc_dist * fuelC)
 
 	# 3 options, choose from good hauls 
@@ -117,7 +117,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	## Check for closed areas
 	Closure <- as.integer(paste(new.point, collapse="")) %in%
 		paste(as.integer(closed_areas[,"x"]),
-		      as.integer(closed_areas[,"y"]) sep = "")
+		      as.integer(closed_areas[,"y"]), sep = "")
 
 	# If new.point is in closure areas, repick, else break
 	if(Closure == TRUE) {# print(paste("Stuck on option 1", count))
@@ -205,7 +205,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 
 	Closure <- as.integer(paste(new.point, collapse="")) %in%
 		paste(as.integer(closed_areas[,"x"]),
-		      as.integer(closed_areas[,"y"]) sep = "")
+		      as.integer(closed_areas[,"y"]), sep = "")
 
 	if(Closure == TRUE) {# print(paste("Stuck on option 2", count))
 	count <- count+1 
@@ -290,7 +290,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	## Check for closed areas
 	Closure <- as.integer(paste(new.point, collapse="")) %in%
 		paste(as.integer(closed_areas[,"x"]),
-		      as.integer(closed_areas[,"y"]) sep = "")
+		      as.integer(closed_areas[,"y"]), sep = "")
 
 	# If new.point is in closure areas, repick, else break
 	if(Closure == TRUE) {#	print(paste("Stuck on option 2", count))
@@ -365,7 +365,7 @@ coords <- c(catch[t-1, "x"], catch[t-1,"y"]) # Previous coordinates
 	## Check for closed areas
 	Closure <- as.integer(paste(new.point, collapse="")) %in%
 		paste(as.integer(closed_areas[,"x"]),
-		      as.integer(closed_areas[,"y"]) sep = "")
+		      as.integer(closed_areas[,"y"]), sep = "")
 
 	# If new.point is in closure areas, repick, else break
 	if(Closure == TRUE) {# print(paste("Stuck on CRW", count))
