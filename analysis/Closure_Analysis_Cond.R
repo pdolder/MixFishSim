@@ -11,35 +11,55 @@
 
 library(MixFishSim)
 
-#set.seed(123, kind = "L'Ecuyer-CMRG")
+set.seed(123, kind = "L'Ecuyer-CMRG")
 
 ## initialise the simulation
 
-nx <- 20
-
-sim <- init_sim(nrows = nx, ncols = nx, n_years = 5, n_tows_day = 4, n_days_wk_fished = 5,
-     n_fleets = 5, n_vessels = 2, n_species = 4, move_freq = 2)
+sim <- init_sim(nrows = 100, ncols = 100, n_years = 50, n_tows_day = 4, n_days_wk_fished = 5,
+     n_fleets = 5, n_vessels = 20, n_species = 4, move_freq = 2)
 
 ## create the suitable habitat for each species
 
 hab <- create_hab(sim_init = sim,
 		  spp.ctrl = list(
-           'spp.1' = list('nu' = 1/0.015, var = 1, scale = 100, Aniso =
+           'spp.1' = list('nu' = 1/0.015, var = 1, scale = 10, Aniso =
            matrix(nc=2, c(1.5, 3, -3, 4))),
            'spp.2' = list('nu' = 1/0.05, var = 2, scale = 12, Aniso =
            matrix(nc=2, c(1, 2, -1, 2))),
-	   'spp.3' = list('nu' = 1/0.01, var = 1, scale = 29, Aniso =
+	   'spp.3' = list('nu' = 1/0.01, var = 1, scale = 12, Aniso =
            matrix(nc=2, c(2.5, 1, -1, 2))),
-           'spp.4' = list('nu' = 1/0.05, var = 1, scale = 18, Aniso =
+           'spp.4' = list('nu' = 1/0.005, var = 1, scale = 8, Aniso =
            matrix(nc=2, c(0.1, 2, -1, 0.02)))
 				  ),
-		  spawn_areas = list("spp1" = list(area1 = c(4, 5, 4, 5), area2 =
-				   c(8, 9, 6, 7)), 
-		 "spp2" = list(area1 = c(5, 6, 3, 4), area2 = c(8, 9, 9, 9)),
-		 "spp3" = list(area1 = c(3, 4, 1, 2), area2 = c(6, 7, 2, 3)),
-		 "spp4" = list(area1 = c(5, 6, 8, 9), area2 = c(3, 4, 3, 4))
+		  spawn_areas = list("spp1" = list(area1 = c(40, 50, 40, 50), area2 =
+				   c(80, 90, 60, 70)), 
+		 "spp2" = list(area1 = c(20, 40,  0, 20), area2 = c(80, 100, 90, 100)),
+		 "spp3" = list(area1 = c(20, 35, 10, 20), area2 = c(60, 70, 90, 100)),
+		 "spp4" = list(area1 = c(50, 60, 80, 90), area2 = c(30, 40, 30, 40))
 		 ),
 		spwn_mult = 10, plot.dist = TRUE, plot.file = getwd())
+
+## Look at overlaps of species habitats
+
+over<-hab[["hab"]]
+
+for(i in 1:4) {
+x<- over[[i]]
+x[which(x>0)] <-1
+over[[i]] <- x
+}
+
+plot <- F
+if(plot) {
+par(mfrow = c(2,3))
+image(over[[1]] + over[[2]], main = "spp1 and spp 2")
+image(over[[1]] + over[[3]], main = "spp1 and spp 3")
+image(over[[1]] + over[[4]], main = "spp1 and spp 4")
+image(over[[2]] + over[[3]], main = "spp2 and spp 3")
+image(over[[2]] + over[[4]], main = "spp2 and spp 4")
+image(over[[3]] + over[[4]], main = "spp3 and spp 4")
+}
+
 
 #par(mfrow=c(2,2))
 #for(i in 1:4) {
@@ -72,7 +92,7 @@ hab <- create_hab(sim_init = sim,
 #     B = max(Pop[["Start_pop"]][["spp2"]]), cv = 0)
 
 Pop <- init_pop(sim_init = sim, Bio = c(spp1 = 1e5, spp2 = 2e5, spp3 = 1e5, spp4 = 1e4), 
-		hab = hab[["hab"]], start_cell = c(2,2), 
+		hab = hab[["hab"]], start_cell = c(25,25), 
 		lambda = c("spp1" = 0.1, "spp2" = 0.1, "spp3" = 0.1, "spp4" = 0.1), 
 		init_move_steps = 20, 
 		rec_params =  list("spp1" = c("model" = "BH", "a" = 6, "b" = 4, "cv" = 0.7), 
@@ -89,16 +109,17 @@ Pop <- init_pop(sim_init = sim, Bio = c(spp1 = 1e5, spp2 = 2e5, spp3 = 1e5, spp4
 #### Spatiotemporal movement covariates
 
 moveCov <- init_moveCov(sim_init = sim, steps = 52, 
-			spp_tol = list("spp1" = list("mu" = 10, va = 6),
-				       "spp2" = list("mu" = 15, va = 4),
+			spp_tol = list("spp1" = list("mu" = 12, va = 8),
+				       "spp2" = list("mu" = 15, va = 8),
 				       "spp3" = list("mu" = 17, va = 7), 
-				       "spp4" = list("mu" = 12, va = 10)))
+				       "spp4" = list("mu" = 14, va = 10)))
+
 
 #plot_spatiotemp_hab(hab = hab, moveCov =, spwn_wk = list("spp1" = 16:18, "spp2" = 16:19, "spp3" = 16:18, "spp4" = 18:20))
 
 
 ## Initialise the fleets
-Q_mult  <- 0.02
+Q_mult  <- 0.01
 
 ## maximum possible revenue
 
@@ -108,34 +129,34 @@ VPT <- c("spp1" = 100,
 	 "spp4" = 600)
 
 # fleet 1
-B3_1   <- quantile(sapply(1:(nx*nx), function(x) { 1 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * VPT[["spp1"]] +
+B3_1   <- quantile(sapply(1:1000, function(x) { 1 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * VPT[["spp1"]] +
 				 2 * Q_mult * Pop[["Start_pop"]][[2]][[x]] * VPT[["spp2"]] +
 				 1 * Q_mult * Pop[["Start_pop"]][[3]][[x]] * VPT[["spp3"]] +
 				 2 * Q_mult * Pop[["Start_pop"]][[4]][[x]] * VPT[["spp4"]] 
 				   }), prob = 0.9)
 # fleet 2
-B3_2   <- quantile(sapply(1:(nx*nx), function(x) { 2 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * VPT[["spp1"]] +
+B3_2   <- quantile(sapply(1:1000, function(x) { 2 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * VPT[["spp1"]] +
 				 1 * Q_mult * Pop[["Start_pop"]][[2]][[x]] * VPT[["spp2"]] +
 				 2 * Q_mult * Pop[["Start_pop"]][[3]][[x]] * VPT[["spp3"]] +
 				 1 * Q_mult * Pop[["Start_pop"]][[4]][[x]] * VPT[["spp4"]] 
 				   }), prob = 0.9)
 
 # fleet 3
-B3_3 <- quantile(sapply(1:(nx*nx), function(x) { 2 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * VPT[["spp1"]] +
+B3_3 <- quantile(sapply(1:1000, function(x) { 2 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * VPT[["spp1"]] +
 				 2 * Q_mult * Pop[["Start_pop"]][[2]][[x]] * VPT[["spp2"]] +
 				 2 * Q_mult * Pop[["Start_pop"]][[3]][[x]] * VPT[["spp3"]] +
 				 2 * Q_mult * Pop[["Start_pop"]][[4]][[x]] * VPT[["spp4"]]  
 				   }), prob = 0.85)
 
 # fleet 4
-B3_4 <- quantile(sapply(1:(nx*nx), function(x) { 1 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * VPT[["spp1"]] +
+B3_4 <- quantile(sapply(1:1000, function(x) { 1 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * VPT[["spp1"]] +
 				 1 * Q_mult * Pop[["Start_pop"]][[2]][[x]] * VPT[["spp2"]] +
 				 1 * Q_mult * Pop[["Start_pop"]][[3]][[x]] * VPT[["spp3"]] +
 				 5 * Q_mult * Pop[["Start_pop"]][[4]][[x]] * VPT[["spp4"]] 
 				   }), prob = 0.9)
 
 # fleet 5
-B3_5 <- quantile(sapply(1:(nx*nx), function(x) { 1 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * VPT[["spp1"]] +
+B3_5 <- quantile(sapply(1:1000, function(x) { 1 * Q_mult * Pop[["Start_pop"]][[1]][[x]] * VPT[["spp1"]] +
 				 3 * Q_mult * Pop[["Start_pop"]][[2]][[x]] * VPT[["spp2"]] +
 				 2 * Q_mult * Pop[["Start_pop"]][[3]][[x]] * VPT[["spp3"]] +
 				 1 * Q_mult * Pop[["Start_pop"]][[4]][[x]] * VPT[["spp4"]] 
@@ -161,12 +182,12 @@ fleets <- init_fleet(sim_init = sim, VPT = VPT,
 	   past_knowledge = TRUE,
 	   past_year_month = TRUE,
 	   past_trip = TRUE,
-	   threshold = 0.75)
+	   threshold = 0.7)
 
 
 ## Setup survey
 survey <- init_survey(sim_init = sim, design = "fixed_station", 
-		n_stations = 10, start_day = 92, Qs = c("spp1" = 1, "spp2" = 1, "spp3" = 1, "spp4" = 1)) 
+		n_stations = 100, start_day = 92, Qs = c("spp1" = 1, "spp2" = 1, "spp3" = 1, "spp4" = 1)) 
 
 ######
 # Save all objects
