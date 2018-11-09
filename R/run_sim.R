@@ -63,7 +63,7 @@ close_count <- 0 # counter for recording closures
 if(!is.null(closure)) {
 	
 	
-if(closure[["temp_dyn"]] == 'annual') {
+if(closure[["temp_dyn"]] == 'yearly') {
 closure_list <- vector("list", sim_init[["idx"]][["ny"]] - closure[["year_start"]])
 }
 
@@ -355,7 +355,7 @@ spat_fs <- find_spat_f_pops(sim_init = sim_init, C = spp_catches, B = B,
 #names(spat_fs)  <- names(B)
 
 ## Fishing mortality rates
-print(sapply(names(spat_fs), function(x) weighted.mean(spat_fs[[x]], B[[x]])))
+#print(sapply(names(spat_fs), function(x) weighted.mean(spat_fs[[x]], B[[x]])))
 
 # Apply the delay difference model
 Bp1 <- lapply(paste0("spp", seq_len(n_spp)), function(x) {

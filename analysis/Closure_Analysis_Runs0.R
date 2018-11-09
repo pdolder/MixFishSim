@@ -1,5 +1,5 @@
 ############################################################################
-f# Code to run a number of scenarios testing data type (commercial, survey,
+## Code to run a number of scenarios testing data type (commercial, survey,
 ## real population), resolution (spatio-temporal) and basis for closure (high
 ## pop or high ratio spp1:spp2)
 #############################################################################
