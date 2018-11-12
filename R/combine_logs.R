@@ -26,7 +26,7 @@ combine_logs <- function (fleets_catches) {
 	
 	fleets_logs <- lapply(seq_len(ves_per_fleet), function(x2) {
 		
-	fleet_level <- cbind("vessel" = x2, fleets_catches[[1]][[1]][[x2]]) 
+	fleet_level <- cbind("vessel" = x2, fleets_catches[[x1]][[1]][[x2]]) 
 	return(fleet_level)
 })
 	fleets_logs <- do.call(rbind, fleets_logs)

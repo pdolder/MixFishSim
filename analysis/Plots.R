@@ -8,17 +8,44 @@ library(MixFishSim)
 load('Common_Params.RData')
 
 Run <- 0 
-load(file.path('Scenario_runs3', paste0("Scenario_", Run, ".RData")))
+load(file.path('Scenario_runs_Nov18', paste0("Scenario_", Run, ".RData")))
 
 plot_pop_summary(res, timestep = "annual", save = FALSE)
 
 plot_daily_fdyn(res)
 ggsave(file = file.path('..', 'write_up', 'Plots', 'f_dynamics.png'), width = 8, height = 8)
 
+combine_logs <- function (fleets_catches) {
+
+	# index
+	no_fleets     <- length(fleets_catches)
+	ves_per_fleet <- length(fleets_catches[[1]][[1]])
+	rec_per_vess  <- nrow(fleets_catches[[1]][[1]][[1]])
+
+
+	all_logs <- lapply(seq_len(no_fleets), function(x1) {
+	
+	fleets_logs <- lapply(seq_len(ves_per_fleet), function(x2) {
+		
+	fleet_level <- cbind("vessel" = x2, fleets_catches[[x1]][[1]][[x2]]) 
+	return(fleet_level)
+})
+	fleets_logs <- do.call(rbind, fleets_logs)
+	
+	
+	all_level <- cbind("fleet" = x1, fleets_logs)
+})
+
+	all_logs <- do.call(rbind, all_logs)
+          
+	return(as.data.frame(all_logs))
+
+}
+
 logs <- combine_logs(res[["fleets_catches"]])
 
 plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 2, vessel_no = 5,
-       year_trip = 30, trip_no = 1:8)
+       year_trip = 3, trip_no = 1:8)
 ggsave(file = file.path("..", "write_up", "Plots", "vessel_move.png"), width = 8, height = 8)
 
 
