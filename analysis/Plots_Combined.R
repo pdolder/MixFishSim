@@ -11,7 +11,7 @@ load('Common_Params.RData')
 runs <- 0:56
 
 for(r in runs) {
-load(file.path('Scenario_runs2', paste('Scenario', r, '.RData', sep = "_")))
+load(file.path('Scenario_runs_Nov18', paste0('Scenario_', r, '.RData')))
 #assign(paste0("sc",r),res)
 #}
 
@@ -78,7 +78,7 @@ combined_pop_an <- rbind(results_df_an1, results_df_an2)
 avg2_4  <- combined_pop_an %>% filter(year %in% 26:30) %>% 
 	group_by(scenario, pop, metric) %>% summarise(value = mean(data, na.rm = T))
 
-avg8_10 <- combined_pop_an %>% filter(year %in% 36:40) %>% 
+avg8_10 <- combined_pop_an %>% filter(year %in% 46:50) %>% 
 	group_by(scenario, pop, metric) %>% summarise(value = mean(data, na.rm = T))
 
 combined <- merge(avg2_4, avg8_10, by = c("scenario","metric","pop"))
@@ -109,7 +109,7 @@ ggplot(filter(combined, basis == 'high_pop', metric == "F"), aes(x = data_type, 
 	coord_flip() + ylab("Difference before and after closure in % F") + theme_bw() + facet_grid(pop~.) + geom_hline(yintercept = 0, linetype = "dashed") + ggtitle("Effectiveness of closure in reducing Fishing mortality") + scale_colour_gradient2(high = "red", mid = "orange", low = "yellow") +
 	scale_shape_discrete(solid = F)
 
-ggsave('Overview_plot_highPop.png', width = 12, height = 4)
+ggsave('Overview_plot_highPopRev.png', width = 12, height = 4)
 
 ###########################
 ### 
@@ -137,7 +137,7 @@ geom_line(aes(colour = timescale, linetype = factor(res))) +
 facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
 geom_vline(xintercept = 30, linetype = 2, colour = "grey") + ylab("Fishing mortality") +
 theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,40,5))
-ggsave('F_trends.png', width = 10, height = 8)
+ggsave('F_trendsREV.png', width = 10, height = 8)
 
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F', pop == "spp_3"), 
        aes(x = year, y = data, group = combined)) + 
@@ -146,7 +146,7 @@ facet_wrap(data_type ~ pop, scale = 'free', ncol = 1) + expand_limits(y = 0) +th
 geom_vline(xintercept = 30, linetype = 2, colour = "grey") + ylab("Fishing mortality")+
 theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,40,5))
 
-ggsave('F_trends_spp3.png', width = 8, height = 12)
+ggsave('F_trends_spp3REV.png', width = 8, height = 12)
 
 
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'Bio'), 
@@ -156,7 +156,7 @@ facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
 geom_vline(xintercept = 30, linetype = 2, colour = "grey")+
 theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,40,5))
 
-ggsave('B_trends.png', width = 10, height = 8)
+ggsave('B_trendsREV.png', width = 10, height = 8)
 
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'Rec'), 
        aes(x = year, y = data, group = combined)) + 
@@ -165,7 +165,7 @@ facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
 geom_vline(xintercept = 30, linetype = 2, colour = "grey")+
 theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,40,5))
 
-ggsave('R_trends.png', width = 10, height = 8)
+ggsave('R_trendsREV.png', width = 10, height = 8)
 
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'Catch'), 
        aes(x = year, y = data, group = combined)) + 
@@ -174,5 +174,5 @@ facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
 geom_vline(xintercept = 30, linetype = 2, colour = "grey")+
 theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,40,5))
 
-ggsave('C_trends.png', width = 10, height = 8)
+ggsave('C_trendsREV.png', width = 10, height = 8)
 

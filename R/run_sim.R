@@ -151,7 +151,7 @@ if(t==1 & closeArea & !is.null(closure[["input_coords"]]) & closure[["year_start
 if(t==1 & closeArea & !is.null(closure[["input_coords"]]) & closure[["year_start"]] > 1) {CalcClosures <- FALSE}
 
 if( t > 1 & closeArea ) 		{
-if(closure[["temp_dyn"]] == 'annual') {
+if(closure[["temp_dyn"]] == 'yearly') {
 CalcClosures <- ifelse(year.breaks[t] != year.breaks[t-1], TRUE, FALSE)
 }
 if(closure[["temp_dyn"]] == 'monthly') {
@@ -250,7 +250,7 @@ if(closeArea & CalcClosures & !is.null(closure[["input_coords"]]) & year.breaks[
 print("Setting manually defined closures")
 print(paste("Closures are", closure[["temp_dyn"]]))
 
-if(closure[["temp_dyn"]] == 'annual') {
+if(closure[["temp_dyn"]] == 'yearly') {
 AreaClosures <- closure[["input_coords"]]
 }
 

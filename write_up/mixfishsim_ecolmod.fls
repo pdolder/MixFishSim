@@ -1,4 +1,4 @@
-PWD /mnt/winD/Users/Paul/Dropbox/MARES_PhD/MixFishSim/write_up
+PWD /home/paul/Dropbox/MARES_PhD/MixFishSim/write_up
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
@@ -321,12 +321,12 @@ INPUT ../analysis/Data_Aggregation_space.pdf
 INPUT ../analysis/Data_Aggregation_time.pdf
 INPUT ../analysis/Data_Aggregation_time.pdf
 INPUT ../analysis/Data_Aggregation_time.pdf
-INPUT ../analysis/F_trends.png
-INPUT ../analysis/F_trends.png
-INPUT ../analysis/F_trends.png
-INPUT ../analysis/Overview_plot_highPop.png
-INPUT ../analysis/Overview_plot_highPop.png
-INPUT ../analysis/Overview_plot_highPop.png
+INPUT ../analysis/F_trendsREV.png
+INPUT ../analysis/F_trendsREV.png
+INPUT ../analysis/F_trendsREV.png
+INPUT ../analysis/Overview_plot_highPopRev.png
+INPUT ../analysis/Overview_plot_highPopRev.png
+INPUT ../analysis/Overview_plot_highPopRev.png
 INPUT mixfishsim_ecolmod.bbl
 INPUT mixfishsim_ecolmod.bbl
 OUTPUT mixfishsim_ecolmod.soc

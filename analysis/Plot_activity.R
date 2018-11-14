@@ -7,17 +7,17 @@ library(ggplot2)
 load('Common_Params.RData')
 
 #Run <- 9
-Run <- 10 
-load(file.path('Scenario_runs', paste0("Scenario_", Run, "_.RData")))
+Run <- 3 
+load(file.path('Scenario_runs_Nov18', paste0("Scenario_", Run, ".RData")))
 
 
-logs <- as.data.frame(combine_logs(res[["fleets_catches"]]))
+logs <- combine_logs(res[["fleets_catches"]])
 
-logs_b <- filter(logs, year %in% 2:4)
+logs_b <- filter(logs, year %in% 25:29)
 #logs_b <- filter(logs, year %in% 2:4, week == 4)
 logs_b$time <- 'before'
 #logs_a <- filter(logs, year %in% 8:10, week == 4)
-logs_a <- filter(logs, year %in% 8:10)
+logs_a <- filter(logs, year %in% 46:50)
 logs_a$time <- 'after'
 
 logs <- rbind(logs_a, logs_b)

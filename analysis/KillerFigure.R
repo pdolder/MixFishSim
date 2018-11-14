@@ -343,7 +343,7 @@ dev.off()
 
 ## all year, month and week combinations
 
-logs <- as.data.frame(combine_logs(res[["fleets_catches"]]))
+logs <- combine_logs(res[["fleets_catches"]])
 
 logs_wk_mn <- unique(paste(logs$month, logs$week, sep = "_"))
 

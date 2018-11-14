@@ -1,9 +1,9 @@
 
 library(MixFishSim)
 
-Run <- 1
+Run <- 0
 
-load(file.path('.', 'Scenario_runs', paste0('Scenario_',Run,'_.RData')))
+load(file.path('.', 'Scenario_runs_Nov18', paste0('Scenario_',Run,'.RData')))
 
 pop <- res[["pop_bios"]]
 plot_pop_summary(res, timestep = "annual")
