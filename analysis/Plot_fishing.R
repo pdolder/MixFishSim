@@ -75,14 +75,35 @@ library(cowplot)
 
 logs <- filter(logs, year %in% c(29,46))
 
+
+## Find bounds of area closures
+## But we need to be able to keep areas as contiguous
+
+library(raster)
+library(sf)
+library(units)
+library(smoother)
+
+make_ggpoly <- function(m) {
+test <- filter(closure_areas, month == m)
+dfr <- rasterFromXYZ(test[,c(1,2,5)])
+polyr <- rasterToPolygons(dfr, dissolve = T)
+polyr <- fortify(polyr)
+return(cbind(polyr, data.frame(month = m)))
+}
+
+cl <- lapply(1:12, function(x) make_ggpoly(m = x))
+cl <- do.call(rbind, cl)
+
 p1 <- ggplot(filter(logs, closure == "before"), aes(x = x , y = y)) +
 	geom_point(colour = "blue", alpha = 0.2, shape = "x") +
 	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~month) +
 	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
 
-p2 <- ggplot(closure_areas, aes(x = x , y = y)) + geom_point(colour = "red", shape = 15) +
+p2 <- ggplot(cl) + geom_polygon(aes(long, lat, group = group), colour = "red",fill = NA) +
 	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~month) +
-	geom_point(aes(x = x, y = y, colour = factor(trip)), data = filter(logs, closure == "after"), 
+	geom_point(aes(x = x, y = y), colour = "blue", 
+		   data = filter(logs, closure == "after"), 
 		   alpha = 0.2, shape = "x") +
 	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
 

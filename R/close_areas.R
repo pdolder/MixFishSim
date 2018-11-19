@@ -45,7 +45,7 @@ close_areas <- function (sim_init = sim_init, closure_init = NULL, commercial_lo
 	## Case of dynamic closures
 	if(is.null(yr_base)) {
 	
-	if(timescale == "annual") {
+	if(timescale == "yearly") {
 	yr <- sim_init[["brk.idx"]][["year.breaks"]][[t]] - 1
 	mn <- 1:12
 	wk <- 1:52
@@ -74,7 +74,7 @@ close_areas <- function (sim_init = sim_init, closure_init = NULL, commercial_lo
 	if(!is.null(yr_base)) {
 	yr <- yr_base
 	
-	if(timescale == "annual") {
+	if(timescale == "yearly") {
 	mn <- 1:12
 	wk <- 1:52
 	}
@@ -101,7 +101,7 @@ close_areas <- function (sim_init = sim_init, closure_init = NULL, commercial_lo
 
 #### Pre-defined closures
 if(!is.null(coords)) {
-if(timestep == 'annual') {closed_areas  <- coords}
+if(timestep == 'yearly') {closed_areas  <- coords}
 if(timestep == 'monthly') {closed_areas <- coords[[mn]]}
 if(timestep == 'weekly') {closed_areas <- coords[[wk]]}
 		}

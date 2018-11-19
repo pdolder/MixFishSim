@@ -136,7 +136,7 @@ ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F'),
 geom_line(aes(colour = timescale, linetype = factor(res))) + 
 facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
 geom_vline(xintercept = 30, linetype = 2, colour = "grey") + ylab("Fishing mortality") +
-theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,40,5))
+theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,50,5))
 ggsave('F_trendsREV.png', width = 10, height = 8)
 
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F', pop == "spp_3"), 
@@ -144,7 +144,7 @@ ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F', pop == "spp_3"
 geom_line(aes(colour = timescale, linetype = factor(res))) + 
 facet_wrap(data_type ~ pop, scale = 'free', ncol = 1) + expand_limits(y = 0) +theme_bw() +
 geom_vline(xintercept = 30, linetype = 2, colour = "grey") + ylab("Fishing mortality")+
-theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,40,5))
+theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,50,5))
 
 ggsave('F_trends_spp3REV.png', width = 8, height = 12)
 
@@ -154,7 +154,7 @@ ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'Bio'),
 geom_line(aes(colour = timescale, linetype = factor(res))) + 
 facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
 geom_vline(xintercept = 30, linetype = 2, colour = "grey")+
-theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,40,5))
+theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,50,5))
 
 ggsave('B_trendsREV.png', width = 10, height = 8)
 
@@ -163,7 +163,7 @@ ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'Rec'),
 geom_line(aes(colour = timescale, linetype = factor(res))) + 
 facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
 geom_vline(xintercept = 30, linetype = 2, colour = "grey")+
-theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,40,5))
+theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,50,5))
 
 ggsave('R_trendsREV.png', width = 10, height = 8)
 
@@ -172,7 +172,7 @@ ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'Catch'),
 geom_line(aes(colour = timescale, linetype = factor(res))) + 
 facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
 geom_vline(xintercept = 30, linetype = 2, colour = "grey")+
-theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,40,5))
+theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,50,5))
 
 ggsave('C_trendsREV.png', width = 10, height = 8)
 
