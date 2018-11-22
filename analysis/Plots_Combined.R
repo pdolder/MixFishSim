@@ -111,6 +111,20 @@ ggplot(filter(combined, basis == 'high_pop', metric == "F"), aes(x = data_type, 
 
 ggsave('Overview_plot_highPopRev.png', width = 12, height = 4)
 
+combined_bi <- filter(combined, basis == "high_pop", metric %in% c("F", "Catch")) 
+
+combined_bi <- reshape2::dcast(combined_bi, scenario + pop + timescale + basis + data_type + resolution ~ metric, value.var = "diff")
+
+ggplot(combined_bi, aes(x = F, y = Catch)) + 
+	geom_point(aes(colour = resolution, shape = timescale), size = 4) + 
+	facet_wrap(pop~.) + ylab("Catch") + theme_bw() + facet_grid(pop~.) + 
+	geom_hline(yintercept = 0, linetype = "dashed") + 
+	geom_vline(xintercept = 0, linetype = "dashed") +
+	ggtitle("Effectiveness of closure in reducing Fishing mortality") +
+	scale_colour_gradient2(high = "red", mid = "orange", low = "yellow") +
+	scale_shape_discrete(solid = F)
+
+
 ###########################
 ### 
 ### Plot of all scenarios
