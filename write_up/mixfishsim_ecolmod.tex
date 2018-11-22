@@ -64,42 +64,43 @@
 
 \begin{abstract}
 
-\replaced[id = JJ]{Most fisheries}{Fishing} exploit\deleted[id=JJ]{s} spatially
-and temporally heterogeneous fish populations, using species-unselective gear
-that can result in unintended, unwanted catch of low quota or protected
-species. Reducing these unwanted catches is crucial for biological and economic
-sustainability of `mixed fisheries' and implementation of an ecosystem approach
-to fishing. \\
+\replaced[id = JJ]{Most fisheries}{Fishing} exploit\deleted[id=JJ]{s} a variety 
+of spatially and temporally heterogeneous fish populations, using
+species-unselective gear that can result in unintended, unwanted catch of low
+quota or protected species. Reducing these unwanted catches is crucial for
+biological and economic sustainability of `mixed fisheries' and implementation
+of an ecosystem approach to fishing. \\
 
 \replaced[id = PD]{If fisheries are to avoid unwanted catch}{To implement
 	effective spatial measures to reduce discards} a good understanding of
 spatiotemporal fishery dynamics is required. However, traditional scientific
 advice is limited by a lack of highly resolved knowledge of population
-distribution, movement and how fishers interact with different fish
-populations. This reflects that data on fish location at high temporal and
-spatial resolutions is expensive and difficult to collect and therefore proxies
-inferred from either scientific surveys or commercial catch data are often used
-to model distributions, often with limited spatial and temporal resolution. \\ 
+distributions, movement and how fishers interact with different fish
+populations. This reflects the fact that data on fish location at high temporal
+and spatial resolutions is expensive and difficult to collect. Proxies inferred
+from either scientific surveys or commercial catch data are often used to model
+distributions, often with data at limited spatial and temporal resolution. \\ 
 
-To understand how resolution impacts mixed fisheries inference, we develop a
-highly resolved spatiotemporal simulation model incorporating: i)
-delay-difference population dynamics, ii) population movement using Gaussian
-Random Fields to simulate patchy, heterogeneously distributed populations, and
-iii) fishery dynamics for multiple fleet characteristics based on targeting
-via correlated random walk movement and learned behaviour. \\ 
+To understand how data resolution impacts inference on mixed fisheries
+interactions, we develop a highly resolved spatiotemporal simulation model
+incorporating: i) delay-difference population dynamics, ii) population movement
+using Gaussian Random Fields to simulate patchy, heterogeneously distributed
+populations, and iii) fishery dynamics for multiple fleet characteristics based
+on species targeting via a mix of correlated random walk movement (for
+exploration) and learned behaviour (for exploitation) phases of the fisheries.
+\\ 
 
-We simulate 20 years of exploitation of the fish populations and use the
-results from the fishing model to draw inference on the underlying population
-structures. We compare this inference to i) a simulated fixed-site sampling
-design commonly used for fisheries monitoring purposes, and ii) the true
-underlying population structures input to the simulation, to establish the
-potential and limitations of fishery-dependent data - an inherently biased
-sampling method due to fisher's targeting- to provide a robust picture of
-spatiotemporal distributions. Finally, we simulate an area closure based on
-areas defined from commercial the known ("real-population") distribution,
-commercial catch data and survey data at different temporal and spatial
-resolutions and assess their effectiveness on reducing catches of a fish
-population. \\
+We simulate 50 years of fishing and use the results from the fisheries catch to
+draw inference on the underlying population structures. We compare this
+inference to i) a simulated fixed-site sampling design commonly used for
+fisheries monitoring purposes, and ii) the true underlying population
+structures input to the simulation, to establish the potential and limitations
+of fishery-dependent data - an inherently biased sampling method due to
+fisher's targeting- to provide a robust picture of spatiotemporal
+distributions. Finally, we simulate an area closure based on areas defined from
+commercial the known ("real-population") distribution, commercial catch data
+and survey data at different temporal and spatial resolutions and assess their
+effectiveness on reducing catches of a fish population. \\
 
 We conclude from our simulations that commercial data, while not unbiased,
 provides a useful tool for managing catches in mixed fisheries if applied at
@@ -120,9 +121,9 @@ Some\sep keywords \sep here. Max 6
 
 \section{Introduction}
 
-Fishers exploit fish populations that are heterogeneously distributed in space
-and time with varying knowledge of species distributions using
-species-unselective fishing gear. \added[id=PD]{In doing so} fisheries
+Fishers exploit a variety of fish populations that are heterogeneously
+distributed in space and time with varying knowledge of species distributions
+using species-unselective fishing gear. \added[id=PD]{In doing so} fisheries
 \deleted[id=PD]{that} catch an assemblage of species
 \added[id=PD]{and}\deleted{, known as mixed fisheries} \replaced[id=JJ]{may}{,
 	when managed by single-species quotas can end up}
@@ -131,14 +132,13 @@ discard\deleted[id=JJ]{ing} overquota catch \added[id=JJ]{when managed by
 \added[id=JJ]{\citep{Ulrich2011a, Batsleer2015}}.  \added[id=JJ]{This
 	discarding of fish in excess of quota hampers the ability to limit
 	fishing mortality to within sustainable limits \citep{Alverson1994,
-	Crowder1998, Rijnsdorp2007}} \deleted[id=PD]{; reducing
-discarding is crucial} to ensure biological and
-economic sustainability of fisheries\deleted[id=JJ]{ and implementation of an
-	ecosystem approach to fisheries}\replaced[id=PD]{and}{. As such} there
-is increasing interest in technical solutions such as gear and spatial closures
-as ways of \replaced[id=PD]{reducing unwanted catch}{avoiding
-	discard\added[id=JJ]{ing of fish}}\citep{Kennelly2002,
-		Catchpole2008, Bellido2011}.  \\
+		Crowder1998, Rijnsdorp2007}} \deleted[id=PD]{; reducing
+	discarding is crucial}and ensure biological and economic sustainability
+of fisheries\deleted[id=JJ]{ and implementation of an ecosystem approach to
+	fisheries}. As such, there is increasing interest
+in technical solutions such as gear and spatial closures as ways of
+\replaced[id=PD]{reducing unwanted catch}{avoiding discard\added[id=JJ]{ing of
+		fish}}\citep{Kennelly2002, Catchpole2008, Bellido2011}.  \\
 
 \replaced[id=PD]{Changes to spatial fishing patterns have}{Use of spatial
 	management as a tools} been proposed as a method to reduce discards
@@ -185,7 +185,7 @@ catches \added[id=PD]{, we can use the population model to evaluate how inferenc
 different fisheries \added[id=PD]{dynamics} exploiting four fish populations
 with different spatial and population demographics.\\
 
-Using our model we simulate \replaced[id=PD]{20}{40} years of exploitation of
+Using our model we simulate \replaced[id=PD]{50}{40} years of exploitation of
 the fish populations. \replaced[id=PD]{We}{ and} use the
 results\deleted[id=PD]{ from the fishing model:}
 
