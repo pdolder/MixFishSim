@@ -79,7 +79,8 @@ distributions, movement and how fishers interact with different fish
 populations. This reflects the fact that data on fish location at high temporal
 and spatial resolutions is expensive and difficult to collect. Proxies inferred
 from either scientific surveys or commercial catch data are often used to model
-distributions, often with data at limited spatial and temporal resolution. \\ 
+distributions, often with sparse data at limited spatial and temporal
+resolution. \\ 
 
 To understand how data resolution impacts inference on mixed fisheries
 interactions, we develop a highly resolved spatiotemporal simulation model
@@ -98,8 +99,8 @@ structures input to the simulation, to establish the potential and limitations
 of fishery-dependent data - an inherently biased sampling method due to
 fisher's targeting- to provide a robust picture of spatiotemporal
 distributions. Finally, we simulate an area closure based on areas defined from
-commercial the known ("real-population") distribution, commercial catch data
-and survey data at different temporal and spatial resolutions and assess their
+the known ("real-population") distribution, commercial catch data and survey
+data at different temporal and spatial resolutions and assess their
 effectiveness on reducing catches of a fish population. \\
 
 We conclude from our simulations that commercial data, while not unbiased,
@@ -177,12 +178,12 @@ In order to understand \replaced[id=PD]{the consequences of using}{challenges
 population structure we develop a simulation model where population dynamics
 are highly-resolved in space and time\replaced[id=PD]{. Being}{ and are}
 known \added[id=PD]{directly} rather than inferred from sampling or commercial
-catches \added[id=PD]{, we can use the population model to evaluate how inference from
+catch\added[id=PD]{, we can use the population model to evaluate how inference from
 	fisheries-dependent and fisheries independent sampling relates to the
 	real population structure}. \replaced[id=PD]{In our model system
 	p}{P}opulation movement is driven by random (diffusive) and directed
 (advective) processes and we incorporate characterisation of a number of
-different fisheries \added[id=PD]{dynamics} exploiting four fish populations
+different fishing \added[id=PD]{fleet dynamics} exploiting four fish populations
 with different spatial and population demographics.\\
 
 Using our model we simulate \replaced[id=PD]{50}{40} years of exploitation of
@@ -213,9 +214,9 @@ results\deleted[id=PD]{ from the fishing model:}
 				structure
 		\end{enumerate}
 		We evaluate the theoretical "benefit" to the population of the
-		closure(s), and effect on the other three
-		populations\todo{\added[id=JJ]{If the paper has two goals this
-				should be clear from the start, but may be
+		closure(s), the effect on the other three populations and
+		fishery catch.\todo{\added[id=JJ]{If the paper has two goals
+				this should be clear from the start, but may be
 				better over 2 MSs}\added[id=PD]{I would like to
 				keep both parts, but have made clearer in how
 				its set out. The closure scenarios form
@@ -245,16 +246,16 @@ independent time-scales appropriate to capture the characteristic of the
 growth) operate on a daily time-step\replaced[id=PD]{, while p}{. P}opulation
 movement occurs on a weekly time-step\replaced[id=PD]{. R}{, while r}ecruitment
 \replaced[id=PD]{takes place}{occurs} periodcally each year for a set time
-\replaced[id=PD]{duration}{period (e.g. 3 weeks)} at at specified point
-individual to a species\deleted[id=PD]{.}\added[id=PD]{, while the fishing
-	module operates on a tow-by-tow basis (i.e. multiple events a day)}.
-The simulation framework is implemented in the statistical software package R
+\replaced[id=PD]{duration}{period (e.g. 3 weeks)} specified for each
+population\deleted[id=PD]{.}\added[id=PD]{, while the fishing module operates
+	on a tow-by-tow basis (i.e. multiple events a day)}.  The simulation
+framework is implemented in the statistical software package R
 \citep{RCoreTeam2017} \replaced[id=PD]{and}{;} available as an R package from
-the authors github (\url{www.github.com/pdolder/MixFishSim}).\\
+the authors github site (\url{www.github.com/pdolder/MixFishSim}).\\
 
-\deleted[id=PD]{Here we describe each of the model components; 1)
-Population dynamics, 2) Recruitment dynamics, 3) Population movement dynamics, 4)
-fishery dynamics.}
+\deleted[id=PD]{Here we describe each of the model components; 1) Population
+	dynamics, 2) Recruitment dynamics, 3) Population movement dynamics, 4)
+	fishery dynamics.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Overview schematic  
@@ -294,10 +295,10 @@ fishery dynamics.}
 % Use join to connect a node to the previous one 
 \node [term, join, fill=lcnorm!25]      {Choose random location to fish};
 \node [term, join, fill=lcfree!25] (p1){Sample catch};
-\node [test, densely dotted] (t1) {if $Rec_{p}[t]$};
-\node [test, join, densely dotted] (t2) {if $wk[t] \neq  wk[t-1]$};
-\node [test, join, densely dotted] (wk) {if $day[t] \neq day[t-1]$};
-\node [test, join, densely dotted] (t3) {if $trip[t] \neq trip[t-1] \ | \ PK[t]$};
+\node [test, densely dotted] (t1) {if $(Rec)$};
+\node [test, join, densely dotted] (t2) {if (Pop Movement)};
+\node [test, join, densely dotted] (wk) {if (Pop Dynamics)};
+\node [test, join, densely dotted] (t3) {if (Past Knowledge)};
 \node [term, join, fill=lcnorm!25]  (p2) {Correlated Random Walk};
 \node [term, join, fill=lcnorm!25]  (p3) {Choose new fishing location};
 \node [proc, densely dotted, join, it] (p7) {end};
@@ -368,10 +369,12 @@ fishery dynamics.}
 \end{tikzpicture}
 \caption{Overview Schematic of simulation model. The blue boxes indicate fleet
 	dynamics processes, the green boxes population dynamics processes while
-	the white boxes are the timesteps at which processes occur; $Rec$
-	is a recruitment period for population $p$, $t$ = tow, $tmax$ is the
-	total number of tows, $wk$ is a weekly timestep, $day$ is a day
-	timestep, $trip$ is a trip time step.}
+	the white boxes are the time steps at which processes occur; $t$ = tow,
+	$tmax$ is the total number of tows; (Rec), (Pop Movement), (Pop
+	Dynamics) logic gates for recruitment periods, population movement and
+	population dynamics for each of the populations, (Past Knowledge) a
+	switch whether to use a random (exploratory) or past knowledge
+	(exploitation) fishing strategy.}
 \label{fig:overview}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -382,13 +385,13 @@ The basic population level processes are simulated using a modified two-stage
 Deriso-Schnute delay difference model \citep{Deriso1980, Schnute1985,
 	Dichmont2003} occurring at a daily time-step. \added[id=PD]{A daily
 	time-step was chosen as to discretise continuous population processes
-	on a biologically relevent and computationally tractable timescale.}
-\replaced[id=PD]{Under the popualation dynamics module}{Here,} population
+	on a biologically relevant and computationally tractable timescale.}
+\replaced[id=PD]{Under the population dynamics module}{Here,} population
 biomass growth and depletion for pre-recruits and \deleted[id=PD]{fish}
 recruited \added[id=PD]{fish} \deleted[id=PD]{to the fishery} are modelled
 separately as a function of previous recruited biomass, intrinsic population
-growth and recruitment:
-
+growth and recruitment. Biomass for each cell is incremented each day as
+follows (the full parameter list is detailed in Table \ref{tab: pop_variable}):
 \begin{equation*}
 	\begin{split}
 	B_{c,d+1} = &\\
@@ -400,24 +403,21 @@ growth and recruitment:
 	& Wt_{R} \cdot \alpha_{d} \cdot R_{\tilde{y}(c,y,d)} 
 	\end{split}
 \end{equation*}
-
 where $\rho$ is Brody's coefficient, shown to be approximately equal to
-$exp(-K)$, where $K$ is the growth rate from a von bertalanffy logistic growth
+$e^{-K}$ when $K$ is the growth rate from a von Bertalanffy logistic growth
 model \citep{Schnute1985}. $Wt_{R-1}$ is the weight of fish prior to
 recruitment, while $Wt_{R}$ is the recruited weight. $\alpha_{d}$ represents
 the proportion of fish recruited during that day for the year, while
-$R_{\tilde{c,y}}$ is the annual recruits in cell $c$ for year $y$. \\
+$R_{c,\tilde{y}}$ is the annual recruits in cell $c$ for year $y$. \\
 
 Mortality $Z_{c,d}$ can be decomposed to natural mortality, $M_{c,d}$, and
 fishing mortality, $F_{c,d}$, where both $M_{c,d}$ and $F_{c,d}$ are
 instantaneous rates with $M_{c,d}$ fixed and $F_{c,d}$ calculated by solving
 the Baranov catch equation \citep{Hilborn1992b} for $F_{c,d}$:
-
 \begin{equation*}
 C_{c,d} = \frac{F_{c,d}}{F_{c,d} + M_{c,d}} * (1 - e^{-(F_{c,d} + M_{c,d})}) *
 B_{c,d}
 \end{equation*}
-
 where $C_{c,d}$ is the summed catch from the fishing model across all fleets
 and vessels in cell $c$ for the population during the day $d$, and $B_{c,d}$
 the daily biomass for the population in the cell. \todo{\added[id=CM]{[link $F$ to
@@ -430,10 +430,9 @@ the daily biomass for the population in the cell. \todo{\added[id=CM]{[link $F$ 
 \subsection{Recruitment dynamics}
 
 Recruitment is modelled through a function relating the mature biomass to
-recruits at time of recruitment. In \emph{mixfishsim}, it can be modelled
+recruits at time of recruitment. In \emph{MixFishSim}, it can be modelled
 either either as a stochastic Beverton-Holt stock-recruit form
 \citep{Beverton1957}: 
-
 \begin{equation*}
 	\begin{split}
 	\bar{R}_{c,d} = & \frac{(\alpha * B_{c,d})}{(\beta + B_{c,d})} \\
@@ -443,17 +442,13 @@ either either as a stochastic Beverton-Holt stock-recruit form
 Where $\alpha$ is the maximum recruitment rate, $\beta$ the spawning stock
 biomass (SSB) required to produce half the maximum, $B$ current SSB and
 $\sigma^2$ the variability in the recruitment due to stochastic
-processes. \\
-
-or a stochastic Ricker form \citep{Ricker1954}:
-
+processes, or a stochastic Ricker form \citep{Ricker1954}:
 \begin{equation*}
 	\begin{split}
 	\bar{R}_{c,d} = & B_{c,d} * e^{(\alpha - \beta * B_{c,d})} \\	
    	     R_{c,d} \sim & \log N[(\log(\bar{R}_{c,d}),\log(\sigma^2))]
 	\end{split}
 \end{equation*}
-
 where $\alpha$ is the maximum productivity per spawner and $\beta$ the density
 dependent reduction in productivity as the SSB increases.
 
@@ -469,10 +464,10 @@ move\replaced[id=JJ]{ment}{d} over time with a moving temperature covariate to
 capture temporal dependencies\todo{\added[id=JJ]{What have a temperature
 		covariate? Could just use time}\added[id=PD]{Was intended as
 		some biological meaning - species thermal tolerances load onto
-		the temperature effect}}. \deleted[id=JJ]{This was intended to
-	balance realism in population movement, capturing the main directed and
-	random processes, and practicality of modelling the population rather
-	than individual fish.} \\
+		the temperature effect - so could be different per species}}.
+\deleted[id=JJ]{This was intended to balance realism in population movement,
+	capturing the main directed and random processes, and practicality of
+	modelling the population rather than individual fish.} \\
 
 
 For \deleted[id=PD]{the} habitat we define\added[id=PD]{d} a Gaussian random
@@ -497,15 +492,14 @@ process generates\replaced[id=PD]{;}{, and} we used the \textit{Matérn}
 the distance apart \deleted[id=PD]{(i.e. the correlation between $S(x)$ and
 	$S(x')$ decreases as the distance $u = ||x - x'||$ increases)}.
 \added[id=PD]{The Matérn covariance structure models the spatial
-	autocorrelation observed with animal distributions \citep{Tobler1970,
-		F.Dormann2007}} \replaced[id=PD]{and}{The \textit{Matérn}
+	autocorrelation, where animal densities are observed to be more similar
+	in nearby locations \citep{Tobler1970,
+		F.Dormann2007}}\replaced[id=PD]{. It is}{The \textit{Matérn}
 	correlation} is a two-parameter family where: 
-
 \begin{center}
 	$\rho(u) = \{2^{\kappa -
 		1}\Gamma{\kappa}\}^{-1}(u/\phi)^{\kappa}K_{\kappa}(u/\phi)$
 \end{center}
-	
 $K_{\kappa}(.)$ is a modified Bessel function of order $\kappa$, $\phi >
 0$ is a scale parameter with the dimensions of distance, and $\kappa > 0$,
 called the order, is a shape parameter which determines the smoothness of the
@@ -519,13 +513,11 @@ patchiness of the populations. Each population \replaced[id=PD]{was}{is}
 initialised at a single location, and subsequently move\replaced[id=PD]{ed}{s}
 according to a probabilistic distrib\added[id=PD]{u}tion based on habitat
 suitability, temperature and distance from current cell\replaced[id=PD]{:}{.} 
-
 \begin{equation}
 	Pr(J | I) = \frac{e^{-\lambda * d_{IJ}} \cdot
 		(Hab_{J,p}^2 \cdot Tol_{J,p,wk})}{\sum\limits_{c=1}^{C}e^{-\lambda * d} \cdot
 		(Hab_{c,p}^2 \cdot Tol_{c,p,wk})}
 \end{equation}
-
 Where $d_{IJ}$ is the euclidean distance between cell $I$ and cell $J$,
 $\lambda$ is a given rate of decay, $Hab_{J,p}^2$ is the squared index of
 habitat suitability for cell $J$ and population $p$, with $Tol_{J,p,wk}$ the
@@ -534,7 +526,7 @@ temperature tolerance for cell $J$ by population $p$ in week $wk$.\\
 During specified weeks of the year, the habitat quality
 \replaced[id=PD]{was}{is} modified for \added[id=PD]{user-defined} spawning
 habitat\deleted[id=PD]{s}, \replaced[id=PD]{resulting in}{meaning} each
-population \replaced[id=PD]{had}{has} a concentrated area where spawning takes
+population \replaced[id=PD]{having}{has} a concentrated area where spawning takes
 place and the population move\replaced[id=PD]{d}{s} towards
 \replaced[id=PD]{these cells}{this} in the weeks prior to
 spawning.\todo{\added[id=JM]{What does it mean concisely? Areas are assigned?}
@@ -549,13 +541,11 @@ temperature areas vice versa. Each population $p$ \replaced[id=PD]{wa}{i}s
 assigned a thermal tolerance with mean, $\mu\added[id=PD]{_{p}}$ and variance,
 $\sigma^2\added[id=PD]{_{p}}$ so that each cell and population temperature
 suitability is defined that:
-
 \begin{equation}
 	Tol_{c, p\added[id=PD]{, wk}} = \frac{1}{ \sqrt (2\pi \cdot \sigma^2_{p})} \cdot \exp(-
 		\frac{(T_{c\added[id=PD]{, wk}} - \mu_{p})^2}{2 \cdot \sigma^2_{p}} )	
 \end{equation}
-
-Where $Tol_{c, p, \added[id=PD]{wk}}$ is the tolerance of population $p$ in
+Where $Tol_{c, p, \added[id=PD]{wk}}$ is the tolerance of population $p$ for
 cell $c$ \added[id=PD]{in week $wk$}, $T_{c, \added[id=PD]{wk}}$ is the
 temperature in the cell \added[id=PD]{given the week} and
 $\mu\added[id=PD]{_{p}}$ and $\sigma^2\added[id=PD]{_{p}}$ the mean and
@@ -564,8 +554,7 @@ standard deviation of the population temperature tolerance. \\
 \added[id=PD]{The final process resulted in independent populations structure
 	and movement patterns, with population movement occuring on a weekly
 	basis. This process approximated the demographic shifts in fish
-	populations throughout a year while maintaining seasonal patterns for
-	spawning.}
+	populations throughout a year with seasonal spawning patterns.}
 
 \subsection{Fleet dynamics}
 
@@ -586,8 +575,8 @@ population over another. This, in combination with the parameter choice for the
 step-function \added[id=PD]{defined below} (as well as some randomness from the
 exploratory fishing process) determine\replaced[id=PD]{d}{s} the preference of
 fishing locations for the fleet.  All species prices
-\replaced[id=PD]{were}{are} kept the same, across fleets\replaced[id=PD]{and
-seasons}{, though can be made to vary seasonally}.  
+\replaced[id=PD]{were}{are} kept the same across fleets \replaced[id=PD]{and
+	seasons}{, though can be made to vary seasonally}.  
 
 \subsubsection{Trip-level decisions}
 
@@ -599,27 +588,29 @@ location choice. For this reason, the fleet dynamics sub-model
 include\replaced[id=PD]{d}{s} a learning component, where a vessel's initial
 fishing location in a trip \replaced[id=PD]{wa}{i}s based on selecting from
 previously successful fishing locations. This \replaced[id=PD]{wa}{i}s achieved
-by \added[id=PD]{calculating expected profit from locations fished during}
-previous fishing events in the previous trip as well as the previous time
-periods in past years, and choosing randomly from the top 75 \% of fishing
-events \replaced[id=PD]{as defined by the expected profit}{in value}.
-\added[id=PD]{Expected profit was estimated from the revenue from previous
-	times fished at a location minus the fuel cost of travelling to the
-	location.} Simulation testing indicated that this learning increased
-the mean value of catches for the vessels, over just relying on the correlated
-random walk \todo{\added[id=JJ]{Correlated random walk of what}} function
-\added[id=PD]{as described for the 'within trip' decisions below}. 
+by \added[id=PD]{calculating an expected profit based on the profit from
+	locations previously fished} in the preceding trip as well as the same
+month periods in preceding years, and choosing randomly from the top 75 \% of
+fishing events \replaced[id=PD]{as defined by the expected profit}{in value}.
+\added[id=PD]{Expected profit was estimated from the revenue achieved in
+	previous fishing events at a location minus the fuel cost of travelling
+	from the currently location to the new location.} Simulation testing
+indicated that this learning increased the mean value of catches for the
+vessels, over just relying on the correlated random walk
+\todo{\added[id=JJ]{Correlated random walk of what}} function \added[id=PD]{as
+	described for the 'within trip' decisions below} (MIGHT NEED TO INCLUDE
+IN SUPPLEMENTARY). 
 
 \subsubsection{Within-trip decisions}
 
 Fishing locations within a trip are \added[id=PD]{initially} determined by a
 modified random walk process. \added[id=PD]{As the simulation progresses, the
 	within-trip decision become gradually more influenced by past locations
-	fished, based on the same process as the initial location, influenced
-	by expected profit at a fishing location.} A random walk was chosen for
-the exploratory fishing process as it is the simplest assumption commonly used
-in ecology to describe \added[id=PD]{optimal} animal \deleted[id=PD]{movement
-	which} search\replaced[id=PD]{ strategy}{ing} for
+	fished, based on the same process as the initial trip-level location,
+	influenced by expected profit at a fishing location.} A random walk was
+chosen for the exploratory fishing process as it is the simplest assumption
+commonly used in ecology to describe \added[id=PD]{optimal} animal
+\deleted[id=PD]{movement which} search\replaced[id=PD]{ strategy}{ing} for
 \added[id=PD]{exploiting} homogeneously distributed prey about which there is
 uncertain knowledge \citep{Viswanathan1999}. In a random walk, movement is a
 stochastic process through a series of steps\added[id=JJ]{. These steps have a
@@ -636,9 +627,9 @@ characteristics as those observed by animals in nature, and being a near
 optimum searching strategy for predators pursuing patchily distributed prey
 \citep{Viswanathan1999, Bartumeus2005, Sims2008}.  \citet{Bertrand2007} showed
 that Peruvian anchovy fishermen have a stochastic search pattern similar to
-that observed with a lévy walk. However, it remains a subject of debate
+that observed with a lévy flight. However, it remains a subject of debate
 \added[id=PD]{\citep[e.g. see][]{Edwards2011, Reynolds2015}}, with the
-contention that search patterns may be more simply characteristed as random
+contention that search patterns may be more simply characterised as random
 walks \citep{Sakiyama2013} with specific patterns related to the
 characteristics of the prey field \citep{Sims2012}. \\
 
@@ -647,26 +638,26 @@ circular distribution where a favourable fishing ground is likely to be
 ``fished back over" by the vessel returning in the direction it came from and
 step length (i.e. the distance travelled from the current to the next fishing
 location) is determined by \deleted[id=JJ]{relating} recent fishing success,
-measured as the summed value of fish caught (revenue, $Rev$), $$Rev =
-\sum_{p=1}^{P} \replaced[id=PD]{L}{C}_{p} \cdot Pr_{p}$$ where
-$\replaced[id=PD]{L}{C}_{p}$ is \replaced[id=PD]{landings}{catch} of a
-population $p$, and $Pr_{p}$ price of a population, to step distance. Here,
-when fishing is successful vessels remain in a similar location and continue to
-exploit the local fishing grounds.  When unsuccessful, they move some distance
-away from the current fishing location.  The movement distance retains some
-degree of stochasticity, which can be controlled separately. 
-
-The step function takes the form:
-
+measured as the summed value of fish caught (revenue, $Rev$),
+\begin{equation}
+Rev = \sum_{p=1}^{P} \replaced[id=PD]{L}{C}_{p} \cdot Pr_{p} 
+\end{equation}
+where $\replaced[id=PD]{L}{C}_{p}$ is \replaced[id=PD]{landings}{catch} of a
+population $p$, and $Pr_{p}$ price of a population. Here, when fishing is
+successful vessels remain in a similar location and continue to exploit the
+local fishing grounds. When unsuccessful, they move some distance away from
+the current fishing location.  The movement distance retains some degree of
+stochasticity, which can be controlled separately, but is determined by the
+relationship: 
 \begin{equation*}
 	StepL = e^{log(\beta_{1}) + log(\beta_{2}) -
 		(log(\frac{\beta_{1}}{\beta_{3}}))} * Rev
 \end{equation*}\todo{\added[id=JJ]{So
 			step length increases with increasingly gross
 			revenue?}\added[id=PD]{No, the opposite}}
-
-So that, a step from (x1,y1) to (x2, y2) is defined by:
-
+Where $\beta_{1}$, $\beta_{2}$ and $\beta_{3}$ are parameters determining the
+shape of the step function in its relation to revenue, so that, a step from
+(x1,y1) to (x2, y2) is defined by:
 \begin{equation*}
 	\begin{split}
  (x2, y2) =  & x1 + StepL \cdot \cos (\frac{\pi \cdot Br}{180}), \\
@@ -675,11 +666,10 @@ So that, a step from (x1,y1) to (x2, y2) is defined by:
  			  & Br_{t-1} > 180, Br_{t} = 180 - \sim vm[(0,360), k] \\
 	\end{split}
 \end{equation*}
-
-with $k$ the concentration parameter from the von \replaced[id=JJ]{M}{m}ises
+where $k$ the concentration parameter from the von \replaced[id=JJ]{M}{m}ises
 distribution which we correlate with the revenue so that $k = (Rev + 1 /
 RefRev) * max_{k}$, where $max_{k}$ is the maximum concentration value, $k$,
-and RefRev is parameterised as for $\beta_{3}$ in the step length function. 
+and $RefRev$ is parametrised as for $\beta_{3}$ in the step length function. 
 
 \subsubsection{Local population depletion}
 
@@ -706,22 +696,22 @@ surveys undertaken by fisheries research agencies.
 
 \section{Calculation}
 
-\subsection{Population parameterisation}
+\subsection{Population parametrisation}
 
-We parameterised the simulation model for four populations with differing
+We parametrised the simulation model for four populations with differing
 habitat preference\replaced{,}{ and} temperature tolerances (Figures
 \ref{S-fig:1}, \ref{S-fig:3}, \ref{S-fig:4}, \ref{S-fig:5}, \ref{S-fig:6},
-\ref{S-fig:7}), population demographic\replaced{,}{ and} recruitment functions.
-In addition, each of the populations has two defined spawning areas which
-result in the populations moving towards these areas in given weeks (Figure
-\ref{S-fig:2}) and population-specific movement rates (Table \ref{tab:1}). The
-realised movement of the populations for a number of weeks is shown in Figure
+\ref{S-fig:7}), population demographic and recruitment functions. In addition,
+each of the populations has two defined spawning areas which result in the
+populations moving towards these areas in given weeks (Figure \ref{S-fig:2})
+and population-specific movement rates (Table \ref{tab:1}). The realised
+movement of the populations for a number of weeks is shown in Figure
 \ref{S-fig:9} while the realised daily fishing mortality are shown in Figure
-\ref{S-fig:10}. \\
+\ref{S-fig:10}. 
 
-\subsection{Fleet parameterisation}
+\subsection{Fleet parametrisation}
 
-The fleets were parameterised to reflect five different characteristics based
+The fleets were parametrised to reflect five different characteristics based
 on targeting preference and exploitation dynamics (Table \ref{tab:2}).
 \replaced[id=PD]{Setting a targeting parameter ($Q$) that differed across
 	fleets ensured different spatial dynamics, due to preferential
@@ -730,15 +720,16 @@ on targeting preference and exploitation dynamics (Table \ref{tab:2}).
 	spatial dynamics, preferentially targeted different fish populations}.
 The stochasticity in the random walk process ensures that different vessels
 within a fleet have slightly different spatial distributions based on
-individual experience, while the step function was parameterised dynamically so
+individual experience, while the step function was parametrised dynamically so
 that vessels take smaller steps where the fishing location yields in a top
 quartile of the value available in that year (as defined per fleet in Table
 \ref{tab:2}). \\
 
-Each fleet was set so that, after the first year, fishing locations were chosen
-based on experience built up in the same month from previous years and from
-past trip fishing success. 'Success' in this context was defined as the
-locations where the top 75 \% of revenue from was found in previous trips.
+Each fleet was parametrised so that, after the first year, fishing locations
+were chosen based on experience built up in the same month from previous years
+and from past trip fishing success. 'Success' in this context was defined as
+the locations where the top 75 \% of expected profit would be found given
+previous trips revenue and cost of movement to the new fishing location. \\
 
 An example of the realised fleet movements for a single vessel during a single
 trip are given in Figure \ref{S-fig:11}, while Figure \ref{S-fig:12} shows
@@ -762,34 +753,32 @@ all populations ($Q_{p} = 1$).
 To illustrate the capabilities on \emph{MixFishSim}, we investigate the
 influence of the temporal and spatial resolution of different data sources on
 the reduction in catches of a population given spatial closures. To do so, we
-first set up with simulation to run for 10 years based on a 100 X 100 square
-grid, with five fleets of 20 vessels each and four fish populations. Fishing
-takes place four times a day per vessel and five days a week, while population
-movement is every week.\todo{\added[id=JJ]{move to start of methods
-		section}\added[id=PD]{I think ecological modelling wants the
-		'calculations' section here..will check}} \\
+set up a simulation to run for 50 years based on a 100 X 100 square grid, with
+five fleets of 20 vessels each and four fish populations. Fishing takes place
+four times a day per vessel and five days a week, while population movement is
+every week.\todo{\added[id=JJ]{move to start of methods section}\added[id=PD]{I
+		think ecological modelling wants the 'calculations' section
+		here..will check}} \\
 
-We allow the simulation to run unrestricted for 5 years\todo{\added[id=JJ]{Is
+We allow the simulation to run unrestricted for 30 years\todo{\added[id=JJ]{Is
 		there equilibrium after 5 years or still some trend in
 		B}\added[id=PD]{Not at equilibrium yet...I need to rerun until
-		steady state, looks 20 years. Will update}}, and
-subsequently close areas for the last 5 years of the simulation based on data
-(either derived from the commercial catches, fisheries-independent survey or
-the 'real population' - the underlying populations assumed to be known
-perfectly) used at different spatial and temporal scales. \\
+		steady state, looks 20 years. Will update}}, and subsequently
+close areas for the last 20 years of the simulation based on data (either
+derived from the commercial catches, fisheries-independent survey or the 'real
+population' - the underlying populations assumed to be known perfectly) used at
+different spatial and temporal scales. \\
 
-The following steps are undertaken to determine
-closures:\todo{\added[id=JJ]{Procedure unclear. Refer to symbols in
-		methods section or switch order starting with description of
-		data type	etc..}\added[id=PD]{Yes, will redo}}
-
+The following steps are undertaken to determine closures:
+\todo{\added[id=JJ]{Procedure unclear. Refer to symbols in methods section or
+		switch order starting with description of data type
+		etc..}\added[id=PD]{Yes, will redo}}
 \begin{enumerate}
 	\item Extract data source
 	\item Aggregate according to resolution
-	\item Interpolate across entire area at desired resoltion
-	\item Close top 5 \% of areas
+	\item Interpolate across entire area at desired resolution
+	\item Close area covering top 5 \% of catch 
 \end{enumerate}
-
 In total 56 closure scenarios were run which represent combinations of
 
 \begin{itemize}
@@ -798,15 +787,15 @@ In total 56 closure scenarios were run which represent combinations of
 	\item \textbf{temporal resolutions:} weekly, monthly and yearly
 		closures,
 	\item \textbf{spatial resolutions:} 1 x 1 grid, 5 x 5 grid, 10 x 10
-		grid and 20 x 20 grid.
+		grid and 20 x 20 grid,
+	\item \textbf{closure basis:} high catch rates of protected species, or
+		high ratio of protected species v secondary species.
 \end{itemize}
 
 Survey closures were on an annual basis only, as this was the most temporally
 resolved survey data available.
 
 \section{Results}
-
-The species distribution themselves 
 
 The consequences of different spatial aggregations of the data are shown in
 Figure \ref{fig:1}, which represents the aggregation of catch from each of the
@@ -905,6 +894,7 @@ difference in fishing mortalities across scenarios.
 \begin{table}[!ht]
 	\centering
 	\caption{Description of variables for population dynamics sub-module}
+	\label{tab: pop_variable}
 	\begin{tabular}{p{1.5cm} p{8cm} p{1.5cm}}
 		\toprule
 		Variable & Meaning & Units \\
