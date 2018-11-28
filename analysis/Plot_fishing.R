@@ -2,78 +2,65 @@
 ###########################################################
 ## Plot of fishing locations before and after closures...
 ###########################################################
+
 library(MixFishSim)
 library(dplyr)
 library(ggplot2)
 
+yrs <- c(29, 46) ## years before and after the closures
+
+#timescale <- "yearly"
+#timescale <- "monthly"
+timescale <- "weekly"
+
 load('Common_Params.RData')
 
-Run <- 2
+if(timescale == "yearly")  { Run  <- 3 }
+if(timescale == "monthly") { Run  <- 2 }
+if(timescale == "weekly")  { Run  <- 1 }
+
 load(file.path('Scenario_runs_Nov18', paste0("Scenario_", Run, ".RData")))
 
 logs <- combine_logs(res[["fleets_catches"]])
 
-logs$closure <- ifelse(logs$year %in% 26:30, "before", ifelse(logs$year %in% 46:50, "after", "NONE"))
+logs$closure <- ifelse(logs$year == yrs[1], "before", ifelse(logs$year == yrs[2], "after", "NONE"))
 logs$closure <- factor(logs$closure)
-
+logs <- filter(logs, year %in% yrs)
 
 ##########################
 ## Extract the closures ##
 ##########################
-# The common settings
-load(file.path('..', 'analysis', 'Common_Params.RData'))
-## Scenarios here
-load(file.path('..', 'analysis','scenarios.RData'))
+## Closures run from year 31:50
+closure_yrs <- 31:50
 
-# Re-calc the closures as implemented
-r  <- 2 ## second closure settings
-closure <- init_closure(input_coords = NULL, basis = sc$data_type[r], rationale = sc$basis[r], spp1 = 'spp3', spp2 = 'spp2', year_start = 31, year_basis = c(21:30), closure_thresh = 0.95, sc = sc$resolution[r], temp_dyn = sc$timescale[r])
+if(timescale == "yearly") {
+closed_areas     <- res$closures[which(closure_yrs == yrs[2])]
+closed_areas     <- as.data.frame(closed_areas)
+closed_areas$x   <- as.numeric(closed_areas$x)
+closed_areas$y   <- as.numeric(closed_areas$y)
+closed_areas$dat <- as.numeric(closed_areas$dat)
+closed_areas$year <- yrs[2]
+}
 
-#mn <- 1:12
-wk <- 1:52
-# t for month 1:12 of year 41
-closure_areas <- lapply(1:12, function(m) {
-t <-which(sim$brk.idx$year.breaks == 46 & sim$brk.idx$month.breaks == m)[1]
-year <- 46
-month <- m
-#week <- sim$brk.idx$week.breaks[t] 
-AreaClosures <- close_areas(sim_init = sim, closure_init = closure, commercial_logs = res$fleets_catches, survey_logs = NULL, real_pop = NULL, t = t)
-AreaClosures <- as.data.frame(AreaClosures)
-AreaClosures$closure <- "after" # rename for consistency in the plot
-AreaClosures$month <- m
-return(AreaClosures)
-})
+if(timescale == "monthly") {
+closed_areas     <- res$closures[c(which(closure_yrs == yrs[2]) * 12):
+				  c(which(closure_yrs == yrs[2]) * 12+11)]
+closed_areas <- lapply(1:12, function(x) { cbind(as.data.frame(closed_areas[x]), data.frame(month =x))})
+closed_areas       <- do.call(rbind, closed_areas)
+closed_areas$x     <- as.numeric(closed_areas$x)
+closed_areas$y     <- as.numeric(closed_areas$y)
+closed_areas$dat   <- as.numeric(closed_areas$dat)
+}
 
-
-# y for years 31-40
-#closure_areas <- lapply(46:50, function(y) {
-#t <-which(sim$brk.idx$year.breaks == y)[1]
-#year <- y 
-#mn <- 1:12
-#wk <- 1:52
-#AreaClosures <- close_areas(sim_init = sim, closure_init = closure, commercial_logs = res$fleets_catches, survey_logs = NULL, real_pop = NULL, t = t)
-#AreaClosures <- as.data.frame(AreaClosures)
-#AreaClosures$closure <- "after" # rename for consistency in the plot
-#AreaClosures$year <- y
-#return(AreaClosures)
-#})
-
-
-##############
-## Plots    ##
-##############
-
-## Let's plot the first fleet only
-logs <- filter(logs, closure %in% c("before", "after"))
-closure_areas <- do.call(rbind, closure_areas) # make closures list a combined df
-
-closure_areas$x   <- as.numeric(closure_areas$x)
-closure_areas$y   <- as.numeric(closure_areas$y)
-closure_areas$dat <- as.numeric(closure_areas$dat)
-
-library(cowplot)
-
-logs <- filter(logs, year %in% c(29,46))
+if(timescale == "weekly") {
+closed_areas     <- res$closures[c(which(closure_yrs == yrs[2]) * 52):
+				  c(which(closure_yrs == yrs[2]) * 52+51)]
+closed_areas <- lapply(1:52, function(x) { cbind(as.data.frame(closed_areas[x]), data.frame(week =x))})
+closed_areas       <- do.call(rbind, closed_areas)
+closed_areas$x     <- as.numeric(closed_areas$x)
+closed_areas$y     <- as.numeric(closed_areas$y)
+closed_areas$dat   <- as.numeric(closed_areas$dat)
+}
 
 
 ## Find bounds of area closures
@@ -83,15 +70,45 @@ library(raster)
 library(sf)
 library(units)
 library(smoother)
+library(cowplot)
 
+if(timescale == "yearly") {
+make_ggpoly <- function(y) {
+test <- closed_areas
+dfr <- rasterFromXYZ(test[,c(1,2,5)])
+polyr <- rasterToPolygons(dfr, dissolve = T)
+polyr <- fortify(polyr)
+return(cbind(polyr, data.frame(year = y)))
+}
+cl <- lapply(yrs[2], function(x) make_ggpoly(y = x))
+cl <- do.call(rbind, cl)
+
+p1 <- ggplot(filter(logs, closure == "before"), aes(x = x , y = y)) +
+	geom_point(colour = "blue", alpha = 0.2, shape = "x") +
+	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~year) +
+	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
+
+p2 <- ggplot(cl) + geom_polygon(aes(long, lat, group = group), colour = "red",fill = NA) +
+	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~year) +
+	geom_point(aes(x = x, y = y), colour = "blue", 
+		   data = filter(logs, closure == "after"), 
+		   alpha = 0.2, shape = "x") +
+	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
+
+plot_grid(p1,p2, labels = c("(a) before closures", "(b) after closures"), vjust = 2)
+ggsave(file = "Closure_fishing_locations_yearly.pdf", width = 16, height = 8)
+
+}
+
+
+if(timescale == "monthly") {
 make_ggpoly <- function(m) {
-test <- filter(closure_areas, month == m)
+test <- filter(closed_areas, month == m)
 dfr <- rasterFromXYZ(test[,c(1,2,5)])
 polyr <- rasterToPolygons(dfr, dissolve = T)
 polyr <- fortify(polyr)
 return(cbind(polyr, data.frame(month = m)))
 }
-
 cl <- lapply(1:12, function(x) make_ggpoly(m = x))
 cl <- do.call(rbind, cl)
 
@@ -108,12 +125,38 @@ p2 <- ggplot(cl) + geom_polygon(aes(long, lat, group = group), colour = "red",fi
 	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
 
 plot_grid(p1,p2, labels = c("(a) before closures", "(b) after closures"), vjust = 2)
-ggsave(file = "Closure_fishing_locations.pdf", width = 16, height = 8)
+ggsave(file = "Closure_fishing_locations_monthly.pdf", width = 16, height = 8)
 
-#ggplot(filter(closure_areas, year == 46), aes(x = x , y = y)) + geom_point(colour = "red", shape = 15) +
-#	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~year) +
-#	geom_point(aes(x = x, y = y, colour = factor(trip)), data = filter(logs, closure == "after", year == 46), 
-#		   alpha = 0.2, shape = "x") +
-#	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
+}
+
+if(timescale == "weekly") {
+make_ggpoly <- function(w) {
+test <- filter(closed_areas, week == w)
+dfr <- rasterFromXYZ(test[,c(1,2,5)])
+polyr <- rasterToPolygons(dfr, dissolve = T)
+polyr <- fortify(polyr)
+return(cbind(polyr, data.frame(week = w)))
+}
+cl <- lapply(1:52, function(x) make_ggpoly(w = x))
+cl <- do.call(rbind, cl)
+
+p1 <- ggplot(filter(logs, closure == "before"), aes(x = x , y = y)) +
+	geom_point(colour = "blue", alpha = 0.2, shape = "x") +
+	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~week) +
+	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
+
+p2 <- ggplot(cl) + geom_polygon(aes(long, lat, group = group), colour = "red",fill = NA) +
+	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~week) +
+	geom_point(aes(x = x, y = y), colour = "blue", 
+		   data = filter(logs, closure == "after"), 
+		   alpha = 0.2, shape = "x") +
+	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
+
+plot_grid(p1,p2, labels = c("(a) before closures", "(b) after closures"), vjust = 2)
+ggsave(file = "Closure_fishing_locations_weekly.pdf", width = 16, height = 8)
+
+}
+
+
 
 

@@ -39,16 +39,18 @@
 
 #' @export
 
-init_closure <- function (input_coords = NULL, basis = 'commercial', rationale = 'high_pop', spp1 = 'spp1', spp2, year_start = 1, year_basis = NULL, closure_thresh = 0.95, sc = 1, temp_dyn = 'annual') {
+init_closure <- function (input_coords = NULL, basis = 'commercial', rationale = 'high_pop', spp1 = 'spp1', spp2, year_start = 1, year_basis = NULL, closure_thresh = 0.95, sc = 1, temp_dyn = 'yearly') {
 
 	input_coords <- input_coords
 	temp_dyn     <- temp_dyn
 
-	if(!temp_dyn == 'annual') {
+	if(!temp_dyn == 'yearly') {
 	if(temp_dyn == "weekly" & length(input_coords) != 52 & !is.null(input_coords)) stop("If the temp_dyn are weekly, input coords must be of length 52")
 	
 	if(temp_dyn == "monthly" & length(input_coords) != 12 & !is.null(input_coords)) stop("If the temp_dyn are monthly, input coords must be of length 12")
 	}
+
+	if(is.null(input_coords)) {
 
 	basis     <- basis
 	if(!basis %in% c("survey", "commercial", "real_pop")) stop("The basis must be survey, commercial or real_pop") 
@@ -73,6 +75,22 @@ init_closure <- function (input_coords = NULL, basis = 'commercial', rationale =
 	closure_thresh <- closure_thresh
 
 	sc <- sc
+
+	}
+
+	if(!is.null(input_coords)) {
+
+	basis = NULL 
+	rationale = NULL 
+	spp1 = NULL 
+	spp2 = NULL 
+	year_start = year_start
+	year_basis = NULL 
+	closure_thresh = NULL 
+	sc = NULL 
+	temp_dyn = temp_dyn 
+
+	}
 
 	return(list(input_coords = input_coords, basis = basis, rationale = rationale, spp1 = spp1, spp2 = spp2, year_start = year_start, year_basis = year_basis, closure_thresh = closure_thresh, sc = sc, temp_dyn = temp_dyn)) 
 	

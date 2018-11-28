@@ -124,6 +124,9 @@ ggplot(combined_bi, aes(x = F, y = Catch)) +
 	scale_colour_gradient2(high = "red", mid = "orange", low = "yellow") +
 	scale_shape_discrete(solid = F)
 
+## Print out table of results
+
+write.table(combined[order(combined$diff),], file = "Closure_Analysis_Results.csv", sep =",", row.names = F)
 
 ###########################
 ### 

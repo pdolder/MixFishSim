@@ -167,7 +167,7 @@ draw.barplot2D(catch_comp[[1]]$x,catch_comp[[1]]$y,z = catch_comp[[1]]$z, width 
 
 ## Test
 
-yr <- 2:10 
+yr <- 21:30 
 wk <- 1:52 
 mn <- 1:12
 

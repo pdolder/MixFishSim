@@ -245,8 +245,8 @@ closure_list[[close_count]] <- AreaClosures
 }
 
 ## Fixed closures
-if(!is.null(closure)) {
-if(closeArea & CalcClosures & !is.null(closure[["input_coords"]]) & year.breaks[t] >= closure[["year_start"]]) {
+if(!is.null(closure) & !is.null(closure[["input_coords"]]) & CalcClosures) {
+if(closeArea & year.breaks[t] >= closure[["year_start"]]) {
 print("Setting manually defined closures")
 print(paste("Closures are", closure[["temp_dyn"]]))
 
