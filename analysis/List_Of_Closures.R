@@ -47,5 +47,7 @@ cl$col <- ifelse(cl$closure == "Closed", "black", "red")
 plot(1:100, 1:100, type = "n")
 points(cl$x, cl$y, col = cl$col)
 
-save(cl, file = "Fixed_Closure_Locations.RData")
+closures <- cl
+
+save(closures, file = "Fixed_Closure_Locations.RData")
 
