@@ -12,13 +12,13 @@
 \usetikzlibrary{shapes,arrows,chains,calc}
 \usepackage{hhline}
 \usepackage{booktabs}
-\usepackage[textsize=scriptsize]{todonotes}
-%\usepackage[textsize=scriptsize, disable]{todonotes}  %% to turn off notes
+%\usepackage[textsize=scriptsize]{todonotes}
+\usepackage[textsize=scriptsize, disable]{todonotes}  %% to turn off notes
 \usepackage{eurosym}
 
 % For track-changes
-\usepackage[draft]{changes}
-%\usepackage[final]{changes} %% to turn off changes
+%\usepackage[draft]{changes}
+\usepackage[final]{changes} %% to turn off changes
 \definechangesauthor[color = red]{JM}
 \definechangesauthor[color = blue]{PD}
 \definechangesauthor[color = green!40!black]{JJ}
@@ -75,7 +75,7 @@ of an ecosystem approach to fishing. \\
 	effective spatial measures to reduce discards} a good understanding of
 spatiotemporal fishery dynamics is required. However, traditional scientific
 advice is limited by a lack of highly resolved knowledge of population
-distributions, movement and how fishers interact with different fish
+distributions, population movement and how fishers interact with different fish
 populations. This reflects the fact that data on fish location at high temporal
 and spatial resolutions is expensive and difficult to collect. Proxies inferred
 from either scientific surveys or commercial catch data are often used to model
@@ -95,13 +95,13 @@ We simulate 50 years of fishing and use the results from the fisheries catch to
 draw inference on the underlying population structures. We compare this
 inference to i) a simulated fixed-site sampling design commonly used for
 fisheries monitoring purposes, and ii) the true underlying population
-structures input to the simulation, to establish the potential and limitations
-of fishery-dependent data - an inherently biased sampling method due to
-fisher's targeting- to provide a robust picture of spatiotemporal
-distributions. Finally, we simulate an area closure based on areas defined from
-the known ("real-population") distribution, commercial catch data and survey
-data at different temporal and spatial resolutions and assess their
-effectiveness on reducing catches of a fish population. \\
+structures input to the simulation. We use the results to establish the
+potential and limitations of fishery-dependent data - an inherently biased
+sampling method due to fisher's targeting- to provide a robust picture of
+spatiotemporal distributions. Finally, we simulate an area closure based on
+areas defined from the known ("real-population") distribution, commercial catch
+data and survey data at different temporal and spatial resolutions and assess
+their effectiveness on reducing catches of a fish population. \\
 
 We conclude from our simulations that commercial data, while not unbiased,
 provides a useful tool for managing catches in mixed fisheries if applied at
@@ -995,26 +995,31 @@ difference in fishing mortalities across scenarios.
 	\hline
 	Habitat quality & & & \\
 	\hline
-	Matérn $\nu$ & 1/0.15 & 1/0.05 & 1/0.55 & 1/0.05  \\
+	Matérn $\nu$ & 1/0.015 & 1/0.05 & 1/0.01 & 1/0.005  \\
 	Matérn $\kappa$ & 1 & 2 & 1 & 1  \\
 	Anisotropy & 1.5,3,-3,4 & 1,2,-1,2 & 2.5,1,-1,2 & 0.1,2,-1,0.2 \\
 	Spawning areas (bound box) & 40,50,40,50; 80,90,60,70 &
 	50,60,30,40; 80,90,90,90 & 30,34,10,20; 60,70,20,30 & 50,55,80,85; 30,40,30,40 \\
 	Spawning multiplier & 10 & 10 & 10 & 10 \\
-	Movement $\lambda$ & 0.3 & 0.3 & 0.3 & 0.3 \\
+	Movement $\lambda$ & 0.1 & 0.1 & 0.1 & 0.1 \\
 	\hline
 	Population dynamics & & & & \\
 	\hline
 	Starting Biomass & 1e5 & 2e5 & 1e5 & 1e4 \\
-	Beverton-Holt Recruit 'a' & 60 & 100 & 80 & 2 \\
-	Beverton-Holt Recruit 'b' & 250 & 250 & 200 & 50 \\
-	Beverton-Holt Recruit $\sigma^2$ & 0.4 & 0.3 & 0.4 & 0.3 \\
+	Beverton-Holt Recruit 'a' & 6 & 27 & 18 & 0.3  \\
+	Beverton-Holt Recruit 'b' & 4 & 4 & 11 & 0.5 \\
+	Beverton-Holt Recruit $\sigma^2$ & 0.7 & 0.6 & 0.7 & 0.6 \\
 	Recruit week & 13-16 & 12-16 & 14-16 & 16-20 \\
 	Spawn week & 16-18 & 16-19 & 16-18 & 18-20 \\
 	$K$ & 0.3 & 0.3 & 0.3 & 0.3 \\
 	$wt$ & 1 & 1 & 1 & 1 \\
 	$wt_{d-1}$ & 0.1 & 0.1 & 0.1 & 0.1 \\
-	M (annual) & 0.2 & 0.2 & 0.2 & 0.1 \\
+	M (annual) & 0.2 & 0.1 & 0.2 & 0.1 \\
+	\hline
+	Movement dynamics & & & & \\
+	\hline
+	$\mu$ & 12 & 15 & 17 & 14 \\
+	$\sigma^2$ & 8 & 9 & 7 & 10 \\
 	\hline
 \end{tabular}
 \label{tab:1}
@@ -1030,8 +1035,8 @@ difference in fishing mortalities across scenarios.
 	\hline
 	Price Pop1 & 100 & 100 & 100 & 100 & 100 \\
 	Price Pop2 & 200 & 200 & 200 & 200 & 200 \\
-	Price Pop3 & 600 & 600 & 600 & 600 & 600 \\
-	Price Pop4 & 1600 & 1600 & 1600 & 1600 & 1600 \\
+	Price Pop3 & 350 & 350 & 350 & 350 & 350 \\
+	Price Pop4 & 600 & 600 & 600 & 600 & 600 \\
 	$Q$ Pop1 & 0.01 & 0.02 & 0.02 & 0.01 & 0.01 \\
 	$Q$ Pop2 & 0.02 & 0.01 & 0.02 & 0.01 & 0.03\\
 	$Q$ Pop3 & 0.01 & 0.02 & 0.02 & 0.01 & 0.02 \\
@@ -1040,13 +1045,14 @@ difference in fishing mortalities across scenarios.
 	Exploitation dynamics &&&& \\
 	\hline
 	step function $\beta_1$ & 1 & 2 & 1 & 2 & 3 \\
-	step function $\beta_2$ & 10 & 10 & 8 & 12 & 7 \\
+	step function $\beta_2$ & 10 & 15 & 8 & 12 & 7 \\
 	step function $\beta_3$ & Q90 & Q90 & Q85 & Q90 & Q80 \\
-	step function $rate$ & 10 & 20 & 15 & 25 & 10 \\
+	step function $rate$ & 20 & 30 & 25 & 35 & 20 \\
 	Past Knowledge & T & T & T & T & T \\
 	Past Year \& Month & T & T & T & T & T \\
 	Past Trip & T & T & T & T & T \\
-	Threshold & 0.75 & 0.75 & 0.75 & 0.75 & 0.75 \\
+	Threshold & 0.7 & 0.7 & 0.7 & 0.7 & 0.7 \\
+	Fuel Cost & 3 & 2 & 5 & 2 & 1 \\
 	\hline
 \end{tabular}
 \label{tab:2}

@@ -8,7 +8,8 @@ library(MixFishSim)
 load('Common_Params.RData')
 
 Run <- 0 
-load(file.path('Scenario_runs_Nov18', paste0("Scenario_", Run, ".RData")))
+#load(file.path('Scenario_runs_Nov18', paste0("Scenario_", Run, ".RData")))
+load(file.path('Scenario_runs_Nov18', paste0("Comparison_Run.RData")))
 
 plot_pop_summary(res, timestep = "annual", save = FALSE)
 

@@ -22,7 +22,7 @@ load('Common_Params.RData')
 load('Fixed_Closure_Locations.RData')
 
 ## Change closure per scenario
-closure <- init_closure(input_coords = cl[,c("x","y")], year_start = 1, temp_dyn = "yearly")
+closure <- init_closure(input_coords = cl[,c("x","y")], year_start = 30, temp_dyn = "yearly")
 
 ## run_sim function for overall control
 res <- run_sim(sim_init = sim, pop_init = Pop, move_cov = moveCov, fleets_init = fleets, hab_init = hab, InParallel = TRUE, cores = 1, save_pop_bio = TRUE, survey = survey, closure = closure)

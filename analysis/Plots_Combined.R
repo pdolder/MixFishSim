@@ -10,7 +10,8 @@ load('Common_Params.RData')
 
 runs <- 0:56
 
-for(r in runs) {
+for(r in runs){
+print(r)
 load(file.path('Scenario_runs_Nov18', paste0('Scenario_', r, '.RData')))
 #assign(paste0("sc",r),res)
 #}

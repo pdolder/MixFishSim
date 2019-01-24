@@ -195,12 +195,12 @@ if(basis == 'real_pop') {
 
 		if(rationale == 'high_pop') {
 		## Filter as appropriate:- here based on either yr_base or
-		interpdat <- filter(logs, year %in% yr) %>% group_by(x, y) %>% summarise(dat= sum(get(spp_1))/n())
+		interpdat <- filter(logs, year %in% yr, month %in% mn) %>% group_by(x, y) %>% summarise(dat= sum(get(spp_1))/n())
 		}
 
 		if(rationale == 'high_ratio') {
 		## Filter as appropriate:- here based on either yr_base or
-		interpdat <- filter(logs, year %in% yr) %>% group_by(x, y) %>% summarise(dat1 = sum(get(spp_1))/n(), dat2 =sum(get(spp_2))/n())
+		interpdat <- filter(logs, year %in% yr, month %in% mn) %>% group_by(x, y) %>% summarise(dat1 = sum(get(spp_1))/n(), dat2 =sum(get(spp_2))/n())
 		## Calculate the ratios
 		interpdat$dat <- interpdat$dat2 / interpdat$dat1
 		## Deal with any NaN and Infs - calculate the Infs as large
