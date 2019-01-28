@@ -1,4 +1,4 @@
-\begin{thebibliography}{44}
+\begin{thebibliography}{45}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -14,6 +14,17 @@
   \bibinfo{year}{1994}.
 \newblock \bibinfo{title}{{A global assessment of fisheries bycatch and
   discards}}.
+%Type = Misc
+\bibitem[{Bailey et~al.(2018)Bailey, Carrella, Axtell, Burgess, Cabral,
+  Drexler, Dorsett, Madsen, Merkl and Saul}]{Bailey2018}
+\bibinfo{author}{Bailey, R.M.}, \bibinfo{author}{Carrella, E.},
+  \bibinfo{author}{Axtell, R.}, \bibinfo{author}{Burgess, M.G.},
+  \bibinfo{author}{Cabral, R.B.}, \bibinfo{author}{Drexler, M.},
+  \bibinfo{author}{Dorsett, C.}, \bibinfo{author}{Madsen, J.K.},
+  \bibinfo{author}{Merkl, A.}, \bibinfo{author}{Saul, S.},
+  \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{{A computational approach to managing coupled
+  human–environmental systems: the POSEIDON model of ocean fisheries}}.
 %Type = Article
 \bibitem[{Bartumeus et~al.(2005)Bartumeus, {Da Luz}, Viswanatham and
   Catalan}]{Bartumeus2005}
@@ -44,7 +55,7 @@
   fisheries}}.
 \newblock \bibinfo{journal}{Reviews in Fish Biology and Fisheries}
   \bibinfo{volume}{25}, \bibinfo{pages}{715--736}.
-%Type = Misc
+%Type = Article
 \bibitem[{Bellido et~al.(2011)Bellido, Santos, Pennino, Valeiras and
   Pierce}]{Bellido2011}
 \bibinfo{author}{Bellido, J.M.}, \bibinfo{author}{Santos, M.B.},
@@ -52,6 +63,8 @@
   \bibinfo{author}{Pierce, G.J.}, \bibinfo{year}{2011}.
 \newblock \bibinfo{title}{{Fishery discards and bycatch: Solutions for an
   ecosystem approach to fisheries management?}}
+\newblock \bibinfo{journal}{Hydrobiologia} \bibinfo{volume}{670},
+  \bibinfo{pages}{317--333}.
 %Type = Article
 \bibitem[{Bertrand et~al.(2007)Bertrand, Bertrand, Guevara-Carrasco and
   Gerlotto}]{Bertrand2007}
@@ -85,8 +98,10 @@
 \newblock \bibinfo{journal}{Journal of the Royal Society, Interface / the Royal
   Society} \bibinfo{volume}{5}, \bibinfo{pages}{813--34}.
 %Type = Article
-\bibitem[{Crowder and Murawski(1998)}]{Crowder1998}
-\bibinfo{author}{Crowder, L.B.}, \bibinfo{author}{Murawski, S.A.},
+\bibitem[{Crowder et~al.(1998)Crowder, Murawski, Crowder and
+  Murawski}]{Crowder1998}
+\bibinfo{author}{Crowder, B.L.B.}, \bibinfo{author}{Murawski, S.a.},
+  \bibinfo{author}{Crowder, L.B.}, \bibinfo{author}{Murawski, S.a.},
   \bibinfo{year}{1998}.
 \newblock \bibinfo{title}{{Fisheries Bycatch: Implications for Management}}.
 \newblock \bibinfo{journal}{Fisheries} \bibinfo{volume}{23},
@@ -147,8 +162,9 @@
 \newblock \bibinfo{journal}{Proceedings of the National Academy of Sciences} ,
   \bibinfo{pages}{201513626}.
 %Type = Article
-\bibitem[{Edwards(2011)}]{Edwards2011}
-\bibinfo{author}{Edwards, A.M.}, \bibinfo{year}{2011}.
+\bibitem[{Edwards et~al.(2011)Edwards, Station and Canada}]{Edwards2011}
+\bibinfo{author}{Edwards, A.M.}, \bibinfo{author}{Station, P.B.},
+  \bibinfo{author}{Canada, O.}, \bibinfo{year}{2011}.
 \newblock \bibinfo{title}{{Overturning conclusions of L{\'{e}}vy flight
   movement patterns by fishing boats and foraging animals}}.
 \newblock \bibinfo{journal}{Ecology} \bibinfo{volume}{92},

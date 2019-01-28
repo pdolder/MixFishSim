@@ -12,9 +12,10 @@
 \usetikzlibrary{shapes,arrows,chains,calc}
 \usepackage{hhline}
 \usepackage{booktabs}
-%\usepackage[textsize=scriptsize]{todonotes}
-\usepackage[textsize=scriptsize, disable]{todonotes}  %% to turn off notes
+\usepackage[textsize=scriptsize]{todonotes}
+%\usepackage[textsize=scriptsize, disable]{todonotes}  %% to turn off notes
 \usepackage{eurosym}
+\usepackage{longtable}
 
 % For track-changes
 %\usepackage[draft]{changes}
@@ -96,14 +97,14 @@ draw inference on the underlying population structures. We compare this
 inference to i) a simulated fixed-site sampling design commonly used for
 fisheries monitoring purposes, and ii) the true underlying population
 structures input to the simulation. We use the results to establish the
-potential and limitations of fishery-dependent data - an inherently biased
-sampling method due to fisher's targeting- to provide a robust picture of
-spatiotemporal distributions. Finally, we simulate an area closure based on
-areas defined from the known ("real-population") distribution, commercial catch
-data and survey data at different temporal and spatial resolutions and assess
-their effectiveness on reducing catches of a fish population. \\
+potential and limitations of fishery-dependent data in providing a robust
+picture of spatiotemporal distributions. Finally, we simulate an area closure
+based on areas defined from the known ("real-population") distribution,
+commercial catch data and survey data at different temporal and spatial
+resolutions and assess their effectiveness on reducing catches of a fish
+population. \\
 
-We conclude from our simulations that commercial data, while not unbiased,
+We conclude from our simulations that commercial data, while containing bias,
 provides a useful tool for managing catches in mixed fisheries if applied at
 the correct spatiotemporal scale. \\
 
@@ -125,33 +126,34 @@ Some\sep keywords \sep here. Max 6
 Fishers exploit a variety of fish populations that are heterogeneously
 distributed in space and time with varying knowledge of species distributions
 using species-unselective fishing gear. \added[id=PD]{In doing so} fisheries
-\deleted[id=PD]{that} catch an assemblage of species
+\deleted[id=PD]{that}catch an assemblage of species
 \added[id=PD]{and}\deleted{, known as mixed fisheries} \replaced[id=JJ]{may}{,
 	when managed by single-species quotas can end up}
 discard\deleted[id=JJ]{ing} overquota catch \added[id=JJ]{when managed by
-	single species quotas,} leading to overexploitation of fish populations
-\added[id=JJ]{\citep{Ulrich2011a, Batsleer2015}}.  \added[id=JJ]{This
-	discarding of fish in excess of quota hampers the ability to limit
-	fishing mortality to within sustainable limits \citep{Alverson1994,
-		Crowder1998, Rijnsdorp2007}} \deleted[id=PD]{; reducing
-	discarding is crucial}and ensure biological and economic sustainability
-of fisheries\deleted[id=JJ]{ and implementation of an ecosystem approach to
-	fisheries}. As such, there is increasing interest
-in technical solutions such as gear and spatial closures as ways of
+	single species quotas and fishers exhaust or more quota, may} lead to
+overexploitation of fish populations \added[id=JJ]{\citep{Ulrich2011a,
+		Batsleer2015}}.  \added[id=JJ]{This discarding of fish in
+	excess of quota hampers the ability to limit fishing mortality to
+	within sustainable limits \citep{Alverson1994, Crowder1998,
+		Rijnsdorp2007}} \deleted[id=PD]{; reducing discarding is
+	crucial}and the ability to manage for the biological and economic
+sustainability of fisheries\deleted[id=JJ]{ and implementation of an ecosystem
+	approach to fisheries}. As such, there is increasing interest in
+technical solutions such as gear and spatial closures as ways of
 \replaced[id=PD]{reducing unwanted catch}{avoiding discard\added[id=JJ]{ing of
 		fish}}\citep{Kennelly2002, Catchpole2008, Bellido2011}.  \\
 
 \replaced[id=PD]{Changes to spatial fishing patterns have}{Use of spatial
 	management as a tools} been proposed as a method to reduce discards
 \added[id=PD]{\citep{Holmes2011, Little2014, Dunn2014a}}. However,
-\deleted[id=PD]{its} implementation is hampered by lack of knowledge of fish
-and fishery spatiotemporal dynamics and understanding of the scale at which
-processes are important for management. Understanding the correct scale for
-spatial management is crucial in order to implement measures at a resolution
-that ensures effective management \citep{Dunn2016} while minimising economic
-impact.  For example, a scale that promotes species avoidance for vulnerable or
-low quota species while allowing continuance of sustainable fisheries for
-available quota species.\\
+\deleted[id=PD]{its} implementation of avoidance measures is hampered by lack
+of knowledge of fish and fishery spatiotemporal dynamics and understanding of
+the scale at which processes are important for management. Understanding the
+correct scale for spatial measures is crucial in order to implement measures at
+a resolution that ensures effective management \citep{Dunn2016} while
+minimising economic impact.  For example, a scale that promotes species
+avoidance for vulnerable or low quota species while allowing continuance of
+sustainable fisheries for available quota species.\\
 
 \replaced[id=PD]{Identifying}{Ensuring measures are implemented at} an
 appropriate scale has been a challenge in the past that has led to ineffectual
@@ -162,16 +164,17 @@ areas (e.g. the cod closure in the North Sea
 refined spatial information has \added[id=PD]{since} become available through
 the combination of logbook and Vessel Monitoring System (VMS) data
 \citep{Lee2010, Bastardie2010, Gerritsen2012, Mateo2016} and more real-time
-spatial management has been possible \citep[e.g.][]{Holmes2011}.  Such
-information is, however, patchy and derived from an inherently biased sampling
-programme (i.e. targeted fishing). \deleted[id=PD]{ Further, fishers generally only recorded
-landings (not catch) on a daily basis\todo{\added[id=JJ]{Its not clear what the
-		problem is: landings collected on daily basis or landings
-		recorded rather than catch}}.  This leads to questions about
-the validity of inference that can be drawn from landings data assigned to VMS
-activity pings.}\todo{\added[id=JJ]{This comes as a surprise: I thought this was
-		going to be about discards}\added[id=PD]{Agree, have removed
-		this to avoid confusion}}\\ 
+spatial management has been possible \citep[e.g.][]{Holmes2011}.  However, such
+information is derived from an inherently biased sampling programme, targeted
+fishing. \deleted[id=PD]{ Further, fishers generally only recorded landings
+	(not catch) on a daily basis\todo{\added[id=JJ]{Its not clear what the
+			problem is: landings collected on daily basis or
+			landings recorded rather than catch}}.  This leads to
+	questions about the validity of inference that can be drawn from
+	landings data assigned to VMS activity pings.}\todo{\added[id=JJ]{This
+		comes as a surprise: I thought this was going to be about
+		discards}\added[id=PD]{Agree, have removed this to avoid
+		confusion}}\\ 
 
 In order to understand \replaced[id=PD]{the consequences of using}{challenges
 	that face} VMS-linked landings to draw inference on the underlying
@@ -193,18 +196,21 @@ results\deleted[id=PD]{ from the fishing model:}
 \begin{enumerate}
 	\item to understand how sampling-derived data reflects the underlying
 		population structures. We compare at different spatial and
-		temporal aggregations of data the real population to: 
+		temporal aggregations of the simulated population distributions
+		to: 
 		\begin{enumerate}
-			\item the inferred population from a stratified fixed-site sampling survey design
-				commonly used for fisheries monitoring purposes, otherwise know as a
-				fisheries-independent survey,
-			\item the inferred population from our fishery-dependent model which includes
+			\item the inferred population from a stratified
+				fixed-site sampling survey design commonly used
+				for fisheries monitoring purposes, otherwise
+				know as a fisheries-independent survey,
+			\item the inferred population from our
+				fishery-dependent model which includes
 				fishery-induced sampling dynamics.\\
 		\end{enumerate}
-	\item to understand the impact of data aggregation and source on
-		spatial fisheries management measures we simulate a fishery closure to
-		protect a species based on different spatial and temporal data
-		aggregations:
+	\item to understand the impact of data aggregation and data source on
+		spatial fisheries management measures we simulate a fishery
+		closure to protect a species based on different spatial and
+		temporal data aggregations:
 		\begin{enumerate}
 			\item as if the real spatial population structure were
 				known,
@@ -420,12 +426,16 @@ B_{c,d}
 \end{equation*}
 where $C_{c,d}$ is the summed catch from the fishing model across all fleets
 and vessels in cell $c$ for the population during the day $d$, and $B_{c,d}$
-the daily biomass for the population in the cell. \todo{\added[id=CM]{[link $F$ to
-	effort and catchability - as I think we have F as an emergent property
-	of the fleets rather than something we solve for (I could be wrong
-	though!) - catch for a vessel is a product of catchability and biomass,
-	i.e. C = qB, but this catch is summed to solve for F. So its both
-	really]}}\\
+the daily biomass for the population in the cell. Here, catch and fishing
+mortality are the sum of those across all fleets and vessels, where $F_{fl, v,
+	c, d, p} = E_{fl, v, c, d} \cdot Q_{fl, p} \cdot B_{c, d, p}$ with
+$fl$, $v$ and $p$ the fleet, vessel and population respectively and $E$ and $Q$
+fishing effort and catchability. \todo{\added[id=CM]{[link $F$ to effort and
+		catchability - as I think we have F as an emergent property of
+		the fleets rather than something we solve for (I could be wrong
+		though!) - catch for a vessel is a product of catchability and
+		biomass, i.e. C = qB, but this catch is summed to solve for F.
+		So its both really]}}\\
 
 \subsection{Recruitment dynamics}
 
@@ -450,28 +460,30 @@ processes, or a stochastic Ricker form \citep{Ricker1954}:
 	\end{split}
 \end{equation*}
 where $\alpha$ is the maximum productivity per spawner and $\beta$ the density
-dependent reduction in productivity as the SSB increases.
+dependent reduction in productivity as the SSB increases. In this study, the
+Beverton-Holt form of stock recruit relationship was used for all populations.
 
 \subsection{Population movement dynamics}
 
 To simulate \deleted[id=JJ]{how} fish population\deleted[id=JJ]{s might be}
 distribut\replaced[id=JJ]{ion}{ed} in space and time\deleted[id=JJ]{, we
 	employed} a Gaussian spatial process \added[id=JJ]{was employed} to
-model habitat suitability for each of the populations\replaced[id=JJ]{. An}{,
-	with an} advection-diffusion process \deleted[id=JJ]{to}
-control\added[id=JJ]{led} \deleted[id=JJ]{how the} population\deleted[id=JJ]{s}
-move\replaced[id=JJ]{ment}{d} over time with a moving temperature covariate to
-capture temporal dependencies\todo{\added[id=JJ]{What have a temperature
-		covariate? Could just use time}\added[id=PD]{Was intended as
-		some biological meaning - species thermal tolerances load onto
-		the temperature effect - so could be different per species}}.
-\deleted[id=JJ]{This was intended to balance realism in population movement,
-	capturing the main directed and random processes, and practicality of
-	modelling the population rather than individual fish.} \\
+model habitat suitability for each of the populations on a 2d
+grid\replaced[id=JJ]{. An}{, with an} advection-diffusion process
+\deleted[id=JJ]{to} control\added[id=JJ]{led} \deleted[id=JJ]{how the}
+population\deleted[id=JJ]{s} move\replaced[id=JJ]{ment}{d}, with a time-varying
+temperature covariate used to change the spatial bounds of suitable habitat
+on a weekly time-step\todo{\added[id=JJ]{What have a temperature covariate? Could just
+		use time}\added[id=PD]{Was intended as some biological meaning
+		- species thermal tolerances load onto the temperature effect -
+		so could be different per species}}.  \deleted[id=JJ]{This was
+	intended to balance realism in population movement, capturing the main
+	directed and random processes, and practicality of modelling the
+	population rather than individual fish.} \\
 
 
-For \deleted[id=PD]{the} habitat we define\added[id=PD]{d} a Gaussian random
-field process\todo{\added[id=JJ]{Not clear how habitat/GRF affect local
+For \deleted[id=PD]{the}habitat we first define\added[id=PD]{d} a Gaussian
+random field process\todo{\added[id=JJ]{Not clear how habitat/GRF affect local
 		abundances, only have $B_{y,d}$}\added[id=PD]{Have included
 		cell reference, $c$ to make spatial link explicit}}, $\{S(c) :
 c \in \mathbb{R}^2\}$, \deleted[id=PD]{that is a stochastic process} where
@@ -487,32 +499,32 @@ $\gamma(c,c') = Cov\{S(c),S(c')\}$ \citep{Diggle2007}.\\
 
 The covariance structure affects the smoothness of the surfaces which the
 process generates\replaced[id=PD]{;}{, and} we used the \textit{Matérn}
-\deleted[id=PD]{family of} covariance structure\deleted[id=PD]{s},
-\replaced[id=PD]{as}{one where} the correlation strength weakens the further
-the distance apart \deleted[id=PD]{(i.e. the correlation between $S(x)$ and
-	$S(x')$ decreases as the distance $u = ||x - x'||$ increases)}.
-\added[id=PD]{The Matérn covariance structure models the spatial
-	autocorrelation, where animal densities are observed to be more similar
-	in nearby locations \citep{Tobler1970,
-		F.Dormann2007}}\replaced[id=PD]{. It is}{The \textit{Matérn}
-	correlation} is a two-parameter family where: 
-\begin{center}
-	$\rho(u) = \{2^{\kappa -
-		1}\Gamma{\kappa}\}^{-1}(u/\phi)^{\kappa}K_{\kappa}(u/\phi)$
-\end{center}
+\deleted[id=PD]{family of}covariance structure\deleted[id=PD]{s},
+\replaced[id=PD]{where}{one where} the correlation strength weakens with
+distance\deleted[id=PD]{(i.e. the correlation between $S(x)$ and $S(x')$
+	decreases as the distance $u = ||x - x'||$ increases)}.
+\added[id=PD]{This enables us to model the spatial autocorrelation observed in
+	animal populations where density is more similar in nearby locations
+	\citep{Tobler1970, F.Dormann2007}} and we change the parameters to
+implement different spatial structures for the populations. The \textit{Matérn}
+correlation is a two-parameter family where: 
+	\begin{center}
+		$\rho(u) = \{2^{\kappa -
+			1}\Gamma{\kappa}\}^{-1}(u/\phi)^{\kappa}K_{\kappa}(u/\phi)$
+	\end{center}
 $K_{\kappa}(.)$ is a modified Bessel function of order $\kappa$, $\phi >
 0$ is a scale parameter with the dimensions of distance, and $\kappa > 0$,
 called the order, is a shape parameter which determines the smoothness of the
-underlying process. \\
+underlying process (Figure \ref{S-fig:16}). \\
 
 \replaced[id=PD]{T}{In the simulation model, t}he habitat for each of the
 populations \replaced[id=PD]{was}{is} generated \replaced[id=PD]{with}{through}
 the \textit{RFSimulate} function of the \textit{RandomFields} R package
-\citep{Schlater2015}, implementing different parameter settings to affect the
-patchiness of the populations. Each population \replaced[id=PD]{was}{is}
-initialised at a single location, and subsequently move\replaced[id=PD]{ed}{s}
-according to a probabilistic distrib\added[id=PD]{u}tion based on habitat
-suitability, temperature and distance from current cell\replaced[id=PD]{:}{.} 
+\citep{Schlater2015}. Each population \replaced[id=PD]{was}{is} initialised at
+a single location, and subsequently move\replaced[id=PD]{ed}{s} according to a
+probabilistic distrib\added[id=PD]{u}tion based on habitat suitability
+(represented by the normalised values from the GRFs), temperature and distance
+from current cell\replaced[id=PD]{:}{.} 
 \begin{equation}
 	Pr(J | I) = \frac{e^{-\lambda * d_{IJ}} \cdot
 		(Hab_{J,p}^2 \cdot Tol_{J,p,wk})}{\sum\limits_{c=1}^{C}e^{-\lambda * d} \cdot
@@ -523,22 +535,23 @@ $\lambda$ is a given rate of decay, $Hab_{J,p}^2$ is the squared index of
 habitat suitability for cell $J$ and population $p$, with $Tol_{J,p,wk}$ the
 temperature tolerance for cell $J$ by population $p$ in week $wk$.\\
 
-During specified weeks of the year, the habitat quality
-\replaced[id=PD]{was}{is} modified for \added[id=PD]{user-defined} spawning
-habitat\deleted[id=PD]{s}, \replaced[id=PD]{resulting in}{meaning} each
-population \replaced[id=PD]{having}{has} a concentrated area where spawning takes
-place and the population move\replaced[id=PD]{d}{s} towards
-\replaced[id=PD]{these cells}{this} in the weeks prior to
-spawning.\todo{\added[id=JM]{What does it mean concisely? Areas are assigned?}
-\added[id=PD]{Yes, the areas are pre-defined - I have amended to reflect and
-	tried to clarify}} \\
+During pre-defined weeks of the year the habitat quality is modified with
+\added[id=PD]{user-defined} spawning habitat locations\deleted[id=PD]{s},
+\replaced[id=PD]{resulting in}{meaning} each population
+\replaced[id=PD]{having}{has} concentrated areas where spawning takes place. In
+the simulations the populations move\replaced[id=PD]{d}{s} towards
+\replaced[id=PD]{these cells}{this} in the weeks prior to spawning, resulting
+in directional movement towards the spawning grounds.\todo{\added[id=JM]{What
+		does it mean concisely? Areas are assigned?} \added[id=PD]{Yes,
+		the areas are pre-defined - I have amended to reflect and tried
+		to clarify}} \\
 
-The temperature field \replaced[id=PD]{was}{is} simulated to be on a gradient
-from a South-Westerly to North-Easterly direction, with temperature in each
-cell changing gradually on a week-by-week basis so that initially high
-temperature areas cycle\added[id=PD]{d} to lower temperatures and low
-temperature areas vice versa. Each population $p$ \replaced[id=PD]{wa}{i}s
-assigned a thermal tolerance with mean, $\mu\added[id=PD]{_{p}}$ and variance,
+The temperature field \replaced[id=PD]{was}{is} defined on a gradient from a
+South-Westerly to North-Easterly direction, with temperature in each cell
+changing gradually on a week-by-week basis so that initially high temperature
+areas cycle\added[id=PD]{d} to lower temperatures and low temperature areas
+\textit{vice versa}. Each population $p$ \replaced[id=PD]{wa}{i}s assigned a thermal
+tolerance with mean, $\mu\added[id=PD]{_{p}}$ and variance,
 $\sigma^2\added[id=PD]{_{p}}$ so that each cell and population temperature
 suitability is defined that:
 \begin{equation}
@@ -552,9 +565,10 @@ $\mu\added[id=PD]{_{p}}$ and $\sigma^2\added[id=PD]{_{p}}$ the mean and
 standard deviation of the population temperature tolerance. \\
 
 \added[id=PD]{The final process resulted in independent populations structure
-	and movement patterns, with population movement occuring on a weekly
+	and movement patterns, with population movement occurring on a weekly
 	basis. This process approximated the demographic shifts in fish
-	populations throughout a year with seasonal spawning patterns.}
+	populations throughout a year with seasonal spawning patterns (e.g.
+	Figure \ref{S-fig:5}).}
 
 \subsection{Fleet dynamics}
 
@@ -563,24 +577,25 @@ targeting - which determine\replaced[id=PD]{d}{s} the fleet catch efficiency
 and preference towards a particular species; trip-level decisions, which
 determine\added[id=PD]{d} the initial location to be fished at the beginning of
 a trip; and within-trip decisions, determining movement from one fishing spot
-to another within a trip.
+to another within a trip. Together, these element implement an explore-exploit
+type strategy for individual vessels to maximise their catch from an unknown
+resource distribution (\cite{Bailey2018}).
 
 \subsubsection{Fleet targeting}
 
 Each fleet of \textit{n} vessels \replaced[id=PD]{was}{is} characterised by
-both a general efficiency, \textit{Q}, and a population specific efficiency,
-${Q_{p}}$.  Thus, the product of these parameters affect\replaced[id=PD]{s}{ed}
-the overall catch rates for the fleet and the preferential targeting of one
-population over another. This, in combination with the parameter choice for the
-step-function \added[id=PD]{defined below} (as well as some randomness from the
-exploratory fishing process) determine\replaced[id=PD]{d}{s} the preference of
-fishing locations for the fleet.  All species prices
-\replaced[id=PD]{were}{are} kept the same across fleets \replaced[id=PD]{and
-	seasons}{, though can be made to vary seasonally}.  
+both a general efficiency, $Q_{fl}$, and a population specific efficiency,
+${Q_{fl, p}}$.  Thus, the product of these parameters [$Q_{fl} \cdot Q_{fl,
+	p}$] affect\replaced[id=PD]{s}{ed} the overall catch rates for the
+fleet and the preferential targeting of one population over another. This, in
+combination with the parameter choice for the step-function
+\added[id=PD]{defined below} (as well as some randomness from the exploratory
+fishing process) determine\replaced[id=PD]{d}{s} the preference of fishing
+locations for the fleet.  All species prices \replaced[id=PD]{were}{are} kept
+the same across fleets \replaced[id=PD]{and seasons}{, though can be made to
+	vary seasonally}.  
 
 \subsubsection{Trip-level decisions}
-
-NOTE: THIS IS EXPLORE-EXPLOIT STRATEGY VIZ. BAILEY ET AL POSEIDON MODEL.
 
 Several studies \citep[e.g.][]{Hutton2004, Tidd2012, Girardin2015} have
 confirmed past activity and past catch rates are strong predictors of fishing
@@ -588,15 +603,13 @@ location choice. For this reason, the fleet dynamics sub-model
 include\replaced[id=PD]{d}{s} a learning component, where a vessel's initial
 fishing location in a trip \replaced[id=PD]{wa}{i}s based on selecting from
 previously successful fishing locations. This \replaced[id=PD]{wa}{i}s achieved
-by \added[id=PD]{calculating an expected profit based on the profit from
-	locations previously fished} in the preceding trip as well as the same
-month periods in preceding years, and choosing randomly from the top 75 \% of
-fishing events \replaced[id=PD]{as defined by the expected profit}{in value}.
-\added[id=PD]{Expected profit was estimated from the revenue achieved in
-	previous fishing events at a location minus the fuel cost of travelling
-	from the currently location to the new location.} Simulation testing
-indicated that this learning increased the mean value of catches for the
-vessels, over just relying on the correlated random walk
+by \added[id=PD]{calculating an expected revenue based on the catches from
+	locations fished} in the preceding trip as well as the same month
+periods in previous years and the travel costs from the port to the fishing
+grounds, and choosing randomly from the top 75 \% of fishing events
+\replaced[id=PD]{as defined by the expected profit}{in value}. Simulation
+testing indicated that this learning increased the mean value of catches for
+the vessels, over just relying on the correlated random walk
 \todo{\added[id=JJ]{Correlated random walk of what}} function \added[id=PD]{as
 	described for the 'within trip' decisions below} (MIGHT NEED TO INCLUDE
 IN SUPPLEMENTARY). 
@@ -604,41 +617,42 @@ IN SUPPLEMENTARY).
 \subsubsection{Within-trip decisions}
 
 Fishing locations within a trip are \added[id=PD]{initially} determined by a
-modified random walk process. \added[id=PD]{As the simulation progresses, the
-	within-trip decision become gradually more influenced by past locations
-	fished, based on the same process as the initial trip-level location,
-	influenced by expected profit at a fishing location.} A random walk was
-chosen for the exploratory fishing process as it is the simplest assumption
-commonly used in ecology to describe \added[id=PD]{optimal} animal
-\deleted[id=PD]{movement which} search\replaced[id=PD]{ strategy}{ing} for
-\added[id=PD]{exploiting} homogeneously distributed prey about which there is
-uncertain knowledge \citep{Viswanathan1999}. In a random walk, movement is a
-stochastic process through a series of steps\added[id=JJ]{. These steps have a
-	length, and a direction} that can either be equal in length or take
-some other functional form. The direction of the random walk can be correlated,
-(known as `persistence'), providing some overall \deleted[id=PD]{location of}
-directional movement \citep{Codling2008} \deleted[id=PD]{or uncorrelated}. \\
+modified random walk process. \added[id=PD]{As the simulation progresses the
+	within-trip decision become gradually more influenced by experience
+	gained from past fishing locations (as per the initial trip-level
+	location choice), moving location choice towards areas of higher
+	perceived profit.} A random walk was chosen for the exploratory fishing
+process as it is the simplest assumption commonly used in ecology to describe
+\added[id=PD]{optimal} animal\deleted[id=PD]{movement which}
+search\replaced[id=PD]{ strategy}{ing} for \added[id=PD]{exploiting}
+homogeneously distributed prey about which there is uncertain knowledge
+\citep{Viswanathan1999}. In a random walk, movement is a stochastic process
+through a series of steps\added[id=JJ]{. These steps have a length, and a
+	direction} that can either be equal in length or take some other
+functional form. The direction of the random walk was also correlated (known as
+`persistence') providing some overall \deleted[id=PD]{location of}directional
+movement \citep{Codling2008} \deleted[id=PD]{or uncorrelated}. \\
 
-A \textit{\replaced[id=JJ]{Lévy flight} {lévy walk}} is a particular form of
-random walk characterised by a heavy-tailed distribution of step-length
-\replaced[id=JJ]{. The Lévy flight}{and} has received a lot of attention in
-ecological theory in recent years as having shown to have very similar
-characteristics as those observed by animals in nature, and being a near
-optimum searching strategy for predators pursuing patchily distributed prey
-\citep{Viswanathan1999, Bartumeus2005, Sims2008}.  \citet{Bertrand2007} showed
-that Peruvian anchovy fishermen have a stochastic search pattern similar to
-that observed with a lévy flight. However, it remains a subject of debate
+We use a \textit{\replaced[id=JJ]{Lévy flight} {lévy walk}} which is a
+particular form of random walk characterised by a heavy-tailed distribution of
+step-length\replaced[id=JJ]{. The Lévy flight}{and} has received a lot of
+attention in ecological theory in recent years as having shown to have very
+similar characteristics as those observed by animals in nature, and being a
+near optimum searching strategy for predators pursuing patchily distributed
+prey \citep{Viswanathan1999, Bartumeus2005, Sims2008}.  \citet{Bertrand2007}
+showed that Peruvian anchovy fishermen have a stochastic search pattern similar
+to that observed with a lévy flight. However, it remains a subject of debate
 \added[id=PD]{\citep[e.g. see][]{Edwards2011, Reynolds2015}}, with the
 contention that search patterns may be more simply characterised as random
 walks \citep{Sakiyama2013} with specific patterns related to the
 characteristics of the prey field \citep{Sims2012}. \\
 
-We use a modified random walk where directional change is based on a correlated
-circular distribution where a favourable fishing ground is likely to be
-``fished back over" by the vessel returning in the direction it came from and
-step length (i.e. the distance travelled from the current to the next fishing
-location) is determined by \deleted[id=JJ]{relating} recent fishing success,
-measured as the summed value of fish caught (revenue, $Rev$),
+For our implementation of a random walk directional change is based on a
+negatively correlated circular distribution where a favourable fishing ground
+is likely to be ``fished back over" by the vessel returning in the direction it
+came from.  The step length (i.e. the distance travelled from the current to
+the next fishing location) is determined by \deleted[id=JJ]{relating} recent
+fishing success, measured as the summed value of fish caught (revenue, $Rev$),
 \begin{equation}
 Rev = \sum_{p=1}^{P} \replaced[id=PD]{L}{C}_{p} \cdot Pr_{p} 
 \end{equation}
@@ -669,7 +683,9 @@ shape of the step function in its relation to revenue, so that, a step from
 where $k$ the concentration parameter from the von \replaced[id=JJ]{M}{m}ises
 distribution which we correlate with the revenue so that $k = (Rev + 1 /
 RefRev) * max_{k}$, where $max_{k}$ is the maximum concentration value, $k$,
-and $RefRev$ is parametrised as for $\beta_{3}$ in the step length function. 
+and $RefRev$ is parametrised as for $\beta_{3}$ in the step length function. A
+realised example of the step length and turning angle relationships to revenue
+can be seen at Figure \ref{S-fig:15}.
 
 \subsubsection{Local population depletion}
 
@@ -701,7 +717,7 @@ surveys undertaken by fisheries research agencies.
 We parametrised the simulation model for four populations with differing
 habitat preference\replaced{,}{ and} temperature tolerances (Figures
 \ref{S-fig:1}, \ref{S-fig:3}, \ref{S-fig:4}, \ref{S-fig:5}, \ref{S-fig:6},
-\ref{S-fig:7}), population demographic and recruitment functions. In addition,
+\ref{S-fig:7}), population demographics and recruitment functions. In addition,
 each of the populations has two defined spawning areas which result in the
 populations moving towards these areas in given weeks (Figure \ref{S-fig:2})
 and population-specific movement rates (Table \ref{tab:1}). The realised
@@ -711,25 +727,29 @@ movement of the populations for a number of weeks is shown in Figure
 
 \subsection{Fleet parametrisation}
 
-The fleets were parametrised to reflect five different characteristics based
-on targeting preference and exploitation dynamics (Table \ref{tab:2}).
-\replaced[id=PD]{Setting a targeting parameter ($Q$) that differed across
-	fleets ensured different spatial dynamics, due to preferential
-	targeting of populations that differ in their spatial
-	distributions}{This ensures that different fleets have different
-	spatial dynamics, preferentially targeted different fish populations}.
-The stochasticity in the random walk process ensures that different vessels
-within a fleet have slightly different spatial distributions based on
-individual experience, while the step function was parametrised dynamically so
-that vessels take smaller steps where the fishing location yields in a top
-quartile of the value available in that year (as defined per fleet in Table
-\ref{tab:2}). \\
+The fleets were parametrised to reflect five different characteristic fisheries
+with unique exploitation dynamics (Table \ref{tab:2}).  \replaced[id=PD]{By
+	setting different catchability parameters ($Q_{fl, p}$) we create
+	different targeting preferences between the fleets and hence spatial
+	dynamics}{This ensures that different fleets have different spatial
+	dynamics, preferentially targeted different fish populations}.  The
+stochasticity in the random walk process ensures that within a fleet different
+vessels have slightly different spatial distributions based on individual
+experience. The step function was parametrised dynamically within the
+simulations as the maximum revenue obtainable was not known beforehand. This
+was implemented so that vessels take smaller steps where the fishing location
+yields in a top quartile of the value experienced in each year (as defined per
+fleet in Table \ref{tab:2}). \\
 
-Each fleet was parametrised so that, after the first year, fishing locations
-were chosen based on experience built up in the same month from previous years
-and from past trip fishing success. 'Success' in this context was defined as
-the locations where the top 75 \% of expected profit would be found given
-previous trips revenue and cost of movement to the new fishing location. \\
+With an increasing probability throughout the simulation fishing locations were
+chosen based on experience built up in the same month from previous years and
+from past trip fishing success.  'Success' in this context was defined as the
+locations where the top 75 \% of expected profit would be found given previous
+trips revenue and cost of movement to the new fishing location. This
+probability was based on a logistic sigmoid function with a lower asymptote of
+0 and upper asymptote of 0.95, and a growth rate which ensures the upper
+asymptote (where decisions are mainly based on past knowledge) is reached
+$\sim$ halfway through the simulation).  \\
 
 An example of the realised fleet movements for a single vessel during a single
 trip are given in Figure \ref{S-fig:11}, while Figure \ref{S-fig:12} shows
@@ -766,8 +786,8 @@ We allow the simulation to run unrestricted for 30 years\todo{\added[id=JJ]{Is
 		steady state, looks 20 years. Will update}}, and subsequently
 close areas for the last 20 years of the simulation based on data (either
 derived from the commercial catches, fisheries-independent survey or the 'real
-population' - the underlying populations assumed to be known perfectly) used at
-different spatial and temporal scales. \\
+population' - where the underlying populations assumed to be known perfectly)
+used at different spatial and temporal scales. \\
 
 The following steps are undertaken to determine closures:
 \todo{\added[id=JJ]{Procedure unclear. Refer to symbols in methods section or
@@ -1058,6 +1078,13 @@ difference in fishing mortalities across scenarios.
 \label{tab:2}
 \end{table}
 
+\newpage
+\input{F_changes.tex}
+
+%\newpage
+%\input{C_changes.tex}
+
+%%%% figures
 \begin{figure}[!ht]
 	\includegraphics[width =\linewidth]{../analysis/Data_Aggregation_space}
 	\caption{Data aggregation at different spatial resolutions}

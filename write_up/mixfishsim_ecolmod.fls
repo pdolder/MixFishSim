@@ -234,6 +234,8 @@ INPUT /usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 INPUT /usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 INPUT /usr/share/texlive/texmf-dist/tex/latex/eurosym/eurosym.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/eurosym/eurosym.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/changes/changes.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/changes/changes.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/xifthen/xifthen.sty
@@ -314,6 +316,8 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/eurosym/feymr10.tfm
+INPUT F_changes.tex
+INPUT F_changes.tex
 INPUT ../analysis/Data_Aggregation_space.pdf
 INPUT ../analysis/Data_Aggregation_space.pdf
 INPUT ../analysis/Data_Aggregation_space.pdf

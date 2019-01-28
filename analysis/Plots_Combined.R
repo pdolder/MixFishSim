@@ -76,10 +76,10 @@ combined_pop_an <- rbind(results_df_an1, results_df_an2)
 ## Averages years 1 - 4 and 5-10, then the difference per scenario ##
 #####################################################################
 
-avg2_4  <- combined_pop_an %>% filter(year %in% 26:30) %>% 
+avg2_4  <- combined_pop_an %>% filter(year %in% 29:29) %>% 
 	group_by(scenario, pop, metric) %>% summarise(value = mean(data, na.rm = T))
 
-avg8_10 <- combined_pop_an %>% filter(year %in% 46:50) %>% 
+avg8_10 <- combined_pop_an %>% filter(year %in% 50:50) %>% 
 	group_by(scenario, pop, metric) %>% summarise(value = mean(data, na.rm = T))
 
 combined <- merge(avg2_4, avg8_10, by = c("scenario","metric","pop"))
@@ -128,6 +128,30 @@ ggplot(combined_bi, aes(x = F, y = Catch)) +
 ## Print out table of results
 
 write.table(combined[order(combined$diff),], file = "Closure_Analysis_Results.csv", sep =",", row.names = F)
+
+
+## Latex tables
+library(xtable)
+
+Fs <- filter(combined, metric == "F", basis == "high_pop", pop == "spp_3")
+Fs[,c(4:6)] <- round(Fs[,c(4:6)], 2)
+Fs <- Fs[order(Fs$pop, Fs$diff),]
+
+print(xtable(Fs, digits = 2, caption = "Fishing mortality effects of the closure scenarios", label = "tab:6"), caption.placement = "top", file =
+	     file.path("..","write_up", "F_changes.tex"),include.rownames =
+	     FALSE, tabular.environment= "longtable", floating = FALSE)
+
+
+Cs <- filter(combined, metric == "Catch", basis == "high_pop", pop == "spp_3")
+Cs[,c(4:6)] <- round(Cs[,c(4:6)], 2)
+Cs <- Cs[order(Cs$pop, Cs$diff),]
+
+print(xtable(Cs, digits = 2, caption = "Catch effects of the closure scenarios", label = "tab:7"), caption.placement = "top", file =
+	     file.path("..","write_up", "C_changes.tex"),include.rownames =
+	     FALSE, tabular.environment= "longtable", floating = FALSE)
+
+
+
 
 ###########################
 ### 
@@ -193,4 +217,7 @@ geom_vline(xintercept = 30, linetype = 2, colour = "grey")+
 theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,50,5))
 
 ggsave('C_trendsREV.png', width = 10, height = 8)
+
+
+
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  24 JAN 2019 16:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  28 JAN 2019 17:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -884,6 +884,23 @@ File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ) (/usr/share/texlive/texmf-dist/tex/latex/eurosym/eurosym.sty
 Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
 \@eurobox=\box64
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip55
+\LTright=\skip56
+\LTpre=\skip57
+\LTpost=\skip58
+\LTchunksize=\count152
+\LTcapwidth=\dimen196
+\LT@head=\box65
+\LT@firsthead=\box66
+\LT@foot=\box67
+\LT@lastfoot=\box68
+\LT@cols=\count153
+\LT@rows=\count154
+\c@LT@tables=\count155
+\c@LT@chunks=\count156
+\LT@p@ftn=\toks40
 ) (/usr/share/texlive/texmf-dist/tex/latex/changes/changes.sty
 Package: changes 2015/04/27 v2.0.4 changes package
 *** changes package 2015/04/27 v2.0.4 ***
@@ -898,70 +915,70 @@ Package: pdfcolmk 2016/05/16 v1.3 Color support for pdfTeX via marks (HO)
 Package pdfcolmk Info: The color stack of pdfTeX >= 1.40 is used. Therefore
 (pdfcolmk)             this package is not necessary and not loaded.
 ) (/usr/share/texlive/texmf-dist/tex/generic/ulem/ulem.sty
-\UL@box=\box65
-\UL@hyphenbox=\box66
-\UL@skip=\skip55
-\UL@hook=\toks40
-\UL@height=\dimen196
-\UL@pe=\count152
-\UL@pixel=\dimen197
-\ULC@box=\box67
+\UL@box=\box69
+\UL@hyphenbox=\box70
+\UL@skip=\skip59
+\UL@hook=\toks41
+\UL@height=\dimen197
+\UL@pe=\count157
+\UL@pixel=\dimen198
+\ULC@box=\box71
 Package: ulem 2012/05/18
-\ULdepth=\dimen198
+\ULdepth=\dimen199
 )
-\c@Changes@AuthorCount=\count153
-\c@Changes@Author=\count154
-\c@Changes@AddCount=\count155
-\c@Changes@DeleteCount=\count156
-\c@Changes@ReplaceCount=\count157
+\c@Changes@AuthorCount=\count158
+\c@Changes@Author=\count159
+\c@Changes@AddCount=\count160
+\c@Changes@DeleteCount=\count161
+\c@Changes@ReplaceCount=\count162
 (/usr/share/texlive/texmf-dist/tex/latex/truncate/truncate.sty
 Package: truncate 2001/08/20  ver 3.6
-\@Trunc@RestHyph=\toks41
+\@Trunc@RestHyph=\toks42
 )
-\Changes@Len@summ=\skip56
+\Changes@Len@summ=\skip60
 )
-\c@Changes@AddCountJM=\count158
-\c@Changes@DeleteCountJM=\count159
-\c@Changes@ReplaceCountJM=\count160
-\c@Changes@AddCountPD=\count161
-\c@Changes@DeleteCountPD=\count162
-\c@Changes@ReplaceCountPD=\count163
-\c@Changes@AddCountJJ=\count164
-\c@Changes@DeleteCountJJ=\count165
-\c@Changes@ReplaceCountJJ=\count166
-\c@Changes@AddCountCM=\count167
-\c@Changes@DeleteCountCM=\count168
-\c@Changes@ReplaceCountCM=\count169
+\c@Changes@AddCountJM=\count163
+\c@Changes@DeleteCountJM=\count164
+\c@Changes@ReplaceCountJM=\count165
+\c@Changes@AddCountPD=\count166
+\c@Changes@DeleteCountPD=\count167
+\c@Changes@ReplaceCountPD=\count168
+\c@Changes@AddCountJJ=\count169
+\c@Changes@DeleteCountJJ=\count170
+\c@Changes@ReplaceCountJJ=\count171
+\c@Changes@AddCountCM=\count172
+\c@Changes@DeleteCountCM=\count173
+\c@Changes@ReplaceCountCM=\count174
 (./mixfishsim_ecolmod.aux)
 \openout1 = `mixfishsim_ecolmod.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count170
-\scratchdimen=\dimen199
-\scratchbox=\box68
-\nofMPsegments=\count171
-\nofMParguments=\count172
-\everyMPshowfont=\toks42
-\MPscratchCnt=\count173
-\MPscratchDim=\dimen256
-\MPnumerator=\count174
-\makeMPintoPDFobject=\count175
-\everyMPtoPDFconversion=\toks43
+\scratchcounter=\count175
+\scratchdimen=\dimen256
+\scratchbox=\box72
+\nofMPsegments=\count176
+\nofMParguments=\count177
+\everyMPshowfont=\toks43
+\MPscratchCnt=\count178
+\MPscratchDim=\dimen257
+\MPnumerator=\count179
+\makeMPintoPDFobject=\count180
+\everyMPtoPDFconversion=\toks44
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
@@ -974,344 +991,366 @@ Package grfext Info: Graphics extension search list:
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\AtBeginShipoutBox=\box69
-Package hyperref Info: Link coloring OFF on input line 40.
+\AtBeginShipoutBox=\box73
+Package hyperref Info: Link coloring OFF on input line 41.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count176
+\c@section@level=\count181
 )
-LaTeX Info: Redefining \ref on input line 40.
-LaTeX Info: Redefining \pageref on input line 40.
-LaTeX Info: Redefining \nameref on input line 40.
+LaTeX Info: Redefining \ref on input line 41.
+LaTeX Info: Redefining \pageref on input line 41.
+LaTeX Info: Redefining \nameref on input line 41.
 (./mixfishsim_ecolmod.out) (./mixfishsim_ecolmod.out)
 \@outlinefile=\write5
 \openout5 = `mixfishsim_ecolmod.out'.
 
 ABD: EveryShipout initializing macros
-Underfull \hbox (badness 10000) in paragraph at lines 67--73
+Underfull \hbox (badness 10000) in paragraph at lines 68--74
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--84
+Underfull \hbox (badness 10000) in paragraph at lines 76--85
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--93
+Underfull \hbox (badness 10000) in paragraph at lines 86--94
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--105
+Underfull \hbox (badness 10000) in paragraph at lines 95--106
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--109
+Underfull \hbox (badness 10000) in paragraph at lines 107--110
 
  []
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 119.
+LaTeX Font Info:    Try loading font information for U+msa on input line 120.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 119.
+LaTeX Font Info:    Try loading font information for U+msb on input line 120.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 125--143
+Underfull \hbox (badness 10000) in paragraph at lines 126--145
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 145--155
+Underfull \hbox (badness 10000) in paragraph at lines 147--157
+
+ []
+
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 177.
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--178
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 176--188
+Underfull \hbox (badness 10000) in paragraph at lines 179--191
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 201--203
+Underfull \hbox (badness 10000) in paragraph at lines 206--209
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 216--230
+Underfull \hbox (badness 10000) in paragraph at lines 222--236
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 235--243
+Underfull \hbox (badness 10000) in paragraph at lines 241--249
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 245--255
+Underfull \hbox (badness 10000) in paragraph at lines 251--261
 
  []
 
 
-Overfull \hbox (46.79233pt too wide) in paragraph at lines 263--377
+Overfull \hbox (46.79233pt too wide) in paragraph at lines 269--383
 []  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--412
+Underfull \hbox (badness 10000) in paragraph at lines 411--418
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 420--429
+Underfull \hbox (badness 10000) in paragraph at lines 426--439
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 457--471
+Underfull \hbox (badness 10000) in paragraph at lines 468--483
 
  []
 
 
-Overfull \hbox (24.21655pt too wide) in paragraph at lines 473--487
-\OT1/cmr/m/it/10 mean func-tion\OT1/cmr/m/n/10 , $\OML/cmm/m/it/10 ^^V\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 S\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 )]$ and its \OT1/cmr/m/it/10 co-vari-ance func-tion\OT1/cmr/m/n/10 , $\OML/cmm/m/it/10 ^^M\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c; c[]\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 Cov\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 S\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; S\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c[]\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 g$
+Overfull \hbox (24.21655pt too wide) in paragraph at lines 485--499
+\OT1/cmr/m/it/10 mean func-tion\OT1/cmr/m/n/10 , $\OML/cmm/m/it/10 ^^V\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 S\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 )]$ and its \OT1/cmr/m/it/10 co-vari-ance func-tion[][][]\OT1/cmr/m/n/10 , $\OML/cmm/m/it/10 ^^M\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c; c[]\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 Cov\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 S\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; S\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c[]\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 g$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 473--487
+Underfull \hbox (badness 10000) in paragraph at lines 485--499
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 503--507
+LaTeX Warning: Marginpar on page 7 moved.
+
+
+LaTeX Warning: Marginpar on page 7 moved.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 515--519
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 520--525
+Underfull \hbox (badness 10000) in paragraph at lines 532--537
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--535
+Underfull \hbox (badness 10000) in paragraph at lines 538--548
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 547--553
+Underfull \hbox (badness 10000) in paragraph at lines 560--566
 
  []
 
 [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 606--621
+Underfull \hbox (badness 10000) in paragraph at lines 619--635
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 622--635
+Underfull \hbox (badness 10000) in paragraph at lines 636--649
 
  []
 
-[10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 714--727
-
- []
-
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 728--733
+[10] [11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 730--743
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 753--762
+Underfull \hbox (badness 10000) in paragraph at lines 744--753
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 763--771
+Underfull \hbox (badness 10000) in paragraph at lines 773--782
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 785.
+
+Underfull \hbox (badness 10000) in paragraph at lines 783--791
+
+ []
+
+
+LaTeX Warning: Marginpar on page 14 moved.
+
+
+LaTeX Warning: Marginpar on page 14 moved.
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 805.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 785.
-
-Underfull \hbox (badness 10000) in paragraph at lines 800--803
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 804--817
-
- []
-
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 805.
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 818--821
+Underfull \hbox (badness 10000) in paragraph at lines 820--823
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 822--836
+Underfull \hbox (badness 10000) in paragraph at lines 824--837
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 837--847
+Underfull \hbox (badness 10000) in paragraph at lines 838--841
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 842--856
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 848--858
+Underfull \hbox (badness 10000) in paragraph at lines 857--867
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 859--863
+Underfull \hbox (badness 10000) in paragraph at lines 868--878
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 864--875
+Underfull \hbox (badness 10000) in paragraph at lines 879--883
 
  []
 
 [16]
-Overfull \hbox (3.98029pt too wide) in paragraph at lines 898--933
+Underfull \hbox (badness 10000) in paragraph at lines 884--895
+
+ []
+
+
+Overfull \hbox (3.98029pt too wide) in paragraph at lines 918--953
  [][] 
  []
 
 
-Overfull \hbox (3.98029pt too wide) in paragraph at lines 938--965
+Overfull \hbox (3.98029pt too wide) in paragraph at lines 958--985
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 980--981
+Underfull \hbox (badness 10000) in paragraph at lines 1000--1001
 []\OT1/cmr/m/n/10 euclidean
  []
 
 
-Overfull \hbox (3.98029pt too wide) in paragraph at lines 970--988
+Overfull \hbox (3.98029pt too wide) in paragraph at lines 990--1008
  [][] 
  []
 
 
-Underfull \hbox (badness 4108) in paragraph at lines 1001--1001
+Underfull \hbox (badness 4108) in paragraph at lines 1021--1021
 []\OT1/cmr/m/n/10 Spawning ar-eas (bound
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1001--1001
+Underfull \hbox (badness 10000) in paragraph at lines 1021--1021
 []\OT1/cmr/m/n/10 40,50,40,50;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1002--1002
+Underfull \hbox (badness 10000) in paragraph at lines 1022--1022
 []\OT1/cmr/m/n/10 50,60,30,40;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1002--1002
+Underfull \hbox (badness 10000) in paragraph at lines 1022--1022
 []\OT1/cmr/m/n/10 30,34,10,20;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1002--1003
+Underfull \hbox (badness 10000) in paragraph at lines 1022--1023
 []\OT1/cmr/m/n/10 50,55,80,85;
  []
 
 
-Overfull \hbox (56.43303pt too wide) in paragraph at lines 993--1026
+Overfull \hbox (56.43303pt too wide) in paragraph at lines 1013--1046
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1032--1032
+Underfull \hbox (badness 10000) in paragraph at lines 1052--1052
 []\OT1/cmr/m/n/10 Fleet
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1032--1032
+Underfull \hbox (badness 10000) in paragraph at lines 1052--1052
 []\OT1/cmr/m/n/10 Fleet
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1032--1032
+Underfull \hbox (badness 10000) in paragraph at lines 1052--1052
 []\OT1/cmr/m/n/10 Fleet
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1032--1032
+Underfull \hbox (badness 10000) in paragraph at lines 1052--1052
 []\OT1/cmr/m/n/10 Fleet
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1032--1033
+Underfull \hbox (badness 10000) in paragraph at lines 1052--1053
 []\OT1/cmr/m/n/10 Fleet
  []
 
-<../analysis/Data_Aggregation_space.pdf, id=383, 1156.32pt x 1734.48pt>
+[17] (./F_changes.tex
+Overfull \hbox (113.42311pt too wide) in alignment at lines 3--26
+ [] [] [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (113.42311pt too wide) in alignment at lines 26--39
+ [] [] [] [] [] [] [] [] [] [] 
+ []
+
+[18])
+<../analysis/Data_Aggregation_space.pdf, id=407, 1156.32pt x 1734.48pt>
 File: ../analysis/Data_Aggregation_space.pdf Graphic file (type pdf)
 <use ../analysis/Data_Aggregation_space.pdf>
-Package pdftex.def Info: ../analysis/Data_Aggregation_space.pdf  used on input line 1062.
+Package pdftex.def Info: ../analysis/Data_Aggregation_space.pdf  used on input line 1089.
 (pdftex.def)             Requested size: 345.0pt x 517.4897pt.
-<../analysis/Data_Aggregation_time.pdf, id=384, 1156.32pt x 1734.48pt>
+<../analysis/Data_Aggregation_time.pdf, id=408, 1156.32pt x 1734.48pt>
 File: ../analysis/Data_Aggregation_time.pdf Graphic file (type pdf)
 <use ../analysis/Data_Aggregation_time.pdf>
-Package pdftex.def Info: ../analysis/Data_Aggregation_time.pdf  used on input line 1068.
+Package pdftex.def Info: ../analysis/Data_Aggregation_time.pdf  used on input line 1095.
 (pdftex.def)             Requested size: 345.0pt x 517.4897pt.
-<../analysis/F_trendsREV.png, id=385, 722.7pt x 578.16pt>
+<../analysis/F_trendsREV.png, id=409, 722.7pt x 578.16pt>
 File: ../analysis/F_trendsREV.png Graphic file (type png)
 <use ../analysis/F_trendsREV.png>
-Package pdftex.def Info: ../analysis/F_trendsREV.png  used on input line 1075.
+Package pdftex.def Info: ../analysis/F_trendsREV.png  used on input line 1102.
 (pdftex.def)             Requested size: 345.0pt x 275.99626pt.
-<../analysis/Overview_plot_highPopRev.png, id=386, 867.24pt x 289.08pt>
+<../analysis/Overview_plot_highPopRev.png, id=410, 867.24pt x 289.08pt>
 File: ../analysis/Overview_plot_highPopRev.png Graphic file (type png)
 <use ../analysis/Overview_plot_highPopRev.png>
-Package pdftex.def Info: ../analysis/Overview_plot_highPopRev.png  used on input line 1081.
+Package pdftex.def Info: ../analysis/Overview_plot_highPopRev.png  used on input line 1108.
 (pdftex.def)             Requested size: 345.0pt x 114.99918pt.
-[17] [18] [19] [20] [21] [22] [23] [24 <../analysis/Data_Aggregation_space.pdf>] [25 <../analysis/Data_Aggregation_time.pdf>] [26 <../analysis/F_trendsREV.png (PNG copy)> <../analysis/Overview_plot_highPopRev.png (PNG copy)>] (./mixfishsim_ecolmod.bbl [27
+[19] [20] [21] [22] [23] [24] [25 <../analysis/Data_Aggregation_space.pdf>] [26 <../analysis/Data_Aggregation_time.pdf>] [27 <../analysis/F_trendsREV.png (PNG copy)> <../analysis/Overview_plot_highPopRev.png (PNG copy)>] (./mixfishsim_ecolmod.bbl [28
 
-] [28] [29] [30])
+] [29] [30] [31] [32])
 \Changes@OutFile=\write6
 \openout6 = `mixfishsim_ecolmod.soc'.
 
-[31]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1100.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1100.
+[33]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1127.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1127.
 (./mixfishsim_ecolmod.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1100.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1100.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1127.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1127.
 Package rerunfilecheck Info: File `mixfishsim_ecolmod.out' has not changed.
 (rerunfilecheck)             Checksum: 0019FDC3A669DCD1F44778834EDB541F;1241.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1100.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1127.
  ) 
 Here is how much of TeX's memory you used:
- 21375 strings out of 492982
- 417365 string characters out of 6134895
- 558322 words of memory out of 5000000
- 24367 multiletter control sequences out of 15000+600000
+ 21634 strings out of 492982
+ 422071 string characters out of 6134895
+ 629301 words of memory out of 5000000
+ 24603 multiletter control sequences out of 15000+600000
  13878 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,17n,68p,646b,925s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{figure.15} has been referenced but does not exist, replaced by a fixed one
-
+ 55i,17n,76p,646b,949s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{figure.14} has been referenced but does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{figure.13} has been referenced but does not exist, replaced by a fixed one
@@ -1328,12 +1367,16 @@ pdfTeX warning (dest): name{figure.7} has been referenced but does not exist, re
 
 pdfTeX warning (dest): name{figure.6} has been referenced but does not exist, replaced by a fixed one
 
+pdfTeX warning (dest): name{figure.15} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.16} has been referenced but does not exist, replaced by a fixed one
+
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on mixfishsim_ecolmod.pdf (31 pages, 1634712 bytes).
+Output written on mixfishsim_ecolmod.pdf (33 pages, 1674604 bytes).
 PDF statistics:
- 599 PDF objects out of 1000 (max. 8388607)
- 526 compressed objects within 6 object streams
- 138 named destinations out of 1000 (max. 500000)
+ 626 PDF objects out of 1000 (max. 8388607)
+ 551 compressed objects within 6 object streams
+ 156 named destinations out of 1000 (max. 500000)
  185 words of extra memory for PDF output out of 10000 (max. 10000000)
 
