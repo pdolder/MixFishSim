@@ -68,7 +68,7 @@
 \begin{abstract}
 
 \replaced[id = JJ]{Most fisheries}{Fishing} exploit\deleted[id=JJ]{s} a variety 
-of spatially and temporally heterogeneous fish populations, using
+of spatially and temporally heterogeneous fish populations using
 species-unselective gear that can result in unintended, unwanted catch of low
 quota or protected species. Reducing these unwanted catches is crucial for
 biological and economic sustainability of `mixed fisheries' and implementation
@@ -266,6 +266,7 @@ the authors github site (\url{www.github.com/pdolder/MixFishSim}).\\
 	fishery dynamics.}
 
 %% the tikz figure
+\clearpage
 \input{Process_model.tex}
 
 \subsection{Population dynamics}
@@ -597,16 +598,17 @@ surveys undertaken by fisheries research agencies.
 
 \subsection{Population parametrisation}
 
-We parametrised the simulation model for four populations with differing
-habitat preference\replaced{,}{ and} temperature tolerances (Figures
-\ref{S-fig:1}, \ref{S-fig:3}, \ref{S-fig:4}, \ref{S-fig:5}, \ref{S-fig:6},
-\ref{S-fig:7}), population demographics and recruitment functions. In addition,
-each of the populations has two defined spawning areas which result in the
-populations moving towards these areas in given weeks (Figure \ref{S-fig:2})
-and population-specific movement rates (Table \ref{tab:1}). The realised
-movement of the populations for a number of weeks is shown in Figure
-\ref{S-fig:9} while the realised daily fishing mortality are shown in Figure
-\ref{S-fig:10}. 
+We parametrised the simulation model for four populations with different
+population demographics; growth rates, natural mortality and recruitment
+functions (Table \ref{tab:1}). Habitat preference (Figure \ref{S-fig:1}) and
+temperature tolerances (Figures \ref{S-fig:3}, \ref{S-fig:4}) were unique to
+each population resulting in differently weekly distribution patterns (Figures
+\ref{S-fig:5}-\ref{S-fig:7}). In addition, each of the populations has two
+defined spawning areas which result in the populations moving towards these
+areas in pre-defined weeks (Figure \ref{S-fig:2}) with population-specific
+movement rates (Table \ref{tab:1}). The realised movement of the populations
+for a number of weeks is shown in Figure \ref{S-fig:9} while the realised daily
+fishing mortality are shown in Figure \ref{S-fig:10}. 
 
 \subsection{Fleet parametrisation}
 
@@ -620,29 +622,30 @@ stochasticity in the random walk process ensures that within a fleet different
 vessels have slightly different spatial distributions based on individual
 experience. The step function was parametrised dynamically within the
 simulations as the maximum revenue obtainable was not known beforehand. This
-was implemented so that vessels take smaller steps where the fishing location
-yields in a top quartile of the value experienced in each year (as defined per
-fleet in Table \ref{tab:2}). \\
+was implemented so that vessels take smaller steps when fishing at a location
+yields landings value which is in the top 90th percentile of the value
+experienced in that year (as defined per fleet in Table \ref{tab:2}). \\
 
-With an increasing probability throughout the simulation fishing locations were
-chosen based on experience built up in the same month from previous years and
-from past trip fishing success.  'Success' in this context was defined as the
-locations where the top 75 \% of expected profit would be found given previous
-trips revenue and cost of movement to the new fishing location. This
-probability was based on a logistic sigmoid function with a lower asymptote of
-0 and upper asymptote of 0.95, and a growth rate which ensures the upper
-asymptote (where decisions are mainly based on past knowledge) is reached
-$\sim$ halfway through the simulation).  \\
+With increasing probability throughout the simulation, fishing locations were
+chosen based on experience of profitable catches built up in the same month
+from previous years and from the previous trip. 'Profitable' in this context
+was defined as the locations where the top 70 \% of expected profit would be
+found given previous trips revenue and cost of movement to the new fishing
+location.  This probability was based on a logistic sigmoid function with a
+lower asymptote of 0 and upper asymptote of 0.95, and a growth rate which
+ensures the upper asymptote (where decisions are mainly based on past
+knowledge) is reached $\sim$ halfway through the simulation.  \\
 
 An example of the realised fleet movements for a single vessel during a single
 trip are given in Figure \ref{S-fig:11}, while Figure \ref{S-fig:12} shows
 multiple trips for a single vessel, \added[id=PD]{Figure} \ref{S-fig:13} the
-vessel movements for some trips overlaid on the value field,
-\added[id=PD]{Figure} \ref{S-fig:14} shows fishing locations for an entire
-fleet of 20 vessels for a single trip, \replaced[id=PD]{and Figure}{while}
-\ref{S-fig:15} shows an example of the step function realisation and turning
-angles from the correlated random walk.\todo{\added[id=JJ]{Move some of the
-	supplementary figures to the manuscript}}
+vessel movements for several trips overlaid on the value field (sum of the
+population densities $\times$ price), \added[id=PD]{Figure} \ref{S-fig:14} shows
+fishing locations for an entire fleet of 20 vessels for a single trip,
+\replaced[id=PD]{and Figure}{while} \ref{S-fig:15} shows an example of the step
+function realisation and turning angles from the correlated random
+walk.\todo{\added[id=JJ]{Move some of the supplementary figures to the
+		manuscript}}
 
 \subsection{Survey settings}
 
@@ -656,21 +659,20 @@ all populations ($Q_{p} = 1$).
 To illustrate the capabilities on \emph{MixFishSim}, we investigate the
 influence of the temporal and spatial resolution of different data sources on
 the reduction in catches of a population given spatial closures. To do so, we
-set up a simulation to run for 50 years based on a 100 X 100 square grid, with
-five fleets of 20 vessels each and four fish populations. Fishing takes place
-four times a day per vessel and five days a week, while population movement is
-every week.\todo{\added[id=JJ]{move to start of methods section}\added[id=PD]{I
-		think ecological modelling wants the 'calculations' section
-		here..will check}} \\
+set up a simulation to run for 50 years based on a 100 $\times$ 100 square
+grid, with five fleets of 20 vessels each and four fish populations. Fishing
+takes place four times a day per vessel and five days a week, while population
+movement is every week.\todo{\added[id=JJ]{move to start of methods
+		section}\added[id=PD]{I think ecological modelling wants the
+		'calculations' section here..will check}} \\
 
 We allow the simulation to run unrestricted for 30 years\todo{\added[id=JJ]{Is
-		there equilibrium after 5 years or still some trend in
-		B}\added[id=PD]{Not at equilibrium yet...I need to rerun until
-		steady state, looks 20 years. Will update}}, and subsequently
-close areas for the last 20 years of the simulation based on data (either
-derived from the commercial catches, fisheries-independent survey or the 'real
-population' - where the underlying populations assumed to be known perfectly)
-used at different spatial and temporal scales. \\
+		there equilibrium after 5 years or still some trend in B?
+	}\added[id=PD]{I have rerun to ensure some steady state dynamics}},
+then implement spatial closed areas for the last 20 years of the simulation
+based on data (either derived from the commercial catches,
+fisheries-independent survey or the 'real population') used at different
+spatial and temporal scales. \\
 
 The following steps are undertaken to determine closures:
 \todo{\added[id=JJ]{Procedure unclear. Refer to symbols in methods section or
@@ -678,11 +680,11 @@ The following steps are undertaken to determine closures:
 		etc..}\added[id=PD]{Yes, will redo}}
 \begin{enumerate}
 	\item Extract data source
-	\item Aggregate according to resolution
+	\item Aggregate according to desired spatial and temporal resolution
 	\item Interpolate across entire area at desired resolution
 	\item Close area covering top 5 \% of catch 
 \end{enumerate}
-In total 56 closure scenarios were run which represent combinations of
+In total 56 closure scenarios were run which represent combinations of:
 
 \begin{itemize}
 	\item \textbf{data types:} commercial logbook data, survey data and
@@ -702,40 +704,42 @@ resolved survey data available.
 
 The consequences of different spatial aggregations of the data are shown in
 Figure \ref{fig:1}, which represents the aggregation of catch from each of the
-data sources over a year at different spatial resolutions. \\
+data sources over a ten year period (to average seasonal patterns) at different
+spatial resolutions. \\
 
-The finer spatial grid for the the real population (top left) and commercial
-data (top middle) show similar patterns, though there are unsampled gaps in the
+The finer spatial grid for the real population (top left) and commercial data
+(top middle) show similar patterns, though there are unsampled gaps in the
 commercial data from a lack of fishing activity (particularly in the lower left
 part of the sampling domain). The survey data at this spatial resolution shows
-very sparse and uninformative information about the spatial distributions of
-the populations. The slightly aggregated data on a 5 x 5 grid shows similar
-patterns, and while losing some of the spatial detail there remains good
-consistency between the 'real population' and the commercial data. Survey data
-starts to pick out some of the similar patterns as the other data sources, but
-lacks coverage. The spatial catch information on a 10 x 10 and 20 x 20 grid
-loses a significant amount of information about the spatial resolutions for all
-data sources, and some differences between the commercial and 'real population'
-data emerge. \\
+very sparse information about the spatial distributions of the populations. The
+slightly aggregated data on a 5 x 5 grid shows similar patterns, and while
+losing some of the spatial detail there remains good consistency between the
+'real population' and the commercial data. Survey data starts to pick out some
+of the similar patterns as the other data sources, but lacks coverage. The
+spatial catch information on a 10 x 10 and 20 x 20 grid loses a significant
+amount of information about the spatial resolutions for all data sources, and
+some differences between the survey, commercial and 'real population' data
+emerge. \\
 
 Figure \ref{fig:2} shows the consequences of different temporal aggregations of
-the data, with 156 weekly (top), 36 monthly (middle) and 3 yearly (bottom)
-catch compositions across a 20 x 20 area. \\
+the data over a three year period, with 156 weekly (top), 36 monthly (middle)
+and 3 yearly (bottom) catch compositions from across an aggregated 20 x 20
+area. \\
 
-As can be seen from the 'real population', the monthly aggregation captures the
-major patterns seen in the weekly data, albeit missing more subtle differences.
-The yearly data results in a constant catch pattern due to the aggregation
-process (sometimes known as an aggregation bias). The commercial data on a
-weekly basis shows some of the same patterns as the 'real population', though
-the first species (in red) is less well represented and some weeks are missing
-catches from the area. The monthly data. The monthly data shows some
-consistency between the 'real population' and commercial data for species 2 -
-4, though species 1 remains underrepresented. On an annual basis, interestingly
-the commercial data underrepresents the first species (in red) while the survey
-overrepresents species 1. This is likely due to the biases in commercial
-sampling, with the fisheries not targeting the areas where species 1 are
-present, and the biases in the survey sampling from overrepresentation of the
-spatial distribution. \\
+As can be seen by comparison to the 'real population', the monthly aggregation
+captures the major patterns seen in the weekly data, albeit missing more subtle
+differences. The yearly data results in a constant catch pattern due to the
+aggregation process (sometimes known as an aggregation bias). The commercial
+data on a weekly basis shows some of the same patterns as the 'real
+population', though the first species (in red) is less well represented and
+some weeks are missing catches from the area. The monthly data. The monthly
+data shows some consistency between the 'real population' and commercial data
+for species 2 - 4, though species 1 remains under-represented. On an annual
+basis, interestingly the commercial data under represents the first species (in
+red) while the survey over represents species 1. This is likely due to the
+biases in commercial sampling, with the fisheries not targeting the areas where
+species 1 are present, and the biases in the survey sampling from over
+representation of the spatial distribution. \\
 
 We implemented a spatial closure using the different data sources and spatial
 and temporal aggregations as outlined in the protocol in Section 3.4. We used
@@ -744,9 +748,8 @@ species 1, given availability of data and its use at different resolutions in
 order to evaluate the trade-offs in data sources. Figure \ref{fig:3} shows the
 trend in fishing mortality for each species simulated (columns) given the data
 sources (rows), temporal aggregations (colour lines) and spatial aggregations
-(linestyles), while Figure \ref{fig:4} shows the change in fishing mortality
-from before the closure (average F years 2 - 4) to after the closure (average F
-years 8 - 10). \\
+(line-styles), while Figure \ref{fig:4} shows the change in fishing mortality
+from before the closure (year 29) to after the closure (year 50). \\
 
 For the closures based on 'real population' (bottom row), the most
 disaggregated data (a weekly timescale and 1 x 1 resolution) was most
@@ -754,10 +757,10 @@ effective, reducing fishing mortality on species 1 (left) by $\sim$ 60 \%. Next
 was the monthly closures ($<$ $\sim$ 30 \%).  The least effective were the
 yearly closures (blue lines) at all spatial resolutions, which resulted in
 increased fishing mortalities ($>$ 30 \% - \textcolor{blue}{N.B. Note though,
-this is consistent with the increasing trends in F, which is probably more
-related to the fact that Fs hadn't stabilised in the simulation from the
-fishing vessels "learning" the best locations - I will rerun the sims for a
-longer time (20 - 30 years)}. \\
+	this is consistent with the increasing trends in F, which is probably
+	more related to the fact that Fs hadn't stabilised in the simulation
+	from the fishing vessels "learning" the best locations - I will rerun
+	the sims for a longer time (20 - 30 years)}. \\
 
 For the survey data, which can only be implemented on a yearly timescale, the
 closures had no effect at any data resolution. The results are identical for
@@ -792,205 +795,6 @@ difference in fishing mortalities across scenarios.
 
 \section{Conclusions}
 
-\section*{Appendices}
-
-\begin{table}[!ht]
-	\centering
-	\caption{Description of variables for population dynamics sub-module}
-	\label{tab: pop_variable}
-	\begin{tabular}{p{1.5cm} p{8cm} p{1.5cm}}
-		\toprule
-		Variable & Meaning & Units \\
-		\hline
-		\multicolumn{3}{c}{\textbf{Population dynamics}}  \\
-		\hhline{===}
-		\multicolumn{3}{l}{\textit{Delay-difference model}} \\
-		\hline
-		$B_{c,d}$ & Biomass in cell $c$ and day $d$ & kg \\
-		$Z_{c,d}$ & Total mortality in cell $c$ for day $d$ & - \\
-		$R_{c, \tilde{y}}$  &Annualy recruited fish in cell &  yr\textsuperscript{-1} \\
-		$\rho$ & Brody's growth coefficient & yr\textsuperscript{-1} \\
-		$Wt_{R}$ & Weight of a fully recruited fish & kg \\
-		$Wt_{R-1}$ & Weight of a pre-recruit fish & kg \\
-		$\alpha_{d}$ & Proportion of annually recruited fish recruited
-		during day $d$ & - \\
-		\hline
-		\multicolumn{3}{l}{\textit{Baranov catch equation}} \\
-		\hline
-		$C_{c,d}$ & Catch from cell $c$ for day $d$ & kg \\
-		$F_{c,d}$ & Instantaneous rate of fishing mortality in cell $c$
-		on day $d$ & - \\
-		$M_{c,d}$ & Instantaneous rate of natural mortality in cell $c$
-		on day $d$ & - \\
-		$B_{c,d}$ & Biomass in cell $c$ on day $d$ & kg \\
-		\hline
-		\multicolumn{3}{c}{\textbf{Recruitment dynamics}} \\
-		\hhline{===}
-		$\tilde{R}_{c,d}$ & is the recruitment in cell $c$ for day $d$ & $d^{-1}$ \\
-		$B_{c,d}$ & is the Biomass in cell $c$ for day $d$ & $d^{-1}$ \\
-		$\alpha$ & the maximum recruitment rate & kg  \\
-		$\beta$ & the biomass required to produce half the maximum rate
-		of recruitment & kg \\
-		\bottomrule
-		\end{tabular}
-	\end{table}
-
-\begin{table}[!ht]
-	\centering
-	\caption{Description of variables for population movement sub-module}
-	\begin{tabular}{p{1.5cm} p{8cm} p{1.5cm}}
-		\toprule
-		Variable & Meaning & Units \\
-		\hline
-		\multicolumn{3}{c}{\textbf{Population movement dynamics}} \\
-		\hhline{===}
-		\multicolumn{3}{l}{\textit{Habitat model}} \\
-		\hline
-		a & b & c \\
-		\hline
-		\multicolumn{3}{l}{\textit{Thermal tolerance}} \\
-		\hline
-		$T_{c,wk}$ & Temperature for cell in week & $^\circ$C \\
-		$\mu_{p}$ & Mean of the thermal tolerance for population & $^\circ$C \\
-		$\sigma^{2}_{p}$ & Standard deviation of thermal tolerance for
-		the population & $^\circ$C \\
-		\hline
-		\multicolumn{3}{l}{\textit{Population movement model}} \\
-		\hline
-		$\lambda$ & decay rate for population movement & - \\
-		$Hab^{2}_{c,p}$ & Square of habitat suitability for cell $c$ and
-		population $p$ & - \\
-		$Tol_{c,p,wk}$ & Thermal tolerance for population $p$ in cell
-		$c$ at week $wk$ & - \\
-		$d_{IJ}$ & euclidean distance between cell $I$ and cell $J$ & - \\
-		\bottomrule
-		\end{tabular}
-	\end{table}
-
-\begin{table}[!ht]
-	\centering
-	\caption{Description of variables for fleet dynamics sub-module}
-	\begin{tabular}{p{1.5cm} p{8cm} p{1.5cm}}
-		\toprule
-		Variable & Meaning & Units \\
-		\hline
-		\multicolumn{3}{c}{\textbf{Short-term fleet dynamics}} \\
-		\hhline{===}
-		$Rev$ & Revenue from fishing tow & \euro \\
-		$L_{p}$ & Landings of population $p$ & kg \\
-		$Pr_{p}$ & Average price of population $p$ & \euro
-		\hspace{0.1cm} kg$^{-1}$ \\
-		StepL & Step length for vessel & euclidean distance \\
-		Br & Bearing & degrees \\
-		$k$ & Concentration parameter for Von mises distribution & - \\
-		$\beta_{1}$ & shape parameter for step function & - \\
-		$\beta_{2}$ & shape parameter for step function & - \\
-		$\beta_{3}$ & shape parameter for step function & - \\
-		\bottomrule
-	\end{tabular}
-\end{table}
-
-
-\begin{table}[!ht]
-\caption{Population dynamics and movement parameter setting}
-	\begin{tabular}{ p{4cm } p{2cm} p{2cm} p{2cm} p{2cm}}
-	Parameter & Pop 1 & Pop 2 & Pop 3 & Pop 4 \\
-	\hline
-	Habitat quality & & & \\
-	\hline
-	Matérn $\nu$ & 1/0.015 & 1/0.05 & 1/0.01 & 1/0.005  \\
-	Matérn $\kappa$ & 1 & 2 & 1 & 1  \\
-	Anisotropy & 1.5,3,-3,4 & 1,2,-1,2 & 2.5,1,-1,2 & 0.1,2,-1,0.2 \\
-	Spawning areas (bound box) & 40,50,40,50; 80,90,60,70 &
-	50,60,30,40; 80,90,90,90 & 30,34,10,20; 60,70,20,30 & 50,55,80,85; 30,40,30,40 \\
-	Spawning multiplier & 10 & 10 & 10 & 10 \\
-	Movement $\lambda$ & 0.1 & 0.1 & 0.1 & 0.1 \\
-	\hline
-	Population dynamics & & & & \\
-	\hline
-	Starting Biomass & 1e5 & 2e5 & 1e5 & 1e4 \\
-	Beverton-Holt Recruit 'a' & 6 & 27 & 18 & 0.3  \\
-	Beverton-Holt Recruit 'b' & 4 & 4 & 11 & 0.5 \\
-	Beverton-Holt Recruit $\sigma^2$ & 0.7 & 0.6 & 0.7 & 0.6 \\
-	Recruit week & 13-16 & 12-16 & 14-16 & 16-20 \\
-	Spawn week & 16-18 & 16-19 & 16-18 & 18-20 \\
-	$K$ & 0.3 & 0.3 & 0.3 & 0.3 \\
-	$wt$ & 1 & 1 & 1 & 1 \\
-	$wt_{d-1}$ & 0.1 & 0.1 & 0.1 & 0.1 \\
-	M (annual) & 0.2 & 0.1 & 0.2 & 0.1 \\
-	\hline
-	Movement dynamics & & & & \\
-	\hline
-	$\mu$ & 12 & 15 & 17 & 14 \\
-	$\sigma^2$ & 8 & 9 & 7 & 10 \\
-	\hline
-\end{tabular}
-\label{tab:1}
-\end{table}
-
-\begin{table}[!ht]
-\caption{Fleet dynamics parameter setting}
-\begin{tabular}{ p{4cm } p{1cm} p{1cm} p{1cm} p{1cm} p{1cm}}
-	\hline
-	Parameter & Fleet 1 & Fleet 2 & Fleet 3 & Fleet 4 & Fleet 5 \\
-	\hline
-	Targeting preferences &&&& \\
-	\hline
-	Price Pop1 & 100 & 100 & 100 & 100 & 100 \\
-	Price Pop2 & 200 & 200 & 200 & 200 & 200 \\
-	Price Pop3 & 350 & 350 & 350 & 350 & 350 \\
-	Price Pop4 & 600 & 600 & 600 & 600 & 600 \\
-	$Q$ Pop1 & 0.01 & 0.02 & 0.02 & 0.01 & 0.01 \\
-	$Q$ Pop2 & 0.02 & 0.01 & 0.02 & 0.01 & 0.03\\
-	$Q$ Pop3 & 0.01 & 0.02 & 0.02 & 0.01 & 0.02 \\
-	$Q$ Pop4 & 0.02 & 0.01 & 0.02 & 0.05 & 0.01 \\
-	\hline
-	Exploitation dynamics &&&& \\
-	\hline
-	step function $\beta_1$ & 1 & 2 & 1 & 2 & 3 \\
-	step function $\beta_2$ & 10 & 15 & 8 & 12 & 7 \\
-	step function $\beta_3$ & Q90 & Q90 & Q85 & Q90 & Q80 \\
-	step function $rate$ & 20 & 30 & 25 & 35 & 20 \\
-	Past Knowledge & T & T & T & T & T \\
-	Past Year \& Month & T & T & T & T & T \\
-	Past Trip & T & T & T & T & T \\
-	Threshold & 0.7 & 0.7 & 0.7 & 0.7 & 0.7 \\
-	Fuel Cost & 3 & 2 & 5 & 2 & 1 \\
-	\hline
-\end{tabular}
-\label{tab:2}
-\end{table}
-
-\newpage
-\input{F_changes.tex}
-
-
-%%%% figures
-\begin{figure}[!ht]
-	\includegraphics[width =\linewidth]{../analysis/Data_Aggregation_space}
-	\caption{Data aggregation at different spatial resolutions}
-	\label{fig:1}
-\end{figure}	
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../analysis/Data_Aggregation_time}
-	\caption{Data aggregation at different temporal resolutions}
-	\label{fig:2}
-\end{figure}	
-
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../analysis/F_trendsREV}
-	\caption{Comparison of closure scenarios - F trends}
-	\label{fig:3}
-\end{figure}	
-
-\begin{figure}[!ht]
-	\includegraphics[width =\linewidth]{../analysis/Overview_plot_highPopRev}
-	\caption{Comparison of closure scenarios}
-	\label{fig:4}
-\end{figure}	
-
 \section*{Abbreviations} Detail any unusual ones used.
 
 \section*{Acknowledgements} those providing help during the research..
@@ -998,6 +802,52 @@ difference in fishing mortalities across scenarios.
 \section*{Funding} This work was supported by the MARES doctoral training
 program; and the Centre for Environment, Fisheries and Aquaculture Science
 seedcorn program.
+
+\section*{Appendices}
+
+\input{parameter_tables.tex}
+
+\clearpage
+\footnotesize
+\input{F_changes.tex}
+
+\clearpage
+\footnotesize
+\input{F_changes_ratio.tex}
+
+
+%%%% figures
+\begin{figure}[!ht]
+	\includegraphics[width =\linewidth]{../analysis/Data_Aggregation_space}
+	\caption{Data aggregation at different spatial resolutions over a
+		ten year period}
+	\label{fig:1}
+\end{figure}	
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{../analysis/Data_Aggregation_time}
+	\caption{Data aggregation at different temporal resolutions over a
+		three year period}
+	\label{fig:2}
+\end{figure}	
+
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{../analysis/F_trendsREV}
+	\caption{Comparison of closure scenarios - Fishing mortality trends.
+		Only the scenarios based on high catch rates of population 3
+		are shown.}
+	\label{fig:3}
+\end{figure}
+
+\begin{figure}[!ht]
+	\includegraphics[width =\linewidth]{../analysis/Overview_plot_highPopRev}
+	\caption{Comparison of closure scenarios. Points indicate the
+		difference between the fishing mortality pre-closure (year 29)
+		and post-closure (year 50) for population 3. Only the scenarios
+		based on high catch rates of population 3 are shown.}
+	\label{fig:4}
+\end{figure}	
 
 \clearpage
 

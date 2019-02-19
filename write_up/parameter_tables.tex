@@ -1,0 +1,168 @@
+
+\begin{table}[!ht]
+	\centering
+	\caption{Description of variables for population dynamics sub-module}
+	\label{tab: pop_variable}
+	\begin{tabular}{p{1.5cm} p{8cm} p{1.5cm}}
+		\toprule
+		Variable & Meaning & Units \\
+		\hline
+		\multicolumn{3}{c}{\textbf{Population dynamics}}  \\
+		\hhline{===}
+		\multicolumn{3}{l}{\textit{Delay-difference model}} \\
+		\hline
+		$B_{c,d}$ & Biomass in cell $c$ and day $d$ & kg \\
+		$Z_{c,d}$ & Total mortality in cell $c$ for day $d$ & - \\
+		$R_{c, \tilde{y}}$  &Annualy recruited fish in cell &  yr\textsuperscript{-1} \\
+		$\rho$ & Brody's growth coefficient & yr\textsuperscript{-1} \\
+		$Wt_{R}$ & Weight of a fully recruited fish & kg \\
+		$Wt_{R-1}$ & Weight of a pre-recruit fish & kg \\
+		$\alpha_{d}$ & Proportion of annually recruited fish recruited
+		during day $d$ & - \\
+		\hline
+		\multicolumn{3}{l}{\textit{Baranov catch equation}} \\
+		\hline
+		$C_{c,d}$ & Catch from cell $c$ for day $d$ & kg \\
+		$F_{c,d}$ & Instantaneous rate of fishing mortality in cell $c$
+		on day $d$ & - \\
+		$M_{c,d}$ & Instantaneous rate of natural mortality in cell $c$
+		on day $d$ & - \\
+		$B_{c,d}$ & Biomass in cell $c$ on day $d$ & kg \\
+		\hline
+		\multicolumn{3}{c}{\textbf{Recruitment dynamics}} \\
+		\hhline{===}
+		$\tilde{R}_{c,d}$ & is the recruitment in cell $c$ for day $d$ & $d^{-1}$ \\
+		$B_{c,d}$ & is the Biomass in cell $c$ for day $d$ & $d^{-1}$ \\
+		$\alpha$ & the maximum recruitment rate & kg  \\
+		$\beta$ & the biomass required to produce half the maximum rate
+		of recruitment & kg \\
+		\bottomrule
+		\end{tabular}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\caption{Description of variables for population movement sub-module}
+	\begin{tabular}{p{1.5cm} p{8cm} p{1.5cm}}
+		\toprule
+		Variable & Meaning & Units \\
+		\hline
+		\multicolumn{3}{c}{\textbf{Population movement dynamics}} \\
+		\hhline{===}
+		\multicolumn{3}{l}{\textit{Habitat model}} \\
+		\hline
+		a & b & c \\
+		\hline
+		\multicolumn{3}{l}{\textit{Thermal tolerance}} \\
+		\hline
+		$T_{c,wk}$ & Temperature for cell in week & $^\circ$C \\
+		$\mu_{p}$ & Mean of the thermal tolerance for population & $^\circ$C \\
+		$\sigma^{2}_{p}$ & Standard deviation of thermal tolerance for
+		the population & $^\circ$C \\
+		\hline
+		\multicolumn{3}{l}{\textit{Population movement model}} \\
+		\hline
+		$\lambda$ & decay rate for population movement & - \\
+		$Hab^{2}_{c,p}$ & Square of habitat suitability for cell $c$ and
+		population $p$ & - \\
+		$Tol_{c,p,wk}$ & Thermal tolerance for population $p$ in cell
+		$c$ at week $wk$ & - \\
+		$d_{IJ}$ & euclidean distance between cell $I$ and cell $J$ & - \\
+		\bottomrule
+		\end{tabular}
+	\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\caption{Description of variables for fleet dynamics sub-module}
+	\begin{tabular}{p{1.5cm} p{8cm} p{1.5cm}}
+		\toprule
+		Variable & Meaning & Units \\
+		\hline
+		\multicolumn{3}{c}{\textbf{Short-term fleet dynamics}} \\
+		\hhline{===}
+		$Rev$ & Revenue from fishing tow & \euro \\
+		$L_{p}$ & Landings of population $p$ & kg \\
+		$Pr_{p}$ & Average price of population $p$ & \euro
+		\hspace{0.1cm} kg$^{-1}$ \\
+		StepL & Step length for vessel & euclidean distance \\
+		Br & Bearing & degrees \\
+		$k$ & Concentration parameter for Von mises distribution & - \\
+		$\beta_{1}$ & shape parameter for step function & - \\
+		$\beta_{2}$ & shape parameter for step function & - \\
+		$\beta_{3}$ & shape parameter for step function & - \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+\begin{table}[!ht]
+\caption{Population dynamics and movement parameter setting}
+	\begin{tabular}{ p{4cm } p{2cm} p{2cm} p{2cm} p{2cm}}
+	Parameter & Pop 1 & Pop 2 & Pop 3 & Pop 4 \\
+	\hline
+	Habitat quality & & & \\
+	\hline
+	Matérn $\nu$ & 1/0.015 & 1/0.05 & 1/0.01 & 1/0.005  \\
+	Matérn $\kappa$ & 1 & 2 & 1 & 1  \\
+	Anisotropy & 1.5,3,-3,4 & 1,2,-1,2 & 2.5,1,-1,2 & 0.1,2,-1,0.2 \\
+	Spawning areas (bound box) & 40,50,40,50; 80,90,60,70 &
+	50,60,30,40; 80,90,90,90 & 30,34,10,20; 60,70,20,30 & 50,55,80,85; 30,40,30,40 \\
+	Spawning multiplier & 10 & 10 & 10 & 10 \\
+	Movement $\lambda$ & 0.1 & 0.1 & 0.1 & 0.1 \\
+	\hline
+	Population dynamics & & & & \\
+	\hline
+	Starting Biomass & 1e5 & 2e5 & 1e5 & 1e4 \\
+	Beverton-Holt Recruit 'a' & 6 & 27 & 18 & 0.3  \\
+	Beverton-Holt Recruit 'b' & 4 & 4 & 11 & 0.5 \\
+	Beverton-Holt Recruit $\sigma^2$ & 0.7 & 0.6 & 0.7 & 0.6 \\
+	Recruit week & 13-16 & 12-16 & 14-16 & 16-20 \\
+	Spawn week & 16-18 & 16-19 & 16-18 & 18-20 \\
+	$K$ & 0.3 & 0.3 & 0.3 & 0.3 \\
+	$wt$ & 1 & 1 & 1 & 1 \\
+	$wt_{d-1}$ & 0.1 & 0.1 & 0.1 & 0.1 \\
+	M (annual) & 0.2 & 0.1 & 0.2 & 0.1 \\
+	\hline
+	Movement dynamics & & & & \\
+	\hline
+	$\mu$ & 12 & 15 & 17 & 14 \\
+	$\sigma^2$ & 8 & 9 & 7 & 10 \\
+	\hline
+\end{tabular}
+\label{tab:1}
+\end{table}
+
+\begin{table}[!ht]
+\caption{Fleet dynamics parameter setting}
+\begin{tabular}{ p{4cm } p{1cm} p{1cm} p{1cm} p{1cm} p{1cm}}
+	\hline
+	Parameter & Fleet 1 & Fleet 2 & Fleet 3 & Fleet 4 & Fleet 5 \\
+	\hline
+	Targeting preferences &&&& \\
+	\hline
+	Price Pop1 & 100 & 100 & 100 & 100 & 100 \\
+	Price Pop2 & 200 & 200 & 200 & 200 & 200 \\
+	Price Pop3 & 350 & 350 & 350 & 350 & 350 \\
+	Price Pop4 & 600 & 600 & 600 & 600 & 600 \\
+	$Q$ Pop1 & 0.01 & 0.02 & 0.02 & 0.01 & 0.01 \\
+	$Q$ Pop2 & 0.02 & 0.01 & 0.02 & 0.01 & 0.03\\
+	$Q$ Pop3 & 0.01 & 0.02 & 0.02 & 0.01 & 0.02 \\
+	$Q$ Pop4 & 0.02 & 0.01 & 0.02 & 0.05 & 0.01 \\
+	\hline
+	Exploitation dynamics &&&& \\
+	\hline
+	step function $\beta_1$ & 1 & 2 & 1 & 2 & 3 \\
+	step function $\beta_2$ & 10 & 15 & 8 & 12 & 7 \\
+	step function $\beta_3$ & Q90 & Q90 & Q85 & Q90 & Q80 \\
+	step function $rate$ & 20 & 30 & 25 & 35 & 20 \\
+	Past Knowledge & T & T & T & T & T \\
+	Past Year \& Month & T & T & T & T & T \\
+	Past Trip & T & T & T & T & T \\
+	Threshold & 0.7 & 0.7 & 0.7 & 0.7 & 0.7 \\
+	Fuel Cost & 3 & 2 & 5 & 2 & 1 \\
+	\hline
+\end{tabular}
+\label{tab:2}
+\end{table}
+
