@@ -1,10 +1,10 @@
 
 library(MixFishSim)
 
-#Run <- 0
+Run <- 0
 
-#load(file.path('.', 'Scenario_runs_Nov18', paste0('Scenario_',Run,'.RData')))
-load(file.path('.', 'Scenario_runs_Nov18', paste0('Comparison_Run.RData')))
+load(file.path('.', 'Scenario_runs_Nov18', paste0('Scenario_',Run,'.RData')))
+#load(file.path('.', 'Scenario_runs_Nov18', paste0('Comparison_Run.RData')))
 
 
 
@@ -21,7 +21,7 @@ plot_catch_comp(gran = c(1), logs = logs, fleets = 1:5,
 
 ## Simple plot of distribution changes over time
 
-png(file = file.path("..", "tests","plots", "pop_dist.png"), width = 1600, height = 1600)
+png(file = file.path("..", "write_up","Plots", "pop_dist.png"), width = 1600, height = 1600)
 par(mfrow=c(4,4), mar = c(1,1,1,1))
 
 for(j in round(seq.int(1,52,length.out = 4),0)) {
