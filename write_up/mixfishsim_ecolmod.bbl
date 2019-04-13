@@ -1,4 +1,4 @@
-\begin{thebibliography}{45}
+\begin{thebibliography}{46}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -270,6 +270,14 @@
 \newblock \bibinfo{title}{{Real-time spatial management approaches to reduce
   bycatch and discards: experiences from Europe and the United States}}.
 \newblock \bibinfo{journal}{Fish and Fisheries} , \bibinfo{pages}{n/a--n/a}.
+%Type = Misc
+\bibitem[{Mart{\'{i}}nez-Minaya et~al.(2018)Mart{\'{i}}nez-Minaya, Cameletti,
+  Conesa and Pennino}]{Martinez-Minaya2018}
+\bibinfo{author}{Mart{\'{i}}nez-Minaya, J.}, \bibinfo{author}{Cameletti, M.},
+  \bibinfo{author}{Conesa, D.}, \bibinfo{author}{Pennino, M.G.},
+  \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{{Species distribution modeling: a statistical review
+  with focus in spatio-temporal issues}}.
 %Type = Article
 \bibitem[{Mateo et~al.(2016)Mateo, Pawlowski and Robert}]{Mateo2016}
 \bibinfo{author}{Mateo, M.}, \bibinfo{author}{Pawlowski, L.},

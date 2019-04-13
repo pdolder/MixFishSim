@@ -127,11 +127,11 @@ Some\sep keywords \sep here. Max 6
 
 Fishers exploit a variety of fish populations that are heterogeneously
 distributed in space and time with varying knowledge of species distributions
-using species-unselective fishing gear. \added[id=PD]{In doing so} fisheries
+using species non-selective fishing gear. \added[id=PD]{In doing so} fisheries
 \deleted[id=PD]{that}catch an assemblage of species
 \added[id=PD]{and}\deleted{, known as mixed fisheries} \replaced[id=JJ]{may}{,
 	when managed by single-species quotas can end up}
-discard\deleted[id=JJ]{ing} overquota catch \added[id=JJ]{when managed by
+discard\deleted[id=JJ]{ing} over-quota catch \added[id=JJ]{when managed by
 	single species quotas and fishers exhaust or more quota, may} lead to
 overexploitation of fish populations \added[id=JJ]{\citep{Ulrich2011a,
 		Batsleer2015}}.  \added[id=JJ]{This discarding of fish in
@@ -282,7 +282,7 @@ recruited \added[id=PD]{fish} \deleted[id=PD]{to the fishery} are modelled
 separately as a function of previous recruited biomass, intrinsic population
 growth and recruitment. Biomass for each cell is incremented each day as
 follows (the full parameter list is detailed in Table \ref{tab: pop_variable}):
-\begin{equation*}
+\begin{equation}
 	\begin{split}
 	B_{c,d+1} = &\\
 	& (1 + \rho) B_{c,d} \cdot e^{-Z_{c,d}} - \rho \cdot e^{-Z_{c,d}} \hspace{2.9cm}
@@ -292,7 +292,7 @@ follows (the full parameter list is detailed in Table \ref{tab: pop_variable}):
 	\hspace{0.4cm} + \\
 	& Wt_{R} \cdot \alpha_{d} \cdot R_{\tilde{y}(c,y,d)} 
 	\end{split}
-\end{equation*}
+\end{equation}
 where $\rho$ is Brody's coefficient, shown to be approximately equal to
 $e^{-K}$ when $K$ is the growth rate from a von Bertalanffy logistic growth
 model \citep{Schnute1985}. $Wt_{R-1}$ is the weight of fish prior to
@@ -304,10 +304,10 @@ Mortality $Z_{c,d}$ can be decomposed to natural mortality, $M_{c,d}$, and
 fishing mortality, $F_{c,d}$, where both $M_{c,d}$ and $F_{c,d}$ are
 instantaneous rates with $M_{c,d}$ fixed and $F_{c,d}$ calculated by solving
 the Baranov catch equation \citep{Hilborn1992b} for $F_{c,d}$:
-\begin{equation*}
+\begin{equation}
 C_{c,d} = \frac{F_{c,d}}{F_{c,d} + M_{c,d}} * (1 - e^{-(F_{c,d} + M_{c,d})}) *
 B_{c,d}
-\end{equation*}
+\end{equation}
 where $C_{c,d}$ is the summed catch from the fishing model across all fleets
 and vessels in cell $c$ for the population during the day $d$, and $B_{c,d}$
 the daily biomass for the population in the cell. Here, catch and fishing
@@ -327,22 +327,22 @@ Recruitment is modelled through a function relating the mature biomass to
 recruits at time of recruitment. In \emph{MixFishSim}, it can be modelled
 either either as a stochastic Beverton-Holt stock-recruit form
 \citep{Beverton1957}: 
-\begin{equation*}
+\begin{equation}
 	\begin{split}
 	\bar{R}_{c,d} = & \frac{(\alpha * B_{c,d})}{(\beta + B_{c,d})} \\
 	     R_{c,d} \sim & \log N[(\log(\bar{R}_{c,d}),\log(\sigma^2))]
 	\end{split}
-\end{equation*}
+\end{equation}
 Where $\alpha$ is the maximum recruitment rate, $\beta$ the spawning stock
 biomass (SSB) required to produce half the maximum, $B$ current SSB and
 $\sigma^2$ the variability in the recruitment due to stochastic
 processes, or a stochastic Ricker form \citep{Ricker1954}:
-\begin{equation*}
+\begin{equation}
 	\begin{split}
 	\bar{R}_{c,d} = & B_{c,d} * e^{(\alpha - \beta * B_{c,d})} \\	
    	     R_{c,d} \sim & \log N[(\log(\bar{R}_{c,d}),\log(\sigma^2))]
 	\end{split}
-\end{equation*}
+\end{equation}
 where $\alpha$ is the maximum productivity per spawner and $\beta$ the density
 dependent reduction in productivity as the SSB increases. In this study, the
 Beverton-Holt form of stock recruit relationship was used for all populations.
@@ -547,23 +547,23 @@ local fishing grounds. When unsuccessful, they move some distance away from
 the current fishing location.  The movement distance retains some degree of
 stochasticity, which can be controlled separately, but is determined by the
 relationship: 
-\begin{equation*}
+\begin{equation}
 	StepL = e^{log(\beta_{1}) + log(\beta_{2}) -
 		(log(\frac{\beta_{1}}{\beta_{3}}))} * Rev
-\end{equation*}\todo{\added[id=JJ]{So
+\end{equation}\todo{\added[id=JJ]{So
 			step length increases with increasingly gross
 			revenue?}\added[id=PD]{No, the opposite}}
 Where $\beta_{1}$, $\beta_{2}$ and $\beta_{3}$ are parameters determining the
 shape of the step function in its relation to revenue, so that, a step from
 (x1,y1) to (x2, y2) is defined by:
-\begin{equation*}
+\begin{equation}
 	\begin{split}
  (x2, y2) =  & x1 + StepL \cdot \cos (\frac{\pi \cdot Br}{180}), \\
              & y1 + StepL \cdot \sin (\frac{\pi \cdot Br}{180}) \\	
  with  \hspace{0.5cm}     & Br_{t-1} < 180, Br_{t} = 180 + \sim vm[(0,360), k] \\
  			  & Br_{t-1} > 180, Br_{t} = 180 - \sim vm[(0,360), k] \\
 	\end{split}
-\end{equation*}
+\end{equation}
 where $k$ the concentration parameter from the von \replaced[id=JJ]{M}{m}ises
 distribution which we correlate with the revenue so that $k = (Rev + 1 /
 RefRev) * max_{k}$, where $max_{k}$ is the maximum concentration value, $k$,
@@ -708,18 +708,18 @@ data sources over a ten year period (to average seasonal patterns) at different
 spatial resolutions. \\
 
 The finer spatial grid for the real population (top left) and commercial data
-(top middle) show similar patterns, though there are unsampled gaps in the
-commercial data from a lack of fishing activity (particularly in the lower left
-part of the sampling domain). The survey data at this spatial resolution shows
-very sparse information about the spatial distributions of the populations. The
-slightly aggregated data on a 5 x 5 grid shows similar patterns, and while
-losing some of the spatial detail there remains good consistency between the
-'real population' and the commercial data. Survey data starts to pick out some
-of the similar patterns as the other data sources, but lacks coverage. The
-spatial catch information on a 10 x 10 and 20 x 20 grid loses a significant
-amount of information about the spatial resolutions for all data sources, and
-some differences between the survey, commercial and 'real population' data
-emerge. \\
+(top middle) show visually similar patterns, though there are large unsampled
+areas in the commercial data from a lack of fishing activity (particularly in
+the lower left part of the sampling domain). The survey data at this spatial
+resolution shows very sparse information about the spatial distributions of the
+populations. The slightly aggregated data on a 5 x 5 grid shows similar
+patterns and, while losing some of the spatial detail, there remains good
+consistency between the 'real population' and the commercial data. Survey data
+starts to pick out some of the similar patterns as the other data sources, but
+lacks coverage. The spatial catch information on a 10 x 10 and 20 x 20 grid
+loses a significant amount of information about the spatial resolutions for all
+data sources, and some differences between the survey, commercial and 'real
+population' data emerge. \\
 
 Figure \ref{fig:2} shows the consequences of different temporal aggregations of
 the data over a three year period, with 156 weekly (top), 36 monthly (middle)
@@ -776,12 +776,12 @@ in F for species 1. \textcolor{blue}{This was the only closure scenario to have
 Interestingly the monthly data scenario was more effective than weekly data,
 which I'd posit is due to the increase amount of data available from the
 commercial sampling across a month compared to a week.i Commercial data used at
-an annual timestep was ineffective in bringing fishing mortality down for
+an annual time-step was ineffective in bringing fishing mortality down for
 species 1. \\
 
 Given the scenarios above, it seems clear that spatial disaggregation is more
 important than the temporal disaggregation of the commercial data, except when
-its used at an annual timeframe, which is the scenario that gave the worst
+its used at an annual time-frame, which is the scenario that gave the worst
 results.
 
 For the other species in the simulation (population 2 - 4) there was little
@@ -793,20 +793,42 @@ difference in fishing mortalities across scenarios.
 
 \section{Discussion}
 
-\underline{The why:} \\
+Our study evaluates the importance of data scaling and considers potential
+biases introduced through data aggregation when using commercial fisheries
+logbooks and Vessel Monitoring Systems for inference on spatio-temporal
+dynamics in fisheries. Understanding how fishers exploit multiple
+heterogeneously distributed fish populations with different catch limits or
+conservation status requires detailed understanding of the overlap of
+resources; this is difficult to achieve using conventional modelling approaches
+due to the patchy and irregular nature of fisheries resulting in preferential
+sampling \cite{Martinez-Minaya2018}. Often data is aggregated or extrapolated
+which requires assumptions about the spatial and temporal scale of processes.
+Our study explores the assumptions behind such aggregation and preferential
+sampling to identify potential impacts on management advice. With modern
+management approaches increasingly employing more nuanced spatio-temporal
+approaches in order to maximise productivity while taking account of both the
+biological and human processes operating on different time-frames
+\cite{Dunn2016}, understanding assumptions behind the data used is vital to
+ensure measures are effective. \\
 
-Dynamic management requires understanding of the interaction between fishers
-and heterogeneously distributed resources. \\
+We employ a simulation approach to model each of the population and fishery
+processes in a hypothetical 'mixed fishery', allowing us to i) evaluate the
+consequences of different aggregation assumptions on our understanding of the
+spatio-temporal distribution of the underlying fish populations, and ii)
+evaluate the effectiveness of a spatial closure given those assumptions. Our
+approach captures fine scale population and fishery dynamics not usually
+considered (although see \cite{Bastardie2010, Bailey2018}) which offers the
+advantage that larger scale fishery patterns are emergent properties of the
+system rather than the result of a statistical modelling framework. \\
 
-Difficult because of a lack of knowledge of the scale interactions important at
-and detailed spatiotemp knowledge. \\
+Our results show commercial data can provide at right scale and resolution -
+depends on scale of process: pop movement etc... Important to consider how
+fishers interact / adapt to changes with the resource and mgmt. \\
 
-\underline{The what:}  \\
+Closure scenarios demonstrate potential tor reduce F - not as high as with real
+pop, but good.  Make link to other studies -- read up on these. \\
 
-We develop a simulation model to understand scale.\\
-
-Detail of sim model important -- highly resolved, IBM. Make comparison to other
-models, e.g. DISPLACE, POSEIDON...\\
+\underline{The what next:} \\
 
 Real world spatiotemp closures rarely been able to consider these issues /
 designed with these issues fully in mind - NS cod closures, plaice and trevose
@@ -816,16 +838,6 @@ Use of commercial data increasing - likely to become more important in future.
 Also collaborative approach with industry, e.g. hotspot mapping, spatiotemp
 advice... \\
 
-\underline{The what it shows:} \\
-
-Our results show commercial data can be useful at right scale and resolution -
-depends on scale of process: pop movement etc... Important to consider how
-fishers interact / adapt to changes with the resoruce and mgmt. \\
-
-Closure scenarios demonstrate potential tor reduce F - not as high as with real
-pop, but good.  Make link to other studies -- read up on these. \\
-
-\underline{The what next:} \\
 
 Other potential uses of the model \\
 
@@ -871,14 +883,14 @@ seedcorn program.
 
 %%%% figures
 \begin{figure}[!ht]
-	\includegraphics[width =\linewidth]{../analysis/Data_Aggregation_space}
+	\includegraphics[width=\linewidth]{../analysis/Data_Aggregation_space_Rev}
 	\caption{Data aggregation at different spatial resolutions over a
 		ten year period}
 	\label{fig:1}
 \end{figure}	
 
 \begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{../analysis/Data_Aggregation_time}
+	\includegraphics[width =\linewidth]{../analysis/Data_Aggregation_time_Rev}
 	\caption{Data aggregation at different temporal resolutions over a
 		three year period}
 	\label{fig:2}
