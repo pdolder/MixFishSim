@@ -370,7 +370,7 @@ dataIn <- dataIn[order(dataIn$year, dataIn$month, dataIn$week),]
 
 dataIn[,4:7] <- dataIn[,4:7] / rowSums(dataIn[,4:7])
 
-dataPlot <- data.frame(year = rep(2:4, each = length(logs_wk_mn)), 
+dataPlot <- data.frame(year = rep(yr, each = length(logs_wk_mn)), 
 		       month = sapply(strsplit(logs_wk_mn, "_"), "[", 1),
 		       week = sapply(strsplit(logs_wk_mn, "_"), "[", 2), 
 		       spp_1 = NA, spp_2 = NA, spp_3 = NA, spp_4 = NA)
@@ -409,7 +409,7 @@ dataIn <- dataIn[order(dataIn$year, dataIn$month),]
 
 dataIn[,3:6] <- dataIn[,3:6] / rowSums(dataIn[,3:6])
 
-dataPlot <- expand.grid(year = 2:4, month = 1:12, spp_1 = NA, spp_2 = NA, spp_3 = NA, spp_4 = NA)
+dataPlot <- expand.grid(year = yr, month = 1:12, spp_1 = NA, spp_2 = NA, spp_3 = NA, spp_4 = NA)
 
 dataPlot$spp_1 <- dataIn$spp_1[match(paste(dataPlot$year, dataPlot$month),
 				     paste(dataIn$year, dataIn$month))]
@@ -424,7 +424,7 @@ dataPlot[,3:6][is.na(dataPlot[,3:6])] <- 0
 dataPlot <- dataPlot[order(dataPlot$year, dataPlot$month),]
 
 cols <- c("red", "blue", "purple", "green")
-barplot(t(dataPlot[,3:6]), names.arg = rep(paste(""), 36), col = cols, border = NA)
+barplot(t(dataPlot[,3:6]), names.arg = rep(paste(""), 12 * length(yr)), col = cols, border = NA)
 
 }
 
@@ -450,7 +450,7 @@ dataIn <- dataIn[order(dataIn$year),]
 
 dataIn[,2:5] <- dataIn[,2:5] / rowSums(dataIn[,2:5])
 
-dataPlot <- expand.grid(year = 2:4, spp_1 = NA, spp_2 = NA, spp_3 = NA, spp_4 = NA)
+dataPlot <- expand.grid(year = yr, spp_1 = NA, spp_2 = NA, spp_3 = NA, spp_4 = NA)
 
 dataPlot$spp_1 <- dataIn$spp_1[match(dataPlot$year, dataIn$year)]
 dataPlot$spp_2 <- dataIn$spp_2[match(dataPlot$year, dataIn$year)]
@@ -461,7 +461,7 @@ dataPlot[,2:5][is.na(dataPlot[,2:5])] <- 0
 dataPlot <- dataPlot[order(dataPlot$year),]
 
 cols <- c("red", "blue", "purple", "green")
-barplot(t(dataPlot[,2:5]), names.arg = rep(paste(""), 3), col = cols, border = NA)
+barplot(t(dataPlot[,2:5]), names.arg = rep(paste(""), length(yr)), col = cols, border = NA)
 
 }
 
@@ -495,7 +495,7 @@ plot_temp(timestep = 'year', basis = 'survey')
 mtext(text = "Real Population        Commercial Data     Survey Data", side = 3, line = 2, outer = T, font = 2,   cex = 3 ) ## top
 mtext(text = "yearly                                     monthly                                       weekly", side = 4, line = 2, outer = T, font = 2, cex  = 3) ## right side
 
-legend(x = -5, y = 0, legend = c("Pop 1", "Pop 2", "Pop 3", "Pop 4"),
+legend(x = -20, y = 0, legend = c("Pop 1", "Pop 2", "Pop 3", "Pop 4"),
             fill = c("red", "blue", "purple", "green"), ncol = 4, xpd = NA, bty = "n", cex = 4)
  
 dev.off()
