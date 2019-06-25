@@ -236,6 +236,8 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/eurosym/eurosym.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/eurosym/eurosym.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/changes/changes.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/changes/changes.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/xifthen/xifthen.sty
@@ -305,7 +307,6 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT Process_model.tex
 INPUT Process_model.tex
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
@@ -315,6 +316,7 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 INPUT parameter_tables.tex
