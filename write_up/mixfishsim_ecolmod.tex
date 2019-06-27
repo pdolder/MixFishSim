@@ -343,16 +343,7 @@ field process\todo{\added[id=JJ]{Not clear how habitat/GRF affect local
 c \in \mathbb{R}^2\}$, \deleted[id=PD]{that is a stochastic process} where
 \added[id=PD]{for} any set of cells $c_{1}, \dots, c_{n}$ \deleted[id=PD]{where
 	for each $c_{i} \in \mathbb{R}^2$}, the joint distribution of $S =
-\{S(c1),\dots S(c_{n})\}$ is multivariate Gaussian. The distribution is
-specified by its \textit{mean function}, $\mu(c) = E[S(c)]$ and its
-\textit{covariance function}\todo{\added[id=JM]{Introduce the gamma function,
-		and why this covariance structure? Why correlate values in the
-		random field?}\added[id=PD]{to allow populations to have
-		different aggregation densities: have tried to clarify}},
-$\gamma(c,c') = Cov\{S(c),S(c')\}$ \citep{Diggle2007}.\\
-
-The covariance structure affects the smoothness of the surfaces which the
-process generates\replaced[id=PD]{;}{, and} we used the \textit{Matérn}
+\{S(c1),\dots S(c_{n})\}$ is multivariate Gaussian with a \textit{Matérn}
 \deleted[id=PD]{family of}covariance structure\deleted[id=PD]{s},
 \replaced[id=PD]{where}{one where} the correlation strength weakens with
 distance\deleted[id=PD]{(i.e. the correlation between $S(x)$ and $S(x')$
@@ -360,16 +351,7 @@ distance\deleted[id=PD]{(i.e. the correlation between $S(x)$ and $S(x')$
 \added[id=PD]{This enables us to model the spatial autocorrelation observed in
 	animal populations where density is more similar in nearby locations
 	\citep{Tobler1970, F.Dormann2007}} and we change the parameters to
-implement different spatial structures for the populations. The \textit{Matérn}
-correlation is a two-parameter family where: 
-	\begin{center}
-		$\rho(u) = \{2^{\kappa -
-			1}\Gamma{\kappa}\}^{-1}(u/\phi)^{\kappa}K_{\kappa}(u/\phi)$
-	\end{center}
-$K_{\kappa}(.)$ is a modified Bessel function of order $\kappa$, $\phi >
-0$ is a scale parameter with the dimensions of distance, and $\kappa > 0$,
-called the order, is a shape parameter which determines the smoothness of the
-underlying process (Figure \ref{S-fig:16}). \\
+implement different spatial structures for the populations. \\
 
 \replaced[id=PD]{T}{In the simulation model, t}he habitat for each of the
 populations \replaced[id=PD]{was}{is} generated \replaced[id=PD]{with}{through}
@@ -475,12 +457,7 @@ by \added[id=PD]{calculating an expected revenue based on the catches from
 	locations fished} in the preceding trip as well as the same month
 periods in previous years and the travel costs from the port to the fishing
 grounds, and choosing randomly from the top 75 \% of fishing events
-\replaced[id=PD]{as defined by the expected profit}{in value}. Simulation
-testing indicated that this learning increased the mean value of catches for
-the vessels, over just relying on the correlated random walk
-\todo{\added[id=JJ]{Correlated random walk of what}} function \added[id=PD]{as
-	described for the 'within trip' decisions below} (MIGHT NEED TO INCLUDE
-IN SUPPLEMENTARY). 
+\replaced[id=PD]{as defined by the expected profit}{in value}. 
 
 \subsubsection{Within-trip decisions}
 
@@ -583,21 +560,22 @@ The simulation framework is implemented in the statistical software package R
 \citep{RCoreTeam2017} \replaced[id=PD]{and}{;} available as an R package from
 the authors github site (\url{www.github.com/pdolder/MixFishSim}).\\
 
-\section{Calculation - used by journal / Parameterisation}
+\section{Parameterisation}
 
-\subsection{Population parametrisation}
+\subsection{Population models}
 
 We parametrised the simulation model for four populations with different
-population demographics; growth rates, natural mortality and recruitment
-functions (Table \ref{tab:1}). Habitat preference (Figure \ref{S-fig:1}) and
-temperature tolerances (Figures \ref{S-fig:3}, \ref{S-fig:4}) were unique to
-each population resulting in differently weekly distribution patterns (Figures
+demographics; growth rates, natural mortality and recruitment functions (Table
+\ref{tab:1}). Habitat preference (Figure \ref{S-fig:1}) and temperature
+tolerances (Figures \ref{S-fig:3}, \ref{S-fig:4}) were unique to each
+population resulting in differently weekly distribution patterns (Figures
 \ref{S-fig:5}-\ref{S-fig:7}). In addition, each of the populations has two
 defined spawning areas which result in the populations moving towards these
 areas in pre-defined weeks (Figure \ref{S-fig:2}) with population-specific
-movement rates (Table \ref{tab:1}). The realised movement of the populations
-for a number of weeks is shown in Figure \ref{S-fig:9} while the realised daily
-fishing mortality are shown in Figure \ref{S-fig:10}. 
+movement rates (Table \ref{tab:1}). The individual habitat preferences and
+thermal tolerances results different spatial habitat use for each population
+(Figure \ref{S-fig:9}) and consequently different seasonal exploitation
+patterns (Fishing mortality in Figure \ref{S-fig:10}). 
 
 \subsection{Fleet parametrisation}
 
@@ -625,16 +603,21 @@ lower asymptote of 0 and upper asymptote of 0.95, and a growth rate which
 ensures the upper asymptote (where decisions are mainly based on past
 knowledge) is reached approximately halfway through the simulation.  \\
 
-An example of the realised fleet movements for a single vessel during a single
-trip are given in Figure \ref{S-fig:11}, while Figure \ref{S-fig:12} shows
-multiple trips for a single vessel, \added[id=PD]{Figure} \ref{S-fig:13} the
-vessel movements for several trips overlaid on the value field (sum of the
-population densities $\times$ price), \added[id=PD]{Figure} \ref{S-fig:14} shows
-fishing locations for an entire fleet of 20 vessels for a single trip,
-\replaced[id=PD]{and Figure}{while} \ref{S-fig:15} shows an example of the step
-function realisation and turning angles from the correlated random
-walk.\todo{\added[id=JJ]{Move some of the supplementary figures to the
-		manuscript}}
+It can be seen from a single vessels movements during a trip that the vessel
+exploits four different fishing grounds, three of them multiple time (Figure
+\ref{S-fig:11}), while across multiple trips fishing grounds that are further
+apart are fished (Figure \ref{S-fig:12}). These different locations relate to
+areas where the highest revenue were experienced, as shown by
+\added[id=PD]{Figure} \ref{S-fig:13}, which shows several trips for the vessel
+overlaid on the value field (sum of the population densities $\times$ price).
+Vessels from the same fleet (and therefore targeting preference) exploit
+similar but slightly different fishing grounds depending on their own personal
+experience during the explore phase of the fishery (\added[id=PD]{Figure}
+\ref{S-fig:14}), which is the result of the correlated random walk step
+function, with distance moved during the exploitation phase related to the
+revenue experienced on the fishing ground (\replaced[id=PD]{Figure}{while}
+\ref{S-fig:15}).\todo{\added[id=JJ]{Move some of the
+		supplementary figures to the manuscript}}
 
 \subsection{Survey settings}
 

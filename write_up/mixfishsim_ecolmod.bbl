@@ -1,4 +1,4 @@
-\begin{thebibliography}{46}
+\begin{thebibliography}{45}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -125,12 +125,6 @@
   Prawn Fishery}}.
 \newblock \bibinfo{journal}{Fisheries Research} \bibinfo{volume}{65},
   \bibinfo{pages}{335--350}.
-%Type = Book
-\bibitem[{Diggle and Ribeiro(2007)}]{Diggle2007}
-\bibinfo{author}{Diggle, P.J.}, \bibinfo{author}{Ribeiro, P.J.},
-  \bibinfo{year}{2007}.
-\newblock \bibinfo{title}{{Model-based Geostatistics (Springer Series in
-  Statistics)}}. volume~\bibinfo{volume}{1}.
 %Type = Article
 \bibitem[{Dinmore et~al.(2003)Dinmore, Duplisea, Rackham, Maxwell and
   Jennings}]{Dinmore2003}
