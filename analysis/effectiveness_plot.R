@@ -53,6 +53,8 @@ rtree <- rpart(diff ~ fpop + ftimescale + data_type + fresolution,
 barplot(rtree$variable.importance)
 ## so it goes fpop > fresolution > data_type > ftimescale 
 
+rtree$variable.importance / sum(rtree$variable.importance)
+
 ## visualise the regression tree
 blue2red <- colorRampPalette(c("blue","white","red"))
 cols <- blue2red(100)
@@ -86,3 +88,21 @@ ggplot(f_diff, aes(x = resolution, y = diff))+
     xlab("Spatial resolution (high to low)") +
     ylab("Percentage difference in F before and after closure")
 dev.off()
+
+
+png("f_diff_effectiveness.png", units = "in", height = 8, width = 9, res = 600)
+
+ggplot(f_diff, aes(x = resolution, y = diff))+
+    geom_line(aes(colour = data_type), size = 2) +
+    facet_grid(timescale ~ fpop) +
+    geom_hline(yintercept = 0, linetype = 2, size = 1) +
+    scale_colour_manual("Data source", values = c("#d95f02", "#7570b3", "#1b9e77")) +
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+	  axis.text = element_text(size = 14, face = "bold"),
+	  axis.title = element_text(size = 14, face = "bold")) +
+    xlab("Spatial resolution (high to low)") +
+    ylab("Percentage difference in F before and after closure")
+dev.off()
+
+
+

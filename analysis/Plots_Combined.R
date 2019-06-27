@@ -137,6 +137,8 @@ Fs <- filter(combined, metric == "F", basis == "high_pop", pop == "spp_3")
 Fs[,c(4:6)] <- round(Fs[,c(4:6)], 2)
 Fs <- Fs[order(Fs$pop, Fs$diff),]
 
+colnames(Fs)[4:6] <- c("f_before", "f_after", "f_change")
+
 print(xtable(Fs, digits = 2, caption = "Fishing mortality effects of the
 	     closure scenarios (ordered by most effective first)", label =
 	     "tab:6"), caption.placement = "top", file =
@@ -186,13 +188,20 @@ combined_pop_an <-  combined_pop_an[!is.na(combined_pop_an$year),] ## Remove R f
 
 combined_pop_an$year <- as.numeric(combined_pop_an$year) # to fix x-axis breaks
 
+combined_pop_an$res <- as.factor(combined_pop_an$res)
+
+png('F_trendsREV.png', units = "in", height = 8, width = 9, res = 600)
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F'), 
        aes(x = year, y = data, group = combined)) + 
-geom_line(aes(colour = timescale, linetype = factor(res))) + 
-facet_wrap(data_type ~ pop, scale = 'free') + expand_limits(y = 0) +theme_bw() +
+geom_line(aes(colour = timescale, linetype = res), size = 1) + 
+facet_grid(data_type ~pop) + expand_limits(y = 0) +theme_bw() +
 geom_vline(xintercept = 30, linetype = 2, colour = "grey") + ylab("Fishing mortality") +
-theme(axis.text.x = element_text(angle = -90, hjust = 0)) + scale_x_continuous(breaks = seq(0,50,5))
-ggsave('F_trendsREV.png', width = 10, height = 8)
+theme(axis.text.x = element_text(angle = -90, hjust = 0),
+      panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+	  axis.text = element_text(size = 12, face = "bold"),
+	  axis.title = element_text(size = 12, face = "bold")) + 
+		  scale_x_continuous(breaks = seq(0,50,10))
+dev.off()
 
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F', pop == "spp_3"), 
        aes(x = year, y = data, group = combined)) + 

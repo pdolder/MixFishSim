@@ -324,8 +324,6 @@ INPUT parameter_tables.tex
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/eurosym/feymr10.tfm
 INPUT F_changes.tex
 INPUT F_changes.tex
-INPUT F_changes_ratio.tex
-INPUT F_changes_ratio.tex
 INPUT ../analysis/Data_Aggregation_space_Rev.pdf
 INPUT ../analysis/Data_Aggregation_space_Rev.pdf
 INPUT ../analysis/Data_Aggregation_space_Rev.pdf
@@ -335,9 +333,9 @@ INPUT ../analysis/Data_Aggregation_time_Rev.pdf
 INPUT ../analysis/F_trendsREV.png
 INPUT ../analysis/F_trendsREV.png
 INPUT ../analysis/F_trendsREV.png
-INPUT ../analysis/Overview_plot_highPopRev.png
-INPUT ../analysis/Overview_plot_highPopRev.png
-INPUT ../analysis/Overview_plot_highPopRev.png
+INPUT ../analysis/f_diff_effectiveness.png
+INPUT ../analysis/f_diff_effectiveness.png
+INPUT ../analysis/f_diff_effectiveness.png
 INPUT mixfishsim_ecolmod.bbl
 INPUT mixfishsim_ecolmod.bbl
 OUTPUT mixfishsim_ecolmod.soc
