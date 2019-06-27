@@ -126,15 +126,15 @@ Some\sep keywords \sep here. Max 6
 \section{Introduction}
 
 Fishers exploit a variety of fish populations that are heterogeneously
-distributed in space and time with varying knowledge of species distributions
-using species non-selective fishing gear. \added[id=PD]{In doing so} fisheries
-\deleted[id=PD]{that}catch an assemblage of species
+distributed in space and time, with varying knowledge of species distributions
+and using species non-selective fishing gear. \added[id=PD]{In doing so}
+fisheries \deleted[id=PD]{that}catch an assemblage of species
 \added[id=PD]{and}\deleted{, known as mixed fisheries} \replaced[id=JJ]{may}{,
 	when managed by single-species quotas can end up}
 discard\deleted[id=JJ]{ing} over-quota catch \added[id=JJ]{when managed by
-	single species quotas and fishers exhaust one or more quota which may}
+	single species quotas and fishers exhaust one or more quota. This may}
 lead to overexploitation of fish populations \added[id=JJ]{\citep{Ulrich2011a,
-		Batsleer2015}}.  \added[id=JJ]{This discarding of fish in
+		Batsleer2015}}.  \added[id=JJ]{Discarding of fish in
 	excess of quota limits the ability to maintain fishing mortality within
 	sustainable limits \citep{Alverson1994, Crowder1998, Rijnsdorp2007}}
 \deleted[id=PD]{; reducing discarding is crucial}and the ability to manage for
@@ -142,13 +142,13 @@ the biological and economic sustainability of fisheries\deleted[id=JJ]{ and
 	implementation of an ecosystem approach to fisheries}. As such, there
 is increasing interest in technical solutions such as gear and spatial closures
 as measures to \replaced[id=PD]{reduce unwanted catch}{avoiding
-	discard\added[id=JJ]{ing of fish}}\citep{Kennelly2002, Catchpole2008,
+	discard\added[id=JJ]{ing of fish}} \citep{Kennelly2002, Catchpole2008,
 	Bellido2011}.  \\
 
 \replaced[id=PD]{Changes to spatial fishing patterns have}{Use of spatial
 	management as a tools} been proposed as a method to reduce discards
 \added[id=PD]{\citep{Holmes2011, Little2014, Dunn2014a}}.  \deleted[id=PD]{its}
-implementation of avoidance measures is, however, restricted by lack of
+Implementation of avoidance measures is, however, restricted by lack of
 knowledge of fish and fishery spatiotemporal dynamics and understanding of the
 scale at which processes become important for management. Understanding the
 correct scale for spatial measures is crucial for implementation at a
@@ -168,13 +168,16 @@ the combination of logbook and Vessel Monitoring System (VMS) data
 \citep{Lee2010, Bastardie2010, Gerritsen2012, Mateo2016} and more real-time
 spatial management has been possible \citep[e.g.][]{Holmes2011}.  Such
 information is, however, derived from an inherently biased sampling programme,
-targeted fishing. \deleted[id=PD]{ Further, fishers generally only recorded
-	landings (not catch) on a daily basis\todo{\added[id=JJ]{Its not clear
-			what the problem is: landings collected on daily basis
-			or landings recorded rather than catch}}.  This leads
-	to questions about the validity of inference that can be drawn from
-	landings data assigned to VMS activity pings.}\todo{\added[id=JJ]{This
-		comes as a surprise: I thought this was going to be about
+targeted fishing, where fishers establish favoured fishing grounds first
+through an explore-exploit strategy \cite{Bailey2018} and then use experience
+to return to areas of high catch. \deleted[id=PD]{ Further, fishers generally
+	only recorded landings (not catch) on a daily
+	basis\todo{\added[id=JJ]{Its not clear what the problem is: landings
+			collected on daily basis or landings recorded rather
+			than catch}}.  This leads to questions about the
+	validity of inference that can be drawn from landings data assigned to
+	VMS activity pings.}\todo{\added[id=JJ]{This comes as a surprise: I
+		thought this was going to be about
 		discards}\added[id=PD]{Agree, have removed this to avoid
 		confusion}}\\ 
 
@@ -188,38 +191,37 @@ targeted fishing. \deleted[id=PD]{ Further, fishers generally only recorded
 	\item How does data aggregation and source impact on monitoring spatial
 		fisheries management measures ? \end{enumerate}
 	
-We i) develop a simulation model where population dynamics are highly-resolved
-in space and time to answer these questions\replaced[id=PD]{. Being}{ and are}
-known \added[id=PD]{directly} rather than inferred from sampling or commercial
-catch\added[id=PD]{, we can use the population model to evaluate how inference
-	from fisheries-dependent and fisheries independent sampling relates to
-	the real population structure}. We ii) compare at different spatial and
-temporal aggregations of the simulated population distributions to samples from
-fisheries-dependent and fisheries independent catches. We then iii) simulate a
-fishery closure to protect a species based on different spatial and temporal
-data aggregations. \\
-	
-We compare the catch composition from fisheries independent and dependent
-sampling against the real population composition, as well as the theoretical
-"benefit" to the population spatial closures using the different data sources.
-We use these evaluations to draw inference on the utility of commercial data in
-supporting management decisions. \todo{\added[id=JJ]{If the paper has two goals
-		this should be clear from the start, but may be better over 2
-		MSs}\added[id=PD]{I would like to keep both parts, but have
-		made clearer in how its set out.  The closure scenarios form
-		validation of the data aggregation, rather than effectiveness
-		of the closures themselves - so its a continuation of the same
-		question in my eyes}}\deleted[id=PD]{.  Further, we extend our
-	analysis to a range of spatial and temporal scales to assess the impact
-	of these processes on the success of the management measure.}\\
+To answer these questions we i) develop a simulation model where population
+dynamics are highly-resolved in space and time \replaced[id=PD]{. Being}{ and
+	are} known \added[id=PD]{directly} rather than inferred from sampling
+or commercial catch\added[id=PD]{, we can use the population model to evaluate
+	how inference from fisheries-dependent and fisheries independent
+	sampling relates to the real population structure}. We ii) compare, at
+different spatial and temporal aggregations, the simulated population
+distributions to samples from fisheries-dependent and fisheries independent
+catches to test if these are a true reflection of the relative density of the
+populations. We then iii) simulate a fishery closure to protect a species based
+on different spatial and temporal data aggregations. We use these evaluations
+to draw inference on the utility of commercial data in supporting management
+decisions. \todo{\added[id=JJ]{If the paper has two goals this should be clear
+		from the start, but may be better over 2 MSs}\added[id=PD]{I
+		would like to keep both parts, but have made clearer in how its
+		set out.  The closure scenarios form validation of the data
+		aggregation, rather than effectiveness of the closures
+		themselves - so its a continuation of the same question in my
+		eyes}}\deleted[id=PD]{.  Further, we extend our analysis to a
+	range of spatial and temporal scales to assess the impact of these
+	processes on the success of the management measure.}\\
 
+[We find..] 
 
 \section{Materials and Methods}
 
 \replaced[id=PD]{A}{We developed and implemented a simulation model with a}
-modular event-based \replaced{simulation model was developed with}{approach,
-	where} \added[id=PD]{sub-}modules \deleted[id=PD]{are} implemented on
-independent time-scales appropriate to capture the characteristic of the
+\replaced{simulation model that is modular and discrete-event based was
+	developed. This approach enables efficient computation by allowing
+	for}{approach, where} \added[id=PD]{sub-}modules \deleted[id=PD]{are}
+implemented on time-scales appropriate to capture the characteristic of the
 \replaced[id=PD]{different processes}{process modelled} (Figure 1).
 \added[id=PD]{The following sub-modules were included to capture the full
 	system: 1) Population dynamics, 2) Recruitment dynamics, 3) Population
@@ -237,12 +239,12 @@ population\deleted[id=PD]{.}\added[id=PD]{, while the fishing module operates
 	dynamics, 2) Recruitment dynamics, 3) Population movement dynamics, 4)
 	fishery dynamics.}
 
-\replaced[id=PD]{In our model system p}{P}opulation movement is driven by
+\replaced[id=PD]{In the model system p}{P}opulation movement is driven by
 random (diffusive) and directed (advective) processes and we incorporate
 characterisation of a number of different fishing \added[id=PD]{fleet dynamics}
 exploiting four fish populations with different spatial and population
-demographics. We use the model to simulate \replaced[id=PD]{50}{40} years of
-exploitation of the fish populations. 
+demographics. The following describes the implementation of each of the
+sub-modules.
 
 %% the tikz figure
 \clearpage
@@ -256,7 +258,7 @@ Deriso-Schnute delay difference model \citep{Deriso1980, Schnute1985,
 	time-step was chosen to discretise continuous population processes
 	on a biologically relevant and computationally tractable timescale.}
 \replaced[id=PD]{Under the population dynamics module}{Here,} population
-biomass growth and depletion for pre-recruits and \deleted[id=PD]{fish}
+biomass growth and depletion for pre-recruits and\deleted[id=PD]{fish}
 recruited \added[id=PD]{fish} \deleted[id=PD]{to the fishery} are modelled
 separately as a function of previous recruited biomass, intrinsic population
 growth and recruitment. Biomass for each cell $c$ is incremented each day $d$ as
@@ -272,9 +274,9 @@ follows (the full parameter list is detailed in Table \ref{tab: pop_variable}):
 	& Wt_{R} \cdot \alpha_{d} \cdot R_{\tilde{y}(c,y,d)} 
 	\end{split}
 \end{equation}
-where $\rho$ is Brody's coefficient, shown to be approximately equal to
-$e^{-K}$ when $K$ is the growth rate from a von Bertalanffy logistic growth
-model \citep{Schnute1985}. $Wt_{R-1}$ is the average weight of fish prior to
+where $\rho$ is Brody's coefficient, shown to be equal to $e^{-K}$ when $K$ is
+the growth rate from a von Bertalanffy logistic growth model
+\citep{Schnute1985}. $Wt_{R-1}$ is the average weight of fish prior to
 recruitment, while $Wt_{R}$ is the average recruited weight. $\alpha_{d}$
 represents the proportion of fish recruited during that day for the year, while
 $R_{c,\tilde{y}}$ is the annual recruits in cell $c$ for year $y$. \\
@@ -323,30 +325,19 @@ processes, or a stochastic Ricker form \citep{Ricker1954}:
 	\end{split}
 \end{equation}
 where $\alpha$ is the maximum productivity per spawner and $\beta$ the density
-dependent reduction in productivity as the SSB increases. In this study, the
-Beverton-Holt form of stock recruit relationship was used for all populations.
+dependent reduction in productivity as the SSB increases. In our example
+application the Beverton-Holt form of stock recruit relationship was used for
+all populations though either functional form can be chosen.
 
 \subsection{Population movement dynamics}
 
 To simulate \deleted[id=JJ]{how} fish population\deleted[id=JJ]{s might be}
 distribut\replaced[id=JJ]{ion}{ed} in space and time\deleted[id=JJ]{, we
 	employed} a Gaussian spatial process \added[id=JJ]{was employed} to
-model habitat suitability for each of the populations on a 2d
-grid\replaced[id=JJ]{. An}{, with an} advection-diffusion process
-\deleted[id=JJ]{to} control\added[id=JJ]{led} \deleted[id=JJ]{how the}
-population\deleted[id=JJ]{s} move\replaced[id=JJ]{ment}{d}, with a time-varying
-temperature covariate used to change the spatial bounds of suitable habitat
-on a weekly time-step\todo{\added[id=JJ]{What have a temperature covariate? Could just
-		use time}\added[id=PD]{Was intended as some biological meaning
-		- species thermal tolerances load onto the temperature effect -
-		so could be different per species}}.  \deleted[id=JJ]{This was
-	intended to balance realism in population movement, capturing the main
-	directed and random processes, and practicality of modelling the
-	population rather than individual fish.} \\
+model habitat suitability for each of the populations on a 2d grid. \\
 
-
-For \deleted[id=PD]{the}habitat we first define\added[id=PD]{d} a Gaussian
-random field process\todo{\added[id=JJ]{Not clear how habitat/GRF affect local
+\deleted[id=PD]{the habitat}We first define\added[id=PD]{d} a Gaussian random
+field process\todo{\added[id=JJ]{Not clear how habitat/GRF affect local
 		abundances, only have $B_{y,d}$}\added[id=PD]{Have included
 		cell reference, $c$ to make spatial link explicit}}, $\{S(c) :
 c \in \mathbb{R}^2\}$, \deleted[id=PD]{that is a stochastic process} where
@@ -410,14 +401,20 @@ in directional movement towards the spawning grounds.\todo{\added[id=JM]{What
 		the areas are pre-defined - I have amended to reflect and tried
 		to clarify}} \\
 
-The temperature field \replaced[id=PD]{was}{is} defined on a gradient from a
-South-Westerly to North-Easterly direction, with temperature in each cell
-changing gradually on a week-by-week basis so that initially high temperature
-areas cycle\added[id=PD]{d} to lower temperatures and low temperature areas
-\textit{vice versa}. Each population $p$ \replaced[id=PD]{wa}{i}s assigned a thermal
-tolerance with mean, $\mu\added[id=PD]{_{p}}$ and variance,
-$\sigma^2\added[id=PD]{_{p}}$ so that each cell and population temperature
-suitability is defined that:
+\replaced[id=JJ]{An}{, with an} advection-diffusion process \deleted[id=JJ]{to}
+control\added[id=JJ]{led} \deleted[id=JJ]{how the} population\deleted[id=JJ]{s}
+move\replaced[id=JJ]{ment}{d}, with a time-varying temperature covariate used
+to change the interaction between time and suitable habitat on a weekly
+time-step\todo{\added[id=JJ]{What have a temperature covariate? Could just use
+		time}\added[id=PD]{Was intended as some biological meaning -
+		species thermal tolerances load onto the temperature effect -
+		so could be different per species}}.  \deleted[id=JJ]{This was
+	intended to balance realism in population movement, capturing the main
+	directed and random processes, and practicality of modelling the
+	population rather than individual fish.} Each population $p$
+\replaced[id=PD]{wa}{i}s assigned a thermal tolerance with mean,
+$\mu\added[id=PD]{_{p}}$ and variance, $\sigma^2\added[id=PD]{_{p}}$ so that
+each cell and population temperature suitability is defined that:
 \begin{equation}
 	Tol_{c, p\added[id=PD]{, wk}} = \frac{1}{ \sqrt (2\pi \cdot \sigma^2_{p})} \cdot \exp(-
 		\frac{(T_{c\added[id=PD]{, wk}} - \mu_{p})^2}{2 \cdot \sigma^2_{p}} )	
@@ -428,9 +425,12 @@ temperature in the cell \added[id=PD]{given the week} and
 $\mu\added[id=PD]{_{p}}$ and $\sigma^2\added[id=PD]{_{p}}$ the mean and
 standard deviation of the population temperature tolerance. \\
 
-\added[id=PD]{The final process resulted in independent populations structure
-	and movement patterns, with population movement occurring on a weekly
-	basis. This process approximated the demographic shifts in fish
+\added[id=PD]{The final process resulted in population structures and movement
+	patterns unique to each species, with population movement occurring on
+	a weekly basis. The decision to model population movement on a weekly
+	timescale was to reflect that fish tend to aggregate in species
+	specific locations and range within a week is fairly limited [REF!!].
+	Therefore this process approximated the demographic shifts in fish
 	populations throughout a year with seasonal spawning patterns (e.g.
 	Figure \ref{S-fig:5}).}
 
@@ -443,7 +443,11 @@ determine\added[id=PD]{d} the initial location to be fished at the beginning of
 a trip; and within-trip decisions, determining movement from one fishing spot
 to another within a trip. Together, these element implement an explore-exploit
 type strategy for individual vessels to maximise their catch from an unknown
-resource distribution (\cite{Bailey2018}).
+resource distribution (\cite{Bailey2018}). The decision to use an individual
+based model for fishing vessels was taken because fishers as a group tend to
+show heterogeneity and individual rather than group dynamics. Thus this was the
+fleet dynamics is the productive of individual experiences rather than
+pre-ordained group dynamics. 
 
 \subsubsection{Fleet targeting}
 
@@ -495,7 +499,7 @@ through a series of steps\added[id=JJ]{. These steps have a length, and a
 	direction} that can either be equal in length or take some other
 functional form. The direction of the random walk was also correlated (known as
 `persistence') providing some overall \deleted[id=PD]{location of}directional
-movement \citep{Codling2008} \deleted[id=PD]{or uncorrelated}. \\
+movement \citep{Codling2008}\deleted[id=PD]{or uncorrelated}. \\
 
 We use a \textit{\replaced[id=JJ]{Lévy flight} {lévy walk}} which is a
 particular form of random walk characterised by a heavy-tailed distribution of
