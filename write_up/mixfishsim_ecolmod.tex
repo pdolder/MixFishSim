@@ -41,6 +41,18 @@
 %% Harvard
 \bibliographystyle{model2-names.bst}\biboptions{authoryear}
 %%%%%%%%%%%%%%%%%%%%%%%
+%% correct equation line numbering
+
+\let\oldequation\equation
+\let\oldendequation\endequation
+\renewenvironment{equation}
+ {\linenomathNonumbers\oldequation}
+ {\oldendequation\endlinenomath}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \begin{document}
 
@@ -143,7 +155,7 @@ the biological and economic sustainability of fisheries\deleted[id=JJ]{ and
 is increasing interest in technical solutions such as gear and spatial closures
 as measures to \replaced[id=PD]{reduce unwanted catch}{avoiding
 	discard\added[id=JJ]{ing of fish}} \citep{Kennelly2002, Catchpole2008,
-	Bellido2011}.  \\
+	Bellido2011}\textcolor{red}{(ADD COSGROVE REFERENCE HERE)}.  \\
 
 \replaced[id=PD]{Changes to spatial fishing patterns have}{Use of spatial
 	management as a tools} been proposed as a method to reduce discards
@@ -359,10 +371,14 @@ implement different spatial structures for the populations. \\
 \replaced[id=PD]{T}{In the simulation model, t}he habitat for each of the
 populations \replaced[id=PD]{was}{is} generated \replaced[id=PD]{with}{through}
 the \textit{RFSimulate} function of the \textit{RandomFields} R package
-\citep{Schlater2015}. Each population \replaced[id=PD]{was}{is} initialised at
-a single location, and subsequently move\replaced[id=PD]{ed}{s} according to a
-probabilistic distrib\added[id=PD]{u}tion based on habitat suitability
-(represented by the normalised values from the GRFs), temperature and distance
+\citep{Schlater2015}, which simulates a Gaussian Random Field process given a
+user defined error model and correlation structure. We define a stationary
+habitat field and combine with a temporally dynamic thermal tolerance field to
+imitate two key drivers of population dynamics. Each population
+\replaced[id=PD]{was}{is} initialised at a single location, and subsequently
+move\replaced[id=PD]{ed}{s} according to a probabilistic
+distrib\added[id=PD]{u}tion based on habitat suitability (represented by the
+normalised values from the GRFs), temperature and distance
 from current cell\replaced[id=PD]{:}{.} 
 \begin{equation}
 	Pr(J | I) = \frac{e^{-\lambda * d_{IJ}} \cdot
@@ -426,13 +442,13 @@ targeting - which determine\replaced[id=PD]{d}{s} the fleet catch efficiency
 and preference towards a particular species; trip-level decisions, which
 determine\added[id=PD]{d} the initial location to be fished at the beginning of
 a trip; and within-trip decisions, determining movement from one fishing spot
-to another within a trip. Together, these element implement an explore-exploit
+to another within a trip. Together, these elements implement an explore-exploit
 type strategy for individual vessels to maximise their catch from an unknown
 resource distribution (\cite{Bailey2018}). The decision to use an individual
 based model for fishing vessels was taken because fishers as a group tend to
 show heterogeneity and individual rather than group dynamics
-[\textcolor{red}{REF!}]. Thus this was the fleet dynamics is the productive of
-individual experiences rather than pre-ordained group dynamics. 
+[\textcolor{red}{REF!}]. Therefore in the simulations fleet dynamics are the
+productive of individual experiences rather than pre-defined group dynamics. 
 
 \subsubsection{Fleet targeting}
 
@@ -611,11 +627,11 @@ knowledge) is reached approximately halfway through the simulation.  \\
 
 \subsection{Survey settings}
 
-The survey simulation was set up with follow a fixed gridded station design
-with 100 stations fished each year, starting on day 92 \added[id=PD]{and ending
-	on day 112 (5 stations per day)} with same catchability parameters for
-all populations ($Q_{p} = 1$). This was so as to approximate a real world
-survey design with limited seasonal and spatial coverage. 
+The survey simulation was set up with a fixed gridded station design with 100
+stations fished each year, starting on day 92 \added[id=PD]{and ending on day
+	112 (5 stations per day)} with same catchability parameters for all
+populations ($Q_{p} = 1$). This approximates a real world survey design with
+limited seasonal and spatial coverage. 
 
 \subsection{Example research question}
 
@@ -804,14 +820,17 @@ considered in fisheries simulations. While other simulation frameworks seek to
 model individual vessel dynamics based on inferred dynamics from VMS and
 logbook records \citep{Bastardie2010}, or as a system to identify measures to
 meet particular management goals \citep{Bailey2018}, our framework allows users
-to explore the assumptions in modelling observations data and evaluate the
+to explore the assumptions in modelling observational data and evaluate the
 underlying dynamics of such approaches at a fine spatial and temporal scale.
 This offers the advantage that larger scale fishery patterns are emergent
 properties of the system rather and results can be compared to those obtained
 under a statistical modelling framework. \\
 
+COMPARE AGAINST OTHER MODELS: Osmose, Atlantis,... do they use rationale actors
+and economic profit making ?
+
 Our results demonstrate the importance of data scale and resolution when using
-observational data to support management measures. In doing so it highlights  
+observational data to support management measures. In doing so it highlights
 depends on scale of process: pop movement etc... Important to consider how
 fishers interact / adapt to changes with the resource and mgmt. \\
 
@@ -834,9 +853,14 @@ advice... \\
 
 Other potential uses of the model \\
 
-Survey design \\
+Survey design - random, fixed, stratified - all possible to explore  \\
 
-commercial index standardization methods \\
+Assumptions in spatiotemporal models: GAMs, GLMMs, geostatistical models
+
+Natural mortality estimation
+
+Commercial index standardization methods - different spatial scales, individual
+vessels, data aggregation -- all these can be explored. \\
 
 Sampling scheme design \\
 
