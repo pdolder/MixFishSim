@@ -5,45 +5,45 @@ The style file: model2-names.bst.bst
 Database file #1: simulation_framework.bib
 Warning--empty journal in Beverton1957
 Warning--empty pages in Shin2004
-You've used 51 entries,
+You've used 60 entries,
             2761 wiz_defined-function locations,
-            944 strings with 16083 characters,
-and the built_in function-call counts, 35461 in all, are:
-= -- 2713
-> -- 1798
-< -- 18
-+ -- 688
-- -- 636
-* -- 4274
-:= -- 5472
-add.period$ -- 149
-call.type$ -- 51
-change.case$ -- 466
-chr.to.int$ -- 50
-cite$ -- 53
-duplicate$ -- 2171
-empty$ -- 2168
-format.name$ -- 791
-if$ -- 6329
+            989 strings with 18241 characters,
+and the built_in function-call counts, 42476 in all, are:
+= -- 3202
+> -- 2256
+< -- 20
++ -- 862
+- -- 801
+* -- 5169
+:= -- 6568
+add.period$ -- 176
+call.type$ -- 60
+change.case$ -- 566
+chr.to.int$ -- 59
+cite$ -- 62
+duplicate$ -- 2585
+empty$ -- 2540
+format.name$ -- 987
+if$ -- 7549
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 495
-newline$ -- 261
-num.names$ -- 204
-pop$ -- 545
+missing$ -- 596
+newline$ -- 306
+num.names$ -- 240
+pop$ -- 666
 preamble$ -- 1
-purify$ -- 416
+purify$ -- 507
 quote$ -- 0
-skip$ -- 677
+skip$ -- 798
 stack$ -- 0
-substring$ -- 1675
-swap$ -- 1962
+substring$ -- 1902
+swap$ -- 2360
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 456
+type$ -- 537
 warning$ -- 2
-while$ -- 233
+while$ -- 270
 width$ -- 0
-write$ -- 703
+write$ -- 825
 (There were 2 warnings)

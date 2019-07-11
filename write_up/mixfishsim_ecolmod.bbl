@@ -1,4 +1,4 @@
-\begin{thebibliography}{51}
+\begin{thebibliography}{60}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -125,6 +125,16 @@
 \newblock \bibinfo{journal}{Fisheries} \bibinfo{volume}{23},
   \bibinfo{pages}{8--17}.
 %Type = Article
+\bibitem[{Dedman et~al.(2015)Dedman, Officer, Brophy, Clarke and
+  Reid}]{Dedman2015}
+\bibinfo{author}{Dedman, S.}, \bibinfo{author}{Officer, R.},
+  \bibinfo{author}{Brophy, D.}, \bibinfo{author}{Clarke, M.},
+  \bibinfo{author}{Reid, D.G.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{{Modelling abundance hotspots for data-poor Irish Sea
+  rays}}.
+\newblock \bibinfo{journal}{Ecological Modelling} \bibinfo{volume}{312},
+  \bibinfo{pages}{77--90}.
+%Type = Article
 \bibitem[{Deriso(1980)}]{Deriso1980}
 \bibinfo{author}{Deriso, R.B.}, \bibinfo{year}{1980}.
 \newblock \bibinfo{title}{{Harvesting Strategies and Parameter Estimation for
@@ -153,6 +163,13 @@
   fishing disturbance and the consequences for benthic communities}}.
 \newblock \bibinfo{journal}{ICES Journal of Marine Science}
   \bibinfo{volume}{60}, \bibinfo{pages}{371--380}.
+%Type = Article
+\bibitem[{Dolder et~al.(2018)Dolder, Thorson and Minto}]{Dolder2018}
+\bibinfo{author}{Dolder, P.J.}, \bibinfo{author}{Thorson, J.T.},
+  \bibinfo{author}{Minto, C.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{{Spatial separation of catches in highly mixed
+  fisheries}}.
+\newblock \bibinfo{journal}{Scientific Reports} .
 %Type = Article
 \bibitem[{Dunn et~al.(2014)Dunn, Boustany, Roberts, Brazer, Sanderson, Gardner
   and Halpin}]{Dunn2014a}
@@ -199,6 +216,28 @@
   the analysis of species distributional data: A review}}.
 \newblock \bibinfo{journal}{Ecography} \bibinfo{volume}{30},
   \bibinfo{pages}{609--628}.
+%Type = Article
+\bibitem[{Fulton et~al.(2011)Fulton, Link, Kaplan, Savina-Rolland, Johnson,
+  Ainsworth, Horne, Gorton, Gamble, Smith and Smith}]{Fulton2011}
+\bibinfo{author}{Fulton, E.A.}, \bibinfo{author}{Link, J.S.},
+  \bibinfo{author}{Kaplan, I.C.}, \bibinfo{author}{Savina-Rolland, M.},
+  \bibinfo{author}{Johnson, P.}, \bibinfo{author}{Ainsworth, C.},
+  \bibinfo{author}{Horne, P.}, \bibinfo{author}{Gorton, R.},
+  \bibinfo{author}{Gamble, R.J.}, \bibinfo{author}{Smith, A.D.},
+  \bibinfo{author}{Smith, D.C.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{{Lessons in modelling and management of marine
+  ecosystems: The Atlantis experience}}.
+\newblock \bibinfo{journal}{Fish and Fisheries} .
+%Type = Article
+\bibitem[{Gardner et~al.(2008)Gardner, Sullivan, Morreale and
+  Epperly}]{Gardner2008}
+\bibinfo{author}{Gardner, B.}, \bibinfo{author}{Sullivan, P.J.},
+  \bibinfo{author}{Morreale, S.J.}, \bibinfo{author}{Epperly, S.P.},
+  \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{{Spatial and temporal statistical analysis of bycatch
+  data: patterns of sea turtle bycatch in the North Atlantic}}.
+\newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
+  \bibinfo{volume}{65}, \bibinfo{pages}{2461--2470}.
 %Type = Article
 \bibitem[{Gerritsen et~al.(2012)Gerritsen, Lordan, Minto and
   Kraak}]{Gerritsen2012}
@@ -282,6 +321,12 @@
 \newblock \bibinfo{title}{{Real-time spatial management approaches to reduce
   bycatch and discards: experiences from Europe and the United States}}.
 \newblock \bibinfo{journal}{Fish and Fisheries} , \bibinfo{pages}{n/a--n/a}.
+%Type = Article
+\bibitem[{Mangel and Clark(1983)}]{Mangel1983}
+\bibinfo{author}{Mangel, M.}, \bibinfo{author}{Clark, C.W.},
+  \bibinfo{year}{1983}.
+\newblock \bibinfo{title}{{Uncertainty, search, and information in fisheries}}.
+\newblock \bibinfo{journal}{ICES Journal of Marine Science} .
 %Type = Misc
 \bibitem[{Mart{\'{i}}nez-Minaya et~al.(2018)Mart{\'{i}}nez-Minaya, Cameletti,
   Conesa and Pennino}]{Martinez-Minaya2018}
@@ -298,6 +343,30 @@
   in retained catches of French fisheries in the Celtic Sea}}.
 \newblock \bibinfo{journal}{ICES Journal of Marine Science: Journal du Conseil}
   , \bibinfo{pages}{fsw129}.
+%Type = Article
+\bibitem[{Needle and Catarino(2011)}]{Needle2011}
+\bibinfo{author}{Needle, C.L.}, \bibinfo{author}{Catarino, R.},
+  \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{{Evaluating the effect of real-time closures on cod
+  targeting}}.
+\newblock \bibinfo{journal}{ICES Journal of Marine Science}
+  \bibinfo{volume}{68}, \bibinfo{pages}{1647--1655}.
+%Type = Article
+\bibitem[{Plag{\'{a}}nyi et~al.(2014)Plag{\'{a}}nyi, Punt, Hillary, Morello,
+  Th{\'{e}}baud, Hutton, Pillans, Thorson, Fulton, Smith, Smith, Bayliss,
+  Haywood, Lyne and Rothlisberg}]{Plaganyi2014}
+\bibinfo{author}{Plag{\'{a}}nyi, {\'{E}}.E.}, \bibinfo{author}{Punt, A.E.},
+  \bibinfo{author}{Hillary, R.}, \bibinfo{author}{Morello, E.B.},
+  \bibinfo{author}{Th{\'{e}}baud, O.}, \bibinfo{author}{Hutton, T.},
+  \bibinfo{author}{Pillans, R.D.}, \bibinfo{author}{Thorson, J.T.},
+  \bibinfo{author}{Fulton, E.A.}, \bibinfo{author}{Smith, A.D.M.},
+  \bibinfo{author}{Smith, F.}, \bibinfo{author}{Bayliss, P.},
+  \bibinfo{author}{Haywood, M.}, \bibinfo{author}{Lyne, V.},
+  \bibinfo{author}{Rothlisberg, P.C.}, \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{{Multispecies fisheries management and conservation:
+  tactical applications using models of intermediate complexity}}.
+\newblock \bibinfo{journal}{Fish and Fisheries} \bibinfo{volume}{15},
+  \bibinfo{pages}{1--22}.
 %Type = Article
 \bibitem[{Poos and Rijnsdorp(2007a)}]{Poos2007a}
 \bibinfo{author}{Poos, J.J.}, \bibinfo{author}{Rijnsdorp, A.D.},
@@ -422,6 +491,17 @@
 \newblock \bibinfo{journal}{Nature} \bibinfo{volume}{451},
   \bibinfo{pages}{1098--U5}.
 %Type = Article
+\bibitem[{Stock et~al.(2019)Stock, Ward, Eguchi, Jannot, Thorson, Feist and
+  Semmens}]{Stock2019}
+\bibinfo{author}{Stock, B.C.}, \bibinfo{author}{Ward, E.J.},
+  \bibinfo{author}{Eguchi, T.}, \bibinfo{author}{Jannot, J.E.},
+  \bibinfo{author}{Thorson, J.T.}, \bibinfo{author}{Feist, B.E.},
+  \bibinfo{author}{Semmens, B.X.}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{{Comparing predictions of fisheries bycatch using
+  multiple spatiotemporal species distribution model frameworks}}.
+\newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
+  .
+%Type = Article
 \bibitem[{Tidd et~al.(2012)Tidd, Hutton, Kell and Blanchard}]{Tidd2012}
 \bibinfo{author}{Tidd, A.N.}, \bibinfo{author}{Hutton, T.},
   \bibinfo{author}{Kell, L.T.}, \bibinfo{author}{Blanchard, J.L.},
@@ -469,5 +549,16 @@
 \newblock \bibinfo{title}{{Optimizing the success of random searches}}.
 \newblock \bibinfo{journal}{Nature} \bibinfo{volume}{401},
   \bibinfo{pages}{911--914}.
+%Type = Article
+\bibitem[{Ward et~al.(2015)Ward, Jannot, Lee, Ono, Shelton and
+  Thorson}]{Ward2015}
+\bibinfo{author}{Ward, E.J.}, \bibinfo{author}{Jannot, J.E.},
+  \bibinfo{author}{Lee, Y.W.}, \bibinfo{author}{Ono, K.},
+  \bibinfo{author}{Shelton, A.O.}, \bibinfo{author}{Thorson, J.T.},
+  \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{{Using spatiotemporal species distribution models to
+  identify temporally evolving hotspots of species co-occurrence}}.
+\newblock \bibinfo{journal}{Ecological Applications} \bibinfo{volume}{25},
+  \bibinfo{pages}{2198--2209}.
 
 \end{thebibliography}
