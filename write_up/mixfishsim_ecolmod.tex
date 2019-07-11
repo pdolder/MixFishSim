@@ -19,8 +19,8 @@
 
 \usepackage{hhline}
 \usepackage{booktabs}
-\usepackage[textsize=scriptsize]{todonotes}
-%\usepackage[textsize=scriptsize, disable]{todonotes}  %% to turn off notes
+%\usepackage[textsize=scriptsize]{todonotes}
+\usepackage[textsize=scriptsize, disable]{todonotes}  %% to turn off notes
 \usepackage{eurosym}
 \usepackage{longtable}
 
@@ -155,7 +155,7 @@ the biological and economic sustainability of fisheries\deleted[id=JJ]{ and
 is increasing interest in technical solutions such as gear and spatial closures
 as measures to \replaced[id=PD]{reduce unwanted catch}{avoiding
 	discard\added[id=JJ]{ing of fish}} \citep{Kennelly2002, Catchpole2008,
-	Bellido2011}\textcolor{red}{(ADD COSGROVE REFERENCE HERE)}.  \\
+	Bellido2011, Cosgrove2019}.  \\
 
 \replaced[id=PD]{Changes to spatial fishing patterns have}{Use of spatial
 	management as a tools} been proposed as a method to reduce discards
@@ -212,7 +212,7 @@ or commercial catch\added[id=PD]{, we can use the population model to validate
 	how inference from fisheries-dependent and fisheries independent
 	sampling relates to the real population structure in a way we could not
 	with real data}. We ii) compare, at different spatial and temporal
-aggregations, the simulated population distributions to samples from
+aggregations, the 'real population' distributions to samples from
 fisheries-dependent and fisheries independent catches to test if these are a
 true reflection of the relative density of the populations. We then iii)
 simulate a fishery closure to protect a species based on different spatial and
@@ -430,8 +430,8 @@ standard deviation of the population temperature tolerance. \\
 	pattern unique to each species, with population movement occurring on a
 	weekly basis. The decision to model population movement on a weekly
 	timescale was to reflect that fish tend to aggregate in species
-	specific locations and range within a week is fairly limited
-	[\textcolor{red}{REF!!}].  Therefore this process approximated the
+	specific locations which have been observed to last around one to two
+	weeks \citep{Poos2007}.  Therefore this process approximated the
 	demographic shifts in fish populations throughout a year with seasonal
 	spawning patterns (e.g.  Figure \ref{S-fig:5}).}
 
@@ -444,11 +444,12 @@ determine\added[id=PD]{d} the initial location to be fished at the beginning of
 a trip; and within-trip decisions, determining movement from one fishing spot
 to another within a trip. Together, these elements implement an explore-exploit
 type strategy for individual vessels to maximise their catch from an unknown
-resource distribution (\cite{Bailey2018}). The decision to use an individual
-based model for fishing vessels was taken because fishers as a group tend to
-show heterogeneity and individual rather than group dynamics
-[\textcolor{red}{REF!}]. Therefore in the simulations fleet dynamics are the
-productive of individual experiences rather than pre-defined group dynamics. 
+resource distribution \cite{Bailey2018}. The decision to use an individual
+based model for fishing vessels was taken because fishers are heterogeneous in
+their location choice behaviour due to different objectives, risk preference
+and targeting preference \citep{VanPutten2012a}. Therefore in the simulations
+fleet dynamics are the productive of individual experiences rather than
+pre-defined group dynamics. 
 
 \subsubsection{Fleet targeting}
 
@@ -660,7 +661,7 @@ The following steps are undertaken to determine closures:
 	\item Aggregate according to desired spatial and temporal resolution
 	\item Interpolate across entire area at desired resolution using simple
 		kriging using the \emph{interp} function from the R package
-		akima [\textcolor{red}{REF!}].
+		akima \citep{Akima2006}.
 	\item Close area covering top 5 \% of catch rates 
 \end{enumerate}
 In total 28 closure scenarios were run which represent combinations of:
@@ -706,7 +707,7 @@ ground (\replaced[id=PD]{Figure}{while}
 	structure?}
 
 In order to answer this question we compare different spatial and temporal
-aggregations of the simulated population distributions to:
+aggregations of the 'real population' distributions to:
 \begin{enumerate}[label=\alph*)]
 	\item \textbf{fisheries-independent data:} the inferred population from
 		a fixed-site sampling survey design as commonly used for
@@ -727,25 +728,25 @@ the spatial distributions of the populations. The slightly aggregated data on a
 5 x 5 grid shows similar patterns and, while losing some of the spatial detail,
 there remains good consistency between the `real population' and the commercial
 data. Survey data starts to pick out some of the similar patterns as the other
-data sources, but lacks coverage. The spatial catch information on a 10 x 10
-and 20 x 20 grid lose a significant amount of information about the spatial
-resolutions for all data sources, and some differences between the survey,
-commercial and 'real population' data emerge. \\
+data sources, but lacks spatiotemporal coverage. The spatial catch information
+on a 10 x 10 and 20 x 20 grid lose a significant amount of information about
+the spatial resolutions for all data sources, and some differences between the
+survey, commercial and 'real population' data emerge. \\
 
 Figure \ref{fig:2} shows the consequences of different temporal aggregations of
 the data over a ten-year period, with weekly (top), monthly (middle) and yearly
-(bottom) catch compositions from across an aggregated 20 x 20 area. As can be
-seen by comparison to the 'real population', the monthly aggregation captures
-the major patterns seen in the weekly data, albeit missing more subtle
-differences. The yearly data results in a constant catch pattern due to the
-aggregation process (sometimes known as an aggregation bias). The commercial
-data on a weekly basis shows some of the same patterns as the 'real
-population', though the first species (in red) is less well represented and
-some weeks are missing catches from the area. The monthly data shows some
-consistency between the 'real population' and commercial data for species 2 -
-4, though species 1 remains under-represented. On an annual basis,
-interestingly the commercial data under represents the first species (in red)
-while the survey over represents species 1. This is likely due to the biases in
+(bottom) catch compositions from across an aggregated 20 x 20 area. By
+comparison to the 'real population', the monthly aggregation captures the major
+patterns seen in the weekly data, albeit missing more subtle differences. The
+yearly data results in a constant catch pattern due to the aggregation process
+(sometimes known as an aggregation bias). The commercial data on a weekly basis
+shows some of the same patterns as the 'real population', though the first
+species (in red) is less well represented and some weeks are missing catches
+from the area. The monthly data shows some consistency between the 'real
+population' and commercial data for species 2 - 4, though species 1 remains
+under-represented. On an annual basis, interestingly the commercial data under
+represents the first species (in red) while the survey over represents species
+1. This is likely due to the biases in
 commercial sampling, with the fisheries not targeting the areas where species 1
 are present, and the biases in the survey sampling from over representation of
 the spatial distribution. 
@@ -773,30 +774,28 @@ on the other species changed in different proportions, depending on whether the
 displaced fishing effort moved to areas where the populations were found in
 greater or lesser density. \\
 
-A regression tree (using the R package REEMtree [ref]) highlights that the
-factor most contributing to differences in fishing mortality before and after
-the closure was the population (72 \% showing that the closures were effective
-for population 3), followed by data resolution (21 \%), data type (7 \%) with
-the least important factor the timescale ($<$ 1 \%). In general the finer the
-spatial resolution of the data used the greater reduction in fishing mortality
-for population 3 after the closures (Figure \ref{fig:4}). The notable outliers
-are the commercial data at the coarsest spatial resolution (20 x 20) at a
-yearly and weekly timescale, where closures were nearly as effective as the
-fine-scale resolution. In this case the closures were sufficiently large to
-protect the population (and was as effective as when the closure was based on
-the "real population"; \textcolor{red}{CHECK THIS, COULD PLOT ACTUAL CLOSURE
-	LOCATIONS??}) but this may have consequences in terms of restricting a
-much larger area than necessary. \\
+A regression tree (using the R package REEMtree \citep{Sela2012}) highlights
+that the factor most contributing to differences in fishing mortality before
+and after the closure was the population (72 \% showing that the closures were
+effective for population 3), followed by data resolution (21 \%), data type (7
+\%) with the least important factor the timescale ($<$ 1 \%). In general the
+finer the spatial resolution of the data used the greater reduction in fishing
+mortality for population 3 after the closures (Figure \ref{fig:4}). The notable
+outliers are the commercial data at the coarsest spatial resolution (20 x 20)
+at a yearly and weekly timescale, where closures were nearly as effective as
+the fine-scale resolution. In this case the closures were sufficiently large to
+protect a core are of the habitat for the population, but this was achieved in
+a fairly crude manner by closing a large area - including area where the
+species was not found (Figure \ref{S-fig:17}) which may have consequences in
+terms of restricting the fishery in a much larger area than necessary. \\
 
 \section{Discussion}
-
-INCLUDE SUBHEADINGS TO MATCH RESULTS
 
 %% General intro
 
 Our study evaluates the importance of data scaling and considers potential bias
 introduced through data aggregation when using fisheries data to infer
-spatio-temporal dynamics of fish populations. Understanding how fishers exploit
+spatiotemporal dynamics of fish populations. Understanding how fishers exploit
 multiple heterogeneously distributed fish populations with different catch
 limits or conservation status requires detailed understanding of the overlap of
 resources; this is difficult to achieve using conventional modelling approaches
@@ -805,39 +804,48 @@ due to species targeting in fisheries resulting in preferential sampling
 requires assumptions about the spatial and temporal scale of processes. Our
 study explores the assumptions behind such aggregation and preferential
 sampling to identify potential impacts on management advice. With modern
-management approaches increasingly employing more nuanced spatio-temporal
+management approaches increasingly employing more nuanced spatiotemporal
 approaches in order to maximise productivity while taking account of both the
 biological and human processes operating on different time-frames
-\citep{Dunn2016}, understanding assumptions behind the data used -
-increasingly a combination of logbook and positional information from vessel
-monitoring systems - is vital to ensure measures are effective. \\
+\citep{Dunn2016}, understanding assumptions behind the data used - increasingly
+a combination of logbook and positional information from vessel monitoring
+systems - is vital to ensure measures are effective. \\
 
-%% our approach
-
+\subsection{Simulation dynamics}
+ 
 We employ a simulation approach to model each of the population and fishery
-processes in a hypothetical 'mixed fishery', allowing us to i) evaluate the
+dynamics in a hypothetical 'mixed fishery', allowing us to i) evaluate the
 consequences of different aggregation assumptions on our understanding of the
-spatio-temporal distribution of the underlying fish populations, and ii)
+spatiotemporal distribution of the underlying fish populations, and ii)
 evaluate the effectiveness of a spatial closure given those assumptions. \\
 
 %% USP
-
-Our approach captures fine scale population and fishery dynamics and their
-interaction in a way not usually possible with real data and thus not usually
-considered in fisheries simulations. While other simulation frameworks seek to
-model individual vessel dynamics based on inferred dynamics from VMS and
-logbook records \citep{Bastardie2010}, or as a system to identify measures to
-meet particular management goals \citep{Bailey2018}, our framework allows users
-to explore the assumptions in modelling observational data and evaluate the
-underlying dynamics of such approaches at a fine spatial and temporal scale.
-This offers the advantage that larger scale fishery patterns are emergent
-properties of the system rather and results can be compared to those obtained
-under a statistical modelling framework. \\
+Our approach is unique in that it captures fine scale population and fishery
+dynamics and their interaction in a way not usually possible with real data and
+thus not usually considered in fisheries simulations. While other simulation
+frameworks seek to model individual vessel dynamics based on inferred dynamics
+from VMS and logbook records \citep{Bastardie2010}, or as a system to identify
+measures to meet particular management goals \citep{Bailey2018}, our framework
+allows users to explore the assumptions in modelling observational data and
+evaluate the underlying dynamics of such approaches at a fine spatial and
+temporal scale.  This offers the advantage that larger scale fishery patterns
+are emergent properties of the system rather and results can be compared to
+those obtained under a statistical modelling framework. \\
 
 %% Comparison to other models
+Typically, simulation models which treat fish as individuals are focussed on
+exploring the inter- and intra- specific interactions among fish populations
+(e.g. OSMOSE \cite{Shin2004}) in order to understand how they vary over space
+and time. Our focus was on understanding how fleets which exploit multiple fish
+populations realise catch distributions which may differ from the underlying
+populations. As such, we favoured a minimum realistic model of the fish
+populations after \cite{Plaganyi2014}, while incorporating fishing dynamics
+which take account of different drivers in a mechanistic way, similarly to
+other approaches \citep{Fulton2011} but at an individual vessel rather than
+fleet level. 
 
-COMPARE AGAINST OTHER MODELS: Osmose, Atlantis,... do they use rationale actors
-and economic profit making ?
+\subsection{How does sampling-derived data reflect the underlying population
+	structure?}
 
 %% Why ours is important
 
@@ -848,11 +856,16 @@ fishers interact / adapt to changes with the resource and mgmt. \\
 
 %% key findings in context
 
+\subsection{How does data aggregation and source impact on spatial fisheries
+	management measures?}
+
 It seems clear that spatial disaggregation is more important than the temporal
 disaggregation of the commercial data... WHY
 
 Closure scenarios demonstrate potential tor reduce F - not as high as with real
 pop, but good.  Make link to other studies -- read up on these. \\
+
+\subsection{Future application for framework}
 
 \underline{The what next:} \\
 
@@ -882,6 +895,9 @@ Testing fleet dynamics models at an aggregated level \\
 
 Bigger picture stuff::  LO, increasing desire for more nuanced spatiotemp
 mgmt... Wider applicability: birds, wildlife ?? 
+
+\subsection{Model assumptions and caveats}
+
 
 \section{Conclusions}
 

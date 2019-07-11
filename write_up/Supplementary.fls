@@ -134,6 +134,9 @@ INPUT ../tests/plots/step_function.png
 INPUT ./Plots/Matern.png
 INPUT ./Plots/Matern.png
 INPUT ./Plots/Matern.png
+INPUT ./Plots/Closure_fishing_locations_yearly.png
+INPUT ./Plots/Closure_fishing_locations_yearly.png
+INPUT ./Plots/Closure_fishing_locations_yearly.png
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT Supplementary.aux
 INPUT ./Supplementary.out

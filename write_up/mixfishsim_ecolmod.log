@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.6.7)  3 JUL 2019 16:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  11 JUL 2019 17:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -84,12 +84,7 @@ LaTeX Info: Redefining \cite on input line 694.
 ) (/usr/share/texlive/texmf-dist/tex/latex/tools/xr.sty
 Package: xr 1994/05/28 v5.02 eXternal References (DPC)
 )
-
-Package xr Warning: 
-No file Supplementary.aux
-LABELS NOT IMPORTED.
- on input line 4.
-
+Package xr Info: IMPORTING LABELS FROM Supplementary.aux on input line 4.
 (/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
 Package: lineno 2005/11/02 line numbers on paragraphs v4.41
 \linenopenalty=\count94
@@ -1064,7 +1059,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 161--171
 
  []
 
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 195.
 
 Underfull \hbox (badness 10000) in paragraph at lines 172--196
 
@@ -1118,202 +1112,153 @@ Underfull \hbox (badness 10000) in paragraph at lines 394--404
  []
 
 [9]
-
-LaTeX Warning: Marginpar on page 10 moved.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 422--428
 
  []
 
-
-LaTeX Warning: Reference `S-fig:5' on page 10 undefined on input line 436.
-
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 484--500
+Underfull \hbox (badness 10000) in paragraph at lines 485--501
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 501--514
+Underfull \hbox (badness 10000) in paragraph at lines 502--515
 
  []
 
 [12]
-
-LaTeX Warning: Reference `S-fig:15' on page 13 undefined on input line 553.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 570--577
+Underfull \hbox (badness 10000) in paragraph at lines 571--578
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 580--583
+Underfull \hbox (badness 10000) in paragraph at lines 581--584
 
  []
 
 
-LaTeX Warning: Reference `S-fig:1' on page 14 undefined on input line 590.
-
-
-LaTeX Warning: Reference `S-fig:3' on page 14 undefined on input line 591.
-
-
-LaTeX Warning: Reference `S-fig:4' on page 14 undefined on input line 591.
-
-
-LaTeX Warning: Reference `S-fig:5' on page 14 undefined on input line 593.
-
-
-LaTeX Warning: Reference `S-fig:7' on page 14 undefined on input line 593.
-
-
-LaTeX Warning: Reference `S-fig:2' on page 14 undefined on input line 595.
-
-
-LaTeX Warning: Reference `S-fig:9' on page 14 undefined on input line 598.
-
-
-LaTeX Warning: Reference `S-fig:10' on page 14 undefined on input line 599.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 603--616
+Underfull \hbox (badness 10000) in paragraph at lines 604--617
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 617--626
+Underfull \hbox (badness 10000) in paragraph at lines 618--627
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 646--653
+Underfull \hbox (badness 10000) in paragraph at lines 647--654
 
  []
 
-
-LaTeX Warning: Marginpar on page 16 moved.
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 669.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 670.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 669.
-
-LaTeX Warning: Reference `S-fig:11' on page 16 undefined on input line 688.
-
-
-LaTeX Warning: Reference `S-fig:12' on page 16 undefined on input line 689.
-
-
-LaTeX Warning: Reference `S-fig:13' on page 16 undefined on input line 691.
-
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 670.
 [16]
-
-LaTeX Warning: Reference `S-fig:14' on page 17 undefined on input line 698.
-
-
-LaTeX Warning: Reference `S-fig:15' on page 17 undefined on input line 702.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 719--734
+Underfull \hbox (badness 10000) in paragraph at lines 720--735
 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 762--775
+Underfull \hbox (badness 10000) in paragraph at lines 763--776
 
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 776--790
+Underfull \hbox (badness 10000) in paragraph at lines 777--791
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 793--810
+Underfull \hbox (badness 10000) in paragraph at lines 796--813
 
  []
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 811--816
+Underfull \hbox (badness 10000) in paragraph at lines 816--821
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 817--828
+Underfull \hbox (badness 10000) in paragraph at lines 823--834
 
  []
 
 [20]
-Underfull \hbox (badness 10000) in paragraph at lines 829--833
+Underfull \hbox (badness 10000) in paragraph at lines 849--853
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 837--839
+Underfull \hbox (badness 10000) in paragraph at lines 862--864
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 840--841
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 842--845
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 846--849
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 851--852
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 853--854
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 855--856
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 857--858
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 859--860
+Underfull \hbox (badness 10000) in paragraph at lines 867--868
 
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 866--867
+Underfull \hbox (badness 10000) in paragraph at lines 869--872
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 868--869
+Underfull \hbox (badness 10000) in paragraph at lines 873--876
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 870--871
+Underfull \hbox (badness 10000) in paragraph at lines 878--879
 
  []
 
 
-Overfull \hbox (31.6996pt too wide) in paragraph at lines 876--879
+Underfull \hbox (badness 10000) in paragraph at lines 880--881
+
+ []
+
+
+Overfull \hbox (0.13954pt too wide) in paragraph at lines 882--883
+[]\OT1/cmr/m/n/10 Assumptions in spa-tiotem-po-ral mod-els: GAMs, GLMMs, geo-sta-tis-ti-cal mod-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 886--888
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 889--890
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 891--892
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 901--902
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 903--904
+
+ []
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 905--906
+
+ []
+
+
+Overfull \hbox (31.6996pt too wide) in paragraph at lines 911--914
 []\OT1/cmr/m/n/10 This work was sup-ported by the MARES doc-toral train-ing pro-gram (MARES[]14[]15)
  []
 
@@ -1407,7 +1352,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 142--144
 []\OT1/cmr/m/n/10 pop
  []
 
-) [22] [23] [24] [25] [26] [27] (./F_changes.tex
+) [23] [24] [25] [26] [27] [28] (./F_changes.tex
 Overfull \hbox (76.2294pt too wide) in alignment at lines 3--29
  [] [] [] [] [] [] [] [] [] [] 
  []
@@ -1418,61 +1363,76 @@ Overfull \hbox (76.2294pt too wide) in alignment at lines 29--42
  []
 
 )
-<../analysis/Data_Aggregation_space_Rev.pdf, id=460, 1156.32pt x 1734.48pt>
+<../analysis/Data_Aggregation_space_Rev.pdf, id=519, 1156.32pt x 1734.48pt>
 File: ../analysis/Data_Aggregation_space_Rev.pdf Graphic file (type pdf)
 <use ../analysis/Data_Aggregation_space_Rev.pdf>
-Package pdftex.def Info: ../analysis/Data_Aggregation_space_Rev.pdf  used on input line 891.
+Package pdftex.def Info: ../analysis/Data_Aggregation_space_Rev.pdf  used on input line 926.
 (pdftex.def)             Requested size: 345.0pt x 517.4897pt.
-<../analysis/Data_Aggregation_time_Rev.pdf, id=461, 1156.32pt x 1734.48pt>
+<../analysis/Data_Aggregation_time_Rev.pdf, id=520, 1156.32pt x 1734.48pt>
 File: ../analysis/Data_Aggregation_time_Rev.pdf Graphic file (type pdf)
 <use ../analysis/Data_Aggregation_time_Rev.pdf>
-Package pdftex.def Info: ../analysis/Data_Aggregation_time_Rev.pdf  used on input line 898.
+Package pdftex.def Info: ../analysis/Data_Aggregation_time_Rev.pdf  used on input line 933.
 (pdftex.def)             Requested size: 345.0pt x 517.4897pt.
-<../analysis/F_trendsREV.png, id=462, 650.43pt x 578.16pt>
+<../analysis/F_trendsREV.png, id=521, 650.43pt x 578.16pt>
 File: ../analysis/F_trendsREV.png Graphic file (type png)
 <use ../analysis/F_trendsREV.png>
-Package pdftex.def Info: ../analysis/F_trendsREV.png  used on input line 906.
+Package pdftex.def Info: ../analysis/F_trendsREV.png  used on input line 941.
 (pdftex.def)             Requested size: 345.0pt x 306.67035pt.
-<../analysis/f_diff_effectiveness.png, id=463, 650.43pt x 578.16pt>
+<../analysis/f_diff_effectiveness.png, id=522, 650.43pt x 578.16pt>
 File: ../analysis/f_diff_effectiveness.png Graphic file (type png)
 <use ../analysis/f_diff_effectiveness.png>
-Package pdftex.def Info: ../analysis/f_diff_effectiveness.png  used on input line 914.
+Package pdftex.def Info: ../analysis/f_diff_effectiveness.png  used on input line 949.
 (pdftex.def)             Requested size: 345.0pt x 306.67035pt.
-[28
+[29
 
-] [29 <../analysis/Data_Aggregation_space_Rev.pdf>] [30 <../analysis/Data_Aggregation_time_Rev.pdf>] [31 <../analysis/F_trendsREV.png (PNG copy)>] [32 <../analysis/f_diff_effectiveness.png (PNG copy)>] (./mixfishsim_ecolmod.bbl [33
+] [30 <../analysis/Data_Aggregation_space_Rev.pdf>] [31 <../analysis/Data_Aggregation_time_Rev.pdf>] [32 <../analysis/F_trendsREV.png (PNG copy)>] [33 <../analysis/f_diff_effectiveness.png (PNG copy)>] (./mixfishsim_ecolmod.bbl [34
 
-] [34] [35])
+] [35] [36] [37])
 \Changes@OutFile=\write6
 \openout6 = `mixfishsim_ecolmod.soc'.
 
-[36]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 926.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 926.
+[38]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 961.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 961.
 (./mixfishsim_ecolmod.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 926.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 926.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 961.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 961.
 Package rerunfilecheck Info: File `mixfishsim_ecolmod.out' has not changed.
-(rerunfilecheck)             Checksum: E670626D8D7666A38C0461F06434A3D7;1630.
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 926.
+(rerunfilecheck)             Checksum: B2CE373FBCBE5E901AB3608DA008873E;2120.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 961.
  ) 
 Here is how much of TeX's memory you used:
- 21895 strings out of 492982
- 426498 string characters out of 6134897
- 581202 words of memory out of 5000000
- 24857 multiletter control sequences out of 15000+600000
+ 21807 strings out of 492982
+ 424189 string characters out of 6134895
+ 550009 words of memory out of 5000000
+ 24757 multiletter control sequences out of 15000+600000
  13878 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,17n,76p,645b,933s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/symbols/msbm10.pfb>
-Output written on mixfishsim_ecolmod.pdf (36 pages, 2129198 bytes).
+ 55i,17n,68p,645b,931s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{figure.17} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.14} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.13} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.12} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.11} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.10} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.9} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.7} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.15} has been referenced but does not exist, replaced by a fixed one
+
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/symbols/msbm10.pfb>
+Output written on mixfishsim_ecolmod.pdf (38 pages, 2118310 bytes).
 PDF statistics:
- 644 PDF objects out of 1000 (max. 8388607)
- 566 compressed objects within 6 object streams
- 153 named destinations out of 1000 (max. 500000)
- 217 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 713 PDF objects out of 1000 (max. 8388607)
+ 632 compressed objects within 7 object streams
+ 165 named destinations out of 1000 (max. 500000)
+ 257 words of extra memory for PDF output out of 10000 (max. 10000000)
 

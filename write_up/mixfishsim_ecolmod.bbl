@@ -1,4 +1,4 @@
-\begin{thebibliography}{45}
+\begin{thebibliography}{51}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -6,6 +6,13 @@
 \providecommand{\eprint}[2][]{\url{#2}}
 \providecommand{\bibinfo}[2]{#2}
 \ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Akima(2006)}]{Akima2006}
+\bibinfo{author}{Akima, H.}, \bibinfo{year}{2006}.
+\newblock \bibinfo{title}{{Interpolation of irregularly spaced data, The akima
+  Package}}.
+\newblock \bibinfo{journal}{Interpolation of Irregularly and Regularly Spaced
+  Data} .
 %Type = Misc
 \bibitem[{Alverson et~al.(1994)Alverson, Freeberg, Murawski and
   Pope}]{Alverson1994}
@@ -97,6 +104,17 @@
 \newblock \bibinfo{title}{{Random walk models in biology.}}
 \newblock \bibinfo{journal}{Journal of the Royal Society, Interface / the Royal
   Society} \bibinfo{volume}{5}, \bibinfo{pages}{813--34}.
+%Type = Article
+\bibitem[{Cosgrove et~al.(2019)Cosgrove, Browne, Minto, Tyndall, Oliver,
+  Montgomerie and McHugh}]{Cosgrove2019}
+\bibinfo{author}{Cosgrove, R.}, \bibinfo{author}{Browne, D.},
+  \bibinfo{author}{Minto, C.}, \bibinfo{author}{Tyndall, P.},
+  \bibinfo{author}{Oliver, M.}, \bibinfo{author}{Montgomerie, M.},
+  \bibinfo{author}{McHugh, M.}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{{A game of two halves: Bycatch reduction in Nephrops
+  mixed fisheries}}.
+\newblock \bibinfo{journal}{Fisheries Research} \bibinfo{volume}{210},
+  \bibinfo{pages}{31--40}.
 %Type = Article
 \bibitem[{Crowder et~al.(1998)Crowder, Murawski, Crowder and
   Murawski}]{Crowder1998}
@@ -281,13 +299,22 @@
 \newblock \bibinfo{journal}{ICES Journal of Marine Science: Journal du Conseil}
   , \bibinfo{pages}{fsw129}.
 %Type = Article
-\bibitem[{Poos and Rijnsdorp(2007)}]{Poos2007a}
+\bibitem[{Poos and Rijnsdorp(2007a)}]{Poos2007a}
 \bibinfo{author}{Poos, J.J.}, \bibinfo{author}{Rijnsdorp, A.D.},
-  \bibinfo{year}{2007}.
+  \bibinfo{year}{2007}a.
 \newblock \bibinfo{title}{{An "experiment" on effort allocation of fishing
   vessels: the role of interference competition and area specialization}}.
 \newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
   \bibinfo{volume}{64}, \bibinfo{pages}{304--313}.
+%Type = Article
+\bibitem[{Poos and Rijnsdorp(2007b)}]{Poos2007}
+\bibinfo{author}{Poos, J.J.}, \bibinfo{author}{Rijnsdorp, A.D.},
+  \bibinfo{year}{2007}b.
+\newblock \bibinfo{title}{{The dynamics of small-scale patchiness of plaice and
+  sole as reflected in the catch rates of the Dutch beam trawl fleet and its
+  implications for the fleet dynamics}}.
+\newblock \bibinfo{journal}{Journal of Sea Research} \bibinfo{volume}{58},
+  \bibinfo{pages}{100--112}.
 %Type = Article
 \bibitem[{{R Core Team}(2017)}]{RCoreTeam2017}
 \bibinfo{author}{{R Core Team}}, \bibinfo{year}{2017}.
@@ -355,6 +382,19 @@
   data}}.
 \newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
   \bibinfo{volume}{42}, \bibinfo{pages}{414--429}.
+%Type = Misc
+\bibitem[{Sela and Simonoff(2012)}]{Sela2012}
+\bibinfo{author}{Sela, R.}, \bibinfo{author}{Simonoff, J.},
+  \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{{Package ‘REEMtree'}}.
+%Type = Inproceedings
+\bibitem[{Shin et~al.(2004)Shin, Shannon and Cury}]{Shin2004}
+\bibinfo{author}{Shin, Y.J.}, \bibinfo{author}{Shannon, L.J.},
+  \bibinfo{author}{Cury, P.M.}, \bibinfo{year}{2004}.
+\newblock \bibinfo{title}{{Simulations of fishing effects on the southern
+  Benguela fish community using an individual-based model: Learning from a
+  comparison with ECOSIM}}, in: \bibinfo{booktitle}{African Journal of Marine
+  Science}.
 %Type = Article
 \bibitem[{Sims et~al.(2012)Sims, Humphries, Bradford and Bruce}]{Sims2012}
 \bibinfo{author}{Sims, D.W.}, \bibinfo{author}{Humphries, N.E.},
@@ -408,6 +448,17 @@
   demersal fisheries using the Fcube mixed-fisheries advice framework}}.
 \newblock \bibinfo{journal}{ICES Journal of Marine Science}
   \bibinfo{volume}{68}, \bibinfo{pages}{1535--1547}.
+%Type = Article
+\bibitem[{{Van Putten} et~al.(2012){Van Putten}, Kulmala, Th{\'{e}}baud,
+  Dowling, Hamon, Hutton and Pascoe}]{VanPutten2012a}
+\bibinfo{author}{{Van Putten}, I.E.}, \bibinfo{author}{Kulmala, S.},
+  \bibinfo{author}{Th{\'{e}}baud, O.}, \bibinfo{author}{Dowling, N.},
+  \bibinfo{author}{Hamon, K.G.}, \bibinfo{author}{Hutton, T.},
+  \bibinfo{author}{Pascoe, S.}, \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{{Theories and behavioural drivers underlying fleet
+  dynamics models}}.
+\newblock \bibinfo{journal}{Fish and Fisheries} \bibinfo{volume}{13},
+  \bibinfo{pages}{216--235}.
 %Type = Article
 \bibitem[{Viswanathan et~al.(1999)Viswanathan, Buldyrev, Havlin, {Da Luz},
   Raposo and Stanley}]{Viswanathan1999}

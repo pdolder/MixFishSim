@@ -1,4 +1,4 @@
-PWD /mnt/c/Users/PJD01/git_files/MixFishSim/write_up
+PWD /home/paul/Dropbox/MARES_PhD/MixFishSim/write_up
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
@@ -39,6 +39,7 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 OUTPUT mixfishsim_ecolmod.spl
 INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/xr.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/xr.sty
+INPUT Supplementary.aux
 INPUT /usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty

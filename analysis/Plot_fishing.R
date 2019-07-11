@@ -9,13 +9,13 @@ library(ggplot2)
 
 yrs <- c(29, 46) ## years before and after the closures
 
-#timescale <- "yearly"
+timescale <- "yearly"
 #timescale <- "monthly"
-timescale <- "weekly"
+#timescale <- "weekly"
 
 load('Common_Params.RData')
 
-if(timescale == "yearly")  { Run  <- 3 }
+if(timescale == "yearly")  { Run  <- 45 }
 if(timescale == "monthly") { Run  <- 2 }
 if(timescale == "weekly")  { Run  <- 1 }
 
@@ -63,6 +63,10 @@ closed_areas$dat   <- as.numeric(closed_areas$dat)
 }
 
 
+## habitat df
+
+hab.df <- data.frame(x = rep(1:100,100), y = rep(1:100, each = 100), hab = as.vector(hab$hab$spp3))
+
 ## Find bounds of area closures
 ## But we need to be able to keep areas as contiguous
 
@@ -95,8 +99,14 @@ p2 <- ggplot(cl) + geom_polygon(aes(long, lat, group = group), colour = "red",fi
 		   alpha = 0.2, shape = "x") +
 	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
 
-plot_grid(p1,p2, labels = c("(a) before closures", "(b) after closures"), vjust = 2)
-ggsave(file = "Closure_fishing_locations_yearly.pdf", width = 16, height = 8)
+p3 <- ggplot(cl) + geom_raster(aes(x, y, alpha = hab), data = filter(hab.df, hab > 0))+ 
+	geom_polygon(aes(long, lat, group = group), colour = "red",fill = NA) +
+	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~year) +
+	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"), 
+			   legend.position = "none")
+
+plot_grid(p1, p2, p3, labels = c("(a) before closures", "(b) after closures", "(c) habitat spp3" ), vjust = 2, ncol = 1)
+ggsave(file = "Closure_fishing_locations_yearly.png", width = 6, height = 18)
 
 }
 
