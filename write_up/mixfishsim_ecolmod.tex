@@ -371,7 +371,7 @@ implement different spatial structures for the populations. \\
 \replaced[id=PD]{T}{In the simulation model, t}he habitat for each of the
 populations \replaced[id=PD]{was}{is} generated \replaced[id=PD]{with}{through}
 the \textit{RFSimulate} function of the \textit{RandomFields} R package
-\citep{Schlater2015}, which simulates a Gaussian Random Field process given a
+\citep{Schlater2015}, that simulates a Gaussian Random Field process given a
 user defined error model and correlation structure. We define a stationary
 habitat field and combine with a temporally dynamic thermal tolerance field to
 imitate two key drivers of population dynamics. Each population
@@ -430,7 +430,7 @@ standard deviation of the population temperature tolerance. \\
 	pattern unique to each species, with population movement occurring on a
 	weekly basis. The decision to model population movement on a weekly
 	timescale was to reflect that fish tend to aggregate in species
-	specific locations which have been observed to last around one to two
+	specific locations that have been observed to last around one to two
 	weeks \citep{Poos2007}.  Therefore this process approximated the
 	demographic shifts in fish populations throughout a year with seasonal
 	spawning patterns (e.g.  Figure \ref{S-fig:5}).}
@@ -438,9 +438,9 @@ standard deviation of the population temperature tolerance. \\
 \subsection{Fleet dynamics}
 
 The fleet dynamics can be broadly categorised into three components; fleet
-targeting - which determine\replaced[id=PD]{d}{s} the fleet catch efficiency
-and preference towards a particular species; trip-level decisions, which
-determine\added[id=PD]{d} the initial location to be fished at the beginning of
+targeting - that determines\replaced[id=PD]{d}{s} the fleet catch efficiency
+and preference towards a particular species; trip-level decisions, that 
+determines\added[id=PD]{d} the initial location to be fished at the beginning of
 a trip; and within-trip decisions, determining movement from one fishing spot
 to another within a trip. Together, these elements implement an explore-exploit
 type strategy for individual vessels to maximise their catch from an unknown
@@ -477,7 +477,7 @@ by \added[id=PD]{calculating an expected revenue based on the catches from
 	locations fished} in the preceding trip as well as the same month
 periods in previous years and the travel costs from the port to the fishing
 grounds, and choosing randomly from the top 75 \% of fishing events
-\replaced[id=PD]{as defined by the expected profit, which has a seasonal
+\replaced[id=PD]{as defined by the expected profit, that has a seasonal
 	component}{in value}. 
 
 \subsubsection{Within-trip decisions}
@@ -527,7 +527,7 @@ population $p$, and $Pr_{p}$ price of a population. Here, when fishing is
 successful vessels remain in a similar location and continue to exploit the
 local fishing grounds. When unsuccessful, they move some distance away from
 the current fishing location.  The movement distance retains some degree of
-stochasticity, which can be controlled separately, but is determined by the
+stochasticity, that can be controlled separately, but is determined by the
 relationship: 
 \begin{equation}
 	StepL = e^{log(\beta_{1}) + log(\beta_{2}) -
@@ -547,7 +547,7 @@ shape of the step function in its relation to revenue, so that, a step from
 	\end{split}
 \end{equation}
 where $k$ the concentration parameter from the von \replaced[id=JJ]{M}{m}ises
-distribution which we correlate with the revenue so that $k = (Rev + 1 /
+distribution that we correlate with the revenue so that $k = (Rev + 1 /
 RefRev) * max_{k}$, where $max_{k}$ is the maximum concentration value, $k$,
 and $RefRev$ is parametrised as for $\beta_{3}$ in the step length function. A
 realised example of the step length and turning angle relationships to revenue
@@ -592,7 +592,7 @@ demographics; growth rates, natural mortality and recruitment functions (Table
 tolerances (Figures \ref{S-fig:3}, \ref{S-fig:4}) were unique to each
 population resulting in differently weekly distribution patterns (Figures
 \ref{S-fig:5}-\ref{S-fig:7}). In addition, each of the populations has two
-defined spawning areas which result in the populations moving towards these
+defined spawning areas that result in the populations moving towards these
 areas in pre-defined weeks (Figure \ref{S-fig:2}) with population-specific
 movement rates (Table \ref{tab:1}). The individual habitat preferences and
 thermal tolerances result in different spatial habitat use for each population
@@ -621,7 +621,7 @@ from previous years and from the previous trip. 'Profitable' in this context
 was defined as the locations where the top 70 \% of expected profit would be
 found given previous trips revenue and cost of movement to the new fishing
 location.  This probability was based on a logistic sigmoid function with a
-lower asymptote of 0 and upper asymptote of 0.95, and a growth rate which
+lower asymptote of 0 and upper asymptote of 0.95, and a growth rate that 
 ensures the upper asymptote (where decisions are mainly based on past
 knowledge) is reached approximately halfway through the simulation.  \\
 
@@ -664,7 +664,7 @@ The following steps are undertaken to determine closures:
 		akima \citep{Akima2006}.
 	\item Close area covering top 5 \% of catch rates 
 \end{enumerate}
-In total 28 closure scenarios were run which represent combinations of:
+In total 28 closure scenarios were run that represent combinations of:
 
 \begin{itemize}
 	\item \textbf{data types:} commercial logbook data, survey data and
@@ -696,7 +696,7 @@ $$\sum^c_{c=1}\sum^s_{s=1} B_{s,c} \cdot Q_{s,c}$$
 Vessels from the same fleet (and therefore targeting preference) exploit
 similar but slightly different fishing grounds depending on their own personal
 experience during the explore phase of the fishery (\added[id=PD]{Figure}
-\ref{S-fig:14}), which is the result of the randomness in the correlated random
+\ref{S-fig:14}), that is the result of the randomness in the correlated random
 walk step function, with distance moved during the exploitation phase and the
 direction stochastically related to the revenue experienced on the fishing
 ground (\replaced[id=PD]{Figure}{while}
@@ -713,7 +713,7 @@ aggregations of the 'real population' distributions to:
 		a fixed-site sampling survey design as commonly used for
 		fisheries monitoring purposes;
 	\item \textbf{fisheries-dependent data:} the inferred population from
-		our fleet model which includes fishery-induced sampling
+		our fleet model that includes fishery-induced sampling
 		dynamics.
 \end{enumerate}
 
@@ -767,7 +767,7 @@ reductions in fishing mortality happened immediately after the closures,
 following which the fisheries "adapted" to the closures and fishing mortality
 increased again somewhat. The exception to the success was the closures
 implemented based on the coarsest spatial (20 x 20) and temporal resolution
-(yearly) which were ineffective with all data sources. As expected, closures
+(yearly) that was ineffective with all data sources. As expected, closures
 based on the "known" population distribution were most effective, with
 differing degrees of success using the commercial data. Fishing mortality rates
 on the other species changed in different proportions, depending on whether the
@@ -786,7 +786,7 @@ at a yearly and weekly timescale, where closures were nearly as effective as
 the fine-scale resolution. In this case the closures were sufficiently large to
 protect a core are of the habitat for the population, but this was achieved in
 a fairly crude manner by closing a large area - including area where the
-species was not found (Figure \ref{S-fig:17}) which may have consequences in
+species was not found (Figure \ref{S-fig:17}) that may have consequences in
 terms of restricting the fishery in a much larger area than necessary. \\
 
 \section{Discussion}
@@ -833,15 +833,15 @@ are emergent properties of the system and results can be compared to those
 obtained under a statistical modelling framework. \\
 
 %% Comparison to other models
-Typically, simulation models which treat fish as individuals are focussed on
+Typically, simulation models that treat fish as individuals are focussed on
 exploring the inter- and intra- specific interactions among fish populations
 (e.g. OSMOSE \cite{Shin2004}) in order to understand how they vary over space
 and time. Our focus was on understanding the strengths and limitations of
 inference from catch data obtained through commercial fishing activity with
 fleets exploiting multiple fish populations and realising catch distributions
-which may differ from the underlying populations. As such, we favoured a
+that may differ from the underlying populations. As such, we favoured a
 minimum realistic model of the fish populations \citep{Plaganyi2014}, while
-incorporating detailed fishing dynamics which take account of different drivers
+incorporating detailed fishing dynamics that take account of different drivers
 in a mechanistic way. In this way we take account of heterogeneity in fleet
 dynamics due to different preferences and drivers similarly to other approaches
 \citep{Fulton2011}, but at an individual vessel rather than fleet level. We do
@@ -909,7 +909,7 @@ study by varying the parameters and assessing the robustness of our
 conclusions. \\
 
 In addition, we have assumed that fishing vessels are not restricted by quota
-and therefore discarding of species for which vessels have no quota or which
+and therefore discarding of species for which vessels have no quota or that 
 are unwanted is not taken into account. This is likely to be a significant
 source of bias in any inference using commercial data and should also be
 explored. \\
