@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  12 JUL 2019 11:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  12 JUL 2019 12:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1187,42 +1187,42 @@ Underfull \hbox (badness 10000) in paragraph at lines 823--834
 
  []
 
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 861--877
+[20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 872--881
 
  []
 
-[21]
-Underfull \hbox (badness 10000) in paragraph at lines 898--902
+
+Underfull \hbox (badness 10000) in paragraph at lines 882--891
 
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 903--910
+Underfull \hbox (badness 10000) in paragraph at lines 900--904
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 911--916
+Underfull \hbox (badness 10000) in paragraph at lines 905--912
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 919--929
+Underfull \hbox (badness 10000) in paragraph at lines 913--918
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 930--939
+Underfull \hbox (badness 10000) in paragraph at lines 921--931
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 932--941
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 945--946
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 947--948
 
  []
@@ -1233,7 +1233,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 949--950
  []
 
 
-Overfull \hbox (31.6996pt too wide) in paragraph at lines 955--958
+Underfull \hbox (badness 10000) in paragraph at lines 951--952
+
+ []
+
+
+Overfull \hbox (31.6996pt too wide) in paragraph at lines 957--960
 []\OT1/cmr/m/n/10 This work was sup-ported by the MARES doc-toral train-ing pro-gram (MARES[]14[]15)
  []
 
@@ -1338,25 +1343,25 @@ Overfull \hbox (76.2294pt too wide) in alignment at lines 29--42
  []
 
 )
-<../analysis/Data_Aggregation_space_Rev.pdf, id=562, 1156.32pt x 1734.48pt>
+<../analysis/Data_Aggregation_space_Rev.pdf, id=563, 1156.32pt x 1734.48pt>
 File: ../analysis/Data_Aggregation_space_Rev.pdf Graphic file (type pdf)
 <use ../analysis/Data_Aggregation_space_Rev.pdf>
-Package pdftex.def Info: ../analysis/Data_Aggregation_space_Rev.pdf  used on input line 970.
+Package pdftex.def Info: ../analysis/Data_Aggregation_space_Rev.pdf  used on input line 972.
 (pdftex.def)             Requested size: 345.0pt x 517.4897pt.
-<../analysis/Data_Aggregation_time_Rev.pdf, id=563, 1156.32pt x 1734.48pt>
+<../analysis/Data_Aggregation_time_Rev.pdf, id=564, 1156.32pt x 1734.48pt>
 File: ../analysis/Data_Aggregation_time_Rev.pdf Graphic file (type pdf)
 <use ../analysis/Data_Aggregation_time_Rev.pdf>
-Package pdftex.def Info: ../analysis/Data_Aggregation_time_Rev.pdf  used on input line 977.
+Package pdftex.def Info: ../analysis/Data_Aggregation_time_Rev.pdf  used on input line 979.
 (pdftex.def)             Requested size: 345.0pt x 517.4897pt.
-<../analysis/F_trendsREV.png, id=564, 650.43pt x 578.16pt>
+<../analysis/F_trendsREV.png, id=565, 650.43pt x 578.16pt>
 File: ../analysis/F_trendsREV.png Graphic file (type png)
 <use ../analysis/F_trendsREV.png>
-Package pdftex.def Info: ../analysis/F_trendsREV.png  used on input line 985.
+Package pdftex.def Info: ../analysis/F_trendsREV.png  used on input line 987.
 (pdftex.def)             Requested size: 345.0pt x 306.67035pt.
-<../analysis/f_diff_effectiveness.png, id=565, 650.43pt x 578.16pt>
+<../analysis/f_diff_effectiveness.png, id=566, 650.43pt x 578.16pt>
 File: ../analysis/f_diff_effectiveness.png Graphic file (type png)
 <use ../analysis/f_diff_effectiveness.png>
-Package pdftex.def Info: ../analysis/f_diff_effectiveness.png  used on input line 993.
+Package pdftex.def Info: ../analysis/f_diff_effectiveness.png  used on input line 995.
 (pdftex.def)             Requested size: 345.0pt x 306.67035pt.
 [31
 
@@ -1367,14 +1372,14 @@ Package pdftex.def Info: ../analysis/f_diff_effectiveness.png  used on input lin
 \openout6 = `mixfishsim_ecolmod.soc'.
 
 [40]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1005.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1005.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1007.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1007.
 (./mixfishsim_ecolmod.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1005.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1005.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1007.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1007.
 Package rerunfilecheck Info: File `mixfishsim_ecolmod.out' has not changed.
 (rerunfilecheck)             Checksum: D6E8EE0033B4C77559E8369FD2499720;2120.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1005.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1007.
  ) 
 Here is how much of TeX's memory you used:
  21847 strings out of 492982
@@ -1404,10 +1409,10 @@ pdfTeX warning (dest): name{figure.15} has been referenced but does not exist, r
 
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on mixfishsim_ecolmod.pdf (40 pages, 2125486 bytes).
+Output written on mixfishsim_ecolmod.pdf (40 pages, 2125404 bytes).
 PDF statistics:
- 758 PDF objects out of 1000 (max. 8388607)
- 675 compressed objects within 7 object streams
+ 759 PDF objects out of 1000 (max. 8388607)
+ 676 compressed objects within 7 object streams
  176 named destinations out of 1000 (max. 500000)
  257 words of extra memory for PDF output out of 10000 (max. 10000000)
 
