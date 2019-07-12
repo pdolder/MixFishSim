@@ -797,7 +797,6 @@ terms of restricting the fishery in a much larger area than necessary. \\
 \section{Discussion}
 
 %% General intro
-
 Our study evaluates the importance of data scaling and considers potential bias
 introduced through data aggregation when using fisheries data to infer
 spatiotemporal dynamics of fish populations. Understanding how fishers exploit
@@ -869,9 +868,19 @@ understanding of the community composition dynamics will depend on the level of
 data aggregation and its important to consider the scale of processes;
 including population movement rates, habitat uniformity and fishing targeting
 practices if potential biases in data are to be understood and taken into
-account.
+account. \\
 
-EXPAND - relate to survey, commercial etc.. in Figure 2 
+Our simulation shows that, despite biases introduced through the fishing
+process, the commercially derived data could still inform on the key spatial
+patterns in the community structures where the fisheries occurred, which was
+spatially limited due to the ``hotspots" of commercially valuable species being
+fished. Similarly, despite the even spatial coverage the survey was able to
+capture some of the same spatial patterns as the 'real population', but missed
+others due to gaps between survey stations limiting spatial and temporal
+coverage. This provides a challenge when modelling unsampled areas in inferring
+species distribution maps, though these limitations may be overcome by
+understanding the relationship between the species and habitat covariates where
+these are known at unsampled locations \citep{Robinson2011}. \\ 
 
 %% key findings in context
 \subsection{How does data aggregation and source impact on spatial fisheries
@@ -958,14 +967,43 @@ operating model in a management strategy evaluation \cite{Mahevas2004}. \\
 
 \section{Conclusions}
 
-Bigger picture stuff::  LO, increasing desire for more nuanced spatiotemp
-mgmt... Wider applicability: birds, wildlife ?? 
+MixFishSim provides a detailed simulation framework to explore the interaction
+of multiple fisheries exploiting different fish populations. The framework
+enables users to evaluate assumptions in modelling commercially derived data
+through comparison to the true underlying dynamics at a fine spatial and
+temporal scale.  Understanding these dynamics, the limitations of the data and
+any potential biases that may be introduced when making inference on
+spatiotemporal interactions will enable users to identify weaknesses in
+modelling approaches and identity where data collection is needed to strengthen
+inference. \\
 
-Study shows ....\\
+Our application shows that inference on community dynamics may change depending
+on the scale of data aggregation. There is an important balance in ensuring
+that the data are sufficiently spatially and temporally disaggregated that the
+main features of the data are captured, yet maintaining enough data coverage
+that the features can be distinguished. We found in our application that there
+was greater spatial heterogeneity than temporal heterogeneity and that when
+using aggregated data to define spatial closures coarser temporal resolution
+(months instead of weeks) could still achieve the same results in reducing
+exploitation rates of a vulnerable species at the highest temporal resolution
+data. Conversely, reducing the spatial resolution had a negative effect on the
+effectiveness of the measures (though importantly, there was still some benefit
+even with coarse spatial resolution). \\
 
-This is important because .... \\
+While any findings are likely to be case specific, our findings emphasise the
+need to understand population demographics, habitat use and movement rates in
+designing any closure scenario based on observational sampling. This
+information can then be used to set the bounds on data aggregation used in
+modelling studies aimed at informing the management measures. \\ 
 
-How we might apply this in future .... \\
+MixFishSim has numerous potential additional applications as it enables the
+user to apply methods to a fisheries system where there is detailed
+understanding of underlying spatiotemporal dynamics. This enables
+identification of weaknesses or limitations which would not be possible
+otherwise. In future, we recommend use of the framework to test hypothesis that
+are otherwise unable to be analysed using real world data due to limitations of
+data collection. That way the knowledge gained through simulation can inform
+the future design of management measures. 
 
 \section*{Abbreviations} Detail any unusual ones used.
 
