@@ -1,4 +1,4 @@
-\begin{thebibliography}{60}
+\begin{thebibliography}{69}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -115,6 +115,14 @@
   mixed fisheries}}.
 \newblock \bibinfo{journal}{Fisheries Research} \bibinfo{volume}{210},
   \bibinfo{pages}{31--40}.
+%Type = Article
+\bibitem[{Cotter and Pilling(2007)}]{Cotter2007}
+\bibinfo{author}{Cotter, A.J.}, \bibinfo{author}{Pilling, G.M.},
+  \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{{Landings, logbooks and observer surveys: Improving
+  the protocols for sampling commercial fisheries}}.
+\newblock \bibinfo{journal}{Fish and Fisheries} \bibinfo{volume}{8},
+  \bibinfo{pages}{123--152}.
 %Type = Article
 \bibitem[{Crowder et~al.(1998)Crowder, Murawski, Crowder and
   Murawski}]{Crowder1998}
@@ -258,6 +266,17 @@
 \newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
   \bibinfo{volume}{55}, \bibinfo{pages}{37--46}.
 %Type = Article
+\bibitem[{Girardin et~al.(2016)Girardin, Hamon, Pinnegar, Poos, Th{\'{e}}baud,
+  Tidd, Vermard and Marchal}]{Girardin2016}
+\bibinfo{author}{Girardin, R.}, \bibinfo{author}{Hamon, K.G.},
+  \bibinfo{author}{Pinnegar, J.}, \bibinfo{author}{Poos, J.J.},
+  \bibinfo{author}{Th{\'{e}}baud, O.}, \bibinfo{author}{Tidd, A.},
+  \bibinfo{author}{Vermard, Y.}, \bibinfo{author}{Marchal, P.},
+  \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{{Thirty years of fleet dynamics modelling using
+  discrete-choice models: What have we learned?}}
+\newblock \bibinfo{journal}{Fish and Fisheries} , \bibinfo{pages}{1--18}.
+%Type = Article
 \bibitem[{Girardin et~al.(2015)Girardin, Vermard, Th{\'{e}}baud, Tidd and
   Marchal}]{Girardin2015}
 \bibinfo{author}{Girardin, R.}, \bibinfo{author}{Vermard, Y.},
@@ -267,6 +286,14 @@
   and resources in a mixed demersal fishery}}.
 \newblock \bibinfo{journal}{Ocean {\&} Coastal Management}
   \bibinfo{volume}{106}, \bibinfo{pages}{124--135}.
+%Type = Article
+\bibitem[{Harley et~al.(2001)Harley, Myers and Dunn}]{Harley2001}
+\bibinfo{author}{Harley, S.J.}, \bibinfo{author}{Myers, R.A.},
+  \bibinfo{author}{Dunn, A.}, \bibinfo{year}{2001}.
+\newblock \bibinfo{title}{{Is catch-per-unit-effort proportional to
+  abundance?}}
+\newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
+  \bibinfo{volume}{58}, \bibinfo{pages}{1760--1772}.
 %Type = Book
 \bibitem[{Hilborn and Walters(1992)}]{Hilborn1992b}
 \bibinfo{author}{Hilborn, R.}, \bibinfo{author}{Walters, C.},
@@ -304,6 +331,14 @@
 \newblock \bibinfo{journal}{Fish and Fisheries} \bibinfo{volume}{3},
   \bibinfo{pages}{340--355}.
 %Type = Article
+\bibitem[{Kimura and Somerton(2006)}]{Kimura2006}
+\bibinfo{author}{Kimura, D.K.}, \bibinfo{author}{Somerton, D.A.},
+  \bibinfo{year}{2006}.
+\newblock \bibinfo{title}{{Review of statistical aspects of survey sampling for
+  marine fisheries}}.
+\newblock \bibinfo{journal}{Reviews in Fisheries Science} \bibinfo{volume}{14},
+  \bibinfo{pages}{245--283}.
+%Type = Article
 \bibitem[{Lee et~al.(2010)Lee, South and Jennings}]{Lee2010}
 \bibinfo{author}{Lee, J.}, \bibinfo{author}{South, A.B.},
   \bibinfo{author}{Jennings, S.}, \bibinfo{year}{2010}.
@@ -321,6 +356,21 @@
 \newblock \bibinfo{title}{{Real-time spatial management approaches to reduce
   bycatch and discards: experiences from Europe and the United States}}.
 \newblock \bibinfo{journal}{Fish and Fisheries} , \bibinfo{pages}{n/a--n/a}.
+%Type = Article
+\bibitem[{Liu and Heino(2013)}]{Liu2013}
+\bibinfo{author}{Liu, X.}, \bibinfo{author}{Heino, M.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{{Overlooked biological and economic implications of
+  within-season fishery dynamics}}.
+\newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
+  .
+%Type = Article
+\bibitem[{Mah{\'{e}}vas and Pelletier(2004)}]{Mahevas2004}
+\bibinfo{author}{Mah{\'{e}}vas, S.}, \bibinfo{author}{Pelletier, D.},
+  \bibinfo{year}{2004}.
+\newblock \bibinfo{title}{{ISIS-Fish, a generic and spatially explicit
+  simulation tool for evaluating the impact of management measures on fisheries
+  dynamics}}.
+\newblock \bibinfo{journal}{Ecological Modelling} .
 %Type = Article
 \bibitem[{Mangel and Clark(1983)}]{Mangel1983}
 \bibinfo{author}{Mangel, M.}, \bibinfo{author}{Clark, C.W.},
@@ -343,6 +393,13 @@
   in retained catches of French fisheries in the Celtic Sea}}.
 \newblock \bibinfo{journal}{ICES Journal of Marine Science: Journal du Conseil}
   , \bibinfo{pages}{fsw129}.
+%Type = Article
+\bibitem[{Maunder and Punt(2004)}]{Maunder2004}
+\bibinfo{author}{Maunder, M.N.}, \bibinfo{author}{Punt, A.E.},
+  \bibinfo{year}{2004}.
+\newblock \bibinfo{title}{{Standardizing catch and effort data: A review of
+  recent approaches}}.
+\newblock \bibinfo{journal}{Fisheries Research} .
 %Type = Article
 \bibitem[{Needle and Catarino(2011)}]{Needle2011}
 \bibinfo{author}{Needle, C.L.}, \bibinfo{author}{Catarino, R.},
@@ -550,6 +607,12 @@
 \newblock \bibinfo{journal}{Nature} \bibinfo{volume}{401},
   \bibinfo{pages}{911--914}.
 %Type = Article
+\bibitem[{Walters(2007)}]{Walters2007}
+\bibinfo{author}{Walters, C.J.}, \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{{Is adaptive management helping to solve fisheries
+  problems?}}
+\newblock \bibinfo{journal}{Ambio} .
+%Type = Article
 \bibitem[{Ward et~al.(2015)Ward, Jannot, Lee, Ono, Shelton and
   Thorson}]{Ward2015}
 \bibinfo{author}{Ward, E.J.}, \bibinfo{author}{Jannot, J.E.},
@@ -560,5 +623,13 @@
   identify temporally evolving hotspots of species co-occurrence}}.
 \newblock \bibinfo{journal}{Ecological Applications} \bibinfo{volume}{25},
   \bibinfo{pages}{2198--2209}.
+%Type = Article
+\bibitem[{Xu et~al.(2015)Xu, Zhang, Xue, Ren and Chen}]{Xu2015}
+\bibinfo{author}{Xu, B.}, \bibinfo{author}{Zhang, C.}, \bibinfo{author}{Xue,
+  Y.}, \bibinfo{author}{Ren, Y.}, \bibinfo{author}{Chen, Y.},
+  \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{{Optimization of sampling effort for a
+  fishery-independent survey with multiple goals}}.
+\newblock \bibinfo{journal}{Environmental Monitoring and Assessment} .
 
 \end{thebibliography}

@@ -108,6 +108,10 @@ on species targeting under an explore-exploit strategy via a mix of correlated
 random walk movement (for exploration) and learned behaviour (for exploitation)
 phases of the fisheries.  \\ 
 
+Our framework allows users to explore the assumptions in modelling observational
+data and evaluate the underlying dynamics of such approaches at a fine spatial
+and temporal scale. \\
+
 We simulate 50 years of fishing and use the results from the fisheries catch to
 draw inference on the underlying population structures. We compare this
 inference to a simulated fixed-site sampling design commonly used for fisheries
@@ -308,9 +312,10 @@ where $C_{c,d}$ is the summed catch from the fishing model across all fleets
 and vessels in cell $c$ for the population during the day $d$, and $B_{c,d}$
 the daily biomass for the population in the cell. Here, catch and fishing
 mortality are the sum of those across all fleets and vessels, where $F_{fl, v,
-	c, d, p} = E_{fl, v, c, d} \cdot Q_{fl, p} \cdot B_{c, d, p}$ with
+	c, d, p} = E_{fl, v, c, d} \cdot Q_{fl, p} \cdot D_{c, d, p}$ with
 $fl$, $v$ and $p$ the fleet, vessel and population respectively and $E$ and $Q$
-fishing effort and catchability. \todo{\added[id=CM]{[link $F$ to effort and
+fishing effort and catchability of the gear, and $D$ is the density of the
+population at the location fished. \todo{\added[id=CM]{[link $F$ to effort and
 		catchability - as I think we have F as an emergent property of
 		the fleets rather than something we solve for (I could be wrong
 		though!) - catch for a vessel is a product of catchability and
@@ -864,7 +869,10 @@ understanding of the community composition dynamics will depend on the level of
 data aggregation and its important to consider the scale of processes;
 including population movement rates, habitat uniformity and fishing targeting
 practices if potential biases in data are to be understood and taken into
-account. 
+account.
+
+EXPAND - relate to survey, commercial etc.. in Figure 2 
+
 %% key findings in context
 \subsection{How does data aggregation and source impact on spatial fisheries
 	management measures?}
@@ -897,26 +905,31 @@ for these changes.
 
 \subsection{Model assumptions and caveats}
 
-We model the population and fleet dynamic processes in order to draw inference
-on the importance of data scale and aggregation in understanding and managing
-mixed fisheries and their impact on multiple fish populations. In doing so, we
-have necessarily had to make a number of simplifying assumptions. \\
+We model the population and fleet dynamic processes to draw inference on the
+importance of data scale and aggregation in understanding and managing mixed
+fisheries and their impact on multiple fish populations. In doing so, we have
+necessarily had to make a number of simplifying assumptions. \\
 
 Fish populations in our simulations move in pre-defined timescales and
-according to fixed habitat preferences and temperature gradients. Our
-assumptions in parametrising the model (movement rates, temperature tolerances)
-will have a direct impact on our conclusions on the relative importance of
-spatial and temporal processes. These assumptions could be explored in a future
-study by varying the parameters and assessing the robustness of our
-conclusions. \\
+according to fixed habitat preferences and temperature gradients (Figures
+\ref{S-fig:1}, \ref{S-fig:3}). Our assumptions in parametrising the model
+(movement rates, temperature tolerances) will have a direct impact on our
+conclusions on the relative importance of spatial and temporal processes. These
+assumptions could be explored in a future study by varying the parameters and
+assessing the robustness of our conclusions. For our example application we
+have chosen movement rates to reflect aggregation periods observed in past
+studies \citep{Poos2007}. \\
 
 In addition, we have assumed that fishing vessels are not restricted by quota
-and therefore discarding of species for which vessels have no quota or that 
-are unwanted is not taken into account. This is likely to be a significant
-source of bias in any inference using commercial data and should also be
-explored. \\
+and therefore discarding of species for which vessels have no quota or that are
+unwanted is not taken into account. This is likely to be a significant source
+of bias in any inference using commercial data and should also be explored. For
+example, MixFishSim could be altered to allow for spatiotemporal appraisal of
+the impact of discarding on fisher behaviour and underlying populations via
+inclusion as discarding behaviour, or through move-on rules or cessation of
+fishing activity when quota is exhausted. \\
 
-\subsection{Future application for framework}
+\subsection{Future applications of MixFishSim}
 
 We consider that the increased availability of high resolution catch and
 locational information from commercial fisheries will require it to be a key
@@ -930,14 +943,18 @@ GAMs, GLMMs, Random Forests and geostatistical models under different data
 generation processes as exampled by \cite{Stock2019}). \\
 
 Other novel applications of our framework could be; testing different survey
-designs given multiple species and data generating assumptions; commercial
-index standardisation methods and approaches and understanding of appropriate
-scales and data aggregations; exploring assumptions about the distribution of
-natural mortality and fishing mortality throughout the year and importance of
-capturing in-year dynamics in estimating stock status; at sea sampling scheme
-designs to deliver unbiased estimates of population parameters; testing the
-ability of commonly employed fleet dynamics models such as Random Utility
-Models to capture finescale dynamics and understand their importance. \\
+designs given multiple species and data generating assumptions \citep{Xu2015};
+commercial index standardisation methods and approaches and understanding of
+appropriate scales and data aggregations and non-proportionality in catch rate
+and abundance \citep{Harley2001, Maunder2004}; exploring assumptions about the
+distribution of natural mortality and fishing mortality throughout the year and
+importance of capturing in-year dynamics in estimating stock status
+\citep{Liu2013}; at sea sampling scheme designs to deliver unbiased estimates
+of population parameters \cite{Cotter2007, Kimura2006}; adaptive management
+\citep{Walters2007, Dunn2016}; testing the ability of commonly employed fleet
+dynamics models such as Random Utility Models to capture fine scale dynamics
+and understand their importance \cite{Girardin2016}; and as a detailed
+operating model in a management strategy evaluation \cite{Mahevas2004}. \\
 
 \section{Conclusions}
 
