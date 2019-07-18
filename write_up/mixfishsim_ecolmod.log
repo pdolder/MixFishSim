@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  12 JUL 2019 18:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  18 JUL 2019 19:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1060,39 +1060,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 161--171
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--196
+Underfull \hbox (badness 10000) in paragraph at lines 172--199
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 208--230
+Underfull \hbox (badness 10000) in paragraph at lines 212--234
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--244
+Underfull \hbox (badness 10000) in paragraph at lines 237--246
 
  []
 
-[4] [5] (./Process_model.tex
-Overfull \hbox (46.79233pt too wide) in paragraph at lines 5--119
-[]  [] 
- []
-
-) [6
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 291--298
+[4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 290--297
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 306--320
+Underfull \hbox (badness 10000) in paragraph at lines 305--319
 
  []
 
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 350--354
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 349--354
 
  []
 
@@ -1101,154 +1094,150 @@ Underfull \hbox (badness 10000) in paragraph at lines 355--371
 
  []
 
-[8]
+[7]
 Underfull \hbox (badness 10000) in paragraph at lines 388--394
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 395--405
+Underfull \hbox (badness 10000) in paragraph at lines 424--430
 
  []
 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 423--429
-
- []
-
-[10]
+[8] [9]
 Underfull \hbox (badness 10000) in paragraph at lines 486--502
 
  []
 
-[11]
+
 Underfull \hbox (badness 10000) in paragraph at lines 503--516
 
  []
 
+[10] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 573--580
+
+ []
+
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 572--579
+Underfull \hbox (badness 10000) in paragraph at lines 583--586
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 607--620
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 582--585
+Underfull \hbox (badness 10000) in paragraph at lines 621--630
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 605--618
+Underfull \hbox (badness 10000) in paragraph at lines 650--657
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 619--628
-
- []
-
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 648--655
-
- []
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 671.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 673.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 671.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 673.
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 723--738
+
+ []
+
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 721--736
+Underfull \hbox (badness 10000) in paragraph at lines 766--779
 
  []
 
-[17] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 764--777
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 780--794
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 778--792
+Underfull \hbox (badness 10000) in paragraph at lines 798--815
+
+ []
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 818--823
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 825--836
 
  []
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 796--813
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 816--821
+Underfull \hbox (badness 10000) in paragraph at lines 863--870
 
  []
 
 [20]
-Underfull \hbox (badness 10000) in paragraph at lines 823--834
+Underfull \hbox (badness 10000) in paragraph at lines 871--882
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 887--896
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 897--906
 
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 861--868
+Underfull \hbox (badness 10000) in paragraph at lines 915--919
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 869--880
+Underfull \hbox (badness 10000) in paragraph at lines 920--929
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 885--894
+Underfull \hbox (badness 10000) in paragraph at lines 930--938
 
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 895--904
+Underfull \hbox (badness 10000) in paragraph at lines 941--951
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 913--917
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 918--927
+Underfull \hbox (badness 10000) in paragraph at lines 952--965
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 928--936
+Underfull \hbox (badness 10000) in paragraph at lines 968--977
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 939--949
+Underfull \hbox (badness 10000) in paragraph at lines 978--990
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 950--963
+Underfull \hbox (badness 10000) in paragraph at lines 991--996
 
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 966--975
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 976--988
-
- []
-
-[25]
-Underfull \hbox (badness 10000) in paragraph at lines 989--994
-
- []
-
-
-Overfull \hbox (31.6996pt too wide) in paragraph at lines 1008--1011
+Overfull \hbox (31.6996pt too wide) in paragraph at lines 1010--1013
 []\OT1/cmr/m/n/10 This work was sup-ported by the MARES doc-toral train-ing pro-gram (MARES[]14[]15)
  []
 
@@ -1342,7 +1331,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 142--144
 []\OT1/cmr/m/n/10 pop
  []
 
-) [26] [27] [28] [29] [30] [31] (./F_changes.tex
+) [25] [26] [27] [28] [29] [30] (./F_changes.tex
 Overfull \hbox (76.2294pt too wide) in alignment at lines 3--29
  [] [] [] [] [] [] [] [] [] [] 
  []
@@ -1352,26 +1341,33 @@ Overfull \hbox (76.2294pt too wide) in alignment at lines 29--42
  [] [] [] [] [] [] [] [] [] [] 
  []
 
+) [31
+
+] (./Process_model.tex
+Overfull \hbox (46.79233pt too wide) in paragraph at lines 5--119
+[]  [] 
+ []
+
 )
-<../analysis/Data_Aggregation_space_Rev.pdf, id=605, 1156.32pt x 1734.48pt>
+<../analysis/Data_Aggregation_space_Rev.pdf, id=599, 1156.32pt x 1734.48pt>
 File: ../analysis/Data_Aggregation_space_Rev.pdf Graphic file (type pdf)
 <use ../analysis/Data_Aggregation_space_Rev.pdf>
-Package pdftex.def Info: ../analysis/Data_Aggregation_space_Rev.pdf  used on input line 1023.
+Package pdftex.def Info: ../analysis/Data_Aggregation_space_Rev.pdf  used on input line 1032.
 (pdftex.def)             Requested size: 345.0pt x 517.4897pt.
-<../analysis/Data_Aggregation_time_Rev.pdf, id=606, 1156.32pt x 1734.48pt>
+<../analysis/Data_Aggregation_time_Rev.pdf, id=600, 1156.32pt x 1734.48pt>
 File: ../analysis/Data_Aggregation_time_Rev.pdf Graphic file (type pdf)
 <use ../analysis/Data_Aggregation_time_Rev.pdf>
-Package pdftex.def Info: ../analysis/Data_Aggregation_time_Rev.pdf  used on input line 1030.
+Package pdftex.def Info: ../analysis/Data_Aggregation_time_Rev.pdf  used on input line 1039.
 (pdftex.def)             Requested size: 345.0pt x 517.4897pt.
-<../analysis/F_trendsREV.png, id=607, 650.43pt x 578.16pt>
+<../analysis/F_trendsREV.png, id=601, 650.43pt x 578.16pt>
 File: ../analysis/F_trendsREV.png Graphic file (type png)
 <use ../analysis/F_trendsREV.png>
-Package pdftex.def Info: ../analysis/F_trendsREV.png  used on input line 1038.
+Package pdftex.def Info: ../analysis/F_trendsREV.png  used on input line 1047.
 (pdftex.def)             Requested size: 345.0pt x 306.67035pt.
-<../analysis/f_diff_effectiveness.png, id=608, 650.43pt x 578.16pt>
+<../analysis/f_diff_effectiveness.png, id=602, 650.43pt x 578.16pt>
 File: ../analysis/f_diff_effectiveness.png Graphic file (type png)
 <use ../analysis/f_diff_effectiveness.png>
-Package pdftex.def Info: ../analysis/f_diff_effectiveness.png  used on input line 1046.
+Package pdftex.def Info: ../analysis/f_diff_effectiveness.png  used on input line 1055.
 (pdftex.def)             Requested size: 345.0pt x 306.67035pt.
 [32
 
@@ -1382,23 +1378,23 @@ Package pdftex.def Info: ../analysis/f_diff_effectiveness.png  used on input lin
 \openout6 = `mixfishsim_ecolmod.soc'.
 
 [42]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1058.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1058.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1067.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1067.
 (./mixfishsim_ecolmod.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1058.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1058.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1067.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1067.
 Package rerunfilecheck Info: File `mixfishsim_ecolmod.out' has not changed.
-(rerunfilecheck)             Checksum: B2EDA32F54ED007E2D4E1718C8BE3B9C;2121.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1058.
+(rerunfilecheck)             Checksum: 4C3C0768095A5B226F8C9CEBA68F2C1F;2144.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1067.
  ) 
 Here is how much of TeX's memory you used:
  21889 strings out of 492982
  425544 string characters out of 6134895
- 553298 words of memory out of 5000000
+ 553033 words of memory out of 5000000
  24816 multiletter control sequences out of 15000+600000
  13878 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,17n,68p,645b,931s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,17n,68p,646b,937s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{figure.17} has been referenced but does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{figure.14} has been referenced but does not exist, replaced by a fixed one
@@ -1419,10 +1415,10 @@ pdfTeX warning (dest): name{figure.15} has been referenced but does not exist, r
 
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on mixfishsim_ecolmod.pdf (42 pages, 2132972 bytes).
+Output written on mixfishsim_ecolmod.pdf (42 pages, 2134228 bytes).
 PDF statistics:
- 807 PDF objects out of 1000 (max. 8388607)
- 721 compressed objects within 8 object streams
+ 805 PDF objects out of 1000 (max. 8388607)
+ 719 compressed objects within 8 object streams
  188 named destinations out of 1000 (max. 500000)
  257 words of extra memory for PDF output out of 10000 (max. 10000000)
 
