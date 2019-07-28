@@ -210,13 +210,14 @@ experienced high catch in the past.  \deleted[id=PD]{ Further, fishers
 \end{enumerate}
 	
 To answer these questions we i) develop a simulation model where population
-dynamics are highly-resolved in space and time\replaced[id=PD]{. Being}{ and
-	are} known \added[id=PD]{directly} rather than inferred from sampling
-or commercial catch\added[id=PD]{, we can use the population model to validate
-	how inference from fisheries-dependent and fisheries independent
-	sampling relates to the real community structure in a way we could not
-	with real data}. We ii) compare, at different spatial and temporal
-aggregations, the 'real population' distributions to samples from
+dynamics are highly-resolved in space and time by use of a Gaussian spatial
+process to define suitable habitat\replaced[id=PD]{. Precise locations being}{
+	and are} known \added[id=PD]{directly} rather than inferred from
+sampling or commercial catch\added[id=PD]{, we can use the population model to
+	validate how inference from fisheries-dependent and fisheries
+	independent sampling relates to the real community structure in a way
+	we could not with real data}. We ii) compare, at different spatial and
+temporal aggregations, the 'real population' distributions to samples from
 fisheries-dependent and fisheries independent catches to test if these are a
 true reflection of the relative density of the populations. We then iii)
 simulate a fishery closure to protect a species based on different spatial and
@@ -245,38 +246,43 @@ implemented on time-scales appropriate to capture the characteristic of the
 	movement, 4) fishery dynamics.}\\
 
 \deleted[id=PD]{The fishing model operated on a tow-by-tow basis, while}
-\replaced[id=PD]{P}{p}opulation dynamics (fishing and natural mortality,
-growth) operate on a daily time-step\replaced[id=PD]{, while p}{. P}opulation
-movement occurs on a weekly time-step\replaced[id=PD]{. R}{, while r}ecruitment
-\replaced[id=PD]{takes place}{occurs} periodically each year for a set time
+\replaced[id=PD]{P}{p}opulation dynamics (fishing and natural mortality which
+are instantaneous rates, growth of the population biomass) operate on a daily
+time-step\replaced[id=PD]{, while p}{. P}opulation movement occurs on a weekly
+time-step\replaced[id=PD]{. R}{, while r}ecruitment \replaced[id=PD]{takes
+	place}{occurs} periodically each year for a set time
 \replaced[id=PD]{duration}{period (e.g. 3 weeks)} specified for each
 population\deleted[id=PD]{.}\added[id=PD]{, while the fishing module operates
-	on a tow-by-tow basis (i.e. multiple events a day)}.  
+	on a tow-by-tow basis (i.e. multiple events a day)}.
 \deleted[id=PD]{Here we describe each of the model components; 1) Population
 	dynamics, 2) Recruitment dynamics, 3) Population movement dynamics, 4)
 	fishery dynamics.}
 
-\replaced[id=PD]{In the model system p}{P}opulation movement is driven by
-random (diffusive) and directed (advective) processes and we incorporate
-characterisation of a number of different fishing \added[id=PD]{fleet dynamics}
-exploiting four fish populations with different spatial and population
-demographics. The following describes the implementation of each of the
-sub-modules.
+Population movement is a combination of random (diffusive) movement, governed
+by a stochastic process where movement between adjacent cells is described by a
+set of probabilities, and directed (advective) movement where at certain times
+of year the population moves towards spawning grounds by increasing the
+probabilities of moving into the spawning grounds from adjacent cells. We
+incorporate characterisation of a number of different fishing
+\added[id=PD]{fleet dynamics} exploiting four fish populations with different
+spatial and population demographics. The following describes the implementation
+of each of the sub-modules.
 
 \subsection{Population dynamics}
 
 The basic population level processes were simulated using a modified two-stage
-Deriso-Schnute delay difference model \citep{Deriso1980, Schnute1985,
-	Dichmont2003} occurring at a daily time-step. \added[id=PD]{A daily
-	time-step was chosen to discretise continuous population processes on a
-	biologically relevant and computationally tractable timescale.}
-\deleted[id=PD]{Here,}Population
-biomass growth and depletion for pre-recruits and\deleted[id=PD]{fish}
-recruited \added[id=PD]{fish}\deleted[id=PD]{to the fishery} were modelled
-separately as a function of previous recruited biomass, intrinsic population
-growth and recruitment functionally linked to the adult population size.
-Biomass for each cell $c$ was incremented each day $d$ as follows (the full
-parameter list is detailed in Table \ref{tab: pop_variable}): 
+Deriso-Schnute delay difference model which models the fish populations in
+terms of aggregate biomass of recruits and mature components rather than
+keeping track of individuals\citep{Deriso1980, Schnute1985, Dichmont2003}.
+\added[id=PD]{A daily time-step was chosen to discretise continuous population
+	processes on a biologically relevant and computationally tractable
+	timescale.} \deleted[id=PD]{Here,}Population biomass growth and
+depletion for pre-recruits and\deleted[id=PD]{fish} recruited
+\added[id=PD]{fish}\deleted[id=PD]{to the fishery} were modelled separately as
+a function of previous recruited biomass, intrinsic population growth and
+recruitment functionally linked to the adult population size.  Biomass for each
+cell $c$ was incremented each day $d$ as follows (the full parameter list is
+detailed in Table \ref{tab: pop_variable}): 
 \begin{equation}
 	\begin{split}
 	B_{c,d+1} = &\\
@@ -573,7 +579,8 @@ ALSO BE REPRESENTED BY A LIMITATION FACTOR
 A fisheries-independent survey is simulated where fishing on a regular grid
 begins each year at the same time for a given number of stations (a fixed
 station survey design). Catches of the populations \replaced[id=JJ]{at each
-station}{present} are recorded but not removed from the population. This
+	station}{present} are recorded but not removed from the population
+(catches are assumed to have negligible impact on population dynamics). This
 provides a fishery independent snapshot of the populations at a regular spatial
 \replaced[id=JJ]{intervals}{distribution} each year, similar to scientific
 surveys undertaken by fisheries research agencies. \\
@@ -663,8 +670,10 @@ The following steps are undertaken to determine closures:
 	\item Extract data source
 	\item Aggregate according to desired spatial and temporal resolution
 	\item Interpolate across entire area at desired resolution using simple
-		kriging using the \emph{interp} function from the R package
-		akima \citep{Akima2006}. JM: SEE COMMENT
+		bivariate kriging using the \emph{interp} function from the R
+		package akima \citep{Akima2006}. This is intended to represent
+		a naive spatial model of catch rates, without knowledge of the
+		spatial population dynamics.
 	\item Close area covering top 5 \% of catch rates 
 \end{enumerate}
 In total 28 closure scenarios were run that represent combinations of:
@@ -696,11 +705,11 @@ areas where the highest revenue were experienced, as shown by
 overlaid on the revenue field, i.e. 
 $$\sum^c_{c=1}\sum^s_{s=1} B_{s,c} \cdot Q_{s,c}$$
 
-Vessels from the same fleet (and therefore targeting preference) exploit
-similar but slightly different fishing grounds depending on their own personal
+Vessels from the same fleet (and therefore targeting preference) may exploit
+some shared and some different fishing grounds depending on their own personal
 experience during the explore phase of the fishery (\added[id=PD]{Figure}
-\ref{S-fig:14}), that is the result of the randomness in the correlated random
-walk step function, with distance moved during the exploitation phase and the
+\ref{S-fig:14}). This results from the randomness in the correlated random walk
+step function, with distance moved during the exploitation phase and the
 direction stochastically related to the revenue experienced on the fishing
 ground (\replaced[id=PD]{Figure}{while}
 \ref{S-fig:15}).\todo{\added[id=JJ]{Move some of the supplementary figures to
@@ -741,17 +750,19 @@ the data over a ten-year period, with weekly (top), monthly (middle) and yearly
 (bottom) catch compositions from across an aggregated 20 x 20 area. By
 comparison to the 'real population', the monthly aggregation captures the major
 patterns seen in the weekly data, albeit missing more subtle differences. The
-yearly data results in a constant catch pattern due to the aggregation process
-(sometimes known as an aggregation bias). The commercial data on a weekly basis
-shows some of the same patterns as the 'real population', though the first
-species (in red) is less well represented and some weeks are missing catches
-from the area. The monthly data shows some consistency between the 'real
-population' and commercial data for species 2 - 4, though species 1 remains
-under-represented. On an annual basis, interestingly the commercial data under
-represents the first species (in red) while the survey over represents species
-1. This is likely due to the biases in
-commercial sampling, with the fisheries not targeting the areas where species 1
-are present, and the biases in the survey sampling from over representation of
+yearly data assumes the same proportion of each population caught at any time
+of the year due to the data aggregation. This assumption introduces
+`aggregation bias' as the data may only be representative of some point (or no
+point) in time. The commercial data on a weekly basis shows some of the same
+patterns as the 'real population', though the first species (in red) is less
+well represented and some weeks are missing catches from the area. The monthly
+data shows some consistency between the 'real population' and commercial data
+for species 2 - 4, though species 1 remains under-represented. On an annual
+basis, interestingly the commercial data under represents the first species (in
+red) while the survey over represents species
+1. This is likely due to the biases in commercial sampling, with the fisheries
+not targeting the areas where species 1 are present, and the biases in the
+survey sampling from over representation of
 the spatial distribution. 
 
 \subsection{How does data aggregation and source impact on spatial fisheries
