@@ -1,4 +1,4 @@
-\begin{thebibliography}{70}
+\begin{thebibliography}{71}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -115,6 +115,16 @@
   mixed fisheries}}.
 \newblock \bibinfo{journal}{Fisheries Research} \bibinfo{volume}{210},
   \bibinfo{pages}{31--40}.
+%Type = Article
+\bibitem[{Costello et~al.(2010)Costello, Rassweiler, Siegel, {De Leo}, Micheli
+  and Rosenberg}]{Costello2010}
+\bibinfo{author}{Costello, C.}, \bibinfo{author}{Rassweiler, A.},
+  \bibinfo{author}{Siegel, D.}, \bibinfo{author}{{De Leo}, G.},
+  \bibinfo{author}{Micheli, F.}, \bibinfo{author}{Rosenberg, A.},
+  \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{{The value of spatial information in MPA network
+  design}}.
+\newblock \bibinfo{journal}{Proceedings of the National Academy of Sciences} .
 %Type = Article
 \bibitem[{Cotter and Pilling(2007)}]{Cotter2007}
 \bibinfo{author}{Cotter, A.J.}, \bibinfo{author}{Pilling, G.M.},
