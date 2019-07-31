@@ -324,6 +324,15 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT Plots/pop_dist.png
+INPUT ./Plots/pop_dist.png
+INPUT ./Plots/pop_dist.png
+INPUT Plots/f_dynamics.png
+INPUT ./Plots/f_dynamics.png
+INPUT ./Plots/f_dynamics.png
+INPUT Plots/vessel_move_value.png
+INPUT ./Plots/vessel_move_value.png
+INPUT ./Plots/vessel_move_value.png
 INPUT ../analysis/Data_Aggregation_space_Rev.pdf
 INPUT ../analysis/Data_Aggregation_space_Rev.pdf
 INPUT ../analysis/Data_Aggregation_space_Rev.pdf
@@ -336,6 +345,9 @@ INPUT ../analysis/F_trendsREV.png
 INPUT ../analysis/f_diff_effectiveness.png
 INPUT ../analysis/f_diff_effectiveness.png
 INPUT ../analysis/f_diff_effectiveness.png
+INPUT ./Plots/Closure_fishing_locations_yearly.png
+INPUT ./Plots/Closure_fishing_locations_yearly.png
+INPUT ./Plots/Closure_fishing_locations_yearly.png
 INPUT mixfishsim_ecolmod.bbl
 INPUT mixfishsim_ecolmod.bbl
 OUTPUT mixfishsim_ecolmod.soc

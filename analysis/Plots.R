@@ -14,6 +14,39 @@ load(file.path('Scenario_runs_Nov18', paste0("Scenario_", Run, ".RData")))
 plot_pop_summary(res, timestep = "annual", save = FALSE)
 
 plot_daily_fdyn(res)
+
+
+daily_fdyn <- function (results) {
+	
+	n_spp <- length(res[["pop_summary"]]) 
+	res_spp <- lapply(seq_len(n_spp), function(x) {
+ 			 x1_res <- tidyr::gather(as.data.frame(t(results[["pop_summary"]][[x]][["F.mat"]])), key = "year", factor_key = T)
+			 F_df <- data.frame("pop" = paste0("spp_", x), 
+					    "day" = rep(1:362,length.out = nrow(x1_res)),
+					    "year" = x1_res$year,
+					    data = x1_res$value)
+			 
+				  })
+	res_out <- do.call(rbind, res_spp)
+
+	return(res_out)
+
+}
+
+library(tidyverse)
+
+df <- daily_fdyn(res)
+
+mean_f <- df %>% group_by(pop, day) %>%
+	summarise(data = mean(data, na.rm = T))
+
+ggplot(filter(df, !is.na(data)), aes(x = day, y = data, group = year)) +
+	geom_line(colour = "grey", alpha = 0.4) +
+	geom_line(data = filter(mean_f,!is.na(data)), aes(group = pop),
+		  colour = "black", size = 1) +  
+	facet_wrap(~pop) +
+	theme_classic()
+	
 ggsave(file = file.path('..', 'write_up', 'Plots', 'f_dynamics.png'), width = 8, height = 8)
 
 logs <- combine_logs(res[["fleets_catches"]])

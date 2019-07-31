@@ -604,9 +604,9 @@ to have two defined spawning areas that result in the populations moving
 towards these areas in pre-defined weeks (Figure \ref{S-fig:2}) with
 population-specific movement rates (Table \ref{tab:1}). In such a
 configuration, the individual habitat preferences and thermal tolerances result
-in different spatial habitat use for each population (Figure \ref{S-fig:9}) and
+in different spatial habitat use for each population (Figure \ref{fig:9}) and
 consequently different seasonal exploitation patterns (Fishing mortality in
-Figure \ref{S-fig:10}). 
+Figure \ref{fig:10}). 
 
 \subsection{Fleet parametrisation}
 
@@ -700,7 +700,7 @@ exploits four different fishing grounds, three of them multiple times (Figure
 \ref{S-fig:11}), while across several trips fishing grounds that are further
 apart are fished (Figure \ref{S-fig:12}). These different locations relate to
 areas where the highest revenue were experienced, as shown by
-\added[id=PD]{Figure} \ref{S-fig:13}, where several trips for the vessel
+\added[id=PD]{Figure} \ref{fig:13}, where several trips for the vessel
 overlaid on the revenue field, i.e. 
 $$\sum^c_{c=1}\sum^s_{s=1} B_{s,c} \cdot Q_{s,c}$$
 
@@ -798,7 +798,7 @@ at a yearly and weekly timescale, where closures were nearly as effective as
 the fine-scale resolution. In this case the closures were sufficiently large to
 protect a core are of the habitat for the population, but this was achieved in
 a fairly crude manner by closing a large area - including area where the
-species was not found (Figure \ref{S-fig:17}) that may have consequences in
+species was not found (Figure \ref{fig:17}) that may have consequences in
 terms of restricting the fishery in a much larger area than necessary. \\
 
 \section{Discussion}
@@ -897,7 +897,7 @@ From our simulations spatial disaggregation was more important than the
 temporal disaggregation of the commercial data. This reflects the fact that
 there was greater spatial heterogeneity over the spatial domain than
 experienced in individual locations over the course of the year (Figure
-\ref{S-fig:9}). This indicates that fixed closures, at the right resolution,
+\ref{fig:9}). This indicates that fixed closures, at the right resolution,
 when based on commercially derived data have the potential to reduced fishing
 mortality. The likely cost of poor spatial and temporal resolution is
 associated with reduced effectiveness and potentially closing fishing
@@ -1038,6 +1038,32 @@ Aquaculture Science seedcorn program (DP227AC).
 \input{Process_model.tex}
 
 \begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{Plots/pop_dist}
+	\caption{Simulated spatial dynamics - the four populations abundance
+		(log+1) at four time steps.
+		}
+	\label{fig:9}
+\end{figure}	
+
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{Plots/f_dynamics}
+	\caption{Fishing mortality dynamics - the daily fishing mortalities
+		showing weekly and seasonal patterns in exploitation.
+		Individual years and the light grey lines, the mean of all
+		years the thick black line}
+	\label{fig:10}
+\end{figure}	
+
+\begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{Plots/vessel_move_value}
+	\caption{movement of a fleet over a single trip reference overlaid on the
+		value field (i.e. sum of the population abundance x catchability x value}
+	\label{fig:13}
+\end{figure}	
+
+
+\begin{figure}[!ht]
 	\includegraphics[width=\linewidth]{../analysis/Data_Aggregation_space_Rev}
 	\caption{Data aggregation at different spatial resolutions over a
 		ten year period}
@@ -1065,6 +1091,16 @@ Aquaculture Science seedcorn program (DP227AC).
 	\caption{Comparison of closure scenario effectiveness based on
 		different spatial and temporal resolutions.}
 	\label{fig:4}
+\end{figure}	
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width =0.5\linewidth]{./Plots/Closure_fishing_locations_yearly}
+	\caption{Closure fishing locations based on annual closures with a
+		coarse spatial resolution. Closure location can be seen in red
+	in relation to a) before the closure fishing locations, b) after the
+	closure fishing locations, c) species 3 habitat distribution}
+	\label{fig:17}
 \end{figure}	
 
 \clearpage
