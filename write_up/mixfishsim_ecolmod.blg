@@ -4,46 +4,47 @@ The top-level auxiliary file: mixfishsim_ecolmod.aux
 The style file: model2-names.bst.bst
 Database file #1: simulation_framework.bib
 Warning--empty journal in Beverton1957
+Warning--empty pages in Gillespie1977
 Warning--empty pages in Shin2004
-You've used 71 entries,
+You've used 73 entries,
             2761 wiz_defined-function locations,
-            1044 strings with 20275 characters,
-and the built_in function-call counts, 49298 in all, are:
-= -- 3723
-> -- 2598
-< -- 26
-+ -- 993
-- -- 921
-* -- 5961
-:= -- 7644
-add.period$ -- 209
-call.type$ -- 71
-change.case$ -- 661
-chr.to.int$ -- 70
-cite$ -- 73
-duplicate$ -- 3027
-empty$ -- 2952
-format.name$ -- 1148
-if$ -- 8760
+            1055 strings with 20606 characters,
+and the built_in function-call counts, 50247 in all, are:
+= -- 3795
+> -- 2634
+< -- 27
++ -- 1007
+- -- 933
+* -- 6052
+:= -- 7801
+add.period$ -- 213
+call.type$ -- 73
+change.case$ -- 674
+chr.to.int$ -- 72
+cite$ -- 76
+duplicate$ -- 3096
+empty$ -- 3023
+format.name$ -- 1164
+if$ -- 8936
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 689
-newline$ -- 361
-num.names$ -- 284
-pop$ -- 790
+missing$ -- 703
+newline$ -- 369
+num.names$ -- 292
+pop$ -- 816
 preamble$ -- 1
-purify$ -- 591
+purify$ -- 603
 quote$ -- 0
-skip$ -- 949
+skip$ -- 982
 stack$ -- 0
-substring$ -- 2145
-swap$ -- 2724
+substring$ -- 2167
+swap$ -- 2766
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 636
-warning$ -- 2
-while$ -- 313
+type$ -- 651
+warning$ -- 3
+while$ -- 319
 width$ -- 0
-write$ -- 972
-(There were 2 warnings)
+write$ -- 995
+(There were 3 warnings)

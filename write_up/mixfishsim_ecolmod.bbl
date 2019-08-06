@@ -1,4 +1,4 @@
-\begin{thebibliography}{71}
+\begin{thebibliography}{73}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -267,6 +267,11 @@
   management tool}}.
 \newblock \bibinfo{journal}{Fisheries Research} \bibinfo{volume}{129-130},
   \bibinfo{pages}{127--136}.
+%Type = Inproceedings
+\bibitem[{Gillespie(1977)}]{Gillespie1977}
+\bibinfo{author}{Gillespie, D.T.}, \bibinfo{year}{1977}.
+\newblock \bibinfo{title}{{Exact stochastic simulation of coupled chemical
+  reactions}}, in: \bibinfo{booktitle}{Journal of Physical Chemistry}.
 %Type = Article
 \bibitem[{Gillis and Peterman(1998)}]{Gillis1998}
 \bibinfo{author}{Gillis, D.M.}, \bibinfo{author}{Peterman, R.M.},
@@ -348,6 +353,12 @@
   marine fisheries}}.
 \newblock \bibinfo{journal}{Reviews in Fisheries Science} \bibinfo{volume}{14},
   \bibinfo{pages}{245--283}.
+%Type = Book
+\bibitem[{Lande et~al.(2010)Lande, Engen and Saether}]{Lande2010}
+\bibinfo{author}{Lande, R.}, \bibinfo{author}{Engen, S.},
+  \bibinfo{author}{Saether, B.E.}, \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{{Stochastic Population Dynamics in Ecology and
+  Conservation}}.
 %Type = Article
 \bibitem[{Lee et~al.(2010)Lee, South and Jennings}]{Lee2010}
 \bibinfo{author}{Lee, J.}, \bibinfo{author}{South, A.B.},

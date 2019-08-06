@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  31 JUL 2019 22:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  6 AUG 2019 14:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1177,67 +1177,77 @@ Underfull \hbox (badness 10000) in paragraph at lines 834--845
  []
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 872--879
+Underfull \hbox (badness 10000) in paragraph at lines 847--858
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 859--867
 
  []
 
 [20]
-Underfull \hbox (badness 10000) in paragraph at lines 880--891
+Underfull \hbox (badness 10000) in paragraph at lines 883--890
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 896--905
+Underfull \hbox (badness 10000) in paragraph at lines 891--902
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 906--915
+Underfull \hbox (badness 10000) in paragraph at lines 907--916
 
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 924--928
+Underfull \hbox (badness 10000) in paragraph at lines 917--926
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 929--938
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 939--947
+Underfull \hbox (badness 10000) in paragraph at lines 935--939
 
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 950--960
+Underfull \hbox (badness 10000) in paragraph at lines 940--949
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 961--974
+Underfull \hbox (badness 10000) in paragraph at lines 950--958
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 961--971
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 977--986
+Underfull \hbox (badness 10000) in paragraph at lines 972--985
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 987--999
+Underfull \hbox (badness 10000) in paragraph at lines 988--997
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1000--1005
+Underfull \hbox (badness 10000) in paragraph at lines 998--1010
 
  []
 
 [24]
-Overfull \hbox (31.6996pt too wide) in paragraph at lines 1019--1022
+Underfull \hbox (badness 10000) in paragraph at lines 1011--1016
+
+ []
+
+[25]
+Overfull \hbox (31.6996pt too wide) in paragraph at lines 1030--1033
 []\OT1/cmr/m/n/10 This work was sup-ported by the MARES doc-toral train-ing pro-gram (MARES[]14[]15)
  []
 
@@ -1331,7 +1341,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 142--144
 []\OT1/cmr/m/n/10 pop
  []
 
-) [25] [26] [27] [28] [29] [30] (./F_changes.tex
+) [26] [27] [28] [29] [30] [31] (./F_changes.tex
 Overfull \hbox (76.2294pt too wide) in alignment at lines 3--29
  [] [] [] [] [] [] [] [] [] [] 
  []
@@ -1341,7 +1351,7 @@ Overfull \hbox (76.2294pt too wide) in alignment at lines 29--42
  [] [] [] [] [] [] [] [] [] [] 
  []
 
-) [31
+) [32
 
 ] (./Process_model.tex
 Overfull \hbox (46.79233pt too wide) in paragraph at lines 5--119
@@ -1349,72 +1359,72 @@ Overfull \hbox (46.79233pt too wide) in paragraph at lines 5--119
  []
 
 )
-<Plots/pop_dist.png, id=602, 1606.0pt x 1606.0pt>
+<Plots/pop_dist.png, id=612, 1606.0pt x 1606.0pt>
 File: Plots/pop_dist.png Graphic file (type png)
 <use Plots/pop_dist.png>
-Package pdftex.def Info: Plots/pop_dist.png  used on input line 1041.
+Package pdftex.def Info: Plots/pop_dist.png  used on input line 1052.
 (pdftex.def)             Requested size: 345.0pt x 344.98921pt.
-<Plots/f_dynamics.png, id=603, 578.16pt x 578.16pt>
+<Plots/f_dynamics.png, id=613, 578.16pt x 578.16pt>
 File: Plots/f_dynamics.png Graphic file (type png)
 <use Plots/f_dynamics.png>
-Package pdftex.def Info: Plots/f_dynamics.png  used on input line 1050.
+Package pdftex.def Info: Plots/f_dynamics.png  used on input line 1061.
 (pdftex.def)             Requested size: 345.0pt x 344.99312pt.
-<Plots/vessel_move_value.png, id=604, 578.16pt x 578.16pt>
+<Plots/vessel_move_value.png, id=614, 578.16pt x 578.16pt>
 File: Plots/vessel_move_value.png Graphic file (type png)
 <use Plots/vessel_move_value.png>
-Package pdftex.def Info: Plots/vessel_move_value.png  used on input line 1059.
+Package pdftex.def Info: Plots/vessel_move_value.png  used on input line 1070.
 (pdftex.def)             Requested size: 345.0pt x 344.99312pt.
-<../analysis/Data_Aggregation_space_Rev.pdf, id=605, 1156.32pt x 1734.48pt>
+<../analysis/Data_Aggregation_space_Rev.pdf, id=615, 1156.32pt x 1734.48pt>
 File: ../analysis/Data_Aggregation_space_Rev.pdf Graphic file (type pdf)
 <use ../analysis/Data_Aggregation_space_Rev.pdf>
-Package pdftex.def Info: ../analysis/Data_Aggregation_space_Rev.pdf  used on input line 1067.
+Package pdftex.def Info: ../analysis/Data_Aggregation_space_Rev.pdf  used on input line 1078.
 (pdftex.def)             Requested size: 345.0pt x 517.4897pt.
-<../analysis/Data_Aggregation_time_Rev.pdf, id=606, 1156.32pt x 1734.48pt>
+<../analysis/Data_Aggregation_time_Rev.pdf, id=616, 1156.32pt x 1734.48pt>
 File: ../analysis/Data_Aggregation_time_Rev.pdf Graphic file (type pdf)
 <use ../analysis/Data_Aggregation_time_Rev.pdf>
-Package pdftex.def Info: ../analysis/Data_Aggregation_time_Rev.pdf  used on input line 1074.
+Package pdftex.def Info: ../analysis/Data_Aggregation_time_Rev.pdf  used on input line 1085.
 (pdftex.def)             Requested size: 345.0pt x 517.4897pt.
-<../analysis/F_trendsREV.png, id=607, 650.43pt x 578.16pt>
+<../analysis/F_trendsREV.png, id=617, 650.43pt x 578.16pt>
 File: ../analysis/F_trendsREV.png Graphic file (type png)
 <use ../analysis/F_trendsREV.png>
-Package pdftex.def Info: ../analysis/F_trendsREV.png  used on input line 1082.
+Package pdftex.def Info: ../analysis/F_trendsREV.png  used on input line 1093.
 (pdftex.def)             Requested size: 345.0pt x 306.67035pt.
-<../analysis/f_diff_effectiveness.png, id=608, 650.43pt x 578.16pt>
+<../analysis/f_diff_effectiveness.png, id=618, 650.43pt x 578.16pt>
 File: ../analysis/f_diff_effectiveness.png Graphic file (type png)
 <use ../analysis/f_diff_effectiveness.png>
-Package pdftex.def Info: ../analysis/f_diff_effectiveness.png  used on input line 1090.
+Package pdftex.def Info: ../analysis/f_diff_effectiveness.png  used on input line 1101.
 (pdftex.def)             Requested size: 345.0pt x 306.67035pt.
-<./Plots/Closure_fishing_locations_yearly.png, id=609, 433.62pt x 1300.86pt>
+<./Plots/Closure_fishing_locations_yearly.png, id=619, 433.62pt x 1300.86pt>
 File: ./Plots/Closure_fishing_locations_yearly.png Graphic file (type png)
 <use ./Plots/Closure_fishing_locations_yearly.png>
-Package pdftex.def Info: ./Plots/Closure_fishing_locations_yearly.png  used on input line 1098.
+Package pdftex.def Info: ./Plots/Closure_fishing_locations_yearly.png  used on input line 1109.
 (pdftex.def)             Requested size: 172.5pt x 517.4963pt.
 
-LaTeX Warning: Float too large for page by 22.2463pt on input line 1104.
+LaTeX Warning: Float too large for page by 22.2463pt on input line 1115.
 
-[32
+[33
 
-] [33 <./Plots/pop_dist.png (PNG copy)>] [34 <./Plots/f_dynamics.png>] [35 <./Plots/vessel_move_value.png (PNG copy)>] [36 <../analysis/Data_Aggregation_space_Rev.pdf>] [37 <../analysis/Data_Aggregation_time_Rev.pdf>] [38 <../analysis/F_trendsREV.png (PNG copy)>] [39 <../analysis/f_diff_effectiveness.png (PNG copy)>] [40 <./Plots/Closure_fishing_locations_yearly.png (PNG copy)>] (./mixfishsim_ecolmod.bbl [41
+] [34 <./Plots/pop_dist.png (PNG copy)>] [35 <./Plots/f_dynamics.png>] [36 <./Plots/vessel_move_value.png (PNG copy)>] [37 <../analysis/Data_Aggregation_space_Rev.pdf>] [38 <../analysis/Data_Aggregation_time_Rev.pdf>] [39 <../analysis/F_trendsREV.png (PNG copy)>] [40 <../analysis/f_diff_effectiveness.png (PNG copy)>] [41 <./Plots/Closure_fishing_locations_yearly.png (PNG copy)>] (./mixfishsim_ecolmod.bbl [42
 
-] [42] [43] [44] [45])
+] [43] [44] [45] [46])
 \Changes@OutFile=\write6
 \openout6 = `mixfishsim_ecolmod.soc'.
 
-[46]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1112.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1112.
+[47]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1123.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1123.
 (./mixfishsim_ecolmod.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1112.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1112.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1123.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1123.
 Package rerunfilecheck Info: File `mixfishsim_ecolmod.out' has not changed.
-(rerunfilecheck)             Checksum: 4C3C0768095A5B226F8C9CEBA68F2C1F;2144.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1112.
+(rerunfilecheck)             Checksum: 3C55073E8F6BF9A06B335DA6B7F2D8E4;2164.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1123.
  ) 
 Here is how much of TeX's memory you used:
- 21917 strings out of 492982
- 426230 string characters out of 6134895
- 556743 words of memory out of 5000000
- 24835 multiletter control sequences out of 15000+600000
+ 21926 strings out of 492982
+ 426383 string characters out of 6134895
+ 554828 words of memory out of 5000000
+ 24841 multiletter control sequences out of 15000+600000
  13878 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,17n,68p,646b,937s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1426,10 +1436,10 @@ pdfTeX warning (dest): name{figure.12} has been referenced but does not exist, r
 
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on mixfishsim_ecolmod.pdf (46 pages, 3175066 bytes).
+Output written on mixfishsim_ecolmod.pdf (47 pages, 3175882 bytes).
 PDF statistics:
- 830 PDF objects out of 1000 (max. 8388607)
- 735 compressed objects within 8 object streams
- 191 named destinations out of 1000 (max. 500000)
+ 841 PDF objects out of 1000 (max. 8388607)
+ 745 compressed objects within 8 object streams
+ 194 named destinations out of 1000 (max. 500000)
  277 words of extra memory for PDF output out of 10000 (max. 10000000)
 

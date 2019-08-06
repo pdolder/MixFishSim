@@ -850,19 +850,30 @@ exploring the inter- and intra- specific interactions among fish populations
 and time. Our focus was on understanding the strengths and limitations of
 inference from catch data obtained through commercial fishing activity with
 fleets exploiting multiple fish populations and realising catch distributions
-that may differ from the underlying populations. As such, we favoured a
-minimum realistic model of the fish populations \citep{Plaganyi2014}, while
-incorporating detailed fishing dynamics that take account of different drivers
-in a mechanistic way. In this way we take account of heterogeneity in fleet
-dynamics due to different preferences and drivers similarly to other approaches
-\citep{Fulton2011}, but at an individual vessel rather than fleet level. We do
-not explicitly define fleets as rational profit maximisers at the outset, but
-consider there are several stages to development of the fishery; information
-gathering through search where the resource location is not known,  followed by
-individual learnt behaviour of profitable locations.  This provides a realistic
-model of how fishing patterns are established and maintained to exploit an
-uncertain resource through an explore-exploit strategy \citep{Mangel1983,
-	Bailey2018}. 
+that may differ from the underlying populations. As such, we favoured a minimum
+realistic model of the fish populations \citep{Plaganyi2014} taking account of
+environmental but not demographic stochasticity, while incorporating detailed
+fishing dynamics that take account of different drivers in a mechanistic way.
+\\ 
+
+Demographic stochasticity arises due to individual-level variability in time to
+reproduction and death. This form of stochasticity is often modelled by drawing
+random time intervals from a given distribution \citep{Gillespie1977}. The
+impact of demographic stochasticity depends on the population size, with the
+effects expected to decrease with increasing population size \citep{Lande2010}.
+This contrasts with environmental stochasticity, which affects all population
+sizes and is present at the population level in our model by variability in
+recruitment. \\
+
+We take account of heterogeneity in fleet dynamics due to different preferences
+and drivers similarly to other approaches \citep{Fulton2011}, but at an
+individual vessel rather than fleet level. We do not explicitly define fleets
+as rational profit maximisers at the outset, but consider there are several
+stages to development of the fishery; information gathering through search
+where the resource location is not known, followed by individual learnt
+behaviour of profitable locations.  This provides a realistic model of how
+fishing patterns are established and maintained to exploit an uncertain
+resource through an explore-exploit strategy \citep{Mangel1983, Bailey2018}. 
 
 \subsection{How does sampling-derived fisheries data reflect the underlying
 	population structure?}
