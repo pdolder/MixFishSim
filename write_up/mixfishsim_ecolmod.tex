@@ -171,25 +171,27 @@ continuance of sustainable fisheries for available quota species.\\
 
 \replaced[id=PD]{Identifying}{Ensuring measures are implemented at} appropriate
 spatial scales for fisheries closures has been a challenge in the past but
-identified as crucial to its success \citep{Costello2010, Dunn2016}. Further,
-poorly sited closures have led to ineffectual measures with unintended
-consequences. For example, increased benthic impact on previously unexploited
-areas was observed from the cod closure in the North Sea with a lack of
-observed intended effect in reducing cod exploitation
-\citep{Rijnsdorp2001,Dinmore2003}). \replaced[id=PD]{M}{Since then m}ore
-refined spatiotemporal information has \added[id=PD]{since} become available
-through the combination of logbook and Vessel Monitoring System (VMS) data
-\citep{Lee2010, Bastardie2010, Gerritsen2012, Mateo2016} and more real-time
-spatial management has been possible \citep[e.g.][]{Holmes2011}.  Such
-information is, however, derived from an inherently biased sampling programme,
-targeted fishing, where fishers establish favoured fishing grounds through an
-explore-exploit strategy \citep{Bailey2018} where they search for areas with
-high catches and then use experience to return to areas where they've
-experienced high catch in the past.  \deleted[id=PD]{ Further, fishers
-	generally only recorded landings (not catch) on a daily
-	basis\todo{\added[id=JJ]{Its not clear what the problem is: landings
-			collected on daily basis or landings recorded rather
-			than catch}}.  This leads to questions about the
+identified as crucial to its success \citep{Costello2010, Dunn2016}, and is
+hampered where spatial information is coarse due to low resolution reporting of
+fisheries catch which is subject to aggregation across larger gridded areas
+\citep{Branch2005}. Further, coarse spatial data may lead to poorly sited closures,
+which have led to ineffectual measures with unintended consequences.  For
+example, increased benthic impact on previously unexploited areas was observed
+from the cod closure in the North Sea with a lack of observed intended effect
+in reducing cod exploitation \citep{Rijnsdorp2001,Dinmore2003}).
+\replaced[id=PD]{M}{Since then m}ore refined spatiotemporal information has
+\added[id=PD]{since} become available through the combination of logbook and
+Vessel Monitoring System (VMS) data \citep{Lee2010, Bastardie2010,
+	Gerritsen2012, Mateo2016} and more real-time spatial management has
+been possible \citep[e.g.][]{Holmes2011}.  Such information is, however,
+derived from an inherently biased sampling programme, targeted fishing, where
+fishers establish favoured fishing grounds through an explore-exploit strategy
+\citep{Bailey2018} where they search for areas with high catches and then use
+experience to return to areas where they've experienced high catch in the past.
+\deleted[id=PD]{ Further, fishers generally only recorded landings (not catch)
+	on a daily basis\todo{\added[id=JJ]{Its not clear what the problem is:
+			landings collected on daily basis or landings recorded
+			rather than catch}}.  This leads to questions about the
 	validity of inference that can be drawn from landings data assigned to
 	VMS activity pings.}\todo{\added[id=JJ]{This comes as a surprise: I
 		thought this was going to be about
@@ -234,22 +236,23 @@ utility of commercial data in supporting management decisions.
 
 \section{Materials and Methods}
 
-\replaced[id=PD]{A}{We developed and implemented a simulation model with a}
-\replaced{simulation model that is modular and discrete-event based was
-	developed. This approach enables efficient computation by allowing
-	for}{approach, where} \added[id=PD]{sub-}modules \deleted[id=PD]{are}
-implemented on time-scales appropriate to capture the characteristic of the
-\replaced[id=PD]{different processes}{process modelled} (Figure 1).
-\added[id=PD]{The following sub-modules were included to capture the full
-	system: 1) Population dynamics, 2) Recruitment dynamics, 3) Population
-	movement, 4) fishery dynamics.}\\
+\replaced[id=PD]{A}{We developed and implemented a fully spatially explicit
+	simulation model with a} \replaced{simulation model that is modular and
+	discrete-event based was developed. This approach enables efficient
+	computation by allowing for}{approach, where}
+\added[id=PD]{sub-}modules \deleted[id=PD]{are} implemented on time-scales
+appropriate to capture the characteristic of the \replaced[id=PD]{different
+	processes}{process modelled} (Figure 1).  \added[id=PD]{The following
+	sub-modules were included to capture the full system: 1) Population
+	dynamics, 2) Recruitment dynamics, 3) Population movement, 4) fishery
+	dynamics.}\\
 
 \deleted[id=PD]{The fishing model operated on a tow-by-tow basis, while}
-\replaced[id=PD]{P}{p}opulation dynamics (fishing and natural mortality which
-are instantaneous rates, growth of the population biomass) operate on a daily
-time-step\replaced[id=PD]{, while p}{. P}opulation movement occurs on a weekly
-time-step\replaced[id=PD]{. R}{, while r}ecruitment \replaced[id=PD]{takes
-	place}{occurs} periodically each year for a set time
+\replaced[id=PD]{P}{p}opulation dynamics (including fishing and natural
+mortality which are instantaneous rates, growth of the population biomass)
+operate on a daily time-step\replaced[id=PD]{, while p}{. P}opulation movement
+occurs on a weekly time-step\replaced[id=PD]{. R}{, while r}ecruitment
+\replaced[id=PD]{takes place}{occurs} periodically each year for a set time
 \replaced[id=PD]{duration}{period (e.g. 3 weeks)} specified for each
 population\deleted[id=PD]{.}\added[id=PD]{, while the fishing module operates
 	on a tow-by-tow basis (i.e. multiple events a day)}.
@@ -275,25 +278,24 @@ terms of aggregate biomass of recruits and mature components rather than
 keeping track of individuals\citep{Deriso1980, Schnute1985, Dichmont2003}.
 \added[id=PD]{A daily time-step was chosen to discretise continuous population
 	processes on a biologically relevant and computationally tractable
-	timescale.} \deleted[id=PD]{Here,}Population biomass growth and
-depletion for pre-recruits and\deleted[id=PD]{fish} recruited
-\added[id=PD]{fish}\deleted[id=PD]{to the fishery} were modelled separately as
-a function of previous recruited biomass, intrinsic population growth and
-recruitment functionally linked to the adult population size.  Biomass for each
-cell $c$ was incremented each day $d$ as follows (the full parameter list is
-detailed in Table \ref{tab: pop_variable}): 
+	timescale.} \deleted[id=PD]{Here,}Population biomass growth was
+modelled as a function of previous recruited biomass, intrinsic population
+growth and recruitment functionally linked to the adult population size.
+Biomass for each cell $c$ was incremented each day $d$ as follows (the full
+parameter list is detailed in Table \ref{tab: pop_variable}): 
 \begin{equation}
 	\begin{split}
 	B_{c,d+1} = &\\
-	& (1 + \rho) B_{c,d} \cdot e^{-Z_{c,d}} - \rho \cdot e^{-Z_{c,d}} \hspace{2.9cm}
+	& (1 + \rho) B_{c,d} \cdot \mathrm{e}^{-Z_{c,d}} - \rho \cdot
+	\mathrm{e}^{-Z_{c,d}} \hspace{2.9cm}
 	\times \\  
-	& (B_{c,d-1} \cdot e^{-Z_{c,d-1}} + Wt_{R-1} \cdot \alpha_{d-1} \cdot
+	& (B_{c,d-1} \cdot \mathrm{e}^{-Z_{c,d-1}} + Wt_{R-1} \cdot \alpha_{d-1} \cdot
 	R_{\tilde{y}(c,y,d-1)})
 	\hspace{0.4cm} + \\
 	& Wt_{R} \cdot \alpha_{d} \cdot R_{\tilde{y}(c,y,d)} 
 	\end{split}
 \end{equation}
-where $\rho$ is Brody's coefficient, shown to be equal to $e^{-K}$ when $K$ is
+where $\rho$ is Brody's coefficient, shown to be equal to $\mathrm{e}^{-K}$ when $K$ is
 the growth rate from a von Bertalanffy logistic growth model
 \citep{Schnute1985}. $Wt_{R-1}$ is the average weight of fish prior to
 recruitment, while $Wt_{R}$ is the average recruited weight. $\alpha_{d}$
@@ -305,7 +307,7 @@ fishing mortality, $F_{c,d}$, where both $M_{c,d}$ and $F_{c,d}$ are
 instantaneous rates with $M_{c,d}$ fixed and $F_{c,d}$ calculated by solving
 the Baranov catch equation \citep{Hilborn1992b} for $F_{c,d}$:
 \begin{equation}
-C_{c,d} = \frac{F_{c,d}}{F_{c,d} + M_{c,d}} * (1 - e^{-(F_{c,d} + M_{c,d})})
+C_{c,d} = \frac{F_{c,d}}{F_{c,d} + M_{c,d}} * (1 - \mathrm{e}^{-(F_{c,d} + M_{c,d})})
 \cdot B_{c,d}
 \end{equation}
 where $C_{c,d}$ is the summed catch from the fishing model across all fleets
@@ -340,7 +342,7 @@ stock size and $\sigma^2$ the variability in the recruitment due to stochastic
 processes, or a stochastic Ricker form \citep{Ricker1954}:
 \begin{equation}
 	\begin{split}
-	\bar{R}_{c,d} = & B_{c,d} \cdot e^{(\alpha - \beta \cdot B_{c,d})} \\	
+	\bar{R}_{c,d} = & B_{c,d} \cdot \mathrm{e}^{(\alpha - \beta \cdot B_{c,d})} \\	
    	     R_{c,d} \sim & \log N[(\log(\bar{R}_{c,d}),\log(\sigma^2))]
 	\end{split}
 \end{equation}
@@ -354,8 +356,7 @@ all populations though either functional form can be chosen.
 To simulate \deleted[id=JJ]{how} fish population\deleted[id=JJ]{s might be}
 distribut\replaced[id=JJ]{ion}{ed} in space and time\deleted[id=JJ]{, we
 	employed} a Gaussian spatial process \added[id=JJ]{was employed} to
-model habitat suitability for each of the populations on a 2d grid. JM: MENTION
-IN THE INTRODUCTION \\
+model habitat suitability for each of the populations on a 2d grid. \\
 
 \deleted[id=PD]{the habitat}We first define\added[id=PD]{d} a Gaussian random
 field process\todo{\added[id=JJ]{Not clear how habitat/GRF affect local
@@ -387,8 +388,9 @@ distrib\added[id=PD]{u}tion based on habitat suitability (represented by the
 normalised values from the GRFs), temperature and distance
 from current cell\replaced[id=PD]{:}{.} 
 \begin{equation}
-	Pr(J | I) = \frac{e^{-\lambda * d_{IJ}} \cdot
-		(Hab_{J,p}^2 \cdot Tol_{J,p,wk})}{\sum\limits_{c=1}^{C}e^{-\lambda * d} \cdot
+	Pr(J | I) = \frac{\mathrm{e}^{-\lambda * d_{IJ}} \cdot
+		(Hab_{J,p}^2 \cdot
+		Tol_{J,p,wk})}{\sum\limits_{c=1}^{C}\mathrm{e}^{-\lambda * d} \cdot
 		(Hab_{c,p}^2 \cdot Tol_{c,p,wk})}
 \end{equation}
 Where $d_{IJ}$ is the euclidean distance between cell $I$ and cell $J$,
@@ -406,7 +408,7 @@ the simulations the populations move\deleted[id=PD]{s} towards
 in directional movement towards the spawning grounds.\todo{\added[id=JM]{What
 		does it mean concisely? Areas are assigned?} \added[id=PD]{Yes,
 		the areas are pre-defined - I have amended to reflect and tried
-		to clarify}} \\ JM: WHAT ABOUT INDIVIDUAL INTERACTIONS:w
+		to clarify}} \\ 
 
 
 \replaced[id=JJ]{An}{, with an} advection-diffusion process\deleted[id=JJ]{to}
@@ -536,7 +538,7 @@ the current fishing location.  The movement distance retains some degree of
 stochasticity, that can be controlled separately, but is determined by the
 relationship: 
 \begin{equation}
-	StepL = e^{log(\beta_{1}) + log(\beta_{2}) -
+	StepL = \mathrm{e}^{log(\beta_{1}) + log(\beta_{2}) -
 		(log(\frac{\beta_{1}}{\beta_{3}}))} * Rev
 \end{equation}\todo{\added[id=JJ]{So
 			step length increases with increasingly gross
@@ -570,8 +572,7 @@ order to account for this behaviour, the fishing sub-model operates spatially
 on a daily time-step so that for future days the biomass available to the
 fishery is reduced in the areas fished. The cumulative effect is to make
 heavily fished areas less attractive as a future fishing location choice as
-reduced catch rates will be experienced. JM: INTERFERENCE COMPETITION COULD
-ALSO BE REPRESENTED BY A LIMITATION FACTOR 
+reduced catch rates will be experienced. 
 
 \subsection{Fisheries independent survey}
 
@@ -669,10 +670,10 @@ The following steps are undertaken to determine closures:
 	\item Extract data source
 	\item Aggregate according to desired spatial and temporal resolution
 	\item Interpolate across entire area at desired resolution using simple
-		bivariate kriging using the \emph{interp} function from the R
-		package akima \citep{Akima2006}. This is intended to represent
-		a naive spatial model of catch rates, without knowledge of the
-		spatial population dynamics.
+		bivariate interpolation using the \emph{interp} function from
+		the R package akima \citep{Akima2006}. This is intended to
+		represent a naive spatial model of catch rates, without
+		knowledge of the spatial population dynamics.
 	\item Close area covering top 5 \% of catch rates 
 \end{enumerate}
 In total 28 closure scenarios were run that represent combinations of:
@@ -746,22 +747,27 @@ survey, commercial and 'real population' data emerge. \\
 
 Figure \ref{fig:2} shows the consequences of different temporal aggregations of
 the data over a ten-year period, with weekly (top), monthly (middle) and yearly
-(bottom) catch compositions from across an aggregated 20 x 20 area. By
-comparison to the 'real population', the monthly aggregation captures the major
-patterns seen in the weekly data, albeit missing more subtle differences. The
-yearly data assumes the same proportion of each population caught at any time
-of the year due to the data aggregation. This assumption introduces
-`aggregation bias' as the data may only be representative of some point (or no
-point) in time. The commercial data on a weekly basis shows some of the same
-patterns as the 'real population', though the first species (in red) is less
-well represented and some weeks are missing catches from the area. The monthly
-data shows some consistency between the 'real population' and commercial data
-for species 2 - 4, though species 1 remains under-represented. On an annual
-basis, interestingly the commercial data under represents the first species (in
-red) while the survey over represents species 1. This is likely due to the
-biases in commercial sampling, with the fisheries not targeting the areas where
-species 1 are present and the survey sampling areas where species 1 is more
-abundant than on average. 
+(bottom) catch compositions from across an aggregated 20 x 20 area. In the
+'real population', the monthly aggregation captures the major patterns of
+composition seen in the weekly data with similar mean and standard deviations.
+In the weekly data species 1 = 9.36 (3.99), species 2 = 83.2 (5.60), species 3
+= 3.57 (1.23), species 4 = 3.91 (1.59); in the monthly data species 1 = 9.23
+(3.87), species 2 = 83.3 (5.52), species 3 = 3.62 (1.15), species 4 = 3.86
+(1.52). While means were similar some of the variation was lost when aggregated
+to an annual level; species 1 = 9.90 (0.173), species 2 = 82.2 (0.308), species
+3 = 3.82 (0.119), species 4 = 4.03 (0.0502).\\
+
+The commercial data on a weekly basis shows some of the same patterns as the
+'real population', though the species 1 (in red) is less well represented and
+some weeks are missing catches from the area. Here, weekly and monthly
+compositions were nearly identical, with monthly composition of species 1 =
+0.0472 (0.0139), species 2 = 94.4 (1.47), species 3 = 3.12 (1.47), species 4 =
+2.40 (0.444). Again, yearly values head a similar mean but smaller standard
+deviation.\\
+
+The survey data was only available on an annual basis, and showed again a
+slightly different composition; species 1 = 0.372 (0.00473), species 2 = 87.7
+(0.193), species 3 = 0.729 (0.0200), species 4 = 11.2 (0.172).
 
 \subsection{How does data aggregation and source impact on spatial fisheries
 	management measures?}
@@ -908,11 +914,24 @@ From our simulations spatial disaggregation was more important than the
 temporal disaggregation of the commercial data. This reflects the fact that
 there was greater spatial heterogeneity over the spatial domain than
 experienced in individual locations over the course of the year (Figure
-\ref{fig:9}). This indicates that fixed closures, at the right resolution,
-when based on commercially derived data have the potential to reduced fishing
-mortality. The likely cost of poor spatial and temporal resolution is
-associated with reduced effectiveness and potentially closing fishing
-opportunities for other fisheries. \\
+\ref{fig:9}). \\ 
+
+The yearly data assumes the same proportion of each population caught at any
+time of the year due to the data aggregation. This assumption introduces
+`aggregation bias' as the data may only be representative of some point (or no
+point) in time. The monthly data shows some consistency between the 'real population' and
+commercial data for species 2 - 4, though species 1 remains under-represented.
+On an annual basis, interestingly the commercial data under represents the
+first species (in red) while the survey over represents species 1. This is
+likely due to the biases in commercial sampling, with the fisheries not
+targeting the areas where species 1 are present and the survey sampling areas
+where species 1 is more abundant than on average. \\
+
+This indicates that fixed closures, at the right resolution, when based on
+commercially derived data have the potential to reduced fishing mortality. The
+likely cost of poor spatial and temporal resolution is associated with reduced
+effectiveness and potentially closing fishing opportunities for other
+fisheries. \\
 
 Two contrasting real world approaches in this respect were the spatial closures
 to protect cod in the North Sea. In one example, large scale spatial closures
@@ -1038,6 +1057,8 @@ Aquaculture Science seedcorn program (DP227AC).
 \clearpage
 \footnotesize
 \input{F_changes.tex}
+
+\input{Temp_proportions.tex}
 
 
 %%%%%%%%%%%%%%%%%

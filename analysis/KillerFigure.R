@@ -344,8 +344,9 @@ dev.off()
 ## all year, month and week combinations
 
 logs <- combine_logs(res[["fleets_catches"]])
-
 logs_wk_mn <- unique(paste(logs$month, logs$week, sep = "_"))
+
+## Need to amend to print table of percentages
 
 ## Some measure of temporal change in distribtions
 plot_temp <- function(timestep = NULL, basis = NULL) {
@@ -390,6 +391,8 @@ dataPlot <- dataPlot[order(dataPlot$year, dataPlot$month, dataPlot$week),]
 cols <- c("red", "blue", "purple", "green")
 barplot(t(dataPlot[,4:7]), names.arg = rep(paste(""), nrow(dataPlot)), col = cols, border = NA)
 
+write.csv(dataPlot, file = paste0(timestep, basis,".csv"), row.names = F)
+
 }
 
 ## Monthly
@@ -425,6 +428,7 @@ dataPlot <- dataPlot[order(dataPlot$year, dataPlot$month),]
 
 cols <- c("red", "blue", "purple", "green")
 barplot(t(dataPlot[,3:6]), names.arg = rep(paste(""), 12 * length(yr)), col = cols, border = NA)
+write.csv(dataPlot, file = paste0(timestep, basis,".csv"), row.names = F)
 
 }
 
@@ -462,6 +466,7 @@ dataPlot <- dataPlot[order(dataPlot$year),]
 
 cols <- c("red", "blue", "purple", "green")
 barplot(t(dataPlot[,2:5]), names.arg = rep(paste(""), length(yr)), col = cols, border = NA)
+write.csv(dataPlot, file = paste0(timestep, basis,".csv"), row.names = F)
 
 }
 

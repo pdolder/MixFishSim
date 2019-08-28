@@ -1,4 +1,4 @@
-\begin{thebibliography}{73}
+\begin{thebibliography}{74}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -88,6 +88,14 @@
   \bibinfo{year}{1957}.
 \newblock \bibinfo{title}{{On the Dynamics of Exploited Fish Populations}} ,
   \bibinfo{pages}{533}.
+%Type = Article
+\bibitem[{Branch et~al.(2005)Branch, Hilborn and Bogazzi}]{Branch2005}
+\bibinfo{author}{Branch, T.}, \bibinfo{author}{Hilborn, R.},
+  \bibinfo{author}{Bogazzi, E.}, \bibinfo{year}{2005}.
+\newblock \bibinfo{title}{{Escaping the tyranny of the grid: a more realistic
+  way of defining fishing opportunities}}.
+\newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
+  \bibinfo{volume}{642}, \bibinfo{pages}{631--642}.
 %Type = Article
 \bibitem[{Catchpole and Revill(2008)}]{Catchpole2008}
 \bibinfo{author}{Catchpole, T.L.}, \bibinfo{author}{Revill, A.S.},

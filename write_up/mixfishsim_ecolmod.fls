@@ -315,6 +315,8 @@ INPUT parameter_tables.tex
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/eurosym/feymr10.tfm
 INPUT F_changes.tex
 INPUT F_changes.tex
+INPUT Temp_proportions.tex
+INPUT Temp_proportions.tex
 INPUT Process_model.tex
 INPUT Process_model.tex
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
