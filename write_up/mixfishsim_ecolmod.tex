@@ -83,20 +83,18 @@
 
 \replaced[id = JJ]{Most fisheries}{Fishing} exploit\deleted[id=JJ]{s} a variety 
 of spatially and temporally heterogeneous fish populations using
-species-unselective gear that can result in unintended, unwanted catch of low
-quota or protected species. Reducing these unwanted catches is crucial for
-biological and economic sustainability of `mixed fisheries' and implementation
-of an ecosystem approach to fishing. \\
+species-unselective gear. This can result in unintended, unwanted catch of low
+quota or protected species and reducing these catches is crucial for
+biological and economic sustainability of `mixed fisheries'. \\
 
 \replaced[id = PD]{If fisheries are to avoid unwanted catch,}{To implement
 	effective spatial measures to reduce discards} a good understanding of
 spatiotemporal fishery dynamics is required. However, traditional scientific
 advice is limited by a lack of highly resolved knowledge of population
-distributions, population movement and how fishers interact with different fish
-populations. This reflects the fact that data on fish location at high temporal
-and spatial resolutions is expensive and difficult to collect. Proxies inferred
-from either scientific surveys or commercial catch data are often used to model
-distributions, usually with sparse data at limited spatial and temporal
+distributions and movement, and how fishers interact with different fish
+populations. Because data on fish location at high temporal and spatial
+resolutions is expensive and difficult to collect proxies are usually inferred
+from scientific surveys or commercial catches with limited spatial and temporal
 resolution. \\ 
 
 To understand how data resolution impacts inference on mixed fisheries
@@ -104,19 +102,18 @@ interactions, we developed a highly resolved spatiotemporal simulation model
 incorporating: i) delay-difference population dynamics, ii) population movement
 using Gaussian Random Fields to simulate patchy, heterogeneously distributed
 populations, and iii) fishery dynamics for multiple fleet characteristics based
-on species targeting under an explore-exploit strategy via a mix of correlated
-random walk movement (for exploration) and learned behaviour (for exploitation)
-phases of the fisheries.  \\ 
+on species targeting under an explore-exploit strategy. This is implemented via
+a mix of correlated random walk movement (for exploration) and learned
+behaviour (for exploitation) phases of the fisheries.  \\ 
 
-We simulated 50 years of fishing and used the results from the fisheries catch
-to draw inference on the underlying community structures. We compared this
-inference to a simulated fixed-site sampling design commonly used for fisheries
-monitoring purposes and the true underlying community structure. We i) used
-the results to establish the potential and limitations of fishery-dependent
-data in providing a robust picture of spatiotemporal distributions; and ii)
-simulated an area closure based on areas defined from the different data sources
-at a range of temporal and spatial resolutions to assess their effectiveness
-on reducing catches of a fish population. \\
+We simulated 50 years of fishing and used the results to draw inference on the
+underlying community structures. We compared inference from commercial catch to
+a simulated fixed-site sampling design and the true underlying community. We i)
+establish the potential limitations of fishery-dependent data in providing a
+robust picture of spatiotemporal distributions; and then ii) simulated an area
+closure based on areas defined from the different data sources at a range of
+temporal and spatial resolutions to assess their effectiveness on reducing
+catches of a fish population. \\
 
 Our framework allows users to explore the assumptions in modelling
 observational data and evaluate the underlying dynamics of such approaches at a
@@ -158,36 +155,37 @@ as measures to \replaced[id=PD]{reduce unwanted catch}{avoiding
 	Bellido2011, Cosgrove2019}.  \\
 
 \replaced[id=PD]{Adaptive spatial management strategies have}{Use of spatial
-	management as a tools} been proposed as a way of reducing discards
-\added[id=PD]{\citep{Holmes2011, Little2014, Dunn2014a}}.  \deleted[id=PD]{its}
-Implementation of avoidance measures is, however, restricted by lack of
-knowledge of fish and fishery spatiotemporal dynamics and understanding of the
-scale at which processes become important for management. Understanding the
-correct scale for spatial measures is crucial for implementing solutions at a
-resolution that ensures effective management \citep{Dunn2016} while minimising
-economic impact.  For example, the problem can be to identify a scale that
-promotes species avoidance for vulnerable or low quota species while allowing
-continuance of sustainable fisheries for available quota species.\\
+	management as a tools} been proposed as a way of reducing overquota
+discards \added[id=PD]{\citep{Holmes2011, Little2014, Dunn2014a}}.
+\deleted[id=PD]{its} However, implementation is restricted by lack of knowledge
+of fish and fishery spatiotemporal dynamics and understanding of the scale at
+which processes become important for management. Understanding the correct
+scale for spatial measures is crucial for implementing effective solutions
+which  minimising economic impact \citep{Dunn2016}. For example, the problem
+can be to identify a scale that promotes species avoidance for vulnerable or
+low quota species while allowing continuance of sustainable fisheries for
+available quota species.\\
 
 \replaced[id=PD]{Identifying}{Ensuring measures are implemented at} appropriate
-spatial scales for fisheries closures has been a challenge in the past but
-identified as crucial to its success \citep{Costello2010, Dunn2016}, and is
-hampered where spatial information is coarse due to low resolution reporting of
-fisheries catch which is subject to aggregation across larger gridded areas
-\citep{Branch2005}. Further, coarse spatial data may lead to poorly sited closures,
-which have led to ineffectual measures with unintended consequences.  For
-example, increased benthic impact on previously unexploited areas was observed
-from the cod closure in the North Sea with a lack of observed intended effect
-in reducing cod exploitation \citep{Rijnsdorp2001,Dinmore2003}).
-\replaced[id=PD]{M}{Since then m}ore refined spatiotemporal information has
-\added[id=PD]{since} become available through the combination of logbook and
-Vessel Monitoring System (VMS) data \citep{Lee2010, Bastardie2010,
-	Gerritsen2012, Mateo2016} and more real-time spatial management has
-been possible \citep[e.g.][]{Holmes2011}.  Such information is, however,
-derived from an inherently biased sampling programme, targeted fishing, where
+spatial scales for fisheries closures has been a challenge in the past but is
+crucial to their success \citep{Costello2010, Dunn2016}. Inference is hampered
+where spatial information is coarse due to low resolution reporting of
+fisheries catch which is aggregated across larger gridded areas
+\citep{Branch2005}. Further, if data does not allow identification of spatial
+features it may lead to poorly sited closures which are ineffectual or have
+unintended consequences. For example, increased benthic impact on previously
+unexploited areas from the cod closure in the North Sea were observed without
+the intended effect of reducing cod exploitation
+\citep{Rijnsdorp2001,Dinmore2003}). \replaced[id=PD]{M}{Since then m}ore
+refined spatiotemporal information has \added[id=PD]{since} become available
+through the combination of logbook and Vessel Monitoring System (VMS) data
+\citep{Lee2010, Bastardie2010, Gerritsen2012, Mateo2016} and more real-time
+spatial management has been possible \citep[e.g.][]{Holmes2011}. However,
 fishers establish favoured fishing grounds through an explore-exploit strategy
 \citep{Bailey2018} where they search for areas with high catches and then use
 experience to return to areas where they've experienced high catch in the past.
+This leads to an inherently biased sampling where target species are
+over-represented in catch as fishers exploit areas of high abundance.
 \deleted[id=PD]{ Further, fishers generally only recorded landings (not catch)
 	on a daily basis\todo{\added[id=JJ]{Its not clear what the problem is:
 			landings collected on daily basis or landings recorded
@@ -199,9 +197,9 @@ experience to return to areas where they've experienced high catch in the past.
 		confusion}}\\ 
 
 \replaced[id=PD]{In order to understand the effect of spatiotemporal
-	aggregation of data we ask two fundamental questions regarding
-	inference derived from observational data:}{ and use the
-	results}\deleted[id=PD]{ from the fishing model:}
+	aggregation of data and fishery targeting we ask two fundamental
+	questions regarding inference derived from observational data:}{ and
+	use the results}\deleted[id=PD]{ from the fishing model:}
 
 \begin{enumerate}
 	\item How does sampling-derived fisheries data reflects the underlying
@@ -212,27 +210,21 @@ experience to return to areas where they've experienced high catch in the past.
 	
 To answer these questions we i) develop a simulation model where population
 dynamics are highly-resolved in space and time by use of a Gaussian spatial
-process to define suitable habitat\replaced[id=PD]{. Precise locations being}{
-	and are} known \added[id=PD]{directly} rather than inferred from
-sampling or commercial catch\added[id=PD]{, we can use the population model to
-	validate how inference from fisheries-dependent and fisheries
-	independent sampling relates to the real community structure in a way
-	we could not with real data}. We ii) compare, at different spatial and
-temporal aggregations, the 'real population' distributions to samples from
-fisheries-dependent and fisheries independent catches to test if these are a
-true reflection of the relative density of the populations. We then iii)
-simulate a fishery closure to protect a species based on different spatial and
-temporal data aggregations. We use these evaluations to draw inference on the
-utility of commercial data in supporting management decisions.
-\todo{\added[id=JJ]{If the paper has two goals this should be clear from the
-		start, but may be better over 2 MSs}\added[id=PD]{I would like
-		to keep both parts, but have made clearer in how its set out.
-		The closure scenarios form validation of the data aggregation,
-		rather than effectiveness of the closures themselves - so its a
-		continuation of the same question in my eyes}}\deleted[id=PD]{.
-	Further, we extend our analysis to a range of spatial and temporal
-	scales to assess the impact of these processes on the success of the
-	management measure.}\\
+process to define suitable habitat for different populations\replaced[id=PD]{.
+	Precise locations of the fish being}{ and are} known
+\added[id=PD]{directly} rather than inferred from sampling or commercial
+catch\added[id=PD]{, we can use the population model to validate how inference
+	from fisheries-dependent and fisheries independent sampling relates to
+	the real community structure in a way we could not with real data}. We
+ii) compare, at different spatial and temporal aggregations, the 'real
+population' distributions to samples from fisheries-dependent and fisheries
+independent catches to test if these are a true reflection of the relative
+density of the populations. We then iii) simulate a fishery closure to protect
+a species based on different spatial and
+temporal data aggregations. \\
+
+We use these evaluations to draw inference on the utility of commercial data in
+supporting management decisions.  
 
 \section{Materials and Methods}
 
@@ -249,7 +241,7 @@ appropriate to capture the characteristic of the \replaced[id=PD]{different
 
 \deleted[id=PD]{The fishing model operated on a tow-by-tow basis, while}
 \replaced[id=PD]{P}{p}opulation dynamics (including fishing and natural
-mortality which are instantaneous rates, growth of the population biomass)
+mortality which are instantaneous rates, and growth of the population biomass)
 operate on a daily time-step\replaced[id=PD]{, while p}{. P}opulation movement
 occurs on a weekly time-step\replaced[id=PD]{. R}{, while r}ecruitment
 \replaced[id=PD]{takes place}{occurs} periodically each year for a set time
