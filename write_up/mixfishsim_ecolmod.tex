@@ -57,7 +57,7 @@
 \begin{document}
 
 \begin{frontmatter}
-\title{\emph{MixFishSim}: highly resolved spatiotemporal simulations for
+\title{Working title: Highly resolved spatiotemporal simulations for
 	exploring mixed fishery dynamics}
 
 %% Group authors per affiliation:
@@ -112,8 +112,8 @@ a simulated fixed-site sampling design and the true underlying community. We i)
 establish the potential limitations of fishery-dependent data in providing a
 robust picture of spatiotemporal distributions; and then ii) simulated an area
 closure based on areas defined from the different data sources at a range of
-temporal and spatial resolutions to assess their effectiveness on reducing
-catches of a fish population. \\
+temporal and spatial resolutions. We assessed the effectiveness of the closures
+in reducing catches of a fish population. \\
 
 Our framework allows users to explore the assumptions in modelling
 observational data and evaluate the underlying dynamics of such approaches at a
@@ -155,7 +155,7 @@ as measures to \replaced[id=PD]{reduce unwanted catch}{avoiding
 	Bellido2011, Cosgrove2019}.  \\
 
 \replaced[id=PD]{Adaptive spatial management strategies have}{Use of spatial
-	management as a tools} been proposed as a way of reducing overquota
+	management as a tools} been proposed as a way of reducing over-quota
 discards \added[id=PD]{\citep{Holmes2011, Little2014, Dunn2014a}}.
 \deleted[id=PD]{its} However, implementation is restricted by lack of knowledge
 of fish and fishery spatiotemporal dynamics and understanding of the scale at
@@ -228,39 +228,25 @@ supporting management decisions.
 
 \section{Materials and Methods}
 
-\replaced[id=PD]{A}{We developed and implemented a fully spatially explicit
-	simulation model with a} \replaced{simulation model that is modular and
-	discrete-event based was developed. This approach enables efficient
-	computation by allowing for}{approach, where}
-\added[id=PD]{sub-}modules \deleted[id=PD]{are} implemented on time-scales
-appropriate to capture the characteristic of the \replaced[id=PD]{different
-	processes}{process modelled} (Figure 1).  \added[id=PD]{The following
-	sub-modules were included to capture the full system: 1) Population
-	dynamics, 2) Recruitment dynamics, 3) Population movement, 4) fishery
-	dynamics.}\\
+\replaced[id=PD]{An}{We developed and implemented a fully spatially explicit
+	simulation model with a} \replaced{event-based simulation model of a
+	hypothetical fishery was developed as a software package
+	(`MixFishSim'). The modular approach enabled efficient computation by allowing
+	for}{approach, where} \added[id=PD]{sub-}modules \deleted[id=PD]{are}
+implemented on time-scales appropriate to capture the characteristic of the
+\replaced[id=PD]{different processes}{process modelled} (Figure 1).
+\added[id=PD]{The following sub-modules were included to capture the full
+	system: 1) Population dynamics, 2) Recruitment dynamics, 3) Population
+	movement, 4) fishery dynamics.}\\
 
 \deleted[id=PD]{The fishing model operated on a tow-by-tow basis, while}
-\replaced[id=PD]{P}{p}opulation dynamics (including fishing and natural
-mortality which are instantaneous rates, and growth of the population biomass)
-operate on a daily time-step\replaced[id=PD]{, while p}{. P}opulation movement
-occurs on a weekly time-step\replaced[id=PD]{. R}{, while r}ecruitment
-\replaced[id=PD]{takes place}{occurs} periodically each year for a set time
-\replaced[id=PD]{duration}{period (e.g. 3 weeks)} specified for each
-population\deleted[id=PD]{.}\added[id=PD]{, while the fishing module operates
-	on a tow-by-tow basis (i.e. multiple events a day)}.
-\deleted[id=PD]{Here we describe each of the model components; 1) Population
-	dynamics, 2) Recruitment dynamics, 3) Population movement dynamics, 4)
-	fishery dynamics.}
+\replaced[id=PD]{P}{p}opulation dynamics operate on a daily
+time-step\replaced[id=PD]{, while p}{. P}opulation movement occurs on a weekly
+time-step, with the fishing module operating on a tow-by-tow basis (i.e.
+multiple events a day).  \deleted[id=PD]{Here we describe each of the model
+components; 1) Population dynamics, 2) Recruitment dynamics, 3) Population
+movement dynamics, 4) fishery dynamics.}
 
-Population movement is a combination of random (diffusive) movement, governed
-by a stochastic process where movement between adjacent cells is described by a
-set of probabilities, and directed (advective) movement where at certain times
-of year the population moves towards spawning grounds by increasing the
-probabilities of moving into the spawning grounds from adjacent cells. We
-incorporate characterisation of a number of different fishing
-\added[id=PD]{fleet dynamics} exploiting four fish populations with different
-spatial and population demographics. The following describes the implementation
-of each of the sub-modules.
 
 \subsection{Population dynamics}
 
@@ -318,10 +304,9 @@ population at the location fished. \todo{\added[id=CM]{[link $F$ to effort and
 
 \subsection{Recruitment dynamics}
 
-Recruitment is modelled through a function relating the adult biomass to
-recruits at time of recruitment. In \emph{MixFishSim}, it can be modelled
-either either as a stochastic Beverton-Holt stock-recruit form
-\citep{Beverton1957}: 
+Recruitment is modelled through a function relating to adult biomass. In
+\emph{MixFishSim}, it can be either as a stochastic Beverton-Holt stock-recruit
+form \citep{Beverton1957}: 
 \begin{equation}
 	\begin{split}
 	\bar{R}_{c,d} = & \frac{(\alpha \cdot S_{c,d})}{(\beta + S_{c,d})} \\
@@ -339,11 +324,19 @@ processes, or a stochastic Ricker form \citep{Ricker1954}:
 	\end{split}
 \end{equation}
 where $\alpha$ is the maximum productivity per spawner and $\beta$ the density
-dependent reduction in productivity as the SSB increases. In our example
-application the Beverton-Holt form of stock recruit relationship was used for
-all populations though either functional form can be chosen.
+dependent reduction in productivity as the SSB increases. 
 
 \subsection{Population movement dynamics}
+
+Population movement is a combination of random (diffusive) movement, governed
+by a stochastic process where movement between adjacent cells is described by a
+set of probabilities, and directed (advective) movement where at certain times
+of year the population moves towards spawning grounds by increasing the
+probabilities of moving into the spawning grounds from adjacent cells. We
+incorporate characterisation of a number of different fishing
+\added[id=PD]{fleet dynamics} exploiting four fish populations with different
+spatial and population demographics. The following describes the implementation
+of each of the sub-modules.
 
 To simulate \deleted[id=JJ]{how} fish population\deleted[id=JJ]{s might be}
 distribut\replaced[id=JJ]{ion}{ed} in space and time\deleted[id=JJ]{, we
@@ -365,13 +358,8 @@ distance\deleted[id=PD]{(i.e. the correlation between $S(x)$ and $S(x')$
 \added[id=PD]{This enables us to model the spatial autocorrelation observed in
 	animal populations where density is more similar in nearby locations
 	\citep{Tobler1970, F.Dormann2007}} and we change the parameters to
-implement different spatial structures for the populations. \\
-
-\replaced[id=PD]{T}{In the simulation model, t}he habitat for each of the
-populations \replaced[id=PD]{was}{is} generated \replaced[id=PD]{with}{through}
-the \textit{RFSimulate} function of the \textit{RandomFields} R package
-\citep{Schlater2015}, that simulates a Gaussian Random Field process given a
-user defined error model and correlation structure. We define a stationary
+implement different spatial structures for the different populations using the
+\textit{RandomFields} R package \citep{Schlater2015}. We define a stationary
 habitat field and combine with a temporally dynamic thermal tolerance field to
 imitate two key drivers of population dynamics. Each population
 \replaced[id=PD]{was}{is} initialised at a single location, and subsequently
@@ -427,14 +415,14 @@ temperature in the cell \added[id=PD]{given the week} and
 $\mu\added[id=PD]{_{p}}$ and $\sigma^2\added[id=PD]{_{p}}$ the mean and
 standard deviation of the population temperature tolerance. \\
 
-\added[id=PD]{The final process results in a population structure and movement
-	pattern unique to each species, with population movement occurring on a
-	weekly basis. The decision to model population movement on a weekly
-	timescale was to reflect that fish tend to aggregate in species
-	specific locations that have been observed to last around one to two
-	weeks \citep{Poos2007}.  Therefore this process approximated the
+\added[id=PD]{The final combined process results in a population structure and
+	movement pattern unique to each species, with population movement
+	occurring on a weekly basis. The decision to model population movement
+	on a weekly timescale was to reflect that fish tend to aggregate in
+	species specific locations that have been observed to last around one
+	to two weeks \citep{Poos2007}. Therefore this process approximated the
 	demographic shifts in fish populations throughout a year with seasonal
-	spawning patterns (e.g.  Figure \ref{S-fig:5}).}
+	spawning patterns (Figure \ref{S-fig:5}).}
 
 \subsection{Fleet dynamics}
 
@@ -445,7 +433,7 @@ to be fished at the beginning of a trip; and within-trip decisions, that
 determined movement from one fishing spot to another within a trip. Together,
 these elements implemented an explore-exploit type strategy for individual
 vessels to maximise their catch from an unknown resource distribution
-\cite{Bailey2018}.  The decision to use an individual based model for fishing
+\citep{Bailey2018}. The decision to use an individual based model for fishing
 vessels was taken because fishers are heterogeneous in their location choice
 behaviour due to different objectives, risk preference and targeting preference
 \citep{VanPutten2012a}. Therefore in the simulations fleet dynamics are the
@@ -461,9 +449,7 @@ fleet and the preferential targeting of one population over another. This, in
 combination with the parameter choice for the step-function
 \added[id=PD]{defined below} (as well as some randomness from the exploratory
 fishing process) determine\replaced[id=PD]{d}{s} the preference of fishing
-locations for the fleet.  All species prices \replaced[id=PD]{were}{are} kept
-the same across fleets \replaced[id=PD]{and seasons}{, though can be made to
-	vary seasonally}.  
+locations for the fleet.  
 
 \subsubsection{Trip-level decisions}
 
@@ -523,11 +509,12 @@ fishing success, measured as the summed value of fish caught (revenue, $Rev$),
 Rev = \sum_{p=1}^{P} \replaced[id=PD]{L}{C}_{p} \cdot Pr_{p} 
 \end{equation}
 where $\replaced[id=PD]{L}{C}_{p}$ is \replaced[id=PD]{landings}{catch} of a
-population $p$, and $Pr_{p}$ price of a population. Here, when fishing is
-successful vessels remain in a similar location and continue to exploit the
-local fishing grounds. When unsuccessful, they move some distance away from
-the current fishing location.  The movement distance retains some degree of
-stochasticity, that can be controlled separately, but is determined by the
+population $p$, and $Pr_{p}$ price of a population. All species prices were
+kept the same across fleets and seasons. Here, when fishing is successful
+vessels remain in a similar location and continue to exploit the local fishing
+grounds. When unsuccessful, they move some distance away from the current
+fishing location.  The movement distance retains some degree of stochasticity,
+that can be controlled separately, but is determined by the
 relationship: 
 \begin{equation}
 	StepL = \mathrm{e}^{log(\beta_{1}) + log(\beta_{2}) -
@@ -588,7 +575,7 @@ the authors github site (\url{www.github.com/pdolder/MixFishSim}).\\
 \subsection{Population models}
 
 We parametrised the simulation model for four populations with different
-demographics; growth rates, natural mortality and recruitment functions (Table
+demographics; growth rates, natural mortality and recruitment parameters (Table
 \ref{tab:1}). Habitat preference (Figure \ref{S-fig:1}) and temperature
 tolerances (Figures \ref{S-fig:3}, \ref{S-fig:4}) were defined to be unique to
 each population resulting in differently weekly distribution patterns (Figures
