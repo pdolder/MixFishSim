@@ -25,7 +25,7 @@
 \usepackage{longtable}
 
 \usepackage{enumitem}
-
+\usepackage{comment}
 % For track-changes
 %\usepackage[draft]{changes}
 \usepackage[final]{changes} %% to turn off changes
@@ -86,9 +86,9 @@ of spatially and temporally heterogeneous fish populations using
 species-unselective gear. This can result in unintended, unwanted catch of low
 quota or protected species and reducing these catches is crucial for
 biological and economic sustainability of `mixed fisheries'. \\
-
+%%
 \replaced[id = PD]{If fisheries are to avoid unwanted catch,}{To implement
-	effective spatial measures to reduce discards} a good understanding of
+	effective spatial measures to reduce discards} \replaced[id = CM]{an in-depth}{a good} understanding of
 spatiotemporal fishery dynamics is required. However, traditional scientific
 advice is limited by a lack of highly resolved knowledge of population
 distributions and movement, and how fishers interact with different fish
@@ -96,31 +96,31 @@ populations. Because data on fish location at high temporal and spatial
 resolutions is expensive and difficult to collect proxies are usually inferred
 from scientific surveys or commercial catches with limited spatial and temporal
 resolution. \\ 
-
+%%
 To understand how data resolution impacts inference on mixed fisheries
-interactions, we developed a highly resolved spatiotemporal simulation model
+interactions, we developed a highly resolved spatiotemporal \added[id=CM]{event-based} simulation model
 incorporating: i) delay-difference population dynamics, ii) population movement
 using Gaussian Random Fields to simulate patchy, heterogeneously distributed
 populations, and iii) fishery dynamics for multiple fleet characteristics based
 on species targeting under an explore-exploit strategy. This is implemented via
 a mix of correlated random walk movement (for exploration) and learned
 behaviour (for exploitation) phases of the fisheries.  \\ 
-
-We simulated 50 years of fishing and used the results to draw inference on the
-underlying community structures. We compared inference from commercial catch to
-a simulated fixed-site sampling design and the true underlying community. We i)
+%%
+\replaced[id=CM]{Fifty}{We simulated 50} years of \added[id=CM]{sub-daily} fishing \added[id=CM]{was simulated} and used \deleted[id = CM]{the results}to draw inference on the
+underlying community structures. We compared inference\added[id=CM]{s} \added[id=CM]{based on:}\deleted[id=CM]{from} commercial catch\added[id=CM]{,} \deleted[id=CM]{to}
+a simulated fixed-site sampling \added[id=CM]{survey} design and the true underlying community. We i)
 establish the potential limitations of fishery-dependent data in providing a
 robust picture of spatiotemporal distributions; and then ii) simulated an area
 closure based on areas defined from the different data sources at a range of
-temporal and spatial resolutions. We assessed the effectiveness of the closures
+temporal and spatial resolutions. \deleted{We assessed the effectiveness of the closures
 in reducing catches of a fish population. \\
-
+%%
 Our framework allows users to explore the assumptions in modelling
 observational data and evaluate the underlying dynamics of such approaches at a
-fine spatial and temporal scale. We conclude from our simulations that
+fine spatial and temporal scale.} We conclude from our \replaced[id=CM]{example framework application}{simulations} that
 commercial data, while containing bias, provide a useful tool for managing
-catches in mixed fisheries if applied at the correct spatiotemporal scale. \\
-
+catches in mixed fisheries if applied at the correct spatiotemporal scale. [NEED A LITTLE MORE DETAIL OF THE RESULTS HERE - 2 MORE SENTENCES ON KEY TAKE-HOME RESULTS]\\
+%%
 \end{abstract}
 
 \begin{keyword}
@@ -185,7 +185,7 @@ fishers establish favoured fishing grounds through an explore-exploit strategy
 \citep{Bailey2018} where they search for areas with high catches and then use
 experience to return to areas where they've experienced high catch in the past.
 This leads to an inherently biased sampling where target species are
-over-represented in catch as fishers exploit areas of high abundance.
+over-represented in \added[id=CM]{the} catch as fishers exploit areas of high abundance.
 \deleted[id=PD]{ Further, fishers generally only recorded landings (not catch)
 	on a daily basis\todo{\added[id=JJ]{Its not clear what the problem is:
 			landings collected on daily basis or landings recorded
@@ -196,7 +196,7 @@ over-represented in catch as fishers exploit areas of high abundance.
 		discards}\added[id=PD]{Agree, have removed this to avoid
 		confusion}}\\ 
 
-\replaced[id=PD]{In order to understand the effect of spatiotemporal
+\replaced[id=PD]{\replaced[id=CM]{To}{In order to} understand the effect of spatiotemporal
 	aggregation of data and fishery targeting we ask two fundamental
 	questions regarding inference derived from observational data:}{ and
 	use the results}\deleted[id=PD]{ from the fishing model:}
@@ -216,7 +216,7 @@ process to define suitable habitat for different populations\replaced[id=PD]{.
 catch\added[id=PD]{, we can use the population model to validate how inference
 	from fisheries-dependent and fisheries independent sampling relates to
 	the real community structure in a way we could not with real data}. We
-ii) compare, at different spatial and temporal aggregations, the 'real
+ii) compare, at different spatial and temporal aggregations, the \replaced[id=CM]{`}{'}real
 population' distributions to samples from fisheries-dependent and fisheries
 independent catches to test if these are a true reflection of the relative
 density of the populations. We then iii) simulate a fishery closure to protect
@@ -1047,7 +1047,7 @@ Aquaculture Science seedcorn program (DP227AC).
 %% the tikz figure
 \clearpage
 \input{Process_model.tex}
-
+\begin{comment}
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{Plots/pop_dist}
 	\caption{Simulated spatial dynamics - the four populations abundance
@@ -1113,6 +1113,7 @@ Aquaculture Science seedcorn program (DP227AC).
 	closure fishing locations, c) species 3 habitat distribution}
 	\label{fig:17}
 \end{figure}	
+\end{comment}
 
 \clearpage
 
