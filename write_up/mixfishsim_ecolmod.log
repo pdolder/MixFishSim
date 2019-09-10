@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.17)  5 SEP 2019 23:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.7)  10 SEP 2019 17:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **mixfishsim_ecolmod.tex
 (./mixfishsim_ecolmod.tex
 LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 7 language(s) loaded.
-(/home/coilin/texmf/tex/latex/commonstuff/elsarticle.cls
+Babel <3.18> and hyphenation patterns for 3 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/elsarticle/elsarticle.cls
 Document Class: elsarticle 2009/09/17, 1.2.0: Elsevier Ltd
 \@bls=\dimen102
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -80,7 +80,8 @@ File: upsy.fd 2001/06/04 font definitions for U/psy.
 \@sep=\skip43
 \@@sep=\skip44
 
-(./mixfishsim_ecolmod.spl) (/home/coilin/texmf/tex/latex/interact/natbib.sty
+(./mixfishsim_ecolmod.spl)
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip45
 \bibsep=\skip46
@@ -1023,8 +1024,8 @@ File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
 (/usr/share/texlive/texmf-dist/tex/latex/tools/hhline.sty
 Package: hhline 2014/10/28 v2.03 Table rule package (DPC)
 )
-(/home/coilin/texmf/tex/latex/interact/booktabs.sty
-Package: booktabs 2005/04/14 v1.61803 publication quality tables
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \heavyrulewidth=\dimen183
 \lightrulewidth=\dimen184
 \cmidrulewidth=\dimen185
@@ -1153,20 +1154,20 @@ Package: truncate 2001/08/20  ver 3.6
 (./mixfishsim_ecolmod.aux)
 \openout1 = `mixfishsim_ecolmod.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1199,7 +1200,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box74
-Package hyperref Info: Link coloring OFF on input line 57.
+Package hyperref Info: Link coloring OFF on input line 58.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1209,9 +1210,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count182
 )
-LaTeX Info: Redefining \ref on input line 57.
-LaTeX Info: Redefining \pageref on input line 57.
-LaTeX Info: Redefining \nameref on input line 57.
+LaTeX Info: Redefining \ref on input line 58.
+LaTeX Info: Redefining \pageref on input line 58.
+LaTeX Info: Redefining \nameref on input line 58.
 
 (./mixfishsim_ecolmod.out) (./mixfishsim_ecolmod.out)
 \@outlinefile=\write6
@@ -1219,15 +1220,15 @@ LaTeX Info: Redefining \nameref on input line 57.
 
 
 ABD: EveryShipout initializing macros
-Underfull \hbox (badness 10000) in paragraph at lines 84--124
+Underfull \hbox (badness 10000) in paragraph at lines 85--125
 
  []
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 131.
+LaTeX Font Info:    Try loading font information for U+msa on input line 132.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 131.
+LaTeX Font Info:    Try loading font information for U+msb on input line 132.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1235,76 +1236,57 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 137--156
+Underfull \hbox (badness 10000) in paragraph at lines 138--157
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--168
+Underfull \hbox (badness 10000) in paragraph at lines 159--169
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 169--198
+Underfull \hbox (badness 10000) in paragraph at lines 170--199
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 211--225
+Underfull \hbox (badness 10000) in paragraph at lines 212--226
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 232--241
+Underfull \hbox (badness 10000) in paragraph at lines 233--242
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 275--282
+Underfull \hbox (badness 10000) in paragraph at lines 276--283
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 290--304
+Underfull \hbox (badness 10000) in paragraph at lines 291--305
 
  []
 
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 341--345
+[6] [7]
+
+LaTeX Warning: Reference `S-fig:5' on page 8 undefined on input line 426.
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 472--488
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 375--381
-
- []
-
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 382--392
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 411--417
-
- []
-
-
-LaTeX Warning: Reference `S-fig:5' on page 8 undefined on input line 425.
-
-[8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 471--487
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 488--501
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 489--502
 
  []
 
 [10]
 
-LaTeX Warning: Reference `S-fig:15' on page 11 undefined on input line 541.
+LaTeX Warning: Reference `S-fig:15' on page 11 undefined on input line 542.
 
 [11]
 Underfull \hbox (badness 10000) in paragraph at lines 558--566
@@ -1317,217 +1299,220 @@ Underfull \hbox (badness 10000) in paragraph at lines 569--572
  []
 
 
-LaTeX Warning: Reference `S-fig:1' on page 12 undefined on input line 579.
+LaTeX Warning: Reference `S-fig:1' on page 12 undefined on input line 580.
 
 
-LaTeX Warning: Reference `S-fig:3' on page 12 undefined on input line 580.
+LaTeX Warning: Reference `S-fig:3' on page 12 undefined on input line 581.
 
 
-LaTeX Warning: Reference `S-fig:4' on page 12 undefined on input line 580.
+LaTeX Warning: Reference `S-fig:4' on page 12 undefined on input line 581.
 
 
-LaTeX Warning: Reference `S-fig:5' on page 12 undefined on input line 582.
+LaTeX Warning: Reference `S-fig:5' on page 12 undefined on input line 583.
 
 
-LaTeX Warning: Reference `S-fig:7' on page 12 undefined on input line 582.
+LaTeX Warning: Reference `S-fig:7' on page 12 undefined on input line 583.
 
 
-LaTeX Warning: Reference `S-fig:2' on page 12 undefined on input line 584.
+LaTeX Warning: Reference `S-fig:2' on page 12 undefined on input line 585.
 
 
-LaTeX Warning: Reference `fig:9' on page 12 undefined on input line 587.
+LaTeX Warning: Reference `fig:9' on page 12 undefined on input line 588.
 
 
-LaTeX Warning: Reference `fig:10' on page 12 undefined on input line 589.
+LaTeX Warning: Reference `fig:10' on page 12 undefined on input line 590.
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 593--606
+Underfull \hbox (badness 10000) in paragraph at lines 594--607
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 607--616
+Underfull \hbox (badness 10000) in paragraph at lines 608--617
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 636--643
+Underfull \hbox (badness 10000) in paragraph at lines 637--644
 
  []
 
-[14]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 661.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 662.
 
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 661.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 662.
+ [14]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\replaced' on input line 677.
 
 
-LaTeX Warning: Reference `S-fig:11' on page 15 undefined on input line 680.
+LaTeX Warning: Reference `S-fig:11' on page 15 undefined on input line 681.
 
 
-LaTeX Warning: Reference `S-fig:12' on page 15 undefined on input line 681.
+LaTeX Warning: Reference `S-fig:12' on page 15 undefined on input line 682.
 
 
-LaTeX Warning: Reference `fig:13' on page 15 undefined on input line 683.
+LaTeX Warning: Reference `fig:13' on page 15 undefined on input line 684.
 
 
-LaTeX Warning: Reference `S-fig:14' on page 15 undefined on input line 690.
+LaTeX Warning: Reference `S-fig:14' on page 15 undefined on input line 691.
 
 
-LaTeX Warning: Reference `S-fig:15' on page 15 undefined on input line 694.
+LaTeX Warning: Reference `S-fig:15' on page 15 undefined on input line 695.
 
 [15]
 
-LaTeX Warning: Reference `fig:1' on page 16 undefined on input line 711.
+LaTeX Warning: Reference `fig:1' on page 16 undefined on input line 712.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 711--726
+Underfull \hbox (badness 10000) in paragraph at lines 712--727
 
  []
 
 
-LaTeX Warning: Reference `fig:2' on page 16 undefined on input line 727.
+LaTeX Warning: Reference `fig:2' on page 16 undefined on input line 728.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 727--738
+Underfull \hbox (badness 10000) in paragraph at lines 728--739
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 739--746
+Underfull \hbox (badness 10000) in paragraph at lines 740--747
 
  []
 
 
-LaTeX Warning: Reference `fig:3' on page 17 undefined on input line 762.
+LaTeX Warning: Reference `fig:3' on page 17 undefined on input line 763.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 760--773
+Underfull \hbox (badness 10000) in paragraph at lines 761--774
 
  []
 
 [17]
 
-LaTeX Warning: Reference `fig:4' on page 18 undefined on input line 780.
+LaTeX Warning: Reference `fig:4' on page 18 undefined on input line 781.
 
 
-LaTeX Warning: Reference `fig:17' on page 18 undefined on input line 786.
+LaTeX Warning: Reference `fig:17' on page 18 undefined on input line 787.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 774--788
+Underfull \hbox (badness 10000) in paragraph at lines 775--789
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 792--809
+Underfull \hbox (badness 10000) in paragraph at lines 793--810
 
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 812--817
+Underfull \hbox (badness 10000) in paragraph at lines 813--818
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 819--830
+Underfull \hbox (badness 10000) in paragraph at lines 820--831
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 833--844
 
  []
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 832--843
+Underfull \hbox (badness 10000) in paragraph at lines 845--853
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 844--852
+Underfull \hbox (badness 10000) in paragraph at lines 869--876
 
  []
 
 [20]
-Underfull \hbox (badness 10000) in paragraph at lines 868--875
+Underfull \hbox (badness 10000) in paragraph at lines 877--888
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 876--887
+LaTeX Warning: Reference `fig:9' on page 21 undefined on input line 897.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 893--898
 
  []
 
 
-LaTeX Warning: Reference `fig:9' on page 21 undefined on input line 896.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 892--897
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 898--908
+Underfull \hbox (badness 10000) in paragraph at lines 899--909
 
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 909--914
+Underfull \hbox (badness 10000) in paragraph at lines 910--915
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 915--924
+Underfull \hbox (badness 10000) in paragraph at lines 916--925
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 933--937
+Underfull \hbox (badness 10000) in paragraph at lines 934--938
 
  []
 
 [22]
 
-LaTeX Warning: Reference `S-fig:1' on page 23 undefined on input line 940.
+LaTeX Warning: Reference `S-fig:1' on page 23 undefined on input line 941.
 
 
-LaTeX Warning: Reference `S-fig:3' on page 23 undefined on input line 940.
+LaTeX Warning: Reference `S-fig:3' on page 23 undefined on input line 941.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 938--947
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 948--956
+Underfull \hbox (badness 10000) in paragraph at lines 939--948
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 959--969
+Underfull \hbox (badness 10000) in paragraph at lines 949--957
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 960--970
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 970--983
+Underfull \hbox (badness 10000) in paragraph at lines 971--984
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 986--995
+Underfull \hbox (badness 10000) in paragraph at lines 987--996
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 997--1009
 
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 996--1008
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1009--1014
+Underfull \hbox (badness 10000) in paragraph at lines 1010--1015
 
  []
 
 [25]
-Overfull \hbox (31.6996pt too wide) in paragraph at lines 1028--1031
+Overfull \hbox (31.6996pt too wide) in paragraph at lines 1029--1032
 []\OT1/cmr/m/n/10 This work was sup-ported by the MARES doc-toral train-ing pro
 -gram (MARES[]14[]15)
  []
@@ -1654,28 +1639,28 @@ Overfull \hbox (46.79233pt too wide) in paragraph at lines 5--119
 \openout7 = `mixfishsim_ecolmod.soc'.
 
  [41]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1124.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1124.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1125.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1125.
  (./mixfishsim_ecolmod.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1124.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1124.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1125.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1125.
 
 Package rerunfilecheck Info: File `mixfishsim_ecolmod.out' has not changed.
-(rerunfilecheck)             Checksum: 3C55073E8F6BF9A06B335DA6B7F2D8E4;2164.
+(rerunfilecheck)             Checksum: C6B54AF0890F9CDEB6912B5DC3B65E38;2181.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1124.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1125.
  ) 
 Here is how much of TeX's memory you used:
- 21908 strings out of 494847
- 425426 string characters out of 6179079
- 546392 words of memory out of 5000000
- 24604 multiletter control sequences out of 15000+600000
+ 21910 strings out of 494923
+ 425566 string characters out of 6180743
+ 546090 words of memory out of 5000000
+ 24596 multiletter control sequences out of 15000+600000
  13531 words of font info for 53 fonts, out of 8000000 for 9000
- 59 hyphenation exceptions out of 8191
- 55i,17n,68p,646b,937s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 14 hyphenation exceptions out of 8191
+ 55i,17n,68p,646b,935s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
@@ -1701,10 +1686,10 @@ i8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on mixfishsim_ecolmod.pdf (41 pages, 402185 bytes).
+Output written on mixfishsim_ecolmod.pdf (41 pages, 402873 bytes).
 PDF statistics:
- 760 PDF objects out of 1000 (max. 8388607)
- 683 compressed objects within 7 object streams
+ 756 PDF objects out of 1000 (max. 8388607)
+ 679 compressed objects within 7 object streams
  179 named destinations out of 1000 (max. 500000)
  237 words of extra memory for PDF output out of 10000 (max. 10000000)
 

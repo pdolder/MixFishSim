@@ -3,7 +3,8 @@
 \usepackage{xr} %% For cross-referencing supl figures
 \externaldocument[S-]{Supplementary}
 
-\usepackage{lineno,hyperref}
+\usepackage{lineno}
+\usepackage[hidelinks]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{amsfonts}
@@ -285,7 +286,7 @@ fishing mortality, $F_{c,d}$, where both $M_{c,d}$ and $F_{c,d}$ are
 instantaneous rates with $M_{c,d}$ fixed and $F_{c,d}$ calculated by solving
 the Baranov catch equation \citep{Hilborn1992b} for $F_{c,d}$:
 \begin{equation}
-C_{c,d} = \frac{F_{c,d}}{F_{c,d} + M_{c,d}} * (1 - \mathrm{e}^{-(F_{c,d} + M_{c,d})})
+C_{c,d} = \frac{F_{c,d}}{F_{c,d} + M_{c,d}} \deleted[id=CM]{*} \added[id=CM]{\left(}1 - \mathrm{e}^{-(F_{c,d} + M_{c,d})}\added[id=CM]{\right)}
 \cdot B_{c,d}
 \end{equation}
 where $C_{c,d}$ is the summed catch from the fishing model across all fleets
@@ -333,7 +334,7 @@ by a stochastic process where movement between adjacent cells is described by a
 set of probabilities, and directed (advective) movement where at certain times
 of year the population moves towards spawning grounds by increasing the
 probabilities of moving into the spawning grounds from adjacent cells. We
-incorporate characterisation of a number of different fishing
+\replaced[id=CM]{characterise}{incorporate characterisation of} a \replaced[id=CM]{set}{number} of different fishing
 \added[id=PD]{fleet dynamics} exploiting four fish populations with different
 spatial and population demographics. The following describes the implementation
 of each of the sub-modules.
@@ -341,7 +342,7 @@ of each of the sub-modules.
 To simulate \deleted[id=JJ]{how} fish population\deleted[id=JJ]{s might be}
 distribut\replaced[id=JJ]{ion}{ed} in space and time\deleted[id=JJ]{, we
 	employed} a Gaussian spatial process \added[id=JJ]{was employed} to
-model habitat suitability for each of the populations on a 2d grid. \\
+model habitat suitability for each of the populations on a 2d grid. 
 
 \deleted[id=PD]{the habitat}We first define\added[id=PD]{d} a Gaussian random
 field process\todo{\added[id=JJ]{Not clear how habitat/GRF affect local
@@ -368,7 +369,7 @@ distrib\added[id=PD]{u}tion based on habitat suitability (represented by the
 normalised values from the GRFs), temperature and distance
 from current cell\replaced[id=PD]{:}{.} 
 \begin{equation}
-	Pr(J | I) = \frac{\mathrm{e}^{-\lambda * d_{IJ}} \cdot
+	\replaced[id=CM]{Pr(C_{wk+1} = J | C_{wk} =I)}{Pr(J | I)} = \frac{\mathrm{e}^{-\lambda * d_{IJ}} \cdot
 		(Hab_{J,p}^2 \cdot
 		Tol_{J,p,wk})}{\sum\limits_{c=1}^{C}\mathrm{e}^{-\lambda * d} \cdot
 		(Hab_{c,p}^2 \cdot Tol_{c,p,wk})}
@@ -377,7 +378,7 @@ Where $d_{IJ}$ is the euclidean distance between cell $I$ and cell $J$,
 $\lambda$ is a given rate of decay, $Hab_{J,p}^2$ is the squared index of
 habitat suitability for cell $J$ and population $p$, with $Tol_{J,p,wk}$ the
 temperature tolerance for cell $J$ by population $p$ in week $wk$ (see
-below).\\
+below).\deleted[id=CM]{\\}
 
 During pre-defined weeks of the year the habitat suitability is modified with
 \added[id=PD]{user-defined} spawning habitat locations\deleted[id=PD]{s},
@@ -388,7 +389,7 @@ the simulations the populations move\deleted[id=PD]{s} towards
 in directional movement towards the spawning grounds.\todo{\added[id=JM]{What
 		does it mean concisely? Areas are assigned?} \added[id=PD]{Yes,
 		the areas are pre-defined - I have amended to reflect and tried
-		to clarify}} \\ 
+		to clarify}} \deleted[id=CM]{\\}
 
 
 \replaced[id=JJ]{An}{, with an} advection-diffusion process\deleted[id=JJ]{to}
@@ -413,7 +414,7 @@ Where $Tol_{c, p, \added[id=PD]{wk}}$ is the tolerance of population $p$ for
 cell $c$ \added[id=PD]{in week $wk$}, $T_{c, \added[id=PD]{wk}}$ is the
 temperature in the cell \added[id=PD]{given the week} and
 $\mu\added[id=PD]{_{p}}$ and $\sigma^2\added[id=PD]{_{p}}$ the mean and
-standard deviation of the population temperature tolerance. \\
+standard deviation of the population temperature tolerance. \deleted[id=CM]{\\}
 
 \added[id=PD]{The final combined process results in a population structure and
 	movement pattern unique to each species, with population movement
@@ -426,18 +427,18 @@ standard deviation of the population temperature tolerance. \\
 
 \subsection{Fleet dynamics}
 
-The fleet dynamics can be broadly categorised into three components; fleet
+\replaced[id=CM]{F}{The f}leet dynamics can be broadly categorised into three components\replaced[id=CM]{:}{;} fleet
 targeting - that determined the fleet catch efficiency and preference towards a
-particular species; trip-level decisions, that determined the initial location
+particular species; trip-level decisions, that determine\replaced[id=CM]{s}{d} the initial location
 to be fished at the beginning of a trip; and within-trip decisions, that
-determined movement from one fishing spot to another within a trip. Together,
-these elements implemented an explore-exploit type strategy for individual
+determine\replaced[id=CM]{s}{d} movement from one fishing spot to another within a trip. Together,
+these elements implement\deleted[id=CM]{ed} an explore-exploit type strategy for individual
 vessels to maximise their catch from an unknown resource distribution
 \citep{Bailey2018}. The decision to use an individual based model for fishing
 vessels was taken because fishers are heterogeneous in their location choice
 behaviour due to different objectives, risk preference and targeting preference
-\citep{VanPutten2012a}. Therefore in the simulations fleet dynamics are the
-productive of individual experiences rather than pre-defined group dynamics. 
+\citep{VanPutten2012a}. Therefore in the simulations fleet dynamics \replaced[id=CM]{reflect}{are the
+productive of} individual experiences rather than pre-defined group dynamics. 
 
 \subsubsection{Fleet targeting}
 
@@ -546,8 +547,7 @@ Where several fishing vessels exploit the same fish population competition is
 known to play an important role in local distribution of fishing effort
 \citep{Gillis1998}. If several vessels are fishing on the same patch of fish,
 local depletion and interference \added[id=JJ]{competition} will affect fishing
-location choice of the fleet as a whole \citep{Rijnsdorp2000, Poos2007a}. In
-order to account for this behaviour, the fishing sub-model operates spatially
+location choice of the fleet as a whole \citep{Rijnsdorp2000, Poos2007a}. \replaced[id=CM]{To}{In order to} account for this behaviour, the fishing sub-model operates spatially
 on a daily time-step so that for future days the biomass available to the
 fishery is reduced in the areas fished. The cumulative effect is to make
 heavily fished areas less attractive as a future fishing location choice as
@@ -568,14 +568,15 @@ surveys undertaken by fisheries research agencies. \\
 
 The simulation framework is implemented in the statistical software package R
 \citep{RCoreTeam2017} \replaced[id=PD]{and}{;} available as an R package from
-the authors github site (\url{www.github.com/pdolder/MixFishSim}).\\
+the author\added{'}s github site (\url{www.github.com/pdolder/MixFishSim}).\\
 
 \section{Parameterisation}
+\added[id=CM]{We parameterise \emph{MixFishSim} to investigate the influence of data aggregation on spatial inference.}
 
 \subsection{Population models}
 
-We parametrised the simulation model for four populations with different
-demographics; growth rates, natural mortality and recruitment parameters (Table
+We parametrised the simulation model for four \added[id=CM]{example} populations with different
+demographics\replaced[id=CM]{,}{;} growth rates, natural mortality and recruitment parameters (Table
 \ref{tab:1}). Habitat preference (Figure \ref{S-fig:1}) and temperature
 tolerances (Figures \ref{S-fig:3}, \ref{S-fig:4}) were defined to be unique to
 each population resulting in differently weekly distribution patterns (Figures
@@ -596,7 +597,7 @@ with unique exploitation dynamics (Table \ref{tab:2}).  \replaced[id=PD]{By
 	different targeting preferences between the fleets and hence spatial
 	dynamics}{This ensures that different fleets have different spatial
 	dynamics, preferentially targeted different fish populations}.  The
-random walk process implies that within a fleet different vessels have
+\added[id=CM]{learned} random walk process implies that within a fleet different vessels have
 different spatial distributions based on individual experience. The step
 function was parametrised dynamically within the simulations as the maximum
 revenue obtainable was not known beforehand. This was implemented so that
@@ -646,7 +647,7 @@ The following steps are undertaken to determine closures:
 		switch order starting with description of data type
 		etc..}\added[id=PD]{Yes, will redo}}
 \begin{enumerate}
-	\item Extract data source
+	\item Extract data source 
 	\item Aggregate according to desired spatial and temporal resolution
 	\item Interpolate across entire area at desired resolution using simple
 		bivariate interpolation using the \emph{interp} function from
@@ -673,7 +674,7 @@ resolved survey data available.
 
 \section{Results}
 
-\subsection{Simulation dynamics}
+\subsection{\replaced[id=CM]{Emergent s}{S}imulation dynamics}
 
 It can be seen from a single vessels movements during a trip that the vessel
 exploits four different fishing grounds, three of them multiple times (Figure
@@ -686,7 +687,7 @@ $$\sum^c_{c=1}\sum^s_{s=1} B_{s,c} \cdot Q_{s,c}$$
 
 Vessels from the same fleet (and therefore targeting preference) may exploit
 some shared and some different fishing grounds depending on their own personal
-experience during the explore phase of the fishery (\added[id=PD]{Figure}
+experience during the explor\replaced[id=CM]{atory}{e} phase of the fishery (\added[id=PD]{Figure}
 \ref{S-fig:14}). This results from the randomness in the correlated random walk
 step function, with distance moved during the exploitation phase and the
 direction stochastically related to the revenue experienced on the fishing
@@ -697,8 +698,8 @@ ground (\replaced[id=PD]{Figure}{while}
 \subsection{How does sampling-derived fisheries data reflect the underlying
 	population structure?}
 
-In order to answer this question we compare different spatial and temporal
-aggregations of the 'real population' distributions to:
+\replaced[id=CM]{To}{In order to} answer this question we compare different spatial and temporal
+aggregations of the \deleted[id = CM]{'}real population\deleted[id = CM]{'} distributions to:
 \begin{enumerate}[label=\alph*)]
 	\item \textbf{fisheries-independent data:} the inferred population from
 		a fixed-site sampling survey design as commonly used for
@@ -717,7 +718,7 @@ activity (particularly in the lower left part of the sampling domain). The
 survey data at this spatial resolution displays very sparse information about
 the spatial distributions of the populations. The slightly aggregated data on a
 5 x 5 grid shows similar patterns and, while losing some of the spatial detail,
-there remains good consistency between the `real population' and the commercial
+there remains good consistency between the \deleted[id = CM]{'}real population\deleted[id = CM]{'} and the commercial
 data. Survey data starts to pick out some of the similar patterns as the other
 data sources, but lacks spatiotemporal coverage. The spatial catch information
 on a 10 x 10 and 20 x 20 grid lose a significant amount of information about
@@ -727,7 +728,7 @@ survey, commercial and 'real population' data emerge. \\
 Figure \ref{fig:2} shows the consequences of different temporal aggregations of
 the data over a ten-year period, with weekly (top), monthly (middle) and yearly
 (bottom) catch compositions from across an aggregated 20 x 20 area. In the
-'real population', the monthly aggregation captures the major patterns of
+\deleted[id = CM]{'}real population\deleted[id = CM]{'}, the monthly aggregation captures the major patterns of
 composition seen in the weekly data with similar mean and standard deviations.
 In the weekly data species 1 = 9.36 (3.99), species 2 = 83.2 (5.60), species 3
 = 3.57 (1.23), species 4 = 3.91 (1.59); in the monthly data species 1 = 9.23
@@ -737,7 +738,7 @@ to an annual level; species 1 = 9.90 (0.173), species 2 = 82.2 (0.308), species
 3 = 3.82 (0.119), species 4 = 4.03 (0.0502).\\
 
 The commercial data on a weekly basis shows some of the same patterns as the
-'real population', though the species 1 (in red) is less well represented and
+\deleted[id = CM]{'}real population\deleted[id = CM]{'}, though the species 1 (in red) is less well represented and
 some weeks are missing catches from the area. Here, weekly and monthly
 compositions were nearly identical, with monthly composition of species 1 =
 0.0472 (0.0139), species 2 = 94.4 (1.47), species 3 = 3.12 (1.47), species 4 =
@@ -761,11 +762,11 @@ The trend in fishing mortality for each species show that in most cases the
 fishery closure was successful in reducing fishing mortality on the species of
 interest (species 3; Figure \ref{fig:3}), though interestingly the largest
 reductions in fishing mortality happened immediately after the closures,
-following which the fisheries "adapted" to the closures and fishing mortality
+following which the fisheries \replaced[id=CM]{``}{"}adapted" to the closures and fishing mortality
 increased again somewhat. The exception to the success was the closures
 implemented based on the coarsest spatial (20 x 20) and temporal resolution
 (yearly) that was ineffective with all data sources. As expected, closures
-based on the "known" population distribution were most effective, with
+based on the \replaced[id=CM]{``}{"}known" population distribution were most effective, with
 differing degrees of success using the commercial data. Fishing mortality rates
 on the other species changed in different proportions, depending on whether the
 displaced fishing effort moved to areas where the populations were found in
@@ -781,7 +782,7 @@ mortality for population 3 after the closures (Figure \ref{fig:4}). The notable
 outliers are the commercial data at the coarsest spatial resolution (20 x 20)
 at a yearly and weekly timescale, where closures were nearly as effective as
 the fine-scale resolution. In this case the closures were sufficiently large to
-protect a core are of the habitat for the population, but this was achieved in
+protect a core are\added[id=CM]{a} of the habitat for the population, but this was achieved in
 a fairly crude manner by closing a large area - including area where the
 species was not found (Figure \ref{fig:17}) that may have consequences in
 terms of restricting the fishery in a much larger area than necessary. \\
@@ -789,7 +790,7 @@ terms of restricting the fishery in a much larger area than necessary. \\
 \section{Discussion}
 
 %% General intro
-Our study evaluates the importance of data scaling and considers potential bias
+Our study \added{presents a new highly resolved fisheries simulation framework,} evaluates the importance of data scaling and considers potential bias
 introduced through data aggregation when using fisheries data to infer
 spatiotemporal dynamics of fish populations. Understanding how fishers exploit
 multiple heterogeneously distributed fish populations with different catch
@@ -801,7 +802,7 @@ requires assumptions about the spatial and temporal scale of processes. Our
 study explores the assumptions behind such aggregation and preferential
 sampling to identify potential impacts on management advice. With modern
 management approaches increasingly employing more nuanced spatiotemporal
-approaches in order to maximise productivity while taking account of both the
+approaches \replaced[id=CM]{to}{In order to} maximise productivity while taking account of both the
 biological and human processes operating on different time-frames
 \citep{Dunn2016}, understanding assumptions behind the data used - increasingly
 a combination of logbook and positional information from vessel monitoring
@@ -810,7 +811,7 @@ systems - is vital to ensure measures are effective. \\
 \subsection{Simulation dynamics}
  
 We employ a simulation approach to model each of the population and fishery
-dynamics in a hypothetical 'mixed fishery', allowing us to i) evaluate the
+dynamics in a hypothetical \replaced[id=CM]{`}{'}mixed fishery', allowing us to i) evaluate the
 consequences of different aggregation assumptions on our understanding of the
 spatiotemporal distribution of the underlying fish populations, and ii)
 evaluate the effectiveness of a spatial closure given those assumptions. \\
@@ -871,16 +872,16 @@ understanding of the community composition dynamics will depend on the level of
 data aggregation and its important to consider the scale of processes;
 including population movement rates, habitat uniformity and fishing targeting
 practices if potential biases in data are to be understood and taken into
-account. \\
+account \added[id=CM]{(Figures X,Y,Z)}. \\
 
 Our simulation shows that, despite biases introduced through the fishing
 process, the commercially derived data could still inform on the key spatial
 patterns in the community structures where the fisheries occurred, which was
 spatially limited due to the ``hotspots" of commercially valuable species being
 fished. Similarly, despite the even spatial coverage the survey was able to
-capture some of the same spatial patterns as the 'real population', but missed
+capture some of the same spatial patterns as the \replaced{`}{'}real population', but missed
 others due to gaps between survey stations limiting spatial and temporal
-coverage. This provides a challenge when modelling unsampled areas in inferring
+coverage \added[id=CM]{(Figures X,Y,Z)}. This provides a challenge when modelling unsampled areas in inferring
 species distribution maps, though these limitations may be overcome by
 understanding the relationship between the species and habitat covariates where
 these are known at unsampled locations \citep{Robinson2011}. \\ 
@@ -937,7 +938,7 @@ necessarily had to make a number of simplifying assumptions. \\
 
 Fish populations in our simulations move in pre-defined timescales and
 according to fixed habitat preferences and temperature gradients (Figures
-\ref{S-fig:1}, \ref{S-fig:3}). Our assumptions in parametrising the model
+\ref{S-fig:1}, \ref{S-fig:3}). Our assumptions in paramet\added[id=CM]{e}rising the model
 (movement rates, temperature tolerances) will have a direct impact on our
 conclusions on the relative importance of spatial and temporal processes. These
 assumptions could be explored in a future study by varying the parameters and
@@ -967,7 +968,7 @@ hotspots and indeed behind spatiotemporal modelling in general (e.g. comparing
 GAMs, GLMMs, Random Forests and geostatistical models under different data
 generation processes as exampled by \cite{Stock2019}). \\
 
-Other novel applications of our framework could be; testing different survey
+Other novel applications of our framework could be\replaced[id=CM]{:}{;} testing different survey
 designs given multiple species and data generating assumptions \citep{Xu2015};
 commercial index standardisation methods and approaches and understanding of
 appropriate scales and data aggregations and non-proportionality in catch rate
@@ -975,11 +976,11 @@ and abundance \citep{Harley2001, Maunder2004}; exploring assumptions about the
 distribution of natural mortality and fishing mortality throughout the year and
 importance of capturing in-year dynamics in estimating stock status
 \citep{Liu2013}; at sea sampling scheme designs to deliver unbiased estimates
-of population parameters \cite{Cotter2007, Kimura2006}; adaptive management
+of population parameters \citep{Cotter2007, Kimura2006}; adaptive management
 \citep{Walters2007, Dunn2016}; testing the ability of commonly employed fleet
 dynamics models such as Random Utility Models to capture fine scale dynamics
-and understand their importance \cite{Girardin2016}; and as a detailed
-operating model in a management strategy evaluation \cite{Mahevas2004}. \\
+and understand their importance \citep{Girardin2016}; and as a detailed
+operating model in a management strategy evaluation \citep{Mahevas2004}. \\
 
 \section{Conclusions}
 
