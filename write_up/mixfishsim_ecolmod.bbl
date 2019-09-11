@@ -1,4 +1,4 @@
-\begin{thebibliography}{74}
+\begin{thebibliography}{67}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -33,16 +33,6 @@
 \newblock \bibinfo{title}{{A computational approach to managing coupled
   human–environmental systems: the POSEIDON model of ocean fisheries}}.
 %Type = Article
-\bibitem[{Bartumeus et~al.(2005)Bartumeus, {Da Luz}, Viswanatham and
-  Catalan}]{Bartumeus2005}
-\bibinfo{author}{Bartumeus, F.}, \bibinfo{author}{{Da Luz}, M.G.E.},
-  \bibinfo{author}{Viswanatham, G.M.}, \bibinfo{author}{Catalan, J.},
-  \bibinfo{year}{2005}.
-\newblock \bibinfo{title}{{Animal Search Strategies: A Quantitative Random Walk
-  Analysis}}.
-\newblock \bibinfo{journal}{Ecological Society of America}
-  \bibinfo{volume}{86}, \bibinfo{pages}{3078--3087}.
-%Type = Article
 \bibitem[{Bastardie et~al.(2010)Bastardie, Nielsen, Ulrich, Egekvist and
   Degel}]{Bastardie2010}
 \bibinfo{author}{Bastardie, F.}, \bibinfo{author}{Nielsen, J.R.},
@@ -72,16 +62,6 @@
   ecosystem approach to fisheries management?}}
 \newblock \bibinfo{journal}{Hydrobiologia} \bibinfo{volume}{670},
   \bibinfo{pages}{317--333}.
-%Type = Article
-\bibitem[{Bertrand et~al.(2007)Bertrand, Bertrand, Guevara-Carrasco and
-  Gerlotto}]{Bertrand2007}
-\bibinfo{author}{Bertrand, S.}, \bibinfo{author}{Bertrand, A.},
-  \bibinfo{author}{Guevara-Carrasco, R.}, \bibinfo{author}{Gerlotto, F.},
-  \bibinfo{year}{2007}.
-\newblock \bibinfo{title}{{Scale-invariant movements of fishermen: The same
-  foraging strategy as natural predators}}.
-\newblock \bibinfo{journal}{Ecological Applications} \bibinfo{volume}{17},
-  \bibinfo{pages}{331--337}.
 %Type = Article
 \bibitem[{Beverton and Holt(1957)}]{Beverton1957}
 \bibinfo{author}{Beverton, R.J.}, \bibinfo{author}{Holt, S.J.},
@@ -216,14 +196,6 @@
   and efficacy of fisheries management}}.
 \newblock \bibinfo{journal}{Proceedings of the National Academy of Sciences} ,
   \bibinfo{pages}{201513626}.
-%Type = Article
-\bibitem[{Edwards et~al.(2011)Edwards, Station and Canada}]{Edwards2011}
-\bibinfo{author}{Edwards, A.M.}, \bibinfo{author}{Station, P.B.},
-  \bibinfo{author}{Canada, O.}, \bibinfo{year}{2011}.
-\newblock \bibinfo{title}{{Overturning conclusions of L{\'{e}}vy flight
-  movement patterns by fishing boats and foraging animals}}.
-\newblock \bibinfo{journal}{Ecology} \bibinfo{volume}{92},
-  \bibinfo{pages}{1247--1257}.
 %Type = Article
 \bibitem[{{F. Dormann} et~al.(2007){F. Dormann}, {M. McPherson}, {B.
   Ara{\'{u}}jo}, Bivand, Bolliger, Carl, {G. Davies}, Hirzel, Jetz, {Daniel
@@ -478,11 +450,6 @@
 \newblock \bibinfo{journal}{R Foundation for Statistical Computing, Vienna,
   Austria. URL http://www.R-project.org/.} , \bibinfo{pages}{R Foundation for
   Statistical Computing}.
-%Type = Misc
-\bibitem[{Reynolds(2015)}]{Reynolds2015}
-\bibinfo{author}{Reynolds, A.}, \bibinfo{year}{2015}.
-\newblock \bibinfo{title}{{Liberating L{\'{e}}vy walk research from the
-  shackles of optimal foraging}}.
 %Type = Article
 \bibitem[{Ricker(1954)}]{Ricker1954}
 \bibinfo{author}{Ricker, W.E.}, \bibinfo{year}{1954}.
@@ -525,14 +492,6 @@
 \newblock \bibinfo{journal}{Global Ecology and Biogeography}
   \bibinfo{volume}{20}, \bibinfo{pages}{789--802}.
 %Type = Article
-\bibitem[{Sakiyama and Gunji(2013)}]{Sakiyama2013}
-\bibinfo{author}{Sakiyama, T.}, \bibinfo{author}{Gunji, Y.P.},
-  \bibinfo{year}{2013}.
-\newblock \bibinfo{title}{{Emergence of an optimal search strategy from a
-  simple random walk.}}
-\newblock \bibinfo{journal}{Journal of the Royal Society, Interface}
-  \bibinfo{volume}{10}, \bibinfo{pages}{20130486}.
-%Type = Article
 \bibitem[{Schlater et~al.(2015)Schlater, Malinowski and Menck}]{Schlater2015}
 \bibinfo{author}{Schlater, M.}, \bibinfo{author}{Malinowski, A.},
   \bibinfo{author}{Menck, P.J.}, \bibinfo{year}{2015}.
@@ -561,32 +520,6 @@
   Benguela fish community using an individual-based model: Learning from a
   comparison with ECOSIM}}, in: \bibinfo{booktitle}{African Journal of Marine
   Science}.
-%Type = Article
-\bibitem[{Sims et~al.(2012)Sims, Humphries, Bradford and Bruce}]{Sims2012}
-\bibinfo{author}{Sims, D.W.}, \bibinfo{author}{Humphries, N.E.},
-  \bibinfo{author}{Bradford, R.W.}, \bibinfo{author}{Bruce, B.D.},
-  \bibinfo{year}{2012}.
-\newblock \bibinfo{title}{{L{\'{e}}vy flight and Brownian search patterns of a
-  free-ranging predator reflect different prey field characteristics}}.
-\newblock \bibinfo{journal}{Journal of Animal Ecology} \bibinfo{volume}{81},
-  \bibinfo{pages}{432--442}.
-%Type = Article
-\bibitem[{Sims et~al.(2008)Sims, Southall, Humphries, Hays, Bradshaw,
-  Pitchford, James, Ahmed, Brierley, Hindell, Morritt, Musyl, Righton, Shepard,
-  Wearmouth, Wilson, Witt and Metcalfe}]{Sims2008}
-\bibinfo{author}{Sims, D.W.}, \bibinfo{author}{Southall, E.J.},
-  \bibinfo{author}{Humphries, N.E.}, \bibinfo{author}{Hays, G.C.},
-  \bibinfo{author}{Bradshaw, C.J.A.}, \bibinfo{author}{Pitchford, J.W.},
-  \bibinfo{author}{James, A.}, \bibinfo{author}{Ahmed, M.Z.},
-  \bibinfo{author}{Brierley, A.S.}, \bibinfo{author}{Hindell, M.A.},
-  \bibinfo{author}{Morritt, D.}, \bibinfo{author}{Musyl, M.K.},
-  \bibinfo{author}{Righton, D.}, \bibinfo{author}{Shepard, E.L.C.},
-  \bibinfo{author}{Wearmouth, V.J.}, \bibinfo{author}{Wilson, R.P.},
-  \bibinfo{author}{Witt, M.J.}, \bibinfo{author}{Metcalfe, J.D.},
-  \bibinfo{year}{2008}.
-\newblock \bibinfo{title}{{Scaling laws of marine predator search behaviour}}.
-\newblock \bibinfo{journal}{Nature} \bibinfo{volume}{451},
-  \bibinfo{pages}{1098--U5}.
 %Type = Article
 \bibitem[{Stock et~al.(2019)Stock, Ward, Eguchi, Jannot, Thorson, Feist and
   Semmens}]{Stock2019}
