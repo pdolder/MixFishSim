@@ -1,4 +1,4 @@
-\begin{thebibliography}{67}
+\begin{thebibliography}{66}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -261,6 +261,15 @@
 \newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
   \bibinfo{volume}{55}, \bibinfo{pages}{37--46}.
 %Type = Article
+\bibitem[{Gillis et~al.(2008)Gillis, Rijnsdorp and Poos}]{Gillis2008}
+\bibinfo{author}{Gillis, D.M.}, \bibinfo{author}{Rijnsdorp, A.D.},
+  \bibinfo{author}{Poos, J.J.}, \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{{Behavioral inferences from the statistical
+  distribution of commercial catch: patterns of targeting in the landings of
+  the Dutch beam trawler fleet}}.
+\newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
+  \bibinfo{volume}{65}, \bibinfo{pages}{27--37}.
+%Type = Article
 \bibitem[{Girardin et~al.(2016)Girardin, Hamon, Pinnegar, Poos, Th{\'{e}}baud,
   Tidd, Vermard and Marchal}]{Girardin2016}
 \bibinfo{author}{Girardin, R.}, \bibinfo{author}{Hamon, K.G.},
@@ -271,16 +280,6 @@
 \newblock \bibinfo{title}{{Thirty years of fleet dynamics modelling using
   discrete-choice models: What have we learned?}}
 \newblock \bibinfo{journal}{Fish and Fisheries} , \bibinfo{pages}{1--18}.
-%Type = Article
-\bibitem[{Girardin et~al.(2015)Girardin, Vermard, Th{\'{e}}baud, Tidd and
-  Marchal}]{Girardin2015}
-\bibinfo{author}{Girardin, R.}, \bibinfo{author}{Vermard, Y.},
-  \bibinfo{author}{Th{\'{e}}baud, O.}, \bibinfo{author}{Tidd, A.},
-  \bibinfo{author}{Marchal, P.}, \bibinfo{year}{2015}.
-\newblock \bibinfo{title}{{Predicting fisher response to competition for space
-  and resources in a mixed demersal fishery}}.
-\newblock \bibinfo{journal}{Ocean {\&} Coastal Management}
-  \bibinfo{volume}{106}, \bibinfo{pages}{124--135}.
 %Type = Article
 \bibitem[{Harley et~al.(2001)Harley, Myers and Dunn}]{Harley2001}
 \bibinfo{author}{Harley, S.J.}, \bibinfo{author}{Myers, R.A.},
@@ -308,15 +307,6 @@
   mortality and cut discards}}.
 \newblock \bibinfo{journal}{ICES Journal of Marine Science}
   \bibinfo{volume}{68}, \bibinfo{pages}{1679--1688}.
-%Type = Article
-\bibitem[{Hutton et~al.(2004)Hutton, Mardle, Pascoe and Clark}]{Hutton2004}
-\bibinfo{author}{Hutton, T.}, \bibinfo{author}{Mardle, S.},
-  \bibinfo{author}{Pascoe, S.}, \bibinfo{author}{Clark, R.a.},
-  \bibinfo{year}{2004}.
-\newblock \bibinfo{title}{{Modelling fishing location choice within mixed
-  fisheries: English North Sea beam trawlers in 2000 and 2001}}.
-\newblock \bibinfo{journal}{ICES Journal of Marine Science}
-  \bibinfo{volume}{61}, \bibinfo{pages}{1443--1452}.
 %Type = Article
 \bibitem[{Kennelly and Broadhurst(2002)}]{Kennelly2002}
 \bibinfo{author}{Kennelly, S.J.}, \bibinfo{author}{Broadhurst, M.K.},
@@ -481,6 +471,16 @@
   response to a temporarily closed area in the North Sea}}.
 \newblock \bibinfo{journal}{Ices Cm 2001/N: 01} , \bibinfo{pages}{1--17}.
 %Type = Article
+\bibitem[{Rijnsdorp et~al.(2011)Rijnsdorp, Poos, Quirijns and
+  Grant}]{Rijnsdorp2011}
+\bibinfo{author}{Rijnsdorp, A.D.}, \bibinfo{author}{Poos, J.J.},
+  \bibinfo{author}{Quirijns, F.J.}, \bibinfo{author}{Grant, J.},
+  \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{{Spatial dimension and exploitation dynamics of local
+  fishing grounds by fishers targeting several flatfish species}}.
+\newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
+  \bibinfo{volume}{68}, \bibinfo{pages}{1064--1076}.
+%Type = Article
 \bibitem[{Robinson et~al.(2011)Robinson, Elith, Hobday, Pearson, Kendall,
   Possingham and Richardson}]{Robinson2011}
 \bibinfo{author}{Robinson, L.M.}, \bibinfo{author}{Elith, J.},
@@ -531,15 +531,6 @@
   multiple spatiotemporal species distribution model frameworks}}.
 \newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
   .
-%Type = Article
-\bibitem[{Tidd et~al.(2012)Tidd, Hutton, Kell and Blanchard}]{Tidd2012}
-\bibinfo{author}{Tidd, A.N.}, \bibinfo{author}{Hutton, T.},
-  \bibinfo{author}{Kell, L.T.}, \bibinfo{author}{Blanchard, J.L.},
-  \bibinfo{year}{2012}.
-\newblock \bibinfo{title}{{Dynamic prediction of effort reallocation in mixed
-  fisheries}}.
-\newblock \bibinfo{journal}{Fisheries Research} \bibinfo{volume}{125-126},
-  \bibinfo{pages}{243--253}.
 %Type = Article
 \bibitem[{Tobler(1970)}]{Tobler1970}
 \bibinfo{author}{Tobler, W.R.}, \bibinfo{year}{1970}.

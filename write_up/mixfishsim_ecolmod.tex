@@ -143,55 +143,57 @@ discards \citep{Holmes2011, Little2014, Dunn2014a}. However, if fisheries are
 to reduce unwanted catch through spatial avoidance, an in-depth understanding
 of spatiotemporal fishery dynamics is required. Implementation of spatial
 measures is hampered by a lack of knowledge of fish and fishery spatiotemporal
-dynamics and understanding of the scale at which processes become important for
-management. \\
+dynamics and understanding of the scale at which these processes become
+important for management. \\
 
-Understanding the correct scale for spatial measures is also crucial as it
-enables implementation of effective solutions which minimise economic impact
-\citep{Dunn2016}. For example, the problem can be to identify a scale that
-promotes species avoidance for vulnerable or low quota species while allowing
-continuance of sustainable fisheries for available quota species. Identifying
-the correct spatial scale remains a challenge because data on fish location at
-high temporal and spatial resolutions is expensive and difficult to collect and
-proxies are usually inferred from scientific surveys or commercial catches with
-limited spatial and temporal resolution. \\ 
+Understanding the correct scale for spatial management measures to be effective
+is also crucial as it enables implementation of effective solutions which
+minimise economic impact \citep{Dunn2016}. For example, the problem can be to
+identify a scale that promotes species avoidance for vulnerable or low quota
+species while allowing continuance of sustainable fisheries for available quota
+species. Identifying the correct spatial scale remains a challenge because data
+on fish location at high temporal and spatial resolutions is expensive and
+difficult to collect and proxies are usually inferred from scientific surveys
+or commercial catches with limited spatial and temporal resolution. \\ 
 
 Identifying appropriate spatial scales for fisheries closures has been a
 highlighted as crucial to their success \citep{Costello2010, Dunn2016}.
-Inference is hampered where spatial information is coarse due to low resolution
-reporting of fisheries catch which is aggregated across larger gridded areas
-\citep{Branch2005}. Further, if data does not allow identification of spatial
-features it may lead to poorly sited closures which are ineffectual or have
-unintended consequences. For example, increased benthic impact on previously
-unexploited areas from the cod closure in the North Sea were observed without
-the intended effect of reducing cod exploitation
-\citep{Rijnsdorp2001,Dinmore2003}).\\ 
+Inference on fisheries spatial dynamics is hampered where spatial information
+is coarse due to low resolution reporting of fisheries catch which is
+aggregated across larger gridded areas \citep{Branch2005}. Further, if data
+does not allow identification of spatial features it may lead to poorly sited
+closures which are ineffectual or have unintended consequences. For example,
+increased benthic impact on previously unexploited areas from the cod closure
+in the North Sea were observed without the intended effect of reducing cod
+exploitation \citep{Rijnsdorp2001,Dinmore2003}).\\ 
 
 More refined spatiotemporal information has since become available through the
 combination of logbook and Vessel Monitoring System (VMS) data \citep{Lee2010,
 	Bastardie2010, Gerritsen2012, Mateo2016} and more real-time spatial
 management has been possible \citep[e.g.][]{Holmes2011}.  However, fishers
 establish favoured fishing grounds through an explore-exploit strategy
-\citep{Bailey2018} where they search for areas with high catches and then use
-experience to return to areas where they've experienced high catch in the past.
-This leads to an inherently biased sampling where target species are
-over-represented in the catch as fishers exploit areas of high abundance. \\ 
+\citep{Rijnsdorp2011, Bailey2018} where they search for areas with high catches
+and then use experience to return to areas where they've experienced high catch
+in the past.  This leads to an inherently biased sampling where target species
+are over-represented in the catch as fishers exploit areas of high abundance.
+\\ 
 
 To understand the effect of spatiotemporal aggregation of data and fishery
-targeting we ask two fundamental questions regarding inference derived from
-observational data:
+targeting on our understanding of fish communities we ask two fundamental
+questions regarding inference derived from observational data:
 
 \begin{enumerate}
-	\item How does sampling-derived fisheries data reflects the underlying
-		community structure? 	
-	\item How does data aggregation and source impact on spatial fisheries
-	management measures?
+	\item Do different source of sampling-derived fisheries data
+		reflects the underlying community structure or represent a
+		biased picture? 	
+	\item How does data aggregation and data source impact on the success
+		of spatial fisheries management measures?
 \end{enumerate}
 	
 To answer these questions we i) develop a simulation model where population
-dynamics are highly-resolved in space and time by use of a Gaussian spatial
-process to define suitable habitat for different populations.  Precise
-locations of the fish being known directly rather than inferred from sampling
+dynamics are highly-resolved in space and time, using a Gaussian spatial
+process to define suitable habitat for different populations. As the precise
+locations of the fish are known directly rather than inferred from sampling
 or commercial catch, we can use the population model to validate how inference
 from fisheries-dependent and fisheries independent sampling relates to the real
 community structure in a way we could not with real data. We ii) compare, at
@@ -247,7 +249,7 @@ when $K$ is the growth rate from a von Bertalanffy logistic growth model
 \citep{Schnute1985}. $Wt_{R-1}$ is the average weight of fish prior to
 recruitment, while $Wt_{R}$ is the average recruited weight. $\alpha_{d}$
 represents the proportion of fish recruited during that day for the year, while
-$R_{c,\tilde{y}}$ is the annual recruits in cell $c$ for year $y$. \\
+$R_{\tilde{y},c}$ is the annual recruits in year $y$ for cell $c$. \\
 
 Mortality $Z_{c,d}$ can be decomposed to natural mortality, $M_{c,d}$, and
 fishing mortality, $F_{c,d}$, where both $M_{c,d}$ and $F_{c,d}$ are
@@ -268,9 +270,10 @@ population at the location fished. \\
 
 \subsection{Recruitment dynamics}
 
-Recruitment is modelled through a function relating to adult biomass. In
-\textit{MixFishSim}, it can be either as a stochastic Beverton-Holt stock-recruit
-form \citep{Beverton1957}: 
+Recruitment is modelled as a function of adult biomass. In
+\textit{MixFishSim}, it can either take the form of a stochastic Beverton-Holt
+stock recruitment relationship, or a stochastic Ricker stock recruitment
+relationship. The Beverton-Holt relationship is defined as\citep{Beverton1957}: 
 \begin{equation}
 	\begin{split}
 	\bar{R}_{c,d} = & \frac{(\alpha \cdot S_{c,d})}{(\beta + S_{c,d})} \\
@@ -280,7 +283,7 @@ form \citep{Beverton1957}:
 Where $\alpha$ is the maximum recruitment rate, $\beta$ the spawning stock
 biomass (SSB) required to produce half the maximum stock size, $S$ current
 stock size and $\sigma^2$ the variability in the recruitment due to stochastic
-processes, or a stochastic Ricker form \citep{Ricker1954}:
+processes, the stochastic Ricker form \citep{Ricker1954}:
 \begin{equation}
 	\begin{split}
 	\bar{R}_{c,d} = & B_{c,d} \cdot \mathrm{e}^{(\alpha - \beta \cdot B_{c,d})} \\	
@@ -292,13 +295,11 @@ dependent reduction in productivity as the SSB increases.
 
 \subsection{Population movement dynamics}
 
-Population movement is a combination of random (diffusive) movement, governed
-by a stochastic process where movement between adjacent cells is described by a
-set of probabilities, and directed (advective) movement where at certain times
-of year the population moves towards spawning grounds by increasing the
-probabilities of moving into the spawning grounds from adjacent cells. We
-characterise a set of different fishing fleet dynamics exploiting four fish
-populations with different spatial and population demographics. \\
+Population movement is a combination of directed (advective) movement where at
+certain times of year the population moves towards spawning grounds by
+increasing the probabilities of moving into the spawning grounds from adjacent
+cells, and random (diffusive) movement, governed by a stochastic process where
+movement between adjacent cells is described by a set of probabilities.\\
 
 To simulate fish population distribution in space and time a Gaussian spatial
 process was employed to model habitat suitability for each of the populations
@@ -308,18 +309,19 @@ distribution of $S = \{S(c1),\dots S(c_{n})\}$ is multivariate Gaussian with a
 \textit{Matérn} covariance structure, where the correlation strength weakens
 with distance. This enables us to model the spatial autocorrelation observed in
 animal populations where density is more similar in nearby locations
-\citep{Tobler1970, F.Dormann2007} and we change the parameters to implement
-different spatial structures for the different populations using the
+\citep{Tobler1970, F.Dormann2007, Poos2007} and we change the parameters to
+implement different spatial structures for the different populations using the
 \textit{RandomFields} R package \citep{Schlater2015}. We define a stationary
-habitat field and combine with a temporally dynamic thermal tolerance field to
+habitat field and combine it with a temporally dynamic thermal tolerance field to
 imitate two key drivers of population dynamics. Each population was initialised
-at a single location, and subsequently moved according to a probabilistic
-distribution based on habitat suitability (represented by the normalised values
+at a single location, and subsequently moved across the entire space according
+to a probabilistic distribution based on habitat suitability (represented by
+the normalised values
 from the GRFs), temperature and distance from current cell: 
 \begin{equation}
-	Pr(C_{wk+1} = J | C_{wk} =I) = \frac{\mathrm{e}^{-\lambda * d_{IJ}} \cdot
+	Pr(C_{wk+1} = J | C_{wk} =I) = \frac{\mathrm{e}^{-\lambda \cdot d_{IJ}} \cdot
 		(Hab_{J,p}^2 \cdot
-		Tol_{J,p,wk})}{\sum\limits_{c=1}^{C}\mathrm{e}^{-\lambda * d} \cdot
+		Tol_{J,p,wk})}{\sum\limits_{c=1}^{C}\mathrm{e}^{-\lambda \cdot d} \cdot
 		(Hab_{c,p}^2 \cdot Tol_{c,p,wk})}
 \end{equation}
 Where $d_{IJ}$ is the euclidean distance between cell $I$ and cell $J$,
@@ -330,15 +332,14 @@ below). \\
 
 During pre-defined weeks of the year the habitat suitability is modified with
 user-defined spawning habitat locations, resulting in each population having
-concentrated areas where spawning takes place. In the simulations the
-populations move towards these cells in the weeks prior to spawning, resulting
-in directional movement towards the spawning grounds. \\
+concentrated areas where spawning takes place. The populations then move towards
+these cells in the weeks prior to spawning, resulting in directional movement
+towards the spawning grounds. \\
 
-An advection-diffusion process controls population movement, with a
-time-varying temperature covariate used to change the interaction between time
-and suitable habitat on a weekly time-step. Each population $p$ was assigned a
-thermal tolerance with mean, $\mu_{p}$ and variance, $\sigma^2_{p}$ so that
-each cell and population temperature suitability is defined that:
+A time-varying temperature covariate changes the interaction between
+time and suitable habitat on a weekly time-step. Each population $p$ was
+assigned a thermal tolerance with mean, $\mu_{p}$ and variance, $\sigma^2_{p}$
+so that each cell and population temperature suitability is defined that:
 \begin{equation}
 	Tol_{c, p, wk} = \frac{1}{ \sqrt (2\pi \cdot \sigma^2_{p})} \cdot \exp(-
 		\frac{(T_{c\added[id=PD]{, wk}} - \mu_{p})^2}{2 \cdot \sigma^2_{p}} )	
@@ -362,39 +363,41 @@ Fleet dynamics can be broadly categorised into three components: fleet
 targeting - that determined the fleet catch efficiency and preference towards a
 particular species; trip-level decisions, that determines the initial location
 to be fished at the beginning of a trip; and within-trip decisions, that
-determines movement from one fishing spot to another within a trip. Together,
-these elements implement an explore-exploit type strategy for individual
-vessels to maximise their catch from an unknown resource distribution
-\citep{Bailey2018}. The decision to use an individual based model for fishing
-vessels was taken because fishers are heterogeneous in their location choice
-behaviour due to different objectives, risk preference and targeting preference
-\citep{VanPutten2012a}. Therefore in the simulations fleet dynamics reflect
-individual experiences rather than pre-defined group dynamics. 
+determines movement from one fishing spot to another within a trip. An
+explore-exploit type strategy was implemented in the model that combined these
+three components for individual vessels to maximise their catch from an unknown
+resource distribution \citep{Bailey2018}. The decision to use an individual
+based model for fishing vessels was taken because fishers are heterogeneous in
+their location choice behaviour due to different objectives, risk preference
+and targeting preference \citep{VanPutten2012a}. Therefore in the simulations
+fleet dynamics reflect individual experiences rather than pre-defined group
+dynamics. 
 
 \subsubsection{Fleet targeting}
 
 Each fleet of \textit{n} vessels was characterised by both a general
-efficiency, $Q_{fl}$, and a population specific efficiency, ${Q_{fl, p}}$.
-Thus, the product of these parameters [$Q_{fl} \cdot Q_{fl, p}$] affects the
-overall catch rates for the fleet and the preferential targeting of one
-population over another. This, in combination with the parameter choice for the
-step-function defined below (as well as some randomness from the exploratory
-fishing process) determined the preference of fishing locations for the fleet.  
+efficiency, $Q_{fl}$, and a population specific efficiency, ${Q_{fl, p}}$ which
+are each bound by [0,1]. The product of these parameters [$Q_{fl} \cdot
+Q_{fl, p}$] affects the overall catch rates for the fleet and the preferential
+targeting of one population over another. This, in combination with the
+parameter choice for the step-function defined below (as well as some
+randomness from the exploratory fishing process) determined the preference of
+fishing locations for the fleet.  
 
-\subsubsection{Trip-level decisions}
+\subsubsection{Decision about where to fish at the start of the trip}
 
-Several studies \citep[e.g.][]{Hutton2004, Tidd2012, Girardin2015} have
-confirmed past activity and past catch rates are strong predictors of fishing
-location choice. For this reason, the fleet dynamics sub-model included a
-learning component, where a vessel's initial fishing location in a trip was
-based on selecting from previously successful fishing locations. This was
-achieved by calculating an expected revenue based on the catches from locations
-fished in the preceding trip as well as the same month periods in previous
-years and the travel costs from the port to the fishing grounds, and choosing
-randomly from the top 75 \% of fishing events as defined by the expected
-profit, that has a seasonal component. 
+Several studies \citep[for a review]{Girardin2016} have confirmed past activity
+and past catch rates are strong predictors of fishing location choice. For this
+reason, the fleet dynamics sub-model included a learning component, where a
+vessel's initial fishing location in a trip was based on selecting from
+previously successful fishing locations. This was achieved by calculating an
+expected revenue based on the catches from locations fished in the preceding
+trip as well as the same month periods in previous years and the travel costs
+from the port to the fishing grounds. Then a vessel chooses randomly from the
+top 75 \% of fishing events as defined by the expected profit, that has a
+seasonal component. 
 
-\subsubsection{Within-trip decisions}
+\subsubsection{Decision about where to fish within the trip}
 
 Fishing locations within a trip are initially determined by a modified random
 walk process. As the simulation progresses the within-trip decision become
@@ -506,14 +509,14 @@ smaller steps when fishing at a location that yields landings value in the top
 90th percentile of the value experienced in that year so far (as defined per
 fleet in Table \ref{tab:2}). \\
 
-With increasing probability throughout the simulation, fishing locations were
-chosen based on experience of profitable catches built up in the same month
-from previous years and from the previous trip. 'Profitable' in this context
-was defined as the locations where the top 70 \% of expected profit would be
-found given revenue from previous trips and cost of movement to the new fishing
-location. This probability was based on a logistic sigmoid function with a
-lower asymptote of 0 and upper asymptote of 0.95, and a growth rate that
-ensures the upper asymptote (where decisions are mainly based on past
+Fishing locations were chosen based on random search and, with increasing
+proportion as time progressed, experience of profitable catches built up in the
+same month from previous years and from the previous trip.  'Profitable' in
+this context was defined as the locations where the top 70 \% of expected
+profit would be found given revenue from previous trips and cost of movement to
+the new fishing location. This probability was based on a logistic sigmoid
+function with a lower asymptote of 0 and upper asymptote of 0.95, and a growth
+rate that ensures the upper asymptote (where decisions are mainly based on past
 knowledge) is reached approximately halfway through the simulation.  \\
 
 
@@ -588,8 +591,7 @@ resolved survey data available.
 
 Individual habitat preferences and thermal tolerances result in different
 spatial habitat use for each population (Figure \ref{fig:9}) and consequently
-different seasonal exploitation patterns (Fishing mortality in Figure
-\ref{fig:10}). 
+different seasonal exploitation patterns (Figure \ref{fig:10}). 
 
 It can be seen from a single vessels movements during a trip that the vessel
 exploits three different fishing grounds, each of them multiple times (Figure
@@ -743,11 +745,11 @@ exploring the inter- and intra- specific interactions among fish populations
 and time. Our focus was on understanding the strengths and limitations of
 inference from catch data obtained through commercial fishing activity with
 fleets exploiting multiple fish populations and realising catch distributions
-that may differ from the underlying populations. As such, we favoured a minimum
-realistic model of the fish populations \citep{Plaganyi2014} taking account of
-environmental but not demographic stochasticity, while incorporating detailed
-fishing dynamics that take account of different drivers in a mechanistic way.
-\\ 
+that may differ from the underlying populations [[\citep{Gillis2008}]]. As
+such, we favoured a minimum realistic model of the fish populations
+\citep{Plaganyi2014} taking account of environmental but not demographic
+stochasticity, while incorporating detailed fishing dynamics that take account
+of different drivers in a mechanistic way.  \\ 
 
 Demographic stochasticity arises due to individual-level variability in time to
 reproduction and death. This form of stochasticity is often modelled by drawing
