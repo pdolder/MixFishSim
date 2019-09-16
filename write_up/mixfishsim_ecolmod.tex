@@ -68,7 +68,7 @@
 
 \author[1]{Cóilín Minto}
 \author[3]{Jean-Marc Guarini}
-\author[4]{Jan Jaap Poos}
+\author[4,5]{Jan Jaap Poos}
 
 \address[1]{Galway-Mayo Institute of Technology (GMIT), Dublin Road, Galway,
 	Ireland} 
@@ -79,6 +79,9 @@
 	75005 Paris, France}
 \address[4]{Wageningen Marine Research, Haringkade 1 1976 CP IJmuiden,
 	Netherlands}
+\address[5]{Aquaculture and Fisheries Group, Wageningen University \& Research,
+	Zodiac Building 122, De Elst 1, 6708 WD Wageningen, the Netherlands}
+
 
 \begin{abstract}
 
@@ -442,8 +445,7 @@ where $L$ is the step length, $k$ the concentration parameter from the von
 Mises distribution that we correlate with the revenue so
 that $k = (Rev + 1 / RefRev) * max_{k}$, where $max_{k}$ is the maximum
 concentration value, $k$, and $RefRev$ is parametrised as for $\beta_{3}$ in
-the step length function. A realised example of the step length and turning
-angle relationships to revenue can be seen at Figure \ref{S-fig:15}.
+the step length function. 
 
 \subsubsection{Local population depletion}
 
@@ -488,11 +490,7 @@ be unique to each population resulting in differently weekly distribution
 patterns (Figures \ref{S-fig:5}-\ref{S-fig:7}). In addition, each of the
 populations was assumed to have two defined spawning areas that result in the
 populations moving towards these areas in pre-defined weeks (Figure
-\ref{S-fig:2}) with population-specific movement rates (Table \ref{tab:1}). In
-such a configuration, the individual habitat preferences and thermal tolerances
-result in different spatial habitat use for each population (Figure
-\ref{fig:9}) and consequently different seasonal exploitation patterns (Fishing
-mortality in Figure \ref{fig:10}). 
+\ref{S-fig:2}) with population-specific movement rates (Table \ref{tab:1}).
 
 \subsection{Fleet parametrisation}
 
@@ -588,53 +586,62 @@ resolved survey data available.
 
 \subsection{Emergent simulation dynamics}
 
+Individual habitat preferences and thermal tolerances result in different
+spatial habitat use for each population (Figure \ref{fig:9}) and consequently
+different seasonal exploitation patterns (Fishing mortality in Figure
+\ref{fig:10}). 
+
 It can be seen from a single vessels movements during a trip that the vessel
-exploits four different fishing grounds, three of them multiple times (Figure
-\ref{S-fig:11}), while across several trips fishing grounds that are further
-apart are fished (Figure \ref{S-fig:12}). These different locations relate to
+exploits three different fishing grounds, each of them multiple times (Figure
+\ref{fig:mv}(A)), while across several trips fishing grounds that are further
+apart are fished (Figure \ref{fig:mv} (B)). These different locations relate to
 areas where the highest revenue were experienced, as shown by
-\added[id=PD]{Figure} \ref{fig:13}, where several trips for the vessel overlaid
-on the revenue field, i.e. $$\sum^c_{c=1}\sum^s_{s=1} B_{s,c} \cdot Q_{s,c}$$
+\added[id=PD]{Figure} \ref{fig:13}, where several vessels tracks are
+overlaid on the revenue field, i.e. $$\sum^c_{c=1}\sum^s_{s=1} B_{s,c} \cdot
+Q_{s,c}$$
 
 Vessels from the same fleet (and therefore targeting preference) may exploit
 some shared and some different fishing grounds depending on their own personal
-experience during the exploratory phase of the fishery (Figure \ref{S-fig:14}).
+experience during the exploratory phase of the fishery (Figure \ref{fig:mv} (C)).
 This results from the randomness in the correlated random walk step function,
 with distance moved during the exploitation phase and the direction
 stochastically related to the revenue experienced on the fishing ground (Figure
-\ref{S-fig:15}). 
+\ref{fig:mv} (D)). 
 
 \subsection{How does sampling-derived fisheries data reflect the underlying
 	population structure?}
 
-Figure \ref{fig:1} shows the aggregated catch composition from each of the data
-sources over a ten-year period (to average seasonal patterns) at different
-spatial resolutions. The finer spatial grid for the real population (top left)
-and commercial data (top middle) show visually similar patterns, though there
-are large unsampled areas in the commercial data from a lack of fishing
-activity (particularly in the lower left part of the sampling domain). The
-survey data at this spatial resolution displays very sparse information about
-the spatial distributions of the populations. The slightly aggregated data on a
-5 x 5 grid shows similar patterns and, while losing some of the spatial detail,
-there remains good consistency between the real population and the commercial
-data. Survey data starts to pick out some of the similar patterns as the other
-data sources, but lacks spatiotemporal coverage. The spatial catch information
-on a 10 x 10 and 20 x 20 grid lose a significant amount of information about
-the spatial resolutions for all data sources, and some differences between the
-survey, commercial and real population data emerge. \\
+The aggregated catch composition from each of the data sources over a ten-year
+period (which shows average seasonal patterns) at different spatial resolutions
+highlights different patterns in perceived community structure depending on the
+data source and aggregation level (Figure \ref{fig:1}). The finer spatial grid
+for the real population (top left) and commercial data (top middle) show
+visually similar patterns, though there are large unsampled areas in the
+commercial data from a lack of fishing activity (particularly in the lower left
+part of the sampling domain). The survey data at this spatial resolution
+displays very sparse information about the spatial distributions of the
+populations. The slightly aggregated data on a 5 x 5 grid shows similar
+patterns and, while losing some of the spatial detail, there remains good
+consistency between the real population and the commercial data. Survey data
+starts to pick out some of the similar patterns as the other data sources, but
+lacks spatiotemporal coverage. The spatial catch information on a 10 x 10 and
+20 x 20 grid lose a significant amount of information about the spatial
+resolutions for all data sources, and some differences between the survey,
+commercial and real population data emerge. \\
 
-Figure \ref{fig:2} shows the consequences of different temporal aggregations of
-the data over a ten-year period, with weekly (top), monthly (middle) and yearly
-(bottom) catch compositions from across an aggregated 20 x 20 area. In the real
-population, the monthly aggregation captures the major patterns of composition
-seen in the weekly data with the percentage of different species in the catch
-having similar mean and standard deviations.  In the weekly data species 1 =
-9.36 (3.99), species 2 = 83.2 (5.60), species 3 = 3.57 (1.23), species 4 = 3.91
-(1.59); in the monthly data species 1 = 9.23 (3.87), species 2 = 83.3 (5.52),
-species 3 = 3.62 (1.15), species 4 = 3.86 (1.52). While means were similar some
-of the variation was lost when aggregated to an annual level; species 1 = 9.90
-(0.173), species 2 = 82.2 (0.308), species 3 = 3.82 (0.119), species 4 = 4.03
-(0.0502).\\
+Different perceptions of the proportion of each stock in an area are seen when
+we aggregate the data over a smaller geographical region at different
+timescales, with weekly (top), monthly (middle) and yearly (bottom) catch
+compositions from across an aggregated 20 x 20 area (Figure \ref{fig:2}). In
+the real population, the monthly aggregation captures the major patterns of
+composition seen in the weekly data with the percentage of different species in
+the catch having similar mean and standard deviations.  In the weekly data
+species 1 = 9.36 (3.99), species 2 = 83.2 (5.60), species 3 = 3.57 (1.23),
+species 4 = 3.91 (1.59); in the monthly data species 1 = 9.23 (3.87), species 2
+= 83.3 (5.52), species 3 = 3.62 (1.15), species 4 = 3.86 (1.52). While means
+were similar some of the variation was lost when aggregated to an annual level;
+species 1 = 9.90 (0.173), species 2 = 82.2 (0.308), species 3 = 3.82 (0.119),
+species 4 = 4.03 (0.0502).\\
 
 The commercial data on a weekly basis shows some of the same patterns as the
 real population, though the species 1 (in red) is less well represented and
@@ -956,7 +963,6 @@ Aquaculture Science seedcorn program (DP227AC).
 	\label{fig:9}
 \end{figure}	
 
-
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{Plots/f_dynamics}
 	\caption{Fishing mortality dynamics - the daily fishing mortalities
@@ -967,6 +973,18 @@ Aquaculture Science seedcorn program (DP227AC).
 \end{figure}	
 
 \begin{figure}[!ht]
+	\includegraphics[width = \linewidth]{Plots/Combined_Movement}
+	\caption{(A) The fishing locations (points) and movements (lines) of a
+	single vessel during a trip overlaid on the relative value of a fishing
+	site; (B) the fishing locations of the vessel over several trips (value
+field changes over the period so not shown); (C) the locations of multiple
+vessels from the same fleet overlaid on the value field, (D) the realised step
+distance and turning angles for a single vessel over the simulation}
+	\label{fig:mv}
+\end{figure}	
+
+
+\begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{Plots/vessel_move_value}
 	\caption{movement of a fleet over a single trip reference overlaid on the
 		value field (i.e. sum of the population abundance x catchability x value}
@@ -975,14 +993,14 @@ Aquaculture Science seedcorn program (DP227AC).
 
 
 \begin{figure}[!ht]
-	\includegraphics[width=\linewidth]{../analysis/Data_Aggregation_space_Rev}
+	\includegraphics[width=\linewidth]{../analysis/Data_Aggregation_space_Rev2}
 	\caption{Data aggregation at different spatial resolutions over a
 		ten year period}
 	\label{fig:1}
 \end{figure}	
 
 \begin{figure}[!ht]
-	\includegraphics[width =\linewidth]{../analysis/Data_Aggregation_time_Rev}
+	\includegraphics[width=\linewidth]{../analysis/Data_Aggregation_time_Rev2}
 	\caption{Data aggregation at different temporal resolutions over a
 		ten-year period}
 	\label{fig:2}

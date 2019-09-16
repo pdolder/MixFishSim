@@ -152,12 +152,14 @@ catch_hans <- make.xyz(x = catch_hans$grid_x,y = catch_hans$grid_y,z = catch_han
 
 catch_comp <- list(catch_hans = catch_hans, catch_grid = catch_grid)
 
-cols <- c("red", "blue", "purple", "green")
+#cols <- c("red", "blue", "purple", "green")
+cols <- c("#E66101", "#FDB863", "#B2ABD2", "#5E3C99") 
 
 #par(mar = c(0,0,0,0), pty = 'm')
 basemap(xlim = c(0,100), ylim = c(0,100), xlab = "", ylab = "", bg = "white", xaxt = 'n', yaxt = "n")
 draw.barplot2D(catch_comp[[1]]$x,catch_comp[[1]]$y,z = catch_comp[[1]]$z, width = gran,
-	       height = gran, xlab = "", ylab = "", col = cols, lwd.frame = 0, col.frame = "white")
+	       height = gran, xlab = "", ylab = "", col = cols, lwd.frame = 0, 
+	       col.frame = "white", border = NA)
 
 
 }
@@ -177,7 +179,7 @@ load(file.path('.', 'Common_Params.RData'))
 
 ## Commercial
 dataIn <- get_data(basis = 'commercial', yr = yr, mn = mn, wk = wk, dataIn = res[["fleets_catches"]]) 
-plot_comp(gran = 1, dataIn = dataIn)
+plot_comp(gran = 20, dataIn = dataIn)
 
 ## Survey
 dataIn <- get_data(basis = 'survey', yr = yr, mn = mn, wk = wk, dataIn = res[["survey"]][["log.mat"]]) 
@@ -192,7 +194,7 @@ plot_comp(gran = 1, dataIn = dataIn)
 ## Setting out the plot
 ##setEPS()
 ##postscript('Data_Aggregation_space.eps', width = 8 * 2, height = 8 * 3, bg = "white")
-pdf('Data_Aggregation_space_Rev.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
+pdf('Data_Aggregation_space_Rev2.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
 
 par(oma = c(12,2,12,12), mar = c(0,0,0,0), mfrow = c(4,3))
 
@@ -229,7 +231,7 @@ mtext(text = "Real Population        Commercial Data     Survey Data", side = 3,
 mtext(text = "20 x 20 pt                        10 x 10  pt                         5 x 5 pt                     1 x 1 pt", side = 4, line = 2, outer = T, font = 2, cex  = 3) ## right side
 
 legend(x = -250, y = -10, legend = c("Pop 1", "Pop 2", "Pop 3", "Pop 4"),
-            fill = c("red", "blue", "purple", "green"), ncol = 4, xpd = NA, bty = "n", cex = 4)
+            fill = c("#E66101", "#FDB863", "#B2ABD2", "#5E3C99"), ncol = 4, xpd = NA, bty = "n", cex = 4)
  
 dev.off()
 
@@ -287,14 +289,15 @@ xyz <-      make.xyz(x = catch_grid$grid_x, y = catch_grid$grid_y, z = rep(1, l 
 cols <- c("darkred", "darkblue", "orange", "darkgreen", "pink")[1:cluster_k]
 
 basemap(xlim = c(0,100), ylim = c(0,100), xlab = "", ylab = "", bg = "white")
-draw.barplot2D(xyz[["x"]],xyz[["y"]],z = xyz[["z"]], width = gran, height = gran, xlab = "", ylab = "", col = cols)
+draw.barplot2D(xyz[["x"]],xyz[["y"]],z = xyz[["z"]], width = gran, height = gran, xlab = "", ylab = "", col = cols,
+	       col.frame = "white", border = NA)
 
 }
 
 
 
 #######################################################################################################
-pdf('Data_cluster_space_Rev.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
+pdf('Data_cluster_space_Rev2.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
 
 par(oma = c(12,2,12,12), mar = c(0,0,0,0), mfrow = c(4,3))
 
@@ -388,7 +391,9 @@ dataPlot$spp_4 <- dataIn$spp_4[match(paste(dataPlot$year, dataPlot$month, dataPl
 dataPlot[,4:7][is.na(dataPlot[,4:7])] <- 0
 dataPlot <- dataPlot[order(dataPlot$year, dataPlot$month, dataPlot$week),]
 
-cols <- c("red", "blue", "purple", "green")
+#cols <- c("red", "blue", "purple", "green")
+cols <- c("#E66101", "#FDB863", "#B2ABD2", "#5E3C99") 
+
 barplot(t(dataPlot[,4:7]), names.arg = rep(paste(""), nrow(dataPlot)), col = cols, border = NA)
 
 write.csv(dataPlot, file = paste0(timestep, basis,".csv"), row.names = F)
@@ -426,7 +431,9 @@ dataPlot$spp_4 <- dataIn$spp_4[match(paste(dataPlot$year, dataPlot$month),
 dataPlot[,3:6][is.na(dataPlot[,3:6])] <- 0
 dataPlot <- dataPlot[order(dataPlot$year, dataPlot$month),]
 
-cols <- c("red", "blue", "purple", "green")
+#cols <- c("red", "blue", "purple", "green")
+cols <- c("#E66101", "#FDB863", "#B2ABD2", "#5E3C99") 
+
 barplot(t(dataPlot[,3:6]), names.arg = rep(paste(""), 12 * length(yr)), col = cols, border = NA)
 write.csv(dataPlot, file = paste0(timestep, basis,".csv"), row.names = F)
 
@@ -464,7 +471,9 @@ dataPlot$spp_4 <- dataIn$spp_4[match(dataPlot$year, dataIn$year)]
 dataPlot[,2:5][is.na(dataPlot[,2:5])] <- 0
 dataPlot <- dataPlot[order(dataPlot$year),]
 
-cols <- c("red", "blue", "purple", "green")
+#cols <- c("red", "blue", "purple", "green")
+cols <- c("#E66101", "#FDB863", "#B2ABD2", "#5E3C99") 
+
 barplot(t(dataPlot[,2:5]), names.arg = rep(paste(""), length(yr)), col = cols, border = NA)
 write.csv(dataPlot, file = paste0(timestep, basis,".csv"), row.names = F)
 
@@ -479,7 +488,7 @@ write.csv(dataPlot, file = paste0(timestep, basis,".csv"), row.names = F)
 
 ##setEPS()
 ##postscript('Data_Aggregation_time.eps', width = 8 * 2, height = 8 * 3, bg = "white")
-pdf('Data_Aggregation_time_Rev.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
+pdf('Data_Aggregation_time_Rev2.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
 par(oma = c(12,2,12,12), mar = c(0,0,0,0), mfrow = c(3,3))
 
 plot_temp(timestep = 'week', basis = 'real_pop')
@@ -501,7 +510,7 @@ mtext(text = "Real Population        Commercial Data     Survey Data", side = 3,
 mtext(text = "yearly                                     monthly                                       weekly", side = 4, line = 2, outer = T, font = 2, cex  = 3) ## right side
 
 legend(x = -20, y = 0, legend = c("Pop 1", "Pop 2", "Pop 3", "Pop 4"),
-            fill = c("red", "blue", "purple", "green"), ncol = 4, xpd = NA, bty = "n", cex = 4)
+            fill = c("#E66101", "#FDB863", "#B2ABD2", "#5E3C99"), ncol = 4, xpd = NA, bty = "n", cex = 4)
  
 dev.off()
 

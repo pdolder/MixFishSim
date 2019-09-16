@@ -21,8 +21,8 @@ plot_realised_stepF <- function(logs = logs, fleet_no = 1, vessel_no = 1) {
 	plot(stepDF[["val"]][1:c(nrow(stepDF)-1)], stepDF[["stepD"]][2:nrow(stepDF)], main = "Realised step distances", xlab = "value", ylab = "step distance")
 
 
-	plot(stepDF[["val"]][1:c(nrow(stepDF)-1)],
+	return(print(plot(stepDF[["val"]][1:c(nrow(stepDF)-1)],
      stepDF[["angles"]][1:c(nrow(stepDF)-1)]- 
      stepDF[["angles"]][2:nrow(stepDF)], main = "Relalised turning angles", xlab = "value", ylab = "change in angle")
-
+))
 }

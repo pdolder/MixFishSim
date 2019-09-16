@@ -10,17 +10,62 @@
 #' @param trip_no is a Numeric for the trip you wish to plot
 
 #' @examples
-#' plot_fleet_trip(logs = logs, fleet_no = 1, year_trip = 1, trip_no = 1)
+#' plot_fleet_trip(logs = logs, fleet_no = 1, year_trip = 1, trip_no = 1,
+#' pop_bios = NULL, fleets_init = NULL)
 
 #' @export
 
-plot_fleet_trip <- function (logs = logs, fleet_no = 1, year_trip = 1, trip_no = 1) {
+plot_fleet_trip <- function (logs = logs, fleet_no = 1, year_trip = 1, trip_no = 1,
+			 pop_bios = NULL, fleets_init = NULL, sim_init = NULL) {
 
 require(ggplot2)
 require(dplyr)
 
 log <- filter(as.data.frame(logs), fleet %in% fleet_no, year %in% year_trip, trip %in% trip_no)
 
-print(ggplot(log, aes(x = x, y = y)) + geom_point(aes(colour = factor(vessel))) + geom_path(aes(colour = factor(vessel))))
+log$vessel <-as.factor(log$vessel)
+
+if(is.null(pop_bios)) {
+print(ggplot(log, aes(x = x, y = y)) + 
+      geom_point(aes(colour = vessel)) +
+      geom_path(aes(colour = vessel)) + 
+      theme_bw()) 
+}
+
+
+if(!is.null(pop_bios)) {
+
+## Extract pop biomasses
+Bs <- pop_bios[[year_trip, trip_no]]
+
+## Create value field for fleet
+
+Value <- lapply(names(Bs), function(x) {
+		     fleets_init[["fleet_params"]][[fleet_no]][["VPT"]][[x]] * 
+			     fleets_init[["fleet_params"]][[fleet_no]][["Qs"]][[x]] *
+			     Bs[[x]]
+		     })
+
+TotVal <- Reduce("+", Value)
+
+TotValDF <- tidyr::gather(as.data.frame(TotVal), factor_key = TRUE)
+TotValDF$x <- rep(seq_len(sim_init[["idx"]][["nrows"]]), times = sim_init[["idx"]][["nrows"]])
+TotValDF$y <- rep(seq_len(sim_init[["idx"]][["ncols"]]), each = sim_init[["idx"]][["ncols"]])
+
+
+print(ggplot(TotValDF, aes(x = x, y = y)) + geom_tile(aes(fill = value)) +
+	scale_fill_gradient2(low = "blue", high = "darkblue") +
+	geom_point(data = log, aes(colour = vessel)) +
+        geom_path(data = log, aes(colour = vessel)) + 
+	theme_bw() + #scale_colour_gradient(low = "red", high = "darkred") + 
+	expand_limits(y = c(0,sim_init[["idx"]][["ncols"]]), 
+		      x = c(0,sim_init[["idx"]][["nrows"]])) +
+      theme(legend.position = "none")
+	
+	)
 
 }
+
+}
+
+
