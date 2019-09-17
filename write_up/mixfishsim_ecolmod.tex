@@ -84,7 +84,7 @@
 
 %%
 To understand how data resolution impacts inference on mixed fisheries
-interactions, we developed a highly resolved spatiotemporal discrete-event
+interactions we developed a highly resolved spatiotemporal discrete-event
 simulation model incorporating: i) delay-difference population dynamics, ii)
 population movement using Gaussian Random Fields to simulate patchy,
 heterogeneously distributed populations, and iii) fishery dynamics for multiple
@@ -93,10 +93,10 @@ strategy. This is implemented via a mix of correlated random walk movement (for
 exploration) and learned behaviour (for exploitation) phases of the fisheries.
 \\ 
 %%
-Fifty years of sub-daily fishing was simulated and used to draw inference on
-the underlying community structures. We compared inferences based on:
-commercial catch, a simulated fixed-site sampling survey design and the true
-underlying community. We i) establish the potential limitations of
+Fifty years of sub-daily fishing activity was simulated and used to draw
+inference on the underlying community structures. We compared inferences based
+on: commercial catch, a simulated fixed-site sampling survey design and the
+true underlying populations. We i) establish the potential limitations of
 fishery-dependent data in providing a robust picture of spatiotemporal
 distributions; and then ii) simulated an area closure based on areas defined
 from the different data sources at a range of temporal and spatial resolutions.
@@ -104,11 +104,17 @@ from the different data sources at a range of temporal and spatial resolutions.
 %%
 Our framework allows users to explore the assumptions in modelling
 observational data and evaluate the underlying dynamics of such approaches at a
-fine spatial and temporal scale. We conclude from our example framework
-application that commercial data, while containing bias, provide a useful tool
-for managing catches in mixed fisheries if applied at the correct
-spatiotemporal scale. [NEED A LITTLE MORE DETAIL OF THE RESULTS HERE - 2 MORE
-SENTENCES ON KEY TAKE-HOME RESULTS]\\
+fine spatial and temporal scale. In application to a mixed fishery exploiting
+four different populations we found different spatial patterns were evident and
+that the effectiveness of the spatial closure reduced when data were aggregated
+across larger spatial areas. However, aggregation across time periods has less
+of a negative impact on the closure success and while not as effective as when
+based on on the true population, closures based on high catch rates observed in
+commercial data could still reduce fishing on a protected species. \\ 
+
+We conclude from our example framework application that commercial data, while
+containing bias, provide a useful tool for managing catches in mixed fisheries
+if applied at the correct spatiotemporal scale. \\
 %%
 \end{abstract}
 
@@ -125,12 +131,13 @@ Some\sep keywords \sep here. Max 6
 
 Fishers exploit a variety of fish populations that are heterogeneously
 distributed in space and time with varying knowledge of species distributions.
-As fishers do not have full control over what species they select in `mixed
-fisheries' this can result in catch of low quota or protected species. If
-fishers discard over-quota catch of a species for which they have no quota, it
-limits our ability to control fishing mortality \citep{Alverson1994,
-	Crowder1998, Rijnsdorp2007} and the ability to manage fisheries for the
-biological and economic sustainability \citep{Ulrich2011a, Batsleer2015}.\\
+As fishers do not have full control over what species they select when fishing
+in `mixed fisheries' it can result in catch of low quota or protected species.
+If over-quota catch of a species for which they have no quota is discarded
+without being accounted for it limits our ability to control fishing mortality
+\citep{Alverson1994, Crowder1998, Rijnsdorp2007} and the ability to manage
+fisheries for the biological and economic sustainability \citep{Ulrich2011a,
+	Batsleer2015}.\\
 
 There is increasing interest in technical solutions such as gear and spatial
 closures as measures to reduce unwanted catch \citep{Kennelly2002,
@@ -650,13 +657,13 @@ The commercial data on a weekly basis shows some of the same patterns as the
 true population, though the population 1 (in red) is less well represented and
 some weeks are missing catches from the area. Here, weekly and monthly
 compositions were nearly identical, with monthly composition of population 1 =
-0.0472 (0.0139), population 2 = 94.4 (1.47), population 3 = 3.12 (1.47), population 4 =
-2.40 (0.444). Again, yearly values head a similar mean but smaller standard
-deviation.\\
+0.0472 (0.0139), population 2 = 94.4 (1.47), population 3 = 3.12 (1.47),
+population 4 = 2.40 (0.444). Again, yearly values head a similar mean but
+smaller standard deviation.\\
 
 The survey data was only available on an annual basis, and showed again a
-slightly different composition; population 1 = 0.372 (0.00473), population 2 = 87.7
-(0.193), population 3 = 0.729 (0.0200), population 4 = 11.2 (0.172).
+slightly different composition; population 1 = 0.372 (0.00473), population 2 =
+87.7 (0.193), population 3 = 0.729 (0.0200), population 4 = 11.2 (0.172).
 
 \subsection{How does data aggregation and source impact on spatial fisheries
 	management measures?}
