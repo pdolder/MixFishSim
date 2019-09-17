@@ -74,9 +74,8 @@
 	Ireland} 
 \address[2]{Centre for Environment, Fisheries and Aquaculture Science (Cefas),
 	Pakefield Road, Lowestoft, UK}
-\address[3]{\replaced[id=JM]{Sorbonne Université, Faculty of
-		Sciences}{Université Pierre et Marie Curie}, 4 Place Jussieu,
-	75005 Paris, France}
+\address[3]{Sorbonne Université, Faculty of Sciences, 4 Place Jussieu, 75005
+	Paris, France}
 \address[4]{Wageningen Marine Research, Haringkade 1 1976 CP IJmuiden,
 	Netherlands}
 \address[5]{Aquaculture and Fisheries Group, Wageningen University \& Research,
@@ -87,14 +86,14 @@
 
 %%
 To understand how data resolution impacts inference on mixed fisheries
-interactions, we developed a highly resolved spatiotemporal
-event-based simulation model incorporating: i) delay-difference
-population dynamics, ii) population movement using Gaussian Random Fields to
-simulate patchy, heterogeneously distributed populations, and iii) fishery
-dynamics for multiple fleet characteristics based on species targeting under an
-explore-exploit strategy. This is implemented via a mix of correlated random
-walk movement (for exploration) and learned behaviour (for exploitation) phases
-of the fisheries.  \\ 
+interactions, we developed a highly resolved spatiotemporal discrete-event
+simulation model incorporating: i) delay-difference population dynamics, ii)
+population movement using Gaussian Random Fields to simulate patchy,
+heterogeneously distributed populations, and iii) fishery dynamics for multiple
+fleet characteristics based on species targeting under an explore-exploit
+strategy. This is implemented via a mix of correlated random walk movement (for
+exploration) and learned behaviour (for exploitation) phases of the fisheries.
+\\ 
 %%
 Fifty years of sub-daily fishing was simulated and used to draw inference on
 the underlying community structures. We compared inferences based on:
@@ -210,13 +209,13 @@ supporting management decisions.
 
 \section{Materials and Methods}
 
-An event-based simulation model of a hypothetical fishery was developed as a
-software package (\textit{MixFishSim}). The modular approach enabled efficient
-computation by allowing for sub-modules implemented on time-scales appropriate
-to capture the characteristic of the different processes (Figure 1). The
-following sub-modules were included to capture the full system: 1) Population
-dynamics, 2) Recruitment dynamics, 3) Population movement, 4) fishery
-dynamics.\\
+A Discrete-event simulation (DES) model of a hypothetical fishery was developed
+as a software package (\textit{MixFishSim}). The modular approach enabled
+efficient computation by allowing for sub-modules implemented on time-scales
+appropriate to capture the characteristic of the different processes (Figure
+1). The following sub-modules were included to capture the full system: 1)
+Population dynamics, 2) Recruitment dynamics, 3) Population movement, 4)
+fishery dynamics.\\
 
 Population dynamics operate on a daily time-step, while population movement
 occurs on a weekly time-step, with the fishing module operating on a tow-by-tow
@@ -251,7 +250,8 @@ when $K$ is the growth rate from a von Bertalanffy logistic growth model
 \citep{Schnute1985}. $Wt_{R-1}$ is the average weight of fish prior to
 recruitment, while $Wt_{R}$ is the average recruited weight. $\alpha_{d}$
 represents the proportion of fish recruited during that day for the year, while
-$R_{\tilde{y},c}$ is the annual recruits in year $y$ for cell $c$. \\
+$R_{c,\tilde{y},d}$ is the annual recruits in year $y$ and day $d$ for cell
+$c$. \\
 
 Mortality $Z_{c,d}$ can be decomposed to natural mortality, $M_{c,d}$, and
 fishing mortality, $F_{c,d}$, where both $M_{c,d}$ and $F_{c,d}$ are
@@ -263,12 +263,12 @@ C_{c,d} = \frac{F_{c,d}}{F_{c,d} + M_{c,d}} \cdot \left(1 -
 \end{equation}
 where $C_{c,d}$ is the summed catch from the fishing model across all fleets
 and vessels in cell $c$ for the population during the day $d$, and $B_{c,d}$
-the daily biomass for the population in the cell. Here, catch and fishing
-mortality are the sum of those across all fleets and vessels, where $F_{fl, v,
-	c, d, p} = E_{fl, v, c, d} \cdot Q_{fl, p} \cdot D_{c, d, p}$ with
-$fl$, $v$ and $p$ the fleet, vessel and population respectively and $E$ and $Q$
-fishing effort and catchability of the gear, and $D$ is the density of the
-population at the location fished. \\
+the daily biomass for the population in the cell. Here, catch is the sum of
+those across all fleets and vessels, $C_{c, d} =
+\sum\limits_{fl=1}^{fl}\sum\limits_{v=1}^{v} E_{fl, v, c, d} \cdot Q_{fl} \cdot
+D_{c, d}$ with $fl$ and $v$ the fleet and vessel respectively and
+$E_{fl,v,c,d}$ and $Q_{fl}$ fishing effort and catchability of the gear, and
+$D_{c,d}$ is the density of the population at the location fished. \\
 
 \subsection{Recruitment dynamics}
 
@@ -321,30 +321,30 @@ to a probabilistic distribution based on habitat suitability (represented by
 the normalised values
 from the GRFs), temperature and distance from current cell: 
 \begin{equation}
-	Pr(C_{wk+1} = J | C_{wk} =I) = \frac{\mathrm{e}^{-\lambda \cdot d_{IJ}} \cdot
+	Pr(C_{wk+1} = J | C_{wk} =I) = \frac{\mathrm{e}^{-\lambda \cdot d_{I,J}} \cdot
 		(Hab_{J,p}^2 \cdot
 		Tol_{J,p,wk})}{\sum\limits_{c=1}^{C}\mathrm{e}^{-\lambda \cdot d} \cdot
 		(Hab_{c,p}^2 \cdot Tol_{c,p,wk})}
 \end{equation}
-Where $d_{IJ}$ is the euclidean distance between cell $I$ and cell $J$,
-$\lambda$ is a given rate of decay, $Hab_{J,p}^2$ is the squared index of
-habitat suitability for cell $J$ and population $p$, with $Tol_{J,p,wk}$ the
-temperature tolerance for cell $J$ by population $p$ in week $wk$ (see
+Where $d_{I,J}$ is the euclidean distance between cell $I$ and cell $J$,
+$\lambda$ is a given rate of decay, $Hab_{c,p}^2$ is the squared index of
+habitat suitability for cell $c$ and population $p$, with $Tol_{c,p,wk}$ the
+temperature tolerance for cell $c$ by population $p$ in week $wk$ (see
 below). \\
 
 During pre-defined weeks of the year the habitat suitability is modified with
 user-defined spawning habitat locations, resulting in each population having
-concentrated areas where spawning takes place. The populations then move towards
-these cells in the weeks prior to spawning, resulting in directional movement
-towards the spawning grounds. \\
+concentrated areas where spawning takes place. The populations then move
+towards these cells in the weeks prior to spawning, resulting in directional
+movement towards the spawning grounds. \\
 
-A time-varying temperature covariate changes the interaction between
-time and suitable habitat on a weekly time-step. Each population $p$ was
-assigned a thermal tolerance with mean, $\mu_{p}$ and variance, $\sigma^2_{p}$
-so that each cell and population temperature suitability is defined that:
+A time-varying temperature covariate changes the interaction between time and
+suitable habitat on a weekly time-step. Each population $p$ was assigned a
+thermal tolerance with mean, $\mu_{p}$ and variance, $\sigma^2_{p}$ so that
+each cell and population temperature suitability is defined that:
 \begin{equation}
 	Tol_{c, p, wk} = \frac{1}{ \sqrt (2\pi \cdot \sigma^2_{p})} \cdot \exp(-
-		\frac{(T_{c\added[id=PD]{, wk}} - \mu_{p})^2}{2 \cdot \sigma^2_{p}} )	
+		\frac{(T_{c, wk} - \mu_{p})^2}{2 \cdot \sigma^2_{p}} )	
 \end{equation}
 Where $Tol_{c, p, wk}$ is the tolerance of population $p$ for cell $c$ in week
 $wk$, $T_{c, wk}$ is the temperature in the cell given the week and $\mu_{p}$
@@ -371,8 +371,8 @@ three components for individual vessels to maximise their catch from an unknown
 resource distribution \citep{Bailey2018}. The decision to use an individual
 based model for fishing vessels was taken because fishers are heterogeneous in
 their location choice behaviour due to different objectives, risk preference
-and targeting preference \citep{VanPutten2012a}. Therefore in the simulations
-fleet dynamics reflect individual experiences rather than pre-defined group
+and targeting preference \citep{VanPutten2012a, Boonstra2015}. Therefore fleet
+dynamics are emergent from individual dynamics rather than pre-defined group
 dynamics. 
 
 \subsubsection{Fleet targeting}
@@ -422,9 +422,9 @@ came from.  The step length (i.e. the distance travelled from the current to
 the next fishing location) is determined by relating recent
 fishing success, measured as the summed value of fish caught (revenue, $Rev$);
 \begin{equation}
-Rev = \sum_{p=1}^{P} \replaced[id=PD]{L}{C}_{p} \cdot Pr_{p} 
+Rev_{c,d} = \sum_{p=1}^{P} L_{c,d,p} \cdot Pr_{p} 
 \end{equation}
-where $L_{p}$ is landings of a population $p$, and $Pr_{p}$ price of a
+where $L_{c,d,p}$ is landings of a population $p$, and $Pr_{p}$ price of a
 population. All species prices were kept the same across fleets and seasons.
 Here, when fishing is successful vessels remain in a similar location and
 continue to exploit the local fishing grounds. When unsuccessful, they move
@@ -432,25 +432,26 @@ some distance away from the current fishing location.  The movement distance
 retains some degree of stochasticity, that can be controlled separately, but is
 determined by the relationship: 
 \begin{equation}
-	StepL = \mathrm{e}^{log(\beta_{1}) + log(\beta_{2}) -
-		\left(log\left(\frac{\beta_{1}}{\beta_{3}}\right)\right)} \cdot Rev
+	Le = \mathrm{e}^{log(\beta_{1}) + log(\beta_{2}) -
+		\left(log\left(\frac{\beta_{1}}{\beta_{3}}\right)\right) \cdot Rev
+} 
 \end{equation}
 Where $\beta_{1}$, $\beta_{2}$ and $\beta_{3}$ are parameters determining the
 shape of the step function in its relation to revenue, so that, a step from
 (x1,y1) to (x2, y2) is defined by:
 \begin{equation}
 	\begin{split}
- (x2, y2) =  & x1 + L \cdot \cos \left(\frac{\pi \cdot Br}{180}\right), \\
-             & y1 + L \cdot \sin \left(\frac{\pi \cdot Br}{180}\right) \\	
+ (x2, y2) =  & x1 + Le \cdot \cos \left(\frac{\pi \cdot Br}{180}\right), \\
+             & y1 + Le \cdot \sin \left(\frac{\pi \cdot Br}{180}\right) \\	
  with  \hspace{0.5cm}     & Br_{t-1} < 180, Br_{t} = 180 + \sim vm[(0,360), k] \\
  			  & Br_{t-1} > 180, Br_{t} = 180 - \sim vm[(0,360), k] \\
 	\end{split}
 \end{equation}
-where $L$ is the step length, $k$ the concentration parameter from the von
-Mises distribution that we correlate with the revenue so
-that $k = (Rev + 1 / RefRev) * max_{k}$, where $max_{k}$ is the maximum
-concentration value, $k$, and $RefRev$ is parametrised as for $\beta_{3}$ in
-the step length function. 
+where $Le$ is the step length, $k$ the concentration parameter from the von
+Mises distribution that we correlate with the revenue so that $k = (Rev + 1 /
+RefRev) \cdot max_{k}$, where $max_{k}$ is the maximum concentration value,
+$k$, and $RefRev$ is parametrised as for $\beta_{3}$ in the step length
+function. 
 
 \subsubsection{Local population depletion}
 
@@ -599,10 +600,9 @@ It can be seen from a single vessels movements during a trip that the vessel
 exploits three different fishing grounds, each of them multiple times (Figure
 \ref{fig:mv}(A)), while across several trips fishing grounds that are further
 apart are fished (Figure \ref{fig:mv} (B)). These different locations relate to
-areas where the highest revenue were experienced, as shown by
-\added[id=PD]{Figure} \ref{fig:13}, where several vessels tracks are
-overlaid on the revenue field, i.e. $$\sum^c_{c=1}\sum^s_{s=1} B_{s,c} \cdot
-Q_{s,c}$$
+areas where the highest revenue were experienced, as shown by Figure
+\ref{fig:mv} (D), where several vessels tracks are overlaid on the revenue
+field, i.e. $$\sum^c_{c=1}\sum^s_{s=1} B_{s,c} \cdot Q_{s,c}$$
 
 Vessels from the same fleet (and therefore targeting preference) may exploit
 some shared and some different fishing grounds depending on their own personal
@@ -743,15 +743,15 @@ obtained under a statistical modelling framework. \\
 %% Comparison to other models
 Typically, simulation models that treat fish as individuals are focussed on
 exploring the inter- and intra- specific interactions among fish populations
-(e.g. OSMOSE \cite{Shin2004}) in order to understand how they vary over space
+(e.g. OSMOSE; \cite{Shin2004}) in order to understand how they vary over space
 and time. Our focus was on understanding the strengths and limitations of
 inference from catch data obtained through commercial fishing activity with
 fleets exploiting multiple fish populations and realising catch distributions
-that may differ from the underlying populations [[\citep{Gillis2008}]]. As
-such, we favoured a minimum realistic model of the fish populations
-\citep{Plaganyi2014} taking account of environmental but not demographic
-stochasticity, while incorporating detailed fishing dynamics that take account
-of different drivers in a mechanistic way.  \\ 
+that may differ from the underlying populations, as identified by
+\cite{Gillis2008}. As such, we favoured a minimum realistic model of the fish
+populations \citep{Plaganyi2014} taking account of environmental but not
+demographic stochasticity, while incorporating detailed fishing dynamics that
+take account of different drivers in a mechanistic way.  \\ 
 
 Demographic stochasticity arises due to individual-level variability in time to
 reproduction and death. This form of stochasticity is often modelled by drawing
@@ -783,7 +783,7 @@ understanding of the community composition dynamics will depend on the level of
 data aggregation and its important to consider the scale of processes;
 including population movement rates, habitat uniformity and fishing targeting
 practices if potential biases in data are to be understood and taken into
-account \added[id=CM]{(Figures X,Y,Z)}. \\
+account (Figures X,Y,Z). \\
 
 Our simulation shows that, despite biases introduced through the fishing
 process, the commercially derived data could still inform on the key spatial
@@ -792,7 +792,7 @@ spatially limited due to the ``hotspots" of commercially valuable species being
 fished. Similarly, despite the even spatial coverage the survey was able to
 capture some of the same spatial patterns as the real population, but missed
 others due to gaps between survey stations limiting spatial and temporal
-coverage \added[id=CM]{(Figures X,Y,Z)}. This provides a challenge when
+coverage (Figures X,Y,Z). This provides a challenge when
 modelling unsampled areas in inferring species distribution maps, though these
 limitations may be overcome by understanding the relationship between the
 species and habitat covariates where these are known at unsampled locations
@@ -961,38 +961,37 @@ Aquaculture Science seedcorn program (DP227AC).
 %\begin{comment}
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{Plots/pop_dist}
-	\caption{Simulated spatial dynamics - the four populations abundance
-		(log+1) at four time steps.
-		}
+	\caption{Spatial density (log abundance) for each of the four
+		populations at four time steps. The darker the colour the
+		greater the density of the population. Note that you can see
+		the diagonal isotropic patterns in populations 2 and 3 and
+		concentrated spawning areas in the second row of the panels
+		(t=18) }
 	\label{fig:9}
 \end{figure}	
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{Plots/f_dynamics}
 	\caption{Fishing mortality dynamics - the daily fishing mortalities
-		showing weekly and seasonal patterns in exploitation.
-		Individual years and the light grey lines, the mean of all
-		years the thick black line}
+		across the entire spatial domain showing weekly and seasonal
+		patterns in exploitation.  Individual years and the light grey
+		lines, the mean of all years the thick black line}
 	\label{fig:10}
 \end{figure}	
 
 \begin{figure}[!ht]
 	\includegraphics[width = \linewidth]{Plots/Combined_Movement}
 	\caption{(A) The fishing locations (points) and movements (lines) of a
-	single vessel during a trip overlaid on the relative value of a fishing
-	site; (B) the fishing locations of the vessel over several trips (value
-field changes over the period so not shown); (C) the locations of multiple
-vessels from the same fleet overlaid on the value field, (D) the realised step
-distance and turning angles for a single vessel over the simulation}
+		single vessel during a trip overlaid on the relative value of a
+		fishing site; (B) the fishing locations of the vessel over
+		several trips (value field changes over the period so not
+		shown). Note that the field is wrapped on a torus so that
+		distances between opposite side of the spatial domain are
+		considered next to each other, hence apparent large movements;
+		(C) the locations of multiple vessels from the same fleet
+		overlaid on the value field, (D) the realised step distance and
+		turning angles for a single vessel over the simulation}
 	\label{fig:mv}
-\end{figure}	
-
-
-\begin{figure}[!ht]
-	\includegraphics[width = \linewidth]{Plots/vessel_move_value}
-	\caption{movement of a fleet over a single trip reference overlaid on the
-		value field (i.e. sum of the population abundance x catchability x value}
-	\label{fig:13}
 \end{figure}	
 
 
@@ -1015,7 +1014,8 @@ distance and turning angles for a single vessel over the simulation}
 	\includegraphics[width = \linewidth]{../analysis/F_trendsREV}
 	\caption{Comparison of closure scenarios effect on fishing mortality
 		trends. Line colour denotes the timescale, while linestyle
-		denotes the spatial resolution.}
+		denotes the spatial resolution. The vertical dashed line
+		indicates the onset of the spatial closures.}
 	\label{fig:3}
 \end{figure}
 

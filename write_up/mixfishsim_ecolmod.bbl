@@ -1,4 +1,4 @@
-\begin{thebibliography}{66}
+\begin{thebibliography}{67}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -68,6 +68,13 @@
   \bibinfo{year}{1957}.
 \newblock \bibinfo{title}{{On the Dynamics of Exploited Fish Populations}} ,
   \bibinfo{pages}{533}.
+%Type = Article
+\bibitem[{Boonstra and Hentati-Sundberg(2015)}]{Boonstra2015}
+\bibinfo{author}{Boonstra, W.J.}, \bibinfo{author}{Hentati-Sundberg, J.},
+  \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{{Classifying fishers' behaviour. An invitation to
+  fishing styles}}.
+\newblock \bibinfo{journal}{Infancy} .
 %Type = Article
 \bibitem[{Branch et~al.(2005)Branch, Hilborn and Bogazzi}]{Branch2005}
 \bibinfo{author}{Branch, T.}, \bibinfo{author}{Hilborn, R.},

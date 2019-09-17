@@ -6,45 +6,45 @@ Database file #1: simulation_framework.bib
 Warning--empty journal in Beverton1957
 Warning--empty pages in Gillespie1977
 Warning--empty pages in Shin2004
-You've used 66 entries,
+You've used 67 entries,
             2761 wiz_defined-function locations,
-            1006 strings with 18929 characters,
-and the built_in function-call counts, 44774 in all, are:
-= -- 3397
-> -- 2308
-< -- 25
-+ -- 883
-- -- 816
-* -- 5362
-:= -- 6957
-add.period$ -- 193
-call.type$ -- 66
-change.case$ -- 600
-chr.to.int$ -- 65
-cite$ -- 69
-duplicate$ -- 2778
-empty$ -- 2713
-format.name$ -- 1026
-if$ -- 7970
+            1011 strings with 19073 characters,
+and the built_in function-call counts, 45253 in all, are:
+= -- 3436
+> -- 2326
+< -- 26
++ -- 890
+- -- 822
+* -- 5411
+:= -- 7035
+add.period$ -- 196
+call.type$ -- 67
+change.case$ -- 607
+chr.to.int$ -- 66
+cite$ -- 70
+duplicate$ -- 2813
+empty$ -- 2744
+format.name$ -- 1037
+if$ -- 8056
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 625
-newline$ -- 335
-num.names$ -- 264
-pop$ -- 734
+missing$ -- 631
+newline$ -- 340
+num.names$ -- 268
+pop$ -- 745
 preamble$ -- 1
-purify$ -- 536
+purify$ -- 542
 quote$ -- 0
-skip$ -- 891
+skip$ -- 905
 stack$ -- 0
-substring$ -- 1923
-swap$ -- 2455
+substring$ -- 1934
+swap$ -- 2478
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 588
+type$ -- 597
 warning$ -- 3
-while$ -- 287
+while$ -- 290
 width$ -- 0
-write$ -- 900
+write$ -- 913
 (There were 3 warnings)

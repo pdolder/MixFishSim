@@ -336,9 +336,6 @@ INPUT ./Plots/f_dynamics.png
 INPUT Plots/Combined_Movement.png
 INPUT ./Plots/Combined_Movement.png
 INPUT ./Plots/Combined_Movement.png
-INPUT Plots/vessel_move_value.png
-INPUT ./Plots/vessel_move_value.png
-INPUT ./Plots/vessel_move_value.png
 INPUT ../analysis/Data_Aggregation_space_Rev2.pdf
 INPUT ../analysis/Data_Aggregation_space_Rev2.pdf
 INPUT ../analysis/Data_Aggregation_space_Rev2.pdf
