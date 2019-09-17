@@ -1,5 +1,5 @@
 ;blue;;0;0;0
-JM;red;;0;0;1
-PD;blue;;1;0;0
+JM;red;;0;0;0
+PD;blue;;0;0;0
 JJ;green!40!black;;0;0;0
-CM;purple;;2;0;0
+CM;purple;;0;0;0

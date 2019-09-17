@@ -227,10 +227,10 @@ plot_comp(gran = 20, dataIn = dataIn)
 dataIn <- get_data(basis = 'survey', yr = yr, mn = mn, wk = wk, dataIn = res[["survey"]][["log.mat"]]) 
 plot_comp(gran = 20, dataIn = dataIn)
 
-mtext(text = "Real Population        Commercial Data     Survey Data", side = 3, line = 2, outer = T, font = 2,   cex = 3 ) ## top
-mtext(text = "20 x 20 pt                        10 x 10  pt                         5 x 5 pt                     1 x 1 pt", side = 4, line = 2, outer = T, font = 2, cex  = 3) ## right side
+mtext(text = "True Population     Commercial Data        Survey Data", side = 3, line = 2, outer = T, font = 2,   cex = 3 ) ## top
+mtext(text = "20 x 20                         10 x 10                           5 x 5                      1 x 1 ", side = 4, line = 2, outer = T, font = 2, cex  = 3) ## right side
 
-legend(x = -250, y = -10, legend = c("Pop 1", "Pop 2", "Pop 3", "Pop 4"),
+legend(x = -330, y = -10, legend = c("Population 1", "Population 2", "Population 3", "Population 4"),
             fill = c("#E66101", "#FDB863", "#B2ABD2", "#5E3C99"), ncol = 4, xpd = NA, bty = "n", cex = 4)
  
 dev.off()
@@ -506,10 +506,10 @@ plot_temp(timestep = 'year', basis = 'real_pop')
 plot_temp(timestep = 'year', basis = 'commercial')
 plot_temp(timestep = 'year', basis = 'survey')
 
-mtext(text = "Real Population        Commercial Data     Survey Data", side = 3, line = 2, outer = T, font = 2,   cex = 3 ) ## top
+mtext(text = "True Population  Commercial Data        Survey Data", side = 3, line = 2, outer = T, font = 2,   cex = 3 ) ## top
 mtext(text = "yearly                                     monthly                                       weekly", side = 4, line = 2, outer = T, font = 2, cex  = 3) ## right side
 
-legend(x = -20, y = 0, legend = c("Pop 1", "Pop 2", "Pop 3", "Pop 4"),
+legend(x = -25, y = 0, legend = c("Population 1", "Population 2", "Population 3", "Population 4"),
             fill = c("#E66101", "#FDB863", "#B2ABD2", "#5E3C99"), ncol = 4, xpd = NA, bty = "n", cex = 4)
  
 dev.off()

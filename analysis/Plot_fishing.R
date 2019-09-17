@@ -90,22 +90,27 @@ cl <- do.call(rbind, cl)
 p1 <- ggplot(filter(logs, closure == "before"), aes(x = x , y = y)) +
 	geom_point(colour = "blue", alpha = 0.2, shape = "x") +
 	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~year) +
-	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
+	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm")) +
+	xlab("x distance") + ylab("y distance")
 
 p2 <- ggplot(cl) + geom_polygon(aes(long, lat, group = group), colour = "red",fill = NA) +
 	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~year) +
 	geom_point(aes(x = x, y = y), colour = "blue", 
 		   data = filter(logs, closure == "after"), 
 		   alpha = 0.2, shape = "x") +
-	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))
+	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))+
+	xlab("x distance") + ylab("y distance")
+
 
 p3 <- ggplot(cl) + geom_raster(aes(x, y, alpha = hab), data = filter(hab.df, hab > 0))+ 
 	geom_polygon(aes(long, lat, group = group), colour = "red",fill = NA) +
 	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~year) +
 	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"), 
-			   legend.position = "none")
+			   legend.position = "none") +
+	xlab("x distance") + ylab("y distance")
 
-plot_grid(p1, p2, p3, labels = c("(a) before closures", "(b) after closures", "(c) habitat spp3" ), vjust = 2, ncol = 1)
+
+plot_grid(p1, p2, p3, labels = c("(a) before closures", "(b) after closures", "(c) habitat Population 3" ), vjust = 2, ncol = 1)
 ggsave(file = "Closure_fishing_locations_yearly.png", width = 6, height = 18)
 
 }

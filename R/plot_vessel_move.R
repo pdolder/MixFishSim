@@ -36,7 +36,9 @@ return(print(ggplot(log, aes(x = x, y = y, group = paste(vessel, trip))) +
       geom_path(aes(colour = trip))+ theme_bw() +
       expand_limits(y = c(0,sim_init[["idx"]][["ncols"]]), 
 		    x = c(0,sim_init[["idx"]][["nrows"]])) + 
-	     theme(legend.position = "none")))
+	     theme(legend.position = "none") + ylab("y distance") + 
+	     xlab("x distance")
+	     ))
 
 }
 
@@ -66,7 +68,8 @@ return(print(ggplot(TotValDF, aes(x = x, y = y)) + geom_tile(aes(fill = value)) 
 	theme_bw() + scale_colour_gradient(low = "red", high = "darkred") + 
 	expand_limits(y = c(0,sim_init[["idx"]][["ncols"]]), 
 		      x = c(0,sim_init[["idx"]][["nrows"]])) + 
-       theme(legend.position = "none")
+       theme(legend.position = "none")+ ylab("y distance") + 
+	     xlab("x distance")
 ))
 
 }

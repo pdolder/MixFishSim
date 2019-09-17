@@ -78,6 +78,14 @@ dev.off()
 ## re-order so focus species is first
 f_diff$fpop <- factor(f_diff$pop, levels = c("spp_3", "spp_1", "spp_2", "spp_4"))
 
+levels(f_diff$fpop)[levels(f_diff$fpop) == "spp_1"] <- "Population 1"
+levels(f_diff$fpop)[levels(f_diff$fpop) == "spp_2"] <- "Population 2"
+levels(f_diff$fpop)[levels(f_diff$fpop) == "spp_3"] <- "Population 3"
+levels(f_diff$fpop)[levels(f_diff$fpop) == "spp_4"] <- "Population 4"
+
+f_diff$data_type[f_diff$data_type == "real_pop"] <- "True Population"
+
+
 pdf("f_diff_effectiveness.pdf", height = 6, width = 8)
 ggplot(f_diff, aes(x = resolution, y = diff))+
     geom_line(aes(colour = data_type)) +
@@ -93,10 +101,11 @@ dev.off()
 png("f_diff_effectiveness.png", units = "in", height = 8, width = 9, res = 600)
 
 ggplot(f_diff, aes(x = resolution, y = diff))+
-    geom_line(aes(colour = data_type), size = 2) +
+    geom_line(aes(colour = data_type, linetype = data_type), size = 2) +
     facet_grid(timescale ~ fpop) +
     geom_hline(yintercept = 0, linetype = 2, size = 1) +
     scale_colour_manual("Data source", values = c("#d95f02", "#7570b3", "#1b9e77")) +
+    scale_linetype_manual("Data source", values = 1:3) + 
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
 	  axis.text = element_text(size = 14, face = "bold"),
 	  axis.title = element_text(size = 14, face = "bold")) +

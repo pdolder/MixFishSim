@@ -137,7 +137,18 @@ Fs <- filter(combined, metric == "F", basis == "high_pop", pop == "spp_3")
 Fs[,c(4:6)] <- round(Fs[,c(4:6)], 2)
 Fs <- Fs[order(Fs$pop, Fs$diff),]
 
-colnames(Fs)[4:6] <- c("f_before", "f_after", "f_change")
+colnames(Fs)[4:6] <- c("F before", "F after", "F change")
+
+Fs$pop[Fs$pop == "spp_1"] <- "Population 1"
+Fs$pop[Fs$pop == "spp_2"] <- "Population 2"
+Fs$pop[Fs$pop == "spp_3"] <- "Population 3"
+Fs$pop[Fs$pop == "spp_4"] <- "Population 4"
+
+Fs$data_type[Fs$data_type == "real_pop"] <- "True Population"
+
+Fs <- Fs[c("scenario", "pop", "F before", "F after", "F change", "data_type", "timescale", "resolution")]
+
+colnames(Fs) <- c("Scenario No", "Population", "F before", "F after", "% F change", "data type", "timescale", "resolution")
 
 print(xtable(Fs, digits = 2, caption = "Fishing mortality effects of the
 	     closure scenarios (ordered by most effective first)", label =
@@ -190,17 +201,29 @@ combined_pop_an$year <- as.numeric(combined_pop_an$year) # to fix x-axis breaks
 
 combined_pop_an$res <- as.factor(combined_pop_an$res)
 
+
+combined_pop_an$pop[combined_pop_an$pop == "spp_1"] <- "Population 1"
+combined_pop_an$pop[combined_pop_an$pop == "spp_2"] <- "Population 2"
+combined_pop_an$pop[combined_pop_an$pop == "spp_3"] <- "Population 3"
+combined_pop_an$pop[combined_pop_an$pop == "spp_4"] <- "Population 4"
+
+combined_pop_an$data_type[combined_pop_an$data_type == "real_pop"]  <- "True Population"
+
+
 png('F_trendsREV.png', units = "in", height = 8, width = 9, res = 600)
+
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F'), 
        aes(x = year, y = data, group = combined)) + 
-geom_line(aes(colour = timescale, linetype = res), size = 1) + 
+geom_line(aes(colour = timescale, linetype = res), size = 1) +
+scale_linetype_manual(values = rev(1:4)) + 
 facet_grid(data_type ~pop) + expand_limits(y = 0) +theme_bw() +
 geom_vline(xintercept = 30, linetype = 2, colour = "grey") + ylab("Fishing mortality") +
-theme(axis.text.x = element_text(angle = -90, hjust = 0),
+theme(axis.text.x = element_text(hjust = 0),
       panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
 	  axis.text = element_text(size = 12, face = "bold"),
 	  axis.title = element_text(size = 12, face = "bold")) + 
-		  scale_x_continuous(breaks = seq(0,50,10))
+		  scale_x_continuous(breaks = seq(0,50,10)) + 
+		  xlab("Year") + ylab(expression(Fishing~mortality~year^{-1}))
 dev.off()
 
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F', pop == "spp_3"), 

@@ -29,7 +29,8 @@ if(is.null(pop_bios)) {
 print(ggplot(log, aes(x = x, y = y)) + 
       geom_point(aes(colour = vessel)) +
       geom_path(aes(colour = vessel)) + 
-      theme_bw()) 
+      theme_bw() + xlab("x distance") + ylab("y distance")
+      )
 }
 
 
@@ -60,7 +61,9 @@ print(ggplot(TotValDF, aes(x = x, y = y)) + geom_tile(aes(fill = value)) +
 	theme_bw() + #scale_colour_gradient(low = "red", high = "darkred") + 
 	expand_limits(y = c(0,sim_init[["idx"]][["ncols"]]), 
 		      x = c(0,sim_init[["idx"]][["nrows"]])) +
-      theme(legend.position = "none")
+      theme(legend.position = "none") +
+      xlab("x distance") + ylab("y distance")
+
 	
 	)
 

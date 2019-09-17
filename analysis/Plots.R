@@ -40,12 +40,26 @@ df <- daily_fdyn(res)
 mean_f <- df %>% group_by(pop, day) %>%
 	summarise(data = mean(data, na.rm = T))
 
+## relabel for plot
+df$pop[df$pop == "spp_1"] <- "Population 1"
+df$pop[df$pop == "spp_2"] <- "Population 2"
+df$pop[df$pop == "spp_3"] <- "Population 3"
+df$pop[df$pop == "spp_4"] <- "Population 4"
+
+mean_f$pop[mean_f$pop == "spp_1"] <- "Population 1"
+mean_f$pop[mean_f$pop == "spp_2"] <- "Population 2"
+mean_f$pop[mean_f$pop == "spp_3"] <- "Population 3"
+mean_f$pop[mean_f$pop == "spp_4"] <- "Population 4"
+
+
 ggplot(filter(df, !is.na(data)), aes(x = day, y = data, group = year)) +
 	geom_line(colour = "grey", alpha = 0.4) +
 	geom_line(data = filter(mean_f,!is.na(data)), aes(group = pop),
 		  colour = "black", size = 1) +  
 	facet_wrap(~pop) +
-	theme_classic()
+	theme_classic() + 
+	ylab(expression(Fishing~mortality~day^{-1})) +
+	xlab("Day") 
 	
 ggsave(file = file.path('..', 'write_up', 'Plots', 'f_dynamics.png'), width = 8, height = 8)
 
@@ -105,8 +119,8 @@ stepDF <- dplyr::filter(as.data.frame(logs), fleet == 3, vessel == 2)
 	stepDF$step_lagged   <- c(stepDF$stepD[2:nrow(stepDF)],NA)
 	stepDF$angles_lagged <- c(stepDF$angles[2:nrow(stepDF)],NA)
 
-	plot(stepDF$val_lagged, stepDF$step_lagged, main = "Realised step distances", xlab = "value", ylab = "step distance")
-	plot(stepDF$val_lagged, stepDF$angles_lagged, main = "Realised turning angles", xlab = "value", ylab = "change in angle")
+	plot(stepDF$val_lagged, stepDF$step_lagged, main = "Realised step distances", xlab = "value (Euros)", ylab = "step distance")
+	plot(stepDF$val_lagged, stepDF$angles_lagged, main = "Realised turning angles", xlab = "value (Euros)", ylab = "change in angle")
 
 
 stepDF2 <- stepDF %>% select("val_lagged", "step_lagged", "angles_lagged") %>% 
@@ -123,7 +137,8 @@ colnames(stepDF2)[3] <- "data"
 p4 <- ggplot(stepDF2, aes(x = value, y = data)) +
 	geom_point() + theme_bw() +
 	facet_wrap(~variable, ncol = 2, scale = "free") +
-	ylab("distance or angle")
+	ylab("step distance or turning angle") + 
+	xlab("value (Euros)")
 
 library(cowplot)
 

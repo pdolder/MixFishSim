@@ -25,13 +25,13 @@ plot_catch_comp(gran = c(1), logs = logs, fleets = 1:5,
 cols <- brewer.pal(9, "BuGn")
 
 png(file = file.path("..", "write_up","Plots", "pop_dist.png"), width = 1600, height = 1600)
-par(mfrow=c(4,4), mar = c(1,1,1,1))
+par(mfrow=c(4,4), oma = c(4,4,4,4), mar = c(1,1,1,1))
 
 for(j in round(seq.int(1,52,length.out = 4),0)) {
 for(i in 1:4) {
 image(seq_len(100), seq_len(100), log(pop[[9,j]][[i]]+1), col = cols)
-if(i==1) {text(x = 9, y = 94, labels = paste("t =",j), cex= 2, font = 2)}
-if(j==1) {text(x = 92, y = 94, labels = paste("Pop ",i), cex = 2, font = 2)}
+if(i==1) {text(x = 17, y = 94, labels = paste("week =",j), cex= 3, font = 2, col = "blue")}
+if(j==1) {text(x = 78, y = 94, labels = paste("Population ",i), cex = 3, font = 2, col = "blue")}
 }
 
 }
