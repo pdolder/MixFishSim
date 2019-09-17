@@ -88,7 +88,7 @@ interactions, we developed a highly resolved spatiotemporal discrete-event
 simulation model incorporating: i) delay-difference population dynamics, ii)
 population movement using Gaussian Random Fields to simulate patchy,
 heterogeneously distributed populations, and iii) fishery dynamics for multiple
-fleet characteristics based on species targeting under an explore-exploit
+fleet characteristics based on population targeting under an explore-exploit
 strategy. This is implemented via a mix of correlated random walk movement (for
 exploration) and learned behaviour (for exploitation) phases of the fisheries.
 \\ 
@@ -350,7 +350,7 @@ and $\sigma^2_{p}$ the mean and standard deviation of the population
 temperature tolerance. \\
 
 The final combined process results in a population structure and movement
-pattern unique to each species, with population movement occurring on a weekly
+pattern unique to each population, with population movement occurring on a weekly
 basis. The decision to model population movement on a weekly timescale was to
 reflect that fish tend to aggregate in species specific locations that have
 been observed to last around one to two weeks \citep{Poos2007}. Therefore this
@@ -361,7 +361,7 @@ year with seasonal spawning patterns (Figure \ref{S-fig:5}).
 
 Fleet dynamics can be broadly categorised into three components: fleet
 targeting - that determined the fleet catch efficiency and preference towards a
-particular species; trip-level decisions, that determines the initial location
+particular population; trip-level decisions, that determines the initial location
 to be fished at the beginning of a trip; and within-trip decisions, that
 determines movement from one fishing spot to another within a trip. An
 explore-exploit type strategy was implemented in the model that combined these
@@ -379,7 +379,7 @@ Each fleet of \textit{n} vessels was characterised by both a general
 efficiency, $Q_{fl}$, and a population specific efficiency, ${Q_{fl, p}}$ which
 are each bound by [0,1]. The product of these parameters [$Q_{fl} \cdot
 Q_{fl, p}$] affects the overall catch rates for the fleet and the preferential
-targeting of one population over another. This, in combination with the
+targeting of one species over another. This, in combination with the
 parameter choice for the step-function defined below (as well as some
 randomness from the exploratory fishing process) determined the preference of
 fishing locations for the fleet.  
@@ -423,7 +423,7 @@ fishing success, measured as the summed value of fish caught (revenue, $Rev$);
 Rev_{c,d} = \sum_{p=1}^{P} L_{c,d,p} \cdot Pr_{p} 
 \end{equation}
 where $L_{c,d,p}$ is landings of a population $p$, and $Pr_{p}$ price of a
-population. All species prices were kept the same across fleets and seasons.
+population. All population prices were kept the same across fleets and seasons.
 Here, when fishing is successful vessels remain in a similar location and
 continue to exploit the local fishing grounds. When unsuccessful, they move
 some distance away from the current fishing location.  The movement distance
@@ -545,12 +545,13 @@ week, while population movement is every week. \\
 To answer this question we compare different spatial and temporal aggregations
 of the true population distributions to:
 \begin{enumerate}[label=\alph*)]
-	\item \textbf{fisheries-independent data:} the inferred population from
-		a fixed-site sampling survey design as commonly used for
+	\item \textbf{fisheries-independent data:} the inferred population
+		density from a fixed-site sampling survey design as commonly
+		used for
 		fisheries monitoring purposes;
-	\item \textbf{fisheries-dependent data:} the inferred population from
-		our fleet model that includes fishery-induced sampling
-		dynamics.
+	\item \textbf{fisheries-dependent data:} the inferred population
+		density from our fleet model that includes fishery-induced
+		sampling dynamics.
 \end{enumerate}
 
 We allow the simulation to run unrestricted for 30 years, then implement
@@ -580,7 +581,7 @@ In total 28 closure scenarios were run that represent combinations of:
 	\item \textbf{spatial resolutions:} 1 x 1 grid, 5 x 5 grid, 10 x 10
 		grid and 20 x 20 grid,
 	\item \textbf{closure basis:} highest 5 \%  of catch rates for the
-		protected species
+		protected population
 \end{itemize}
 
 Survey closures were on an annual basis only, as this was the most temporally
@@ -636,14 +637,14 @@ we aggregate the data over a smaller geographical region at different
 timescales, with weekly (top), monthly (middle) and yearly (bottom) catch
 compositions from across an aggregated 20 x 20 area (Figure \ref{fig:2}). In
 the true population, the monthly aggregation captures the major patterns of
-composition seen in the weekly data with the percentage of different species in
-the catch having similar mean and standard deviations.  In the weekly data
-population 1 = 9.36 (3.99), population 2 = 83.2 (5.60), population 3 = 3.57 (1.23),
-population 4 = 3.91 (1.59); in the monthly data population 1 = 9.23 (3.87), population 2
-= 83.3 (5.52), population 3 = 3.62 (1.15), population 4 = 3.86 (1.52). While means
-were similar some of the variation was lost when aggregated to an annual level;
-population 1 = 9.90 (0.173), population 2 = 82.2 (0.308), population 3 = 3.82 (0.119),
-population 4 = 4.03 (0.0502).\\
+composition seen in the weekly data with the percentage of different
+populations in the catch having similar mean and standard deviations.  In the
+weekly data population 1 = 9.36 (3.99), population 2 = 83.2 (5.60), population
+3 = 3.57 (1.23), population 4 = 3.91 (1.59); in the monthly data population 1 =
+9.23 (3.87), population 2 = 83.3 (5.52), population 3 = 3.62 (1.15), population
+4 = 3.86 (1.52). While means were similar some of the variation was lost when
+aggregated to an annual level; population 1 = 9.90 (0.173), population 2 = 82.2
+(0.308), population 3 = 3.82 (0.119), population 4 = 4.03 (0.0502).\\
 
 The commercial data on a weekly basis shows some of the same patterns as the
 true population, though the population 1 (in red) is less well represented and
