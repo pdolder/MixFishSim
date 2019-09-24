@@ -25,13 +25,6 @@
 
 \usepackage{enumitem}
 \usepackage{comment}
-% For track-changes
-%\usepackage[draft]{changes}
-\usepackage[final]{changes} %% to turn off changes
-\definechangesauthor[color = red]{JM}
-\definechangesauthor[color = blue]{PD}
-\definechangesauthor[color = green!40!black]{JJ}
-\definechangesauthor[color = purple]{CM}
 
 \modulolinenumbers[1]
 
@@ -239,13 +232,13 @@ follows (the full parameter list is detailed in Table \ref{tab: pop_variable}):
 \begin{equation}
 	\begin{split}
 	B_{c,d+1} = &\\
-	& (1 + \rho) B_{c,d} \cdot \mathrm{e}^{-Z_{c,d}} - \rho \cdot
+	& \left(1 + \rho \right) B_{c,d} \cdot \mathrm{e}^{-Z_{c,d}} - \rho \cdot
 	\mathrm{e}^{-Z_{c,d}} \hspace{2.9cm}
 	\times \\  
-	& (B_{c,d-1} \cdot \mathrm{e}^{-Z_{c,d-1}} + Wt_{R-1} \cdot \alpha_{d-1} \cdot
-	R_{\tilde{y}(c,y,d-1)})
-	\hspace{0.4cm} + \\
-	& Wt_{R} \cdot \alpha_{d} \cdot R_{\tilde{y}(c,y,d)} 
+	& \left(B_{c,d-1} \cdot \mathrm{e}^{-Z_{c,d-1}} + Wt_{R-1} \cdot \left( \alpha_{d-1} \cdot
+	R_{\tilde{y}(c)}\right) \right)
+	\hspace{0.9cm} + \\
+	& Wt_{R} \cdot \left( \alpha_{d} \cdot R_{\tilde{y}(c) \right)}
 	\end{split}
 \end{equation}
 where $\rho$ is Brody's coefficient, shown to be equal to $\mathrm{e}^{-K}$
@@ -253,8 +246,7 @@ when $K$ is the growth rate from a von Bertalanffy logistic growth model
 \citep{Schnute1985}. $Wt_{R-1}$ is the average weight of fish prior to
 recruitment, while $Wt_{R}$ is the average recruited weight. $\alpha_{d}$
 represents the proportion of fish recruited during that day for the year, while
-$R_{c,\tilde{y},d}$ is the annual recruits in year $y$ and day $d$ for cell
-$c$. \\
+$R_{c,\tilde{y}(c)}$ is the annual recruits in year $y$ for cell $c$. \\
 
 Mortality $Z_{c,d}$ can be decomposed to natural mortality, $M_{c,d}$, and
 fishing mortality, $F_{c,d}$, where both $M_{c,d}$ and $F_{c,d}$ are
@@ -268,7 +260,7 @@ where $C_{c,d}$ is the summed catch from the fishing model across all fleets
 and vessels in cell $c$ for the population during the day $d$, and $B_{c,d}$
 the daily biomass for the population in the cell. Here, catch is the sum of
 those across all fleets and vessels, $C_{c, d} =
-\sum\limits_{fl=1}^{fl}\sum\limits_{v=1}^{v} E_{fl, v, c, d} \cdot Q_{fl} \cdot
+\sum\limits_{fl=1}^{FL}\sum\limits_{v=1}^{V} E_{fl, v, c, d} \cdot Q_{fl} \cdot
 D_{c, d}$ with $fl$ and $v$ the fleet and vessel respectively and
 $E_{fl,v,c,d}$ and $Q_{fl}$ fishing effort and catchability of the gear, and
 $D_{c,d}$ is the density of the population at the location fished. \\
@@ -285,10 +277,10 @@ relationship. The Beverton-Holt relationship is defined as\citep{Beverton1957}:
 	     R_{c,d} \sim & \log N[(\log(\bar{R}_{c,d}),\sigma^2)]
 	\end{split}
 \end{equation}
-Where $\alpha$ is the maximum recruitment rate, $\beta$ the spawning stock
+where $\alpha$ is the maximum recruitment rate, $\beta$ the spawning stock
 biomass (SSB) required to produce half the maximum stock size, $S$ current
 stock size and $\sigma^2$ the variability in the recruitment due to stochastic
-processes, the stochastic Ricker form \citep{Ricker1954}:
+processes. The stochastic Ricker form \citep{Ricker1954} is:
 \begin{equation}
 	\begin{split}
 	\bar{R}_{c,d} = & B_{c,d} \cdot \mathrm{e}^{(\alpha - \beta \cdot B_{c,d})} \\	
@@ -530,7 +522,7 @@ knowledge) is reached approximately halfway through the simulation.  \\
 
 The survey simulation was set up with a fixed gridded station design with 100
 stations fished each year, starting on day 92 and ending on day 112 (5 stations
-per day) with same catchability parameters for all populations ($Q_{p} = 1$).
+per day) with same catchability parameter ($Q_{p} = 1$) for all populations $p$.
 This approximates a real world survey design with limited seasonal and spatial
 coverage. 
 
@@ -606,7 +598,7 @@ exploits three different fishing grounds, each of them multiple times (Figure
 apart are fished (Figure \ref{fig:mv} (B)). These different locations relate to
 areas where the highest revenue were experienced, as shown by Figure
 \ref{fig:mv} (D), where several vessels tracks are overlaid on the revenue
-field, i.e. $$\sum^c_{c=1}\sum^s_{s=1} B_{s,c} \cdot Q_{s,c}$$
+field, i.e. $$Rev_{c} = \sum^P_{p=1} B_{c,p} \cdot Q_{fl,p} \cdot Pr_{p}$$
 
 Vessels from the same fleet (and therefore targeting preference) may exploit
 some shared and some different fishing grounds depending on their own personal
@@ -935,10 +927,6 @@ otherwise. In future, we recommend use of the framework to test hypothesis that
 are otherwise unable to be analysed using real world data due to limitations of
 data collection. That way the knowledge gained through simulation can inform
 the future design of management measures. 
-
-\section*{Abbreviations} Detail any unusual ones used.
-
-\section*{Acknowledgements} those providing help during the research..
 
 \section*{Funding} This work was supported by the MARES doctoral training
 program (MARES\_14\_15) and the Centre for Environment, Fisheries and
