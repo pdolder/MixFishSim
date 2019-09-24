@@ -29,6 +29,9 @@ log <- filter(as.data.frame(logs), fleet %in% fleet_no, vessel %in% vessel_no, y
 
 log$trip <- as.factor(log$trip)
 
+## We need to identify trips that are jumps across the taurus
+log$move_type <- ifelse(!is.na(log$stepD), "CRW", "Experience")
+
 if(is.null(fleets_init) | is.null(pop_bios)) {
 
 return(print(ggplot(log, aes(x = x, y = y, group = paste(vessel, trip))) +
@@ -37,8 +40,11 @@ return(print(ggplot(log, aes(x = x, y = y, group = paste(vessel, trip))) +
       expand_limits(y = c(0,sim_init[["idx"]][["ncols"]]), 
 		    x = c(0,sim_init[["idx"]][["nrows"]])) + 
 	     theme(legend.position = "none") + ylab("y distance") + 
-	     xlab("x distance")
+	     xlab("x distance")+ 
+	expand_limits(y = c(0,sim_init[["idx"]][["ncols"]]), 
+		      x = c(0,sim_init[["idx"]][["nrows"]])
 	     ))
+)
 
 }
 

@@ -58,7 +58,7 @@ ggplot(filter(df, !is.na(data)), aes(x = day, y = data, group = year)) +
 		  colour = "black", size = 1) +  
 	facet_wrap(~pop) +
 	theme_classic() + 
-	ylab(expression(Fishing~mortality~day^{-1})) +
+	ylab(expression(Fishing~mortality~(day^{-1}))) +
 	xlab("Day") 
 	
 ggsave(file = file.path('..', 'write_up', 'Plots', 'f_dynamics.png'), width = 8, height = 8)
@@ -99,9 +99,9 @@ logs <- combine_logs(res[["fleets_catches"]])
 source("../R/plot_vessel_move.R")
 
 p1 <- plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 3, fleets_init = fleets, 
-		 vessel_no = 14,  year_trip = 30, trip_no = 1, pop_bios = res[["pop_bios"]])
+		 vessel_no = 4,  year_trip = 30, trip_no = 1, pop_bios = res[["pop_bios"]])
 
-p2 <- plot_vessel_move(logs = logs, fleet_no = 3, vessel_no = 4, year_trip = 30, trip_no =  1:12)
+p2 <- plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 3, vessel_no = 4, year_trip = 30, trip_no =  1:12)
 
 source("../R/plot_fleet_trip.R")
 

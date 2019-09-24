@@ -144,14 +144,16 @@ Fs$pop[Fs$pop == "spp_2"] <- "Population 2"
 Fs$pop[Fs$pop == "spp_3"] <- "Population 3"
 Fs$pop[Fs$pop == "spp_4"] <- "Population 4"
 
-Fs$data_type[Fs$data_type == "real_pop"] <- "True Population"
+Fs$data_type[Fs$data_type == "real_pop"] <- "true Population"
 
-Fs <- Fs[c("scenario", "pop", "F before", "F after", "F change", "data_type", "timescale", "resolution")]
+Fs <- Fs[c("scenario", "F after", "F change", "data_type", "timescale", "resolution")]
 
-colnames(Fs) <- c("Scenario No", "Population", "F before", "F after", "% F change", "data type", "timescale", "resolution")
+colnames(Fs) <- c("Scenario No", "F after closure", "% F change", "data type", "timescale", "resolution")
 
 print(xtable(Fs, digits = 2, caption = "Fishing mortality effects of the
-	     closure scenarios (ordered by most effective first)", label =
+	     closure scenarios on population 3 (ordered by most effective
+						first). The fishing mortality
+	     rate before the closure was 1.08.", label =
 	     "tab:6"), caption.placement = "top", file =
 file.path("..","write_up", "F_changes.tex"),include.rownames = FALSE,
 tabular.environment= "longtable", floating = FALSE)

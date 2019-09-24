@@ -309,12 +309,12 @@ animal populations where density is more similar in nearby locations
 \citep{Tobler1970, F.Dormann2007, Poos2007} and we change the parameters to
 implement different spatial structures for the different populations using the
 \textit{RandomFields} R package \citep{Schlater2015}. We define a stationary
-habitat field and combine it with a temporally dynamic thermal tolerance field to
-imitate two key drivers of population dynamics. Each population was initialised
-at a single location, and subsequently moved across the entire space according
-to a probabilistic distribution based on habitat suitability (represented by
-the normalised values
-from the GRFs), temperature and distance from current cell: 
+habitat field with an anisotropic pattern (to simulate a depth gradient) and
+combine it with a temporally dynamic thermal tolerance field to imitate two key
+drivers of population dynamics. Each population was initialised at a single
+location, and subsequently moved across the entire space according to a
+probabilistic distribution based on habitat suitability (represented by the
+normalised values from the GRFs), temperature and distance from current cell: 
 \begin{equation}
 	Pr(C_{wk+1} = J | C_{wk} =I) = \frac{\mathrm{e}^{-\lambda \cdot d_{I,J}} \cdot
 		(Hab_{J,p}^2 \cdot
@@ -391,8 +391,8 @@ previously successful fishing locations. This was achieved by calculating an
 expected revenue based on the catches from locations fished in the preceding
 trip as well as the same month periods in previous years and the travel costs
 from the port to the fishing grounds. Then a vessel chooses randomly from the
-top 75 \% of fishing events as defined by the expected profit, that has a
-seasonal component. 
+top 70 \% of fishing events (defined as the `threshold') in terms of expected
+profit within that season. 
 
 \subsubsection{Decision about where to fish within the trip}
 
@@ -937,9 +937,9 @@ Aquaculture Science seedcorn program (DP227AC).
 \input{parameter_tables.tex}
 
 \clearpage
-\footnotesize
 \input{F_changes.tex}
 
+\clearpage
 \input{Temp_proportions.tex}
 
 
@@ -956,9 +956,10 @@ Aquaculture Science seedcorn program (DP227AC).
 	\includegraphics[width = \linewidth]{Plots/pop_dist}
 	\caption{Spatial density (log abundance) for each of the four
 		populations at four time steps. The darker the colour the
-		greater the density of the population. Note that you can see
-		the diagonal isotropic patterns in populations 2 and 3 and
-		concentrated spawning areas in the second row of the panels
+		greater the density of the population. Note that a diagonal
+		anisotropic pattern representing a depth gradient can be
+		clearly seen in populations 2 and 3. The concentrated spawning
+		areas are also visible in the second row of the panels
 		(t=18).}
 	\label{fig:9}
 \end{figure}	
@@ -976,11 +977,13 @@ Aquaculture Science seedcorn program (DP227AC).
 	\includegraphics[width = \linewidth]{Plots/Combined_Movement}
 	\caption{(A) The fishing locations (points) and movements (lines) of a
 		single vessel during a trip overlaid on the revenue of a
-		fishing site (catch x price); (B) the fishing locations of the
-		vessel over several trips (value field changes over the period
-		so not shown). Note that the field is wrapped on a torus so
-		that distances between opposite side of the spatial domain are
-		considered next to each other, hence apparent large movements;
+		fishing site (landings x price); (B) the fishing locations of
+		the vessel over several trips (value field changes over the
+		period so not shown). Note that movements are a mixture of
+		correlated random walk and experience-based, and that the field
+		is wrapped on a torus so that distances between opposite side
+		of the spatial domain are considered next to each other. For
+		these reasons there are moves larger than the step length in D;
 		(C) the locations of multiple vessels from the same fleet
 		overlaid on the value field, (D) the realised step distance and
 		turning angles for a single vessel over the simulation.}
