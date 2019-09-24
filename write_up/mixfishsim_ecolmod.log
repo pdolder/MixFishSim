@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  24 SEP 2019 20:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  24 SEP 2019 21:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1333,72 +1333,69 @@ Package pdftex.def Info: Plots/pop_dist.png  used on input line 956.
 <Plots/f_dynamics.png, id=607, 578.16pt x 578.16pt>
 File: Plots/f_dynamics.png Graphic file (type png)
 <use Plots/f_dynamics.png>
-Package pdftex.def Info: Plots/f_dynamics.png  used on input line 967.
+Package pdftex.def Info: Plots/f_dynamics.png  used on input line 968.
 (pdftex.def)             Requested size: 345.0pt x 344.99312pt.
 <Plots/Combined_Movement.png, id=608, 867.4809pt x 804.1242pt>
 File: Plots/Combined_Movement.png Graphic file (type png)
 <use Plots/Combined_Movement.png>
-Package pdftex.def Info: Plots/Combined_Movement.png  used on input line 976.
+Package pdftex.def Info: Plots/Combined_Movement.png  used on input line 977.
 (pdftex.def)             Requested size: 345.0pt x 319.8035pt.
 <../analysis/Data_Aggregation_space_Rev2.pdf, id=609, 1156.32pt x 1734.48pt>
 File: ../analysis/Data_Aggregation_space_Rev2.pdf Graphic file (type pdf)
 <use ../analysis/Data_Aggregation_space_Rev2.pdf>
-Package pdftex.def Info: ../analysis/Data_Aggregation_space_Rev2.pdf  used on input line 992.
+Package pdftex.def Info: ../analysis/Data_Aggregation_space_Rev2.pdf  used on input line 995.
 (pdftex.def)             Requested size: 345.0pt x 517.4897pt.
 <../analysis/Data_Aggregation_time_Rev2.pdf, id=610, 1156.32pt x 1734.48pt>
 File: ../analysis/Data_Aggregation_time_Rev2.pdf Graphic file (type pdf)
 <use ../analysis/Data_Aggregation_time_Rev2.pdf>
-Package pdftex.def Info: ../analysis/Data_Aggregation_time_Rev2.pdf  used on input line 999.
+Package pdftex.def Info: ../analysis/Data_Aggregation_time_Rev2.pdf  used on input line 1002.
 (pdftex.def)             Requested size: 345.0pt x 517.4897pt.
 
-LaTeX Warning: Float too large for page by 21.79526pt on input line 1005.
+LaTeX Warning: Float too large for page by 21.79526pt on input line 1008.
 
 <../analysis/F_trendsREV.png, id=611, 650.43pt x 578.16pt>
 File: ../analysis/F_trendsREV.png Graphic file (type png)
 <use ../analysis/F_trendsREV.png>
-Package pdftex.def Info: ../analysis/F_trendsREV.png  used on input line 1009.
+Package pdftex.def Info: ../analysis/F_trendsREV.png  used on input line 1012.
 (pdftex.def)             Requested size: 345.0pt x 306.67035pt.
 <../analysis/f_diff_effectiveness.png, id=612, 650.43pt x 578.16pt>
 File: ../analysis/f_diff_effectiveness.png Graphic file (type png)
 <use ../analysis/f_diff_effectiveness.png>
-Package pdftex.def Info: ../analysis/f_diff_effectiveness.png  used on input line 1018.
+Package pdftex.def Info: ../analysis/f_diff_effectiveness.png  used on input line 1021.
 (pdftex.def)             Requested size: 345.0pt x 306.67035pt.
 <./Plots/Closure_fishing_locations_yearly.png, id=613, 433.62pt x 1300.86pt>
 File: ./Plots/Closure_fishing_locations_yearly.png Graphic file (type png)
 <use ./Plots/Closure_fishing_locations_yearly.png>
-Package pdftex.def Info: ./Plots/Closure_fishing_locations_yearly.png  used on input line 1026.
+Package pdftex.def Info: ./Plots/Closure_fishing_locations_yearly.png  used on input line 1029.
 (pdftex.def)             Requested size: 172.5pt x 517.4963pt.
 
-LaTeX Warning: Float too large for page by 22.2463pt on input line 1033.
+LaTeX Warning: Float too large for page by 22.2463pt on input line 1036.
 
 [34
 
 ] [35 <./Plots/pop_dist.png>] [36 <./Plots/f_dynamics.png>] [37 <./Plots/Combined_Movement.png (PNG copy)>] [38 <../analysis/Data_Aggregation_space_Rev2.pdf>] [39 <../analysis/Data_Aggregation_time_Rev2.pdf>] [40 <../analysis/F_trendsREV.png (PNG copy)>] [41 <../analysis/f_diff_effectiveness.png (PNG copy)>] [42 <./Plots/Closure_fishing_locations_yearly.png (PNG copy)>] (./mixfishsim_ecolmod.bbl [43
 
 ] [44] [45] [46] [47] [48] [49]) [50]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1042.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1042.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1045.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1045.
 (./mixfishsim_ecolmod.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1042.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1042.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1045.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1045.
 Package rerunfilecheck Info: File `mixfishsim_ecolmod.out' has not changed.
 (rerunfilecheck)             Checksum: 3C6D77A4DD5640CBB797AF8C92EBDA13;2229.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1042.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1045.
  ) 
 Here is how much of TeX's memory you used:
  21071 strings out of 492982
  409783 string characters out of 6134895
- 540096 words of memory out of 5000000
+ 540797 words of memory out of 5000000
  24027 multiletter control sequences out of 15000+600000
  13425 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,19n,68p,742b,929s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,19n,68p,862b,929s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/symbols/msbm10.pfb>
-Output written on mixfishsim_ecolmod.pdf (50 pages, 3531800 bytes).
+Output written on mixfishsim_ecolmod.pdf (50 pages, 3531664 bytes).
 PDF statistics:
  842 PDF objects out of 1000 (max. 8388607)
  742 compressed objects within 8 object streams
