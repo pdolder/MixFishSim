@@ -25,10 +25,18 @@ log <- filter(as.data.frame(logs), fleet %in% fleet_no, year %in% year_trip, tri
 
 log$vessel <-as.factor(log$vessel)
 
+## We need to identify trips that are jumps across the taurus
+log$move_type[2:nrow(log)] <- ifelse(!is.na(log$stepD[1:(nrow(log)-1)]), "CRW", "Experience")
+log$move_type[2:nrow(log)] <- ifelse(log$move_type[2:nrow(log)] == "CRW" & log$stepD[1:(nrow(log)-1)] > 10, "OutsideMove", log$move_type[2:nrow(log)])
+
+
+
 if(is.null(pop_bios)) {
 print(ggplot(log, aes(x = x, y = y)) + 
       geom_point(aes(colour = vessel)) +
-      geom_path(aes(colour = vessel)) + 
+      geom_path(data = filter(log, move_type == "CRW"), aes(colour = vessel)) +
+      geom_path(data = filter(log, move_type == "Experience"), aes(colour = vessel)) +
+      geom_path(data = filter(log, move_type == "OutsideMove"), aes(colour = vessel)) +
       theme_bw() + xlab("x distance") + ylab("y distance")
       )
 }
@@ -57,7 +65,9 @@ TotValDF$y <- rep(seq_len(sim_init[["idx"]][["ncols"]]), each = sim_init[["idx"]
 print(ggplot(TotValDF, aes(x = x, y = y)) + geom_tile(aes(fill = value)) +
 	scale_fill_gradient2(low = "blue", high = "darkblue") +
 	geom_point(data = log, aes(colour = vessel)) +
-        geom_path(data = log, aes(colour = vessel)) + 
+	geom_path(data = filter(log, move_type == "CRW"), aes(colour = vessel), linetype = "solid") +
+      	geom_path(data = filter(log, move_type == "Experience"), aes(colour = vessel), linetype = "longdash") +
+      	geom_path(data = filter(log, move_type == "OutsideMove"), aes(colour = vessel), linetype = "twodash") +
 	theme_bw() + #scale_colour_gradient(low = "red", high = "darkred") + 
 	expand_limits(y = c(0,sim_init[["idx"]][["ncols"]]), 
 		      x = c(0,sim_init[["idx"]][["nrows"]])) +

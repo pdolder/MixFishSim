@@ -52,10 +52,10 @@
 		\hline
 		\multicolumn{3}{l}{\textit{Thermal tolerance}} \\
 		\hline
-		$T_{c,wk}$ & Temperature for cell in week & $^\circ$C \\
-		$\mu_{p}$ & Mean of the thermal tolerance for population & $^\circ$C \\
+		$T_{c,wk}$ & Temperature for cell $c$ in week $wk$ & $^\circ$C \\
+		$\mu_{p}$ & Mean of the thermal tolerance for population $p$ & $^\circ$C \\
 		$\sigma^{2}_{p}$ & Standard deviation of thermal tolerance for
-		the population & $^\circ$C \\
+		population $p$ & $^\circ$C \\
 		\hline
 		\multicolumn{3}{l}{\textit{Population movement model}} \\
 		\hline
@@ -81,7 +81,7 @@
 		$Pr_{p}$ & Average price of population $p$ & \euro
 		\hspace{0.1cm} kg$^{-1}$ \\
 		Le & Step length for vessel & - \\
-		Br & Bearing & degrees \\
+		$Br$ & Bearing & degrees \\
 		$k$ & Concentration parameter for von mises distribution & - \\
 		$\beta_{1}$ & shape parameter for step function & - \\
 		$\beta_{2}$ & shape parameter for step function & - \\
@@ -150,7 +150,8 @@
 	\hline
 	step function $\beta_1$ & 1 & 2 & 1 & 2 & 3 \\
 	step function $\beta_2$ & 10 & 15 & 8 & 12 & 7 \\
-	step function $\beta_3$ & Q90 & Q90 & Q85 & Q90 & Q80 \\
+	step function $\beta_3$, the landings value $nth$ quantile &
+	90 & 90 & 85 & 90 & 80 \\
 	step function $rate$ & 20 & 30 & 25 & 35 & 20 \\
 	Past Knowledge = TRUE & & & & & \\
 	Threshold & 0.7 & 0.7 & 0.7 & 0.7 & 0.7 \\

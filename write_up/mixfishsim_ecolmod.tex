@@ -261,9 +261,10 @@ and vessels in cell $c$ for the population during the day $d$, and $B_{c,d}$
 the daily biomass for the population in the cell. Here, catch is the sum of
 those across all fleets and vessels, $C_{c, d} =
 \sum\limits_{fl=1}^{FL}\sum\limits_{v=1}^{V} E_{fl, v, c, d} \cdot Q_{fl} \cdot
-D_{c, d}$ with $fl$ and $v$ the fleet and vessel respectively and
-$E_{fl,v,c,d}$ and $Q_{fl}$ fishing effort and catchability of the gear, and
-$D_{c,d}$ is the density of the population at the location fished. \\
+D_{c, d}$ with $fl$ and $FL$ the fleet and total number of fleets, $v$ and $V$
+the vessel and total number of vessels respectively and $E_{fl,v,c,d}$ and
+$Q_{fl}$ fishing effort and catchability of the gear, and $D_{c,d}$ is the
+density of the population at the location fished. \\
 
 \subsection{Recruitment dynamics}
 
@@ -300,21 +301,24 @@ movement between adjacent cells is described by a set of probabilities.\\
 
 To simulate fish population distribution in space and time a Gaussian spatial
 process was employed to model habitat suitability for each of the populations
-on a 2d grid.  We first defined a Gaussian random field process, $\{S(c) : c \in
-\mathbb{R}^2\}$, where for any set of cells $c_{1}, \dots, c_{n}$, the joint
-distribution of $S = \{S(c1),\dots S(c_{n})\}$ is multivariate Gaussian with a
-\textit{Matérn} covariance structure, where the correlation strength weakens
-with distance. This enables us to model the spatial autocorrelation observed in
-animal populations where density is more similar in nearby locations
-\citep{Tobler1970, F.Dormann2007, Poos2007} and we change the parameters to
-implement different spatial structures for the different populations using the
-\textit{RandomFields} R package \citep{Schlater2015}. We define a stationary
-habitat field with an anisotropic pattern (to simulate a depth gradient) and
-combine it with a temporally dynamic thermal tolerance field to imitate two key
-drivers of population dynamics. Each population was initialised at a single
-location, and subsequently moved across the entire space according to a
-probabilistic distribution based on habitat suitability (represented by the
-normalised values from the GRFs), temperature and distance from current cell: 
+on a 2d grid.  We first defined a Gaussian random field process, $\{S(c) : c
+\in \mathbb{R}^2\}$, where for any set of cells $c_{1}, \dots, c_{n}$, the
+joint distribution of $S = \{S(c1),\dots S(c_{n})\}$ is multivariate Gaussian
+with a \textit{Matérn} covariance structure, where the correlation strength
+weakens with distance controlled by two parameters, with $\nu$ a scale
+parameter in the units of distance and $\kappa$ a shape parameter which
+determines the smoothness of the process. This enables us to model the spatial
+autocorrelation observed in animal populations where density is more similar in
+nearby locations \citep{Tobler1970, F.Dormann2007, Poos2007} and we change the
+parameters to implement different spatial structures for the different
+populations using the \textit{RandomFields} R package \citep{Schlater2015}. We
+define a stationary habitat field with an anisotropic pattern (to simulate a
+depth gradient) and combine it with a temporally dynamic thermal tolerance
+field to imitate two key drivers of population dynamics without modelling the
+processes explicitly. Each population was initialised at a single location, and
+subsequently moved across the entire space according to a probabilistic
+distribution based on habitat suitability (represented by the normalised values
+from the GRFs), temperature and distance from current cell: 
 \begin{equation}
 	Pr(C_{wk+1} = J | C_{wk} =I) = \frac{\mathrm{e}^{-\lambda \cdot d_{I,J}} \cdot
 		(Hab_{J,p}^2 \cdot
@@ -381,9 +385,9 @@ parameter choice for the step-function defined below (as well as some
 randomness from the exploratory fishing process) determined the preference of
 fishing locations for the fleet.  
 
-\subsubsection{Decision about where to fish at the start of the trip}
+\subsubsection{Decision about where to fish at the start of a trip}
 
-Several studies \citep[for a review]{Girardin2016} have confirmed past activity
+Several studies \citep[for a review see][]{Girardin2016} have confirmed past activity
 and past catch rates are strong predictors of fishing location choice. For this
 reason, the fleet dynamics sub-model included a learning component, where a
 vessel's initial fishing location in a trip was based on selecting from
@@ -394,7 +398,7 @@ from the port to the fishing grounds. Then a vessel chooses randomly from the
 top 70 \% of fishing events (defined as the `threshold') in terms of expected
 profit within that season. 
 
-\subsubsection{Decision about where to fish within the trip}
+\subsubsection{Decision about where to fish within a trip}
 
 Fishing locations within a trip are initially determined by a modified random
 walk process. As the simulation progresses the within-trip decision become
@@ -433,20 +437,21 @@ determined by the relationship:
 \end{equation}
 Where $\beta_{1}$, $\beta_{2}$ and $\beta_{3}$ are parameters determining the
 shape of the step function in its relation to revenue, so that, a step from
-(x1,y1) to (x2, y2) is defined by:
+($x_{t}$,$y_{t}$) to ($x_{t+1}$, $y_{t+1}$) is defined by:
 \begin{equation}
 	\begin{split}
- (x2, y2) =  & x1 + Le \cdot \cos \left(\frac{\pi \cdot Br}{180}\right), \\
-             & y1 + Le \cdot \sin \left(\frac{\pi \cdot Br}{180}\right) \\	
- with  \hspace{0.5cm}     & Br_{t-1} < 180, Br_{t} = 180 + \sim vm[(0,360), k] \\
- 			  & Br_{t-1} > 180, Br_{t} = 180 - \sim vm[(0,360), k] \\
+ (x_{t+1}, y_{t+1}) =  & x_{t} + Le \cdot \cos \left(\frac{\pi \cdot
+		 Br_{t+1}}{180}\right), \\ & y_{t} + Le \cdot \sin
+ \left(\frac{\pi \cdot Br_{t+1}}{180}\right) \\	
+ when  \hspace{0.5cm}     & Br_{t} < 180, Br_{t+1} = 180 + \sim vm[(0,360), k] \\
+ 			  & Br_{t} > 180, Br_{t+1} = 180 - \sim vm[(0,360), k] \\
 	\end{split}
 \end{equation}
-where $Le$ is the step length, $k$ the concentration parameter from the von
-Mises distribution that we correlate with the revenue so that $k = (Rev + 1 /
-RefRev) \cdot max_{k}$, where $max_{k}$ is the maximum concentration value,
-$k$, and $RefRev$ is parametrised as for $\beta_{3}$ in the step length
-function. 
+where $Le$ is the step length, $Br_t$ is the bearing at time $t$, $k$ the
+concentration parameter from the von Mises distribution that we correlate with
+the revenue so that $k = (Rev + 1 / RefRev) \cdot max_{k}$, where $max_{k}$ is
+the maximum concentration value, $k$, and $RefRev$ is parametrised as for
+$\beta_{3}$ in the step length function. 
 
 \subsubsection{Local population depletion}
 
@@ -957,7 +962,7 @@ Aquaculture Science seedcorn program (DP227AC).
 	\caption{Spatial density (log abundance) for each of the four
 		populations at four time steps. The darker the colour the
 		greater the density of the population. Note that a diagonal
-		anisotropic pattern representing a depth gradient can be
+		anisotropic pattern (mimicking a depth gradient) can be
 		clearly seen in populations 2 and 3. The concentrated spawning
 		areas are also visible in the second row of the panels
 		(t=18).}
@@ -980,13 +985,13 @@ Aquaculture Science seedcorn program (DP227AC).
 		fishing site (landings x price); (B) the fishing locations of
 		the vessel over several trips (value field changes over the
 		period so not shown). Note that movements are a mixture of
-		correlated random walk and experience-based, and that the field
-		is wrapped on a torus so that distances between opposite side
-		of the spatial domain are considered next to each other. For
-		these reasons there are moves larger than the step length in D;
-		(C) the locations of multiple vessels from the same fleet
-		overlaid on the value field, (D) the realised step distance and
-		turning angles for a single vessel over the simulation.}
+		correlated random walk (solid lines) and experience-based
+		(dashed lines), and that the field is wrapped on a torus so
+		that opposite sides of the spatial domain are considered next
+		door; (C) the locations of multiple vessels from the
+		same fleet overlaid on the value field, (D) the realised step
+		distance and turning angles for a single vessel over the
+		simulation.}
 	\label{fig:mv}
 \end{figure}	
 

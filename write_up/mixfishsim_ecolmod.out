@@ -5,8 +5,8 @@
 \BOOKMARK [2][-]{subsection.2.3}{Population movement dynamics}{section.2}% 5
 \BOOKMARK [2][-]{subsection.2.4}{Fleet dynamics}{section.2}% 6
 \BOOKMARK [3][-]{subsubsection.2.4.1}{Fleet targeting}{subsection.2.4}% 7
-\BOOKMARK [3][-]{subsubsection.2.4.2}{Decision about where to fish at the start of the trip}{subsection.2.4}% 8
-\BOOKMARK [3][-]{subsubsection.2.4.3}{Decision about where to fish within the trip}{subsection.2.4}% 9
+\BOOKMARK [3][-]{subsubsection.2.4.2}{Decision about where to fish at the start of a trip}{subsection.2.4}% 8
+\BOOKMARK [3][-]{subsubsection.2.4.3}{Decision about where to fish within a trip}{subsection.2.4}% 9
 \BOOKMARK [3][-]{subsubsection.2.4.4}{Local population depletion}{subsection.2.4}% 10
 \BOOKMARK [2][-]{subsection.2.5}{Fisheries independent survey}{section.2}% 11
 \BOOKMARK [2][-]{subsection.2.6}{Software: R-package development}{section.2}% 12

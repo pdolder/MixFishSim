@@ -31,12 +31,16 @@ log$trip <- as.factor(log$trip)
 
 ## We need to identify trips that are jumps across the taurus
 log$move_type <- ifelse(!is.na(log$stepD), "CRW", "Experience")
+log$move_type <- ifelse(log$move_type == "CRW" & log$stepD > 10, "OutsideMove", log$move_type)
 
 if(is.null(fleets_init) | is.null(pop_bios)) {
 
 return(print(ggplot(log, aes(x = x, y = y, group = paste(vessel, trip))) +
       geom_point(aes(colour = trip)) +
-      geom_path(aes(colour = trip))+ theme_bw() +
+      geom_path(data = filter(log, move_type == "CRW"),aes(colour = trip), linetype = "solid")+ 
+      geom_path(data = filter(log, move_type == "Experience"),aes(colour = trip), linetype = "longdash")+ 
+      geom_path(data = filter(log, move_type == "OutsideMove"),aes(colour = trip), linetype = "twodash")+ 
+      theme_bw() +
       expand_limits(y = c(0,sim_init[["idx"]][["ncols"]]), 
 		    x = c(0,sim_init[["idx"]][["nrows"]])) + 
 	     theme(legend.position = "none") + ylab("y distance") + 
