@@ -285,8 +285,16 @@ z_c <- filter(combined_pop_an, basis == "high_pop", metric == "Catch", as.numeri
 
  z <- merge(z_f, z_c, by = c("scenario","timescale", "res", "data_type"))
 
-ggplot(z, aes(x = f, y = catch)) +
-	geom_text(aes(colour = timescale, label = res)) +
-	facet_wrap(~data_type) + stat_ellipse(aes(colour = res, group = timescale)) +
-	theme_bw() + xlab("mean F on population 3 (year 39 - 50)") +
-	ylab("mean catch all populations (year 39 - 50)")
+ z$data_type <- factor(z$data_type)
+ z$data_type <- factor(z$data_type, levels = c("True Population", "commercial", "survey"))
+
+ggplot(z, aes(x = f, y = catch/1e3)) +
+	geom_point(aes(colour = timescale), shape = 1, size = 6) +
+	geom_text(aes(colour = timescale, label = res), fontface = "bold", show.legend = FALSE) +
+	facet_wrap(~data_type) + geom_smooth(method = "lm", se = FALSE, linetype = 2, colour = "grey") +
+	theme_bw() + xlab("mean fishing mortality per year on population 3") +
+	ylab("mean catch per year (thousand tonnes)") + 
+	scale_colour_manual(values = c("#1b9e77", "#d95f02", "#7570b3")) 
+
+ggsave(file = file.path("..", "write_up", "Plots", "Closure_effectiveness_CF.png"), width = 12, height = 6)
+
