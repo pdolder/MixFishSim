@@ -330,6 +330,9 @@ INPUT ../analysis/f_diff_effectiveness.png
 INPUT ./Plots/Closure_fishing_locations_yearly.png
 INPUT ./Plots/Closure_fishing_locations_yearly.png
 INPUT ./Plots/Closure_fishing_locations_yearly.png
+INPUT ./Plots/Closure_effectiveness_CF.png
+INPUT ./Plots/Closure_effectiveness_CF.png
+INPUT ./Plots/Closure_effectiveness_CF.png
 INPUT mixfishsim_ecolmod.bbl
 INPUT mixfishsim_ecolmod.bbl
 INPUT mixfishsim_ecolmod.aux

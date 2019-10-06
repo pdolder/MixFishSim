@@ -267,4 +267,26 @@ ggsave('C_trendsREV.png', width = 10, height = 8)
 
 
 
+####################################################
+#
+# F population 3 vs total catch
+#
+####################################################
 
+## Closure year starts at 30
+
+
+z_f <- filter(combined_pop_an, basis == "high_pop", metric %in% "F", pop == "Population 3", as.numeric(year) > 39) %>%
+	group_by(scenario, timescale, res, data_type) %>% summarise(f = mean(data))
+
+z_c <- filter(combined_pop_an, basis == "high_pop", metric == "Catch", as.numeric(year) > 39) %>%
+	group_by(scenario, timescale, res, data_type, year) %>% summarise(catch = sum(data)) %>%
+	group_by(scenario, timescale, res, data_type) %>% summarise(catch = mean(catch))
+
+ z <- merge(z_f, z_c, by = c("scenario","timescale", "res", "data_type"))
+
+ggplot(z, aes(x = f, y = catch)) +
+	geom_text(aes(colour = timescale, label = res)) +
+	facet_wrap(~data_type) + stat_ellipse(aes(colour = res, group = timescale)) +
+	theme_bw() + xlab("mean F on population 3 (year 39 - 50)") +
+	ylab("mean catch all populations (year 39 - 50)")
