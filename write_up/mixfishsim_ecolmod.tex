@@ -491,11 +491,11 @@ aggregation on spatial inference.
 We parametrised the simulation model for four example populations with
 different demographics, growth rates, natural mortality and recruitment
 parameters (Table \ref{tab:1}). Habitat preference (Figure \ref{S-fig:1}) and
-temperature tolerances (Figures \ref{S-fig:3}, \ref{S-fig:4}) were defined to
-be unique to each population resulting in differently weekly distribution
-patterns (Figures \ref{S-fig:5}-\ref{S-fig:7}). In addition, each of the
-populations was assumed to have two defined spawning areas that result in the
-populations moving towards these areas in pre-defined weeks (Figure
+temperature (Figures \ref{S-fig:3}, with temperature tolerance \ref{S-fig:4})
+defined to be unique to each population resulting in differently weekly
+distribution patterns (Figures \ref{S-fig:5}-\ref{S-fig:7}). In addition, each
+of the populations was assumed to have two defined spawning areas that result
+in the populations moving towards these areas in pre-defined weeks (Figure
 \ref{S-fig:2}) with population-specific movement rates (Table \ref{tab:1}).
 
 \subsection{Fleet parametrisation}
@@ -587,7 +587,10 @@ In total 28 closure scenarios were run that represent combinations of:
 \end{itemize}
 
 Survey closures were on an annual basis only, as this was the most temporally
-resolved survey data available.
+resolved survey data available. We evaluated the factors contributing to the
+success of the closures through a regression tree (using the R package REEMtree
+\citep{Sela2012}) to identify the factor most contributing to differences in
+fishing mortality before and after the closure.
 
 \section{Results}
 
@@ -641,24 +644,26 @@ compositions from across an aggregated 20 x 20 area (Figure \ref{fig:2}). In
 the true population, the monthly aggregation captures the major patterns of
 composition seen in the weekly data with the percentage of different
 populations in the catch having similar mean and standard deviations.  In the
-weekly data population 1 = 9.36 (3.99), population 2 = 83.2 (5.60), population
-3 = 3.57 (1.23), population 4 = 3.91 (1.59); in the monthly data population 1 =
-9.23 (3.87), population 2 = 83.3 (5.52), population 3 = 3.62 (1.15), population
-4 = 3.86 (1.52). While means were similar some of the variation was lost when
-aggregated to an annual level; population 1 = 9.90 (0.173), population 2 = 82.2
-(0.308), population 3 = 3.82 (0.119), population 4 = 4.03 (0.0502).\\
+weekly data population 1 = 9.36\% (SD = 3.99), population 2 = 83.2\% (5.60),
+population 3 = 3.57\% (1.23), population 4 = 3.91\% (1.59); in the monthly data
+population 1 = 9.23\% (3.87), population 2\% = 83.3 (5.52), population 3 =
+3.62\% (1.15), population 4 = \%3.86 (1.52). While means were similar some of
+the variation was lost when aggregated to an annual level; population 1 =
+9.90\% (0.173), population 2 = 82.2\% (0.308), population 3 = 3.82\% (0.119),
+population 4 = 4.03\% (0.0502).\\
 
 The commercial data on a weekly basis shows some of the same patterns as the
 true population, though the population 1 (in red) is less well represented and
 some weeks are missing catches from the area. Here, weekly and monthly
 compositions were nearly identical, with monthly composition of population 1 =
-0.0472 (0.0139), population 2 = 94.4 (1.47), population 3 = 3.12 (1.47),
-population 4 = 2.40 (0.444). Again, yearly values head a similar mean but
+0.0472\% (0.0139), population 2 = 94.4\% (1.47), population 3 = 3.12\% (1.47),
+population 4 = 2.40\% (0.444). Again, yearly values head a similar mean but
 smaller standard deviation.\\
 
 The survey data was only available on an annual basis, and showed again a
-slightly different composition; population 1 = 0.372 (0.00473), population 2 =
-87.7 (0.193), population 3 = 0.729 (0.0200), population 4 = 11.2 (0.172).
+slightly different composition; population 1 = 0.372\% (0.00473), population 2
+= 87.7\% (0.193), population 3 = 0.729\% (0.0200), population 4 = 11.2\%
+(0.172).
 
 \subsection{How does data aggregation and source impact on spatial fisheries
 	management measures?}
@@ -669,23 +674,22 @@ this to assess the efficacy of a closure in reducing fishing mortality on
 population 3, given availability of data and its use at different resolutions in
 order to evaluate the trade-offs in data sources. 
 
-The trend in fishing mortality for each species show that in most cases the
-fishery closure was successful in reducing fishing mortality on the species of
-interest (population 3; Figure \ref{fig:3}), though interestingly the largest
-reductions in fishing mortality happened immediately after the closures,
-following which the fisheries ``adapted" to the closures and fishing mortality
-increased again somewhat. The exception to the success was the closures
-implemented based on the coarsest spatial (20 x 20) and temporal resolution
-(yearly) that was ineffective with all data sources. As expected, closures
-based on the ``known" population distribution were most effective, with
-differing degrees of success using the commercial data. Fishing mortality rates
-on the other species changed in different proportions, depending on whether the
-displaced fishing effort moved to areas where the populations were found in
-greater or lesser density. \\
+In most cases the fishery closure was successful in reducing fishing mortality
+on the species of interest (population 3; Figure \ref{fig:3}), though
+interestingly the largest reductions in fishing mortality happened immediately
+after the closures, following which the fisheries ``adapted" to the closures
+and fishing mortality increased again somewhat. The exception to the success
+was the closures implemented based on the coarsest spatial (20 x 20) and
+temporal resolution (yearly) that was ineffective (i.e. failed to reduce
+fishing mortality) with all data sources. As expected, closures based on the
+``known" population distribution were most effective, with differing degrees of
+success using the commercial data. Fishing mortality rates on the other species
+changed in different proportions, depending on whether the displaced fishing
+effort moved to areas where the populations were found in greater or lesser
+density. \\
 
-A regression tree (using the R package REEMtree \citep{Sela2012}) highlights
-that the factor most contributing to differences in fishing mortality before
-and after the closure was the population (72 \% showing that the closures were
+The factor most contributing to differences in fishing mortality before and
+after the closure was the population (72 \% showing that the closures were
 effective for population 3), followed by data resolution (21 \%), data type (7
 \%) with the least important factor the timescale ($<$ 1 \%). In general the
 finer the spatial resolution of the data used the greater reduction in fishing
@@ -701,12 +705,12 @@ of restricting the fishery in a much larger area than necessary. \\
 \section{Discussion}
 
 %% General intro
-Our study presents a new highly resolved fisheries simulation framework,
-evaluates the importance of data scaling and considers potential bias
-introduced through data aggregation when using fisheries data to infer
-spatiotemporal dynamics of fish populations. Understanding how fishers exploit
-multiple heterogeneously distributed fish populations with different catch
-limits or conservation status requires detailed understanding of the overlap of
+Our study presents a new highly resolved fisheries simulation framework to
+evaluate the importance of data scaling and considers potential bias introduced
+through data aggregation when using fisheries data to infer spatiotemporal
+dynamics of fish populations. Understanding how fishers exploit multiple
+heterogeneously distributed fish populations with different catch limits or
+conservation status requires detailed understanding of the overlap of
 resources; this is difficult to achieve using conventional modelling approaches
 due to species targeting in fisheries resulting in preferential sampling
 \citep{Martinez-Minaya2018}. Often data are aggregated or extrapolated which
@@ -829,7 +833,7 @@ to protect cod in the North Sea. In one example, large scale spatial closures
 were implemented with little success due to effort displacement to previously
 unfished areas \citep{Dinmore2003}, while in another small scale targeted
 spatiotemporal closures were considered to have some effect in reducing cod
-mortality without having to disrupt other fisheries significantly
+mortality without having to disrupt other fisheries substantially
 \citep{Needle2011}. These examples emphasise the importance of considering the
 right scale and aggregation of data when identifying area closures and the need
 to consider changing dynamics in the fisheries in response to such closures. \\
@@ -842,9 +846,9 @@ for these changes.
 
 \subsection{Model assumptions and caveats}
 
-We model the population and fleet dynamic processes to draw inference on the
+We modelled the population and fleet dynamic processes to draw inference on the
 importance of data scale and aggregation in understanding and managing mixed
-fisheries and their impact on multiple fish populations. In doing so, we have
+fisheries and their impact on multiple fish populations. In doing so, we
 necessarily had to make a number of simplifying assumptions. \\
 
 Fish populations in our simulations move in pre-defined timescales and
@@ -987,8 +991,8 @@ Aquaculture Science seedcorn program (DP227AC).
 		period so not shown). Note that movements are a mixture of
 		correlated random walk (solid lines) and experience-based
 		(dashed lines), and that the field is wrapped on a torus so
-		that opposite sides of the spatial domain are considered next
-		door; (C) the locations of multiple vessels from the
+		that opposite sides of the spatial domain are considered
+		spatially close; (C) the locations of multiple vessels from the
 		same fleet overlaid on the value field, (D) the realised step
 		distance and turning angles for a single vessel over the
 		simulation.}
