@@ -318,7 +318,7 @@ field to imitate two key drivers of population dynamics without modelling the
 processes explicitly. Each population was initialised at a single location, and
 subsequently moved across the entire space according to a probabilistic
 distribution based on habitat suitability (represented by the normalised values
-from the GRFs), temperature and distance from current cell: 
+from the GRFs), temperature tolerance and distance from current cell: 
 \begin{equation}
 	Pr(C_{wk+1} = J | C_{wk} =I) = \frac{\mathrm{e}^{-\lambda \cdot d_{I,J}} \cdot
 		(Hab_{J,p}^2 \cdot
@@ -326,10 +326,10 @@ from the GRFs), temperature and distance from current cell:
 		(Hab_{c,p}^2 \cdot Tol_{c,p,wk})}
 \end{equation}
 Where $d_{I,J}$ is the euclidean distance between cell $I$ and cell $J$,
-$\lambda$ is a given rate of decay, $Hab_{c,p}^2$ is the squared index of
-habitat suitability for cell $c$ and population $p$, with $Tol_{c,p,wk}$ the
-temperature tolerance for cell $c$ by population $p$ in week $wk$ (see
-below). \\
+$\lambda$ is a given rate of decay, $Hab_{c,p}$ is the index of habitat
+suitability for cell $c$ and population $p$, with $Tol_{c,p,wk}$ the
+temperature tolerance for cell $c$ by population $p$ in week $wk$ (see below).
+\\
 
 During pre-defined weeks of the year the habitat suitability is modified with
 user-defined spawning habitat locations, resulting in each population having
@@ -339,16 +339,16 @@ movement towards the spawning grounds. \\
 
 A time-varying temperature covariate changes the interaction between time and
 suitable habitat on a weekly time-step. Each population $p$ was assigned a
-thermal tolerance with mean, $\mu_{p}$ and variance, $\sigma^2_{p}$ so that
-each cell and population temperature suitability is defined that:
+thermal tolerance with mean, $\mu_{p}$ and standard deviation, $\sigma_{p}$ so that
+each cell and population temperature tolerance is defined that:
 \begin{equation}
 	Tol_{c, p, wk} = \frac{1}{ \sqrt (2\pi \cdot \sigma^2_{p})} \cdot \exp(-
 		\frac{(T_{c, wk} - \mu_{p})^2}{2 \cdot \sigma^2_{p}} )	
 \end{equation}
 Where $Tol_{c, p, wk}$ is the tolerance of population $p$ for cell $c$ in week
 $wk$, $T_{c, wk}$ is the temperature in the cell given the week and $\mu_{p}$
-and $\sigma^2_{p}$ the mean and standard deviation of the population
-temperature tolerance. \\
+and $\sigma_{p}$ the mean and standard deviation of the population temperature
+tolerance. \\
 
 The final combined process results in a population structure and movement
 pattern unique to each population, with population movement occurring on a weekly
