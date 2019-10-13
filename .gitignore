@@ -4,3 +4,6 @@ tests/*.RData
 .RDataTmp
 *.RData
 cover_letter.*
+write_up/comments/
+
+
