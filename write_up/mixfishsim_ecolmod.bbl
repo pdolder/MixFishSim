@@ -6,32 +6,34 @@
 \providecommand{\eprint}[2][]{\url{#2}}
 \providecommand{\bibinfo}[2]{#2}
 \ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
-%Type = Article
-\bibitem[{Akima(2006)}]{Akima2006}
-\bibinfo{author}{Akima, H.}, \bibinfo{year}{2006}.
-\newblock \bibinfo{title}{{Interpolation of irregularly spaced data, The akima
-  Package}}.
-\newblock \bibinfo{journal}{Interpolation of Irregularly and Regularly Spaced
-  Data} .
 %Type = Misc
-\bibitem[{Alverson et~al.(1994)Alverson, Freeberg, Murawski and
-  Pope}]{Alverson1994}
-\bibinfo{author}{Alverson, D.L.}, \bibinfo{author}{Freeberg, M.H.},
-  \bibinfo{author}{Murawski, S.A.}, \bibinfo{author}{Pope, J.},
+\bibitem[{Akima and Gebhardt(2016)}]{Akima2006}
+\bibinfo{author}{Akima, H.}, \bibinfo{author}{Gebhardt, A.},
+  \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{{akima: Interpolation of Irregularly and Regularly
+  Space data. R package version 0.6-2.}}
+%Type = Techreport
+\bibitem[{Alverson et~al.(1994)Alverson, Freeberg, Pope and
+  Murawski}]{Alverson1994}
+\bibinfo{author}{Alverson, D.L.}, \bibinfo{author}{Freeberg, M.},
+  \bibinfo{author}{Pope, J.}, \bibinfo{author}{Murawski, S.},
   \bibinfo{year}{1994}.
-\newblock \bibinfo{title}{{A global assessment of fisheries bycatch and
-  discards}}.
-%Type = Misc
-\bibitem[{Bailey et~al.(2018)Bailey, Carrella, Axtell, Burgess, Cabral,
+\newblock \bibinfo{title}{{A Global Assessment of Fisheries By-catch and
+  Discards: A Summary Overview.}}
+\newblock \bibinfo{type}{Technical Report} \bibinfo{number}{339}.
+%Type = Article
+\bibitem[{Bailey et~al.(2019)Bailey, Carrella, Axtell, Burgess, Cabral,
   Drexler, Dorsett, Madsen, Merkl and Saul}]{Bailey2018}
 \bibinfo{author}{Bailey, R.M.}, \bibinfo{author}{Carrella, E.},
   \bibinfo{author}{Axtell, R.}, \bibinfo{author}{Burgess, M.G.},
   \bibinfo{author}{Cabral, R.B.}, \bibinfo{author}{Drexler, M.},
   \bibinfo{author}{Dorsett, C.}, \bibinfo{author}{Madsen, J.K.},
   \bibinfo{author}{Merkl, A.}, \bibinfo{author}{Saul, S.},
-  \bibinfo{year}{2018}.
+  \bibinfo{year}{2019}.
 \newblock \bibinfo{title}{{A computational approach to managing coupled
   human–environmental systems: the POSEIDON model of ocean fisheries}}.
+\newblock \bibinfo{journal}{Sustainability Science} \bibinfo{volume}{14},
+  \bibinfo{pages}{259--275}.
 %Type = Article
 \bibitem[{Bastardie et~al.(2010)Bastardie, Nielsen, Ulrich, Egekvist and
   Degel}]{Bastardie2010}
@@ -62,27 +64,28 @@
   ecosystem approach to fisheries management?}}
 \newblock \bibinfo{journal}{Hydrobiologia} \bibinfo{volume}{670},
   \bibinfo{pages}{317--333}.
-%Type = Article
+%Type = Book
 \bibitem[{Beverton and Holt(1957)}]{Beverton1957}
 \bibinfo{author}{Beverton, R.J.}, \bibinfo{author}{Holt, S.J.},
   \bibinfo{year}{1957}.
-\newblock \bibinfo{title}{{On the Dynamics of Exploited Fish Populations}} ,
-  \bibinfo{pages}{533}.
+\newblock \bibinfo{title}{{On the Dynamics of Exploited Fish Populations}}.
+\newblock \bibinfo{publisher}{HM Stationary Office}, \bibinfo{address}{London}.
 %Type = Article
-\bibitem[{Boonstra and Hentati-Sundberg(2015)}]{Boonstra2015}
+\bibitem[{Boonstra and Hentati-Sundberg(2016)}]{Boonstra2015}
 \bibinfo{author}{Boonstra, W.J.}, \bibinfo{author}{Hentati-Sundberg, J.},
-  \bibinfo{year}{2015}.
+  \bibinfo{year}{2016}.
 \newblock \bibinfo{title}{{Classifying fishers' behaviour. An invitation to
   fishing styles}}.
-\newblock \bibinfo{journal}{Infancy} .
+\newblock \bibinfo{journal}{Fish and Fisheries} \bibinfo{volume}{17},
+  \bibinfo{pages}{78--100}.
 %Type = Article
 \bibitem[{Branch et~al.(2005)Branch, Hilborn and Bogazzi}]{Branch2005}
-\bibinfo{author}{Branch, T.}, \bibinfo{author}{Hilborn, R.},
+\bibinfo{author}{Branch, T.A.}, \bibinfo{author}{Hilborn, R.},
   \bibinfo{author}{Bogazzi, E.}, \bibinfo{year}{2005}.
-\newblock \bibinfo{title}{{Escaping the tyranny of the grid: a more realistic
+\newblock \bibinfo{title}{{Escaping the tyranny of the grid: A more realistic
   way of defining fishing opportunities}}.
 \newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
-  \bibinfo{volume}{642}, \bibinfo{pages}{631--642}.
+  \bibinfo{volume}{62}, \bibinfo{pages}{631--642}.
 %Type = Article
 \bibitem[{Catchpole and Revill(2008)}]{Catchpole2008}
 \bibinfo{author}{Catchpole, T.L.}, \bibinfo{author}{Revill, A.S.},
@@ -119,7 +122,9 @@
   \bibinfo{year}{2010}.
 \newblock \bibinfo{title}{{The value of spatial information in MPA network
   design}}.
-\newblock \bibinfo{journal}{Proceedings of the National Academy of Sciences} .
+\newblock \bibinfo{journal}{Proceedings of the National Academy of Sciences of
+  the United States of America} \bibinfo{volume}{107},
+  \bibinfo{pages}{18294--18299}.
 %Type = Article
 \bibitem[{Cotter and Pilling(2007)}]{Cotter2007}
 \bibinfo{author}{Cotter, A.J.}, \bibinfo{author}{Pilling, G.M.},
@@ -182,7 +187,7 @@
   \bibinfo{author}{Minto, C.}, \bibinfo{year}{2018}.
 \newblock \bibinfo{title}{{Spatial separation of catches in highly mixed
   fisheries}}.
-\newblock \bibinfo{journal}{Scientific Reports} .
+\newblock \bibinfo{journal}{Scientific Reports} \bibinfo{volume}{8}.
 %Type = Article
 \bibitem[{Dunn et~al.(2014)Dunn, Boustany, Roberts, Brazer, Sanderson, Gardner
   and Halpin}]{Dunn2014a}
@@ -201,8 +206,9 @@
   \bibinfo{year}{2016}.
 \newblock \bibinfo{title}{{Dynamic ocean management increases the efficiency
   and efficacy of fisheries management}}.
-\newblock \bibinfo{journal}{Proceedings of the National Academy of Sciences} ,
-  \bibinfo{pages}{201513626}.
+\newblock \bibinfo{journal}{Proceedings of the National Academy of Sciences of
+  the United States of America} \bibinfo{volume}{113},
+  \bibinfo{pages}{668--673}.
 %Type = Article
 \bibitem[{{F. Dormann} et~al.(2007){F. Dormann}, {M. McPherson}, {B.
   Ara{\'{u}}jo}, Bivand, Bolliger, Carl, {G. Davies}, Hirzel, Jetz, {Daniel
@@ -232,7 +238,8 @@
   \bibinfo{author}{Smith, D.C.}, \bibinfo{year}{2011}.
 \newblock \bibinfo{title}{{Lessons in modelling and management of marine
   ecosystems: The Atlantis experience}}.
-\newblock \bibinfo{journal}{Fish and Fisheries} .
+\newblock \bibinfo{journal}{Fish and Fisheries} \bibinfo{volume}{12},
+  \bibinfo{pages}{171--188}.
 %Type = Article
 \bibitem[{Gardner et~al.(2008)Gardner, Sullivan, Morreale and
   Epperly}]{Gardner2008}
@@ -247,18 +254,20 @@
 \bibitem[{Gerritsen et~al.(2012)Gerritsen, Lordan, Minto and
   Kraak}]{Gerritsen2012}
 \bibinfo{author}{Gerritsen, H.D.}, \bibinfo{author}{Lordan, C.},
-  \bibinfo{author}{Minto, C.}, \bibinfo{author}{Kraak, S.B.M.},
+  \bibinfo{author}{Minto, C.}, \bibinfo{author}{Kraak, S.B.},
   \bibinfo{year}{2012}.
 \newblock \bibinfo{title}{{Spatial patterns in the retained catch composition
   of Irish demersal otter trawlers: High-resolution fisheries data as a
   management tool}}.
 \newblock \bibinfo{journal}{Fisheries Research} \bibinfo{volume}{129-130},
   \bibinfo{pages}{127--136}.
-%Type = Inproceedings
+%Type = Article
 \bibitem[{Gillespie(1977)}]{Gillespie1977}
 \bibinfo{author}{Gillespie, D.T.}, \bibinfo{year}{1977}.
 \newblock \bibinfo{title}{{Exact stochastic simulation of coupled chemical
-  reactions}}, in: \bibinfo{booktitle}{Journal of Physical Chemistry}.
+  reactions}}.
+\newblock \bibinfo{journal}{Journal of Physical Chemistry}
+  \bibinfo{volume}{81}, \bibinfo{pages}{2340--2361}.
 %Type = Article
 \bibitem[{Gillis and Peterman(1998)}]{Gillis1998}
 \bibinfo{author}{Gillis, D.M.}, \bibinfo{author}{Peterman, R.M.},
@@ -277,16 +286,17 @@
 \newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
   \bibinfo{volume}{65}, \bibinfo{pages}{27--37}.
 %Type = Article
-\bibitem[{Girardin et~al.(2016)Girardin, Hamon, Pinnegar, Poos, Th{\'{e}}baud,
+\bibitem[{Girardin et~al.(2017)Girardin, Hamon, Pinnegar, Poos, Th{\'{e}}baud,
   Tidd, Vermard and Marchal}]{Girardin2016}
 \bibinfo{author}{Girardin, R.}, \bibinfo{author}{Hamon, K.G.},
   \bibinfo{author}{Pinnegar, J.}, \bibinfo{author}{Poos, J.J.},
   \bibinfo{author}{Th{\'{e}}baud, O.}, \bibinfo{author}{Tidd, A.},
   \bibinfo{author}{Vermard, Y.}, \bibinfo{author}{Marchal, P.},
-  \bibinfo{year}{2016}.
+  \bibinfo{year}{2017}.
 \newblock \bibinfo{title}{{Thirty years of fleet dynamics modelling using
   discrete-choice models: What have we learned?}}
-\newblock \bibinfo{journal}{Fish and Fisheries} , \bibinfo{pages}{1--18}.
+\newblock \bibinfo{journal}{Fish and Fisheries} \bibinfo{volume}{18},
+  \bibinfo{pages}{638--655}.
 %Type = Article
 \bibitem[{Harley et~al.(2001)Harley, Myers and Dunn}]{Harley2001}
 \bibinfo{author}{Harley, S.J.}, \bibinfo{author}{Myers, R.A.},
@@ -346,21 +356,22 @@
 \newblock \bibinfo{journal}{ICES Journal of Marine Science}
   \bibinfo{volume}{67}, \bibinfo{pages}{1260--1271}.
 %Type = Article
-\bibitem[{Little et~al.(2014)Little, Needle, Hilborn, Holland and
+\bibitem[{Little et~al.(2015)Little, Needle, Hilborn, Holland and
   Marshall}]{Little2014}
 \bibinfo{author}{Little, A.S.}, \bibinfo{author}{Needle, C.L.},
   \bibinfo{author}{Hilborn, R.}, \bibinfo{author}{Holland, D.S.},
-  \bibinfo{author}{Marshall, C.T.}, \bibinfo{year}{2014}.
+  \bibinfo{author}{Marshall, C.T.}, \bibinfo{year}{2015}.
 \newblock \bibinfo{title}{{Real-time spatial management approaches to reduce
-  bycatch and discards: experiences from Europe and the United States}}.
-\newblock \bibinfo{journal}{Fish and Fisheries} , \bibinfo{pages}{n/a--n/a}.
+  bycatch and discards: Experiences from Europe and the United States}}.
+\newblock \bibinfo{journal}{Fish and Fisheries} \bibinfo{volume}{16},
+  \bibinfo{pages}{576--602}.
 %Type = Article
-\bibitem[{Liu and Heino(2013)}]{Liu2013}
-\bibinfo{author}{Liu, X.}, \bibinfo{author}{Heino, M.}, \bibinfo{year}{2013}.
+\bibitem[{Liu and Heino(2014)}]{Liu2013}
+\bibinfo{author}{Liu, X.}, \bibinfo{author}{Heino, M.}, \bibinfo{year}{2014}.
 \newblock \bibinfo{title}{{Overlooked biological and economic implications of
   within-season fishery dynamics}}.
 \newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
-  .
+  \bibinfo{volume}{71}, \bibinfo{pages}{181--188}.
 %Type = Article
 \bibitem[{Mah{\'{e}}vas and Pelletier(2004)}]{Mahevas2004}
 \bibinfo{author}{Mah{\'{e}}vas, S.}, \bibinfo{author}{Pelletier, D.},
@@ -368,14 +379,16 @@
 \newblock \bibinfo{title}{{ISIS-Fish, a generic and spatially explicit
   simulation tool for evaluating the impact of management measures on fisheries
   dynamics}}.
-\newblock \bibinfo{journal}{Ecological Modelling} .
+\newblock \bibinfo{journal}{Ecological Modelling} \bibinfo{volume}{171},
+  \bibinfo{pages}{65--84}.
 %Type = Article
 \bibitem[{Mangel and Clark(1983)}]{Mangel1983}
 \bibinfo{author}{Mangel, M.}, \bibinfo{author}{Clark, C.W.},
   \bibinfo{year}{1983}.
 \newblock \bibinfo{title}{{Uncertainty, search, and information in fisheries}}.
-\newblock \bibinfo{journal}{ICES Journal of Marine Science} .
-%Type = Misc
+\newblock \bibinfo{journal}{ICES Journal of Marine Science}
+  \bibinfo{volume}{41}, \bibinfo{pages}{93--103}.
+%Type = Article
 \bibitem[{Mart{\'{i}}nez-Minaya et~al.(2018)Mart{\'{i}}nez-Minaya, Cameletti,
   Conesa and Pennino}]{Martinez-Minaya2018}
 \bibinfo{author}{Mart{\'{i}}nez-Minaya, J.}, \bibinfo{author}{Cameletti, M.},
@@ -383,21 +396,24 @@
   \bibinfo{year}{2018}.
 \newblock \bibinfo{title}{{Species distribution modeling: a statistical review
   with focus in spatio-temporal issues}}.
+\newblock \bibinfo{journal}{Stochastic Environmental Research and Risk
+  Assessment} \bibinfo{volume}{32}, \bibinfo{pages}{3227--3244}.
 %Type = Article
-\bibitem[{Mateo et~al.(2016)Mateo, Pawlowski and Robert}]{Mateo2016}
+\bibitem[{Mateo et~al.(2017)Mateo, Pawlowski and Robert}]{Mateo2016}
 \bibinfo{author}{Mateo, M.}, \bibinfo{author}{Pawlowski, L.},
-  \bibinfo{author}{Robert, M.}, \bibinfo{year}{2016}.
-\newblock \bibinfo{title}{{Highly mixed fisheries: fine-scale spatial patterns
+  \bibinfo{author}{Robert, M.}, \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{{Highly mixed fisheries: Fine-scale spatial patterns
   in retained catches of French fisheries in the Celtic Sea}}.
-\newblock \bibinfo{journal}{ICES Journal of Marine Science: Journal du Conseil}
-  , \bibinfo{pages}{fsw129}.
+\newblock \bibinfo{journal}{ICES Journal of Marine Science}
+  \bibinfo{volume}{74}, \bibinfo{pages}{91--101}.
 %Type = Article
 \bibitem[{Maunder and Punt(2004)}]{Maunder2004}
 \bibinfo{author}{Maunder, M.N.}, \bibinfo{author}{Punt, A.E.},
   \bibinfo{year}{2004}.
 \newblock \bibinfo{title}{{Standardizing catch and effort data: A review of
   recent approaches}}.
-\newblock \bibinfo{journal}{Fisheries Research} .
+\newblock \bibinfo{journal}{Fisheries Research} \bibinfo{volume}{70},
+  \bibinfo{pages}{141--159}.
 %Type = Article
 \bibitem[{Needle and Catarino(2011)}]{Needle2011}
 \bibinfo{author}{Needle, C.L.}, \bibinfo{author}{Catarino, R.},
@@ -439,20 +455,17 @@
   implications for the fleet dynamics}}.
 \newblock \bibinfo{journal}{Journal of Sea Research} \bibinfo{volume}{58},
   \bibinfo{pages}{100--112}.
-%Type = Article
+%Type = Misc
 \bibitem[{{R Core Team}(2017)}]{RCoreTeam2017}
 \bibinfo{author}{{R Core Team}}, \bibinfo{year}{2017}.
 \newblock \bibinfo{title}{{R Core Team (2017). R: A language and environment
   for statistical computing.}}
-\newblock \bibinfo{journal}{R Foundation for Statistical Computing, Vienna,
-  Austria. URL http://www.R-project.org/.} , \bibinfo{pages}{R Foundation for
-  Statistical Computing}.
 %Type = Article
 \bibitem[{Ricker(1954)}]{Ricker1954}
 \bibinfo{author}{Ricker, W.E.}, \bibinfo{year}{1954}.
-\newblock \bibinfo{title}{{Stock and recruitment}}.
+\newblock \bibinfo{title}{{Stock and Recruitment}}.
 \newblock \bibinfo{journal}{Journal of the Fisheries Research Board of Canada}
-  \bibinfo{volume}{11}, \bibinfo{pages}{559 -- 623}.
+  \bibinfo{volume}{11}, \bibinfo{pages}{559--623}.
 %Type = Article
 \bibitem[{Rijnsdorp(2000)}]{Rijnsdorp2000}
 \bibinfo{author}{Rijnsdorp, A.}, \bibinfo{year}{2000}.
@@ -476,7 +489,7 @@
   \bibinfo{author}{Poos, J.J.}, \bibinfo{year}{2001}.
 \newblock \bibinfo{title}{{Effort allocation of the Dutch beam trawl fleet in
   response to a temporarily closed area in the North Sea}}.
-\newblock \bibinfo{journal}{Ices Cm 2001/N: 01} , \bibinfo{pages}{1--17}.
+\newblock \bibinfo{journal}{Ices CM 2001/N:01} , \bibinfo{pages}{1--17}.
 %Type = Article
 \bibitem[{Rijnsdorp et~al.(2011)Rijnsdorp, Poos, Quirijns and
   Grant}]{Rijnsdorp2011}
@@ -499,11 +512,13 @@
 \newblock \bibinfo{journal}{Global Ecology and Biogeography}
   \bibinfo{volume}{20}, \bibinfo{pages}{789--802}.
 %Type = Article
-\bibitem[{Schlater et~al.(2015)Schlater, Malinowski and Menck}]{Schlater2015}
-\bibinfo{author}{Schlater, M.}, \bibinfo{author}{Malinowski, A.},
-  \bibinfo{author}{Menck, P.J.}, \bibinfo{year}{2015}.
-\newblock \bibinfo{title}{{Analysis, Simulation and Prediction of Multivariate
-  Random Fields with Package RandomFields}}.
+\bibitem[{Schlather et~al.(2015)Schlather, Malinowski, Menck, Oestin and
+  Strokorb}]{Schlater2015}
+\bibinfo{author}{Schlather, M.}, \bibinfo{author}{Malinowski, A.},
+  \bibinfo{author}{Menck, P.J.}, \bibinfo{author}{Oestin, M.},
+  \bibinfo{author}{Strokorb, K.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{{Analysis, simulation and prediction of multivariate
+  random fields with package randomfields}}.
 \newblock \bibinfo{journal}{Journal of Statistical Software}
   \bibinfo{volume}{63}, \bibinfo{pages}{1--25}.
 \newblock \eprint{arXiv:1501.0228}.
@@ -515,18 +530,20 @@
 \newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
   \bibinfo{volume}{42}, \bibinfo{pages}{414--429}.
 %Type = Misc
-\bibitem[{Sela and Simonoff(2012)}]{Sela2012}
+\bibitem[{Sela and Simonoff(2011)}]{Sela2012}
 \bibinfo{author}{Sela, R.}, \bibinfo{author}{Simonoff, J.},
-  \bibinfo{year}{2012}.
-\newblock \bibinfo{title}{{Package ‘REEMtree'}}.
-%Type = Inproceedings
+  \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{{REEMtree: Regression Trees with Random Effects. R
+  package version 0.90.3}}.
+%Type = Article
 \bibitem[{Shin et~al.(2004)Shin, Shannon and Cury}]{Shin2004}
 \bibinfo{author}{Shin, Y.J.}, \bibinfo{author}{Shannon, L.J.},
   \bibinfo{author}{Cury, P.M.}, \bibinfo{year}{2004}.
 \newblock \bibinfo{title}{{Simulations of fishing effects on the southern
   Benguela fish community using an individual-based model: Learning from a
-  comparison with ECOSIM}}, in: \bibinfo{booktitle}{African Journal of Marine
-  Science}.
+  comparison with ECOSIM}}.
+\newblock \bibinfo{journal}{African Journal of Marine Science}
+  \bibinfo{volume}{26}, \bibinfo{pages}{95--114}.
 %Type = Article
 \bibitem[{Stock et~al.(2019)Stock, Ward, Eguchi, Jannot, Thorson, Feist and
   Semmens}]{Stock2019}
@@ -601,6 +618,7 @@
   \bibinfo{year}{2015}.
 \newblock \bibinfo{title}{{Optimization of sampling effort for a
   fishery-independent survey with multiple goals}}.
-\newblock \bibinfo{journal}{Environmental Monitoring and Assessment} .
+\newblock \bibinfo{journal}{Environmental Monitoring and Assessment}
+  \bibinfo{volume}{187}.
 
 \end{thebibliography}
