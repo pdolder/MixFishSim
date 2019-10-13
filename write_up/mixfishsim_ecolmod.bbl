@@ -1,4 +1,4 @@
-\begin{thebibliography}{67}
+\begin{thebibliography}{68}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -250,6 +250,11 @@
   data: patterns of sea turtle bycatch in the North Atlantic}}.
 \newblock \bibinfo{journal}{Canadian Journal of Fisheries and Aquatic Sciences}
   \bibinfo{volume}{65}, \bibinfo{pages}{2461--2470}.
+%Type = Misc
+\bibitem[{Gerritsen(2014)}]{Gerritsen2014}
+\bibinfo{author}{Gerritsen, H.}, \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{{mapplots: Data visualisation on maps. R package
+  version 1.5. http://CRAN.R-project.org/package=mapplots}}.
 %Type = Article
 \bibitem[{Gerritsen et~al.(2012)Gerritsen, Lordan, Minto and
   Kraak}]{Gerritsen2012}

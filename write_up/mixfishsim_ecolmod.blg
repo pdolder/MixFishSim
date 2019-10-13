@@ -5,45 +5,45 @@ The style file: model2-names.bst.bst
 Database file #1: simulation_framework.bib
 Warning--missing institution in Alverson1994
 Warning--can't use both volume and number fields in Hilborn1992b
-You've used 67 entries,
+You've used 68 entries,
             2761 wiz_defined-function locations,
-            1035 strings with 19330 characters,
-and the built_in function-call counts, 46572 in all, are:
-= -- 3582
-> -- 2350
-< -- 27
-+ -- 899
-- -- 831
-* -- 5632
-:= -- 7170
-add.period$ -- 200
-call.type$ -- 67
-change.case$ -- 608
-chr.to.int$ -- 66
-cite$ -- 69
-duplicate$ -- 2887
-empty$ -- 2833
-format.name$ -- 1050
-if$ -- 8313
+            1039 strings with 19476 characters,
+and the built_in function-call counts, 46927 in all, are:
+= -- 3612
+> -- 2360
+< -- 28
++ -- 903
+- -- 834
+* -- 5659
+:= -- 7234
+add.period$ -- 202
+call.type$ -- 68
+change.case$ -- 614
+chr.to.int$ -- 67
+cite$ -- 70
+duplicate$ -- 2913
+empty$ -- 2858
+format.name$ -- 1054
+if$ -- 8377
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 663
-newline$ -- 344
-num.names$ -- 268
-pop$ -- 704
+missing$ -- 667
+newline$ -- 348
+num.names$ -- 272
+pop$ -- 712
 preamble$ -- 1
-purify$ -- 545
+purify$ -- 550
 quote$ -- 0
-skip$ -- 883
+skip$ -- 896
 stack$ -- 0
-substring$ -- 2100
-swap$ -- 2631
+substring$ -- 2111
+swap$ -- 2645
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 594
+type$ -- 603
 warning$ -- 2
-while$ -- 312
+while$ -- 315
 width$ -- 0
-write$ -- 936
+write$ -- 947
 (There were 2 warnings)
