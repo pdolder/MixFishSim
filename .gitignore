@@ -3,4 +3,4 @@ tests/*.RData
 !*.png
 .RDataTmp
 *.RData
-write_up/cover_letter.*
+cover_letter.*
