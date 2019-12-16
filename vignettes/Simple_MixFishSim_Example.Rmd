@@ -1,0 +1,8 @@
+---
+title: "Simple MixFishSim Example"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Simple MixFishSim Example}
+    %\VignetteEngine{knitr::rmarkdown}
+      \usepackage[utf8]{inputenc}
+---

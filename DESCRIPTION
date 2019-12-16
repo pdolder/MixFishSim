@@ -19,5 +19,8 @@ Suggests:
     testthat,
     ggplot2,
     dplyr,
-    akima
+    akima,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
 LinkingTo: Rcpp
