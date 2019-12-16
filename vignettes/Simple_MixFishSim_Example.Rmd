@@ -6,3 +6,72 @@ vignette: >
     %\VignetteEngine{knitr::rmarkdown}
       \usepackage[utf8]{inputenc}
 ---
+
+This is a simple example of how to use \textbf{'MixFishSim'} to generate simulations of dynamics in a mixed fishery.
+
+# Load MixFishSim
+
+```{r packages}
+library(MixFishSim)
+library(knitr)
+opts_chunk$set(tidy = TRUE)
+
+```
+
+# Initialise the simulation
+
+## Base parameters
+
+First we specify the basic parameters of the simulation. This includes the size of the spatial domain, the number of years to simulate, the number of fleets and vessels per fleet and the number of species for the simulation etc... 
+
+The object returned is used internally by MixFishSim a list with two objects: 
+
+* sim$idx : The different units of different processes 
+* sim$brk.idx: breaks for each of the key processes in units of a timestep
+
+```{r basic}
+
+sim <- init_sim(nrows = 10, ncols = 10, n_years = 10, n_tows_day = 4, n_days_wk_fished = 5, n_fleets = 5, n_vessels = 2, n_species = 2, move_freq = 2)
+
+class(sim)
+sim$idx
+names(sim$brk.idx)
+
+```
+
+## Habitat setup
+
+This function creates the spatial fields which support the fish populations and fisheries. You define the parameters for the mattern covariance function for each population and optionally the location of any spawning closure areas.
+
+```{r habitat}
+
+hab <- create_hab(sim_init = sim, 
+		  spp.ctrl = list(
+				  "spp.1" = list('nu' = 1/0.015,
+						'var' = 1,
+						'scale' = 1,
+						'Aniso' = matrix(nc = 2, c(1.5, 3, -3, 4))),
+				  "spp.2" = list('nu' = 1/0.05,
+						'var'  = 2,
+						'scale' = 12,
+						'Aniso' = matrix(nc = 2, c(1, 2, -1, 2)))
+				  ),
+		  spawn_areas = list(
+				     "spp1" = list(
+						   'area1' = c(2,3,2,3),
+						   'area2' = c(6,7,6,6)
+						   ),
+				     "spp2" = list(
+						   'area1' = c(5,6,6,6)
+						   ),
+				     spwn_mult = 10, 
+				     plot.dist = FALSE)
+		  )
+
+print(hab)
+
+## To plot we need to bust the function out of the current create_hab function!!
+
+
+```
+

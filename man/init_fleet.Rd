@@ -4,9 +4,17 @@
 \alias{init_fleet}
 \title{Initialise fleet}
 \usage{
-init_fleet(sim_init = NULL, VPT = NULL, Qs = NULL, fuelC = 0,
-  step_params = NULL, past_knowledge = FALSE,
-  past_year_month = FALSE, past_trip = FALSE, threshold = NULL)
+init_fleet(
+  sim_init = NULL,
+  VPT = NULL,
+  Qs = NULL,
+  fuelC = 0,
+  step_params = NULL,
+  past_knowledge = FALSE,
+  past_year_month = FALSE,
+  past_trip = FALSE,
+  threshold = NULL
+)
 }
 \arguments{
 \item{sim_init}{is the output (a list) from the \code{sim_init} function with the

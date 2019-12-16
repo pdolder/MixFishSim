@@ -4,8 +4,7 @@
 \alias{find_spat_f}
 \title{find spatial Fs (fishing mortality rates)}
 \usage{
-find_spat_f(sim_init = NULL, C = C, B = B, M = M,
-  FUN = baranov_f)
+find_spat_f(sim_init = NULL, C = C, B = B, M = M, FUN = baranov_f)
 }
 \arguments{
 \item{sim_init}{is the parameterised sim settings, made by \code{init_sim}}

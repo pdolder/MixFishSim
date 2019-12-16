@@ -4,8 +4,7 @@
 \alias{logistic}
 \title{Logistic probability}
 \usage{
-logistic(A = 0, K = 0.95, C = 1, Q = 200, B = NULL, v = 1,
-  t = NULL)
+logistic(A = 0, K = 0.95, C = 1, Q = 200, B = NULL, v = 1, t = NULL)
 }
 \arguments{
 \item{A}{is the lower asymptote, set at 0}

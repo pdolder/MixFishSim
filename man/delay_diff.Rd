@@ -4,8 +4,18 @@
 \alias{delay_diff}
 \title{Delay-difference (weekly)}
 \usage{
-delay_diff(K = 0.3, F = NULL, M = 0.2, wt = 1, wtm1 = 0.1,
-  R = NULL, B = NULL, Bm1 = NULL, al = NULL, alm1 = NULL)
+delay_diff(
+  K = 0.3,
+  F = NULL,
+  M = 0.2,
+  wt = 1,
+  wtm1 = 0.1,
+  R = NULL,
+  B = NULL,
+  Bm1 = NULL,
+  al = NULL,
+  alm1 = NULL
+)
 }
 \arguments{
 \item{K}{is a Numeric vector describing growth.  Note:

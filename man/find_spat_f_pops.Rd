@@ -4,8 +4,14 @@
 \alias{find_spat_f_pops}
 \title{find spatial f pops}
 \usage{
-find_spat_f_pops(FUN = find_spat_f, sim_init = sim, C = C, B = B,
-  dem_params = NULL, ...)
+find_spat_f_pops(
+  FUN = find_spat_f,
+  sim_init = sim,
+  C = C,
+  B = B,
+  dem_params = NULL,
+  ...
+)
 }
 \arguments{
 \item{FUN}{is the \code{find_spat_f} function}

@@ -4,10 +4,18 @@
 \alias{init_closure}
 \title{Initialise spatial closure(s)}
 \usage{
-init_closure(input_coords = NULL, basis = "commercial",
-  rationale = "high_pop", spp1 = "spp1", spp2, year_start = 1,
-  year_basis = NULL, closure_thresh = 0.95, sc = 1,
-  temp_dyn = "yearly")
+init_closure(
+  input_coords = NULL,
+  basis = "commercial",
+  rationale = "high_pop",
+  spp1 = "spp1",
+  spp2,
+  year_start = 1,
+  year_basis = NULL,
+  closure_thresh = 0.95,
+  sc = 1,
+  temp_dyn = "yearly"
+)
 }
 \arguments{
 \item{input_coords}{is a dataframe of x,y coordinates defining the

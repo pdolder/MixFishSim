@@ -4,8 +4,14 @@
 \alias{init_survey}
 \title{Initialise survey settings}
 \usage{
-init_survey(sim_init = NULL, design = "fixed_station",
-  n_stations = 50, start_day = 90, stations_per_day = 5, Qs = NULL)
+init_survey(
+  sim_init = NULL,
+  design = "fixed_station",
+  n_stations = 50,
+  start_day = 90,
+  stations_per_day = 5,
+  Qs = NULL
+)
 }
 \arguments{
 \item{sim_init}{is the general simualtion settings from \link{sim_init}}

@@ -5,9 +5,17 @@
 \title{Plot the spatial catch composition from the commercial catches as
 'square pie charts' using \link{mapplots}.}
 \usage{
-plot_catch_comp(gran = c(20, 10, 5), logs = logs, fleets = 1:2,
-  vessels = 1:5, trips = 1:20, years = 18:20, cluster_plot = FALSE,
-  cluster_k = 5, scale_data = NULL)
+plot_catch_comp(
+  gran = c(20, 10, 5),
+  logs = logs,
+  fleets = 1:2,
+  vessels = 1:5,
+  trips = 1:20,
+  years = 18:20,
+  cluster_plot = FALSE,
+  cluster_k = 5,
+  scale_data = NULL
+)
 }
 \arguments{
 \item{gran}{is a Numeric Vector of granularities required}

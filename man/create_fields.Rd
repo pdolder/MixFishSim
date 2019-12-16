@@ -4,8 +4,15 @@
 \alias{create_fields}
 \title{Create species distribution fields}
 \usage{
-create_fields(npt = 1000, t = 1, seed = 123, n.spp = NULL,
-  spp.ctrl = NULL, plot.dist = FALSE, plot.file = getwd())
+create_fields(
+  npt = 1000,
+  t = 1,
+  seed = 123,
+  n.spp = NULL,
+  spp.ctrl = NULL,
+  plot.dist = FALSE,
+  plot.file = getwd()
+)
 }
 \arguments{
 \item{npt}{Numeric integer with the dimensions of the field in

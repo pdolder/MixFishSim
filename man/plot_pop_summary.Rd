@@ -4,8 +4,12 @@
 \alias{plot_pop_summary}
 \title{Plot population summary}
 \usage{
-plot_pop_summary(results = res, timestep = "daily", save = FALSE,
-  save.location = ".")
+plot_pop_summary(
+  results = res,
+  timestep = "daily",
+  save = FALSE,
+  save.location = "."
+)
 }
 \arguments{
 \item{results}{is an output from the function \link{run_sim}.}

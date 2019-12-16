@@ -4,9 +4,14 @@
 \alias{close_areas}
 \title{Close areas}
 \usage{
-close_areas(sim_init = sim_init, closure_init = NULL,
-  commercial_logs = NULL, survey_logs = NULL, real_pop = NULL,
-  t = t)
+close_areas(
+  sim_init = sim_init,
+  closure_init = NULL,
+  commercial_logs = NULL,
+  survey_logs = NULL,
+  real_pop = NULL,
+  t = t
+)
 }
 \arguments{
 \item{closure_init}{is the output from \link{init_clousre}.}

@@ -6,6 +6,8 @@ reload()
 #load_all()
 document()
 
+build_vignettes()
+
 install()
 
 ## Note: document with 

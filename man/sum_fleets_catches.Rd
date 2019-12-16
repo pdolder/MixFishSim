@@ -4,8 +4,12 @@
 \alias{sum_fleets_catches}
 \title{Sum fleets catches}
 \usage{
-sum_fleets_catches(FUN = sum_fleet_catches, fleets_log = NULL,
-  sim_init = sim, ...)
+sum_fleets_catches(
+  FUN = sum_fleet_catches,
+  fleets_log = NULL,
+  sim_init = sim,
+  ...
+)
 }
 \arguments{
 \item{FUN}{is the function, i.e. \code{sum_fleet_catches}}

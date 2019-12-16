@@ -4,8 +4,12 @@
 \alias{plot_spatiotemp_hab}
 \title{Plot spatiotemporal habitat suitability}
 \usage{
-plot_spatiotemp_hab(hab = NULL, moveCov = NULL, plot.file = getwd(),
-  spwn_wk = NULL)
+plot_spatiotemp_hab(
+  hab = NULL,
+  moveCov = NULL,
+  plot.file = getwd(),
+  spwn_wk = NULL
+)
 }
 \arguments{
 \item{hab}{is the output from \link{create_hab}}

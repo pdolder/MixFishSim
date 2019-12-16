@@ -4,9 +4,17 @@
 \alias{go_fish_fleet}
 \title{Go fish fleet}
 \usage{
-go_fish_fleet(FUN = go_fish, sim_init = NULL, fleets_params = NULL,
-  fleets_catches = NULL, sp_fleets_catches = NULL, pops = NULL,
-  closed_areas = NULL, t = t, ...)
+go_fish_fleet(
+  FUN = go_fish,
+  sim_init = NULL,
+  fleets_params = NULL,
+  fleets_catches = NULL,
+  sp_fleets_catches = NULL,
+  pops = NULL,
+  closed_areas = NULL,
+  t = t,
+  ...
+)
 }
 \arguments{
 \item{fleets_params}{is the parameter settings initialised from \code{_init_fleets}}

@@ -4,9 +4,17 @@
 \alias{init_sim}
 \title{Initialise simulation}
 \usage{
-init_sim(n_years = 1, n_tows_day = 4, n_days_wk_fished = 5,
-  n_fleets = 1, n_vessels = 1, n_species = 1, nrows = nrows,
-  ncols = ncols, move_freq = 2)
+init_sim(
+  n_years = 1,
+  n_tows_day = 4,
+  n_days_wk_fished = 5,
+  n_fleets = 1,
+  n_vessels = 1,
+  n_species = 1,
+  nrows = nrows,
+  ncols = ncols,
+  move_freq = 2
+)
 }
 \arguments{
 \item{n_years}{is an integar defining the number of years for the
