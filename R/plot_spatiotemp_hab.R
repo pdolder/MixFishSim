@@ -12,7 +12,7 @@
 
 #' @export
 
-plot_spatiotemp_hab <- function(hab = NULL, moveCov = NULL, plot.file = getwd(), spwn_wk = NULL) {
+plot_spatiotemp_hab <- function(hab = NULL, moveCov = NULL, plot.file = NULL, spwn_wk = NULL) {
 
 	nrows <- nrow(hab[["hab"]][[1]]) 
 	ncols <- ncol(hab[["hab"]][[1]])
@@ -21,7 +21,9 @@ plot_spatiotemp_hab <- function(hab = NULL, moveCov = NULL, plot.file = getwd(),
 for(s in seq_len(length(hab[["hab"]]))) {
 
 	nt <- length(moveCov[["cov.matrix"]])
+	if(!is.null(plot.file)) {
 	png(filename = paste0(plot.file,'/','habitat_spatiotemp_spp_',s,'.png'), width = 800, height = 800)
+	}
 	par(mfrow = c(ceiling(sqrt(nt)), ceiling(nt/ceiling(sqrt(nt)))), mar = c(1, 1, 1, 1))
 
 	for(i in seq_len(nt)) {

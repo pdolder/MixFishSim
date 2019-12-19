@@ -60,6 +60,8 @@ close_count <- 0 # counter for recording closures
 
 # preallocate closure list
 
+if(is.null(closure)) { CalcClosures  <- FALSE }
+
 if(!is.null(closure)) {
 	
 	
@@ -143,6 +145,7 @@ Pop_move <- ifelse(week.breaks[t] != week.breaks[t+1], TRUE, FALSE) ## weekly po
 Update   <- ifelse(day.breaks[t] != day.breaks[t+1], TRUE, FALSE) ## weekly pop records 
 
 ## Closure switch, when to recalculate the closed areas
+
 
 if(!is.null(closure)) {
 if(t==1 & !closeArea) {CalcClosures  <-  FALSE }

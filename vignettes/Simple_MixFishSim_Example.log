@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.6.7)  16 DEC 2019 16:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.6.7)  19 DEC 2019 14:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -944,36 +944,73 @@ LaTeX Font Info:    Try loading font information for TS1+lmr on input line 163.
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 383.
-[4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 383.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5]
+<Simple_MixFishSim_Example_files/figure-latex/habitat-1.pdf, id=56, 439.6425pt 
+x 295.1025pt>
+File: Simple_MixFishSim_Example_files/figure-latex/habitat-1.pdf Graphic file (
+type pdf)
+<use Simple_MixFishSim_Example_files/figure-latex/habitat-1.pdf>
+Package pdftex.def Info: Simple_MixFishSim_Example_files/figure-latex/habitat-1
+.pdf  used on input line 492.
+(pdftex.def)             Requested size: 439.64812pt x 295.10626pt.
+[6]
+<Simple_MixFishSim_Example_files/figure-latex/habitat-2.pdf, id=61, 439.6425pt 
+x 295.1025pt>
+File: Simple_MixFishSim_Example_files/figure-latex/habitat-2.pdf Graphic file (
+type pdf)
+<use Simple_MixFishSim_Example_files/figure-latex/habitat-2.pdf>
+Package pdftex.def Info: Simple_MixFishSim_Example_files/figure-latex/habitat-2
+.pdf  used on input line 501.
+(pdftex.def)             Requested size: 439.64812pt x 295.10626pt.
+[7 <./Simple_MixFishSim_Example_files/figure-latex/habitat-1.pdf> <./Simple_Mix
+FishSim_Example_files/figure-latex/habitat-2.pdf>] [8]
+<Simple_MixFishSim_Example_files/figure-latex/pop_init-1.pdf, id=85, 407.5225pt
+ x 253.94875pt>
+File: Simple_MixFishSim_Example_files/figure-latex/pop_init-1.pdf Graphic file 
+(type pdf)
+<use Simple_MixFishSim_Example_files/figure-latex/pop_init-1.pdf>
+Package pdftex.def Info: Simple_MixFishSim_Example_files/figure-latex/pop_init-
+1.pdf  used on input line 578.
+(pdftex.def)             Requested size: 407.53394pt x 253.95586pt.
+<Simple_MixFishSim_Example_files/figure-latex/pop_init-2.pdf, id=86, 407.5225pt
+ x 253.94875pt>
+File: Simple_MixFishSim_Example_files/figure-latex/pop_init-2.pdf Graphic file 
+(type pdf)
+<use Simple_MixFishSim_Example_files/figure-latex/pop_init-2.pdf>
+Package pdftex.def Info: Simple_MixFishSim_Example_files/figure-latex/pop_init-
+2.pdf  used on input line 586.
+(pdftex.def)             Requested size: 407.53394pt x 253.95586pt.
+[9 <./Simple_MixFishSim_Example_files/figure-latex/pop_init-1.pdf> <./Simple_Mi
+xFishSim_Example_files/figure-latex/pop_init-2.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 602.
+[10]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 602.
 (./Simple_MixFishSim_Example.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 383.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 383.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 602.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 602.
 Package rerunfilecheck Info: File `Simple_MixFishSim_Example.out' has not chang
 ed.
-(rerunfilecheck)             Checksum: 3273AECBB6237790EB5789518C1748B3;551.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 383.
+(rerunfilecheck)             Checksum: 19217B224F97FD90229C1A6DE691417E;845.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 602.
  ) 
 Here is how much of TeX's memory you used:
- 12958 strings out of 492982
- 185951 string characters out of 6134897
- 300956 words of memory out of 5000000
- 16372 multiletter control sequences out of 15000+600000
- 31267 words of font info for 32 fonts, out of 8000000 for 9000
+ 12990 strings out of 492982
+ 187240 string characters out of 6134897
+ 308433 words of memory out of 5000000
+ 16392 multiletter control sequences out of 15000+600000
+ 31433 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 32i,5n,38p,919b,457s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 32i,6n,38p,919b,455s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/d
 vips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/l
 m/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf
 /fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt1
 0.pfb>
-Output written on Simple_MixFishSim_Example.pdf (4 pages, 158203 bytes).
+Output written on Simple_MixFishSim_Example.pdf (10 pages, 193515 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 59 compressed objects within 1 object stream
- 9 named destinations out of 1000 (max. 500000)
- 6177 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 142 PDF objects out of 1000 (max. 8388607)
+ 110 compressed objects within 2 object streams
+ 17 named destinations out of 1000 (max. 500000)
+ 6213 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -31,7 +31,7 @@ The object returned is used internally by MixFishSim a list with two objects:
 
 ```{r basic}
 
-sim <- init_sim(nrows = 10, ncols = 10, n_years = 10, n_tows_day = 4, n_days_wk_fished = 5, n_fleets = 5, n_vessels = 2, n_species = 2, move_freq = 2)
+sim <- init_sim(nrows = 20, ncols = 10, n_years = 10, n_tows_day = 4, n_days_wk_fished = 5, n_fleets = 2, n_vessels = 20, n_species = 2, move_freq = 2)
 
 class(sim)
 sim$idx
@@ -41,7 +41,11 @@ names(sim$brk.idx)
 
 ## Habitat setup
 
-This function creates the spatial fields which support the fish populations and fisheries. You define the parameters for the mattern covariance function for each population and optionally the location of any spawning closure areas.
+This function creates the spatial fields which support the fish populations and fisheries. You define the parameters for the mattern covariance function for each population and optionally the location of any spawning closure areas. 
+
+It returns a list of suitable habitat for each species (hab), the habitat as adjusted during the spawning period (spwn_hab) and the binary location of spawning areas (spwn_loc). It also returns the locations as x1,x2,y1,y2 and the multiplier of attractiveness to the spawning area during spawning periods (spwn_mult).
+
+If plot.dist = TRUE, it returns the plots to a file.
 
 ```{r habitat}
 
@@ -58,8 +62,8 @@ hab <- create_hab(sim_init = sim,
 				  ),
 		  spawn_areas = list(
 				     "spp1" = list(
-						   'area1' = c(2,3,2,3),
-						   'area2' = c(6,7,6,6)
+						   'area1' = c(2,5,2,5),
+						   'area2' = c(6,8,6,8)
 						   ),
 				     "spp2" = list(
 						   'area1' = c(5,6,6,6)
@@ -70,8 +74,117 @@ hab <- create_hab(sim_init = sim,
 
 print(hab)
 
-## To plot we need to bust the function out of the current create_hab function!!
+## Plot the unadjusted habitat fields
+plot_habitat(hab$hab)
+
+## Plot the adjusted habitat fields
+plot_habitat(hab$spwn_hab)
+
+```
+
+## Population models
+
+Now we need to set up the population models for the simulations. We do this
+with the init_pop function. We set the initial population biomasses, movement
+rates, recruitment parameter and growth and natural mortality rates.
+
+The object created stores all the starting conditions and containers for the
+changes in the populations during the simulations.
+
+```{r pop_init}
+
+Pop <- init_pop(sim_init = sim, Bio = c("spp1" = 1e5, "spp2" = 1e3),
+		hab = hab[["hab"]], start_cell = c(5,5),
+		lambda = c("spp1" = 0.1, "spp2" = 0.1),
+		init_move_steps = 20,
+		rec_params = list("spp1" = c("model" = "BH", "a" = 4, "b" = 2, "cv" = 0.7),
+				  "spp2" = c("model" = "BH", "a" = 27, "cv" = 0.3)),
+		rec_wk = list("spp1" = 3:6, "spp2" = 4:8),
+		spwn_wk = list("spp1" = 4:8, "spp2" = 4:8),
+		M = c("spp1" = 0.2, "spp2" = 0.2),
+		K = c("spp1" = 0.3, "spp2" = 0.3)
+		)
+
+names(Pop)
+
+Pop$dem_params
+
+image(Pop$Start_pop[[1]], main = "spp1 starting biomass")
+image(Pop$Start_pop[[2]], main = "spp2 starting biomass")
+					   
+```
+
+## Population movement
+
+Now we set up the population tolerance to different temperatures. We can then
+plot the combined spatiotemporal suitable habitat.
+
+```{r temp}
+
+moveCov <- init_moveCov(sim_init = sim, steps = 52,
+			spp_tol = list("spp1" = list("mu" = 12, "va" = 8),
+				       "spp2" = list("mu" = 15, "va" = 7)
+				       )
+			)
+
+plot(norm_fun(x = 0:25, mu = 12, va = 8)/max(norm_fun(0:25, 12, 8)), 
+     type = "l", xlab = "Temperature", ylab = "Tolerance", lwd = 2)
+lines(norm_fun(x = 0:25, mu = 15, va = 7)/ max(norm_fun(0:25, 15, 7)),
+      type = "l", col = "blue", lwd = 2)
+legend(x = 2, y = 0.9, legend = c("spp1", "spp2"), lwd = 2, col = c("black", "blue"))
+
+plot_spatiotemp_hab(hab = hab, moveCov = moveCov, spwn_wk = list("spp1" = 4:8, "spp2" = 4:8))
+
+```
+
+## Fleet models
+
+Here we initialise the fleet with fish landings price per tonne, catchability coefficients per population,
+fuel cost, the coefficients for the step function and fleet behaviour.
+
+We can plot the behaviour of the step function.
+
+```{r fleets}
+
+fleets <- init_fleet(sim_init = sim, VPT = list("spp1" = 4, "spp2" = 3),
+		     Qs = list("fleet 1" = c("spp1" = 0.01, "spp2" = 0.03),
+			       "fleet 2" = c("spp1" = 0.05, "spp2" = 0.01)
+			       ),
+		     fuelC = list("fleet1" = 3, "fleet 2" = 8),
+		     step_params = list("fleet 1" = c("rate" = 3, "B1" = 1, "B2" = 2, "B3" = 3),
+					"fleet 2" = c("rate" = 3, "B1" = 2, "B2" = 3, "B3" = 4)
+					),				
+		     past_knowledge = TRUE,
+		     past_year_month = TRUE,
+		     past_trip = TRUE,
+		     threshold = 0.7
+		     )
+
+test_step(step_params = fleets$fleet_params[[1]]$step_params, rev.max = 1e2)
+test_step(step_params = fleets$fleet_params[[2]]$step_params, rev.max = 1e2)
+
+```
+
+
+## Run simulation
+
+```{r sim}
+
+set.seed(123)
+
+res <- run_sim(sim_init = sim,
+	       pop_init = Pop,
+	       move_cov = moveCov,
+	       fleets_init = fleets,
+	       hab_init = hab,
+	       save_pop_bio = TRUE,
+	       survey = NULL,
+	       closure = NULL)
+
 
 
 ```
+
+
+
 

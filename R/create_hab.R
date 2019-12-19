@@ -82,13 +82,7 @@ hab <- 	lapply(seq_len(n.spp), function(i) {
 	# Plot
 	if(plot.dist == TRUE) {
 	png(filename = paste0(plot.file,'/','habitat','.png'), width = 800, height = 800)
-	par(mfrow = c(ceiling(sqrt(n.spp)), ceiling(n.spp/ceiling(sqrt(n.spp)))), mar = c(2, 2, 2, 2))
-	for (i in seq(n.spp)) {
-	image(hab[[paste0('spp',i)]], cex.axis = 1.5, cex.main = 2, col = grey(seq(1,0,l = 51)), axes = F)
-	axis(1, at = seq(0, 1, by = 0.2), labels = seq(0, nrows, by = nrows/5))
-	axis(2, at = seq(0, 1, by = 0.2), labels = seq(0, ncols, by = ncols/5))
-	text(0.5, 0.98, labels = paste('habitat spp =', i), cex = 2)
-		}
+	plot_habitat(hab)
 	dev.off()
 	}
 
@@ -125,13 +119,7 @@ spwn <- matrix(rep(0.5, nrows * ncols), nc = ncols)
 	# Plot
 	if(plot.dist == TRUE & !is.null(spawn_areas)) {
 	png(filename = paste0(plot.file,'/','habitat_spwn','.png'), width = 800, height = 800)
-	par(mfrow = c(ceiling(sqrt(n.spp)), ceiling(n.spp/ceiling(sqrt(n.spp)))), mar = c(2, 2, 2, 2))
-	for (i in seq(n.spp)) {
-	image(spwn_hab[[paste0('spp',i)]], cex.axis = 1.5, cex.main = 2, col = grey(seq(1,0,l = 51)), axes = F)
-	axis(1, at = seq(0, 1, by = 0.2), labels = seq(0, nrows, by = nrows/5))
-	axis(2, at = seq(0, 1, by = 0.2), labels = seq(0, ncols, by = ncols/5))
-	text(0.5, 0.98, labels = paste('habitat spp =', i), cex = 2)
-		}
+	plot_habitat(spwn_hab)
 	dev.off()
 	}
 
