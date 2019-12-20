@@ -302,7 +302,17 @@ Population movement is a combination of directed (advective) movement where at
 certain times of year the population moves towards spawning grounds by
 increasing the probabilities of moving into the spawning grounds from adjacent
 cells, and random (diffusive) movement, governed by a stochastic process where
-movement between adjacent cells is described by a set of probabilities.\\
+movement between adjacent cells is described by a set of probabilities
+\added{which are affected by the suitability of habitat, temperature in a cell
+	and the thermal tolerance of a population to that temperature}.\\
+
+\added{The combined process results in a population structure and movement
+pattern unique to each population, with population movement occurring on a weekly
+basis. The decision to model population movement on a weekly timescale was to
+reflect that fish tend to aggregate in species specific locations that have
+been observed to last around one to two weeks \citep{Poos2007}. Therefore this
+process approximated the demographic shifts in fish populations throughout a
+year with seasonal spawning patterns }(Figure \ref{S-fig:5}).
 
 To simulate fish population distribution in space and time a Gaussian spatial
 process was employed to model habitat suitability for each of the populations
@@ -312,18 +322,22 @@ joint distribution of $S = \{S(c1),\dots S(c_{n})\}$ is multivariate Gaussian
 with a \textit{Matérn} covariance structure, where the correlation strength
 weakens with distance controlled by two parameters, with $\nu$ a scale
 parameter in the units of distance and $\kappa$ a shape parameter which
-determines the smoothness of the process. This enables us to model the spatial
-autocorrelation observed in animal populations where density is more similar in
-nearby locations \citep{Tobler1970, F.Dormann2007, Poos2007} and we change the
-parameters to implement different spatial structures for the different
-populations using the \textit{RandomFields} R package \citep{Schlater2015}. We
-define a stationary habitat field with an anisotropic pattern (to simulate a
-depth gradient) and combine it with a temporally dynamic thermal tolerance
-field to imitate two key drivers of population dynamics without modelling the
-processes explicitly. Each population was initialised at a single location, and
-subsequently moved across the entire space according to a probabilistic
-distribution based on habitat suitability (represented by the normalised values
-from the GRFs), temperature tolerance and distance from current cell: 
+determines the smoothness of the process. \added{We use the most commonly used
+	Matérn covariance structure as it is a flexible form that under certain
+	conditions is of the same form as an exponential function and
+	it}\deleted{This} enables us to model the spatial autocorrelation
+observed in animal populations where density is more similar in nearby
+locations, \added{but that correlation decreases non-linearly}
+\citep{Tobler1970, F.Dormann2007, Poos2007}. We change the parameters to
+implement different spatial structures for the different populations using the
+\textit{RandomFields} R package \citep{Schlater2015}. We define a stationary
+habitat field with an anisotropic pattern (to simulate a depth gradient) and
+combine it with a temporally dynamic thermal tolerance field to imitate two key
+drivers of population dynamics without modelling the processes explicitly. Each
+population was initialised at a single location, and subsequently moved across
+the entire space according to a probabilistic distribution based on habitat
+suitability (represented by the normalised values from the GRFs), temperature
+tolerance and distance from current cell: 
 \begin{equation}
 	Pr(C_{wk+1} = J | C_{wk} =I) = \frac{\mathrm{e}^{-\lambda \cdot d_{I,J}} \cdot
 		(Hab_{J,p}^2 \cdot
@@ -355,29 +369,31 @@ $wk$, $T_{c, wk}$ is the temperature in the cell given the week and $\mu_{p}$
 and $\sigma_{p}$ the mean and standard deviation of the population temperature
 tolerance. \\
 
-The final combined process results in a population structure and movement
+\deleted{The final combined process results in a population structure and movement
 pattern unique to each population, with population movement occurring on a weekly
 basis. The decision to model population movement on a weekly timescale was to
 reflect that fish tend to aggregate in species specific locations that have
 been observed to last around one to two weeks \citep{Poos2007}. Therefore this
 process approximated the demographic shifts in fish populations throughout a
-year with seasonal spawning patterns (Figure \ref{S-fig:5}).
+year with seasonal spawning patterns (Figure \ref{S-fig:5}).}
 
 \subsection{Fleet dynamics}
 
-Fleet dynamics can be broadly categorised into three components: fleet
-targeting - that determined the fleet catch efficiency and preference towards a
-particular population; trip-level decisions, that determines the initial location
-to be fished at the beginning of a trip; and within-trip decisions, that
-determines movement from one fishing spot to another within a trip. An
-explore-exploit type strategy was implemented in the model that combined these
-three components for individual vessels to maximise their catch from an unknown
-resource distribution \citep{Bailey2018}. The decision to use an individual
-based model for fishing vessels was taken because fishers are heterogeneous in
-their location choice behaviour due to different objectives, risk preference
-and targeting preference \citep{VanPutten2012a, Boonstra2015}. Therefore fleet
-dynamics are emergent from individual dynamics rather than pre-defined group
-dynamics. 
+Fleet dynamics \replaced{were}{can be }broadly categorised into three
+components. \textit{Fleet targeting} \replaced{determined}{determines} the
+fleet catch efficiency and preference towards a particular population;
+\textit{trip-level decisions} \replaced{determined}{that determines} the
+initial location to be fished at the beginning of a trip; and
+\textit{within-trip decisions}\replaced{determined fishing locations}{, that
+	determines movement from one fishing spot to another} within a trip.
+\replaced{This results in an explore-exploit strategy}{ was implemented in the
+	model that combined these three components} for individual vessels to
+maximise their catch from an unknown resource distribution \citep{Bailey2018}.
+The decision to use an individual based model for fishing vessels was taken
+because fishers are heterogeneous in their location choice behaviour due to
+different objectives, risk preference and targeting preference
+\citep{VanPutten2012a, Boonstra2015}.  Therefore fleet dynamics are emergent
+from individual dynamics rather than pre-defined group dynamics. 
 
 \subsubsection{Fleet targeting}
 
@@ -487,15 +503,15 @@ The simulation framework is implemented in the statistical software package R
 \citep{RCoreTeam2017} and available as an R package from the author's github
 site (\url{www.github.com/pdolder/MixFishSim}).\\
 
-\section{Parameterisation}
-We parameterise \textit{MixFishSim} to investigate the influence of data
+\section{Model calibration}
+We calibrate \textit{MixFishSim} to investigate the influence of data
 aggregation on spatial inference.
 
 \subsection{Population models}
 
-We parametrised the simulation model for four example populations with
+We calibrated the simulation model for four example populations with
 different demographics, growth rates, natural mortality and recruitment
-parameters (Table \ref{tab:1}). Habitat preference (Figure \ref{S-fig:1}) and
+(Table \ref{tab:1}). Habitat preference (Figure \ref{S-fig:1}) and
 temperature (Figures \ref{S-fig:3}, with temperature tolerance \ref{S-fig:4})
 defined to be unique to each population resulting in differently weekly
 distribution patterns (Figures \ref{S-fig:5}-\ref{S-fig:7}). In addition, each
@@ -503,15 +519,15 @@ of the populations was assumed to have two defined spawning areas that result
 in the populations moving towards these areas in pre-defined weeks (Figure
 \ref{S-fig:2}) with population-specific movement rates (Table \ref{tab:1}).
 
-\subsection{Fleet parametrisation}
+\subsection{Fleet calibration}
 
-The fleets were parametrised to reflect five different characteristic fisheries
+The fleets were calibrated to reflect five different characteristic fisheries
 with unique exploitation dynamics (Table \ref{tab:2}). By setting different
-catchability parameters ($Q_{fl, p}$) we create different targeting preferences
-between the fleets and hence spatial dynamics.  The learned random walk process
-implies that within a fleet different vessels have different spatial
-distributions based on individual experience. The step function was
-parametrised dynamically within the simulations as the maximum revenue
+catchability coefficients ($Q_{fl, p}$) we create different targeting
+preferences between the fleets and hence spatial dynamics.  The learned random
+walk process implies that within a fleet different vessels have different
+spatial distributions based on individual experience. The step function was
+calibrated dynamically within the simulations as the maximum revenue
 obtainable was not known beforehand. This was implemented so that vessels take
 smaller steps when fishing at a location that yields landings value in the top
 90th percentile of the value experienced in that year so far (as defined per
@@ -624,24 +640,24 @@ stochastically related to the revenue experienced on the fishing ground (Figure
 \subsection{How does sampling-derived fisheries data reflect the underlying
 	population structure?}
 
-The aggregated catch composition from each of the data sources over a ten-year
-period (which shows average seasonal patterns) at different spatial resolutions
-highlights different patterns in perceived community structure depending on the
-data source and aggregation level (Figure \ref{fig:1}; visualised using
-\cite{Gerritsen2014}). The finer spatial grid for the true population (top
-left) and commercial data (top middle) show visually similar patterns, though
-there are large unsampled areas in the commercial data from a lack of fishing
-activity (particularly in the lower left part of the sampling domain). The
-survey data at this spatial resolution displays very sparse information about
-the spatial distributions of the populations. The slightly aggregated data on a
-5 x 5 grid shows similar patterns and, while losing some of the spatial detail,
-there remains good consistency between the true population and the commercial
-data. Survey data starts to pick out some of the similar patterns as the other
-data sources, but
-lacks spatiotemporal coverage. The spatial catch information on a 10 x 10 and
-20 x 20 grid lose a significant amount of information about the spatial
-resolutions for all data sources, and some differences between the survey,
-commercial and true population data emerge. \\
+The \deleted{aggregated }catch composition\added{aggregated at different
+	spatial resolutions} from each of the data sources (\deleted{which
+	shows }average seasonal patterns over a ten-year period) highlights
+different patterns in perceived community structure depending on the data
+source and aggregation level (Figure \ref{fig:1}). The finer spatial grid for
+the true population (top left) and commercial data (top middle) show visually
+similar patterns, though there are large unsampled areas in the commercial data
+from a lack of fishing activity (particularly in the lower left part of the
+sampling domain). The survey data at this spatial resolution displays very
+sparse information about the spatial distributions of the populations. The
+slightly aggregated data on a 5 x 5 grid shows similar patterns and, while
+losing some of the spatial detail, there remains good consistency between the
+true population and the commercial data. Survey data starts to pick out some of
+the similar patterns as the other data sources, but lacks spatiotemporal
+coverage. The spatial catch information on a 10 x 10 and 20 x 20 grid lose a
+significant amount of information about the spatial resolutions for all data
+sources, and some differences between the survey, commercial and true
+population data emerge. \\
 
 Different perceptions of the proportion of each stock in an area are seen when
 we aggregate the data over a smaller geographical region at different
@@ -864,7 +880,7 @@ necessarily had to make a number of simplifying assumptions. \\
 
 Fish populations in our simulations move in pre-defined timescales and
 according to fixed habitat preferences and temperature gradients (Figures
-\ref{S-fig:1}, \ref{S-fig:3}). Our assumptions in parameterising the model
+\ref{S-fig:1}, \ref{S-fig:3}). Our assumptions in calibrating the model
 (movement rates, temperature tolerances) will have a direct impact on our
 conclusions on the relative importance of spatial and temporal processes. These
 assumptions could be explored in a future study by varying the parameters and
@@ -1016,7 +1032,9 @@ competing interests.
 \begin{figure}[!ht]
 	\includegraphics[width=\linewidth]{../analysis/Data_Aggregation_space_Rev2}
 	\caption{[Colour] Data aggregation at different spatial resolutions over a
-		ten year period.}
+		ten year period. The figure shows catch composition at each
+		spatial unit as visualised using \cite{Gerritsen2014} mapplots
+		R package.}
 	\label{fig:1}
 \end{figure}	
 

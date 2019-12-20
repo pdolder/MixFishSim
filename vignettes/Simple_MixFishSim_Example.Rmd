@@ -252,20 +252,25 @@ and all the results are saved in the output from the run_sim function.
 ```{rplots}
 
 ## Biological
-plot_pop_summary(results = res,
-		 timestep = "annual"
+p1 <- plot_pop_summary(results = res,
+		 timestep = "annual",
+		 save = FALSE
 		 )
+p1
 
-plot_daily_fdyn(res)
+p2 <- plot_daily_fdyn(res)
+p2
 
 ## Fishery
 
 logs <- combine_logs(res[["fleets_catches"]])
 
-plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 1, vessel_no = 5,
+p3 <- plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 1, vessel_no = 5,
 		 year_trip = 5, trip_no = 10)
+p3
 
-plot_realised_stepF(logs = logs, fleet_no = 1, vessel_no = 1)
+p4 <- plot_realised_stepF(logs = logs, fleet_no = 1, vessel_no = 1)
+p4      
 
 ```
 
