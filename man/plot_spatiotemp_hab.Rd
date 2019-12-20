@@ -7,7 +7,7 @@
 plot_spatiotemp_hab(
   hab = NULL,
   moveCov = NULL,
-  plot.file = getwd(),
+  plot.file = NULL,
   spwn_wk = NULL
 )
 }

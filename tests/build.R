@@ -1,6 +1,6 @@
 library(devtools)
 
-build()
+build(vignettes = FALSE)
 reload()
 
 #load_all()

@@ -93,7 +93,7 @@ names(MoveProb)      <- paste0("spp", seq_len(n_spp))
 names(MoveProb_spwn) <- paste0("spp", seq_len(n_spp))
 
 ## Avoid printing every tow
-print.seq <- seq(1, ntow, 20)
+print.seq <- seq(1, ntow, 100)
 
 
 ## Closure?
@@ -182,7 +182,7 @@ CalcClosures <- ifelse(week.breaks[t] != week.breaks[t-1], TRUE, FALSE)
 
 if(Recruit) { # Check for new week
 
-print("Recruiting")
+##print("Recruiting")
 
     ## Check if its a recruitment week for the population
  Rec <- lapply(paste0("spp", seq_len(n_spp)), function(s) {
@@ -335,7 +335,7 @@ catches <- lapply(seq_len(n_fleets), function(fl) {
 
 if(Pop_dyn) {
 
-print("Delay-difference model")
+##print("Delay-difference model")
 
 ## Calculate the fishing mortalities
 # 1. Sum all fleet catches - DONE
@@ -385,7 +385,7 @@ B <- Bp1
 
 if(sim_init[["brk.idx"]][["day.breaks"]][t] %in% survey[["log.mat"]][,"day"] & !is.null(survey)) {
 
-print("undertaking scientific survey")
+##print("undertaking scientific survey")
 
 # doy and y
   doy <- sim_init[["brk.idx"]][["day.breaks"]][t]
@@ -425,7 +425,7 @@ log.mat[log.mat[,"day"]==doy & log.mat[,"year"]==y,paste0("spp",s)][i]  <-  	B[[
 
 
 if(Pop_move) {
-	print("Moving populations")
+##	print("Moving populations")
 
 	### With covariates ###
 
@@ -562,7 +562,7 @@ pop_bios <- NULL
 # Update weekly / annual records at pop level
 
 if(Update) {
-print("Recording metrics")
+##print("Recording metrics")
 
 for(s in paste0("spp", seq_len(n_spp))) {
 

@@ -7,7 +7,12 @@ vignette: >
       \usepackage[utf8]{inputenc}
 ---
 
-This is a simple example of how to use \textbf{'MixFishSim'} to generate simulations of dynamics in a mixed fishery.
+This is a simple example of how to use \textbf{'MixFishSim'} to generate
+simulations of the dynamics in a mixed fishery. We describe how to calibrate
+the habitat fields, the population models, the fishery model and implement a
+simple fixed spatial closure. \\
+
+First, load the packages and set a seed for reproducibility.
 
 # Load MixFishSim
 
@@ -16,22 +21,34 @@ library(MixFishSim)
 library(knitr)
 opts_chunk$set(tidy = TRUE)
 
+set.seed(123)
+
 ```
 
 # Initialise the simulation
 
+This vignette is a paired down example of how to construct a simulation using
+MixFishSim. We include only a basic example and encourage users to explore the
+other features of the package. \\
+
+
 ## Base parameters
 
-First we specify the basic parameters of the simulation. This includes the size of the spatial domain, the number of years to simulate, the number of fleets and vessels per fleet and the number of species for the simulation etc... 
+First we specify the basic parameters of the simulation. This includes the
+dimensions of the spatial domain, the number of years to simulate, the number
+of fleets and vessels per fleet and the number of species and how often (in
+weeks) the fish move.
 
-The object returned is used internally by MixFishSim a list with two objects: 
+The object returned is used internally by MixFishSim a list with two levels: 
 
 * sim$idx : The different units of different processes 
 * sim$brk.idx: breaks for each of the key processes in units of a timestep
 
 ```{r basic}
 
-sim <- init_sim(nrows = 20, ncols = 10, n_years = 10, n_tows_day = 4, n_days_wk_fished = 5, n_fleets = 2, n_vessels = 20, n_species = 2, move_freq = 2)
+sim <- init_sim(nrows = 10, ncols = 10, n_years = 10, n_tows_day = 4,
+		n_days_wk_fished = 5, n_fleets = 2, n_vessels = 20, n_species =
+			2, move_freq = 2)
 
 class(sim)
 sim$idx
@@ -41,9 +58,16 @@ names(sim$brk.idx)
 
 ## Habitat setup
 
-This function creates the spatial fields which support the fish populations and fisheries. You define the parameters for the mattern covariance function for each population and optionally the location of any spawning closure areas. 
+This function creates the spatial fields which support the fish populations and
+determine their spatial distributions. You define the parameters for the
+matern covariance function for each population and optionally the location of
+any spawning closure areas. 
 
-It returns a list of suitable habitat for each species (hab), the habitat as adjusted during the spawning period (spwn_hab) and the binary location of spawning areas (spwn_loc). It also returns the locations as x1,x2,y1,y2 and the multiplier of attractiveness to the spawning area during spawning periods (spwn_mult).
+It returns a list of suitable habitat for each species (hab), the habitat as
+adjusted during the spawning period (spwn_hab) and the binary location of
+spawning areas (spwn_loc). It also returns the locations as x1,x2,y1,y2 and the
+multiplier of attractiveness to the spawning area during spawning periods
+(spwn_mult).
 
 If plot.dist = TRUE, it returns the plots to a file.
 
@@ -88,17 +112,19 @@ Now we need to set up the population models for the simulations. We do this
 with the init_pop function. We set the initial population biomasses, movement
 rates, recruitment parameter and growth and natural mortality rates.
 
-The object created stores all the starting conditions and containers for the
-changes in the populations during the simulations.
+The object created stores all the starting conditions and containers for
+recording the changes in the populations during the simulations.
+
+We can plot the starting distributions for each population as a check.
 
 ```{r pop_init}
 
-Pop <- init_pop(sim_init = sim, Bio = c("spp1" = 1e5, "spp2" = 1e3),
+Pop <- init_pop(sim_init = sim, Bio = c("spp1" = 1e5, "spp2" = 1e5),
 		hab = hab[["hab"]], start_cell = c(5,5),
 		lambda = c("spp1" = 0.1, "spp2" = 0.1),
 		init_move_steps = 20,
-		rec_params = list("spp1" = c("model" = "BH", "a" = 4, "b" = 2, "cv" = 0.7),
-				  "spp2" = c("model" = "BH", "a" = 27, "cv" = 0.3)),
+		rec_params = list("spp1" = c("model" = "BH", "a" = 54, "b" = 2, "cv" = 0.7),
+				  "spp2" = c("model" = "BH", "a" = 27, "b" = 4,"cv" = 0.3)),
 		rec_wk = list("spp1" = 3:6, "spp2" = 4:8),
 		spwn_wk = list("spp1" = 4:8, "spp2" = 4:8),
 		M = c("spp1" = 0.2, "spp2" = 0.2),
@@ -116,8 +142,10 @@ image(Pop$Start_pop[[2]], main = "spp2 starting biomass")
 
 ## Population movement
 
-Now we set up the population tolerance to different temperatures. We can then
-plot the combined spatiotemporal suitable habitat.
+Now we set up the population tolerance to different temperatures which
+determines how the populations move during the course of a year. We can then
+plot the combined spatiotemporal suitable habitat to examine how these
+interact.
 
 ```{r temp}
 
@@ -139,20 +167,24 @@ plot_spatiotemp_hab(hab = hab, moveCov = moveCov, spwn_wk = list("spp1" = 4:8, "
 
 ## Fleet models
 
-Here we initialise the fleet with fish landings price per tonne, catchability coefficients per population,
-fuel cost, the coefficients for the step function and fleet behaviour.
+Here we initialise the fleet with fish landings price per tonne, catchability
+coefficients per population, fuel cost, the coefficients for the step function
+and fleet behaviour.
 
-We can plot the behaviour of the step function.
+We can plot the behaviour of the step function to check its suitable for our
+simulations. This determines the relationship between the monetary value gained
+from a fishing tow and the next move by the vessel when using the correlated
+random walk function.
 
 ```{r fleets}
 
 fleets <- init_fleet(sim_init = sim, VPT = list("spp1" = 4, "spp2" = 3),
-		     Qs = list("fleet 1" = c("spp1" = 0.01, "spp2" = 0.03),
-			       "fleet 2" = c("spp1" = 0.05, "spp2" = 0.01)
+		     Qs = list("fleet 1" = c("spp1" = 1e-5, "spp2" = 3e-5),
+			       "fleet 2" = c("spp1" = 5e-5, "spp2" = 1e-5)
 			       ),
 		     fuelC = list("fleet1" = 3, "fleet 2" = 8),
 		     step_params = list("fleet 1" = c("rate" = 3, "B1" = 1, "B2" = 2, "B3" = 3),
-					"fleet 2" = c("rate" = 3, "B1" = 2, "B2" = 3, "B3" = 4)
+					"fleet 2" = c("rate" = 3, "B1" = 2, "B2" = 4, "B3" = 4)
 					),				
 		     past_knowledge = TRUE,
 		     past_year_month = TRUE,
@@ -165,12 +197,32 @@ test_step(step_params = fleets$fleet_params[[2]]$step_params, rev.max = 1e2)
 
 ```
 
+## Spatial closure
+
+We set up a spatial closure. There are multiple options in defining
+this, but we simply define a static fixed site closure for demonstration
+purposes. 
+
+```{r close}
+
+closure <- init_closure(input_coords = data.frame(x = c(9,10), y = c(6,10)),
+			spp1 = "spp1", year_start = 5) 
+
+```
+
+## Survey
+
+Its also possible to define a survey design using the init_survey function, but
+we do not do so for this demonstration. Please refer to the function help file
+if this is required.
 
 ## Run simulation
 
-```{r sim}
+Finally we run the simulation. The output is a list of objects containing all
+the information on fisheries catches, the population dynamics and population
+distributions. These can be examined with some inbuilt plotting functions. 
 
-set.seed(123)
+```{r sim}
 
 res <- run_sim(sim_init = sim,
 	       pop_init = Pop,
@@ -179,12 +231,46 @@ res <- run_sim(sim_init = sim,
 	       hab_init = hab,
 	       save_pop_bio = TRUE,
 	       survey = NULL,
-	       closure = NULL)
-
+	       closure = closure)
 
 
 ```
 
+## Summary plots
 
+There are a series of input plotting functions to visualise the results of the
+simulation. For example, we can explore:
+
+* the population dynamics for each species
+* Seasonal patterns in exploitation
+* the location choice of a vessel
+* the realised step function for a vessel
+
+Users will wish to define their own plots, depending on the issues of interest
+and all the results are saved in the output from the run_sim function.
+
+```{rplots}
+
+## Biological
+plot_pop_summary(results = res,
+		 timestep = "annual"
+		 )
+
+plot_daily_fdyn(res)
+
+## Fishery
+
+logs <- combine_logs(res[["fleets_catches"]])
+
+plot_vessel_move(sim_init = sim, logs = logs, fleet_no = 1, vessel_no = 5,
+		 year_trip = 5, trip_no = 10)
+
+plot_realised_stepF(logs = logs, fleet_no = 1, vessel_no = 1)
+
+```
+
+Note in our example how the fishing mortality rate for species 2 changes
+following the spatial closure, which was set to cover some of the core
+distribution of the population.
 
 
