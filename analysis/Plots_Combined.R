@@ -212,12 +212,18 @@ combined_pop_an$pop[combined_pop_an$pop == "spp_4"] <- "Population 4"
 combined_pop_an$data_type[combined_pop_an$data_type == "real_pop"]  <- "True Population"
 
 
+library(viridis)
+
+colnames(combined_pop_an)[9] <- "resolution"
+
+
 png('F_trendsREV.png', units = "in", height = 8, width = 9, res = 600)
 
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F'), 
        aes(x = year, y = data, group = combined)) + 
-geom_line(aes(colour = timescale, linetype = res), size = 1) +
+geom_line(aes(colour = timescale, linetype = resolution)) +
 scale_linetype_manual(values = rev(1:4)) + 
+scale_colour_manual("Data source", values = c("#d95f02", "#7570b3", "#1b9e77")) +
 facet_grid(data_type ~pop) + expand_limits(y = 0) +theme_bw() +
 geom_vline(xintercept = 30, linetype = 2, colour = "grey") + ylab("Fishing mortality") +
 theme(axis.text.x = element_text(hjust = 0),

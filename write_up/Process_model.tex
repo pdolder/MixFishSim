@@ -37,7 +37,7 @@
 % Use join to connect a node to the previous one 
 \node [term, join, fill=lcnorm!25]      {Choose random location to fish};
 \node [term, join, fill=lcfree!25] (p1){Sample catch};
-\node [test, densely dotted] (t1) {if $(Rec)$};
+\node [test, densely dotted] (t1) {if $(Recr)$};
 \node [test, join, densely dotted] (t2) {if (Pop Movement)};
 \node [test, join, densely dotted] (wk) {if (Pop Dynamics)};
 \node [test, join, densely dotted] (t3) {if (Past Knowledge)};
@@ -112,7 +112,7 @@
 \caption{Schematic overview of the simulation model. Blue boxes indicate fleet
 	dynamics processes, the green boxes population dynamics processes while
 	the white boxes are the time steps at which processes occur; $t$ = tow,
-	$tmax$ is the total number of tows; (Rec), (Pop Movement), (Pop
+	$tmax$ is the total number of tows; (Recr), (Pop Movement), (Pop
 	Dynamics) logic gates for recruitment periods, population movement and
 	population dynamics for each of the populations, (Past Knowledge) a
 	switch whether to use a random (exploratory) or past knowledge

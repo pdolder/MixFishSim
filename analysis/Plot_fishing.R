@@ -86,8 +86,10 @@ return(cbind(polyr, data.frame(year = y)))
 }
 cl <- lapply(yrs[2], function(x) make_ggpoly(y = x))
 cl <- do.call(rbind, cl)
+cl <- cl[,1:7]
 
 p1 <- ggplot(filter(logs, closure == "before"), aes(x = x , y = y)) +
+	geom_polygon(data = cl, aes(long, lat, group = group), colour = "red",fill = NA) +
 	geom_point(colour = "blue", alpha = 0.2, shape = "x") +
 	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~year) +
 	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm")) +
@@ -104,7 +106,7 @@ p2 <- ggplot(cl) + geom_polygon(aes(long, lat, group = group), colour = "red",fi
 
 p3 <- ggplot(cl) + geom_raster(aes(x, y, alpha = hab), data = filter(hab.df, hab > 0))+ 
 	geom_polygon(aes(long, lat, group = group), colour = "red",fill = NA) +
-	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~year) +
+	expand_limits(x = c(0,100), y = c(0,100))+
 	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"), 
 			   legend.position = "none") +
 	xlab("x distance") + ylab("y distance")

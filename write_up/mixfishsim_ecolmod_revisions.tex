@@ -47,7 +47,6 @@
 %%%%%%%%%%%%%%%%%%%%%%
 
 
-
 \begin{document}
 
 \begin{frontmatter}
@@ -218,9 +217,11 @@ appropriate to capture the characteristic of the different processes (Figure
 Population dynamics, 2) Recruitment dynamics, 3) Population movement, 4)
 fishery dynamics.\\
 
-Population dynamics operate on a daily time-step, while population movement
-occurs on a weekly time-step, with the fishing module operating on a tow-by-tow
-basis (i.e.  multiple events a day). 
+Population dynamics \added{for any number of species, as chosen by the user}
+operate on a daily time-step \added{(with recruitment occurring only during
+	defined seasons for each population)}, while population movement occurs
+on a weekly time-step, with the fishing module operating on a tow-by-tow basis
+(i.e.  multiple events a day). \\
 
 \subsection{Population dynamics}
 
@@ -241,9 +242,10 @@ follows (the full parameter list is detailed in Table \ref{tab: pop_variable}):
 	\mathrm{e}^{-Z_{c,d}} \hspace{2.9cm}
 	\times \\  
 	& \left(B_{c,d-1} \cdot \mathrm{e}^{-Z_{c,d-1}} + Wt_{R-1} \cdot \left( \alpha_{d-1} \cdot
-	R_{\tilde{y}(c)}\right) \right)
+	R_{\tilde{y}\left(c\right)}\right) \right)
 	\hspace{0.9cm} + \\
-	& Wt_{R} \cdot \left( \alpha_{d} \cdot R_{\tilde{y}(c) \right)}
+	& Wt_{R} \cdot \left( \alpha_{d} \cdot R_{\tilde{y} \left(c\right)}
+	\right) \\
 	\end{split}
 \end{equation}
 where $\rho$ is Brody's coefficient, shown to be equal to $\mathrm{e}^{-K}$
@@ -367,13 +369,14 @@ each cell and population temperature tolerance is defined that:
 Where $Tol_{c, p, wk}$ is the tolerance of population $p$ for cell $c$ in week
 $wk$, $T_{c, wk}$ is the temperature in the cell given the week and $\mu_{p}$
 and $\sigma_{p}$ the mean and standard deviation of the population temperature
-tolerance. \\
+tolerance. The variables, their meaning and units for population movement is
+provided in Table \ref{tab:pop_move}. \\
 
 \deleted{The final combined process results in a population structure and movement
 pattern unique to each population, with population movement occurring on a weekly
 basis. The decision to model population movement on a weekly timescale was to
 reflect that fish tend to aggregate in species specific locations that have
-been observed to last around one to two weeks \citep{Poos2007}. Therefore this
+been observed to last around one to two weeks (Poos et al 2007). Therefore this
 process approximated the demographic shifts in fish populations throughout a
 year with seasonal spawning patterns (Figure \ref{S-fig:5}).}
 
@@ -472,7 +475,8 @@ where $Le$ is the step length, $Br_t$ is the bearing at time $t$, $k$ the
 concentration parameter from the von Mises distribution that we correlate with
 the revenue so that $k = (Rev + 1 / RefRev) \cdot max_{k}$, where $max_{k}$ is
 the maximum concentration value, $k$, and $RefRev$ is parametrised as for
-$\beta_{3}$ in the step length function. 
+$\beta_{3}$ in the step length function. Details of the variables, meaning and
+units for fleet dynamics are provided in Table \ref{tab:fleet_dyn}.
 
 \subsubsection{Local population depletion}
 
@@ -509,15 +513,19 @@ aggregation on spatial inference.
 
 \subsection{Population models}
 
-We calibrated the simulation model for four example populations with
-different demographics, growth rates, natural mortality and recruitment
-(Table \ref{tab:1}). Habitat preference (Figure \ref{S-fig:1}) and
-temperature (Figures \ref{S-fig:3}, with temperature tolerance \ref{S-fig:4})
-defined to be unique to each population resulting in differently weekly
-distribution patterns (Figures \ref{S-fig:5}-\ref{S-fig:7}). In addition, each
-of the populations was assumed to have two defined spawning areas that result
-in the populations moving towards these areas in pre-defined weeks (Figure
-\ref{S-fig:2}) with population-specific movement rates (Table \ref{tab:1}).
+We calibrated the simulation model for four example populations with different
+demographics, growth rates, natural mortality and recruitment (Table
+\ref{tab:1}). Habitat preference (Figure \ref{S-fig:1}) and temperature
+(Figures \ref{S-fig:3}, with temperature tolerance \ref{S-fig:4}) defined to be
+unique to each population resulting in differently weekly distribution patterns
+(Figures \ref{S-fig:5}-\ref{S-fig:7}). In addition, each of the populations was
+assumed to have two defined spawning areas that result in the populations
+moving towards these areas in pre-defined weeks (Figure \ref{S-fig:2}) with
+population-specific movement rates (Table \ref{tab:1}).  \added{The population
+demographics were defined to broadly represent three mobile low-medium value
+groundfish species and one high value species with low mobility, with the
+dynamics hypothetical but as you might expect to find in a typical demersal
+fishery.}
 
 \subsection{Fleet calibration}
 
@@ -580,7 +588,7 @@ of the true population distributions to:
 We allow the simulation to run unrestricted for 30 years, then implement
 spatial closed areas for the last 20 years of the simulation based on data
 (either derived from the commercial catches, fisheries-independent survey or
-the true population used at different spatial and temporal scales. \\
+the true population) used at different spatial and temporal scales. \\
 
 The following steps are undertaken to determine closures:
 
@@ -607,11 +615,16 @@ In total 28 closure scenarios were run that represent combinations of:
 		protected population
 \end{itemize}
 
-Survey closures were on an annual basis only, as this was the most temporally
-resolved survey data available. We evaluated the factors contributing to the
-success of the closures through a regression tree (using the R package REEMtree
-\citep{Sela2012}) to identify the factor most contributing to differences in
-fishing mortality before and after the closure.
+\added{We implemented a series of spatial closures targeted at reducing fishing
+	mortality on population 3, given the different data sources and spatial
+	and temporal resolutions above. We use the effectiveness of these
+	closures in reducing fishing mortality as a way of evaluating the
+	trade-offs in data sources and resolution.} Survey closures were on an
+annual basis only, as this was the most temporally resolved survey data
+available. We evaluated the factors contributing to the success of the closures
+through a regression tree (using the R package REEMtree \citep{Sela2012}) to
+identify the factor most contributing to differences in fishing mortality
+before and after the closure.
 
 \section{Results}
 
@@ -660,55 +673,50 @@ sources, and some differences between the survey, commercial and true
 population data emerge. \\
 
 Different perceptions of the proportion of each stock in an area are seen when
-we aggregate the data over a smaller geographical region at different
-timescales, with weekly (top), monthly (middle) and yearly (bottom) catch
-compositions from across an aggregated 20 x 20 area (Figure \ref{fig:2}). In
-the true population, the monthly aggregation captures the major patterns of
-composition seen in the weekly data with the percentage of different
-populations in the catch having similar mean and standard deviations.  In the
-weekly data population 1 = 9.36\% (SD = 3.99), population 2 = 83.2\% (5.60),
-population 3 = 3.57\% (1.23), population 4 = 3.91\% (1.59); in the monthly data
-population 1 = 9.23\% (3.87), population 2\% = 83.3 (5.52), population 3 =
-3.62\% (1.15), population 4 = \deleted{\%}3.86\added{\%} (1.52). While means
-were similar some of the variation was lost when aggregated to an annual level;
-population 1 = 9.90\% (0.173), population 2 = 82.2\% (0.308), population 3 =
-3.82\% (0.119), population 4 = 4.03\% (0.0502).\\
+we aggregate the data at different timescales, with weekly (top), monthly
+(middle) and yearly (bottom) catch compositions from across an aggregated 20 x
+20 area showing different patterns (Figure \ref{fig:2}). In the true
+population, the monthly aggregation captures the major patterns of composition
+seen in the weekly data with the percentage of different populations in the
+catch having similar mean and standard deviations (Table \ref{tab:7}). In the
+weekly and monthly data population 2 dominates. However, some of the variation
+was lost when aggregated to an annual level, as indicated from the lower
+standard deviations (Table \ref{tab:7}).\\
 
 The commercial data on a weekly basis shows some of the same patterns as the
 true population, though the population 1 \deleted{(in red)} is less well
 represented and some weeks are missing catches from the area. Here, weekly and
-monthly compositions were nearly identical, with monthly composition of
-population 1 = 0.0472\% (0.0139), population 2 = 94.4\% (1.47), population 3 =
-3.12\% (1.47), population 4 = 2.40\% (0.444). \deleted{Again, y}\added{Y}early
-values head a similar mean but smaller standard deviation.\\
+monthly compositions were nearly identical (Figure \ref{fig:2}; Table
+\ref{tab:7}). \deleted{Again, y}\added{Y}early values head a similar mean but
+smaller standard deviation.\\
 
 The survey data was only available on an annual basis, and showed again a
-slightly different composition; population 1 = 0.372\% (0.00473), population 2
-= 87.7\% (0.193), population 3 = 0.729\% (0.0200), population 4 = 11.2\%
-(0.172).
+slightly different composition from the true population and the commercial
+data; in particular a greater proportion of population 4 (Figure \ref{fig:2}).
 
 \subsection{How does data aggregation and source impact on spatial fisheries
 	management measures?}
 
-We implemented a spatial closure using the different data sources and spatial
-and temporal aggregations as outlined in the protocol in Section 3.4. We used
-this to assess the efficacy of a closure in reducing fishing mortality on
-population 3, given availability of data and its use at different resolutions in
-order to evaluate the trade-offs in data sources. 
+\deleted{We implemented a spatial closure using the different data sources and
+	spatial and temporal aggregations as outlined in the protocol in
+	Section 3.4. We used this to assess the efficacy of a closure in
+	reducing fishing mortality on population 3, given availability of data
+	and its use at different resolutions in order to evaluate the
+	trade-offs in data sources. }
 
 In most cases the fishery closure was successful in reducing fishing mortality
 on the species of interest (population 3; Figure \ref{fig:3}), though
 interestingly the largest reductions in fishing mortality happened immediately
 after the closures, following which the fisheries ``adapted" to the closures
-and fishing mortality increased again somewhat. The exception to the success
-was the closures implemented based on the coarsest spatial (20 x 20) and
-temporal resolution (yearly) that was ineffective (i.e. failed to reduce
-fishing mortality) with all data sources. As expected, closures based on the
-``known" population distribution were most effective, with differing degrees of
-success using the commercial data. Fishing mortality rates on the other species
-changed in different proportions, depending on whether the displaced fishing
-effort moved to areas where the populations were found in greater or lesser
-density. \\
+\added{by finding new areas of high abundance to fish} and fishing mortality
+increased again somewhat. The exception to the success was the closures
+implemented based on the coarsest spatial (20 x 20) and temporal resolution
+(yearly) that was ineffective (i.e. failed to reduce fishing mortality) with
+all data sources. As expected, closures based on the ``known" population
+distribution were most effective, with differing degrees of success using the
+commercial data. Fishing mortality rates on the other species changed in
+different proportions, depending on whether the displaced fishing effort moved
+to areas where the populations were found in greater or lesser density. \\
 
 The factor most contributing to differences in fishing mortality before and
 after the closure was the population (72 \% showing that the closures were
@@ -1015,26 +1023,29 @@ competing interests.
 	\includegraphics[width = \linewidth]{Plots/Combined_Movement}
 	\caption{(A) The fishing locations (points) and movements (lines) of a
 		single vessel during a trip overlaid on the revenue of a
-		fishing site (landings x price); (B) the fishing locations of
-		the vessel over several trips (value field changes over the
-		period so not shown). Note that movements are a mixture of
-		correlated random walk (solid lines) and experience-based
-		(dashed lines), and that the field is wrapped on a torus so
-		that opposite sides of the spatial domain are considered
-		spatially close; (C) the locations of multiple vessels from the
-		same fleet overlaid on the value field, (D) the realised step
-		distance and turning angles for a single vessel over the
-		simulation.}
+		fishing site (landings x price; darker purple = higher
+		revenue); (B) the fishing locations of the vessel over several
+		trips (value field changes over the period so not shown). Note
+		that movements are a mixture of correlated random walk (solid
+		lines) and experience-based (dashed lines), and that the field
+		is wrapped on a torus so that opposite sides of the spatial
+		domain are considered spatially close; (C) the locations of
+		multiple vessels from the same fleet overlaid on the value
+		field, (D) the realised step distance and turning angles for a
+		single vessel over the simulation.}
 	\label{fig:mv}
 \end{figure}	
 
 
 \begin{figure}[!ht]
 	\includegraphics[width=\linewidth]{../analysis/Data_Aggregation_space_Rev2}
-	\caption{[Colour] Data aggregation at different spatial resolutions over a
-		ten year period. The figure shows catch composition at each
-		spatial unit as visualised using \cite{Gerritsen2014} mapplots
-		R package.}
+	\caption{[Colour] Data aggregation at different spatial resolutions
+		over a ten year period. \added{The figure shows catch
+			composition at each spatial unit represented by a
+			square pie chart of the four populations. The area of
+			each colour is proportionate to the weight of each
+			population caught in that unit. Figure produced using
+			the R package 'mapplots' (\cite{Gerritsen2014}.}}
 	\label{fig:1}
 \end{figure}	
 
@@ -1067,11 +1078,10 @@ competing interests.
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width =0.5\linewidth]{./Plots/Closure_fishing_locations_yearly}
-	\caption{Closure fishing locations based on annual closures with a
-		coarse spatial resolution. Closure location can be seen in red
-		box in relation to a) before the closure fishing locations, b)
-		after the closure fishing locations, c) population 3 habitat
-		distribution.}
+	\caption{The location of fishing effort before the spatial closure (a)
+		and after the spatial closure (b), and the suitable habitat for
+		population 3 (c). The site of the closure can be seen in the
+		red box on all three panels.}
 	\label{fig:17}
 \end{figure}	
 

@@ -110,7 +110,7 @@ ggplot(f_diff, aes(x = resolution, y = diff))+
 	  axis.text = element_text(size = 14, face = "bold"),
 	  axis.title = element_text(size = 14, face = "bold")) +
     xlab("Spatial resolution (high to low)") +
-    ylab("Percentage difference in F before and after closure")
+    ylab("Percentage difference in Fishing mortality before and after closure")
 dev.off()
 
 
