@@ -4,6 +4,7 @@ tests/*.RData
 .RDataTmp
 *.RData
 cover_letter.*
+reviewer_response.*
 write_up/comments/
 write_up/declaration*
 write_up/CreDit*
