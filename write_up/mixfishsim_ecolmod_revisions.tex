@@ -81,32 +81,41 @@ To understand how data resolution impacts inference on mixed fisheries
 interactions we developed a highly resolved spatiotemporal discrete-event
 simulation model ('MixFishSim`) incorporating: i) delay-difference population
 dynamics, ii) population movement using Gaussian Random Fields to simulate
-patchy, heterogeneously distributed populations, and iii) fishery dynamics for
-multiple fleet characteristics based on population targeting under an
-explore-exploit strategy. This is implemented via a mix of correlated random
-walk movement (for exploration) and learned behaviour (for exploitation) phases
-of the fisheries. \\ 
+patchy, heterogeneously distributed \added{and moving fish} populations, and
+iii) fishery dynamics for multiple fleet characteristics based on population
+targeting under an explore-exploit strategy.\deleted{ This is implemented via a mix of
+correlated random walk movement (for exploration) and learned behaviour (for
+exploitation) phases of the fisheries. }\\ 
 %%
-Fifty years of sub-daily fishing activity was simulated and used to draw
-inference on the underlying community structures. We compared inferences based
-on: commercial catch, a simulated fixed-site sampling survey design and the
-true \added{(simulated)} underlying populations. We i) establish the potential
+\deleted{Fifty years of sub-daily fishing activity was simulated and used to
+	draw inference on the underlying community structures. W}\added{We
+	applied the framework to draw}\deleted{compared} inference\deleted{s}
+\added{on community structure} \added{when using data generated from
+}\deleted{based on}: commercial catch, a simulated fixed-site sampling survey
+design and the true \added{(simulated)} underlying populations.
+\deleted{W}\added{In doing so w}e \deleted{i)}establish the potential
 limitations of fishery-dependent data in providing a robust picture of
-spatiotemporal distributions; and then ii) simulated an area closure based on
-areas defined from the different data sources at a range of temporal and
-spatial resolutions.\\
-%%
-Our framework allows users to explore the assumptions in modelling
-observational data and evaluate the underlying dynamics of such approaches at a
-fine spatial and temporal scale. In application to a mixed fishery exploiting
-four different populations we found different spatial patterns were evident and
-that the effectiveness of the spatial closure reduced when data were aggregated
-across larger spatial areas. However, aggregation across time periods has less
-of a negative impact on the closure success and while not as effective as when
-based on on the true population, closures based on high catch rates observed in
-commercial data could still reduce fishing on a protected species. \\ 
+spatiotemporal distributions\deleted{; and then ii) simulated an area closure
+	based on areas defined from the different data sources at a range of
+	temporal and spatial resolutions.}\deleted{Our framework allows users
+	to explore the assumptions in modelling observational data and evaluate
+	the underlying dynamics of such approaches at a fine spatial and
+	temporal scale. In application to a mixed fishery exploiting four
+	different populations w} \added{W}e found different spatial patterns
+were evident and that the effectiveness of the spatial closure reduced when
+data were aggregated across larger spatial areas. \deleted{; and then
+	ii)}\added{We then simulated an area closure based on areas defined
+	from the different data sources at a range of temporal and spatial
+	resolutions.} Aggregation across time periods has less of a negative
+impact on the closure success than over space.\deleted{ and w}\added{W}hile not
+as effective as when based on on the true population, closures based on high
+catch rates observed in commercial data were still able to reduce fishing on a
+protected species. \\ 
 
-We conclude from our example framework application that commercial data, while
+\added{Our framework allows users to explore the assumptions in modelling
+	observational data and evaluate the underlying dynamics of such
+	approaches at a fine spatial and temporal scale. }\added{From our
+	application w}\deleted{W}e conclude that commercial data, while
 containing bias, provide a useful tool for managing catches in mixed fisheries
 if applied at the correct spatiotemporal scale. \\
 %%
@@ -114,7 +123,7 @@ if applied at the correct spatiotemporal scale. \\
 
 \begin{keyword}
 spatiotemporal \sep mixed fisheries \sep individual based \sep spatial
-management \sep heterogeneity \sep  preferential sampling
+management \sep heterogeneity \sep bycatch avoidance 
 \MSC[2010] 00-01\sep  99-00
 \end{keyword}
 
@@ -705,18 +714,19 @@ data; in particular a greater proportion of population 4 (Figure \ref{fig:2}).
 	trade-offs in data sources. }
 
 In most cases the fishery closure was successful in reducing fishing mortality
-on the species of interest (population 3; Figure \ref{fig:3}), though
-interestingly the largest reductions in fishing mortality happened immediately
-after the closures, following which the fisheries ``adapted" to the closures
-\added{by finding new areas of high abundance to fish} and fishing mortality
-increased again somewhat. The exception to the success was the closures
-implemented based on the coarsest spatial (20 x 20) and temporal resolution
-(yearly) that was ineffective (i.e. failed to reduce fishing mortality) with
-all data sources. As expected, closures based on the ``known" population
-distribution were most effective, with differing degrees of success using the
-commercial data. Fishing mortality rates on the other species changed in
-different proportions, depending on whether the displaced fishing effort moved
-to areas where the populations were found in greater or lesser density. \\
+on the species of interest (population 3; Figure \ref{fig:3}). Interestingly
+the largest reductions in fishing mortality happened immediately after the
+closures, following which the fisheries ``adapted" to the closures \added{by
+	finding new areas of high abundance to fish which led to} fishing
+mortality increasing again, though not to past levels. The exception to the
+success was the closures implemented based on the coarsest spatial (20 x 20)
+and temporal resolution (yearly) that was ineffective (i.e. failed to reduce
+fishing mortality) with all data sources. As expected, closures based on the
+``known" population distribution were most effective, with differing degrees of
+success using the commercial data. Fishing mortality rates on the other species
+changed in different proportions, depending on whether the displaced fishing
+effort moved to areas where the populations were found in greater or lesser
+density. \\
 
 The factor most contributing to differences in fishing mortality before and
 after the closure was the population (72 \% showing that the closures were
