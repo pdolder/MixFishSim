@@ -325,12 +325,6 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
-INPUT Plots/pop_dist.png
-INPUT ./Plots/pop_dist.png
-INPUT ./Plots/pop_dist.png
-INPUT Plots/f_dynamics.png
-INPUT ./Plots/f_dynamics.png
-INPUT ./Plots/f_dynamics.png
 INPUT Plots/Combined_Movement.png
 INPUT ./Plots/Combined_Movement.png
 INPUT ./Plots/Combined_Movement.png
@@ -343,9 +337,9 @@ INPUT ../analysis/Data_Aggregation_time_Rev2.pdf
 INPUT ../analysis/F_trendsREV.png
 INPUT ../analysis/F_trendsREV.png
 INPUT ../analysis/F_trendsREV.png
-INPUT ../analysis/f_diff_effectiveness.png
-INPUT ../analysis/f_diff_effectiveness.png
-INPUT ../analysis/f_diff_effectiveness.png
+INPUT ./Plots/f_diff_effectiveness.png
+INPUT ./Plots/f_diff_effectiveness.png
+INPUT ./Plots/f_diff_effectiveness.png
 INPUT ./Plots/Closure_fishing_locations_yearly.png
 INPUT ./Plots/Closure_fishing_locations_yearly.png
 INPUT ./Plots/Closure_fishing_locations_yearly.png

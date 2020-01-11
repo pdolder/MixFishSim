@@ -108,7 +108,9 @@ ggplot(f_diff, aes(x = resolution, y = diff))+
     scale_linetype_manual("Data source", values = 1:3) + 
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
 	  axis.text = element_text(size = 14, face = "bold"),
-	  axis.title = element_text(size = 14, face = "bold")) +
+	  axis.title = element_text(size = 14, face = "bold"),
+	  strip.text = element_text(size = 12, face = "bold")
+	  )+
     xlab("Spatial resolution (high to low)") +
     ylab("Percentage difference in Fishing mortality before and after closure")
 dev.off()

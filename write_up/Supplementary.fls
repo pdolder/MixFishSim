@@ -86,6 +86,12 @@ OUTPUT Supplementary.pdf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti8.tfm
+INPUT Plots/pop_dist.png
+INPUT ./Plots/pop_dist.png
+INPUT ./Plots/pop_dist.png
+INPUT Plots/f_dynamics.png
+INPUT ./Plots/f_dynamics.png
+INPUT ./Plots/f_dynamics.png
 INPUT Plots/habitat_spatiotemp_spp_1.png
 INPUT ./Plots/habitat_spatiotemp_spp_1.png
 INPUT ./Plots/habitat_spatiotemp_spp_1.png

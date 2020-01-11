@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1578252316 "Supplementary.tex" "Supplementary.pdf" "Supplementary" 1578252317
+["pdflatex"] 1578747393 "Supplementary.tex" "Supplementary.pdf" "Supplementary" 1578755498
   "../analysis/habitat.png" 1541780166 40511 67c88b4aec548123f5258986beb30c56 ""
   "../analysis/habitat_spwn.png" 1541780340 20908 a519b1951dcd210e90aa454a8fe16be5 ""
   "/etc/texmf/web2c/texmf.cnf" 1525122473 1101 af7716885e081ab43982cab7b4672c1a ""
@@ -49,16 +49,18 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1539516723 4126960 fe533c9aad681c7b649ba409fccc2d03 ""
   "Plots/Species_tolerances.png" 1550575673 19650 e82bfa8595a08699351e0aa8cc764bd4 ""
   "Plots/Temperature_gradient.png" 1550575662 50173 3b1eb92e9a0d99f995dbc78ed6522002 ""
+  "Plots/f_dynamics.png" 1569355357 397251 3ba3733828c070eee65f2104843f08ba ""
   "Plots/habitat_spatiotemp_spp_1.png" 1550575676 120801 34f9e0a23a5f0101b27a8f378723c5ec ""
   "Plots/habitat_spatiotemp_spp_2.png" 1550575677 97614 22a14c2f74e4716951076260ce0d6c2c ""
   "Plots/habitat_spatiotemp_spp_3.png" 1550575678 80663 97becd3cdd940fb7f288bec8e6b5c1a4 ""
-  "Supplementary.aux" 1578252317 3147 373a4f82fbb4da2e762d58af5e77f540 ""
-  "Supplementary.out" 1578252317 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "Supplementary.spl" 1578252317 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "Supplementary.tex" 1578252315 2282 e910bf6ca8e38a6550ae80718dd8c6d3 ""
+  "Plots/pop_dist.png" 1568732243 133931 3dca31218bb867c1709b2dd63d269599 ""
+  "Supplementary.aux" 1578747394 4570 3507b87d6201e8b907810e0b3a7941ed ""
+  "Supplementary.out" 1578747393 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "Supplementary.spl" 1578747393 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "Supplementary.tex" 1578747396 3120 fd50ac27dfc0ed41b0264b1ef884d051 ""
   (generated)
-  "Supplementary.spl"
+  "Supplementary.out"
   "Supplementary.aux"
   "Supplementary.log"
-  "Supplementary.out"
   "Supplementary.pdf"
+  "Supplementary.spl"

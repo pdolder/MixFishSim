@@ -37,7 +37,11 @@ print(ggplot(log, aes(x = x, y = y)) +
       geom_path(data = filter(log, move_type == "CRW"), aes(colour = vessel)) +
       geom_path(data = filter(log, move_type == "Experience"), aes(colour = vessel)) +
       geom_path(data = filter(log, move_type == "OutsideMove"), aes(colour = vessel)) +
-      theme_bw() + xlab("x distance") + ylab("y distance")
+      theme_bw() +
+      theme(axis.text = element_text(size = 12, face = "bold"),
+	   axis.title = element_text(size = 14, face = "bold")
+		   ) +
+      xlab("x distance") + ylab("y distance")
       )
 }
 
@@ -71,7 +75,10 @@ print(ggplot(TotValDF, aes(x = x, y = y)) + geom_tile(aes(fill = value)) +
 	theme_bw() + #scale_colour_gradient(low = "red", high = "darkred") + 
 	expand_limits(y = c(0,sim_init[["idx"]][["ncols"]]), 
 		      x = c(0,sim_init[["idx"]][["nrows"]])) +
-      theme(legend.position = "none") +
+      theme(legend.position = "none",
+   	axis.text = element_text(size = 12, face = "bold"),
+	axis.title = element_text(size = 14, face = "bold")
+	    ) +
       xlab("x distance") + ylab("y distance")
 
 	

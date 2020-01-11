@@ -229,9 +229,11 @@ geom_vline(xintercept = 30, linetype = 2, colour = "grey") + ylab("Fishing morta
 theme(axis.text.x = element_text(hjust = 0),
       panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
 	  axis.text = element_text(size = 12, face = "bold"),
-	  axis.title = element_text(size = 12, face = "bold")) + 
-		  scale_x_continuous(breaks = seq(0,50,10)) + 
-		  xlab("Year") + ylab(expression(Fishing~mortality~year^{-1}))
+	  axis.title = element_text(size = 12, face = "bold"),
+	  strip.text = element_text(size = 12, face = "bold")
+	  ) + 
+scale_x_continuous(breaks = seq(0,50,10)) + 
+xlab("Year") + ylab(expression(Fishing~mortality~year^{-1}))
 dev.off()
 
 ggplot(filter(combined_pop_an,basis == 'high_pop', metric == 'F', pop == "spp_3"), 
@@ -283,22 +285,26 @@ ggsave('C_trendsREV.png', width = 10, height = 8)
 
 
 z_f <- filter(combined_pop_an, basis == "high_pop", metric %in% "F", pop == "Population 3", as.numeric(year) > 39) %>%
-	group_by(scenario, timescale, res, data_type) %>% summarise(f = mean(data))
+	group_by(scenario, timescale, resolution, data_type) %>% summarise(f = mean(data))
 
 z_c <- filter(combined_pop_an, basis == "high_pop", metric == "Catch", as.numeric(year) > 39) %>%
-	group_by(scenario, timescale, res, data_type, year) %>% summarise(catch = sum(data)) %>%
-	group_by(scenario, timescale, res, data_type) %>% summarise(catch = mean(catch))
+	group_by(scenario, timescale, resolution, data_type, year) %>% summarise(catch = sum(data)) %>%
+	group_by(scenario, timescale, resolution, data_type) %>% summarise(catch = mean(catch))
 
- z <- merge(z_f, z_c, by = c("scenario","timescale", "res", "data_type"))
+ z <- merge(z_f, z_c, by = c("scenario","timescale", "resolution", "data_type"))
 
  z$data_type <- factor(z$data_type)
  z$data_type <- factor(z$data_type, levels = c("True Population", "commercial", "survey"))
 
 ggplot(z, aes(x = f, y = catch/1e3)) +
 	geom_point(aes(colour = timescale), shape = 1, size = 6) +
-	geom_text(aes(colour = timescale, label = res), fontface = "bold", show.legend = FALSE) +
+	geom_text(aes(colour = timescale, label = resolution), fontface = "bold", show.legend = FALSE) +
 	facet_wrap(~data_type) + geom_smooth(method = "lm", se = FALSE, linetype = 2, colour = "grey") +
 	theme_bw() + xlab("mean fishing mortality per year on population 3") +
+	theme(axis.text = element_text(size = 12, face = "bold"),
+	      axis.title = element_text(size = 14, face = "bold"),
+	      strip.text = element_text(size = 12, face = "bold")
+	      ) +
 	ylab("mean catch per year (thousand tonnes)") + 
 	scale_colour_manual(values = c("#1b9e77", "#d95f02", "#7570b3")) 
 

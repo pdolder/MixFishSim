@@ -92,7 +92,11 @@ p1 <- ggplot(filter(logs, closure == "before"), aes(x = x , y = y)) +
 	geom_polygon(data = cl, aes(long, lat, group = group), colour = "red",fill = NA) +
 	geom_point(colour = "blue", alpha = 0.2, shape = "x") +
 	expand_limits(x = c(0,100), y = c(0,100)) + facet_wrap(~year) +
-	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm")) +
+	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"), 
+			   axis.text = element_text(size = 12, face = "bold"),
+			   axis.title = element_text(size = 14, face = "bold"),
+			   strip.text = element_text(size = 14, face = "bold")
+			   ) +
 	xlab("x distance") + ylab("y distance")
 
 p2 <- ggplot(cl) + geom_polygon(aes(long, lat, group = group), colour = "red",fill = NA) +
@@ -100,14 +104,21 @@ p2 <- ggplot(cl) + geom_polygon(aes(long, lat, group = group), colour = "red",fi
 	geom_point(aes(x = x, y = y), colour = "blue", 
 		   data = filter(logs, closure == "after"), 
 		   alpha = 0.2, shape = "x") +
-	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"))+
+	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"), 
+			   axis.text = element_text(size = 12, face = "bold"),
+			   axis.title = element_text(size = 14, face = "bold"),
+			   strip.text = element_text(size = 14, face = "bold")
+			   ) +
 	xlab("x distance") + ylab("y distance")
 
 
 p3 <- ggplot(cl) + geom_raster(aes(x, y, alpha = hab), data = filter(hab.df, hab > 0))+ 
 	geom_polygon(aes(long, lat, group = group), colour = "red",fill = NA) +
 	expand_limits(x = c(0,100), y = c(0,100))+
-	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"), 
+	theme_bw() + theme(plot.margin = margin(1, 0.5, 0.5, 0.5, "cm"),  
+			   axis.text = element_text(size = 12, face = "bold"),
+			   axis.title = element_text(size = 14, face = "bold"),
+			   strip.text = element_text(size = 14, face = "bold"),
 			   legend.position = "none") +
 	xlab("x distance") + ylab("y distance")
 

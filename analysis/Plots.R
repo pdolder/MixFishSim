@@ -136,6 +136,10 @@ colnames(stepDF2)[3] <- "data"
 
 p4 <- ggplot(stepDF2, aes(x = value, y = data)) +
 	geom_point() + theme_bw() +
+	theme(axis.text = element_text(size = 12, face = "bold"),
+	      axis.title = element_text(size = 14, face = "bold"),
+	      strip.text = element_text(size = 12, face = "bold")
+	      ) +
 	facet_wrap(~variable, ncol = 2, scale = "free") +
 	ylab("step distance or turning angle") + 
 	xlab("value (Euros)")
