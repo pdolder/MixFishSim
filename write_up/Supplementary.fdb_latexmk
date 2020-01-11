@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1578747393 "Supplementary.tex" "Supplementary.pdf" "Supplementary" 1578755498
+["pdflatex"] 1578758257 "Supplementary.tex" "Supplementary.pdf" "Supplementary" 1578758259
   "../analysis/habitat.png" 1541780166 40511 67c88b4aec548123f5258986beb30c56 ""
   "../analysis/habitat_spwn.png" 1541780340 20908 a519b1951dcd210e90aa454a8fe16be5 ""
   "/etc/texmf/web2c/texmf.cnf" 1525122473 1101 af7716885e081ab43982cab7b4672c1a ""
@@ -53,14 +53,15 @@
   "Plots/habitat_spatiotemp_spp_1.png" 1550575676 120801 34f9e0a23a5f0101b27a8f378723c5ec ""
   "Plots/habitat_spatiotemp_spp_2.png" 1550575677 97614 22a14c2f74e4716951076260ce0d6c2c ""
   "Plots/habitat_spatiotemp_spp_3.png" 1550575678 80663 97becd3cdd940fb7f288bec8e6b5c1a4 ""
+  "Plots/habitat_spatiotemp_spp_4.png" 1550575679 113984 4e7cb2e6707ad720b65ee14400fb7062 ""
   "Plots/pop_dist.png" 1568732243 133931 3dca31218bb867c1709b2dd63d269599 ""
-  "Supplementary.aux" 1578747394 4570 3507b87d6201e8b907810e0b3a7941ed ""
-  "Supplementary.out" 1578747393 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "Supplementary.spl" 1578747393 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "Supplementary.tex" 1578747396 3120 fd50ac27dfc0ed41b0264b1ef884d051 ""
+  "Supplementary.aux" 1578758259 6138 3770f688d189d0adc1200c6b8ed06824 ""
+  "Supplementary.out" 1578758258 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "Supplementary.spl" 1578758258 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "Supplementary.tex" 1578758255 3987 d2fa03f54a9eab58bc79927877851923 ""
   (generated)
-  "Supplementary.out"
   "Supplementary.aux"
-  "Supplementary.log"
   "Supplementary.pdf"
   "Supplementary.spl"
+  "Supplementary.out"
+  "Supplementary.log"
