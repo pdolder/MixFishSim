@@ -26,7 +26,7 @@
 \usepackage{enumitem}
 \usepackage{comment}
 
-\usepackage[draft]{changes}
+\usepackage[draft]{changes}%\usepackage[draft]{changes}
 
 \modulolinenumbers[1]
 
@@ -62,7 +62,7 @@
 \author[3]{Jean-Marc Guarini}
 \author[4,5]{Jan Jaap Poos}
 
-\address[1]{Galway-Mayo Institute of Technology (GMIT), Dublin Road, Galway,
+\address[1]{Marine and Freshwater Research Centre, Galway-Mayo Institute of Technology (GMIT), Dublin Road, Galway,
 	Ireland} 
 \address[2]{Centre for Environment, Fisheries and Aquaculture Science (Cefas),
 	Pakefield Road, Lowestoft, UK}
@@ -79,7 +79,7 @@
 %%
 To understand how data resolution impacts inference on mixed fisheries
 interactions we developed a highly resolved spatiotemporal discrete-event
-simulation model ('MixFishSim`) incorporating: i) delay-difference population
+simulation model (`MixFishSim')\textcolor{blue}{[CM: I think \emph{MixFishSim} is more effective]} incorporating: i) delay-difference population
 dynamics, ii) population movement using Gaussian Random Fields to simulate
 patchy, heterogeneously distributed \added{and moving fish} populations, and
 iii) fishery dynamics for multiple fleet characteristics based on population
@@ -89,30 +89,30 @@ exploitation) phases of the fisheries. }\\
 %%
 \deleted{Fifty years of sub-daily fishing activity was simulated and used to
 	draw inference on the underlying community structures. W}\added{We
-	applied the framework to draw}\deleted{compared} inference\deleted{s}
-\added{on community structure} \added{when using data generated from
-}\deleted{based on}: commercial catch, a simulated fixed-site sampling survey
+	applied `MixFishSim' to\deleted{draw}}\deleted{compared} infer\deleted{ence}\deleted{s}
+\added{\deleted{on}community structure} \added{when using data generated from:}
+\deleted{based on}commercial catch, a\deleted{simulated} fixed-site sampling survey
 design and the true \added{(simulated)} underlying populations.
-\deleted{W}\added{In doing so w}e \deleted{i)}establish the potential
-limitations of fishery-dependent data in providing a robust picture of
-spatiotemporal distributions\deleted{; and then ii) simulated an area closure
+\deleted{W}\deleted{\added{In doing so w}}\added{W}e \added{thereby} \deleted{i)}establish the potential
+limitations of fishery-dependent data in providing a robust \replaced{characterisation}{picture} of
+spatiotemporal distributions.\deleted{; and then ii) simulated an area closure
 	based on areas defined from the different data sources at a range of
 	temporal and spatial resolutions.}\deleted{Our framework allows users
 	to explore the assumptions in modelling observational data and evaluate
 	the underlying dynamics of such approaches at a fine spatial and
 	temporal scale. In application to a mixed fishery exploiting four
-	different populations w} \added{W}e found different spatial patterns
-were evident and that the effectiveness of the spatial closure reduced when
+	different populations w} \deleted{\added{W}e found d}\added{D}ifferent spatial patterns
+were evident and \deleted{that }the effectiveness of the spatial closure reduced when
 data were aggregated across larger spatial areas. \deleted{; and then
-	ii)}\added{We then simulated an area closure based on areas defined
+	ii)}\deleted{\added{We then simulated an area closure based on areas defined
 	from the different data sources at a range of temporal and spatial
-	resolutions.} Aggregation across time periods has less of a negative
-impact on the closure success than over space.\deleted{ and w}\added{W}hile not
+	resolutions.}} \added{A simulated area closure showed that} \replaced{a}{A}ggregation across time periods has less of a negative
+impact on the closure success than \added{aggregation} over space. \deleted{ and w}\added{W}hile not
 as effective as when based on on the true population, closures based on high
 catch rates observed in commercial data were still able to reduce fishing on a
 protected species. \\ 
 
-\added{Our framework allows users to explore the assumptions in modelling
+\added{\replaced{MixFishSim}{Our framework} allows users to explore the assumptions in modelling
 	observational data and evaluate the underlying dynamics of such
 	approaches at a fine spatial and temporal scale. }\added{From our
 	application w}\deleted{W}e conclude that commercial data, while
@@ -165,13 +165,13 @@ spatial measures is hampered by a lack of knowledge of fish and fishery
 spatiotemporal dynamics and understanding of the scale at which these processes
 become important for management. \\ \\ 
 
-Identifying appropriate spatial scales for fisheries closures has been a
-highlighted as crucial to their success \citep{Costello2010, Dunn2016}.
+Identifying appropriate spatial scales for fisheries closures \deleted{has been a
+highlighted a}\added{i}s crucial to their success \citep{Costello2010, Dunn2016}.
 Inference on fisheries spatial dynamics is hampered where spatial information
 is coarse due to low resolution reporting of fisheries catch which is
 aggregated across larger gridded areas \citep{Branch2005}. Further, if data
 does not allow identification of spatial features it may lead to poorly sited
-closures which are ineffectual or have unintended consequences. For example,
+closures \replaced{that}{which} are ineffectual or have unintended consequences. For example,
 increased benthic impact on previously unexploited areas from the cod closure
 in the North Sea were observed without the intended effect of reducing cod
 exploitation \citep{Rijnsdorp2001,Dinmore2003}).\\ 
@@ -182,7 +182,7 @@ combination of logbook and Vessel Monitoring System (VMS) data \citep{Lee2010,
 management has been possible \citep[e.g.][]{Holmes2011}.  However, fishers
 establish favoured fishing grounds through an explore-exploit strategy
 \citep{Rijnsdorp2011, Bailey2018} where they search for areas with high catches
-and then use experience to return to areas where they've experienced high catch
+and then use experience to return to areas where they have experienced high catch
 in the past. This leads to an inherently biased sampling where target species
 are over-represented in the catch as fishers exploit areas of high abundance.
 There is a need to understand the influence of these biases on any spatial
@@ -195,9 +195,9 @@ we ask two fundamental questions regarding inference derived from observational
 data:
 
 \begin{enumerate}
-	\item Do different source of sampling-derived fisheries data
+	\item Do different source\added{s} of sampling-derived fisheries data
 		reflect\deleted{s} the underlying community structure? 	
-	\item How does data aggregation and data source impact on the success
+	\item How do\deleted{es} data aggregation and data source impact on the success
 		of spatial fisheries management measures?
 \end{enumerate}
 	
@@ -209,7 +209,7 @@ or commercial catch, we can use the population model to validate how inference
 from fisheries-dependent and fisheries independent sampling relates to the real
 community structure in a way we could not with real data. We ii) compare, at
 different spatial and temporal aggregations, the real (simulated) population
-distributions to samples from fisheries-dependent and fisheries independent
+distributions to samples from fisheries-dependent and fisheries independent \textcolor{blue}{[CM: hyphenate or don't both, i.e., fishery-independent]}
 catches to test if these are a true reflection of the relative density of the
 populations. We then iii) simulate a fishery closure to protect a species based
 on different spatial and temporal data aggregations. \\
@@ -553,7 +553,7 @@ fleet in Table \ref{tab:2}). \\
 
 Fishing locations were chosen based on random search and, with increasing
 proportion as time progressed, experience of profitable catches built up in the
-same month from previous years and from the previous trip.  'Profitable' in
+same month from previous years and from the previous trip.  `Profitable' in
 this context was defined as the locations where the top 70 \% of expected
 profit would be found given revenue from previous trips and cost of movement to
 the new fishing location. This probability was based on a logistic sigmoid
@@ -1038,7 +1038,7 @@ interests.
 			square pie chart of the four populations. The area of
 			each colour is proportionate to the weight of each
 			population caught in that unit. Figure produced using
-			the R package 'mapplots' (\cite{Gerritsen2014}.}
+			the R package `mapplots' (\cite{Gerritsen2014}.}
 	}
 	\label{fig:1}
 \end{figure}	
