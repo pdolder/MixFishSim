@@ -73,7 +73,6 @@
 \address[5]{Aquaculture and Fisheries Group, Wageningen University \& Research,
 	Zodiac Building 122, De Elst 1, 6708 WD Wageningen, the Netherlands}
 
-
 \begin{abstract}
 
 %%
@@ -107,17 +106,17 @@ data were aggregated across larger spatial areas. \deleted{; and then
 	ii)}\added{We then simulated an area closure based on areas defined
 	from the different data sources at a range of temporal and spatial
 	resolutions.} Aggregation across time periods has less of a negative
-impact on the closure success than over space.\deleted{ and w}\added{W}hile not
+impact on the closure success than over space. \deleted{ and w}\added{W}hile not
 as effective as when based on on the true population, closures based on high
 catch rates observed in commercial data were still able to reduce fishing on a
 protected species. \\ 
-
+%%
 \added{Our framework allows users to explore the assumptions in modelling
 	observational data and evaluate the underlying dynamics of such
-	approaches at a fine spatial and temporal scale. }\added{From our
-	application w}\deleted{W}e conclude that commercial data, while
-containing bias, provide a useful tool for managing catches in mixed fisheries
-if applied at the correct spatiotemporal scale. \\
+	approaches at a fine spatial and temporal scale. From our application
+	w}\deleted{W}e conclude that commercial data, while containing bias,
+provide a useful tool for managing catches in mixed fisheries if applied at the
+correct spatiotemporal scale. \\
 %%
 \end{abstract}
 
@@ -397,7 +396,7 @@ components. \textit{Fleet targeting} \replaced{determined}{determines} the
 fleet catch efficiency and preference towards a particular population;
 \textit{trip-level decisions} \replaced{determined}{that determines} the
 initial location to be fished at the beginning of a trip; and
-\textit{within-trip decisions}\replaced{determined fishing locations}{, that
+\textit{within-trip decisions} \replaced{determined fishing locations}{, that
 	determines movement from one fishing spot to another} within a trip.
 \replaced{This results in an explore-exploit strategy}{ was implemented in the
 	model that combined these three components} for individual vessels to
@@ -927,9 +926,10 @@ future. For example, identifying hot-spots for bycatch reduction or identifying
 spatial overlaps in mixed fisheries \citep{Dolder2018, Gardner2008, Little2014,
 	Dedman2015, Ward2015}. Our simulation model has the potential to test
 some of the assumptions behind the modelling approaches in identifying such
-hotspots and indeed behind spatiotemporal modelling in general\replaced{,}{ (}e.g. comparing
-GAMs, GLMMs, Random Forests and geostatistical models under different data
-generation processes as exampled by \cite{Stock2019}\deleted{)}. \\
+hotspots and indeed behind spatiotemporal modelling in general\replaced{, }{
+	(}e.g. comparing GAMs, GLMMs, Random Forests and geostatistical models
+under different data generation processes as exampled by
+\cite{Stock2019}\deleted{)}. \\
 
 Other novel applications of our framework could be: testing different survey
 designs given multiple species and data generating assumptions \citep{Xu2015};
@@ -1036,7 +1036,7 @@ interests.
 		over a ten year period. \added{The figure shows catch
 			composition at each spatial unit represented by a
 			square pie chart of the four populations. The area of
-			each colour is proportionate to the weight of each
+			each colour is proportional to the weight of each
 			population caught in that unit. Figure produced using
 			the R package 'mapplots' (\cite{Gerritsen2014}.}
 	}
