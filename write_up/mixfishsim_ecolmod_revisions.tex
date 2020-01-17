@@ -231,29 +231,29 @@ supporting management decisions.
 A Discrete-event simulation (DES) model of a hypothetical fishery was developed
 as a software package (\textit{MixFishSim}). The modular approach enabled
 efficient computation by allowing for sub-modules implemented on time-scales
-appropriate to capture the characteristic of the different processes (Figure
-1). The following sub-modules were included to capture the full system: 1)
-Population dynamics, 2) Recruitment dynamics, 3) Population movement, 4)
+appropriate to capture \deleted{the }characteristic\added{s} of the different processes (Figure
+1). \replaced{S}{The following s}ub-modules \deleted{were included }to capture the full system \added{comprised}: 1)
+\replaced{p}{P}opulation dynamics, 2) \replaced{r}{R}ecruitment dynamics, 3) \replaced{p}{P}opulation movement, 4)
 fishery dynamics.\\
 
-Population dynamics \added{for any number of species, as chosen by the user}
+Population dynamics \added{for any number of species, as chosen by the user,}
 operate on a daily time-step \added{(with recruitment occurring only during
 	defined seasons for each population)}, while population movement occurs
 on a weekly time-step, with the fishing module operating on a tow-by-tow basis
-(i.e.  multiple events a day). \\
+(i.e.\added{,} multiple events a day). \\
 
 \subsection{Population dynamics}
 
 The basic population level processes were simulated using a modified two-stage
-Deriso-Schnute delay difference model which models the fish populations in
+Deriso-Schnute delay difference model \replaced{that}{which} models the fish populations in
 terms of aggregate biomass of recruits and mature components rather than
-keeping track of individuals\citep{Deriso1980, Schnute1985, Dichmont2003}. A
+keeping track of individuals \citep{Deriso1980, Schnute1985, Dichmont2003}. A
 daily time-step was chosen to discretise continuous population processes on a
 biologically relevant and computationally tractable timescale. Population
 biomass growth was modelled as a function of previous recruited biomass,
 intrinsic population growth and recruitment functionally linked to the adult
 population size.  Biomass for each cell $c$ was incremented each day $d$ as
-follows (the full parameter list is detailed in Table \ref{tab: pop_variable}): 
+follows (\replaced{see}{the full parameter list is detailed in } Table \ref{tab: pop_variable} \added{for all parameter details}): 
 \begin{equation}
 	\begin{split}
 	B_{c,d+1} = &\\
@@ -268,9 +268,9 @@ follows (the full parameter list is detailed in Table \ref{tab: pop_variable}):
 	\end{split}
 \end{equation}
 where $\rho$ is Brody's coefficient, shown to be equal to $\mathrm{e}^{-K}$
-when $K$ is the growth rate from a von Bertalanffy logistic growth model
+when $K$ is the \deleted{growth }rate \added{at which the asymptote is approached} from a von Bertalanffy \deleted{logistic }growth model
 \citep{Schnute1985}. $Wt_{R-1}$ is the average weight of fish prior to
-recruitment, while $Wt_{R}$ is the average recruited weight. $\alpha_{d}$
+recruitment, while $Wt_{R}$ is the average recruited weight \textcolor{blue}{[CM: do we need $Wt$ or can we just use $W$? Use mass instead of weight?]}. $\alpha_{d}$
 represents the proportion of fish recruited during that day for the year, while
 $R_{c,\tilde{y}(c)}$ is the annual recruits in year $y$ for cell $c$. \\
 
@@ -288,7 +288,7 @@ the daily biomass for the population in the cell. Here, catch is the sum of
 those across all fleets and vessels, $C_{c, d} =
 \sum\limits_{fl=1}^{FL}\sum\limits_{v=1}^{V} E_{fl, v, c, d} \cdot Q_{fl} \cdot
 D_{c, d}$ with $fl$ and $FL$ the fleet and total number of fleets, $v$ and $V$
-the vessel and total number of vessels respectively and $E_{fl,v,c,d}$ and
+the vessel and total number of vessels respectively \textcolor{blue}{[CM: do we want to allow for different numbers of vessels per fleet? If so, use $V_{fl}$ for the upper limit]} and $E_{fl,v,c,d}$ and
 $Q_{fl}$ fishing effort and catchability of the gear, and $D_{c,d}$ is the
 density of the population at the location fished. \\
 
@@ -300,14 +300,15 @@ stock recruitment relationship, or a stochastic Ricker stock recruitment
 relationship. The Beverton-Holt relationship is defined as\citep{Beverton1957}: 
 \begin{equation}
 	\begin{split}
-	\bar{R}_{c,d} = & \frac{(\alpha \cdot S_{c,d})}{(\beta + S_{c,d})} \\
-	     R_{c,d} \sim & \log N[(\log(\bar{R}_{c,d}),\sigma^2)]
+	\bar{R}_{c,d} = & \frac{(\alpha \deleted{\cdot} S_{c,d})}{(\beta + S_{c,d})} \\
+	     \added{\ln(}R_{c,d}\added{)} \sim & \deleted{\log} N[(\replaced{\ln}{\log}(\bar{R}_{c,d}),\sigma^2)]
 	\end{split}
 \end{equation}
+\textcolor{blue}{[CM: Do we include a bias correction? If not the first term is the median, which is fine, just not the mean]}
 where $\alpha$ is the maximum recruitment rate, $\beta$ the spawning stock
 biomass (SSB) required to produce half the maximum stock size, $S$ current
 stock size and $\sigma^2$ the variability in the recruitment due to stochastic
-processes. The stochastic Ricker form \citep{Ricker1954} is:
+processes. The stochastic Ricker form \citep{Ricker1954} is \textcolor{blue}{[CM: edit as above]}:
 \begin{equation}
 	\begin{split}
 	\bar{R}_{c,d} = & B_{c,d} \cdot \mathrm{e}^{(\alpha - \beta \cdot B_{c,d})} \\	
@@ -315,7 +316,7 @@ processes. The stochastic Ricker form \citep{Ricker1954} is:
 	\end{split}
 \end{equation}
 where $\alpha$ is the maximum productivity per spawner and $\beta$ the density
-dependent reduction in productivity as the SSB increases. 
+dependent\textcolor{blue}{[CM: hyphenate?]} reduction in productivity as the SSB increases. 
 
 \subsection{Population movement dynamics}
 
@@ -323,17 +324,17 @@ Population movement is a combination of directed (advective) movement where at
 certain times of year the population moves towards spawning grounds by
 increasing the probabilities of moving into the spawning grounds from adjacent
 cells, and random (diffusive) movement, governed by a stochastic process where
-movement between adjacent cells is described by a set of probabilities
-\added{which are affected by the suitability of habitat, temperature in a cell
+movement between adjacent cells is described by a set of probabilities.
+\added{Stochastic probabilities are affected by the suitability of habitat, temperature in a cell
 	and the thermal tolerance of a population to that temperature}.\\
 
 \added{The combined process results in a population structure and movement
 pattern unique to each population, with population movement occurring on a weekly
-basis. The decision to model population movement on a weekly timescale was to
-reflect that fish tend to aggregate in species specific locations that have
-been observed to last around one to two weeks \citep{Poos2007}. Therefore this
+basis. \replaced{M}{The decision to m}odel\added{ing} population movement on a weekly timescale\deleted{ was to}
+reflect\added{s} that fish tend to aggregate in species\added{-}specific locations\deleted{ that have
+been} observed to last \replaced{between}{around } one \replaced{and}{to} two weeks \citep{Poos2007}. Therefore this
 process approximated the demographic shifts in fish populations throughout a
-year with seasonal spawning patterns }(Figure \ref{S-fig:5}).
+year with seasonal spawning patterns }(Figure \ref{S-fig:5})\textcolor{blue}{[CM: shouldn't it be S1 so that the they follow the main ms? Maybe not \dots]}.
 
 To simulate fish population distribution in space and time a Gaussian spatial
 process was employed to model habitat suitability for each of the populations
@@ -344,11 +345,11 @@ with a \textit{Matérn} covariance structure, where the correlation strength
 weakens with distance controlled by two parameters, with $\nu$ a scale
 parameter in the units of distance and $\kappa$ a shape parameter which
 determines the smoothness of the process. \added{We use the most commonly used
-	Matérn covariance structure as it is a flexible form that under certain
-	conditions is of the same form as an exponential function and
+	Matérn covariance structure as it is a flexible form that \replaced{contains the}{under certain
+	conditions is of the same form as an} exponential \added{and double exponential as special cases}\deleted{ function} and
 	it}\deleted{This} enables us to model the spatial autocorrelation
 observed in animal populations where density is more similar in nearby
-locations, \added{but that correlation decreases non-linearly}
+locations\deleted{, \added{but that correlation decreases non-linearly}}
 \citep{Tobler1970, F.Dormann2007, Poos2007}. We change the parameters to
 implement different spatial structures for the different populations using the
 \textit{RandomFields} R package \citep{Schlater2015}. We define a stationary
@@ -380,7 +381,7 @@ movement towards the spawning grounds. \\
 A time-varying temperature covariate changes the interaction between time and
 suitable habitat on a weekly time-step. Each population $p$ was assigned a
 thermal tolerance with mean, $\mu_{p}$ and standard deviation, $\sigma_{p}$ so that
-each cell and population temperature tolerance is defined that:
+each cell and population temperature tolerance is defined \replaced{as}{that}:
 \begin{equation}
 	Tol_{c, p, wk} = \frac{1}{ \sqrt (2\pi \cdot \sigma^2_{p})} \cdot \exp(-
 		\frac{(T_{c, wk} - \mu_{p})^2}{2 \cdot \sigma^2_{p}} )	
