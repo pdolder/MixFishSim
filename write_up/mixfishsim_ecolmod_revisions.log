@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.7)  24 JAN 2020 15:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.7)  24 JAN 2020 15:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1431,7 +1431,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 850--862
 
  []
 
-
+[23]
 Underfull \hbox (badness 10000) in paragraph at lines 867--872
 
  []
@@ -1441,7 +1441,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 873--888
 
  []
 
-[23]
+
 Underfull \hbox (badness 10000) in paragraph at lines 889--898
 
  []
@@ -1461,12 +1461,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 922--930
 
  []
 
-
+[25]
 Underfull \hbox (badness 10000) in paragraph at lines 933--944
 
  []
 
-[25]
+
 Underfull \hbox (badness 10000) in paragraph at lines 945--958
 
  []
@@ -1486,13 +1486,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 984--989
 
  []
 
-
+[27]
 Overfull \hbox (31.6996pt too wide) in paragraph at lines 999--1005
 []\OT1/cmr/m/n/10 This work was sup-ported by the MARES doc-toral train-ing pro
 -gram (MARES[]14[]15)
  []
 
-[27] (./parameter_tables.tex
+(./parameter_tables.tex
 Overfull \hbox (3.98029pt too wide) in paragraph at lines 7--44
  [][] 
  []
@@ -1646,7 +1646,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1118.
 Here is how much of TeX's memory you used:
  21675 strings out of 494923
  420155 string characters out of 6180743
- 552347 words of memory out of 5000000
+ 554347 words of memory out of 5000000
  24343 multiletter control sequences out of 15000+600000
  13531 words of font info for 53 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -1680,7 +1680,7 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on mixfishsim_ecolmod_revisions.pdf (51 pages, 3426058 bytes).
+Output written on mixfishsim_ecolmod_revisions.pdf (51 pages, 3426642 bytes).
 PDF statistics:
  870 PDF objects out of 1000 (max. 8388607)
  770 compressed objects within 8 object streams
