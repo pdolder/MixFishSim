@@ -378,19 +378,19 @@ concentrated areas where spawning takes place. The populations then move
 towards these cells in the weeks prior to spawning, resulting in directional
 movement towards the spawning grounds. \\
 
-A time-varying temperature covariate changes the interaction between time and
+A time-varying temperature covariate changes the \deleted{interaction between time and}
 suitable habitat on a weekly time-step. Each population $p$ was assigned a
 thermal tolerance with mean, $\mu_{p}$ and standard deviation, $\sigma_{p}$ so that
 each cell and population temperature tolerance is defined \replaced{as}{that}:
 \begin{equation}
-	Tol_{c, p, wk} = \frac{1}{ \sqrt (2\pi \cdot \sigma^2_{p})} \cdot \exp(-
-		\frac{(T_{c, wk} - \mu_{p})^2}{2 \cdot \sigma^2_{p}} )	
+	Tol_{c, p, wk} = \frac{1}{ \sqrt{2\pi  \sigma^2_{p}}}  \exp \left(-
+		\frac{(T_{c, wk} - \mu_{p})^2}{2  \sigma^2_{p}} \right)	
 \end{equation}
 Where $Tol_{c, p, wk}$ is the tolerance of population $p$ for cell $c$ in week
 $wk$, $T_{c, wk}$ is the temperature in the cell given the week and $\mu_{p}$
 and $\sigma_{p}$ the mean and standard deviation of the population temperature
-tolerance. The variables, their meaning and units for population movement is
-provided in Table \ref{tab:pop_move}. \\
+tolerance \replaced{(see Table \ref{tab:pop_move} for variable descriptions).}{. The variables, their meaning and units for population movement is
+provided in Table \ref{tab:pop_move}}. \\
 
 \deleted{The final combined process results in a population structure and movement
 pattern unique to each population, with population movement occurring on a weekly
@@ -420,7 +420,7 @@ from individual dynamics rather than pre-defined group dynamics.
 
 \subsubsection{Fleet targeting}
 
-Each fleet of \textit{n} vessels was characterised by both a general
+Each fleet of \textit{n} (\textcolor{blue}{[CM: can the n's vary by fleet? If so write $n_{fl}$]}) vessels was characterised by both a general
 efficiency, $Q_{fl}$, and a population specific efficiency, ${Q_{fl, p}}$ which
 are each bound by [0,1]. The product of these parameters [$Q_{fl} \cdot
 Q_{fl, p}$] affects the overall catch rates for the fleet and the preferential
@@ -473,7 +473,7 @@ Here, when fishing is successful vessels remain in a similar location and
 continue to exploit the local fishing grounds. When unsuccessful, they move
 some distance away from the current fishing location.  The movement distance
 retains some degree of stochasticity, that can be controlled separately, but is
-determined by the relationship: 
+determined by the relationship: (\textcolor{blue}{[CM: use $\ln$ where we use the natural logarithm. Double-check this equation is right as per the code. As it looks different here: \url{https://github.com/pdolder/MixFishSim/blob/master/R/step_length.R]}. There it looks to simplify to $b_2(b_1/b_2)^{Rev/b_3}$, assuming parameters are positive.})
 \begin{equation}
 	Le = \mathrm{e}^{log(\beta_{1}) + log(\beta_{2}) -
 		\left(log\left(\frac{\beta_{1}}{\beta_{3}}\right)\right) \cdot Rev
@@ -544,15 +544,15 @@ moving towards these areas in pre-defined weeks (Figure \ref{S-fig:2}) with
 population-specific movement rates (Table \ref{tab:1}).  \added{The population
 demographics were defined to broadly represent three mobile low-medium value
 groundfish species and one high value species with low mobility, with the
-dynamics hypothetical but as you might expect to find in a typical demersal
+dynamics hypothetical but \deleted{as you} might \added{be} expect\added{ed} \deleted{to find }in a typical demersal
 fishery.}
 
 \subsection{Fleet calibration}
 
-The fleets were calibrated to reflect five different characteristic fisheries
+\replaced{F}{The f}leets were calibrated to reflect five different characteristic fisheries
 with unique exploitation dynamics (Table \ref{tab:2}). By setting different
 catchability coefficients ($Q_{fl, p}$) we create different targeting
-preferences between the fleets and hence spatial dynamics.  The learned random
+preferences between the fleets and hence \added{different} spatial dynamics.  The learned random
 walk process implies that within a fleet different vessels have different
 spatial distributions based on individual experience. The step function was
 calibrated dynamically within the simulations as the maximum revenue
@@ -567,8 +567,8 @@ same month from previous years and from the previous trip.  `Profitable' in
 this context was defined as the locations where the top 70 \% of expected
 profit would be found given revenue from previous trips and cost of movement to
 the new fishing location. This probability was based on a logistic sigmoid
-function with a lower asymptote of 0 and upper asymptote of 0.95, and a growth
-rate that ensures the upper asymptote (where decisions are mainly based on past
+function with a lower asymptote of 0 and upper asymptote of 0.95, and a \replaced{slope}{growth
+rate} that ensures the upper asymptote (where decisions are mainly based on past
 knowledge) is reached approximately halfway through the simulation.  \\
 
 
@@ -576,7 +576,7 @@ knowledge) is reached approximately halfway through the simulation.  \\
 
 The survey simulation was set up with a fixed gridded station design with 100
 stations fished each year, starting on day 92 and ending on day 112 (5 stations
-per day) with same catchability parameter ($Q_{p} = 1$) for all populations $p$.
+per day) with same catchability parameter ($Q_{p} = 1$) for all populations\deleted{ $p$}.
 This approximates a real world survey design with limited seasonal and spatial
 coverage. 
 
@@ -620,7 +620,7 @@ The following steps are undertaken to determine closures:
 		the R package akima \citep{Akima2006}. This is intended to
 		represent a naive spatial model of catch rates, without
 		knowledge of the spatial population dynamics.
-	\item Close area covering top 5 \% of catch rates 
+	\item Close area covering top 5 \% of catch rates.
 \end{enumerate}
 In total 28 closure scenarios were run that represent combinations of:
 
@@ -632,7 +632,7 @@ In total 28 closure scenarios were run that represent combinations of:
 	\item \textbf{spatial resolutions:} 1 x 1 grid, 5 x 5 grid, 10 x 10
 		grid and 20 x 20 grid,
 	\item \textbf{closure basis:} highest 5 \%  of catch rates for the
-		protected population
+		protected population (\textcolor{blue}{[CM: do we need this as it's common to all scenarios and is above?]})
 \end{itemize}
 
 \added{We implemented a series of spatial closures targeted at reducing fishing
