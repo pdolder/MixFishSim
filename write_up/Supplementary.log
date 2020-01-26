@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  11 JAN 2020 15:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  26 JAN 2020 20:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -237,79 +237,79 @@ LaTeX Info: Redefining \nameref on input line 19.
 \@outlinefile=\write4
 \openout4 = `Supplementary.out'.
 
-<Plots/pop_dist.png, id=4, 1606.0pt x 1606.0pt>
-File: Plots/pop_dist.png Graphic file (type png)
-<use Plots/pop_dist.png>
-Package pdftex.def Info: Plots/pop_dist.png  used on input line 25.
-(pdftex.def)             Requested size: 345.0pt x 344.98921pt.
-<Plots/f_dynamics.png, id=6, 578.16pt x 578.16pt>
-File: Plots/f_dynamics.png Graphic file (type png)
-<use Plots/f_dynamics.png>
-Package pdftex.def Info: Plots/f_dynamics.png  used on input line 37.
-(pdftex.def)             Requested size: 345.0pt x 344.99312pt.
-<../analysis/habitat.png, id=7, 803.0pt x 803.0pt>
-File: ../analysis/habitat.png Graphic file (type png)
-<use ../analysis/habitat.png>
-Package pdftex.def Info: ../analysis/habitat.png  used on input line 46.
-(pdftex.def)             Requested size: 345.0pt x 345.00146pt.
-<../analysis/habitat_spwn.png, id=8, 803.0pt x 803.0pt>
-File: ../analysis/habitat_spwn.png Graphic file (type png)
-<use ../analysis/habitat_spwn.png>
-Package pdftex.def Info: ../analysis/habitat_spwn.png  used on input line 54.
-(pdftex.def)             Requested size: 345.0pt x 345.00146pt.
-<Plots/Temperature_gradient.png, id=9, 803.0pt x 803.0pt>
-File: Plots/Temperature_gradient.png Graphic file (type png)
-<use Plots/Temperature_gradient.png>
-Package pdftex.def Info: Plots/Temperature_gradient.png  used on input line 64.
-(pdftex.def)             Requested size: 345.0pt x 345.00146pt.
-<Plots/Species_tolerances.png, id=10, 803.0pt x 803.0pt>
-File: Plots/Species_tolerances.png Graphic file (type png)
-<use Plots/Species_tolerances.png>
-Package pdftex.def Info: Plots/Species_tolerances.png  used on input line 71.
-(pdftex.def)             Requested size: 345.0pt x 345.00146pt.
-<Plots/habitat_spatiotemp_spp_1.png, id=11, 803.0pt x 803.0pt>
+<Plots/habitat_spatiotemp_spp_1.png, id=4, 803.0pt x 803.0pt>
 File: Plots/habitat_spatiotemp_spp_1.png Graphic file (type png)
 <use Plots/habitat_spatiotemp_spp_1.png>
-Package pdftex.def Info: Plots/habitat_spatiotemp_spp_1.png  used on input line 79.
+Package pdftex.def Info: Plots/habitat_spatiotemp_spp_1.png  used on input line 25.
 (pdftex.def)             Requested size: 345.0pt x 345.00146pt.
-<Plots/habitat_spatiotemp_spp_2.png, id=12, 803.0pt x 803.0pt>
+<Plots/habitat_spatiotemp_spp_2.png, id=5, 803.0pt x 803.0pt>
 File: Plots/habitat_spatiotemp_spp_2.png Graphic file (type png)
 <use Plots/habitat_spatiotemp_spp_2.png>
-Package pdftex.def Info: Plots/habitat_spatiotemp_spp_2.png  used on input line 88.
+Package pdftex.def Info: Plots/habitat_spatiotemp_spp_2.png  used on input line 34.
 (pdftex.def)             Requested size: 345.0pt x 345.00146pt.
-<Plots/habitat_spatiotemp_spp_3.png, id=13, 803.0pt x 803.0pt>
+<Plots/habitat_spatiotemp_spp_3.png, id=6, 803.0pt x 803.0pt>
 File: Plots/habitat_spatiotemp_spp_3.png Graphic file (type png)
 <use Plots/habitat_spatiotemp_spp_3.png>
-Package pdftex.def Info: Plots/habitat_spatiotemp_spp_3.png  used on input line 97.
+Package pdftex.def Info: Plots/habitat_spatiotemp_spp_3.png  used on input line 43.
 (pdftex.def)             Requested size: 345.0pt x 345.00146pt.
-<Plots/habitat_spatiotemp_spp_4.png, id=14, 803.0pt x 803.0pt>
+<Plots/habitat_spatiotemp_spp_4.png, id=7, 803.0pt x 803.0pt>
 File: Plots/habitat_spatiotemp_spp_4.png Graphic file (type png)
 <use Plots/habitat_spatiotemp_spp_4.png>
-Package pdftex.def Info: Plots/habitat_spatiotemp_spp_4.png  used on input line 106.
+Package pdftex.def Info: Plots/habitat_spatiotemp_spp_4.png  used on input line 52.
 (pdftex.def)             Requested size: 345.0pt x 345.00146pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 115.
+<Plots/pop_dist.png, id=8, 1606.0pt x 1606.0pt>
+File: Plots/pop_dist.png Graphic file (type png)
+<use Plots/pop_dist.png>
+Package pdftex.def Info: Plots/pop_dist.png  used on input line 62.
+(pdftex.def)             Requested size: 345.0pt x 344.98921pt.
+<Plots/f_dynamics.png, id=10, 578.16pt x 578.16pt>
+File: Plots/f_dynamics.png Graphic file (type png)
+<use Plots/f_dynamics.png>
+Package pdftex.def Info: Plots/f_dynamics.png  used on input line 74.
+(pdftex.def)             Requested size: 345.0pt x 344.99312pt.
+<../analysis/habitat.png, id=11, 803.0pt x 803.0pt>
+File: ../analysis/habitat.png Graphic file (type png)
+<use ../analysis/habitat.png>
+Package pdftex.def Info: ../analysis/habitat.png  used on input line 83.
+(pdftex.def)             Requested size: 345.0pt x 345.00146pt.
+<../analysis/habitat_spwn.png, id=12, 803.0pt x 803.0pt>
+File: ../analysis/habitat_spwn.png Graphic file (type png)
+<use ../analysis/habitat_spwn.png>
+Package pdftex.def Info: ../analysis/habitat_spwn.png  used on input line 91.
+(pdftex.def)             Requested size: 345.0pt x 345.00146pt.
+<Plots/Temperature_gradient.png, id=13, 803.0pt x 803.0pt>
+File: Plots/Temperature_gradient.png Graphic file (type png)
+<use Plots/Temperature_gradient.png>
+Package pdftex.def Info: Plots/Temperature_gradient.png  used on input line 101.
+(pdftex.def)             Requested size: 345.0pt x 345.00146pt.
+<Plots/Species_tolerances.png, id=14, 803.0pt x 803.0pt>
+File: Plots/Species_tolerances.png Graphic file (type png)
+<use Plots/Species_tolerances.png>
+Package pdftex.def Info: Plots/Species_tolerances.png  used on input line 108.
+(pdftex.def)             Requested size: 345.0pt x 345.00146pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 116.
 [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Plots/pop_dist.png>] [2 <./Plots/f_dynamics.png>] [3 <../analysis/habitat.png>] [4 <../analysis/habitat_spwn.png>] [5 <./Plots/Temperature_gradient.png (PNG copy)>] [6 <./Plots/Species_tolerances.png>] [7 <./Plots/habitat_spatiotemp_spp_1.png>] [8 <./Plots/habitat_spatiotemp_spp_2.png>] [9 <./Plots/habitat_spatiotemp_spp_3.png>] [10 <./Plots/habitat_spatiotemp_spp_4.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 115.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Plots/habitat_spatiotemp_spp_1.png>] [2 <./Plots/habitat_spatiotemp_spp_2.png>] [3 <./Plots/habitat_spatiotemp_spp_3.png>] [4 <./Plots/habitat_spatiotemp_spp_4.png>] [5 <./Plots/pop_dist.png>] [6 <./Plots/f_dynamics.png>] [7 <../analysis/habitat.png>] [8 <../analysis/habitat_spwn.png>] [9 <./Plots/Temperature_gradient.png (PNG copy)>] [10 <./Plots/Species_tolerances.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 116.
 (./Supplementary.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 115.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 115.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 116.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 116.
 Package rerunfilecheck Info: File `Supplementary.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 115.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 116.
  ) 
 Here is how much of TeX's memory you used:
  5639 strings out of 492982
  82443 string characters out of 6134895
- 171702 words of memory out of 5000000
+ 171710 words of memory out of 5000000
  9148 multiletter control sequences out of 15000+600000
  5279 words of font info for 19 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  32i,5n,30p,481b,322s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on Supplementary.pdf (10 pages, 1062534 bytes).
+Output written on Supplementary.pdf (10 pages, 1062574 bytes).
 PDF statistics:
  101 PDF objects out of 1000 (max. 8388607)
  65 compressed objects within 1 object stream
