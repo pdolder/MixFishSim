@@ -175,7 +175,7 @@ mn <- 1:12
 
 ## Load the results
 load(file.path('.', 'Scenario_runs_Nov18', paste0('Scenario_', 0, '.RData')))
-load(file.path('.', 'Common_Params.RData'))
+load(file.path('.', 'Scenario_runs_Nov18', 'Common_Params.RData'))
 
 ## Commercial
 dataIn <- get_data(basis = 'commercial', yr = yr, mn = mn, wk = wk, dataIn = res[["fleets_catches"]]) 
@@ -194,9 +194,9 @@ plot_comp(gran = 1, dataIn = dataIn)
 ## Setting out the plot
 ##setEPS()
 ##postscript('Data_Aggregation_space.eps', width = 8 * 2, height = 8 * 3, bg = "white")
-pdf('Data_Aggregation_space_Rev2.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
+pdf('Data_Aggregation_space_Rev3.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
 
-par(oma = c(12,2,12,12), mar = c(0,0,0,0), mfrow = c(4,3))
+par(oma = c(12,6,12,12), mar = c(0,0,0,0), mfrow = c(4,3))
 
 ## real pop 
 dataIn <- get_data(basis = 'real_pop', yr = yr, mn = mn, wk = wk, dataIn = res[["pop_bios"]], sim_init = sim)
@@ -229,6 +229,9 @@ plot_comp(gran = 20, dataIn = dataIn)
 
 mtext(text = "True Population     Commercial Data        Survey Data", side = 3, line = 2, outer = T, font = 2,   cex = 3 ) ## top
 mtext(text = "20 x 20                         10 x 10                           5 x 5                      1 x 1 ", side = 4, line = 2, outer = T, font = 2, cex  = 3) ## right side
+
+mtext(text = "x-distance (0 - 100)", side = 1, line = 2, outer = T, font = 2, cex = 1.5)
+mtext(text = "y-distance (0 - 100)", side = 2, line = 2, outer = T, font = 2, cex = 1.5)
 
 legend(x = -330, y = -10, legend = c("Population 1", "Population 2", "Population 3", "Population 4"),
             fill = c("#E66101", "#FDB863", "#B2ABD2", "#5E3C99"), ncol = 4, xpd = NA, bty = "n", cex = 4)
@@ -394,7 +397,13 @@ dataPlot <- dataPlot[order(dataPlot$year, dataPlot$month, dataPlot$week),]
 #cols <- c("red", "blue", "purple", "green")
 cols <- c("#E66101", "#FDB863", "#B2ABD2", "#5E3C99") 
 
-barplot(t(dataPlot[,4:7]), names.arg = rep(paste(""), nrow(dataPlot)), col = cols, border = NA)
+if(basis == "real_pop") {
+barplot(t(dataPlot[,4:7]), names.arg = rep(paste(""), nrow(dataPlot)), col = cols, border = NA, yaxt = 'n')
+axis(2, cex.axis = 2, font.axis = 2, at = seq(0, 1, 0.2), labels = c("", 0.2, 0.4, 0.6, 0.8, 1.0))
+} else {
+barplot(t(dataPlot[,4:7]), names.arg = rep(paste(""), nrow(dataPlot)), col = cols, border = NA, axes = F)
+}
+
 
 write.csv(dataPlot, file = paste0(timestep, basis,".csv"), row.names = F)
 
@@ -434,7 +443,14 @@ dataPlot <- dataPlot[order(dataPlot$year, dataPlot$month),]
 #cols <- c("red", "blue", "purple", "green")
 cols <- c("#E66101", "#FDB863", "#B2ABD2", "#5E3C99") 
 
-barplot(t(dataPlot[,3:6]), names.arg = rep(paste(""), 12 * length(yr)), col = cols, border = NA)
+if(basis == "real_pop") {
+barplot(t(dataPlot[,3:6]), names.arg = rep(paste(""), 12 * length(yr)), col = cols, border = NA, yaxt = 'n')
+axis(2, cex.axis = 2, font.axis = 2, at = seq(0, 1, 0.2), labels = c("", 0.2, 0.4, 0.6, 0.8, 1.0))
+
+} else {
+barplot(t(dataPlot[,3:6]), names.arg = rep(paste(""), 12 * length(yr)), col = cols, border = NA, axes = F)
+}
+
 write.csv(dataPlot, file = paste0(timestep, basis,".csv"), row.names = F)
 
 }
@@ -474,7 +490,13 @@ dataPlot <- dataPlot[order(dataPlot$year),]
 #cols <- c("red", "blue", "purple", "green")
 cols <- c("#E66101", "#FDB863", "#B2ABD2", "#5E3C99") 
 
-barplot(t(dataPlot[,2:5]), names.arg = rep(paste(""), length(yr)), col = cols, border = NA)
+if(basis == "real_pop") {
+barplot(t(dataPlot[,2:5]), names.arg = rep(paste(""), length(yr)), col = cols, border = NA, yaxt = 'n')
+axis(2, cex.axis = 2, font.axis = 2, at = seq(0, 1, 0.2), labels = c("", 0.2, 0.4, 0.6, 0.8, 1.0))
+} else {
+barplot(t(dataPlot[,2:5]), names.arg = rep(paste(""), length(yr)), col = cols, border = NA, axes = F)
+}
+
 write.csv(dataPlot, file = paste0(timestep, basis,".csv"), row.names = F)
 
 }
@@ -488,8 +510,8 @@ write.csv(dataPlot, file = paste0(timestep, basis,".csv"), row.names = F)
 
 ##setEPS()
 ##postscript('Data_Aggregation_time.eps', width = 8 * 2, height = 8 * 3, bg = "white")
-pdf('Data_Aggregation_time_Rev2.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
-par(oma = c(12,2,12,12), mar = c(0,0,0,0), mfrow = c(3,3))
+pdf('Data_Aggregation_time_Rev3.pdf', width = 8 * 2, height = 8 * 3, bg = "white")
+par(oma = c(12,6,12,12), mar = c(0,0,0,0), mfrow = c(3,3))
 
 plot_temp(timestep = 'week', basis = 'real_pop')
 plot_temp(timestep = 'week', basis = 'commercial')
@@ -508,6 +530,9 @@ plot_temp(timestep = 'year', basis = 'survey')
 
 mtext(text = "True Population  Commercial Data        Survey Data", side = 3, line = 2, outer = T, font = 2,   cex = 3 ) ## top
 mtext(text = "yearly                                     monthly                                       weekly", side = 4, line = 2, outer = T, font = 2, cex  = 3) ## right side
+
+mtext(text = "Unit time (as per panel label)", side = 1, line = 1, outer = T, font = 2, cex = 1.5)
+mtext(text = "Proportion of population in catch", side = 2, line = 3, outer = T, font = 2, cex = 1.5)
 
 legend(x = -25, y = 0, legend = c("Population 1", "Population 2", "Population 3", "Population 4"),
             fill = c("#E66101", "#FDB863", "#B2ABD2", "#5E3C99"), ncol = 4, xpd = NA, bty = "n", cex = 4)

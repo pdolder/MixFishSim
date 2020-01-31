@@ -15,7 +15,7 @@
 		$B_{c,d}$ & Biomass in cell $c$ and day $d$ & kg \\
 		$Z_{c,d}$ & Total mortality in cell $c$ for day $d$ & - \\
 		$R_{c, \tilde{y}}$  &Annualy recruited fish in cell &  yr\textsuperscript{-1} \\
-		$\rho$ & Brody's growth coefficient & yr\textsuperscript{-1} \\
+		$\rho$ & Ford's growth coefficient & yr\textsuperscript{-1} \\
 		$Wt_{R}$ & Weight of a fully recruited fish & kg \\
 		$Wt_{R-1}$ & Weight of a pre-recruit fish & kg \\
 		$\alpha_{d}$ & Proportion of annually recruited fish recruited
@@ -78,6 +78,8 @@
 		Variable & Meaning & Units \\
 		\hline
 		$Rev$ & Revenue from fishing tow & \euro \\
+		$RefRev$ & Reference revenue for determining the step function
+		& \euro \\
 		$L_{p}$ & Landings of population $p$ & kg \\
 		$Pr_{p}$ & Average price of population $p$ & \euro.kg$^{-1}$ \\
 		Le & Step length for vessel & - \\
@@ -148,9 +150,9 @@
 	\hline
 	Exploitation dynamics &&&& \\
 	\hline
-	step function $\beta_1$ & 1 & 2 & 1 & 2 & 3 \\
-	step function $\beta_2$ & 10 & 15 & 8 & 12 & 7 \\
-	step function $\beta_3$, the landings value $nth$ quantile &
+	$\beta_1$ & 1 & 2 & 1 & 2 & 3 \\
+	$\beta_2$ & 10 & 15 & 8 & 12 & 7 \\
+	$\beta_3$, the landings value $nth$ quantile &
 	90 & 90 & 85 & 90 & 80 \\
 	step function $rate$ & 20 & 30 & 25 & 35 & 20 \\
 	Past Knowledge = TRUE & & & & & \\

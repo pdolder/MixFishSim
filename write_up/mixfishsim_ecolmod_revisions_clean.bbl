@@ -250,7 +250,7 @@
 %Type = Misc
 \bibitem[{Gerritsen(2014)}]{Gerritsen2014}
 \bibinfo{author}{Gerritsen, H.}, \bibinfo{year}{2014}.
-\newblock \bibinfo{title}{{mapplots: Data Visualisation on Maps}}.
+\newblock \bibinfo{title}{{mapplots: Data visualisation on maps}}.
 %Type = Article
 \bibitem[{Gerritsen et~al.(2012)Gerritsen, Lordan, Minto and
   Kraak}]{Gerritsen2012}
@@ -469,7 +469,7 @@
   \bibinfo{volume}{11}, \bibinfo{pages}{559--623}.
 %Type = Article
 \bibitem[{Rijnsdorp(2000)}]{Rijnsdorp2000}
-\bibinfo{author}{Rijnsdorp, A.}, \bibinfo{year}{2000}.
+\bibinfo{author}{Rijnsdorp, A.D.}, \bibinfo{year}{2000}.
 \newblock \bibinfo{title}{{Competitive interactions among beam trawlers
   exploiting local patches of flatfish in the North Sea}}.
 \newblock \bibinfo{journal}{ICES Journal of Marine Science}
