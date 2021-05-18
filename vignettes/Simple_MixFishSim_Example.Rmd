@@ -249,7 +249,7 @@ simulation. For example, we can explore:
 Users will wish to define their own plots, depending on the issues of interest
 and all the results are saved in the output from the run_sim function.
 
-```{rplots}
+```{r plots}
 
 ## Biological
 p1 <- plot_pop_summary(results = res,
