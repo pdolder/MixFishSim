@@ -65,6 +65,7 @@ max2 <- max(sapply(1:1000, function(x) { 0.02 * Pop[["Start_pop"]][[1]][[x]] * 1
 fleets <- init_fleet(sim_init = sim, VPT = c("spp1" = 100, "spp2" = 200),
 	   Qs = list("fleet 1" = c("spp1" = 0.01, "spp2" = 0.02), 
 		     "fleet 2" = c("spp1" = 0.02, "spp2" = 0.01)),
+		     fuelC = list("fleet 1" = 800, "fleet 2" = 600),
 	   step_params = list("fleet 1" = c("rate" = 10, "B1" = 0.1, "B2" = 15, "B3" = max1),
 			      "fleet 2" = c("rate" = 10, "B1" = 0.5, "B2" = 17, "B3" = max2)
 			      ),
