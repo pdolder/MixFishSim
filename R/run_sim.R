@@ -86,8 +86,8 @@ if(is.null(closure)) { closure_list <- NULL}
 ###################################
 print("Calculating movement probabilities")
 
-MoveProb  <- lapply(paste0("spp", seq_len(n_spp)), function(s) { move_prob_Lst(lambda = dem_params[["pop_init"]][[s]][["lambda"]], hab = hab_init[["hab"]][[s]])})
-MoveProb_spwn <- lapply(paste0("spp", seq_len(n_spp)), function(s) { move_prob_Lst(lambda = dem_params[["pop_init"]][[s]][["lambda"]], hab = hab_init[["spwn_hab"]][[s]])})
+MoveProb  <- lapply(paste0("spp", seq_len(n_spp)), function(s) { move_prob_Lst(lambda = pop_init[["dem_params"]][[s]][["lambda"]], hab = hab_init[["hab"]][[s]])})
+MoveProb_spwn <- lapply(paste0("spp", seq_len(n_spp)), function(s) { move_prob_Lst(lambda = pop_init[["dem_params"]][[s]][["lambda"]], hab = hab_init[["spwn_hab"]][[s]])})
 	  
 names(MoveProb)      <- paste0("spp", seq_len(n_spp))
 names(MoveProb_spwn) <- paste0("spp", seq_len(n_spp))
