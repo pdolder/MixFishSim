@@ -108,7 +108,7 @@ names(Pop_vec) <- paste("spp",seq(idx[["n.spp"]]), sep ="")
 
 dem_params <- lapply(names(Bio), function(x) {
 
-dem_params = list(rec_params = rec_params[[x]], rec_wk = rec_wk[[x]], spwn_wk = spwn_wk[[x]], M = M[[x]], K = K[[x]])
+dem_params = list(rec_params = rec_params[[x]], rec_wk = rec_wk[[x]], spwn_wk = spwn_wk[[x]], M = M[[x]], K = K[[x]], lambda = lambda)
 
 return(dem_params)
 		  
