@@ -56,7 +56,7 @@ init_survey <- function (sim_init = NULL, design = 'fixed_station', n_stations =
 	##########################
 
 	#create the repeating pattern for the station days
-	station_days <- rep(sim_init[["brk.idx"]][["day.seq"]][which(sim_init[["brk.idx"]][["day.seq"]] == 92, arr.ind = T):c(which(sim_init[["brk.idx"]][["day.seq"]] == 92, arr.ind = T) + round(n_stations / stations_per_day, 0) - 1)], each = stations_per_day)[seq_len(n_stations)]
+	station_days <- rep(sim_init[["brk.idx"]][["day.seq"]][which(sim_init[["brk.idx"]][["day.seq"]] == start_day, arr.ind = T):c(which(sim_init[["brk.idx"]][["day.seq"]] == start_day, arr.ind = T) + round(n_stations / stations_per_day, 0) - 1)], each = stations_per_day)[seq_len(n_stations)]
 
 
 	log.mat 	       <- matrix(NA, nrow = n_stations * sim_init[["idx"]][["ny"]], 
