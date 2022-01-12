@@ -589,7 +589,7 @@ end.time <- Sys.time()
 time.taken <- end.time - start.time
 print(paste("time taken is :", format(time.taken, units = "auto"), sep = " "))
 
-return(list(fleets_catches = catches, pop_summary = pop_init[["Pop_record"]], pop_bios = pop_bios, survey = survey, closures = closure_list))
+return(list(fleets_catches = catches, pop_summary = pop_init[["Pop_record"]], pop_bios = t(pop_bios), survey = survey, closures = closure_list))
 
 } # end func
 
