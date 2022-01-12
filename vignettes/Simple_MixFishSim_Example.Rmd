@@ -91,10 +91,9 @@ hab <- create_hab(sim_init = sim,
 						   ),
 				     "spp2" = list(
 						   'area1' = c(5,6,6,6)
-						   ),
+						   )),
 				     spwn_mult = 10, 
 				     plot.dist = FALSE)
-		  )
 
 print(hab)
 
