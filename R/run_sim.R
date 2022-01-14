@@ -137,7 +137,7 @@ print(paste("tow ==", t, "----",round(t/ntow * 100,0), "%"))
 ## first tow in a week where any of the stocks recruit
 Recruit  <- ifelse(t > 1, ifelse(week.breaks[t] != week.breaks[t-1] &
 		  week.breaks[t] %in% 
-		  unlist(sapply(pop_init$dem_params, function(x) x[["spwn_wk"]])) &
+		  unlist(sapply(pop_init$dem_params, function(x) x[["spwn_wk"]]))
 		  ,
 	  TRUE, FALSE), FALSE) 
 
@@ -186,10 +186,12 @@ if(Recruit) { # Check for new week
 ##print("Recruiting")
 
     ## Check if its the first recruitment week for the population
+    ## If it is, generate the recruitment
  Rec <- lapply(paste0("spp", seq_len(n_spp)), function(s) {
 
 	    if(week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]][1]) {
 
+     ## In first year recruitment determined by starting pop
     if(year.breaks[t]==1) {
 
     rec <- Recr_mat(model = pop_init[["dem_params"]][[s]][["rec_params"]][["model"]],
@@ -199,6 +201,7 @@ if(Recruit) { # Check for new week
      cv = as.numeric(pop_init[["dem_params"]][[s]][["rec_params"]][["cv"]]))
 
 
+    ## In subsequent years, a lag on SSB
     } else {
 
     rec <- Recr_mat(model = pop_init[["dem_params"]][[s]][["rec_params"]][["model"]],
@@ -209,6 +212,12 @@ if(Recruit) { # Check for new week
 
 	    }
 
+	    }
+
+	    if(week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]] & 
+	       week.breaks[t] != pop_init[["dem_params"]][[s]][["spwn_wk"]][1]) {
+		    rec <- Rec[[s]]  ## Pick up the previously generated recruitment
+	    
 	    }
 
 	if(!week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
