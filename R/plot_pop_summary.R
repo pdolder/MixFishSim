@@ -60,7 +60,7 @@ plot_pop_summary <- function(results = res, timestep = 'daily', save = FALSE, sa
 	results_df_annual <- rbind(results_df_an1, results_df_an2) 
 
 	print(ggplot(results_df_annual, aes(x = year, y = data, group = 2)) + geom_point() + geom_line() + 
-	facet_grid(pop ~ metric, scale = "free") + expand_limits(y = 0))
+	facet_wrap(pop ~ metric, scale = "free", ncol = 4) + expand_limits(y = 0))
 	}
 
 	if(save == TRUE) {
