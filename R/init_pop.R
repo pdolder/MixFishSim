@@ -23,9 +23,15 @@
 #' vector of the weeks in which recruitment takes place for the population
 #' @param spwn_wk is a list with an element for each population, containing a
 #' vector of the weeks in which spawning takes place for the population
-#' @param M is a named vector, with the annual natural mortality rate for each
-#' population
-#' @param K is a named vector, with the annual growth rate for each population
+#' @param M is a named vector, with the natural mortality rate for each
+#' population consistent with the population model time-step. i.e if annual M
+#' is 0.2, daily M is 0.2/365
+#' @param wt is the weight for a fully recruited fish. 
+#' @param wtm1 is the weight for a pre-recruit fish.
+#' @param K is a named vector, with the growth rate for each population. This
+#' should be consistent with your population model time-step, e.g. if an annual
+#' rate of K, a weekly rate of K would be solving for K* in
+#' (1+e^-K)=(1+e^-K*)^52.
 #'
 #' @return The function returns the recording vectors at the population level,
 #' the spatial matrices for the starting population densities and the

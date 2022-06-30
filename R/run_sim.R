@@ -38,7 +38,8 @@ n_vess       <- sim_init[["idx"]][["nv"]]
 n_spp        <- sim_init[["idx"]][["n.spp"]]  
 ncols        <- sim_init[["idx"]][["ncols"]]  
 nrows        <- sim_init[["idx"]][["nrows"]]  
-n_weeks        <- sim_init[["idx"]][["nw"]]  
+n_weeks      <- sim_init[["idx"]][["nw"]]  
+ndf          <- sim_init[["idx"]][["ndf"]]  
 
 day.breaks     <- sim_init[["brk.idx"]][["day.breaks"]]  
 week.breaks    <- sim_init[["brk.idx"]][["week.breaks"]]  
@@ -136,16 +137,16 @@ print(paste("tow ==", t, "----",round(t/ntow * 100,0), "%"))
 ## first tow in a week where any of the stocks recruit
 Recruit  <- ifelse(t > 1, ifelse(week.breaks[t] != week.breaks[t-1] &
 		  week.breaks[t] %in% 
-		  unlist(sapply(pop_init$dem_params, function(x) x[["spwn_wk"]])),
+		  unlist(sapply(pop_init$dem_params, function(x) x[["spwn_wk"]]))
+		  ,
 	  TRUE, FALSE), FALSE) 
 
 if(t != ntow) {
-Pop_dyn  <- ifelse(day.breaks[t] != day.breaks[t+1], TRUE, FALSE) ## weekly delay diff
+Pop_dyn  <- ifelse(day.breaks[t] != day.breaks[t+1], TRUE, FALSE) ## daily delay diff
 Pop_move <- ifelse(week.breaks[t] != week.breaks[t+1], TRUE, FALSE) ## weekly pop movement
-Update   <- ifelse(day.breaks[t] != day.breaks[t+1], TRUE, FALSE) ## weekly pop records 
+Update   <- ifelse(day.breaks[t] != day.breaks[t+1], TRUE, FALSE) ## daily pop records 
 
 ## Closure switch, when to recalculate the closed areas
-
 
 if(!is.null(closure)) {
 if(t==1 & !closeArea) {CalcClosures  <-  FALSE }
@@ -175,29 +176,51 @@ CalcClosures <- ifelse(week.breaks[t] != week.breaks[t-1], TRUE, FALSE)
 # Specified weeks
 # As defined by:
 # init_pop$rec_params$rec_wk
-# Recruitment only occurs in specified spwn.hab
-# Recruitment based on pop in spawning grounds in first week of spawning,
+# Recruitment concentrates in specified spwn.hab
+# Recruitment based on pop in first week of spawning,
 # but occurs throughout the spawning period
-# Different spawning periods for different pops, so we need to handle this...
+# Different spawning periods for different pops
 
 if(Recruit) { # Check for new week
 
 ##print("Recruiting")
 
-    ## Check if its a recruitment week for the population
+    ## Check if its the first recruitment week for the population
+    ## If it is, generate the recruitment
  Rec <- lapply(paste0("spp", seq_len(n_spp)), function(s) {
 
-	    if(week.breaks[t] %in% pop_init[["dem_params"]][[s]][["rec_wk"]]) {
+	    if(week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]][1]) {
+
+     ## In first year recruitment determined by starting pop
+    if(year.breaks[t]==1) {
 
     rec <- Recr_mat(model = pop_init[["dem_params"]][[s]][["rec_params"]][["model"]],
      params = c("a" = as.numeric(pop_init[["dem_params"]][[s]][["rec_params"]][["a"]]),
 		"b" = as.numeric(pop_init[["dem_params"]][[s]][["rec_params"]][["b"]])),
-     B = B[[s]], 
+     B = pop_init$Start_pop[[s]], 
+     cv = as.numeric(pop_init[["dem_params"]][[s]][["rec_params"]][["cv"]]))
+
+
+    ## In subsequent years, a lag on SSB
+    } else {
+
+    rec <- Recr_mat(model = pop_init[["dem_params"]][[s]][["rec_params"]][["model"]],
+     params = c("a" = as.numeric(pop_init[["dem_params"]][[s]][["rec_params"]][["a"]]),
+		"b" = as.numeric(pop_init[["dem_params"]][[s]][["rec_params"]][["b"]])),
+     B = pop_bios[[year.breaks[t]-1, week.breaks[t]]][[s]], 
      cv = as.numeric(pop_init[["dem_params"]][[s]][["rec_params"]][["cv"]]))
 
 	    }
 
-	if(!week.breaks[t] %in% pop_init[["dem_params"]][[s]][["rec_wk"]]) {
+	    }
+
+	    if(week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]] & 
+	       week.breaks[t] != pop_init[["dem_params"]][[s]][["spwn_wk"]][1]) {
+		    rec <- Rec[[s]]  ## Pick up the previously generated recruitment
+	    
+	    }
+
+	if(!week.breaks[t] %in% pop_init[["dem_params"]][[s]][["spwn_wk"]]) {
 		rec <- matrix(0, ncol = ncols, nrow = nrows)
 	
 	}
@@ -352,25 +375,17 @@ spp_catches <- sum_fleets_catches(sim_init = sim_init, fleets_log =
 spat_fs <- find_spat_f_pops(sim_init = sim_init, C = spp_catches, B = B, 
                             dem_params = pop_init[["dem_params"]])
 
-#spat_fs <- lapply(names(B), function(x) {
-#			  find_spat_f_naive(C = spp_catches[[x]], B = B[[x]])
-#				  })
-#names(spat_fs)  <- names(B)
-
-## Fishing mortality rates
-#print(sapply(names(spat_fs), function(x) weighted.mean(spat_fs[[x]], B[[x]])))
-
 # Apply the delay difference model
 Bp1 <- lapply(paste0("spp", seq_len(n_spp)), function(x) {
 
 al   <- ifelse(week.breaks[t] %in% pop_init[["dem_params"]][[x]][["rec_wk"]],
-	     1/length(pop_init[["dem_params"]][[x]][["rec_wk"]]), 0)
+	     1/(length(pop_init[["dem_params"]][[x]][["rec_wk"]]) * ndf), 0)
 alm1 <- ifelse(c(week.breaks[t]-1) %in% pop_init[["dem_params"]][[x]][["rec_wk"]],
-	     1/length(pop_init[["dem_params"]][[x]][["rec_wk"]]), 0)
+	     1/(length(pop_init[["dem_params"]][[x]][["rec_wk"]]) * ndf), 0)
 
 res <- delay_diff(K = pop_init[["dem_params"]][[x]][["K"]], F = spat_fs[[x]], 
-	   M = pop_init[["dem_params"]][[x]][["M"]]/365, 
-	   wt = 1, wtm1 = 0.1, R = Rec[[x]], B = B[[x]],
+	   M = pop_init[["dem_params"]][[x]][["M"]], 
+	   wt = pop_init[["dem_params"]][[x]][["wt"]], wtm1 = pop_init[["dem_params"]][[x]][["wtm1"]], R = Rec[[x]], B = B[[x]],
           Bm1 = Bm1[[x]], al = al,  alm1 = alm1)
 
 })
