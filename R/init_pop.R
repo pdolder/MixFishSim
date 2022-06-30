@@ -31,7 +31,8 @@
 #' @param K is a named vector, with the growth rate for each population. This
 #' should be consistent with your population model time-step, e.g. if an annual
 #' rate of K, a weekly rate of K would be solving for K* in
-#' (1+e^-K)=(1+e^-K*)^52.
+#' (1+e^-K)=(1+e^-K*)^52, similarly a daily rate is ^365. K* should then be
+#' substituted for K as input to the model.
 #'
 #' @return The function returns the recording vectors at the population level,
 #' the spatial matrices for the starting population densities and the
@@ -48,7 +49,7 @@
 
 #' @export
 
-init_pop <- function(sim_init = sim_init, Bio = NULL, hab = NULL, start_cell = NULL, lambda = NULL, init_move_steps = 10, rec_params = NULL, rec_wk = NULL, spwn_wk = NULL, M = NULL, K = NULL, cores = 3) {
+init_pop <- function(sim_init = sim_init, Bio = NULL, hab = NULL, start_cell = NULL, lambda = NULL, init_move_steps = 10, rec_params = NULL, rec_wk = NULL, spwn_wk = NULL, M = NULL, wt = 1, wtm1 = 0.1, K = NULL) {
 
 # extract the indices
 idx <- sim_init[["idx"]]
@@ -114,7 +115,7 @@ names(Pop_vec) <- paste("spp",seq(idx[["n.spp"]]), sep ="")
 
 dem_params <- lapply(names(Bio), function(x) {
 
-dem_params = list(rec_params = rec_params[[x]], rec_wk = rec_wk[[x]], spwn_wk = spwn_wk[[x]], M = M[[x]], K = K[[x]], lambda = lambda[[x]])
+dem_params = list(rec_params = rec_params[[x]], rec_wk = rec_wk[[x]], spwn_wk = spwn_wk[[x]], M = M[[x]], wt = wt[[x]], wtm1 = wtm1[[x]], K = K[[x]], lambda = lambda[[x]])
 
 return(dem_params)
 		  
