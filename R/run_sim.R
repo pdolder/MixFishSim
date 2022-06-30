@@ -384,8 +384,8 @@ alm1 <- ifelse(c(week.breaks[t]-1) %in% pop_init[["dem_params"]][[x]][["rec_wk"]
 	     1/(length(pop_init[["dem_params"]][[x]][["rec_wk"]]) * ndf), 0)
 
 res <- delay_diff(K = pop_init[["dem_params"]][[x]][["K"]], F = spat_fs[[x]], 
-	   M = pop_init[["dem_params"]][[x]][["M"]]/365, 
-	   wt = 1, wtm1 = 0.1, R = Rec[[x]], B = B[[x]],
+	   M = pop_init[["dem_params"]][[x]][["M"]], 
+	   wt = pop_init[["dem_params"]][[x]][["wt"]], wtm1 = pop_init[["dem_params"]][[x]][["wtm1"]], R = Rec[[x]], B = B[[x]],
           Bm1 = Bm1[[x]], al = al,  alm1 = alm1)
 
 })
