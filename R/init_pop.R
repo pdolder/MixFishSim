@@ -90,18 +90,18 @@ Pop_vec <- lapply(seq_len(idx[["n.spp"]]), function(x) {
 
 Pop_vec <- list( 
 	# Pop level biomass
-	Bio.mat = matrix(NA, nrow = idx["ny"], ncol = max.day, dimnames =
-			  list(seq(idx["ny"]), seq(1,max(brk.idx[["day.breaks"]])) )),
+	Bio.mat = matrix(NA, nrow = idx[["ny"]], ncol = max.day, dimnames =
+			  list(seq(idx[["ny"]]), seq(1,max(brk.idx[["day.breaks"]])) )),
 	# Pop level Fs
-	F.mat = matrix(NA, nrow = idx["ny"], ncol = max.day, dimnames =
-			list(seq(idx["ny"]), seq(1,max(brk.idx[["day.breaks"]])) )),
+	F.mat = matrix(NA, nrow = idx[["ny"]], ncol = max.day, dimnames =
+			list(seq(idx[["ny"]]), seq(1,max(brk.idx[["day.breaks"]])) )),
 
 	# Pop level catches
-	Catch.mat = matrix(NA, nrow = idx["ny"], ncol = max.day, dimnames =
-			    list(seq(idx["ny"]), seq(1,max(brk.idx[["day.breaks"]])) )),
+	Catch.mat = matrix(NA, nrow = idx[["ny"]], ncol = max.day, dimnames =
+			    list(seq(idx[["ny"]]), seq(1,max(brk.idx[["day.breaks"]])) )),
 	
 	# Pop level recruitment
-	Rec.mat = matrix(NA,nrow= 1,ncol = idx["ny"]+1,dimnames=list(1, 0:idx["ny"]))
+	Rec.mat = matrix(NA,nrow= 1,ncol = idx[["ny"]]+1,dimnames=list(1, 0:idx[["ny"]]))
 
 	)
 
