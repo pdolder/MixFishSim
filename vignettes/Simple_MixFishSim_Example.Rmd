@@ -126,8 +126,10 @@ Pop <- init_pop(sim_init = sim, Bio = c("spp1" = 1e5, "spp2" = 1e5),
 				  "spp2" = c("model" = "BH", "a" = 27, "b" = 4,"cv" = 0.3)),
 		rec_wk = list("spp1" = 3:6, "spp2" = 4:8),
 		spwn_wk = list("spp1" = 4:8, "spp2" = 4:8),
-		M = c("spp1" = 0.2, "spp2" = 0.2),
-		K = c("spp1" = 0.3, "spp2" = 0.3)
+	  M = c("spp1" = 0.2/365, "spp2" = 0.2/365),
+                wt = c("spp1"= 1, "spp2" = 1),
+                wtm1 = c("spp1" = 0.1, "spp2" = 0.1),
+                K = c("spp1" = 0.3, "spp2" = 0.3)
 		)
 
 names(Pop)
